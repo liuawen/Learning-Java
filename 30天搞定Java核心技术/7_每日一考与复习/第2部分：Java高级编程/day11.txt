@@ -1,0 +1,51 @@
+1.	写出获取Class实例的三种常见方式
+
+Class clazz1 = String.class;
+
+Class clazz2 = person.getClass(); //sout(person); //xxx.yyy.zzz.Person@...
+
+Class clazz3 = Class.forName(String classPath);//体现反射的动态性
+
+
+
+2.谈谈你对Class类的理解
+
+Class实例对应着加载到内存中的一个运行时类。
+
+
+3.创建Class对应运行时类的对象的通用方法，代码实现。以及这样操作，需要对应的运行时类构造器方面满足的要求。
+
+Object obj = clazz.newInstance();//创建了对应的运行时类的对象
+
+1.必须有空参的构造器
+2.权限修饰符的权限要够。通常设置为public
+
+4.在工程或module的src下有名为”jdbc.properties”的配置文件，文件内容为：name=Tom。如何在程序中通过代码获取Tom这个变量值。代码实现
+
+
+
+
+5. 如何调用方法show()  
+类声明如下：
+package com.atguigu.java;
+class User{
+	public void show(){
+		System.out.println(“我是一个中国人！”);  
+}  }
+
+User user = (User)clazz.newInstance();
+Method show = clazz.getDeclaredMethod("show");
+show.setAccessiable(true);
+show.invoke(user);
+
+
+
+
+
+
+
+
+
+
+
+

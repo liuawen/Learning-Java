@@ -1,0 +1,52 @@
+3.一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3。
+编程 找出1000以内的所有完数。（因子：除去这个数本身的其它约数）
+
+//int factor = 0;
+for(int i = 1;i <= 1000;i++){
+	int factor = 0;	
+	for(int j = 1;j <= i/2;j++){
+	
+		if(i % j == 0){
+			factor += j;
+		}
+	
+	}
+
+	if(i == factor){
+		System.out.println(i);
+	}
+
+	//重置factor
+	//factor = 0;
+	
+}
+
+5.
+******
+*****
+****	
+***	
+**	
+*	
+
+外层循环控制行数
+内层循环控制列数
+
+for(int i = 1;i <= 6;i++){
+	for(int j = 1;j <= 7 - i;j++){
+		System.out.print("*");
+	}
+
+	System.out.println();
+	
+}
+
+或
+for(int i = 0;i < 6;i++){
+	
+	for(int j = 0;j < 6 - i;j++){
+		System.out.print("*");
+	}
+
+	System.out.println();
+}

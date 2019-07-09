@@ -1,0 +1,51 @@
+1.如何实现向下转型？需要注意什么问题？如何解决此问题？
+
+Person p = new Man();
+使用强转符：()
+Man m = (Man)p;
+
+可能ClassCastException异常。
+
+使用instanceof在进行向下转型前判断。
+if(p instanceof Man){
+	Man m = (Man)p;
+}
+
+
+2.== 和 equals()有何区别？
+== ：
+
+equals():
+
+
+3.class User{
+String name;
+int age;
+	//重写其equals()方法
+	public boolean equals(Object obj){
+		if(obj == this){
+			return true;
+		}
+
+		if(obj instanceof User){
+			User u = (User)obj;
+			return this.age == u.age && this.name.equals(u.name);
+		}
+
+		return false;
+	}
+
+}
+4. 写出8种基本数据类型及其对应的包装类
+
+int  Integer
+char Character
+
+5. 基本数据类型、包装类与String三者之间如何转换
+
+自动装箱、自动拆箱
+
+Integer i = 10;
+
+基本数据类型、包装类--->String: valueOf(Xxx xx)
+String--->基本数据类型、包装类:parseXxx(String s)
