@@ -8,15 +8,23 @@
 -----
 
 # 仓库目录
-按照JavaEE学习路线(www.atguigu.com)
-学习记录总结中，
+按照JavaEE学习路线(http://www.atguigu.com/download.shtml)
+学习记录总结中
+
 1Java语言核心
+
 2Java与数据库交互技术
+
 3JavaWeb前后端交互技术基础
+
 4JavaEE框架阶段
+
 5常用工具和环境
+
 6Java高级课程
+
 7互联网架构新技术
+
 一：Java语言核心
 	1. Java核心语法
 	2. Java8新特性
