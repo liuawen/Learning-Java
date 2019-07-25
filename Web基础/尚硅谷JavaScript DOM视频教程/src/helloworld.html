@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//1. 当整个 HTML 文档完全加载成功后触发 window.onload 事件. 
+	//事件触发时, 执行后面 function 里边的函数体. 
+	window.onload = function(){
+		//2. 获取所有的 button 节点. 并取得第一个元素
+		var btn = document.getElementsByTagName("button")[0];
+		//3. 为 button 的 onclick 事件赋值: 当点击 button 时, 执行函数体
+		btn.onclick = function(){
+			//4. 弹出 helloworld
+			alert("helloworld");
+		}
+	}	
+</script>
+</head>
+<body>
+	
+	<button>ClickMe</button>
+	
+</body>
+</html>

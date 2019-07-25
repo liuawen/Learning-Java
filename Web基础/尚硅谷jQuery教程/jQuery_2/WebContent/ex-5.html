@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+ 
+ $(function(){
+	 
+	 //1. jQuery 对象调用 jQuery 提供的方法的返回值如果是一个对象的话
+	 //那么这个对象一定是一个 jQuery 对象
+	 //2. find() 方法: 查找子节点, 返回值为子节点对应的 jQuery 对象
+	 function removeTr(aNoe){
+		 //获取 a 节点所在的的 tr 节点. 返回时是 jQuery 对象
+		 var $trNode = $(aNoe).parent().parent();
+		 var textContent = $trNode.find("td:first").text();
+		 textContent = $.trim(textContent);
+		 
+		 var flag = confirm("确定要删除" + textContent + "的信息吗?");
+		 if(flag){
+			 $trNode.remove();
+		 }
+		 
+		 return false;
+	 }
+	 
+	 $("#employeetable a").click(function(){
+		 return removeTr(this);
+	 });
+	 
+	 $("#addEmpButton").click(function(){
+		 $("<tr></tr>").append("<td>" + $("#name").val() + "</td>")
+		               .append("<td>" + $("#email").val() + "</td>")
+		               .append("<td>" + $("#salary").val() + "</td>")
+		               .append("<td><a href='deleteEmp?id=xxx'>Delete</a></td>")
+		               .appendTo("#employeetable tbody")
+		               .find("a")
+			               .click(function(){
+			            	   return removeTr(this)
+			               });
+	 });
+	 
+ })
+	 
+
+</script>
+</head>
+<body>
+
+	<center>
+		<br> <br> 添加新员工 <br> <br> name: <input type="text"
+			name="name" id="name" />&nbsp;&nbsp; email: <input type="text"
+			name="email" id="email" />&nbsp;&nbsp; salary: <input type="text"
+			name="salary" id="salary" /> <br> <br>
+		<button id="addEmpButton" value="abc">Submit</button>
+		<br> <br>
+		<hr>
+		<br> <br>
+		<table id="employeetable" border="1" cellpadding="5" cellspacing=0>
+			<tbody>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Salary</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td>Tom</td>
+					<td>tom@tom.com</td>
+					<td>5000</td>
+					<td><a href="deleteEmp?id=001">Delete</a></td>
+				</tr>
+				<tr>
+					<td>
+						Jerry
+					</td>
+					<td>jerry@sohu.com</td>
+					<td>8000</td>
+					<td><a href="deleteEmp?id=002">Delete</a></td>
+				</tr>
+				<tr>
+					<td>Bob</td>
+					<td>bob@tom.com</td>
+					<td>10000</td>
+					<td><a href="deleteEmp?id=003">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+
+</body>
+</html>

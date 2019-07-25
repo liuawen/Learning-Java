@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//获取元素节点的子节点
+			window.onload = function(){
+				
+				//1. 获取 #city 节点的所有子节点.
+				var cityNode = document.getElementById("city");
+				
+				//2. 利用元素节点的 childNodes 方法可以获取指定元素节点的所有子节点.
+				//但该方法不实用. 
+				alert(cityNode.childNodes.length);
+				
+				//3. 获取 #city 节点的所有 li 子节点.
+				var cityLiNodes = cityNode.getElementsByTagName("li");
+				alert(cityLiNodes.length);
+				
+				//4. 获取指定节点的第一个子节点和最后一个子节点. 
+				alert(cityNode.firstChild);
+				alert(cityNode.lastChild);
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		name: <input type="text" name="username" 
+			id="name" value="atguigu"/>
+	</body>
+</html>	

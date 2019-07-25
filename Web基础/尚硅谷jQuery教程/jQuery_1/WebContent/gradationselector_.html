@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<style type="text/css">
+			div, span, p {
+			    width: 140px;
+			    height: 140px;
+			    margin: 5px;
+			    background: #aaa;
+			    border: #000 1px solid;
+			    float: left;
+			    font-size: 17px;
+			    font-family: Verdana;
+			}
+			
+			div.mini {
+			    width: 55px;
+			    height: 55px;
+			    background-color: #aaa;
+			    font-size: 12px;
+			}
+			
+			div.hide {
+			    display: none;
+			}			
+		</style>
+		<script type="text/javascript" src="jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+		
+			$(function(){
+				
+				$("#btn1").click(function(){
+					$("body div").css("background", "#ffbbaa");
+				});
+				$("#btn2").click(function(){
+					$("body > div").css("background", "#ffbbaa");
+				});
+				$("#btn3").click(function(){
+					$("#one + div").css("background", "#ffbbaa");
+				});
+				
+				$("#btn4").click(function(){
+					$("#two ~ div").css("background", "#ffbbaa");
+				});
+				$("#btn5").click(function(){
+					$("#two").siblings("div").css("background", "#ffbbaa");
+				});
+				$("#btn6").click(function(){
+					//以下选择器选择的是近邻 #one 的 span 元素, 若该span
+					//和 #one 不相邻, 选择器无效. 
+					//$("#one + span").css("background", "#ffbbaa");
+					$("#one").nextAll("span:first").css("background", "#ffbbaa");
+				});
+				$("#btn7").click(function(){
+					$("#two").prevAll("div").css("background", "#ffbbaa");
+				});
+				
+			})
+		
+		</script>
+	</head>
+	<body>		
+		<input type="button" value="选择 body 内的所有 div 元素" id="btn1" />
+		<input type="button" value="在 body 内, 选择子元素是 div 的." id="btn2" />
+		<input type="button" value="选择 id 为 one 的下一个 div 元素" id="btn3" />
+		<input type="button" value="选择 id 为 two 的元素后面的所有 div 兄弟元素" id="btn4" />
+		<input type="button" value="选择 id 为 two 的元素所有 div 兄弟元素" id="btn5" />
+		<input type="button" value="选择 id 为 one 的下一个 span 元素" id="btn6" />
+		<input type="button" value="选择 id 为 two 的元素前边的所有的 div 兄弟元素" id="btn7" />
+		
+		<br><br>
+		<div class="one" id="one">
+			id 为 one,class 为 one 的div
+			<div class="mini">class为mini</div>
+		</div>
+		<div class="one" id="two" title="test">
+			id为two,class为one,title为test的div
+			<div class="mini" title="other">class为mini,title为other</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini"></div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="tesst">class为mini,title为tesst</div>
+		</div>
+		<div style="display:none;" class="none">style的display为"none"的div</div>
+		<div class="hide">class为"hide"的div</div>
+		<div>
+			包含input的type为"hidden"的div<input type="hidden" size="8">
+		</div>
+		<span id="span">^^span元素^^</span>
+		<span id="span">--span元素--</span>
+	</body>
+</html>
+

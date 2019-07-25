@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+				<style type="text/css">
+			div, span, p {
+			    width: 140px;
+			    height: 140px;
+			    margin: 5px;
+			    background: #aaa;
+			    border: #000 1px solid;
+			    float: left;
+			    font-size: 17px;
+			    font-family: Verdana;
+			}
+			
+			div.mini {
+			    width: 55px;
+			    height: 55px;
+			    background-color: #aaa;
+			    font-size: 12px;
+			}
+			
+			div.hide {
+			    display: none;
+			}			
+		</style>
+		<script type="text/javascript" src="jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$("#btn1").click(function(){
+					$("div:visible").css("background", "#ffbbaa");
+				});
+				$("#btn2").click(function(){
+					//alert($("div:hidden").length);
+					//show(time): 可以使不可见的元素变为可见, time 表示时间, 以
+					//毫秒为单位
+					//jQuery 的很多方法支持方法的连缀, 即一个方法的返回值来时调用该
+					//方法的 jQuery 对象: 可以继续调用该对象的其他方法. 
+					$("div:hidden").show(2000).css("background", 
+							"#ffbbaa");
+				});
+				$("#btn3").click(function(){
+					//val() 方法可以返回某一个表单元素的 value 属性值. 
+					alert($("input:hidden").val());
+				});
+				
+			});
+			
+		</script>
+	</head>
+	<body>		
+		<input type="button" value="选取所有可见的  div 元素" id="btn1">
+		<input type="button" value="选择所有不可见的 div 元素" id="btn2" />
+		<input type="button" value="选择所有不可见的 input 元素" id="btn3" />
+		
+		<br><br>
+		<div class="one" id="one">
+			id 为 one,class 为 one 的div
+			<div class="mini">class为mini</div>
+		</div>
+		<div class="one" id="two" title="test">
+			id为two,class为one,title为test的div
+			<div class="mini" title="other">class为mini,title为other</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini"></div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="tesst">class为mini,title为tesst</div>
+		</div>
+		<div style="display:none;" class="none">style的display为"none"的div</div>
+		<div class="hide">class为"hide"的div</div>
+		<div>
+			包含input的type为"hidden"的div
+			<input type="hidden" value="123456789000" size="8">
+		</div>
+		<div id="mover">正在执行动画的div元素.</div>
+	</body>
+</html>
+

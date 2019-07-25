@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//测试 removeChild() 方法: 删除节点
+			window.onload = function(){
+				
+				/*
+				alert("1");
+				
+				var bjNode = document.getElementById("bj");
+				bjNode.parentNode.removeChild(bjNode);
+				*/
+				
+				//为每个 li 节点添加一个 confirm(确认对话框): 确定要删除 xx 的信息吗?
+				//若确定, 则删除
+				
+				var liNodes = document.getElementsByTagName("li");
+				
+				for(var i = 0; i < liNodes.length; i++){
+					liNodes[i].onclick = function(){
+						var flag = confirm("确定要删除" + 
+								this.firstChild.nodeValue + "的信息吗?");
+						
+						if(flag){
+							this.parentNode.removeChild(this);
+						}
+					}
+				}
+				
+				//var flag = confirm("确定要删除吗?");
+				//alert(flag);
+			}
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

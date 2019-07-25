@@ -1,0 +1,11 @@
+1. 对 jQuery 调用调用 each() 方法, 可以在 each() 方法中加入 index, 得到正在遍历的
+那个对象对应的索引.
+
+$("li").each(function(index){
+	//打印出正在遍历的 li 节点在所有 li 组成的数组中的索引. 
+	alert(index);
+	
+}
+
+2. 使用 jQuery 对象和 jQuery 对象提供的 replaceWith(replaceAll) 在进行元素替换时,
+事件和属性不能很好的进行复制. 

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//获取指定的元素节点. 
+			window.onload = function(){
+				
+				//1. 获取 id 为 bj 的那个节点.
+				//在编写 HTML 文档时, 需确保 id 属性值是唯一的. 
+				//该方法为 document 对象的方法
+				var bjNode = document.getElementById("bj");
+				alert(bjNode);
+				
+				//2. 获取所有的 li 节点. 
+				//使用标签名获取指定节点的集合. 
+				//该方法为 Node 接口的方法, 即任何一个节点都有这个方法. 
+				var liNodes = document.getElementsByTagName("li");
+				alert(liNodes.length);
+				
+				var cityNode = document.getElementById("city");
+				var cityLiNodes = cityNode.getElementsByTagName("li");
+				alert(cityLiNodes.length);
+				
+				//3. 根据 HTML 文档元素的 name 属性名来获取指定的节点的集合. 
+				var genderNodes = document.getElementsByName("gender");
+				alert(genderNodes.length);
+				
+				//若 HTML 元素自身没有定义 name 属性, 则 getElementsByName()
+				//方法对于 IE 无效. 所以使用该方法时需谨慎. 
+				var bjNode2 = document.getElementsByName("BeiJing");
+				alert(bjNode2.length);
+				
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	</body>
+</html>	

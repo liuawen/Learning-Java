@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//获取文本节点
+			window.onload = function(){
+				
+				//文本节点一定是元素节点的子节点. 
+				
+				//1. 获取文本节点所在的元素节点
+				var bjNode = document.getElementById("bj");
+				
+				//2. 通过 firstChild 定义为到文本节点
+				var bjTextNode = bjNode.firstChild;
+				
+				//3. 通过操作文本节点的 nodeValue 属性来读写文本节点的值. 
+				alert(bjTextNode.nodeValue);
+				
+				bjTextNode.nodeValue = "尚硅谷";
+				
+				//alert(bjTextNode);
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		name: <input type="text" name="username" 
+			id="name" value="atguigu"/>
+	</body>
+</html>	

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+		
+		//需求: 点击 submit 按钮时,　检查是否选择 type, 若没有选择给出提示: "请选择类型"; 
+		//     检查文本框中是否有输入(可以去除前后空格), 若没有输入,则给出提示: "请输入内容";
+		//若检查都通过, 则在相应的 ul 节点中添加对应的 li 节点 
+	
+		//需求2: 使包括新增的 li 都能响应 onclick 事件: 弹出 li 的文本值. 
+		
+		$(function(){
+			
+			function showContent(li){
+				alert($(li).text());
+			}
+			
+			$("li").click(function(){
+				showContent(this);
+			});
+			
+			//1. 同 JS 的响应函数一样, jQuery 对象的响应函数若返回 false, 
+			//可以取消指定元素的默认行为. 比如 submit, a 等
+			//2. val() 方法, 相当于 attr("value"), 获取表单元素的 value 属性值. 
+			//3. $.trim(str): 可以去除 str 的前后空格.
+			//4. jQuery 对象的方法的连缀: 调用一个方法的返回值还是调用的对象, 于是可以
+			//在调用方法的后面依然调用先前的那个对象的其他方法. 
+			$(":submit").click(function(){
+				
+				var $type = $(":radio[name='type']:checked");
+				if($type.length == 0){
+					alert("请选择类型.");
+					return false;
+				}
+				
+				var type = $type.val();
+				
+				var $name = $(":text[name='name']");
+				var name = $name.val();
+				
+				//$.trim(str): 可以去除 str 的前后空格.
+				name = $.trim(name);
+				$name.val(name);
+				
+				if(name == ""){
+					alert("请输入内容");
+					return false;
+				}
+				
+				$("<li>" + name + "</li>").appendTo($("#" + type))
+				                          .click(function(){
+				                        	  showContent(this);
+				                          });
+				
+				//取消 submit 的默认行为
+				return false;
+			});
+			
+		})
+		
+	
+	</script>
+</head>
+<body>
+
+	<p>你喜欢哪个城市?</p>
+	
+		<ul id="city">
+			<li id="bj">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		
+		<form action="dom-7.html" name="myform">
+			
+			<input type="radio" name="type" value="city">城市
+			<input type="radio" name="type" value="game">游戏
+		
+			name: <input type="text" name="name"/>
+		
+			<input type="submit" value="Submit" id="submit"/>
+			
+		</form>
+
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		
+		//需求: 为所有的 li 节点添加 onclick 响应函数
+		//实现 city 子节点和 game 子节点对应位置的元素的互换
+		
+		window.onload = function(){
+			
+			//自定义互换两个节点的函数
+			function replaceEach(aNode, bNode){
+				//1. 获取 aNode 和 bNode 的父节点. 使用 parentNode 属性
+				var aParent = aNode.parentNode;
+				var bParent = bNode.parentNode;
+				
+				if(aParent && bParent){
+					//2. 克隆 aNode 或 bNode
+					var aNode2 = aNode.cloneNode(true);
+					
+					//克隆 aNode 的同时, 把 onclick 事件也复制. 
+					aNode2.onclick = aNode.onclick;
+					
+					//克隆 aNode 的同时, 把 onclick 事件也复制. 
+					aNode2.index = aNode.index;
+					
+					//3. 分别调用 aNode 的父节点和 bNode 的父节点的 replaceChild()
+					//方法实现节点的互换
+					bParent.replaceChild(aNode2, bNode);
+					aParent.replaceChild(bNode, aNode);
+				}
+			}
+			
+			//1. 获取所有的 li 节点
+			var liNodes = document.getElementsByTagName("li");
+			
+			//2. 为每一个 li 节点添加 Onclick 响应函数
+			for(var i = 0; i < liNodes.length; i++){
+				//手动为每个 li 节点添加一个 index 属性
+				liNodes[i].index = i;
+				
+				liNodes[i].onclick = function(){
+					
+					//alert("index: " + this.index);
+					
+					//3. 找到和当前节点对应的那个 li 节点
+					var targetIndex = 0;
+					
+					if(this.index < 4){
+						targetIndex = 4 + this.index;
+					}else{
+						targetIndex = this.index - 4;
+					}
+					
+					//交换 index 属性. 
+					var tempIndex = this.index;
+					this.index = liNodes[targetIndex].index;
+					liNodes[targetIndex].index = tempIndex;
+					
+					//4. 互换. 
+					replaceEach(this, liNodes[targetIndex]);
+					
+				}
+			}
+			
+			
+
+		}
+	
+	</script>
+</head>
+<body>
+
+	<p>你喜欢哪个城市?</p>
+	
+		<ul id="city">
+			<li id="bj">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		
+		<form action="dom-7.html" name="myform">
+			
+			<input type="radio" name="type" value="city">城市
+			<input type="radio" name="type" value="game">游戏
+		
+			name: <input type="text" name="name"/>
+		
+			<input type="submit" value="Submit" id="submit"/>
+			
+		</form>
+
+
+</body>
+</html>

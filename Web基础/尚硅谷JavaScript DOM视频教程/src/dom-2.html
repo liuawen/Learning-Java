@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//读写属性节点: 通过元素节点 . 的方式来获取属性值和设置属性值. 
+			window.onload = function(){
+				
+				//属性节点即为某一指定的元素节点的属性. 
+				//1. 先获取指定的那个元素节点
+				var nameNode = document.getElementById("name");
+				
+				//2. 再读取指定属性的值
+				alert(nameNode.value);
+				
+				//3. 设置指定的属性的值.
+				nameNode.value = "尚硅谷";
+				
+				//var nameAttr = nameNode.getAttributeNode("value");
+				//alert(nameAttr);
+				//alert("--" + nameAttr.nodeValue);
+				//nameAttr.nodeValue = "atguigu";
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		name: <input type="text" name="username" 
+			id="name" value="atguigu"/>
+	</body>
+</html>	

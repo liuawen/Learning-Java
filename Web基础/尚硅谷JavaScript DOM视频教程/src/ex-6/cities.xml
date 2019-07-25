@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GB2312"?>
+<china>
+	
+	<province name="河北省">
+		<city>石家庄</city>
+		<city>邯郸</city>
+		<city>唐山</city>
+		<city>张家口</city>
+		<city>廊坊</city>
+		<city>保定</city>
+		<city>承德</city>
+	</province>
+	
+	<province name="辽宁省">
+		<city>沈阳</city>
+		<city>大连</city>
+		<city>鞍山</city>
+		<city>抚顺</city>
+		<city>铁岭</city>
+	</province>
+	
+	<province name="山东省">
+		<city>济南</city>
+		<city>青岛</city>
+		<city>威海</city>
+		<city>烟台</city>
+		<city>潍坊</city>
+	</province>
+
+	
+</china>	

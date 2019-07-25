@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			
+			//测试使用 jQuery replaceWith (replaceAll) 方法: 替换节点
+			/*
+			1. replaceWith , replaceAll 一对方法, 可以完成一件事. 就是主语宾语
+			哪个在前面的问题. 
+			2. 以上的两个方法还有移动节点的功能
+			3. 节点互换需要先克隆节点. 
+			4. var $rl = $("#rl").replaceWith($bj2);
+			*/
+			$(function(){
+				
+				//1. 创建一个 <li>尚硅谷</li> 节点, 替换 #city 的最后一个 li 子节点
+				$("<li>尚硅谷</li>").replaceAll($("#city li:last"));
+				
+				//2. 创建一个 <li>[尚硅谷]</li> 节点, 
+				//替换 #city 的第二个 li 子节点
+				$("#city li:eq(1)").replaceWith($("<li>[尚硅谷]</li>"));
+				
+			
+				//3. 互换以下两个节点: #rl 和 #bj. 还有移动的功能.
+				//$("#bj").replaceWith($("#rl"));
+				
+				//节点互换需要先克隆节点. 
+				alert(1);
+				var $bj2 = $("#bj").clone(true);
+				var $rl = $("#rl").replaceWith($bj2);
+				
+				alert(2);
+				$("#bj").replaceWith($rl);
+			})
+			
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li id="dj">东京</li>
+			<li id="se">首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

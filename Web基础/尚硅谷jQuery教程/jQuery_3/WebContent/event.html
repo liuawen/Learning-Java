@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			
+			//加载 DOM 的两种方式: jQuery 的 和 window.onlaod
+			
+			//$(document).ready(function(){}); -- $(function(){});
+			$(function(){
+				
+			});
+			
+			
+			/*
+			window.onload = function(){
+				alert("1");
+			}
+			
+			window.onload = function(){
+				alert("2");
+			}
+			*/
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li id="dj">东京</li>
+			<li id="se">首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪种开发语言?</p>
+		<ul id="language">
+			<li>C</li>
+			<li>Java</li>
+			<li>.NET</li>
+			<li>PHP</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

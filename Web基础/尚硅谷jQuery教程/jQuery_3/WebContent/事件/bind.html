@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+	
+		<script type="text/javascript">
+			//为 .head 添加 Onclick 响应函数: 若 .content 隐藏则显示, 若 .content 显示, 则隐藏
+			$(function(){
+				/*
+				$(".head").click(function(){
+					//使用 is() 方法, 来判断某个给定的 jQuery 对象是否符合指定
+					//的选择器. 
+					var flag = $(".content").is(":hidden");
+					
+					if(flag){
+						//show() 方法: 使隐藏的变为显示
+						$(".content").show();
+					}else{
+						$(".content").hide();
+					}
+				});
+				*/
+				
+				//bind: 为某 jQuery 对象绑定事件. 
+				/*
+				$(".head").bind("click", function(){
+					//使用 is() 方法, 来判断某个给定的 jQuery 对象是否符合指定
+					//的选择器. 
+					var flag = $(".content").is(":hidden");
+					
+					if(flag){
+						//show() 方法: 使隐藏的变为显示
+						$(".content").show();
+					}else{
+						$(".content").hide();
+					}
+				});
+				*/
+				
+				//mouseover: 鼠标移上去
+				//mouseout: 鼠标移出. 
+				/*
+				$(".head").mouseover(function(){
+					$(".content").show();
+				}).mouseout(function(){
+					$(".content").hide();
+				});
+				*/
+				
+				//合成事件: hover: 鼠标移上去执行第一个函数, 移出执行第二个函数. 
+				/*
+				$(".head").hover(function(){
+					$(".content").show();
+				}, function(){
+					$(".content").hide();
+				});
+				*/
+				
+				//合成事件: toggle: 第一次点击执行第一个函数, 第二次点击执行第二个
+				//函数 ... 循环执行. 
+				$(".head").toggle(function(){
+					$(".content").show();
+				}, function(){
+					$(".content").hide();
+				});
+			})
+		</script>
+	
+	</head>
+	<body>
+		<div id="panel">
+			<h5 class="head">什么是jQuery?</h5>
+			<div class="content">
+				jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个由 John Resig 创建于2006年1月的开源项目。jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+			</div>
+		</div>
+	</body>
+
+</html>

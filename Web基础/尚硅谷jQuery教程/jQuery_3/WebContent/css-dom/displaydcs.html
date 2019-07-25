@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+		<style type="text/css">
+			*{ margin:0; padding:0;}
+			body {font-size:12px;text-align:center;}
+			a { color:#04D; text-decoration:none;}
+			a:hover { color:#F50; text-decoration:underline;}
+			.SubCategoryBox {width:600px; margin:0 auto; text-align:center;margin-top:40px;}
+			.SubCategoryBox ul { list-style:none;}
+			.SubCategoryBox ul li { display:block; float:left; width:200px; line-height:20px;}
+			.showmore { clear:both; text-align:center;padding-top:10px;}
+			.showmore a { display:block; width:120px; margin:0 auto; line-height:24px; border:1px solid #AAA;}
+			
+			.showmore a span { padding-left:15px; background:url(img/down.gif) no-repeat 0 0;}
+			
+			.promoted a { color:#F50;}
+		</style>
+		<script type="text/javascript" src="scripts/jquery-1.3.1.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//测试 jQuery 样式相关的方法. 
+				
+				//1. hasClass(): 某元素是否有指定的样式
+				alert($("div:first").hasClass("SubCategoryBox")); //true
+				
+				//2. 移除样式
+				$("div:first").removeClass("SubCategoryBox");
+				
+				alert($("div:first").hasClass("SubCategoryBox"));
+				
+				//3. 添加样式
+				$("div:first").addClass("SubCategoryBox");
+				
+				//4. 切换样式: 存在, 则去除; 没有, 则添加. 
+				$(".showmore").click(function(){
+					$("div:first").toggleClass("SubCategoryBox");
+					return false;
+				});
+				
+				//5. 获取和设置元素透明度: opacity 属性
+				alert($("div:first").css("opacity"));
+				
+				$("div:first").css("opacity", 0.5);
+				
+				//6. width 和 height
+				alert($("div:first").width());
+				alert($("div:first").height());
+				
+				$("div:first").width(400);
+				$("div:first").height(80);
+				
+				//7. 获取元素在当前视窗中的相对位移: offset(). 
+				//其返回对象包含了两个属性: top, left. 该方法只对可见元素有效
+				alert($("div:first").offset().top);
+				alert($("div:first").offset().left);
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div class="SubCategoryBox">
+			<ul>
+				<li ><a href="#">佳能</a><i>(30440) </i></li>
+				<li ><a href="#">索尼</a><i>(27220) </i></li>
+				<li ><a href="#">三星</a><i>(20808) </i></li>
+				<li ><a href="#">尼康</a><i>(17821) </i></li>
+				<li ><a href="#">松下</a><i>(12289) </i></li>
+				<li ><a href="#">卡西欧</a><i>(8242) </i></li>
+				<li ><a href="#">富士</a><i>(14894) </i></li>
+				<li ><a href="#">柯达</a><i>(9520) </i></li>
+				<li ><a href="#">宾得</a><i>(2195) </i></li>
+				<li ><a href="#">理光</a><i>(4114) </i></li>
+				<li ><a href="#">奥林巴斯</a><i>(12205) </i></li>
+				<li ><a href="#">明基</a><i>(1466) </i></li>
+				<li ><a href="#">爱国者</a><i>(3091) </i></li>
+				<li ><a href="#">其它品牌相机</a><i>(7275) </i></li>
+			</ul>
+			<div class="showmore">
+				<a href="more.html"><span>显示全部品牌</span></a>
+			</div>
+		</div>
+	</body>
+</html>
+

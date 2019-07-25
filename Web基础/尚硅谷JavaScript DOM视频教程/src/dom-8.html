@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//测试 replaceChild 方法
+			window.onload = function(){
+				
+				alert(1);
+				
+				var bjNode = document.getElementById("bj");
+				var rlNode = document.getElementById("rl");
+				var gameNode = document.getElementById("game");
+				
+				gameNode.replaceChild(bjNode, rlNode);
+				
+				//replaceEach(bjNode, rlNode);
+				
+				/*
+				var cityNode = document.getElementById("city");
+				//cityNode.replaceChild(rlNode, bjNode);
+				
+				//实现 bj 节点和 rl 节点的互换. 
+				var gameNode = document.getElementById("game");
+				
+				//克隆 bjNode
+				//cloneNode(deep) 若 deep 为true, 则可以克隆子节点
+				var bjNode2 = bjNode.cloneNode(true);
+				gameNode.replaceChild(bjNode2, rlNode);
+				
+				alert(2);
+				
+				cityNode.replaceChild(rlNode, bjNode);
+				*/
+			}
+			
+			//自定义互换两个节点的函数
+			function replaceEach(aNode, bNode){
+				//1. 获取 aNode 和 bNode 的父节点. 使用 parentNode 属性
+				var aParent = aNode.parentNode;
+				var bParent = bNode.parentNode;
+				
+				if(aParent && bParent){
+					//2. 克隆 aNode 或 bNode
+					var aNode2 = aNode.cloneNode(true);
+					
+					//3. 分别调用 aNode 的父节点和 bNode 的父节点的 replaceChild()
+					//方法实现节点的互换
+					bParent.replaceChild(aNode2, bNode);
+					aParent.replaceChild(bNode, aNode);
+				}
+			}
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

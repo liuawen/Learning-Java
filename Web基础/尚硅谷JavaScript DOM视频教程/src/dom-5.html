@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//关于节点的属性: nodeType, nodeName, nodeValue
+			//在文档中, 任何一个节点都有这 3 个属性
+			//而 id, name, value 是具体节点的属性. 
+			window.onload = function(){
+				
+				//1. 元素节点的这 3 个属性
+				var bjNode = document.getElementById("bj");
+				alert(bjNode.nodeType); //元素节点: 1
+				alert(bjNode.nodeName); //节点名: li
+				alert(bjNode.nodeValue); //元素节点没有 nodeValue 属性值: null
+				
+				//2. 属性节点
+				var nameAttr = document.getElementById("name")
+				                       .getAttributeNode("name");
+				alert(nameAttr.nodeType); //属性节点: 2
+				alert(nameAttr.nodeName); //属性节点的节点名: 属性名
+				alert(nameAttr.nodeValue); //属性节点的 nodeValue 属性值: 属性值
+				
+				//3. 文本节点:
+				var textNode = bjNode.firstChild;	
+				alert(textNode.nodeType); //文本节点: 0
+				alert(textNode.nodeName); //节点名: #text
+				alert(textNode.nodeValue); //文本节点的 nodeValue 属性值: 文本值本身. 
+			
+				//nodeType、nodeName 是只读的.
+				//而 nodeValue 是可以被改变的。 
+				//以上三个属性, 只有在文本节点中使用 nodeValue 读写文本值时使用最多. 
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city">
+			<li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		name: <input type="text" name="username" 
+			id="name" value="atguigu"/>
+	</body>
+</html>	

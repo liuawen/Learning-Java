@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+		<style type="text/css">
+			*{ margin:0; padding:0;}
+			body {font-size:12px;text-align:center;}
+			a { color:#04D; text-decoration:none;}
+			a:hover { color:#F50; text-decoration:underline;}
+			.SubCategoryBox {width:600px; margin:0 auto; text-align:center;margin-top:40px;}
+			.SubCategoryBox ul { list-style:none;}
+			.SubCategoryBox ul li { display:block; float:left; width:200px; line-height:20px;}
+			.showmore { clear:both; text-align:center;padding-top:10px;}
+			.showmore a { display:block; width:120px; margin:0 auto; line-height:24px; border:1px solid #AAA;}
+			
+			.showmore a span { padding-left:15px; background:url(img/down.gif) no-repeat 0 0;}
+			
+			.promoted a { color:#F50;}
+		</style>
+		<script type="text/javascript" src="scripts/jquery-1.3.1.js"></script>
+		<script type="text/javascript">
+			/*
+			var $category = $("li:gt(5):lt(10)");
+			此时的 lt 是在 li:gt(5) 基础上进行的. 
+			*/
+			$(function(){
+				//1. 需要选择从 "富士" - "爱国者" 的所有 li: $category
+				var $category = $("li:gt(5):not(:last)");
+				
+				//2. 把他们隐藏. 
+				$category.hide();
+				
+				//3. 为 .showmore 添加一个 onclick 响应函数(取消默认行为)
+				$(".showmore").click(function(){
+					
+					//4. 若 $category 是隐藏的. 使用 is
+					if($category.is(":hidden")){
+						//4.1 $category 显示
+						$category.show();
+						
+						//4.2 使 "佳能", "尼康", "奥林巴斯" 变为高亮显示: 
+						//添加 .promoted 的 class
+						$("li:contains('佳能'),li:contains('尼康'),li:contains('奥林巴斯')").addClass("promoted");
+						
+						//4.3 .showmore > a > span 的文字变为: 显示精简品牌
+						$(".showmore > a > span").text("显示精简品牌");
+						
+						//4.4 .showmore > a > span 的 background 变为: 
+						//url(img/up.gif) no-repeat 0 0
+						$(".showmore > a > span").css("background", "url(img/up.gif) no-repeat 0 0");
+					}
+					//5. 若 $category 是显示的. 
+					else{
+						$category.hide();
+						$("li").removeClass("promoted");
+						$(".showmore > a > span").text("显示全部品牌");
+						$(".showmore > a > span").css("background", "url(img/down.gif) no-repeat 0 0");
+					}
+					
+					return false;
+				});
+				
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div class="SubCategoryBox">
+			<ul>
+				<li ><a href="#">佳能</a><i>(30440) </i></li>
+				<li ><a href="#">索尼</a><i>(27220) </i></li>
+				<li ><a href="#">三星</a><i>(20808) </i></li>
+				<li ><a href="#">尼康</a><i>(17821) </i></li>
+				<li ><a href="#">松下</a><i>(12289) </i></li>
+				<li ><a href="#">卡西欧</a><i>(8242) </i></li>
+				<li ><a href="#">富士</a><i>(14894) </i></li>
+				<li ><a href="#">柯达</a><i>(9520) </i></li>
+				<li ><a href="#">宾得</a><i>(2195) </i></li>
+				<li ><a href="#">理光</a><i>(4114) </i></li>
+				<li ><a href="#">奥林巴斯</a><i>(12205) </i></li>
+				<li ><a href="#">明基</a><i>(1466) </i></li>
+				<li ><a href="#">爱国者</a><i>(3091) </i></li>
+				<li ><a href="#">其它品牌相机</a><i>(7275) </i></li>
+			</ul>
+			<div class="showmore">
+				<a href="more.html"><span>显示全部品牌</span></a>
+			</div>
+		</div>
+	</body>
+</html>
+

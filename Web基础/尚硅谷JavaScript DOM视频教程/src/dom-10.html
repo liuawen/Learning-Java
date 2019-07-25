@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//测试 insertBefore() 插入节点
+			//该方法除了进行插入外, 还有移动节点的功能. 
+			window.onload = function(){
+				
+				alert("abc");
+				
+				//1. 把 #rl 插入到  #bj 节点的前面
+				
+				var cityNode = document.getElementById("city");
+				var bjNode = document.getElementById("bj");
+				var rlNode = document.getElementById("rl");
+				
+				//cityNode.insertBefore(rlNode, bjNode);				
+				
+				//var refNode = document.getElementById("se");
+				var refNode = document.getElementById("dj");
+				insertAfter(rlNode, refNode);
+			}
+			
+			//把 newNode 插入到 refNode 的后面
+			function insertAfter(newNode, refNode){
+				//1. 测试 refNode 是否为其父节点的最后一个子节点
+				var parentNode = refNode.parentNode;
+				if(parentNode){
+					var lastNode = parentNode.lastChild;
+					
+					//2. 若是: 直接把 newNode 插入为 refNode 父节点的最后一个子节点. 
+					if(refNode == lastNode){
+						parentNode.appendChild(newNode);
+					}
+					//3. 若不是: 获取 refNode 的下一个兄弟节点, 然后插入到其下一个兄弟
+					//节点的前面.
+					else{
+						var nextNode = refNode.nextSibling;
+						parentNode.insertBefore(newNode, nextNode);
+					}
+				}
+			}
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li id="dj">东京</li>
+			<li id="se">首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

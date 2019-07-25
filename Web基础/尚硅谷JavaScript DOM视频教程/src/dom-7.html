@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript">
+			
+			//新创建一个元素节点, 并把该节点添加为文档中指定节点的子节点
+			window.onload = function(){
+				alert(1);
+				
+				//1. document.createElement(elementTagName)
+				//新创建一个元素节点, 返回值为指向元素节点的引用
+				//<li></li>
+				var liNode = document.createElement("li");
+				
+				//2. 创建 "厦门" 的文本节点
+				//document.createTextNode(string) 创建一个文本节点
+				//参数为文本值, 返回该文本节点的引用. 
+				var xmText = document.createTextNode("厦门");
+				//<li>厦门</li>
+				liNode.appendChild(xmText);
+				
+				var cityNode = document.getElementById("city");
+				//2. elementNode.appendChild(newChild): 为 elementNode
+				//新添加 newChild 子节点, 该子节点将作为 elementNode 的最后
+				//一个子节点. 
+				cityNode.appendChild(liNode);
+			}
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				//1. 点击所有的 p 节点, 能够弹出其对应的文本内容
+				/*
+				1. jQuery 对象可以进行隐式迭代: $("p").click(function(){...});
+				为选取的所有的 p 节点都添加了 click 响应函数. jQuery 对象本身就是一个 
+				DOM 对象的数组
+				2. 在响应函数中, this 是一个 DOM 对象. 若想使用 jQuery 对象的方法
+				需要把其包装为 jQuery 对象: 使用 $() 把 this 包起来. 
+				3. text() 方法时一个读写的方法: 不加任何参数, 读取文本值; 加参数为
+				属性节点添加文本值(文本节点) (和 text() 类似的方法: attr(), val())
+				*/
+				$("p").click(function(){
+					alert($(this).text());
+					$(this).text("^^" + $(this).text());
+					//alert(this.firstChild.nodeValue);
+				});
+				
+				//2. 使第一个 table 隔行变色
+				$("table:first tr:even").css("background", "#ffaacc");
+				
+				//3. 点击 button, 弹出 checkbox 被选中的个数
+				$("button").click(function(){
+					alert($(":checkbox:checked").length);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p>段落1</p>
+		<p>段落2</p>
+		<p>段落3</p>
+		
+		<table>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+		</table>
+		<br>
+		<hr>
+		<br>
+		<table>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+			<tr>
+				<td>第一行</td><td>第一行</td>
+			</tr>
+		</table>
+		
+		<input type="checkbox" name="test" />
+		<input type="checkbox" name="test" />
+		<input type="checkbox" name="test" />
+		<input type="checkbox" name="test" />
+		<input type="checkbox" name="test" />
+		<input type="checkbox" name="test" />
+		<button>您选中的个数</button>
+	</body>
+</html>

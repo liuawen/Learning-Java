@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	
+	<button>ClickMe</button>
+	
+</body>
+</html>
+
+<!-- 
+	在整个 HTML 文档被加载后, 获取其中的节点. 
+	把  script 节点放在 html 文档的最后 
+	但不符合些 JS 代码的习惯. 
+-->
+<script type="text/javascript">
+	
+	//1. 获取 button
+	var btns = document.getElementsByTagName("button");
+	alert(btns.length);
+	
+	//2. 为 button 添加 onclick 响应函数
+	btns[0].onclick = function(){
+		alert("helloworld!!");
+	}
+
+</script>

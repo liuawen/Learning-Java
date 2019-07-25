@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		
+		<script type="text/javascript" src="scripts/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			
+			//测试使用 jQuery 创建节点并插入节点到指定的节点中
+			/*
+			1. 创建节点: 使用 $(html) 方式即可, 元素节点, 文本节点, 属性节点可以一网打尽
+			返回对应节点的 jQuery 对象:
+			$("<li id='atguigu'>尚硅谷</li>")
+			
+			2. 添加节点:
+			1). appendTo 和 append: 主语和宾语的位置不同:  
+			$("<li id='atguigu'>尚硅谷</li>").appendTo($("#city"));	
+			$("#city").append("<li id='atguigu'>[尚硅谷]</li>");
+			
+			2). prependTo 和  prepend: 主语和宾语的位置不同: 
+			$("<li id='atguigu'>尚硅谷</li>").prependTo($("#city"));
+			$("#city").prepend("<li id='atguigu'>[尚硅谷]</li>");	
+			*/
+			$(function(){
+				//1. 创建一个 <li id="atguigu">尚硅谷</li>
+				//2. 并把其加入到 #city 的子节点
+				//$("<li id='atguigu'>尚硅谷</li>").appendTo($("#city"));
+				//$("#city").append("<li id='atguigu'>[尚硅谷]</li>");
+
+				//$("<li id='atguigu'>尚硅谷</li>").prependTo($("#city"));
+				$("#city").prepend("<li id='atguigu'>[尚硅谷]</li>");
+				
+				
+				
+				alert($("#atguigu").text());
+			})
+			
+		
+		</script>
+		
+	</head>
+	<body>
+		<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li id="dj">东京</li>
+			<li id="se">首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+		
+	</body>
+</html>	

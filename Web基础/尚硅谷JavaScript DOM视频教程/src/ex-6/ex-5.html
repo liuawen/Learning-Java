@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//1. 为 #province 添加 onchange 响应函数
+				document.getElementById("province").onchange = function(){
+					
+					//1.1 把 #city 节点除第一个子节点外都移除. 
+					var cityNode = document.getElementById("city");
+					var cityNodeOptions = cityNode.getElementsByTagName("option");
+					
+					var len = cityNodeOptions.length;
+					for(var i =1; i < len; i++){
+						cityNode.removeChild(cityNodeOptions[1]);
+					}
+					
+					var provinceVal = this.value;
+					if(provinceVal == ""){
+						return; 
+					}
+					
+					//2. 加载 cities.xml 文件. 得到代表给文档的 document 对象
+					var xmlDoc = parseXml("cities.xml");
+					
+					//3. 在 cities.xml 文档中查找和选择的省匹配的 province 节点.
+					
+					//直接使用 XPath 技术查找 XML 文档中匹配的节点. 
+					var provinceEles = xmlDoc.selectNodes("//province[@name='" 
+					                               + provinceVal + "']")
+					                               
+					//4. 再得到 province 节点的所有的 city 子节点
+					var cityNodes = provinceEles[0].getElementsByTagName("city");
+					
+					//5. 遍历 city 子节点, 得到每一个 city 子节点的文本值
+					for(var i = 0; i < cityNodes.length; i++){
+						//6. 利用得到的文本值创建 option 节点
+						//<option>cityName</option>
+						var cityText = cityNodes[i].firstChild.nodeValue;
+						var cityTextNode = document.createTextNode(cityText);
+						var optionNode = document.createElement("option");
+						optionNode.appendChild(cityTextNode);
+						
+						//7. 并把 6 创建的 option 节点添加为 #city 的子节点.
+						cityNode.appendChild(optionNode);
+					}
+
+				}
+				
+				//js 解析 xml 文档的函数, 只支持 ie
+				function parseXml(fileName){
+				    //IE 内核的浏览器
+				    if (window.ActiveXObject) {
+				        //创建 DOM 解析器
+				        var doc = new ActiveXObject("Microsoft.XMLDOM");
+				        doc.async = "false";
+				        //加载 XML 文档, 获取 XML 文档对象
+				        doc.load(fileName);
+				        return doc;
+				    }
+				}
+				
+			}
+		
+		</script>
+		
+	</head>
+	<body>
+		<select id="province">
+			<option value="">请选择...</option>
+			<option value="河北省">河北省</option>
+			<option value="辽宁省">辽宁省</option>
+			<option value="山东省">山东省</option>
+		</select>
+		
+		<select id="city"><option value="...">请选择...</option></select>
+	</body>
+</html>
