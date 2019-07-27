@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>块级元素与行内元素</title>
+	<style>
+		.eg-to-block {
+			display: block;
+		}
+		.eg-to-inline {
+			display:inline;
+		}
+	</style>
+</head>
+<body>
+	<!-- 定义
+		https://www.w3.org/TR/CSS22/visuren.html#block-formatting
+	-->
+	<h2>1.块级元素</h2>
+	<h3>(1)块级元素转换为行内元素</h3>
+	<div class="eg-to-inline">
+		A 想不想并排在一起
+	</div>
+	<div class="eg-to-inline">
+		B 想啊 手牵手
+	</div>
+
+	<h3>(2)块级元素均设置了外边距 产生的叠加</h3>
+	<div style="margin-bottom:50px">
+		
+	</div>
+	<ul style="margin-top:50px">
+		<li>不着边界</li>
+	</ul>
+	
+	<h2>2.行内元素</h2>
+	<p>
+		<a href="#">点我跳走</a>
+		<span>亮相也蛮多的标签</span>
+	</p>
+
+	<h3>(1)行内元素无法设置宽高</h3>
+	<p>
+		<span style="height: 1000px">我为什么不能有1000的高度呜呜</span>
+	</p>
+
+	<h3>(2)行内元素无法设置垂直方向的外边距 内边距</h3>
+	<p>
+		<span style="margin-top: 1000px;padding-top:200px">我为什么不能垂直的外边距呜呜</span>
+	</p>
+
+	<h3>(3)行内元素可以设置水平方向的外边距 边框 内边距</h3>
+	<p>
+		<span style="margin-right: 10px;padding-right:20px">旁边的小子，我要离你远点</span>
+		<span>瞧不起谁呀</span>
+	</p>
+
+	<h3>(4)行内元素转换为块级元素</h3>
+	<p>
+		<a class="eg-to-block" href="#">我被换成块级了yeah!</a>
+		<span>哎呦大哥变身了</span>
+	</p>
+</body>
+</html>
