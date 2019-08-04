@@ -1,0 +1,16 @@
+body {
+  background: #fff url("logo.png") fixed no-repeat top left;
+  color: #321;
+  font-family: Myriad,"Lucida Grande","Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+  line-height: 1.6;
+  margin: 1em 20%;
+}
+a {
+  color: #674;
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  color: #896;
+  text-decoration: underline;
+}
