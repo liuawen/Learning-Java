@@ -1,0 +1,18 @@
+<!--pages/template/template.wxml-->
+<template name="detailTemplate">
+  <view class="tmpContainer">
+    <view class="avatar_date">
+      <image src='{{avatar}}'></image>
+      <text>{{date}}</text>
+    </view>
+    <text class="company">{{title}}</text>
+    <image class="content_img" src="{{headImgSrc}}"></image>
+    <text class="content">{{detail_content}}</text>
+    <view class="love_attention">
+      <image src="{{detail_love_image1}}"></image>
+      <text>{{love_count}}</text>
+      <image src="{{detail_love_image2}}"></image>
+      <text>{{attention_count}}</text>
+    </view>
+  </view>
+</template>

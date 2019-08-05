@@ -1,0 +1,34 @@
+/* pages/index/index.wxss */
+page {
+	height: 100%;
+	background: #8ed145;
+	
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container image {
+	width: 200rpx;
+	height: 200rpx;
+	border-radius: 100rpx;
+	margin: 160rpx;
+}
+
+.username {
+	margin:100rpx;
+	font-size: 32rpx;
+	font-weight: 700;
+}
+
+.goStudy {
+	width: 200rpx;
+	height: 80rpx;
+	border: 1px solid #405f80;
+	border-radius: 5px;
+	font-size: 24rpx;
+	line-height: 80rpx;
+	text-align: center;
+}

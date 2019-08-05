@@ -1,0 +1,60 @@
+/* pages/template/template.wxss */
+.tmpContainer {
+  display: flex;
+  flex-direction: column;
+  border-top:1px solid #efefef;
+  border-bottom:1px solid #efefef;
+  padding:5px 0;
+  margin:20rpx 0 40rpx;
+}
+
+.avatar_date {
+  margin:10rpx 0 20rpx 10rpx;
+}
+
+.avatar_date image {
+  width: 60rpx;
+  height:60rpx;
+  vertical-align: middle;
+}
+
+.avatar_date text {
+  font-size: 14px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.company {
+  font-size: 18px;
+  font-weight: 700;
+  margin:10rpx 0;
+}
+
+.content_img {
+  width: 100%;
+  height:340rpx;
+}
+
+.content {
+  font-size: 16px;
+  color: #666;
+  text-indent: 16px;
+  line-height: 28px;
+}
+
+.love_attention {
+
+}
+
+.love_attention image {
+  width:32rpx;
+  height:32rpx;
+  vertical-align: middle;
+}
+
+.love_attention text {
+  font-size: 14px;
+  color: #666;
+  vertical-align: middle;
+  margin:0 16rpx;
+}

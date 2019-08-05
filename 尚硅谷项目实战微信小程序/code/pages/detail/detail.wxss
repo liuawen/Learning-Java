@@ -1,0 +1,80 @@
+/* pages/detail/detail.wxss */
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail_header{
+  width:100%;
+  height:460rpx;
+}
+
+.musicImg {
+  width:60rpx;
+  height:60rpx;
+  position: absolute;
+  left:50%;
+  top:200rpx;
+  margin-left: -30rpx;
+}
+
+.detail_author_date {
+  padding:10rpx;
+}
+
+.detail_author_date image{
+  width:64rpx;
+  height:64rpx;
+  border-radius: 32rpx;
+  vertical-align: middle;
+}
+
+.detail_author_date text {
+  font-size: 14px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.detail_company {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin:10rpx 0 10rpx 30rpx;
+}
+
+.detail_collection_share{
+  position: relative;
+}
+
+
+.col_share_img {
+  float: right;
+  margin-right: 60rpx;
+}
+
+.col_share_img image {
+  width:90rpx;
+  height:90rpx;
+  margin-right:10rpx;
+}
+
+
+.line {
+  position: absolute;
+  top:45rpx;
+  left: 5%;
+  width:90%;
+  height:1px;
+  background: #eee;
+  z-index:-1;
+}
+
+.detail_content {
+  font-size: 14px;
+  line-height: 28px;
+  text-indent: 14px;
+}
+
+button{
+  width:260rpx;
+  height:80rpx;
+}

@@ -1,0 +1,7 @@
+<view class='container'>
+	<image src='{{userInfo.avatarUrl}}'></image>
+	<text class='username'><text>hello</text> {{userInfo.nickName}}</text>
+	<view bindtap='handleParent' class='goStudy'>
+		<text>开启小程序之旅</text>
+	</view>
+</view>

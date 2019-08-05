@@ -1,0 +1,23 @@
+<!--pages/list/list.wxml-->
+<import src='/pages/template/template' />
+<view>
+	<swiper catchtap="carouselToDetail" indicator-dots="true" indicator-color="green" indicator-active-color="deeppink">
+		<swiper-item>
+			<image data-detailId="1" src='/images/detail/carousel/01.jpg'></image>
+		</swiper-item>
+		<swiper-item>
+			<image data-detailId="0" src='/images/detail/carousel/02.jpg'></image>
+		</swiper-item>
+		<swiper-item>
+			<image data-detailId="2" src='/images/detail/carousel/03.jpg'></image>
+		</swiper-item>
+		<swiper-item>
+			<image data-detailId="3" src='/images/detail/carousel/04.jpg'></image>
+		</swiper-item>
+	</swiper>
+	<block wx:for="{{datas}}" wx:key="{{index}}">
+		<view catchtap="toDetail" data-id="{{index}}">
+			<template is="detailTemplate" data="{{...item}}"></template>
+		</view>
+	</block>
+</view>
