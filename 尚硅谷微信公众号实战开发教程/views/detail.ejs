@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width =device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+  <title>电影详情</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    #app>header{
+      box-sizing: border-box;
+      width: 100%;
+      height: 2rem;
+      padding: .4rem .5rem;
+      border-bottom: 1px solid #f3f3f3;
+    }
+    #app>header .header_title{
+      float: left;
+      color: #00b600;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    #app>header .header_search{
+      float: right;
+      color: #00b600;
+      font-size: .8rem;
+      font-weight: bold;
+    }
+    #app>.page{
+      box-sizing: border-box;
+      width: 100%;
+      padding: 1rem .5rem 0;
+    }
+    #app>.page>.title{
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    #app>.page>.info{
+      width: 100%;
+      height: 7.6rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid #f3f3f3;
+    }
+    #app>.page>.info>.right{
+      float: right;
+      width: 35%;
+    }
+    #app>.page>.info>.right>a{
+      display: block;
+      width: 100%;
+    }
+    #app>.page>.info>.right>a>img{
+      display: block;
+      width: 100%;
+      height: 7.6rem
+    }
+    #app>.page>.info>.left{
+      float: left;
+      width: 56%;
+    }
+    #app>.page>.info>.left>p{
+      font-size: .7rem;
+      color: #494949;
+    }
+    #app>.page>.info>.left>.rating{
+      margin: .2rem 0 .8rem 0;
+    }
+    #app>.page>.info>.left>.meta{
+      font-size: .6rem;
+      line-height: 1.1rem;
+    }
+    #app>.page>.info>.left>.rating>span{
+      color: lightgreen;
+      margin: .2rem 0 .8rem 0;
+    }
+    #app>.page>.info>.left>.rating>.ratingNum{
+      margin-left: .5rem;
+      color: #aaa;
+    }
+
+    h2 {
+      color: #aaa;
+      margin: 0 0 15px;
+      font-size: 15px;
+    }
+    .intro{
+      margin-top: .7rem;
+    }
+    .intro>h2{
+      color: #aaa;
+      font-weight: 400;
+
+    }
+    .intro>.bd{
+      font-size: .6rem;
+      line-height: .8rem;
+      color: #494949;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <a class="header_title" href="/movie">硅谷电影</a>
+      <a class="header_search" href="/search">搜索</a>
+    </header>
+    <div class="page">
+      <h1 class="title"><%= data.title %></h1>
+      <section class="info">
+        <div class="left">
+          <p class="rating">
+            <span>评分:</span>
+            <strong><%= data.rating %></strong>
+            <span class="ratingNum">52996人评价</span>
+          </p>
+          <p class="meta">
+            <%= data.runtime %> /
+            <% data.genre.forEach(function (item) { %>
+              <%= item %> /
+            <% }) %>
+            <%= data.directors %>(导演) / <%= data.casts %> / <%= data.releaseDate %>
+        </div>
+        <div class="right">
+          <a href="javascript:">
+            <img src="http://peicjnx2h.bkt.clouddn.com/<%= data.posterKey %>" alt="<%= data.title %>">
+          </a>
+        </div>
+      </section>
+      <section class="intro">
+        <h2><%= data.title %>的剧情简介</h2>
+        <div class="bd">
+          <p><%= data.summary %></p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script type="text/javascript" src="./js/rem.js"></script>
+</body>
+</html>

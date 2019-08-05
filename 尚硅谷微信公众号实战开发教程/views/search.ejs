@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width =device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+  <title>猜电影</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none
+  }
+  html, body{
+    width: 100%;
+    height: 100%;
+  }
+  .cover{
+    width: 100% ;
+    text-align: center;
+  }
+  #btn{
+    border: 1px solid #00b600;
+    padding: .4rem;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    background: #fff;
+    color: #00b600;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .list{
+    box-sizing: border-box;
+    padding: 1rem .5rem;
+    width: 100%;
+    overflow: hidden;
+  }
+  .list>.item {
+    width: 33.3333%;
+    height: 10rem;
+    box-sizing: border-box;
+    padding: .5rem .2rem;
+    float: left;
+  }
+
+  .list>.item>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .list>.item>a>.cover{
+    width: 100%;
+    height: 7rem;
+  }
+  .list>.item>a>.cover>img{
+    display: block;
+    width: 100%;
+    height: 6.5rem;
+  }
+  .list>.item>a>.info>h3{
+    text-align: center;
+    font-size: .6rem;
+    color: #494949;
+  }
+  .list>.item>a>.info>.rank{
+    text-align: center;
+    font-size: .6rem;
+    color: #9b9b9b;
+  }
+  .page{
+    box-sizing: border-box;
+    padding: 1rem .5rem;
+    width: 100%;
+  }
+   .page>.info{
+    width: 100%;
+    height: 7.6rem;
+  }
+   .page>.info>.right{
+    float: right;
+    width: 35%;
+  }
+   .page>.info>.right>a{
+    display: block;
+    width: 100%;
+  }
+   .page>.info>.right>a>img{
+    display: block;
+    width: 100%;
+    height: 7.6rem
+  }
+   .page>.info>.left{
+    float: left;
+    width: 56%;
+  }
+   .page>.info>.left>p{
+    font-size: .7rem;
+    color: #494949;
+  }
+   .page>.info>.left>.rating{
+    margin: .2rem 0 .8rem 0;
+  }
+   .page>.info>.left>.meta{
+    font-size: .6rem;
+    line-height: 1.1rem;
+  }
+   .page>.info>.left>.rating>span{
+    color: lightgreen;
+    margin: .2rem 0 .8rem 0;
+  }
+   .page>.info>.left>.rating>.ratingNum{
+    margin-left: .5rem;
+    color: #aaa;
+  }
+</style>
+<body>
+  <div class="cover">
+    <button id="btn">点击开始录音</button>
+  </div>
+  <ul class="list">
+
+  </ul>
+  <script type="text/javascript" src="./js/rem.js"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script type="text/javascript">
+    /*
+      1. 绑定域名
+        - 在接口测试号页面上填写js安全域名接口
+      2. 引入js文件
+        - http://res.wx.qq.com/open/js/jweixin-1.2.0.js
+      3. 通过config接口注入权限验证配置
+     */
+
+
+    window.onload = function () {
+      wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wxc8e92f7ab70fbca0', // 必填，公众号的唯一标识
+        timestamp: '<%= timestamp %>', // 必填，生成签名的时间戳
+        nonceStr: '<%= noncestr %>', // 必填，生成签名的随机串
+        signature: '<%= signature %>',// 必填，签名
+        jsApiList: [
+          'onMenuShareQQ',
+          'onMenuShareQZone',
+          'startRecord',
+          'stopRecord',
+          'translateVoice'
+        ] // 必填，需要使用的JS接口列表
+      });
+
+      //测试开发时使用
+      /*wx.checkJsApi({
+        jsApiList: ['onMenuShareQQ',
+          'onMenuShareQZone',
+          'startRecord',
+          'stopRecord',
+          'translateVoice'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+        success: function(res) {
+          // 以键值对的形式返回，可用的api值true，不可用为false
+          // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+          console.log(res);
+        },
+        fail: function (err) {
+          console.log(err);
+        }
+      });*/
+
+      //config信息验证后会执行ready方法
+      wx.ready(function(){
+        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        //标志位：正在录音
+        var isRecord = false;
+        //绑定事件监听
+        document.getElementById('btn').addEventListener('touchend', function () {
+          if (isRecord) {
+            //目前状态是正在录音中，结束录音
+            wx.stopRecord({
+              success: function (res) {
+                var localId = res.localId; //它会自动将录音上传到微信服务器中，返回一个id来标识录音文件
+                //语音识别
+                wx.translateVoice({
+                  localId: localId, // 需要识别的音频的本地Id，由录音相关接口获得
+                  isShowProgressTips: 1, // 默认为1，显示进度提示
+                  success: function (res) {
+                    alert(res.translateResult); // 语音识别的结果
+                    isRecord = false;
+
+                    //查询相应的电影信息
+                    //豆瓣api不允许跨域，使用jsonp解决
+                    const url = 'https://api.douban.com/v2/movie/search?callback=?&q=' + res.translateResult;
+                    //使用jsonp跨域
+                    $.getJSON(url, function (data) {
+
+                      if (data.subjects && data.subjects.length) {
+                        //显示在页面上
+                        let html = '';
+
+                        data.subjects.forEach(function (item) {
+                          html += `<li class="item">
+                                    <a href="javascript:">
+                                      <div class="cover">
+                                        <img src="${item.images.small}" alt="${item.title}" data-x="2000" data-y="2963" class="img-show" style="width: 100%;">
+                                      </div>
+                                      <div class="info">
+                                        <h3>${item.title}</h3>
+                                        <p class="rank">
+                                          <span>评分:</span>
+                                          <span class="rating">${item.rating.average}</span>
+                                        </p>
+                                      </div>
+                                    </a>
+                                  </li>`
+                        })
+
+                        $('.list').html(html);
+
+                        //分享功能
+                        //默认情况下可以分享，分享以后用户看图文消息，没有图片，消息标题是链接
+                        //使用微信分享接口，就可以自己设置图片，设置标题、描述
+                        wx.onMenuShareQQ({
+                          title: data.subjects[0].title, // 分享标题
+                          desc: `评分：${data.subjects[0].rating.average}`, // 分享描述
+                          link: data.subjects[0].alt, // 分享链接
+                          imgUrl: data.subjects[0].images.small, // 分享图标
+                          success: function () {
+                            // 用户确认分享后执行的回调函数
+                            alert('分享成功');
+                          },
+                          cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                            alert('分享失败');
+                          }
+                        });
+
+
+                      } else {
+                        alert('暂时没有相关的电影信息');
+                      }
+                    })
+
+                  }
+                });
+              }
+            });
+          } else {
+            //开始录音
+            wx.startRecord();
+            isRecord = true;
+          }
+
+        })
+      });
+
+      //config信息验证失败会执行error函数
+      wx.error(function(res){
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+      });
+    }
+
+
+
+
+
+  </script>
+</body>
+</html>

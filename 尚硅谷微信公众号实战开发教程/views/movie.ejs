@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+  <title>硅谷电影预告片</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.24.0/DPlayer.min.css" rel="stylesheet">
+  <style>
+    .container{
+      padding: 0;
+    }
+    .navbar-brand{
+      color: #ffffff!important;
+    }
+    .btn.my-2.my-sm-0{
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+    .card-title{
+      font-weight: bold;
+    }
+    .btn.btn-link{
+      text-decoration: none;
+      color: #212529;
+      padding: 0;
+      margin-left: -.1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand">硅谷电影预告片</a>
+    <form class="form-inline" action="/search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+  <div class="row">
+    <div class="col">
+      <div class="card-group">
+        <% data.forEach(function (item, index) { %>
+          <div class="card">
+          <img class="card-img-top" src="http://pcphvlfcd.bkt.clouddn.com/<%= item.posterKey %>/imageMogr2/thumbnail/1080x1092!" alt="Card image cap"
+            data-coverkey="http://pcphvlfcd.bkt.clouddn.com/<%= item.coverKey %>"
+            data-videokey="http://pcphvlfcd.bkt.clouddn.com/<%= item.videoKey %>"
+            data-id="<%= item.doubanId %>"
+          >
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %></h5>
+            <p class="card-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= item.summary %></p>
+          </div>
+
+          <div class="card-header" id="heading<%= index %>">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+                点击查看电影详情
+              </button>
+            </h5>
+          </div>
+          <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordion">
+            <div class="card-body">
+              <ul class="list-group">
+                <li class="list-group-item">导演：<%= item.directors %></li>
+                <li class="list-group-item">主演：
+                  <% item.casts.forEach(function (item) { %>
+                    <%= item %>&nbsp;&nbsp;
+                  <% }) %>
+                </li>
+                <li class="list-group-item">评分：<%= item.rating ? item.rating : '暂无评分' %></li>
+                <li class="list-group-item">类型：
+                  <% item.genre.forEach(function (item) { %>
+                    <%= item %>&nbsp;&nbsp;
+                  <% }) %>
+                </li>
+                <li class="list-group-item">上映时间：<%= item.releaseDate %></li>
+                <li class="list-group-item">片长：<%= item.runtime %></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <small class="text-muted"><%= Math.ceil((Date.now() - item.createTime) / 86400000) %>天前更新</small>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div id="dplayer"></div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.24.0/DPlayer.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    //视频播放器对象
+    let dp = null;
+    //记录上一次视频
+    let lastVideo = null;
+
+    //模态框消失时触发的事件
+    $('#myModal').on('hidden.bs.modal', function (e) {
+      //暂停视频播放器
+      dp.pause();
+    })
+
+    //每一个img图片绑定点击事件
+    $('.card-img-top').click(function () {
+      //模态框显示
+      $('#myModal').modal('show');
+
+      //获取视频和封面图的链接
+      const video = $(this).data('videokey');
+      const cover = $(this).data('coverkey');
+
+      //获取当前电影的doubanId
+      const doubanId = $(this).data('id');
+
+      if (!dp) {
+        //创建播放器对象
+        dp = new DPlayer({
+          container: document.getElementById('dplayer'),
+          video: {
+            url: video,
+            pic: cover,
+            thumbnails: cover
+          },
+          danmaku: {
+            id: doubanId,
+            api: '<%= url %>/',
+            maximum: 3000
+          }
+        });
+      } else {
+        //判断是否点击的是同一个视频
+        if (video === lastVideo) {
+          //播放当前视频
+          dp.play();
+        } else {
+          //切换到其他视频
+          dp.switchVideo({
+            url: video,
+            pic: cover,
+            thumbnails: cover
+          }, {
+            id: doubanId,
+            api: '<%= url %>/',
+            maximum: 3000,
+            user: 'DIYgod'
+          });
+        }
+      }
+      //同步值
+      lastVideo = video;
+
+    })
+    /*
+      1. 加载弹幕
+        请求地址： http://4ef314c8.ngrok.io/v3/?id=demo
+        请求方式： GET
+        返回值：json字符串
+        {
+          code: 0,
+          data: [
+            [
+              3.3964,    弹幕发送时间，单位s
+              0,         弹幕类型
+              16777215,  弹幕的颜色
+              "DIYgod",  弹幕发送者
+              "11111"    弹幕内容
+            ],
+            []
+          ]
+        }
+
+      2. 发送弹幕
+        请求地址： http://4ef314c8.ngrok.io/v3/
+        请求方式： POST
+        请求体参数：
+          author	DIYgod   弹幕发送者
+          color	16777215   弹幕的颜色
+          id	demo         弹幕的id
+          text	123456     弹幕的内容
+          time	0          弹幕的发送时间
+          type	0          弹幕的类型
+        响应内容：
+        {
+          "code":0,
+          "data":{
+          "_id":"5b8f32da5f201846fb7d4102",
+          "player":"demo",
+          "author":"DIYgod",
+          "time":0,
+          "text":"12345",
+          "color":16777215,
+          "type":0,
+          "ip":"121.69.81.166",
+          "referer":"http://4ef314c8.ngrok.io/movie",
+          "date":1536111322710,
+          "__v":0
+       }}
+
+     */
+
+
+  })
+</script>
+</body>
+</html>
