@@ -1,0 +1,20 @@
+如何卸载Oracle 10g 
+关键字: 如何卸载oracle 10g 
+软件环境： 
+1、Windows XP + Oracle 10g 
+2、Oracle安装路径为：d:\Oracle 
+实现方法： 
+1、开始－＞设置－＞控制面板－＞管理工具－＞服务停止所有Oracle服务； 
+2、开始－＞程序－＞Oracle – OraDb10g_home1＞Oracle Installation Products－＞ Universal Installer 卸装所有Oracle产品，但Universal Installer本身不能被删除； 
+3、运行regedit，选择HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE，按del键删除这个入口； 
+4、运行regedit，选择HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services，滚动这个列表，删除所有Oracle入口； 
+5、运行refedit，选择HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application，删除所有Oracle入口； 
+6、开始－＞设置－＞控制面板－＞系统－＞高级－＞环境变量,删除环境变量CLASSPATH和PATH中有关Oracle的设定； 
+7、从桌面上、STARTUP（启动）组、程序菜单中，删除所有有关Oracle的组和图标； 
+8、删除c:\Program Files\Oracle目录； 
+9、重新启动计算机，重起后才能完全删除Oracle所在目录 ； 
+10、删除与Oracle有关的文件，选择Oracle所在的缺省目录C:\Oracle，删除这个入口目录及所有子目录，并从Windows XP目录（一般为d:\WINDOWS）下删除以下文件ORACLE.INI、oradim73.INI、oradim80.INI、oraodbc.ini等等； 
+11、WIN.INI文件中若有[ORACLE]的标记段，删除该段； 
+12、如有必要，删除所有Oracle相关的ODBC的DSN； 
+13、到事件查看器中，删除Oracle相关的日志 说明：如果有个别DLL文件无法删除的情况，则不用理会，重新启动，开始新的安装，o安装时，选择一个新的目录，则，安装完毕并重新启动后，原来的目录及文件就可以删除掉了。 
+
