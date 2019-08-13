@@ -1,6 +1,6 @@
-﻿ **learning Java EE** 
+﻿ **learning Java 开发** 
   
-旨在记录学习Java EE，内容主要是对Java SE,Java Web,Java EE框架，Java 高级，面试就业指导一些东西和编程细节进行总结整理，适合了解 Java ，想进一步深入学习Java EE的人。
+旨在记录学习Java EE，内容主要是对Java SE,Java Web,Java EE框架，Java 高级，面试就业指导一些东西和学习编程进行总结整理，适合了解 Java ，想进一步深入Java开发的人。
 
 **如果觉得不错，请在这个仓库上点个 star 吧**，这也是对我的肯定和鼓励，谢谢了。
 
@@ -189,6 +189,8 @@
 
 web基础
 
+MySQL数据库核心技术
+
 # 博客文档
 
 **博客目录**
@@ -207,11 +209,15 @@ Star即可  ^__^
 -----
 
 # 联系作者
+Email: willowawen@gmail.com
+
+- [B站](http://space.bilibili.com/180771965?)
 
 - [Awen's Personal Website](没有中)
+
 - [CSDN](https://blog.csdn.net/qq_41569732)
 
-Email: willowawen@gmail.com
+
 
 -----
 
