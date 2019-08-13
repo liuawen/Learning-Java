@@ -1,9 +1,12 @@
 尚硅谷 Java 语言30天搞定核心技术全程课程目录 宋红康
+
 尚硅谷Java核心基础_2019年版
+
+B站视频链接：[https://www.bilibili.com/video/av61317519](https://www.bilibili.com/video/av61317519)
 
 视频 课件 源码 资料
 
-链接： **[https://pan.baidu.com/s/1sZSGkNF4Cdzww7Bj_bTOGQ](https://pan.baidu.com/s/1sZSGkNF4Cdzww7Bj_bTOGQ "链接")
+百度网盘链接： **[https://pan.baidu.com/s/1sZSGkNF4Cdzww7Bj_bTOGQ](https://pan.baidu.com/s/1sZSGkNF4Cdzww7Bj_bTOGQ "链接")
 **
 提取码：n5o7
 
