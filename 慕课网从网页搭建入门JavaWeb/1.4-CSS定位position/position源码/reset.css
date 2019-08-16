@@ -1,0 +1,40 @@
+/*简单reset.css*/
+
+html,
+body {
+    background: #f5f5f5;
+}
+
+html,
+body,
+div,p,img {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex-container {
+    background: purple;
+    /*padding:10px;*/
+}
+
+.flex-item {
+    color:purple;
+    text-align: center;
+}
+
+.red {
+    background: red;
+}
+
+.blue {
+    background: lightblue;
+}
+
+.orange {
+    background: darkorange;
+}
+
+.green {
+    background: darkslategray;
+}

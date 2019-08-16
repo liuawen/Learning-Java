@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position-relative</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+		.parent {
+			width:300px;
+			height:300px;
+			background: blue;
+		}
+		.parent div {
+			width: 80px;
+			height: 80px;
+		}
+        .sub-1 {
+        	position:relative;
+        	background: red;
+        	top:20px;
+        	left: 50px;
+        }
+        .sub-2 {
+			background: green;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+    	<div class="sub-1"></div>
+    	<div class="sub-2"></div>
+    </div>
+    <div class=""></div>
+</body>
+</html>

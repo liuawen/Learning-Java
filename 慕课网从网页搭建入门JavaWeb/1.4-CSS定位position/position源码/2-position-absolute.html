@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position-absolute</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .parent {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .sub {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        .tl {
+            top:0;
+            left: 0;
+            background: green;
+        }
+        .tr {
+            top:0;
+            right: 0;
+            background: yellow;
+        }
+        .br {
+            bottom:0;
+            right: 0;
+            background: black;
+        }
+        .bl {
+            bottom:0;
+            left: 0;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="sub tl"></div>
+        <div class="sub tr"></div>
+        <div class="sub br"></div>
+        <div class="sub bl"></div>
+    </div>
+</body>
+</html>

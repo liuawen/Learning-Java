@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom 节点</title>
+</head>
+<body>
+	<div id="div1">
+		<p id="p1">我是第一个p</p>
+		<p id="p2">我是第二个p</p>
+	</div>
+	<script type="text/javascript">
+		/**
+		 *		document.createElement("p")  
+				document.createTextNode("新增")
+				parent.appendChild(child);
+				parent.removeChild(child);
+		 * 
+		 */
+
+		var p = document.createElement("p"); // <p></p>  
+		var word = document.createTextNode("我是新增的p标签");  // 我是新增的p标签
+
+		p.appendChild(word);  //<p>我是新增的p标签</p>
+
+
+		var div1 = document.getElementById("div1");
+		div1.appendChild(p);  
+
+
+		var p1 = document.getElementById("p1");
+		div1.removeChild(p1);
+	</script>
+</body>
+</html>

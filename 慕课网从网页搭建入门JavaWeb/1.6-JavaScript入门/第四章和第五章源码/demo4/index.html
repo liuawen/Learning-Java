@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom 事件</title>
+</head>
+<body>
+	<!-- 
+		1、元素
+		2、动作
+		3、触发的结果
+
+
+		1）事件内嵌元素中 
+
+		2）Element.onclick=function(){displayDate()};
+
+		3）Element.addEventListener("click", function(){
+		      
+		      });
+	 -->
+	<div onclick="alert('helloworld')">按钮</div>
+
+
+	<div id="main">我是main</div>
+
+
+	<div id="btn">我是btn</div>
+
+	<script type="text/javascript">
+		var main = document.getElementById("main");
+		main.onclick = function(){
+			alert("main被触发了");
+		}
+
+
+
+		var btn = document.getElementById("btn");
+		btn.addEventListener("click", function(){
+			alert("btn被触发了");
+		});
+	</script>
+</body>
+</html>

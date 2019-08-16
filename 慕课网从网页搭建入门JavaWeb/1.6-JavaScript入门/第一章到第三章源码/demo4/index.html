@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js数据类型</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/**
+		 * 字符串 (String)
+		 * 数字 (Number)
+		 * 布尔 (Boolean)
+		 * 数组 (Array)
+		 * 对象 (Object)
+		 * 空 (Null)
+		 * 未定义 (Undefined)
+		 */
+		
+
+		// var可以声明各种类型
+		var x;               // x 为 undefined
+		var y = 5;           // y 为数字
+		var z = "John";      // z 为字符串
+
+
+
+
+		// 字符串
+		var carname="Volvo XC60";
+		var carname='Volvo XC60';
+
+
+
+
+
+		// 数字
+		var x1=34.00;      //使用小数点来写
+		var x2=34;         //不使用小数点来写
+
+
+
+
+
+		// 布尔
+		var x=true;
+		var y=false;
+
+
+
+
+
+		// 数组
+		var cars=new Array();
+		cars[0]="Saab";
+		cars[1]="Volvo";
+
+		var cars=new Array("Saab","Volvo","BMW");
+
+		var cars=["Saab","Volvo","BMW"];
+
+
+
+
+
+		// JavaScript 对象   键值对
+		var person={
+			firstname:"John", 
+			lastname:"Doe", 
+			id:5566
+		};
+
+		console.log(person.firstname)
+		console.log(person["firstname"])
+
+
+
+
+
+
+		// Undefined 和 Null
+		// Undefined 这个值表示变量不含有值。
+		// 可以通过将变量的值设置为 null 来清空变量
+		var persons;
+		var car="Volvo";
+		car=null
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

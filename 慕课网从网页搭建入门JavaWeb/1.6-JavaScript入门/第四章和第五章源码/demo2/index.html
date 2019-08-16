@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom html</title>
+</head>
+<body>
+	<div id="main" data="nihao">123</div>
+
+	<img src="1.jpg" id="image" />
+
+	<a id="goUrl" href="">调到百度</a>
+	<script type="text/javascript">
+		var main = document.getElementById("main");
+		main.innerHTML= 'helloWorld';
+
+		/**
+		 *		element.getAttribute()
+				element.setAttribute()   // 添加或者修改
+				element.src
+				element.href 
+
+		 * 
+		 */
+		
+		// alert(main.getAttribute("data"));
+
+		main.setAttribute("data", "buhao");
+		main.setAttribute("dd", "ddname");
+
+		var image = document.getElementById("image");
+		image.src = "2.jpg";
+
+		var goUrl = document.getElementById("goUrl");
+		goUrl.href = "http://www.baidu.com"
+	</script>
+</body>
+</html>

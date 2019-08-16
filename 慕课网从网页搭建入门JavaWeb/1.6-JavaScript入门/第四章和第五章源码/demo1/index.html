@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dom简介</title>
+</head>
+<body>
+	<!-- 
+		<div id="intro"></div>
+		<div id="main">
+			<p>The DOM is very useful.</p>
+		</div>
+		<div class="content"></div>
+
+		var x=document.getElementById("intro");
+		var x=document.getElementById("main");
+		var y=x.getElementsByTagName("p");
+		var content = document.getElementsByClassName("content");
+	 -->
+	<div id="intro">helloworld</div>
+
+
+	<div id="main">
+		<p>The DOM is very useful.</p>
+	</div>
+
+	<div class="content">1</div>
+	<div class="content">2</div>
+	<div class="content">3</div>
+	<div class="content">4</div>
+
+	<script type="text/javascript">
+		// 通过js获取html标签
+		var intro = document.getElementById("intro");  // 通过id找html，唯一的
+
+
+		var main = document.getElementById("main");
+		var p = main.getElementsByTagName("p")[0];
+
+		var content1 = document.getElementsByClassName("content")[0];
+	</script>
+</body>
+</html>
