@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子元素选择器</title>
+    <style>
+        span { background-color: white; }
+        div > span {
+            background-color: DodgerBlue;
+        }
+    </style>
+</head>
+<body>
+<div>
+  <span>Span 1. In the div.
+    <span>Span 2. In the span that's in the div.</span>
+  </span>
+</div>
+<span>Span 3. Not in a div at all</span>
+</body>
+</html>

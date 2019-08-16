@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素</title>
+    <style>
+        q::before {
+            content: "«";
+            color: blue;
+        }
+        q::after {
+            content: "»";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<q>一些引用</q>, 他说, <q>比没有好。</q>.
+</body>
+</html>

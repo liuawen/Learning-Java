@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器的优先级别</title>
+    <style>
+        /* id选择器 */
+        #p {
+            color: lightcoral;
+            font-weight: bold;
+        }
+        /* class选择器 */
+        .myclass {
+            color: lightgreen;
+            font-weight: bolder;
+        }
+        /* 元素选择器 */
+        p {
+            color: lightblue;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<p id="p" class="myclass" style="color: lightslategray;font-weight: lighter">这是一个段落内容.</p>
+</body>
+</html>

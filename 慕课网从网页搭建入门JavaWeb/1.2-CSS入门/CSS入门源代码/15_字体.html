@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字体</title>
+    <style>
+        /* 设置字体系列 */
+        #p1 {
+            font-family: "Times New Roman";
+        }
+        /* 设置自定义字体系列 */
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('font/fontawesome-webfont.eot?v=3.2.1');
+            src: url('font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+        #p2 {
+            font-family: FontAwesome;
+        }
+        #p3 {
+            font-size: larger;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<p id="p1">this is text.</p>
+<p id="p2">this is text too.</p>
+<p id="p3">这是一个段落内容.</p>
+</body>
+</html>

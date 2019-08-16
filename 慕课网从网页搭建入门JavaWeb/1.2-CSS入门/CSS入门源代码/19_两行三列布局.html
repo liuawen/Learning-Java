@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两行三列布局</title>
+    <style>
+        html, body {
+            margin: 0;
+        }
+        header {
+            height: 100px;
+            background-color: lightblue;
+        }
+        #container {
+            height: 500px;
+            background-color: lightgreen;
+        }
+        nav {
+            float: left;
+            width: 150px;
+            background-color: lightyellow;
+            height: 100%;
+        }
+        aside {
+            float: right;
+            width: 100px;
+            background-color: orange;
+            height: 100%;
+        }
+        article {
+            overflow: hidden;
+            background-color: lightcoral;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<header></header>
+<div id="container">
+    <nav></nav>
+    <aside></aside>
+    <article></article>
+</div>
+</body>
+</html>

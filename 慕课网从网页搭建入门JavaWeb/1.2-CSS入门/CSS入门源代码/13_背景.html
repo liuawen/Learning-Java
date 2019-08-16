@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景</title>
+    <style>
+        /* 设置背景为图片，并设置大小、是否重复 */
+        body {
+            background-image: url("imgs/background.jpeg");
+            background-repeat: no-repeat;
+            background-size: 250px 142px;
+        }
+        /* 设置背景为纯色 */
+        #p1 {
+            background-color: lightblue;
+        }
+        /* 设置背景为图片 */
+        #p2 {
+            width: 20px;
+            height: 20px;
+            background-image: url("imgs/citypoint.png");
+        }
+        /* 设置背景为图片的一部分 */
+        #p3 {
+            width: 16px;
+            height: 16px;
+            background-image: url("imgs/ui-icons.png");
+            background-position: -64px -80px;
+        }
+    </style>
+</head>
+<body>
+<p id="p1">这是一个段落内容.</p>
+<p id="p2"></p>
+<p id="p3"></p>
+</body>
+</html>
