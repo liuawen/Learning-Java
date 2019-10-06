@@ -12,7 +12,13 @@
 
 学习记录总结中
 
-尚硅谷JavaEE学习路线：(http://www.atguigu.com/download.shtml)
+尚硅谷JavaEE学习路线(http://www.atguigu.com/kecheng.shtml#course_a)  
+
+&&
+
+黑马程序员JavaEE学习路线(http://bbs.itheima.com/thread-386464-1-1.html)
+
+
 
 1Java语言核心
 
@@ -204,20 +210,23 @@ Star即可  ^__^
 
 # TODO
 
-做中学
+做中学,学中做，疯狂输入计算输出中...  加油呀！
 
 
 -----
 
 
 # 联系作者
-Email: willowawen@gmail.com
+Email: willowawen@gmail.com  ||  277445426@qq.com
 
 - [B站](http://space.bilibili.com/180771965?)
 
 - [Awen's Personal Website](没有中)
 
+- [简书](https://www.jianshu.com/u/2a589513355b)
+- [oschina](https://my.oschina.net/u/4217509)
 - [CSDN](https://blog.csdn.net/qq_41569732)
+
 
 
 -----
