@@ -1,0 +1,19 @@
+1.安装oracle数据库，并通过sql plus或pl/sql dev登录到数据库，并能够实现基本的sql语句操作。
+1）安装服务端
+2）在我的电脑-管理-服务。将oracleServiceORCL和OracleHomeListener设置为手动启动，其他选项关闭。
+3）安装客户端
+4）通过开始-服务端选项的“配置和移植工具”-net manager来配置监听文件
+5）重启一下服务里的OracleHomeListener
+6）通过开始-服务端选项的“配置和移植工具”-net configuration assitant来加载监听器和本地Net服务连接。
+7）通过sql plus或pl/sql dev来连接数据库
+注：可以在“企业用户管理器”进行用户的添加、删除、具体用户的权限设置等操作。
+
+
+2.通过scott用户登录orcl数据库。
+1）登录企业用户管理器，选择orcl数据库，通过system用户或者DBA的身份访问orcl数据库
+2）选择：安全性-用户，将scott用户解锁。
+3）用pl/sql developer的scott用户登录orcl数据库。
+
+3.自己创建一个数据库，数据库名命名为myorcl。
+
+4.在已有的数据库下，添加用户，并赋予其相应的权限。

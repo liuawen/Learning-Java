@@ -1,0 +1,922 @@
+
+【尚硅谷 www.atguigu.com】
+
+/*************************************************************************************************/
+	                               第 1 章  基本SQL-SELECT语句
+/*************************************************************************************************/
+1. 对于日期型数据, 做 *, / 运算不合法
+
+2. 包含空值的数学表达式的值都为空值
+
+3. 别名使用双引号!
+
+4. oracle 中连接字符串使用 "||", 而不是 java 中的 "+"
+
+5. 日期和字符只能在单引号中出现. 输出 last_name`s email is email
+
+select last_name || ' `s email is ' || email EMAIL
+from employees
+
+6. distinct 关键字, 以下语法错误
+
+select last_name, distinct department_id
+from employees
+ 
+/*************************************************************************************************/
+	                          第 2 章  过滤和排序数据
+/*************************************************************************************************/
+7. WHERE 子句紧随 FROM 子句
+
+8. 查询 last_name 为 'King' 的员工信息
+
+错误1: King 没有加上 单引号
+
+select first_name, last_name
+from employees
+where last_name = King
+
+错误2: 在单引号中的值区分大小写
+
+select first_name, last_name
+from employees
+where last_name = 'king'
+
+正确
+
+select first_name, last_name
+from employees
+where last_name = 'King'
+
+9. 查询 1998-4-24 来公司的员工有哪些?
+
+注意: 日期必须要放在单引号中, 且必须是指定的格式
+
+select last_name, hire_date
+from employees
+where hire_date = '24-4月-1998'
+
+10. 查询工资在 5000 -- 10000 之间的员工信息.
+	
+	1). 使用 AND
+	select *
+	from employees
+	where salary >= 5000 and salary <= 10000
+	
+	2). 使用 BETWEEN .. AND ..,  注意: 包含边界!!
+	select *
+	from employees
+	where salary between 5000 and 10000
+
+11. 查询工资等于 6000, 7000, 8000, 9000, 10000 的员工信息
+	
+	1). 使用 OR
+	select *
+	from employees
+	where salary = 6000 or salary = 7000 or salary = 8000 or salary = 9000 or salary = 10000
+	
+	2). 使用 IN
+	select *
+	from employees
+	where salary in (6000, 7000, 8000, 9000, 10000)
+
+12. 查询 LAST_NAME 中有 'o' 字符的所有员工信息.
+	
+	select *
+	from employees
+	where last_name like '%o%'
+	
+13. 查询 LAST_NAME 中第二个字符是 'o' 的所有员工信息.
+
+	select *
+	from employees
+	where last_name like '_o%'
+	
+14. 查询 LAST_NAME 中含有 '_' 字符的所有员工信息
+	
+	1). 准备工作:
+	update employees
+	set last_name = 'Jones_Tom'
+	where employee_id = 195
+	
+	2). 使用 escape 说明转义字符.
+	select *
+	from employees
+	where last_name like '%\_%' escape '\'
+
+15. 查询 COMMISSION_PCT 字段为空的所有员工信息
+	select last_name, commission_pct
+	from employees
+	where commission_pct is null
+	
+16. 查询 COMMISSION_PCT 字段不为空的所有员工信息
+	select last_name, commission_pct
+	from employees
+	where commission_pct is not null
+
+17. ORDER BY:
+	1). 若查询中有表达式运算, 一般使用别名排序
+	2). 按多个列排序: 先按第一列排序, 若第一列中有相同的, 再按第二列排序. 
+	格式：  ORDER BY 一级排序列 ASC/DESC,二级排序列 ASC/DESC；
+
+ 
+/*************************************************************************************************/
+	                          第 3 章  单行函数
+/*************************************************************************************************/
+
+18. 打印出 "2009年10月14日 9:25:40" 格式的当前系统的日期和时间.
+
+	select to_char(sysdate, 'YYYY"年"MM"月"DD"日" HH:MI:SS')
+	from dual	
+
+	注意: 使用双引号向日期中添加字符
+
+19. 格式化数字: 1234567.89 为 1,234,567.89
+
+	select to_char(1234567.89, '999,999,999.99')
+	from dual
+
+20. 字符串转为数字时
+	1). 若字符串中没有特殊字符, 可以进行隐式转换:
+	select '1234567.89' + 100
+	from dual
+
+	2). 若字符串中有特殊字符, 例如 '1,234,567.89', 则无法进行隐式转换, 需要使用 to_number() 来完成
+
+	select to_number('1,234,567.89', '999,999,999.99') + 100
+	from dual
+
+21. 对于把日期作为查询条件的查询, 一般都使用 to_date() 把一个字符串转为日期, 这样可以不必关注日期格式
+
+	select last_name, hire_date
+	from employees
+	where hire_date = to_date('1998-5-23', 'yyyy-mm-dd')
+--	where to_char(hire_date,'yyyy-mm-dd') = '1998-5-23'
+
+22. 转换函数: to_char(), to_number(), to_date()
+
+23. 查询每个月倒数第 2 天入职的员工的信息. 
+
+	select last_name, hire_date
+	from employees
+	where hire_date = last_day(hire_date) - 1
+
+24. 计算公司员工的年薪
+
+	--错误写法: 因为空值计算的结果还是空值
+	select last_name, salary * 12 * (1 + commission_pct) year_sal
+	from employees
+
+	--正确写法
+	select last_name, salary * 12 * (1 + nvl(commission_pct, 0)) year_sal
+	from employees
+
+25. 查询部门号为 10, 20, 30 的员工信息, 若部门号为 10, 则打印其工资的 1.1 倍, 20 号部门, 则打印其工资的 1.2 倍, 30 号部门打印其工资的 1.3 倍数
+
+	--使用 case-when-then-else-end
+	select last_name, department_id, salary, case department_id when 10  then salary * 1.1
+                                                                    when 20  then salary * 1.2
+                                                                    when 30  then salary * 1.3
+                                                 end new_sal
+	from employees
+	where department_id in (10, 20, 30)
+
+	--使用 decode
+	select last_name, department_id, salary, decode(department_id, 10, salary * 1.1,
+                                               		               20, salary * 1.2,
+                                                                       30, salary * 1.3
+                                                 ) new_sal
+        from employees
+        where department_id in (10, 20, 30)
+
+ 
+/*************************************************************************************************/
+	                          第 4 章  多表查询
+/*************************************************************************************************/
+26. 多表连接查询时, 若两个表有同名的列, 必须使用表的别名对列名进行引用, 否则出错!
+
+27. 查询出公司员工的 last_name, department_name, city
+
+	
+	select last_name, department_name, city
+	from departments d, employees e, locations l
+	where d.department_id = e.department_id and d.location_id = l.location_id
+
+28. 查询出 last_name 为 'Chen' 的 manager 的信息. (员工的 manager_id 是某员工的 employee_id) 
+	
+	0). 例如: 老张的员工号为: "1001", 我的员工号为: "1002", 
+
+            我的 manager_id 为 "1001" --- 我的 manager 是"老张" 
+
+	1). 通过两条 sql 查询:
+  
+			select manager_id
+			from employees
+			where lower(last_name) = 'chen' --返回的结果为 108
+			
+			select *
+			from employees
+			where employee_id = 108
+			
+	2). 通过一条 sql 查询(自连接):
+			
+			select m.*
+			from employees e, employees m
+			where e.manager_id = m.employee_id and e.last_name = 'Chen'		
+			
+	3). 通过一条 sql 查询(子查询):	
+			
+			select *
+			from employees
+			where employee_id = (
+			                      select manager_id 
+			                      from employees
+			                      where last_name = 'Chen'
+			                    )	
+
+29. 查询每个员工的 last_name 和 GRADE_LEVEL(在 JOB_GRADES 表中). ---- 非等值连接
+
+			select last_name, salary, grade_level, lowest_sal, highest_sal
+			from employees e, job_grades j
+			where e.salary >= j.lowest_sal and e.salary <= j.highest_sal
+			
+30. 左外连接和右外连接
+
+			select last_name, e.department_id, department_name
+			from employees e, departments d
+			where e.department_id = d.department_id(+)
+			
+			select last_name, d.department_id, department_name
+			from employees e, departments d
+			where e.department_id(+) = d.department_id
+			
+			理解 "(+)" 的位置: 以左外连接为例, 因为左表需要返回更多的记录,
+			右表就需要 "加上" 更多的记录, 所以在右表的链接条件上加上 "(+)"
+			
+			注意: 1). 两边都加上 "(+)" 符号, 会发生语法错误!
+			      2). 这种语法为 Oracle 所独有, 不能在其它数据库中使用.			
+			      
+31. SQL 99 连接 Employees 表和 Departments 表
+			1).
+			select *
+			from employees join departments
+			using(department_id)
+			
+			缺点: 要求两个表中必须有一样的列名.
+			
+			2).
+			select *
+			from employees e join departments d
+			on e.department_id = d.department_id
+			
+			3).多表连接
+			select e.last_name, d.department_name, l.city
+			from employees e join departments d
+			on e.department_id = d.department_id
+			join locations l
+			on d.location_id = l.location_id			     
+			
+32. SQL 99 的左外连接, 右外连接, 满外连接
+			1).
+			select last_name, department_name
+			from employees e left outer join departments d
+			on e.department_id = d.department_id
+			
+			2).
+			select last_name, department_name
+			from employees e right join departments d
+			on e.department_id = d.department_id
+			
+			3).
+			select last_name, department_name
+			from employees e full join departments d
+			on e.department_id = d.department_id	
+
+ 
+/*************************************************************************************************/
+	                          第 5 章  分组函数
+/*************************************************************************************************/	
+			
+33. 查询 employees 表中有多少个部门
+
+		select count(distinct department_id)
+		from employees		
+		
+34. 查询全公司奖金基数的平均值(没有奖金的人按 0 计算)
+
+		select avg(nvl(commission_pct, 0))
+		from employees		
+		
+35. 查询各个部门的平均工资
+
+		--错误: avg(salary) 返回公司平均工资, 只有一个值; 而 department_id 有多个值, 无法匹配返回
+		select department_id, avg(salary)
+		from employees				 
+		
+		**在 SELECT 列表中所有未包含在组函数中的列都应该包含在 GROUP BY 子句中
+		
+		--正确: 按 department_id 进行分组
+		select department_id, avg(salary)
+		from employees
+		group by department_id
+		
+36. Toronto 这个城市的员工的平均工资
+		
+SELECT avg(salary)
+FROM employees e JOIN departments d
+ON e.department_id = d.department_id
+JOIN locations l
+ON d.location_id = l.location_id
+WHERE city = 'Toronto'		
+
+37. (有员工的城市)各个城市的平均工资
+	
+SELECT city, avg(salary)
+FROM employees e JOIN departments d
+ON e.department_id = d.department_id
+JOIN locations l
+ON d.location_id = l.location_id
+GROUP BY city		
+
+38. 查询平均工资高于 8000 的部门 id 和它的平均工资.		
+
+SELECT department_id, avg(salary)
+FROM employees e 
+GROUP BY department_id
+HAVING avg(salary) > 8000		
+		
+39. 查询平均工资高于 6000 的 job_title 有哪些
+
+SELECT job_title, avg(salary)
+FROM employees e join jobs j
+ON e.job_id = j.job_id
+GROUP BY job_title
+HAVING avg(salary) > 6000
+			
+ 
+/*************************************************************************************************/
+	                          第 6 章  子查询
+/*************************************************************************************************/	
+40. 谁的工资比 Abel 高?
+		
+		1). 写两条 SQL 语句.
+		
+		SELECT salary
+		FROM employees
+		WHERE last_name = 'Abel'
+		
+		--返回值为 11000
+		
+		SELECT last_name, salary
+		FROM employees
+		WHERE salary > 11000
+		
+		2). 使用子查询 -- 一条 SQL 语句
+		
+		SELECT last_name, salary
+		FROM employees
+		WHERE salary > (
+			SELECT salary
+			FROM employees
+			WHERE last_name = 'Abel'
+		)
+		
+子查询注意: 
+		
+		1). 子查询要包含在括号内
+		2). 将子查询放在比较条件的右侧	
+
+
+41. 查询工资最低的员工信息: last_name, salary	
+
+42. 查询平均工资最低的部门信息
+
+43*. 查询平均工资最低的部门信息和该部门的平均工资
+
+44. 查询平均工资最高的 job 信息
+
+45. 查询平均工资高于公司平均工资的部门有哪些?
+
+46. 查询出公司中所有 manager 的详细信息.
+
+47. 各个部门中 最高工资中最低的那个部门的 最低工资是多少
+
+48. 查询平均工资最高的部门的 manager 的详细信息: last_name, department_id, email, salary
+
+49. 查询 1999 年来公司的人所有员工的最高工资的那个员工的信息.
+
+
+/*************************************************************************************************/
+		
+41. 查询工资最低的员工信息: last_name, salary	
+
+		SELECT last_name, salary
+		FROM employees
+		WHERE salary = (
+			SELECT min(salary)
+			FROM employees
+		)
+
+42. 查询平均工资最低的部门信息
+		
+		SELECT *
+		FROM departments
+		WHERE department_id = (
+			SELECT department_id
+			FROM employees
+			GROUP BY department_id 
+			HAVING avg(salary) = (
+				SELECT min(avg(salary))
+				FROM employees
+				GROUP BY department_id
+			) 
+		)
+
+43. 查询平均工资最低的部门信息和该部门的平均工资
+
+select d.*, (select avg(salary) from employees where department_id = d.department_id)
+from departments d
+where d.department_id = (
+      SELECT department_id
+      FROM employees
+      GROUP BY department_id 
+      HAVING avg(salary) = (
+			 SELECT min(avg(salary))
+			 FROM employees
+			 GROUP BY department_id
+			  ) 
+      )
+		
+44. 查询平均工资最高的 job 信息
+
+	1). 按 job_id 分组, 查询最高的平均工资	
+	SELECT max(avg(salary))
+	FROM employees
+	GROUP BY job_id
+	
+	2). 查询出平均工资等于 1) 的 job_id
+	SELECT job_id
+	FROM employees
+	GROUP BY job_id
+	HAVING avg(salary) = (
+		SELECT max(avg(salary))
+		FROM employees
+		GROUP BY job_id
+	)
+	
+	3). 查询出 2) 对应的 job 信息
+	SELECT *
+	FROM jobs
+	WHERE job_id = (
+		SELECT job_id
+		FROM employees
+		GROUP BY job_id
+		HAVING avg(salary) = (
+			SELECT max(avg(salary))
+			FROM employees
+			GROUP BY job_id
+		)
+	)
+
+45. 查询平均工资高于公司平均工资的部门有哪些?
+
+	1). 查询出公司的平均工资
+	SELECT avg(salary)
+	FROM employees
+	
+	2). 查询平均工资高于 1) 的部门 ID
+	SELECT department_id
+	FROM employees
+	GROUP BY department_id
+	HAVING avg(salary) > (
+		SELECT avg(salary)
+		FROM employees
+	)
+	
+
+46. 查询出公司中所有 manager 的详细信息.
+	1). 查询出所有的 manager_id
+	SELECT distinct manager_id
+	FROM employeess
+	
+	2). 查询出 employee_id 为 1) 查询结果的那些员工的信息
+	SELECT employee_id, last_name
+	FROM employees
+	WHERE employee_id in (
+		SELECT distinct manager_id
+		FROM employees
+	)
+	
+	
+47. 各个部门中 最高工资中最低的那个部门的 最低工资是多少
+	1). 查询出各个部门的最高工资
+	SELECT max(salary)
+	FROM employees
+	GROUP BY department_id
+	
+	2). 查询出 1) 对应的查询结果的最低值: 各个部门中最低的最高工资(无法查询对应的 department_id)
+	SELECT min(max(salary))
+	FROM employees
+	GROUP BY department_id
+	
+	3). 查询出 2) 所对应的部门 id 是多少: 各个部门中最高工资等于 2) 的那个部门的 id
+	SELECT department_id
+	FROM employees
+	GROUP BY department_id 
+	HAVING max(salary) = (
+		SELECT min(max(salary))
+		FROM employees
+		GROUP BY department_id
+	)
+	
+	4). 查询出 3) 所在部门的最低工资
+	SELECT min(salary)
+	FROM employees
+	WHERE department_id = (
+		SELECT department_id
+		FROM employees
+		GROUP BY department_id 
+		HAVING max(salary) = (
+			SELECT min(max(salary))
+			FROM employees
+			GROUP BY department_id
+		)	
+	)
+
+48. 查询平均工资最高的部门的 manager 的详细信息: last_name, department_id, email, salary
+	
+	1). 各个部门中, 查询平均工资最高的平均工资是多少
+	SELECT max(avg(salary))
+	FROM employees
+	GROUP BY department_id
+	
+	
+	2). 各个部门中, 平均工资等于 1) 的那个部门的部门号是多少
+	SELECT department_id
+	FROM employees
+	GROUP BY department_id
+	HAVING avg(salary) = (
+		SELECT max(avg(salary))
+		FROM employees
+		GROUP BY department_id
+	)
+	
+	
+	
+	3). 查询出 2) 对应的部门的 manager_id
+	SELECT manager_id
+	FROM departments
+	WHERE department_id = (
+		SELECT department_id
+		FROM employees
+		GROUP BY department_id
+		HAVING avg(salary) = (
+			SELECT max(avg(salary))
+			FROM employees
+			GROUP BY department_id
+		)	
+	)
+	
+	
+	4). 查询出 employee_id 为 3) 查询的 manager_id 的员工的 last_name, department_id, email, salary
+	SELECT last_name, department_id, email, salary
+	FROM employees
+	WHERE employee_id = (
+		SELECT manager_id
+		FROM departments
+		WHERE department_id = (
+			SELECT department_id
+			FROM employees
+			GROUP BY department_id
+			HAVING avg(salary) = (
+				SELECT max(avg(salary))
+				FROM employees
+				GROUP BY department_id
+			)	
+		)	
+	)
+	
+
+49. 查询 1999 年来公司的人所有员工的最高工资的那个员工的信息.
+ 		
+		1). 查询出 1999 年来公司的所有的员工的 salary
+		SELECT salary
+		FROM employees
+		WHERE to_char(hire_date, 'yyyy') = '1999'
+		
+		2). 查询出 1) 对应的结果的最大值
+		SELECT max(salary)
+		FROM employees
+		WHERE to_char(hire_date, 'yyyy') = '1999'
+		
+		3). 查询工资等于 2) 对应的结果且 1999 年入职的员工信息		
+		SELECT *
+		FROM employees
+		WHERE to_char(hire_date, 'yyyy') = '1999' AND salary = (
+			SELECT max(salary)
+			FROM employees
+			WHERE to_char(hire_date, 'yyyy') = '1999'
+		)
+		
+50. 多行子查询的 any 和 all
+
+		select department_id
+		from employees
+		group by department_id
+		having avg(salary) >= any(
+		                          --所有部门的平均工资
+		                          select avg(salary)
+		                          from employees
+		                          group by department_id
+		                       )
+		
+any 和任意一个值比较, 所以其条件最为宽松, 所以实际上只需和平均工资最低的比较, 返回所有值
+而 all 是和全部的值比较, 条件最为苛刻, 所以实际上返回的只需和平均工资最高的比较, 所以返回
+平均工资最高的 department_id		
+		
+ 
+/*************************************************************************************************/
+	                          第 7 章  创建和管理表
+/*************************************************************************************************/
+51. 利用子查询创建表 myemp, 
+该表中包含 employees 表的 employee_id(id), last_name(name), salary(sal), email 字段
+
+	1). 创建表的同时复制 employees 对应的记录
+	
+	create table myemp 
+	as
+	select employee_id id, last_name name, salary sal, email from employees	
+	
+	2). 创建表的同时不包含 employees 中的记录, 即创建一个空表
+	
+	create table myemp 
+	as
+	select employee_id id, last_name name, salary sal, email from employees where 1 = 2
+	
+52. 对现有的表进行修改操作
+
+	1). 添加一个新列
+	
+	ALTER TABLE myemp 
+	ADD(age number(3))
+	
+	2). 修改现有列的类型
+	
+	ALTER TABLE myemp 
+	MODIFY(name varchar2(30));
+	
+	3). 修改现有列的名字
+	
+	ALTER TABLE myemp 
+	RENAME COLUMN sal TO salary;
+	
+	4). 删除现有的列
+	
+	ALTER TABLE myemp 
+	DROP COLUMN age;
+	
+53. 清空表(截断： truncate), 不能回滚!!	
+		
+54. 
+
+1). 创建一个表, 该表和 employees 有相同的表结构, 但为空表:  
+	create table emp2 as select * from employees where 1 = 2;
+
+2). 把 employees 表中 80 号部门的所有数据复制到 emp2 表中: 
+
+	insert into emp2 select * from employees where department_id = 80;
+		
+ 
+/*************************************************************************************************/
+	                          第 8 章  数据处理
+/*************************************************************************************************/
+55. 更改 108 员工的信息: 使其工资变为所在部门中的最高工资, job 变为公司中平均工资最低的 job
+	
+	1). 搭建骨架
+	update employees 
+	set salary = (
+		
+	), job_id = (
+
+	) where employee_id = 108;
+	
+	2). 所在部门中的最高工资	
+	select max(salary)
+	from employees
+	where department_id = (
+		select department_id
+		from employees
+		where employee_id = 108
+	)
+	
+	3). 公司中平均工资最低的 job
+	select job_id
+	from employees
+	group by job_id
+	having avg(salary) =  (
+		select min(avg(salary))
+		from employees
+		group by job_id
+	)
+	
+	4). 填充
+	update employees e set salary = (
+		select max(salary)
+		from employees
+		where department_id = e.department_id
+	), job_id = (
+		select job_id
+		from employees
+		group by job_id
+		having avg(salary) =  (
+			select min(avg(salary))
+			from employees
+			group by job_id
+		)
+	) where employee_id = 108;
+	
+56. 删除 108 号员工所在部门中工资最低的那个员工.
+
+	1). 查询 108 员工所在的部门 id
+	select department_id
+	from employees 
+	where employee_id = 108;
+	
+	2). 查询 1) 部门中的最低工资:
+
+	select min(salary)
+	from employees
+	where department_id = (
+		select department_id
+		from employees 
+		where employee_id = 108
+	)
+	
+	3). 删除 1) 部门中工资为 2) 的员工信息:
+	
+	delete from employees e
+		where department_id = (
+      			select department_id
+      			from employees e
+      			where employee_id = 108
+		) and salary = (
+      			select min(salary)
+      			from employees
+      			where department_id = e.department_id
+		)	
+/*************************************************************************************************/
+	                               第 9 章  约束
+/*************************************************************************************************/
+57. 定义非空约束
+
+	1). 非空约束只能定义在列级.
+	
+	2). 不指定约束名
+	create table emp2 (
+	name varchar2(30) not null, 
+	age number(3)
+	);
+	
+	3). 指定约束名	
+	create table emp3(
+	name varchar2(30) constraint name_not_null not null, 
+	age number(3));
+	
+58. 唯一约束
+	1). 列级定义
+		
+		①. 不指定约束名
+		create table emp2 (
+		name varchar2(30) unique, 
+		age number(3)
+		);
+		
+		②. 指定约束名
+		create table emp3 (
+		name varchar2(30) constraint name_uq unique, 
+		age number(3)
+		);
+		
+	2). 表级定义: 必须指定约束名
+		①. 指定约束名
+		create table emp3 (
+		name varchar2(30), 
+		age number(3), 
+		constraint name_uq unique(name)
+		);
+
+58.1 主键约束：唯一确定一行记录。表明此属性：非空，唯一 
+		
+59. 外键约束
+	1). 列级定义
+		
+		①. 不指定约束名
+		create table emp2(
+		       emp_id number(6), 
+		       name varchar2(25), 
+		       dept_id number(4) references dept2(dept_id))
+		
+		②. 指定约束名
+		create table emp3(
+		       emp_id number(6), 
+		       name varchar2(25), 
+		       dept_id number(4) constraint dept_fk3 references dept2(dept_id))
+		
+	2). 表级定义: 必须指定约束名
+
+		①. 指定约束名
+		create table emp4(
+		       emp_id number(6), 
+		       name varchar2(25), 
+		       dept_id number(4),
+		       constraint dept_fk2 foreign key(dept_id) references dept2(dept_id))
+	
+60. 约束需要注意的地方
+
+	1). ** 非空约束(not null)只能定义在列级
+
+	2). ** 唯一约束(unique)的列值可以为空
+
+	3). ** 外键(foreign key)引用的列起码要有一个唯一约束		
+	
+61. 建立外键约束时的级联删除问题:
+	1). 级联删除:
+	
+	create table emp2(
+	       id number(3) primary key, 
+	       name varchar2(25) unique, 
+	       dept_id number(3) references dept2(dept_id) on delete cascade)
+	
+	2). 级联置空
+	
+	create table emp3(
+	       id number(3) primary key, 
+	       name varchar2(25) unique, 
+	       dept_id number(3) references dept2(dept_id) on delete set null)
+       
+/*************************************************************************************************/
+	                          第 10 章  视图
+/*************************************************************************************************
+62. 查询员工表中 salary 前 10 的员工信息.
+
+select last_name, salary
+from (select last_name, salary from employees order by salary desc)
+where rownum <= 10
+	
+	说明: rownum "伪列" ---- 数据表本身并没有这样的列, 是 oracle 数据库为每个数据表 "加上的"  列. 
+	可以标识行号.默认情况下 rownum 按主索引来排序. 若没有主索引则自然排序.
+	 
+注意: **对 ROWNUM 只能使用 < 或 <=, 而是用 =, >, >= 都将不能返回任何数据.   
+
+63. 查询员工表中 salary 10 - 20 的员工信息.    
+
+select *
+from(
+  select rownum rn, temp.*
+  from (
+    select last_name, salary
+    from employees e
+    order by salary desc
+  ) temp
+)
+where rn > 10 and rn < 21
+
+64. 对 oralce 数据库中记录进行分页: 每页显示 10 条记录, 查询第 5 页的数据 
+
+select employee_id, last_name, salary
+from (
+        select rownum rn, employee_id, last_name, salary
+        from employees
+     ) e
+where e.rn <= 50 and e.rn > 40   
+
+注意: **对 oracle 分页必须使用 rownum "伪列"!
+
+select employee_id, last_name, salary
+from (
+        select rownum rn, employee_id, last_name, salary
+        from employees
+     ) e
+where e.rn <= pageNo * pageSize and e.rn > (pageNo - 1) * pageSize
+/*************************************************************************************************/
+	                          第 11 章  其它数据库对象
+/*************************************************************************************************
+
+65. 创建序列: 
+
+1). create sequence hs 
+    increment by 10 
+    start with 10
+
+2). NEXTVAL 应在 CURRVAL 之前指定 ，二者应同时有效
+
+
+65. 序列通常用来生成主键:
+
+INSERT INTO emp2 VALUES (emp2_seq.nextval, 'xx', ...) 
+
+总结：  what -- why -- how
+表table 
+视图view
+序列sequence
+索引index 
+同义词synonym
