@@ -1,7 +1,4 @@
-尚硅谷_MySQL核心技术
-链接：https://pan.baidu.com/s/1HFc1TbRsywj_QUmFJpNiVA 
 
-提取码：649k 
 
 
 课程介绍
