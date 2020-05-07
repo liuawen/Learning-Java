@@ -1,0 +1,14 @@
+1¡¢Á·Ï°1
+		int i=1;
+		System.out.println(i++ + ++i);
+		System.out.println(i);
+
+2¡¢Á·Ï°2
+		int i = 1;
+		int j = 2;
+		System.out.println(i++ * j + ++j);
+
+3¡¢Á·Ï°3
+		int i = 1;
+		int j = 2;
+		System.out.println(++i + j * ++i);
