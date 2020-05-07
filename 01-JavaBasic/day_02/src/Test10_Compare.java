@@ -19,7 +19,7 @@
 
 比较运算符能够用于基本数据类型，不能用于引用数据类型。
 除了==和!=，关于引用数据类型时它俩的意义后面再讲。
-
+操作数几元
 一元运算符：操作数只有一个
 	例如：a++  其中a就是操作数
 		-a   其中a就是操作
@@ -37,7 +37,8 @@ class Test10_Compare{
 		*/
         int age = 26;
 
-        System.out.println("是否成年：" + (age>=18));
+        System.out.println("是否成年：" + (age>=18));//是否成年：true
+//        System.out.println("是否成年：" + age>=18);//这是先字符串拼接的
 
 		/*
 		比较运算符作为条件
@@ -53,15 +54,15 @@ class Test10_Compare{
 		*/
         boolean flag = false;
         if(flag == true){//不会修改flag里面的值
-            System.out.println("条件成立");
+            System.out.println("条件成立1");
         }
         //与上面的语句是等价的
         if(flag){
-            System.out.println("条件成立");
+            System.out.println("条件成立2");
         }
 
         if(flag = true){//不是比较，而是赋值，结果仍然是布尔值，只要是布尔值就可以作为条件
-            System.out.println("条件成立");
+            System.out.println("条件成立3");
         }
         System.out.println("flag = " + flag);
 
@@ -72,7 +73,7 @@ class Test10_Compare{
         if(num == 1){
             System.out.println("num=1");
         }
-
+        //true false  才是  最终的情况
         //if(num = 1){//错误的，因为num=1是赋值表达式，结果还是int，int值是不能作为条件的
         //	System.out.println("num=1");
         //}
