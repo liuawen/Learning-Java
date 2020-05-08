@@ -31,5 +31,11 @@ class TestExer3{
         System.out.println("销量：" + sale);
         System.out.println("库存量：" + amount);
         System.out.println("是否促销：" + cu);
+        //书名：《Java从入门到放弃》
+        //作者：菜鸡文
+        //价格：100.0
+        //销量：0
+        //库存量：100
+        //是否促销：true
     }
 }
