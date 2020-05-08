@@ -64,5 +64,18 @@ class Test02_Order{
         System.out.println("体重：" + weight);
         System.out.println("性别：" + gender);
         System.out.println("是否漂亮：" + beautiful);
+        //请输入年龄：22
+        //age = 22
+        //请输入姓名：牛菜文
+        //请输入体重：75
+        //请输入是否漂亮：true
+        //请输入性别：女
+        //姓名：牛菜文
+        //年龄：22
+        //体重：75.0
+        //性别：女
+        //是否漂亮：true
+        //
+        //Process finished with exit code 0
     }
 }

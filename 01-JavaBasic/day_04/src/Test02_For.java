@@ -57,19 +57,19 @@ class Test02_For{
 		/*
 		（1）int i=1;
 		（2）i<=5;
-		（3）条件成立，执行System.out.println("柴老师真漂亮！");
+		（3）条件成立，执行 System.out.println("柳江雪老师真漂亮！");
 		（4）然后i++， i=2
 		（5）i<=5;
-		（6）条件成立，执行System.out.println("柴老师真漂亮！");
+		（6）条件成立，执行 System.out.println("柳江雪老师真漂亮！");
 		（7）然后i++， i=3
 		（8）i<=5;
-		（9）条件成立，执行System.out.println("柴老师真漂亮！");
+		（9）条件成立，执行 System.out.println("柳江雪老师真漂亮！");
 		（10）然后i++， i=4
 		（11）i<=5;
-		（12）条件成立，执行System.out.println("柴老师真漂亮！");
+		（12）条件成立，执行 System.out.println("柳江雪老师真漂亮！");
 		（13）然后i++， i=5
 		（14）i<=5;
-		（15）条件成立，执行System.out.println("柴老师真漂亮！");
+		（15）条件成立，执行 System.out.println("柳江雪老师真漂亮！");
 		（16）然后i++， i=6
 		（17）i<=5;
 		（18）条件不成立，结束for

@@ -6,6 +6,7 @@
 2、打印1-100的偶数
 
 Ctrl + 鼠标滚轮  调节编辑框字的大小
+一天从早到晚 伤眼睛
 */
 class Test04_Exer2{
     public static void main(String[] args){
