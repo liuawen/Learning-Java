@@ -12,7 +12,7 @@ package homework;
 //  *           *
 //    *       *
 //      *   *
-//        * 
+//        *
 class Day04_Test09_02{
     public static void main(String[] args){
         //上半部分：正的等腰三角形
