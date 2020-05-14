@@ -39,5 +39,14 @@ class Test08_Exer4{
         for(int i=0; i<scores.length; i++){
             System.out.print(scores[i]+"\t");//  \t 制表符
         }
+        //请输入本组的人数：5
+        //请输入第1个学员的成绩：1
+        //请输入第2个学员的成绩：2
+        //请输入第3个学员的成绩：3
+        //请输入第4个学员的成绩：4
+        //请输入第5个学员的成绩：5
+        //本组学员的成绩如下：
+        //1	2	3	4	5
+        //Process finished with exit code 0
     }
 }

@@ -27,29 +27,28 @@ scores[0] = 89;
 class Test01_Array{
     public static void main(String[] args){
 		/*
-		要存储本组学员的成绩，例如：第1组，有7个同学
+		要存储本组学员的成绩，例如：第1组，有5个同学
 		*/
 		/*
-		int score1 = 89;
-		int score2 = 89;
-		int score3 = 67;
-		int score4 = 99;
-		int score5 = 89;
-		int score6 = 34;
-		int score7 = 89;
+		int score1 = 100;
+		int score2 = 90;
+		int score3 = 80;
+		int score4 = 70;
+		int score5 = 60;
 
-		//用7个变量存储没问题，但是如果涉及到对数据的管理：例如，求最值，排序等，就非常麻烦
+		//用5个变量存储没问题，但是如果涉及到对数据的管理：例如，求最值，排序等，就非常麻烦
 		*/
-        int[] scores = new int[7];//用scores这一个统一的名称，来管理7个int类型的元素
-        scores[0] = 89;//每一个元素都有自己的下标，编号，索引
-        scores[1] = 89;
-        scores[2] = 67;
-        scores[3] = 99;
-        scores[4] = 89;
-        scores[5] = 34;
-        scores[6] = 89;
-        //	scores[7] = 56;// java.lang.ArrayIndexOutOfBoundsException:数组下标越界异常
+        int[] scores = new int[5];//用scores这一个统一的名称，来管理5个int类型的元素
+        scores[0] = 100;//每一个元素都有自己的下标，编号，索引
+        scores[1] = 90;
+        scores[2] = 80;
+        scores[3] = 70;
+        scores[4] = 60;
+        //	scores[6] = 50;// java.lang.ArrayIndexOutOfBoundsException:数组下标越界异常
 
         System.out.println(scores.length);
+        for (int i = 0; i < scores.length; i++) {
+            System.out.print(scores[i] + "\t");
+        }
     }
 }

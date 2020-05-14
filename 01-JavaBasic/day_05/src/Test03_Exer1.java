@@ -23,6 +23,17 @@ class Test03_Exer1{
         for(int i=0; i<array.length; i++){
             System.out.println(array[i]);
         }
+        //Result
+        //1
+        //3
+        //5
+        //7
+        //9
+        //-1
+        //1
+        //3
+        //5
+        //7
 
     }
 }

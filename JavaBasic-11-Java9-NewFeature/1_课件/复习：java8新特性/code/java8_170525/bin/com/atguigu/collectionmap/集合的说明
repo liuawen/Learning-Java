@@ -1,0 +1,73 @@
+1.高频的面试题：
+①ArrayList \ LinkedList \ Vector的异同？
+回答看ppt
+
+这里说明源码：
+jdk7：
+ArrayList list = new ArrayList();//初始化一个长度为10的Object[] elementData
+sysout(list.size());//返回存储的元素的个数:0
+list.add(123);
+list.add(345);
+...
+当添加第11个元素时，需要扩容，默认扩容为原来的1.5倍。还需要将原有数组中的数据复制到新的数组中。
+
+删除操作：如果删除某一个数组位置的元素，需要其后面的元素依次前移。
+remove(Object obj) / remove(int index)
+
+jdk8:
+ArrayList list = new ArrayList();//初始化一个长度为0的Object[] elementData
+sysout(list.size());//返回存储的元素的个数:0
+list.add(123);//此时才创建一个长度为10的Object[] elementData
+list.add(345);
+...
+当添加第11个元素时，需要扩容，默认扩容为原来的1.5倍。还需要将原有数组中的数据复制到新的数组中。
+
+删除操作：如果删除某一个数组位置的元素，需要其后面的元素依次前移。
+remove(Object obj) / remove(int index)
+
+开发时的启示：
+1.jdk8延迟了底层数组的创建：内存的使用率；对象的创建更快 
+2.建议使用：ArrayList list = new ArrayList(int length);
+
+************************************
+LinkedList：底层使用双向链表存储添加的元素
+内部类体现：
+private static class Node<E> {
+        E item;
+        Node<E> next;
+        Node<E> prev;
+}
+
+
+②HashMap的底层实现  
+jdk 7：
+HashMap map = new HashMap();//底层创建长度为16的Entry数组，此时加载因子：0.75，临界值：12
+
+map.put(1,"AA");
+map.put(2,"BB");
+
+...
+如果添加第（临界值+1）个元素且要添加到的位置有元素，此时扩容，扩容为原来的2倍。
+
+
+总结：HashMap在jdk7和jdk8中的区别：
+①最初new HashMap()时候，是否初始化底层Entry[]
+②jdk 7 : 数组+链表     jdk8: 数组+链表+红黑树（此数组i位置上的链表元素的个数大于8且整个数组长度>64时才使用）
+③ 新添加的元素如果与现有的元素以链表方式存储的时候：“七上八下”：jdk7：新添加的当链表头，jdk8:新添加的当链表尾
+
+
+---->拓展：LinkedHashMap源码：额外的添加了一对链表：
+static class Entry<K,V> extends HashMap.Node<K,V> {
+        Entry<K,V> before, after;
+}
+
+
+2.中频的面试题：
+①HashMap和Hashtable的异同？
+
+②Collection 和 Collections异同？
+
+③Comparable 和  Comparator的异同？
+
+3.笔试题目：
+

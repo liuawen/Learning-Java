@@ -26,6 +26,10 @@ class Test05_Exer3{
             //...
             System.out.println(week+"对应的星期的单词是：" + weeks[week-1]);
         }
-
+        //Result
+        //请输入星期（1-7）：7
+        //7对应的星期的单词是：Sunday
+        //
+        //Process finished with exit code 0
     }
 }

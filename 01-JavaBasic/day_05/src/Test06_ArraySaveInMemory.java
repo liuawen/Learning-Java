@@ -32,9 +32,11 @@ class Test06_ArraySaveInMemory{
         //int[] array = {1,3,5,7,9};
 
         System.out.println(array);//打印数组名
-        //结果：[I@15db9742
+        //结果：[I@1b6d3586   不同的计算机不同时候运行都不一样的
         //这个值是，数组对象的类型@对象的hashCode编码值
         //其中[I，表示int[]类型
         //15db9742是这个数组对象的hashCode编码值，类似于每个人都有一个身份证号
+        System.out.println(System.identityHashCode(array));
+        //460141958
     }
 }

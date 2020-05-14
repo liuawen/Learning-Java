@@ -1,6 +1,14 @@
 # Java复习笔记
 
+
+
 [TOC]
+
+
+
+
+
+
 
 
 
@@ -2039,6 +2047,8 @@ for(int i=0; i<newArr.length; i++){
 
 ### 4.3.5 查找
 
+查找 顺序查找 二分查找
+
 查找分为两种：
 
 1、顺序查找：挨个看
@@ -2379,6 +2389,12 @@ for(int i=0; i<二维数组名.length; i++){
 
 ​     类是对象的设计模板。
 
+类与对象
+
+类 一类具有相同特性的事务的抽象描述，是构造对象的模板或蓝图。
+
+对象 类的一个个个体，实列，具体的存在。
+
 2、如何声明类？
 
 ```java
@@ -2386,6 +2402,8 @@ for(int i=0; i<二维数组名.length; i++){
     成员列表：属性、方法、构造器、代码块、内部类
 }
 ```
+
+Field 字段 
 
 3、如何创建对象？
 
@@ -2408,7 +2426,7 @@ new 类名();  //匿名对象
 
 > 说明：属性的类型可以是Java的任意类型，包括基本数据类型、引用数据类型（类、接口、数组等）
 
-
+对象中的数据称为实例域（instance field），操纵数据的过程称为方法（method）。
 
 总结：Java的数据类型
 
@@ -2422,7 +2440,7 @@ byte,short,int,long,float,double,char,boolean
 
 ​	例如：String、Student、Circle、System、Scanner、Math...
 
-②接口：后面讲
+②接口：interface 
 
 ③数组：
 
@@ -6769,6 +6787,12 @@ public class SingleLinkedList {
 
 集合框架分为两个家族：Collection（一组对象）和Map（一组映射关系、一组键值对）
 
+Collection  Map
+
+一组对象   一组映射关系 一组键值对
+
+Colleciton Map
+
 ### 12.3.1 Collection
 
 Collection是代表一种对象的集合。它是Collection系列的根接口。
@@ -6904,7 +6928,13 @@ List系列的集合：有序的、可重复的
 
 List系列的常用集合：ArrayList、Vector、LinkedList、Stack
 
+Stack
 
+ArrayList
+
+Vector
+
+Stack
 
 ### 12.4.2 List的API
 
@@ -6985,6 +7015,10 @@ ArrayList、Vector、LinkedList、Stack
 Vector是最早版本的动态数组，线程安全的，默认扩容机制是2倍，支持旧版的迭代器Enumeration
 
 ArrayList是后增的动态数组，线程不安全的，默认扩容机制是1.5倍
+
+Vector
+
+ArrayList 动态数组 
 
 （2）动态数组与LinkedList的区别
 
@@ -7460,6 +7494,8 @@ Set系列的集合：不可重复的
 
 Set系列的集合，有有序的也有无序的。HashSet无序的，TreeSet按照元素的大小顺序遍历，LinkedHashSet按照元素的添加顺序遍历。
 
+List、Set 概述 
+
 ### 12.5.2 实现类的特点
 
 （1）HashSet：
@@ -7498,6 +7534,12 @@ HashMap中的映射关系，是有一个内部类来实现Entry的接口，JDK1.
 JDK1.8是一个叫做Node的内部类实现Entry接口。
 TreeMap中的映射关系，是有一个内部类Entry来实现Entry的接口
 ```
+
+Map概述
+
+用来存储键值对 映射关系的集合
+
+
 
 ### 12.6.2 API
 
@@ -10760,7 +10802,7 @@ Lambda表达式语法格式
 * {Lambda体}就是实现这个抽象方法的方法体
 * ->称为Lambda操作符（减号和大于号中间不能有空格，而且必须是英文状态下半角输入方式）
 
-
+习得电脑安装的手艺，码得一手代码。业余时间，更是热衷于帮女同学修电脑。
 
 优化：Lambda表达式可以精简
 

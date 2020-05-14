@@ -1,0 +1,19 @@
+var 语法 : 局部变量的类型推断.
+注意点 : 
+	1) var a; 这样不可以, 因为无法推断.
+	2) 类的属性的数据类型不可以使用var.
+	
+有参数的lambda表达式使用
+函数式接口 : 
+	Consumer<T> : 消费型函数式接口.
+		public void accept(T t);
+		
+	Consumer<String> consumer = t -> System.out.println(t.toUpperCase());
+	
+	Consumer<String> consumer = (var t) -> System.out.println(t.toUpperCase());
+	
+	错误的形式: 必须要有类型, 可以加上var
+	Consumer<String> consumer = (@Deprecated t) -> System.out.println(t.toUpperCase());
+	正确的形式:
+	Consumer<String> consumer = (@Deprecated var t) -> System.out.println(t.toUpperCase());
+	

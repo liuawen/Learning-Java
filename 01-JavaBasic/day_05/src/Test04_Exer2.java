@@ -16,7 +16,8 @@ class Test04_Exer2{
 
         //并且遍历显示结果
         for(int i=0; i<daysOfMonth.length; i++){
-            System.out.println((i+1) + "月：" + daysOfMonth[i]);
+//            System.out.println((i+1) + "月：" + daysOfMonth[i]);
+            System.out.print((i+1) + "月：" + daysOfMonth[i] + "\t");
         }
     }
 }

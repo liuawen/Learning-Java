@@ -28,5 +28,34 @@ class Test09_Exer5{
         for(int i=0; i<letters.length; i++){
             System.out.println(letters[i] +"->" + (char)(letters[i]-32));
         }
+        //Result
+        //a->A
+        //b->B
+        //c->C
+        //d->D
+        //e->E
+        //f->F
+        //g->G
+        //h->H
+        //i->I
+        //j->J
+        //k->K
+        //l->L
+        //m->M
+        //n->N
+        //o->O
+        //p->P
+        //q->Q
+        //r->R
+        //s->S
+        //t->T
+        //u->U
+        //v->V
+        //w->W
+        //x->X
+        //y->Y
+        //z->Z
+        //
+        //Process finished with exit code 0
     }
 }

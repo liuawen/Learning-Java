@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="multijar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/javatest/lib/multijar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
