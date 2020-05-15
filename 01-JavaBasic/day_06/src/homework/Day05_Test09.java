@@ -32,12 +32,12 @@ class Day05_Test09{
                     break;
                 }
             }
+            //已经搞好了
 
             //要么没有偶数，要么没有奇数
             if(left==-1 || right==-1){
                 break;
             }
-
             if(left < right){
                 //交换arr[left]的偶数与arr[right]的奇数
                 int temp = arr[left];

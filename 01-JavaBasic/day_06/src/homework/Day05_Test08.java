@@ -35,5 +35,12 @@ class Day05_Test08{
         System.out.println("小尚的分数：" + shangFen);
 
         //...
+        int guiFen = 0;
+        for (int i = 0; i < gui.length; i++) {
+            if (gui[i] == answer[i]){
+                guiFen += 2;
+            }
+        }
+        System.out.println("小硅的分数" + guiFen);
     }
 }

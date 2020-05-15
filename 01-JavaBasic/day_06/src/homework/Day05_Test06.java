@@ -22,7 +22,7 @@ class Day05_Test06{
                 break;
             }
         }
-
+        
         System.out.println(flag?"对称":"不对称");
     }
 }

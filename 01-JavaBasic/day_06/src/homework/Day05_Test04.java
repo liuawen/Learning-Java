@@ -5,6 +5,7 @@ package homework;
  * @create 2018-05-11 13:31
  */
 //统计每个字符出现的次数并打印到控制台。
+//每个字符出现的次数 26个字母 一个数组表示 每个元素表示字符出现的次数
 class Day05_Test04{
     public static void main(String[] args){
         char[] arr = {'a','l','f','m','f','o','b','b','s','n'};
@@ -23,6 +24,7 @@ class Day05_Test04{
             //找counts[下标]其中的下标与字母'a','b'等的关系
             //例如：'a' ==》counts[0]的[0]的关系		'a'-97=97-97=0
             //例如：'l' ==》counts[11]的[11]的关系		'l'-97=108-97=11
+            // a 0 b 1 arr[]
             counts[arr[i] - 97]++;
         }
 

@@ -20,7 +20,7 @@ class Test02_Find{
 
         //在arr的数组中，查找2的下标，或者判断2在数组中是否存在
         int value = 2;
-        int index = -1;//因为正常的下标，没有-1
+        int index = -1;//因为正常的下标，没有-1,正常不是-1.
         for(int i=0; i<arr.length; i++){
             if(arr[i] == value){
                 index = i;
