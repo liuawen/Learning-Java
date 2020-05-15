@@ -5,7 +5,7 @@
 /*
 数组的维度：
 	一维数组、二维数组、三维数组...
-
+二维数组  有行有列的表格
 二维数组：
 	有行有列的表格，二维表
 
@@ -62,6 +62,7 @@ for(int i=0; i<二维数组名.length; i++){
 */
 class Test05_ManyDimensionalArray{
     public static void main(String[] args){
+
         //存储多个组的学员的成绩，每一个组单独一行存储
 		/*
 		//1、声明一个二维数组
@@ -82,7 +83,7 @@ class Test05_ManyDimensionalArray{
         };
 
         System.out.println("行数：" + scores.length);
-
+        //列数呢 scores[i].length
         //3、遍历
         for(int i=0; i<scores.length; i++){//行数
             //scores[i]代表一行，看成一个整体
@@ -91,5 +92,8 @@ class Test05_ManyDimensionalArray{
             }
             System.out.println();
         }
+        //行
+        //列
+        //遍历  开搞开搞
     }
 }
