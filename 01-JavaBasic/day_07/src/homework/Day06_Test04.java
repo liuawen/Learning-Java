@@ -10,7 +10,7 @@ package homework;
 class Day06_Test04{
     public static void main(String[] args){
         //(1)先确定行数
-        int[][] yanghui = new int[10][];
+        int[][] yanghui = new int[10][];//yangHui
 
         //(2)再确定每一行的列数
         //第一行有 1 个元素, 第 n 行有 n 个元素
@@ -22,6 +22,7 @@ class Day06_Test04{
         for(int i=0; i<yanghui.length; i++){
             //每一行的第一个和最后一个元素都是1
             yanghui[i][0] = 1;
+//            yanghui[i][yanghui[i].length-1]=1;//通用的
             yanghui[i][i] = 1;
 
             //中间的元素

@@ -2473,19 +2473,48 @@ for(int i=0; i<二维数组名.length; i++){
 
 # 第五章 面向对象基础
 
-## 5.1 类与对象
+
+
+![image-20200516093207357](assets/image-20200516093207357.png)
+
+比较吃力的
+
+
+
+IO 线程 网络 反射 类加载
+
+![image-20200516093831505](assets/image-20200516093831505.png)
+
+static 静态的   静止的
+
+字段是谁的  属于 本质 
+
+【修饰符】 class 类名{
+    成员列表：属性、方法、构造器、代码块、内部类
+
+}
+
+类变量  被static修饰的成员变量 比如Static String Home
+
+类方法 
+
+
+
+##5.1 类与对象
 
 1、类：一类具有相同特性的事物的抽象描述。
 
 ​      对象：类的一个个体，实例，具体的存在。
 
-​     类是对象的设计模板。
+​	  类是对象的设计模板。
 
 类与对象
 
-类 一类具有相同特性的事务的抽象描述，是构造对象的模板或蓝图。
+类：类是某一种事物的抽象，是一类具有相同特性的事物的抽象描述，是构造对象的模板或蓝图。
 
-对象 类的一个个个体，实列，具体的存在。
+对象：对象是某个事物的一个具体的个体。
+
+类是抽象的，对象(实例)是具体的。
 
 2、如何声明类？
 
@@ -2495,7 +2524,21 @@ for(int i=0; i<二维数组名.length; i++){
 }
 ```
 
-Field 字段 
+* 1、使用 class 关键字可以声明一个类 ，比如 public class Person
+ * 2、一个类可以表示一类事物，在类中可以定义该类事物或其个体所具有的特征、行为 
+ * 3、字段(field) 表示该类事物或其个体特征的变量
+ * 4、方法(method) 表示该类事物或其个体可以完成动作、行为
+ * 5、构造方法( constructor ) 是类中与类名同名但没有返回类型的方法
+
+```java
+public class Person{
+    
+}
+```
+
+Field 字段是我有什么 、Method方法是我能干什么
+
+什么是字段 什么是方法 什么是构造 
 
 3、如何创建对象？
 
@@ -2504,6 +2547,10 @@ new 类名();  //匿名对象
 
 类名 对象名 = new 类名(); //有名对象
 ```
+
+匿名对象  有对象名的对象
+
+匿名对象 有对象名的对象
 
 ## 5.2 类的成员之一：属性
 
@@ -2520,11 +2567,15 @@ new 类名();  //匿名对象
 
 对象中的数据称为实例域（instance field），操纵数据的过程称为方法（method）。
 
+字段的类型 基础数据类型、引用数据类型（类、接口、数组等）
+
 总结：Java的数据类型
 
 （1）基本数据类型
 
 byte,short,int,long,float,double,char,boolean
+
+byte short int long float double，char,boolean
 
 （2）引用数据类型
 
@@ -2545,6 +2596,8 @@ int[] arr = new int[5];
 元素的数据类型：int
 数组的数据类型：int[]
 ```
+
+元素的数据类型  数组的数据类型
 
 
 
@@ -2572,7 +2625,7 @@ class TestStudent{
         System.out.println("姓名：" + s1.name);//null
         System.out.println("性别：" + s1.gender);//男
         
-        s1.name = "小薇";//修改属性的默认值
+        s1.name = "小菜";//修改属性的默认值
         s1.gender = '女';//修改属性的初始值
         System.out.println("姓名：" + s1.name);//小薇
         System.out.println("性别：" + s1.gender);//女
@@ -2669,9 +2722,9 @@ class TestStudent{
         System.out.println("姓名：" + s1.name);//null
         System.out.println("性别：" + s1.gender);//男
         
-        s1.name = "小薇";
+        s1.name = "小菜";
         s1.gender = '女';
-        System.out.println("姓名：" + s1.name);//小薇
+        System.out.println("姓名：" + s1.name);//小菜
         System.out.println("性别：" + s1.gender);//女
         
         Student s2 = new Student();
@@ -2682,6 +2735,10 @@ class TestStudent{
 ```
 
 ![1558659534754](imgs/1558659534754.png)
+
+
+
+
 
 
 
@@ -2696,6 +2753,10 @@ class TestStudent{
 （1）复用
 
 （2）简化代码
+
+方法代表一个独立的可复用的功能
+
+目的/好处：复用、简化代码
 
 
 
@@ -2713,7 +2774,7 @@ class TestStudent{
 
 说明：
 
-（1）【修饰符】：待讲
+（1）【修饰符】
 
 （2）返回值类型：
 
@@ -2723,7 +2784,9 @@ class TestStudent{
 
 （3）方法名：能很好的体现方法的功能
 
-命名的规范：①见名知意②从第二个单词开始首字母大写
+命名的规范：①见名知意②从第二个单词开始首字母大写  aaaBbbCcc
+
+
 
 （4）【形参列表】：
 
