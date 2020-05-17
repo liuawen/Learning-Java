@@ -31,6 +31,7 @@ class Person{
 5、访问某个对象的属性值
 例如：打印某个对象的属性值
 System.out.println(对象名.属性名);
+对象名 属性名
 */
 //声明类
 class Person{
