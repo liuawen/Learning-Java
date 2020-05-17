@@ -1,0 +1,8 @@
+练习：
+1、声明一个图形工具类，包含如下方法：
+（1）double getTriangleArea(double base,double height)
+（2）double getTriangleArea(double a,double b, double c)
+
+2、声明一个数学工具类，包含如下方法：
+（1）可以求0~n字符串的拼接结果
+（2）可以求1~n整数的乘积
