@@ -1,0 +1,7 @@
+1、父类：动物，Animal，包含属性：name（动物名称）
+抽象方法，生育：public abstract void giveBirthTo();
+2、子类：卵生动物，Oviparity
+3、子类：胎生动物，Viviparity
+4、在测试类中，创建Animal数组，并保存多个子类对象，
+并调用getName()和giveBirthTo()方法，打印：例如：狗是胎生动物
+
