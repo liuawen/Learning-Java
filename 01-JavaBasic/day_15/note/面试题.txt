@@ -1,0 +1,9 @@
+面试题：finally,final,finalize的区别
+（1）finally：最终块
+无论try中是否有异常，无论catch是否可以捕获异常，也不管try和catch中是否有return，
+都一定要执行的部分
+（2）final：是一个修饰符
+修饰类：表示不能被继承
+修饰方法：表示不能被重写
+修饰变量：表示常量，值不能修改
+（3）finalize：是一个方法名，在Object类中声明的，当对象被GC回收之前调用
