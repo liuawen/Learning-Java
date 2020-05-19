@@ -18,7 +18,7 @@ package com.awen.block;
  *     形参列表 实例初始化方法
  *     即编译后的 .class字节码信息中
  *     是没有构造器这个概念
- *     
+ *
  */
 public class TestBlock {
     public static void main(String[] args) {

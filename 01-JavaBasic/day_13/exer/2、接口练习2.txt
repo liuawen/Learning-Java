@@ -1,0 +1,8 @@
+接口的练习2：
+（1）声明一个员工类Employee，有属性：编号、姓名、年龄、薪资
+（2）让Employee员工类实现java.lang.Comparable接口，
+		重写抽象方法，按照编号从小到大排序
+（3）在测试类中创建Employee[]数组，调用java.util.Arrays的sort方法进行排序，遍历结果
+（4）声明SalaryComparator类，实现java.util.Comparator接口，
+		重写抽象方法，按照薪资从高到低排序
+	用SalaryComparator对象重新对Employee[]数组进行排序，遍历结果

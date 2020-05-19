@@ -1,0 +1,10 @@
+1、匿名内部类练习1
+（1）声明一个抽象类Father，包含抽象方法：public abstract void method();
+（2）用匿名内部类继承Father，并重写抽象方法，打印“hello 孩子"
+并调用子类对象的method方法
+
+2、匿名内部类练习2
+（1）声明一个员工类Employee，有属性：编号、姓名、薪资
+（2）在测试类中创建Employee数组
+（3）分别调用Arrays.sort(数组，Comparator)，用匿名内部类实现按照编号升序排列
+（4）分别调用Arrays.sort(数组，Comparator)，用匿名内部类实现按照薪资升序排列

@@ -4574,11 +4574,9 @@ Object[] object = new Object[5];
 
 （2）每一个对象的创建，最终都会调用到Object实例初始化方法<init>()
 
-实例初始化方法 
-
 （3）Object类型变量、形参、数组，可以存储任意类型的对象
 
-存储任意类型的对象
+
 
 2、Object类的常用方法
 
@@ -4588,9 +4586,7 @@ Object[] object = new Object[5];
 
 ①默认情况下，返回的是“对象的运行时类型 @ 对象的hashCode值的十六进制形式"
 
-没有重写   运行时类型 hashCode值 
-
-②通常是建议重写，如果在eclipse中，可以用Alt +Shift + S-->Generate toString() IDEA、Alt + Insert
+②通常是建议重写，如果在eclipse中，可以用Alt +Shift + S-->Generate toString()
 
 ③如果我们直接System.out.println(对象)，默认会自动调用这个对象的toString()
 
@@ -4634,14 +4630,6 @@ B：如果重写equals，那么一定要遵循如下几个原则：
 
 参考资料
 [搞定Java核心技术](https://www.bilibili.com/video/BV1R5411t7Ze)
-
-13 14 15 16 17 18 19 一个星期了 
-
-
-
-一致性 
-
-对称性 
 
 
 
@@ -4926,15 +4914,11 @@ C：一般情况下不需要重写，只有这个类是表示某种连接资源�
 面向对象的基本特性 封装、继承、多态
 面向对象的特征：封装、继承、多态、抽象
 
-
-
 1、什么时候会用到抽象方法和抽象类？
 
 当声明父类的时候，在父类中某些方法的方法体的实现不能确定，只能由子类决定。但是父类中又要体现子类的共同的特征，即它要包含这个方法，为了统一管理各种子类的对象，即为了多态的应用。
 
 那么此时，就可以选择把这样的方法声明为抽象方法。如果一个类包含了抽象方法，那么这个类就必须是个抽象类。
-
-当声明父类的时候 
 
 
 
@@ -11886,17 +11870,7 @@ orElse(T other) 与ofNullable(T value)配合使用，
 
 ## 18.1 模板设计模式（了解）
 
-模板方法的定义：
-
-Define the skeleton of an algorithm in an operation,deferring some steps tosubclasses.Template Method lets subclasses redefine certain steps of an algorithmwithout changing the algorithm's structure.（定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。）
-
-当解决某个问题，或者完成某个功能时，主体的算法结构（步骤）是确定的，只是其中的一个或者几个小的步骤不确定，要有使用者（子类）来确定时，就可以使用模板设计模式
-
-模板设计模式 
-
-模板方法模式的通用类图
-
-![image-20200519150842665](assets/image-20200519150842665.png)
+1、当解决某个问题，或者完成某个功能时，主体的算法结构（步骤）是确定的，只是其中的一个或者几个小的步骤不确定，要有使用者（子类）来确定时，就可以使用模板设计模式
 
 2、示例代码：计算任意一段代码的运行时间
 
@@ -11941,10 +11915,6 @@ public class Test{
     }
 }
 ```
-
-
-
-
 
 ## 18.2 单例设计模式
 
