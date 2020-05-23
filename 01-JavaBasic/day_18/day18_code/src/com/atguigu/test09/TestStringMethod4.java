@@ -16,6 +16,9 @@ public class TestStringMethod4 {
 		}else if(fileName.endsWith(".class")){
 			System.out.println("字节码文件");
 		}
+		//字节码文件
+		System.out.println(fileName.endsWith(""));//true
+		System.out.println(fileName.endsWith("Hello.class"));//true
 	}
 	
 	@Test
@@ -26,11 +29,14 @@ public class TestStringMethod4 {
 	
 	@Test
 	public void test1(){
-		String name = "崔志恒";
-		if(name.startsWith("张")){
-			System.out.println("张家人");
+		String name = "菜鸡文";
+		if(name.startsWith("菜")){
+			System.out.println("菜鸡文是菜家的人");
 		}else{
-			System.out.println("不是张家人");
+			System.out.println("菜鸡文不是菜家人");
 		}
+		//菜鸡文是菜家的人
+		System.out.println(name.startsWith(""));//true
+		System.out.println(name.startsWith("菜鸡文"));//true
 	}
 }

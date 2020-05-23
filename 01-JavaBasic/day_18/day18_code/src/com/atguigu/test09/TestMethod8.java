@@ -13,30 +13,30 @@ public class TestMethod8 {
 	
 	@Test
 	public void test4(){
-		String str = "hello244world.java;887";
+		String str = "ABC码出个未来abc;123";
 		//把其中的非字母去掉
 		str = str.replaceAll("[^a-zA-Z]", "");
-		System.out.println(str);
+		System.out.println(str);//ABCabc
 	}
 	@Test
 	public void test3(){
-		String str = "中国共产党是执政党，中国共产党是领导党";
-		str = str.replaceAll("共产党", "***");
-		System.out.println(str);
+		String str = "飞出个未来，计算灵光点，码出个未来。";
+		str = str.replaceAll("未来", "***");
+		System.out.println(str);//飞出个***，计算灵光点，码出个***。
 	}
 	
 	@Test
 	public void test2(){
-		String str = "中国共产党是执政党，中国共产党是领导党";
-		str = str.replaceFirst("共产党", "***");
-		System.out.println(str);
+		String str = "飞出个未来，计算灵光点，码出个未来。";
+		str = str.replaceFirst("未来", "***");
+		System.out.println(str);//飞出个***，计算灵光点，码出个未来。
 	}
 	
 	
 	@Test
 	public void test1(){
-		String str = "中国共产党是执政党，中国共产党是领导党";
-		str = str.replace("共产党", "***");
-		System.out.println(str);
+		String str = "飞出个未来，计算灵光点，码出个未来。";
+		str = str.replace("未来", "**");
+		System.out.println(str);//飞出个**，计算灵光点。
 	}
 }

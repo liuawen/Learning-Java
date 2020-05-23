@@ -30,33 +30,38 @@ import org.junit.Test;
 public class TestStringMethod3 {
 	@Test
 	public void test05() throws UnsupportedEncodingException{
-		String str = "尚硅谷";
+		String str = "菜鸟中";
 		byte[] bytes = str.getBytes("ISO8859-1");
+		System.out.println(bytes.length);//3
 		System.out.println(Arrays.toString(bytes));//[63, 63, 63]
 		
 		String string = new String(bytes,"ISO8859-1");
-		System.out.println(string);
+		System.out.println(string.length());//3
+		System.out.println(string);//???
+
 	}
 	
 	
 	@Test
 	public void test04() throws UnsupportedEncodingException{
-		String str = "尚硅谷";
+		String str = "菜鸟中";
 		byte[] bytes = str.getBytes("GBK");
-		System.out.println(Arrays.toString(bytes));//[-55, -48, -71, -24, -71, -56]
-		
+		System.out.println(bytes.length);//6
+		System.out.println(Arrays.toString(bytes));//[-78, -53, -60, -15, -42, -48]
+
 		String string = new String(bytes,"GBK");
-		System.out.println(string);
+		System.out.println(string.length());//3
+		System.out.println(string);//菜鸟中
 	}
 	
 	@Test
 	public void test03() throws UnsupportedEncodingException{
-		String str = "尚硅谷";
+		String str = "菜鸟中";
 		byte[] bytes = str.getBytes();
-		System.out.println(Arrays.toString(bytes));//[-27, -80, -102, -25, -95, -123, -24, -80, -73]
+		System.out.println(Arrays.toString(bytes));//[-24, -113, -100, -23, -72, -97, -28, -72, -83]
 	
 		String string = new String(bytes,"UTF-8");
-		System.out.println(string);
+		System.out.println(string);//菜鸟中
 	}
 	
 	@Test
@@ -67,9 +72,16 @@ public class TestStringMethod3 {
 	}
 	
 	@Test
-	public void test01(){
+	public void test01() throws UnsupportedEncodingException {
 		String str = "a";
 		byte[] bytes = str.getBytes();
 		System.out.println(Arrays.toString(bytes));//[97]
+
+		String str2 = "牛菜鸡";
+		byte[] bytes2 = str2.getBytes("UTF-8");
+		System.out.println(bytes2);//[B@23fe1d71
+		System.out.println(Arrays.toString(bytes2));//[-25, -119, -101, -24, -113, -100, -23, -72, -95]
+		String str3 =new String(bytes2,"UTF-8");
+		System.out.println(str3);//牛菜鸡
 	}
 }

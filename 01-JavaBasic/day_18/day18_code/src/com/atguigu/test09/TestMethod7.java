@@ -26,7 +26,7 @@ public class TestMethod7 {
 		//在正则中\是表示转义，
 		//同时在Java中\也是转义
 		boolean flag = str.matches("\\d+");
-		System.out.println(flag);
+		System.out.println(flag);//false
 	}
 	
 	@Test
@@ -37,6 +37,6 @@ public class TestMethod7 {
 		//第一位不能是0，那么数字[1-9]
 		//接下来8位的数字，那么[0-9]{8}+
 		boolean flag = str.matches("[1-9][0-9]{8}+");
-		System.out.println(flag);
+		System.out.println(flag);//true
 	}
 }
