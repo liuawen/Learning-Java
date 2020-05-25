@@ -7132,7 +7132,7 @@ System.out.println(i == j);//true，凡是和基本数据类型比较，都会�
 
 （3）JDK1.8：元空间
 
-
+字符数组  
 
 ### 11.2.2  字符串对象的比较
 
@@ -8057,17 +8057,50 @@ public class SingleLinkedList {
 
 ## 12.3  Collection
 
+数据结构，容器：
+
+用来装对象....，等各种管理对象的容器。
+
+容器有相同的操作标准：
+
+(1)增
+
+(2)删
+
+(3)改
+
+(4)查
+
+...
+
+
+
 因为集合的类型很多，那么我们把它们称为集合框架。
 
-集合框架分为两个家族：Collection（一组对象）和Map（一组映射关系、一组键值对）
+
+
+Java给这些集合抽取两大接口：
+ * 1、Collection：
+ * 		规范单值集合的接口，obj   单个
+ * 2、Map
+ * 		规范对值集合的接口，(key,value)  两个
+ * Collection Map
+
+也就是把集合框架分为两个家族：Collection（一组对象）和Map（一组映射关系、一组键值对）
 
 Collection  Map
 
-一组对象   一组映射关系 一组键值对
+一组对象   一组映射关系、一组键值对
 
 Colleciton Map
 
 ### 12.3.1 Collection
+
+1、Collection：接口
+ （1）它是根接口
+ （2）它没有直接的实现类，有更具体的子接口：List和Set...
+ （3）有一些的元素是可以重复的，有些集合的元素是不能重复，有些集合的元素是有序的，有些集合的元素是无序的
+
 
 Collection是代表一种对象的集合。它是Collection系列的根接口。
 
@@ -8099,9 +8132,313 @@ Collection是代表一种对象的集合。它是Collection系列的根接口。
 
 （12）retainAll(Collection c)：求当前集合与c集合的交集
 
+2、API
+（1）添加
+ add(Object obj)：添加一个元素
+ addAll(Collection c)：添加多个元素
+
+ （2）获取有效元素的个数
+  int size()
+
+```java
+@SuppressWarnings("all")
+    @Test
+    public void test1() {
+        /*
+         * 我这里左边写Collection，目的是只关注Collection
+         * 因为多态引用时，c编译期间只能访问Collection的方法
+         */
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+        c.add("柳六在");
+
+        Collection c2 = new ArrayList();
+        c2.add("柳七七");
+        c2.add("柳八八");
+        c2.add("柳九九");
+        System.out.println("获取有效元素的个数：" + c2.size()); //获取有效元素的个数：3
+        c.addAll(c2);
+        System.out.println("获取有效元素的个数：" + c.size());//获取有效元素的个数：7
+        System.out.println(c);//[张三, 李四, 王五, 柳六在, 柳七七, 柳八八, 柳九九]
+    }
+```
+
+
+
+demo
+
+```java
+
+    @SuppressWarnings("all")
+    @Test
+    public void test2() {
+        /*
+         * 我这里左边写Collection，目的是只关注Collection
+         * 因为多态引用时，c编译期间只能访问Collection的方法
+         */
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add(1);
+        c.add(2);
+        c.add(3);
+
+        Collection c2 = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c2.add("张三");
+        c2.add("李四");
+        c2.add("王五");
+
+        c.addAll(c2);//把c2中的所有元素都添加到c集合中
+//		c.add(c2);
+
+        System.out.println("获取有效元素的个数：" + c.size());//获取有效元素的个数：6
+        System.out.println(c);//[1, 2, 3, 张三, 李四, 王五]
+    }
+```
+
+
+
+ （3）是否包含
+ contains(Object o) ：判断o是否在当前的集合中
+  containsAll(Collection c) ：判断c是否是当前集合的子集
+
+```java
+ @SuppressWarnings("all")
+    @Test
+    public void test3() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+        System.out.println(c.contains("张三"));//true
+        System.out.println(c.contains("李大炮"));//false
+    }
+
+```
+
+
+
+containsAll
+
+```java
+
+    @SuppressWarnings("all")
+    @Test
+    public void test4() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+
+        Collection c2 = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c2.add("张三");
+        c2.add("李四");
+
+        Collection c3 = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c3.add("张三");
+        c3.add("李大炮");
+
+        System.out.println(c.containsAll(c2));//true c2是c的子集
+        System.out.println(c.containsAll(c3));//false c3不是c的子集
+    }
+
+```
+
+
+
+ （4）boolean isEmpty()  ：判断当前集合是否为空
+  等价于   集合对象.size()==0
+
+```java
+
+```
+
+
+
+  （5）remove(Object o)：删除一个
+  removeAll(Collection c)：删除多个      this = this - this ∩ c
+  clear()：清空所有
+
+remove
+
+```java
+    @SuppressWarnings("all")
+    @Test
+    public void test5() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+        ////说明下ArrayList重写了toString的
+        System.out.println(c);//[张三, 李四, 王五]
+        c.remove("张三");//删除一个
+        System.out.println(c);//[李四, 王五]
+        c.remove("六小子");//删除个不存在的  不影响
+        System.out.println(c);//[李四, 王五]
+    }
+```
+
+removeAll   this = this - this ∩ c
+
+```java
+
+    @SuppressWarnings("all")
+    @Test
+    public void test6() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+        System.out.println(c);//[张三, 李四, 王五]
+        Collection c2 = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c2.add("张三");
+        c2.add("李四");
+        c2.add("柳小子");
+        System.out.println(c2);//[张三, 李四, 柳小子]
+        c.removeAll(c2);
+        System.out.println(c);//说明ArrayList重写了toString
+        //[王五]
+    }
+
+```
+
+  clear()
+
+```java
+  @SuppressWarnings("all")
+    @Test
+    public void test7() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+
+        Collection c2 = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c2.add("张三");
+        c2.add("柳可爱");
+        c.addAll(c2);//直接加 重复的也加
+        ////说明ArrayList重写了toString
+        System.out.println(c);//[张三, 李四, 王五, 张三, 柳可爱]
+        c.removeAll(c2);
+        System.out.println(c);//[李四, 王五]
+        System.out.println(c.size());//2
+        c.clear();
+        System.out.println(c.isEmpty());//true
+        System.out.println(c.size());//0
+    }
+
+```
+
+
+
+  （6）retainAll(Collection<?> c) ：保留交集   this = this ∩ c
+
+```java
+    @SuppressWarnings("all")
+    @Test
+    public void test8() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+
+
+        Collection c2 = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c2.add("张三");
+        c2.add("杨三宝");
+        c.retainAll(c2);
+        System.out.println(c);//[张三]
+        System.out.println(c2);//[张三, 杨三宝]
+        c.addAll(c2);
+        System.out.println(c);//[张三, 张三, 杨三宝]
+        c.addAll(c);
+        System.out.println(c);//[张三, 张三, 杨三宝, 张三, 张三, 杨三宝]
+        System.out.println(c2);//[张三, 杨三宝]
+        //retainAll(Collection<?> c) ：保留交集   this = this ∩ c
+        c.retainAll(c2);
+        System.out.println(c);//[张三, 张三, 杨三宝, 张三, 张三, 杨三宝]
+    }
+
+```
+
+
+
+  （7）Object[] toArray()  ：把集合中的元素用一个数组返回
+
+```java
+ @SuppressWarnings("all")
+    @Test
+    public void test9() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+        System.out.println(c);//[张三, 李四, 王五]
+        Object[] all = c.toArray();
+        System.out.println(all);//[Ljava.lang.Object;@4f2410ac
+        System.out.println(all.length);//3
+        System.out.println(Arrays.toString(all));//[张三, 李四, 王五]
+    }
+```
+
+
+
 ### 12.3.2  Collection系列的集合的遍历
 
-1、明确使用Iterator迭代器
+集合的遍历  挨个访问集合的元素
+
+（1）Object[] toArray()：先返回数组，然后遍历数组
+
+```java
+@SuppressWarnings("all")
+    @Test
+    public void test9() {
+        Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+        c.add("张三");
+        c.add("李四");
+        c.add("王五");
+        System.out.println(c);//[张三, 李四, 王五]
+        Object[] all = c.toArray();
+        System.out.println(all);//[Ljava.lang.Object;@4f2410ac
+        System.out.println(all.length);//3
+        System.out.println(Arrays.toString(all));//[张三, 李四, 王五]
+
+        for (int i = 0; i < all.length; i++) {
+            System.out.println(all[i]);
+        }
+        //Result
+        //张三
+        //李四
+        //王五
+    }
+```
+
+
+
+（2）迭代器设计模式 明确使用Iterator迭代器
+每一个Collection系列的集合，内部都自带一个迭代器
+java.util.Iterator：接口
+它是所有迭代器的标准接口。
+
+Iterator 接口的方法：
+
+（1）boolean hasNext()
+
+（2）Object next()
+
+（3）void remove()
+
+（1）判断是否还有下一个元素：hasNext()
+（2）访问它的下一个元素：next()
+（3）移除下一个元素：remove()
+
+
+
+java.util.Iterator：迭代器接口，这个接口的实现类在每一种集合类中，例如：ArrayList内部有一个内部类实现了Iterator接口
+  这里声明为内部类有两个原因：
+   （1）每一种集合的内部实现（物理结构不同），意味着对迭代器的实现是不同的，每一种集合都要单独定制迭代器。
+  （2）内部类可以直接访问外部类的私有的属性，成员，迭代器就可以直接访问集合的私有的元素。
 
 ```java
 Collection c = ....;
@@ -8113,15 +8450,94 @@ while(iter.hashNext()){
 }
 ```
 
-Iterator 接口的方法：
+demo
 
-（1）boolean hasNext()
+```java
+@SuppressWarnings("all")
+	@Test
+	public void test1(){
+		Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+		c.add("张三");
+		c.add("李四");
+		c.add("王五");
+		
+		//返回这个集合自带的迭代器对象
+		//让这个迭代器对象去挨个的访问元素
+		Iterator iterator = c.iterator();
+		while(iterator.hasNext()){
+			Object obj = iterator.next();
+			System.out.println(obj);
+		}
+		//Result
+		//张三
+		//李四
+		//王五
+	}
+```
 
-（2）Object next()
 
-（3）void remove()
 
-2、foreach
+```java
+@SuppressWarnings("all")
+	@Test
+	public void test2(){
+		Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+		c.add("张三");
+		c.add("李四");
+		c.add("王五");
+		
+		//返回这个集合自带的迭代器对象
+		//让迭代器去挨个的访问元素
+		Iterator iterator = c.iterator();
+		while(iterator.hasNext()){
+			String obj = (String) iterator.next();
+			//要姓“王”走人
+			if(obj.startsWith("王")){
+				iterator.remove();
+			}
+		}
+		
+		System.out.println(c);//[张三, 李四]
+	}
+```
+
+
+
+```java
+
+```
+
+
+
+2、foreach:增强for循环
+
+   foreach循环可以用于遍历数组、Collection系列的集合等容器。
+   语法结构：
+   ```java
+   for(元素的类型  元素临时名称  :  数组和集合名){
+   
+   }
+   ```
+ 不同于普通for循环。
+
+```java
+ for(int i=0; i<5; i++){
+   }
+```
+
+  什么样集合或容器类型可以使用foreach循环？
+
+（1）数组：
+
+（2）实现了java.lang.Iterable接口
+
+这个接口有一个抽象方法：Iterator iterator()
+
+Iterator也是一个接口，它的实现类，通常在集合（容器）类中用内部类实现。并在iterator()的方法中创建它的对象。
+
+   凡是实现了java.lang.Iterable接口（可迭代）的集合或容器都支持foreach循环
+
+   foreach底层还是调用Iterator迭代器来遍历集合。
 
 ```
 Collection c = ....;
@@ -8131,15 +8547,31 @@ for(Object  obj :  c){
 }
 ```
 
-什么样的集合（容器）能够使用foreach遍历？
+Demo
 
-（1）数组：
+```java
+@SuppressWarnings("all")
+	@Test
+	public void test3(){
+		Collection c = new ArrayList();//ArrayList是Collection下面的一个实现类而已
+		c.add("张三");
+		c.add("李四");
+		c.add("王五");
+		
+		//Object：元素的数据类型
+		//obj：临时的元素名称
+		//c:要遍历的集合的名称
+		for (Object obj : c) {
+			System.out.println(obj);
+		}
+		//Result
+		//张三
+		//李四
+		//王五
+	}
+```
 
-（2）实现了java.lang.Iterable接口
 
-这个接口有一个抽象方法：Iterator iterator()
-
-Iterator也是一个接口，它的实现类，通常在集合（容器）类中用内部类实现。并在iterator()的方法中创建它的对象。
 
 ```java
 public class MyArrayList implements Iterable{
@@ -8168,6 +8600,257 @@ public class MyArrayList implements Iterable{
 		}
 	}
 }
+```
+
+MyArrayList.java
+
+```java
+import java.util.Arrays;
+import java.util.Iterator;
+
+/*
+ * MyArrayList我们自己设计的一种数据结构，一种逻辑结构，当别人用我这个MyArrayList的对象时，就是一个容器对象，
+ * 可以用来装对象。
+ */
+public class MyArrayList implements Iterable{
+	//为什么使用Object，因为只是说这个容器是用来装对象的，但是不知道用来装什么对象。
+	private Object[] data;
+	private int total;
+	
+	public MyArrayList(){
+		data = new Object[5];
+	}
+	
+	//添加一个元素
+	public void add(Object obj){
+		//检查是否需要扩容
+		checkCapacity();
+		data[total++] = obj;
+	}
+
+	private void checkCapacity() {
+		//如果data满了，就扩容为原来的2倍
+		if(total >= data.length){
+			data = Arrays.copyOf(data, data.length*2);
+		}
+	}
+	
+	//返回实际元素的个数
+	public int size(){
+		return total;
+	}
+	
+	//返回数组的实际容量
+	public int capacity(){
+		return data.length;
+	}
+	
+	//获取[index]位置的元素
+	public Object get(int index){
+		//校验index的合理性范围
+		checkIndex(index);
+		return data[index];
+	}
+
+	private void checkIndex(int index) {
+		if(index<0 || index>=total){
+			throw new RuntimeException(index+"对应位置的元素不存在");
+//			throw new IndexOutOfBoundsException(index+"越界");
+		}
+	}
+	
+	//替换[index]位置的元素
+	public void set(int index, Object value){
+		//校验index的合理性范围
+		checkIndex(index);
+		
+		data[index] = value;
+	}
+	
+	//在[index]位置插入一个元素value
+	public void insert(int index, Object value){
+		/*
+		 * (1)考虑下标的合理性
+		 * (2)总长度是否够
+		 * (3)[index]以及后面的元素往后移动，把[index]位置腾出来
+		 * (4)data[index]=value  放入新元素
+		 * (5)total++  有效元素的个数增加
+		 */
+		
+		//(1)考虑下标的合理性：校验index的合理性范围
+		checkIndex(index);
+		
+		//(2)总长度是否够：检查是否需要扩容
+		checkCapacity();
+		
+		//(3)[index]以及后面的元素往后移动，把[index]位置腾出来
+		/*
+		 * 假设total = 5, data.length= 10, index= 1
+		 * 有效元素的下标[0,4]
+		 * 移动：[1]->[2],[2]->[3],[3]->[4],[4]->[5]
+		 * 移动元素的个数：total-index
+		 */
+		System.arraycopy(data, index, data, index+1, total-index);
+		
+		//(4)data[index]=value  放入新元素
+		data[index] = value;
+		
+		//(5)total++  有效元素的个数增加
+		total++;
+	}
+	
+	//返回所有实际存储的元素
+	public Object[] getAll(){
+		//返回total个
+		return Arrays.copyOf(data, total);
+	}
+	
+	//删除[index]位置的元素
+	public void remove(int index){
+		/*
+		 * (1)校验index的合理性范围
+		 * (2)移动元素，把[index+1]以及后面的元素往前移动
+		 * (3)把data[total-1]=null  让垃圾回收器尽快回收
+		 * (4)总元素个数减少 total--
+		 */
+		
+		//(1)考虑下标的合理性：校验index的合理性范围
+		checkIndex(index);
+		
+		//(2)移动元素，把[index+1]以及后面的元素往前移动
+		/*
+		 * 假设total=8, data.length=10, index = 3
+		 * 有效元素的范围[0,7]
+		 * 移动：[4]->[3],[5]->[4],[6]->[5],[7]->[6]
+		 * 移动了4个：total-index-1
+		 */
+		System.arraycopy(data, index+1, data, index, total-index-1);
+		
+		//(3)把data[total-1]=null  让垃圾回收器尽快回收
+		data[total-1] = null;
+		
+//		(4)总元素个数减少 total--
+		total--;
+	}
+	
+	//查询某个元素的下标
+/*	public int indexOf(Object obj){
+		for (int i = 0; i < total; i++) {
+		//这两种写法都有风险
+			if(obj.equals(data[i])){
+				//if(data[i].equals(obj)){
+				return i;//找到，返回第一个找到的
+			}
+		}
+		return -1;//没找到返回-1
+	}*/
+	
+	//查询某个元素的下标
+	public int indexOf(Object obj){
+		if(obj == null){
+			for (int i = 0; i < total; i++) {
+				if(data[i] == null){//等价于 if(data[i] == obj)
+					return i;
+				}
+			}
+		}else{
+			for (int i = 0; i < data.length; i++) {
+				if(obj.equals(data[i])){
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
+	
+	//删除数组中的某个元素
+	//如果有重复的，只删除第一个
+	public void remove(Object obj){
+		/*
+		 * (1)先查询obj的[index]
+		 * (2)如果存在，就调用remove(index)删除就可以
+		 */
+		
+		//(1)先查询obj的[index]
+		int index = indexOf(obj);
+		
+		if(index != -1){
+			remove(index);
+		}
+		//不存在，可以什么也不做
+		//不存在，也可以抛异常
+		//throw new RuntimeException(obj + "不存在");
+	}
+	
+	public void set(Object old, Object value){
+		/*
+		 * (1)查询old的[index]
+		 * (2)如果存在，就调用set(index, value)
+		 */
+		
+//		(1)查询old的[index]
+		int index = indexOf(old);
+		if(index!=-1){
+			set(index, value);
+		}
+		
+		//不存在，可以什么也不做
+		//不存在，也可以抛异常
+		//throw new RuntimeException(old + "不存在");
+	}
+
+	@Override
+	public Iterator iterator() {
+		return new MyItr();
+	}
+	
+	private class MyItr implements Iterator{
+		private int cursor;//游标
+
+		@Override
+		public boolean hasNext() {
+			System.out.println("还有下一个");
+			return cursor!=total;
+		}
+
+		@Override
+		public Object next() {
+			System.out.println("拿到下一个");
+			return data[cursor++];
+		}
+		
+	}
+}
+
+```
+
+
+
+```java
+ @SuppressWarnings("all")
+    @Test
+    public void test5() {
+        //我自己写的动态数组
+        MyArrayList list = new MyArrayList();
+        list.add("张三");
+        list.add("李四");
+        list.add("王五");
+
+        for (Object obj : list) {
+            System.out.println(obj);
+        }
+        //Result
+		//还有下一个
+		//拿到下一个
+		//张三
+		//还有下一个
+		//拿到下一个
+		//李四
+		//还有下一个
+		//拿到下一个
+		//王五
+		//还有下一个
+    }
 ```
 
 
