@@ -1,0 +1,11 @@
+一、导入
+1、登录mysql后
+2、导入执行sql脚本
+mysql> source sql文件的路径名
+例如：mysql> source d:/mysqldb.sql
+
+二、导出数据库备份
+不用登录，直接在命令行
+mysqldump -h主机名 -P端口 -u用户名 -p密码 --database 数据库名 > 文件名.sql 
+例如：
+mysqldump -hlocalhost -P3306 -uroot -p123456 --database test > D:\mysqldb.sql

@@ -1,0 +1,18 @@
+1、为什么要使用数据库？
+（1）持久化（永久保存）
+（2）方便管理数据
+
+2、数据库：Database，简称DB
+通俗的讲，就是数据的仓库，专门存储数据的
+它保存了一系列有组织的数据的文件系统或数据结构。
+
+3、数据库管理软件，数据库管理系统，DBMS  Database Management System
+mysql,oracle,sql server,db2,redis.....
+数据库管理软件：操纵和管理数据库的大型软件
+
+4、SQL：结构化查询语言  Structured Query Language
+专门操作数据库的语言
+
+5、mysql
+关系型数据库：二维表
+体积小，成本低，速度快，开源等优点

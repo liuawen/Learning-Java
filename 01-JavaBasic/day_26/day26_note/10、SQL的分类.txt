@@ -1,0 +1,11 @@
+SQL：
+1、DDL：Data Define Language
+	数据定义语言，即定义数据的结构。
+	例如：create，drop，alter
+2、DML：Data Manage Language
+	数据管理语言，对数据值的增、删、改、查
+	例如：insert，delete，update，select
+3、DCL：Data Control Language
+	数据控制语言，对权限、事务等的控制
+	例如：grant,revoke,commit,rollback等
+	

@@ -1,0 +1,36 @@
+mysql的数据库管理软件是C/S结构，底层是TCP/IP协议的程序：
+S：服务器端
+C：客户端端
+
+服务器端，先启动，有一个端口号，监听/等待客户端的连接。
+
+一、mysql的卸载
+1、先停止mysql的服务
+【计算机】->【管理】->【服务】-->mysql服务-->[停止]
+
+2、卸载
+（1）控制面板
+（2）电脑管家或360安全卫士等第三方软件
+
+3、清除残余文件
+到你之前安装的mysql目录下查找对应的残余文件。
+如果没有选择数据目录的话，默认在C:\ProgramData\mysql
+
+4、清理注册表
+1：HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL服务 目录删除
+2：HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\MySQL服务 目录删除
+3：HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL服务 目录删除
+4：HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\MySQL服务 目录删除
+5：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL服务目录删除
+6：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MySQL服务删除
+注册表中的ControlSet001,ControlSet002,不一定是001和002,可能是ControlSet005、006之类
+
+
+二、安装
+1、选择64位还是32
+2、注意服务和数据目录的选择
+
+
+三、配置
+1、D:\ProgramFiles\mysql\MySQL Server 5.5_server\bin\MySQLInstanceConfig.exe
+2、跟着笔记中的截图配置

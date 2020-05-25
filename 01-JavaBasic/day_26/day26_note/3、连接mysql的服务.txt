@@ -1,0 +1,40 @@
+mysql数据库管理软件：C/S
+
+（1）服务器必须先启动
+（2）客户端连接服务器端
+
+一、连接的方式一：用命令行客户端连接服务器
+mysql -hlocalhost -P3306 -uroot -p回车
+Enter password:密码
+
+说明：
+（1）如果你连接的是localhost本地的mysql，那么可以省略-hlocalhost
+（2）如果你连接的mysql服务的端口号就是默认的3306，那么可以省略-P3306
+（3）-h,-P,-u这三个options后面可以有空格，例如：-h localhost
+	但是-p与密码之间不要加空格，否则会认为这个空格是密码的其中一个字符
+	
+
+成功后，看到如下界面：
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.5.27 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+二、mysql5.5版本等，安装后，有自带的一个命令行客户端
+只需要输入密码
+只能以root用户，并且只能连接本机的，mysql服务
+
+三、可视化工具
+例如：SQLyog，Navicate....
+
+四、Java程序
+JDBC的内容

@@ -1,0 +1,80 @@
+一、mysql的数据类型
+1、整数系列
+TINYINT：非常小的整数，类似于Java的byte类型
+SMALLINT：小整数，类似于Java的short类型
+MEDIUMINT：中整数，Java没有对应
+INT、INTEGER：整数，类似于Java的int类型
+BIGINT：大整数，类似于Java的long类型
+
+使用int数据类型：
+（1）int，等价于int(11)
+（2）int(M)：M表示宽度，需要结合另外的两个参数使用
+	unsigned：表示无符号，即没有负数
+	zerofill：表示用0填充
+	例如：int(5)  unsigned zerofill，表示每一个整数有5位数字，如果不足5位的在左边用0凑够5位
+	如果只是单独int(5)，那是不会起作用。
+无论：int的宽度指定为多少，在内存中都是占4个字节，如果你的数字超过了int(5)也可以存储
+
+2、浮点小数
+float：4个字节
+double：8个字节
+
+使用float和double时：
+（1）float或double
+（2）float(M,D)，double(M,D)：M表示总位数，D表示精度，即小数点几位
+例如：double(5,2)表示的数据范围[-999.99,999.99]，如果超过这个范围会报错。
+
+3、定点小数，类似于Java的BigDecimal，底层使用字符串存储
+DECIMAL
+DECIMAL(M,D)	
+
+4、日期时间类型
+date：只能表示日期
+time：表示时间
+datetime：表示日期和时间
+year：表示年
+timestamp：时间戳，表示日期和时间
+
+datetime和timestamp：
+（1）timestamp实际存储的毫秒值，显示时，显示根据毫秒值算出来一个本地化的日期时间
+    datetime就是存储日期时间
+（2）timestamp因为存储的毫秒值，所以在比较和计算时，效率比较高。
+（3）datetime和timestamp可以表示的时间范围是不同的
+
+5、字符串
+强调：mysql没有单字符类型，只有字符串类型
+
+char：定长字符串，长度[1,255]
+		char，char(1)，长度为1个字符
+		char(10),长度为10个字符
+varchar：变长字符串
+		varchar(M)：必须指定M，这个M的意思是最长不超过M个字符
+		例如：varchar(20)，最长不超过20个字符
+		
+text：长文本
+	一般用于存储，文字比较多的，简介等，又不经常检索的信息
+
+char和varchar
+（1）内存占用空间不同
+char(M)：M字符就占M个字符的空间
+	例如：char(2)  实际存储的是'男'，但是也是占2个字符的位置，那一个空的字符存储的是\u0000
+varchar：实际几个字符 + 1/2个字节的空间
+	例如：varchar(20)  实际存储的是'张三',占的2个字符 + 1/2个字节（用来记录实际的字符个数的）
+（2）
+varchar节省空间，但是每次存和取，都要数字符个数
+char：看起来浪费空间，但是每次存和取，都按照固定的长度去处理的
+
+建议：像身份证号，学号，邮编等定长的字符串使用char，例如：地址等使用变长的
+现在mysql的版本对varchar优化的越来越快了。
+	
+6、位类型（了解）
+二进制的位类型，BIT(M)类型允许存储M位值。M范围为1~64，默认为1
+
+7、blob系列类型（了解）
+BINARY和VARBINARY类型类似于CHAR和VARCHAR类型，但是不同的是，它们存储的不是字符字符串，而是二进制串。所以它们没有字符集
+
+8、枚举（ENUM）
+	多个中选择一个
+9、集合
+	多个中可以选择多个
+	
