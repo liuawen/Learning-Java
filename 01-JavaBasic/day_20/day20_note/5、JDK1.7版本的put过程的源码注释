@@ -1,0 +1,53 @@
+public V put(K key, V value) {
+        if (table == EMPTY_TABLE) {//判断table数组是否是空数组
+            inflateTable(threshold);
+        }
+        if (key == null)
+            return putForNullKey(value);
+			
+			
+        int hash = hash(key);//根据key的hashCode用异或，无符号右移等各种运算，得到了一个int类型的hash值
+			因为我们下面要用hash值来算[index]，它的设计者认为用户重写的hashCode可能不够散列。
+		
+		
+        int i = indexFor(hash, table.length);  //  hash & table.length-1
+		/*
+		table数组的长度一定是2的n次方
+		table.length-1  的二进制是前面都是0，后面都是连续的1
+		hash & table.length -1 做按位与运算的结果一定是 在[0,table.length-1]范围内
+		*/
+		
+		//查找table[i]下面的链表中是否有映射关系的key是和我重复的，如果有重复的，就用新value替换旧value
+        for (Entry<K,V> e = table[i]; e != null; e = e.next) {
+            Object k;
+            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+                V oldValue = e.value;
+                e.value = value;
+                e.recordAccess(this);
+                return oldValue;
+            }
+        }
+
+        modCount++;
+        addEntry(hash, key, value, i);
+        return null;
+    }
+	
+	
+	void addEntry(int hash, K key, V value, int bucketIndex) {
+		//当元素的总个数达到阈值  &&  并新的映射关系要添加的table[index]下面不是空的
+        if ((size >= threshold) && (null != table[bucketIndex])) {
+            resize(2 * table.length);//数组扩容为原来的2倍
+            hash = (null != key) ? hash(key) : 0;//重新算hash
+            bucketIndex = indexFor(hash, table.length);//index也重新算
+        }
+
+        createEntry(hash, key, value, bucketIndex);
+    }
+	
+	void createEntry(int hash, K key, V value, int bucketIndex) {
+        Entry<K,V> e = table[bucketIndex];
+        table[bucketIndex] = new Entry<>(hash, key, value, e);
+		//把table[index]下面原来的Entry连接到新的Entry的next中
+        size++;
+    }

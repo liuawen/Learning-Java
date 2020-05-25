@@ -1,0 +1,20 @@
+    void linkLast(E e) {
+        final Node<E> l = last;
+		
+		//新结点的pre是刚刚的最后一个结点
+		//新结点的下一个结点是null，没有
+        final Node<E> newNode = new Node<>(l, e, null);
+		
+		//新结点成为了最后一个结点
+        last = newNode;
+		
+		//如果之前的最后一个结点是null，表示刚才链表是空的
+        if (l == null)
+			//新结点同时也是第一个结点
+            first = newNode;
+        else
+			//如果刚才不是空的，原来的最后一个结点的next指向新结点
+            l.next = newNode;
+        size++;//元素个数增加
+        modCount++;
+    }
