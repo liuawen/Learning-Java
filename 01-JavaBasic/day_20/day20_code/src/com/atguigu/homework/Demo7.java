@@ -10,6 +10,6 @@ public class Demo7 {
     public static void main(String[] args) {
         long num = 100;
 //        int x = num + 2;//Error:(10, 21) java: 不兼容的类型: 从long转换到int可能会有损失
-        System.out.println(x);
+//        System.out.println(x);
     }
 }
