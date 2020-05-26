@@ -297,6 +297,12 @@ mysql>source d:/test.sql;
 
 
 
+![image-20200526223827784](assets/image-20200526223827784.png)
+
+mysqldump -hlocalhost -P3306 -uroot -p123456 --database test >d:/test.sql
+
+
+
 # 第三章  MySQL数据类型和运算符
 
 
@@ -461,6 +467,50 @@ tinyint、smallint、mediumint、int、integer、bigint
 
 ## 3.2 MySQL运算符
 
+```sql
+#注释
+#1、查看当前mysql数据库管理软件中都有什么数据库
+show databases;
+
+#使用一个数据库
+use test;
+
+#如果test不存在，可以创建一个新的数据库
+create database test;
+
+#查看当前数据库中都有什么表格
+show tables;
+
+#查看某个表的数据
+select * from 表名称;
+select * from t_employee;
+
+#查询所有人的薪资
+select salary from t_employee;
+select salary+1000 from t_employee;
+
+#修改所有人的薪资，涨1000元
+update t_employee set salary = salary + 1000;
+
+#查询薪资加完1000元后，超过20000
+select * from t_employee where salary+1000 > 20000;
+
+#设置告知服务器我客户端的字符编码，修改服务器端的一个变量
+set names gbk;
+
+
+```
+
+运算符的作用
+
+```sql
+
+```
+
+
+
+
+
 1、算术运算符
 
 ```
@@ -470,6 +520,104 @@ tinyint、smallint、mediumint、int、integer、bigint
 除：/   div（只保留整数部分）
 模：%   mod
 ```
+
+
+
+```sql
+/*一、运算符
+1、算术运算符
++：加
+-：减
+*：乘
+/：除   可以保留小数部分
+div：除  如果整数与整数相除只保留整数部分
+%：求余数
+mod：求余数
+*/
+select 1/2; #0.5
+select 1 div 2; #0
+```
+
+
+
+```sql
+mysql> select 1+2;
++-----+
+| 1+2 |
++-----+
+|   3 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 1-1;
++-----+
+| 1-1 |
++-----+
+|   0 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 5*3;
++-----+
+| 5*3 |
++-----+
+|  15 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 1/2;
++--------+
+| 1/2    |
++--------+
+| 0.5000 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select 1 div 2;
++---------+
+| 1 div 2 |
++---------+
+|       0 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select 1%2;
++------+
+| 1%2  |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select -1%2;
++------+
+| -1%2 |
++------+
+|   -1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select -1%-2;
++-------+
+| -1%-2 |
++-------+
+|    -1 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select 5 mod 2;
++---------+
+| 5 mod 2 |
++---------+
+|       1 |
++---------+
+1 row in set (0.00 sec)
+
+mysql>
+
+```
+
+
 
 2、比较运算符
 
@@ -483,6 +631,124 @@ tinyint、smallint、mediumint、int、integer、bigint
 安全等于：<=>  可以用于null值判断
 ```
 
+
+
+```sql
+/*
+2、比较运算符
+>：大于
+<：小于
+=：等于  注意区别，Java中是==,mysql中是=
+>=：大于等于
+<=：小于等于
+!=：不等于
+<>：不等于
+<=>：安全等于  用于判断null值的比较运算符
+		null值的判断，习惯上我们用is null 和is not null
+*/
+#查询薪资大于20000元的员工
+select * from t_employee where salary > 20000;
+
+#查询所有男员工
+select * from t_employee where gender = '男';
+select * from t_employee where gender != '女';
+select * from t_employee where gender <> '女';
+
+#查询奖金比例commision_pct是null的员工
+select  * from t_employee where commission_pct <=> null;
+select  * from t_employee where commission_pct is null;
+```
+
+
+
+
+
+```sql
+mysql> select 1 > 2;
++-------+
+| 1 > 2 |
++-------+
+|     0 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select 1<2;
++-----+
+| 1<2 |
++-----+
+|   1 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 1=2;
++-----+
+| 1=2 |
++-----+
+|   0 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> select 1==2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==2' at line 1
+mysql> select 1!=2;
++------+
+| 1!=2 |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select 1<=>1;
++-------+
+| 1<=>1 |
++-------+
+|     1 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select null<=>null;
++-------------+
+| null<=>null |
++-------------+
+|           1 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select null<=>1;
++----------+
+| null<=>1 |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select null=1;
++--------+
+| null=1 |
++--------+
+|   NULL |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select 1=null;
++--------+
+| 1=null |
++--------+
+|   NULL |
++--------+
+1 row in set (0.00 sec)
+
+mysql>
+```
+
+Java ==
+
+MySQL   = 
+
+MySQL  ‘xxx’  字符串 
+
+
+
 3、逻辑运算符（建议用单词，可读性来说）
 
 ```
@@ -491,6 +757,41 @@ tinyint、smallint、mediumint、int、integer、bigint
 逻辑非：! 或 not
 逻辑异或：^ 或 xor
 ```
+
+
+
+```sql
+/*
+3、逻辑运算符
+&&和and：逻辑与
+	两个条件同时满足
+||和or：逻辑或
+	两个条件满足任意一个
+^和xor：逻辑异或
+	两个条件只能满足其中一个
+!和not：
+	不满足xx条件
+	*/
+#查询薪资大于20000元的女员工	
+select * from t_employee where salary > 20000 && gender = '女';
+select * from t_employee where salary > 20000 and gender = '女';
+
+#查询男员工
+select * from t_employee where not gender = '女';
+select * from t_employee where !(gender = '女');
+
+#查询薪资大于10000  异或 性别是男的，即它俩只能满足一个
+#即查询薪资大于10000的女的或薪资低于10000的男的
+select * from t_employee where salary>10000 ^ gender ='男';
+select * from t_employee where salary>10000 xor gender ='男';
+/*
+```
+
+^   只能满足一个 
+
+满足任意一个 || 
+
+异或 用得很少的
 
 4、范围
 
@@ -501,7 +802,36 @@ tinyint、smallint、mediumint、int、integer、bigint
 	    not  in(xxx)
 ```
 
+between and 
+
+in  
+
+not in   集合范围的
+
+```sql
+4、范围
+（1）区间范围：
+	在[a,b]之间，between a and b
+	不在[a,b]之间，not between a and b
+（2）集合范围
+	in(...)
+	not in(...)
+*/
+#查询薪资在[15000,20000]之间的员工
+select * from t_employee where salary between 15000 and 20000;
+select * from t_employee where salary >= 15000 and salary <=20000;
+
+#查询薪资在9000,10000,12000
+select * from t_employee where salary in(9000,10000,12000);
+select * from t_employee where salary =9000 || salary =10000 || salary =12000;
+ /*
+```
+
+
+
 5、模糊查询（只针对字符串类型，日期类型）
+
+字符串类型的  %     查询的
 
 ```
 like 'xxx'
@@ -512,6 +842,24 @@ like 'xxx'
 like  '%柳%'
 
 like '菜鸡_'
+
+```sql
+5、模糊查询
+like '%x%' x代表确定的字符 %表示不确定的0~n个字符
+     '_x%'  x代表确定的字符 _表示确定的1个字符
+*/
+#查询，名字ename中包含“冰”这个字的员工
+select * from t_employee where ename like '%冰%';
+
+#查询，名字ename是张xx，三个字
+select * from t_employee where ename like '张__';
+
+#查询，名字ename是第二个字是'冰'
+select * from t_employee where ename like '_冰%';
+ 
+```
+
+
 
 6、位运算符（很少使用）
 
@@ -642,11 +990,15 @@ ci：不区分大小写
 cs：区分大小写
 bin：最严格，区分大小写，以二进制值存储
 
+不区分大小写的   
+
 2、在sql语句中的值，除了数值类型（整数、小数），其他的类型，都使用''引起来。
 例如：select * from t_employee where gender ='男';
 
 3、如果在SQL中需要给字段取别名时，可以给别名加""。
 如果别名中间没有空格，""可以省略，如果有空格，不能使用""
+
+
 
 4、所有标点符号使用英文状态下的半角输入方式
 
@@ -742,6 +1094,131 @@ SQL：
 	
 
 ## 4.3 DDL(v1.0)
+
+DDL 数据定义语言 即定义数据的结构 
+
+create、drop、alter
+
+```sql
+#一、DDL
+#（一）操作database的SQL
+#1、查看当前mysql数据库管理软件中的所有数据库
+show databases;
+
+#2、使用某个数据库
+use 数据库名;
+
+#例如：use test;
+
+#3、创建一个数据库
+create database 数据库名;
+
+#例如：
+create database library;
+
+#4、删除一个数据库
+drop database 数据库名;
+
+#例如：
+drop database  0513db;
+
+#（二）操作表结构的SQL
+1、查看某个数据库下的所有表格
+show tables;
+
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+解决方案有两种：
+（1）先use，再操作表格
+use 数据库名;
+show tables;
+（2）show tables from 数据名;
+
+2、创建某个表格
+create table 【数据库名.】表名称(字段名1 数据类型,字段名2 数据类型,字段名3 数据类型);
+create table 【数据库名.】表名称(
+	字段名1 数据类型,
+	字段名2 数据类型,
+	字段名3 数据类型
+);
+说明：如果前面有use语句，那么【数据库名.】可以省略
+
+例如：
+create table test.t_stu(
+	sid int,
+	sname varchar(20),
+	gender char,
+	birthday date,
+	score double
+);
+
+3、查看表结构
+desc 表名称;
+
+mysql> desc t_stu;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| sid      | int(11)     | YES  |     | NULL    |       |
+| sname    | varchar(20) | YES  |     | NULL    |       |
+| gender   | char(1)     | YES  |     | NULL    |       |
+| birthday | date        | YES  |     | NULL    |       |
+| score    | double      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+类似于通过Class对象看类的信息。
+
+4、修改表名称
+rename table 旧表名 to 新表名;
+alter table 旧表名 rename 新表名;
+例如：
+rename table t_stu to student;
+alter table student rename t_stu;
+
+5、修改表结构
+（1）增加一列，增加一个字段
+alter table 表名称 add 【column】 字段名 数据类型; #默认添加到最后
+alter table 表名称 add 【column】 字段名 数据类型 first;
+alter table 表名称 add 【column】 字段名 数据类型 after 另一个字段;
+
+例如：增加一列，存储电话号码
+alter table t_stu add  tel char(11);
+
+增加一列，存储地址，添加到第一列的位置
+alter table t_stu add  address varchar(50) first;
+
+增加一列，年龄，添加到sname的后面
+alter table t_stu add  age int after sname;
+
+（2）修改，字段的数据类型或位置 modify 仅仅是修改字段数据类型 modify
+alter table 表名称 modify  【column】 字段名 新的数据类型;
+alter table 表名称 modify  【column】 字段名 数据类型 first;
+alter table 表名称 modify  【column】 字段名 数据类型 after 另一个字段;
+
+例如：修改gender的数据类型为char(2)
+alter table t_stu modify   gender char(2);
+例如：修改address的位置到最后一列
+alter table t_stu modify   address varchar(50) after tel;
+
+（3）修改，列的名称
+alter table 表名称 change  【column】 旧字段名  新的字段名 数据类型;
+例如：修改列的名称tel为phone
+alter table t_stu change tel phone char(11); 
+
+（4）删除一列
+alter table 表名称 drop 【column】 字段名;
+
+例如：删除地址列
+alter table t_stu drop address;
+
+6、删除整张表
+drop table 表名称;
+
+例如：drop table t_stu;
+```
+
+
+
+
 
 1、查看所有数据库
 
@@ -847,6 +1324,115 @@ rename table 旧表名 to 新表名;
 
 
 ## 4.4 DML(v1.0)
+
+DML：操纵数据的  增删改查呢
+
+
+
+```sql
+#二、DML：增删改查    对于程序员来说，DML的重要性要比你掌握DDL还要重要。
+1、添加数据，往表中插入数据
+（1）insert into 【数据库名.】表名称 values(值列表);
+		要求为所有列赋值，(值列表)的类型、数量与表结构中列的类型、数量一致
+（2）insert into 【数据库名.】表名称(字段列表) values(值列表);
+		为(字段列表)指定的列赋值，(值列表)的数量与(字段列表)的类型、数量对应
+（3）insert into 【数据库名.】表名称 values(值列表1),(值列表2)。。。;
+（4）insert into 【数据库名.】表名称(字段列表) values(值列表1),(值列表2)。。。;
+
+mysql> desc t_stu;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| sid      | int(11)     | YES  |     | NULL    |       |
+| sname    | varchar(20) | YES  |     | NULL    |       |
+| gender   | char(1)     | YES  |     | NULL    |       |
+| birthday | date        | YES  |     | NULL    |       |
+| score    | double      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+例如：
+insert into t_stu values(1,'张三','男','1995-05-09',89.5);
+
+mysql> insert into t_stu values(2,'李四',60);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1'
+
+insert into t_stu(sid,sname,score) values(2,'李四',60);
+
+insert into t_stu values
+(3,'王五','男','1993-05-09',80.5),
+(4,'赵六','女','1992-05-09',82.5),
+(5,'钱七','男','1991-05-09',82.5);
+
+insert into t_stu(sid,sname,score) values
+(6,'李六',60),
+(7,'李七',70);
+
+2、修改
+update 【数据库名.】表名称 
+set 字段名1 = 新值,
+	字段名2 = 新值,
+	字段名3 = 新值
+	。。。
+【where 条件】;
+
+说明：如果没有where条件，说明修改所有行的这几个字段的值
+	
+例如：修改所有人的成绩为80分
+update t_stu set score = 80;
+
+例如：修改李四的成绩为40分
+update t_stu set score = 40 where sname = '李四';
+
+例如：把没有填写性别的学生的性别都设置为'男'
+update t_stu set gender = '男' where gender <=> null;
+update t_stu set gender = '男' where gender is null;
+<=> 安全等于 
+例如：修改所有人的成绩都加10分
+update t_stu set score = score + 10;
+
+3、删除数据
+delete from 表名称 【where 条件】;
+
+例如：删除所有数据，表结构还在
+delete from t_stu;
+
+例如：删除成绩是82.5的学生
+delete from t_stu where score = 82.5;
+
+4、查询数据
+（1）select * from 表名称;
+（2）select * from 表名称 【where 条件】;
+（3）select 字段列表 from 表名称 【where 条件】;
+
+例如：查询全部
+select * from t_stu;
+
+例如：查询哪些学生没有填写性别
+select * from t_stu where gender is null;
+
+例如：查询没有填写性别的学生的姓名
+select sname from t_stu where gender is null;
+
+例如：查询没有填写性别的学生的姓名和成绩
+select sname,score from t_stu where gender is null;
+
+5、查询时给字段取别名
+字段名 as "别名"
+其中：
+(1)如果""中的别名没有空格，可以省略""
+(2)这个as可以省略
+
+例如：查询没有填写性别的学生的姓名和成绩，查询结果sname显示姓名，score显示成绩
+select sname as "姓名",score as "成绩" from t_stu where gender is null;
+
+select sname 姓名,score 成绩 from t_stu where gender is null;
+
+
+```
+
+
+
+
 
 1、添加数据
 
