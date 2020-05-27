@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://www.cnblogs.com/-xlp/p/8617760.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>MySQL中数据类型介绍 - myxlp - 博客园</title>
+<meta property="og:description" content="一、MySQL的数据类型 主要包括以下五大类： 整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT 浮点数类型：FLOAT、DOUBLE">
+<link type="text/css" rel="stylesheet" href="./MySQL中数据类型介绍 - myxlp - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./MySQL中数据类型介绍 - myxlp - 博客园_files/bundle-Autumn.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./MySQL中数据类型介绍 - myxlp - 博客园_files/bundle-Autumn-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/-xlp/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/-xlp/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/-xlp/wlwmanifest.xml">
+<script src="./MySQL中数据类型介绍 - myxlp - 博客园_files/f.txt"></script><script src="./MySQL中数据类型介绍 - myxlp - 博客园_files/amp4ads-host-v0.js.下载"></script><script src="./MySQL中数据类型介绍 - myxlp - 博客园_files/pubads_impl_rendering_270.js.下载"></script><script async="" src="./MySQL中数据类型介绍 - myxlp - 博客园_files/analytics.js.下载"></script><script src="./MySQL中数据类型介绍 - myxlp - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = '-xlp', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./MySQL中数据类型介绍 - myxlp - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<link rel="preload" href="./MySQL中数据类型介绍 - myxlp - 博客园_files/f(1).txt" as="script"><script type="text/javascript" src="./MySQL中数据类型介绍 - myxlp - 博客园_files/f(1).txt"></script><script src="./MySQL中数据类型介绍 - myxlp - 博客园_files/pubads_impl_270.js.下载" async=""></script><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-30/html/container.html"></head>
+<body>
+<a name="top"></a>
+
+<table id="blog_header" cellspacing="0" cellpadding="0" width="100%" border="0" class="banner" height="250" background="./MySQL中数据类型介绍 - myxlp - 博客园_files/bg_banner.jpg">
+        <tbody><tr>
+            <td width="61">
+                &nbsp;
+            </td>
+            <td width="236" align="center">
+                
+<br><br><br><br><br><br><br>
+<div id="header">
+	<span>
+		<a id="Header1_HeaderTitle" href="https://www.cnblogs.com/-xlp/">myxlp</a><br><br>
+		
+	</span>
+</div>
+            </td>
+            <td style="padding-bottom: 30px" align="center" valign="bottom">
+                &nbsp;
+            </td>
+        </tr>
+</tbody></table>
+<table align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr>
+        <td width="60">
+            &nbsp;
+        </td>
+        <td id="sidebar" valign="top" s="">
+            <table align="center" width="100%" height="1400" cellspacing="0" cellpadding="5" border="0" bgcolor="white">
+                <tbody><tr>
+                    <td class="banner" valign="top" style="padding-top: 0px">
+                        
+                            
+<div class="news"><div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/-xlp/">myxlp</a><br>园龄：<a href="https://home.cnblogs.com/u/-xlp/" title="入园时间：2017-11-01">1年</a><br>粉丝：<a href="https://home.cnblogs.com/u/-xlp/followers/">1</a><br>关注：<a href="https://home.cnblogs.com/u/-xlp/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;01c1862a-5c2e-4e85-54ce-08d4ef52ecb6&#39;)">+加关注</a></div><script>getFollowStatus('01c1862a-5c2e-4e85-54ce-08d4ef52ecb6')</script></div></div><script type="text/javascript">loadBlogNews();</script></div>
+
+                            <div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/-xlp/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/-xlp/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/-xlp/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/-xlp/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/-xlp/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+		<h1 class="listtitle">随笔分类</h1>
+		
+				<ul class="list">
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_0" class="listitem" href="https://www.cnblogs.com/-xlp/category/1111067.html">c++(1)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_1" class="listitem" href="https://www.cnblogs.com/-xlp/category/1126199.html">LayaAir(1)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_2" class="listitem" href="https://www.cnblogs.com/-xlp/category/1107110.html">Linux(4)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_3" class="listitem" href="https://www.cnblogs.com/-xlp/category/1183061.html">mysql(1)</a> </li>
+			
+				</ul>
+			
+	
+		<h1 class="listtitle">随笔档案</h1>
+		
+				<ul class="list">
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_0" class="listitem" href="https://www.cnblogs.com/-xlp/archive/2018/03.html">2018年3月 (3)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_1" class="listitem" href="https://www.cnblogs.com/-xlp/archive/2018/01.html">2018年1月 (1)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_2" class="listitem" href="https://www.cnblogs.com/-xlp/archive/2017/12.html">2017年12月 (2)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_3" class="listitem" href="https://www.cnblogs.com/-xlp/archive/2017/11.html">2017年11月 (3)</a> </li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/-xlp/p/8617760.html#3996025">1. Re:MySQL中数据类型介绍</a></li>
+        <li class="recent_comment_body">nvarchar这种类型漏了吧</li>
+        <li class="recent_comment_author">--是金子就会灿烂</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/-xlp/p/8617760.html">1. MySQL中数据类型介绍(12138)</a></li><li><a href="https://www.cnblogs.com/-xlp/p/8665141.html">2. js中xml文件加载(49)</a></li><li><a href="https://www.cnblogs.com/-xlp/p/7985893.html">3. LayaAir环境TypeScript(31)</a></li><li><a href="https://www.cnblogs.com/-xlp/p/7799346.html">4. Linux配置IP(22)</a></li><li><a href="https://www.cnblogs.com/-xlp/p/8376914.html">5. 排序 sort函数(17)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/-xlp/p/8617760.html">1. MySQL中数据类型介绍(1)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/-xlp/p/8617760.html">1. MySQL中数据类型介绍(4)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+                        
+                        <br>
+                        <center>
+                            Powered by <a href="http://www.cnblogs.com/">博客园</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td valign="top" style="padding: 0">
+            <table align="center" width="100%" height="1400" cellspacing="0" cellpadding="5" border="0" bgcolor="white" class="index">
+                <tbody><tr>
+                    <td class="banner" valign="top">
+                        <center>
+                            <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a> <span id="sitehome_link_split">|</span> 
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/-xlp/">首页</a> <span id="bloghome_link_split">|</span> 
+<a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a> <span id="newpost_link_split">|</span> 
+<!--<a id="MyLinks1_NewArticleLink" class="menu" href="/EnterMyBlog.aspx?NewArticle=1">发新文章</a> | -->
+<a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/myxlp">联系</a> <span id="contact_link_split">|</span>  
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/-xlp/rss">订阅</a><a id="blog_nav_rss_image" href="https://www.cnblogs.com/-xlp/rss"><img src="./MySQL中数据类型介绍 - myxlp - 博客园_files/xml.gif" alt="订阅"></a> <span id="rss_link_split">|</span> 
+<a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+                        </center>
+                        
+<div id="post_detail">
+<div class="block">
+	<h1 class="block_title"><a id="cb_post_title_url" href="https://www.cnblogs.com/-xlp/p/8617760.html">MySQL中数据类型介绍</a></h1>
+	<div class="post">
+		<div class="postcontent">
+			<div id="cnblogs_post_body" class="blogpost-body"><h3>一、MySQL的数据类型</h3>
+<p>主要包括以下五大类：</p>
+<p>整数类型：BIT、BOOL、TINY INT、SMALL INT、MEDIUM INT、 INT、 BIG INT</p>
+<p>浮点数类型：FLOAT、DOUBLE、DECIMAL</p>
+<p>字符串类型：CHAR、VARCHAR、TINY TEXT、TEXT、MEDIUM TEXT、LONGTEXT、TINY BLOB、BLOB、MEDIUM BLOB、LONG BLOB</p>
+<p>日期类型：Date、DateTime、TimeStamp、Time、Year</p>
+<p>其他数据类型：BINARY、VARBINARY、ENUM、SET、Geometry、Point、MultiPoint、LineString、MultiLineString、Polygon、GeometryCollection等</p>
+<p>&nbsp;</p>
+<p>1、整型</p>
+<table border="1" cellspacing="0" cellpadding="5">
+<tbody>
+<tr>
+<td align="center" width="173">MySQL数据类型</td>
+<td align="center" width="418">含义（有符号）</td>
+</tr>
+<tr>
+<td>tinyint(m)</td>
+<td>1个字节&nbsp; 范围(-128~127)</td>
+</tr>
+<tr>
+<td>smallint(m)</td>
+<td>2个字节&nbsp; 范围(-32768~32767)</td>
+</tr>
+<tr>
+<td>mediumint(m)</td>
+<td>3个字节&nbsp; 范围(-8388608~8388607)</td>
+</tr>
+<tr>
+<td>int(m)</td>
+<td>4个字节&nbsp; 范围(-2147483648~2147483647)</td>
+</tr>
+<tr>
+<td>bigint(m)</td>
+<td>8个字节&nbsp; 范围(+-9.22*10的18次方)</td>
+</tr>
+</tbody>
+</table>
+<p>取值范围如果加了unsigned，则最大值翻倍，如tinyint unsigned的取值范围为(0~256)。</p>
+<p>&nbsp;int(m)里的m是表示SELECT查询结果集中的显示宽度，并不影响实际的取值范围，没有影响到显示的宽度，不知道这个m有什么用。</p>
+<p>&nbsp;</p>
+<p>2、浮点型(float和double)</p>
+<table border="1" cellspacing="0" cellpadding="5">
+<tbody>
+<tr>
+<td align="center" width="173">MySQL数据类型</td>
+<td align="center" width="418">含义</td>
+</tr>
+<tr>
+<td width="151">float(m,d)</td>
+<td width="427">单精度浮点型&nbsp;&nbsp;&nbsp; 8位精度(4字节)&nbsp;&nbsp;&nbsp; &nbsp;m总个数，d小数位</td>
+</tr>
+<tr>
+<td width="151">double(m,d)</td>
+<td width="427">双精度浮点型&nbsp;&nbsp;&nbsp; 16位精度(8字节)&nbsp;&nbsp; &nbsp;m总个数，d小数位</td>
+</tr>
+</tbody>
+</table>
+<p>设一个字段定义为float(6,3)，如果插入一个数123.45678,实际数据库里存的是123.457，但总个数还以实际为准，即6位。整数部分最大是3位，如果插入数12.123456，存储的是12.1234，如果插入12.12，存储的是12.1200.</p>
+<p>&nbsp;</p>
+<p>3、定点数</p>
+<p>浮点型在数据库中存放的是近似值，而定点类型在数据库中存放的是精确值。&nbsp;</p>
+<p>decimal(m,d) 参数m&lt;65 是总个数，d&lt;30且 d&lt;m 是小数位。</p>
+<p>&nbsp;</p>
+<p>4、字符串(char,varchar,_text)</p>
+<table border="1" cellspacing="0" cellpadding="5">
+<tbody>
+<tr>
+<td align="center" width="173">MySQL数据类型</td>
+<td align="center" width="418">含义</td>
+</tr>
+<tr>
+<td width="146">char(n)</td>
+<td width="428">固定长度，最多255个字符</td>
+</tr>
+<tr>
+<td width="146">varchar(n)</td>
+<td width="428">固定长度，最多65535个字符</td>
+</tr>
+<tr>
+<td width="146">tinytext</td>
+<td width="428">可变长度，最多255个字符</td>
+</tr>
+<tr>
+<td width="146">text</td>
+<td width="428">可变长度，最多65535个字符</td>
+</tr>
+<tr>
+<td width="146">mediumtext</td>
+<td width="428">可变长度，最多2的24次方-1个字符</td>
+</tr>
+<tr>
+<td width="146">longtext</td>
+<td width="428">可变长度，最多2的32次方-1个字符</td>
+</tr>
+</tbody>
+</table>
+<p>char和varchar：</p>
+<p>1.char(n) 若存入字符数小于n，则以空格补于其后，查询之时再将空格去掉。所以char类型存储的字符串末尾不能有空格，varchar不限于此。&nbsp;</p>
+<p>2.char(n) 固定长度，char(4)不管是存入几个字符，都将占用4个字节，varchar是存入的实际字符数+1个字节（n&lt;=255）或2个字节(n&gt;255)，</p>
+<p>所以varchar(4),存入3个字符将占用4个字节。&nbsp;</p>
+<p><br>3.char类型的字符串检索速度要比varchar类型的快。<br>varchar和text：&nbsp;</p>
+<p>1.varchar可指定n，text不能指定，内部存储varchar是存入的实际字符数+1个字节（n&lt;=255）或2个字节(n&gt;255)，text是实际字符数+2个字</p>
+<p>节。&nbsp;</p>
+<p>2.text类型不能有默认值。&nbsp;</p>
+<p>3.varchar可直接创建索引，text创建索引要指定前多少个字符。varchar查询速度快于text,在都创建索引的情况下，text的索引似乎不起作用。</p>
+<p>&nbsp;</p>
+<p>5.二进制数据(_Blob)</p>
+<p>1._BLOB和_text存储方式不同，_TEXT以文本方式存储，英文存储区分大小写，而_Blob是以二进制方式存储，不分大小写。</p>
+<p>2._BLOB存储的数据只能整体读出。&nbsp;</p>
+<p>3._TEXT可以指定字符集，_BLO不用指定字符集。</p>
+<p>&nbsp;</p>
+<p>6.日期时间类型</p>
+<table border="1" cellspacing="0" cellpadding="5">
+<tbody>
+<tr>
+<td align="center" width="173">MySQL数据类型</td>
+<td align="center" width="418">含义</td>
+
+
+</tr>
+<tr>
+<td>date</td>
+<td>日期 '2008-12-2'</td>
+
+
+</tr>
+<tr>
+<td>time</td>
+<td>时间 '12:25:36'</td>
+
+
+</tr>
+<tr>
+<td>datetime</td>
+<td>日期时间 '2008-12-2 22:06:44'</td>
+
+
+</tr>
+<tr>
+<td>timestamp</td>
+<td>自动存储记录修改时间</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+<p>若定义一个字段为timestamp，这个字段里的时间数据会随其他字段修改的时候自动刷新，所以这个数据类型的字段可以存放这条记录最后被修改的时间。</p>
+<p>&nbsp;</p>
+<p>数据类型的属性</p>
+<p>&nbsp;</p>
+<table border="1" cellspacing="0" cellpadding="5">
+<tbody>
+<tr>
+<td align="center" width="173">MySQL关键字</td>
+<td align="center" width="418">含义</td>
+
+
+</tr>
+<tr>
+<td>NULL</td>
+<td>数据列可包含NULL值</td>
+
+
+</tr>
+<tr>
+<td>NOT NULL</td>
+<td>数据列不允许包含NULL值</td>
+
+
+</tr>
+<tr>
+<td>DEFAULT</td>
+<td>默认值</td>
+
+
+</tr>
+<tr>
+<td>PRIMARY KEY</td>
+<td>主键</td>
+
+
+</tr>
+<tr>
+<td>AUTO_INCREMENT</td>
+<td>自动递增，适用于整数类型</td>
+
+
+</tr>
+<tr>
+<td>UNSIGNED</td>
+<td>无符号</td>
+
+
+</tr>
+<tr>
+<td>CHARACTER SET name</td>
+<td>指定一个字符集</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+<p>&nbsp;</p>
+<h3><a name="t1"></a>二、MYSQL数据类型的长度和范围</h3>
+<p>各数据类型及字节长度一览表：</p>
+<table style="width: 98%" border="1" cellspacing="1" cellpadding="1" align="center">
+<tbody>
+<tr>
+<td align="center">数据类型</td>
+<td align="center">字节长度</td>
+<td align="center">范围或用法</td>
+
+
+</tr>
+<tr>
+<td>Bit</td>
+<td>1</td>
+<td>无符号[0,255]，有符号[-128,127]，天缘博客备注：BIT和BOOL布尔型都占用1字节</td>
+
+
+</tr>
+<tr>
+<td>TinyInt</td>
+<td>1</td>
+<td>整数[0,255]</td>
+
+
+</tr>
+<tr>
+<td>SmallInt</td>
+<td>2</td>
+<td>无符号[0,65535]，有符号[-32768,32767]</td>
+
+
+</tr>
+<tr>
+<td>MediumInt</td>
+<td>3</td>
+<td>无符号[0,2^24-1]，有符号[-2^23,2^23-1]]</td>
+
+
+</tr>
+<tr>
+<td>Int</td>
+<td>4</td>
+<td>无符号[0,2^32-1]，有符号[-2^31,2^31-1]</td>
+
+
+</tr>
+<tr>
+<td>BigInt</td>
+<td>8</td>
+<td>无符号[0,2^64-1]，有符号[-2^63 ,2^63 -1]</td>
+
+
+</tr>
+<tr>
+<td>Float(M,D)</td>
+<td>4</td>
+<td>单精度浮点数。天缘博客提醒这里的D是精度，如果D&lt;=24则为默认的FLOAT，如果D&gt;24则会自动被转换为DOUBLE型。</td>
+
+
+</tr>
+<tr>
+<td>Double(M,D)</td>
+<td>8</td>
+<td>&nbsp;双精度浮点。</td>
+
+
+</tr>
+<tr>
+<td>Decimal(M,D)</td>
+<td>M+1或M+2</td>
+<td>未打包的浮点数，用法类似于FLOAT和DOUBLE，天缘博客提醒您如果在ASP中使用到Decimal数据类型，直接从数据库读出来的Decimal可能需要先转换成Float或Double类型后再进行运算。</td>
+
+
+</tr>
+<tr>
+<td>Date</td>
+<td>3</td>
+<td>以YYYY-MM-DD的格式显示，比如：2009-07-19</td>
+
+
+</tr>
+<tr>
+<td>Date Time</td>
+<td>8</td>
+<td>以YYYY-MM-DD HH:MM:SS的格式显示，比如：2009-07-19 11：22：30</td>
+
+
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>4</td>
+<td>以YYYY-MM-DD的格式显示，比如：2009-07-19</td>
+
+
+</tr>
+<tr>
+<td>Time</td>
+<td>3</td>
+<td>以HH:MM:SS的格式显示。比如：11：22：30</td>
+
+
+</tr>
+<tr>
+<td>Year</td>
+<td>1</td>
+<td>以YYYY的格式显示。比如：2009</td>
+
+
+</tr>
+<tr>
+<td>Char(M)</td>
+<td>M</td>
+<td>
+<div>定长字符串。</div>
+
+
+</td>
+
+
+</tr>
+<tr>
+<td>VarChar(M)</td>
+<td>M</td>
+<td>变长字符串，要求M&lt;=255</td>
+
+
+</tr>
+<tr>
+<td>Binary(M)</td>
+<td>M</td>
+<td>类似Char的二进制存储，特点是插入定长不足补0</td>
+
+
+</tr>
+<tr>
+<td>VarBinary(M)</td>
+<td>M</td>
+<td>类似VarChar的变长二进制存储，特点是定长不补0</td>
+
+
+</tr>
+<tr>
+<td>Tiny Text</td>
+<td>Max:255</td>
+<td>大小写不敏感</td>
+
+
+</tr>
+<tr>
+<td>Text</td>
+<td>Max:64K</td>
+<td>大小写不敏感</td>
+
+
+</tr>
+<tr>
+<td>Medium Text</td>
+<td>Max:16M</td>
+<td>大小写不敏感</td>
+
+
+</tr>
+<tr>
+<td>Long Text</td>
+<td>Max:4G</td>
+<td>大小写不敏感</td>
+
+
+</tr>
+<tr>
+<td>TinyBlob</td>
+<td>Max:255</td>
+<td>大小写敏感</td>
+
+
+</tr>
+<tr>
+<td>Blob</td>
+<td>Max:64K</td>
+<td>大小写敏感</td>
+
+
+</tr>
+<tr>
+<td>MediumBlob</td>
+<td>Max:16M</td>
+<td>大小写敏感</td>
+
+
+</tr>
+<tr>
+<td>LongBlob</td>
+<td>Max:4G</td>
+<td>大小写敏感</td>
+
+
+</tr>
+<tr>
+<td>Enum</td>
+<td>1或2</td>
+<td>最大可达65535个不同的枚举值</td>
+
+
+</tr>
+<tr>
+<td>Set</td>
+<td>可达8</td>
+<td>最大可达64个不同的值</td>
+
+
+</tr>
+<tr>
+<td>Geometry</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>Point</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>LineString</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>Polygon</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>MultiPoint</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>MultiLineString</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>MultiPolygon</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+<tr>
+<td>GeometryCollection</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+<h3><a name="t2"></a>三、使用建议</h3>
+<p>1、在指定数据类型的时候一般是采用从小原则，比如能用TINY INT的最好就不用INT，能用FLOAT类型的就不用DOUBLE类型，这样会对MYSQL在运行效率上提高很大，尤其是大数据量测试条件下。</p>
+<p>2、不需要把数据表设计的太过复杂，功能模块上区分或许对于后期的维护更为方便，慎重出现大杂烩数据表</p>
+<p>3、数据表和字段的起名字也是一门学问</p>
+<p>4、设计数据表结构之前请先想象一下是你的房间，或许结果会更加合理、高效</p>
+<p>5、数据库的最后设计结果一定是效率和可扩展性的折中，偏向任何一方都是欠妥的</p>
+<p>&nbsp;</p>
+<h2><a name="t3"></a>选择数据类型的基本原则</h2>
+<p>
+前提：使用适合存储引擎。<br><br>选择原则：根据选定的存储引擎，确定如何选择合适的数据类型。<br><br>下面的选择方法按存储引擎分类：</p>
+<ul>
+<li>MyISAM 数据存储引擎和数据列：MyISAM数据表，最好使用固定长度(CHAR)的数据列代替可变长度(VARCHAR)的数据列。</li>
+<li>MEMORY存储引擎和数据列：MEMORY数据表目前都使用固定长度的数据行存储，因此无论使用CHAR或VARCHAR列都没有关系。两者都是作为CHAR类型处理的。</li>
+<li>InnoDB 存储引擎和数据列：建议使用 VARCHAR类型。</li>
+
+
+</ul>
+<p>
+<br>对于InnoDB数据表，内部的行存储格式没有区分固定长度和可变长度列（所有数据行都使用指向数据列值的头指针），因此在本质上，使用固定长度的CHAR列不一定比使用可变长度VARCHAR列简单。因而，主要的性能因素是数据行使用的存储总量。由于CHAR平均占用的空间多于VARCHAR，因 此使用VARCHAR来最小化需要处理的数据行的存储总量和磁盘I/O是比较好的。<br><br>下面说一下固定长度数据列与可变长度的数据列。</p>
+<h2><a name="t4"></a>char与varchar</h2>
+<p>
+CHAR和VARCHAR类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。<br><br>下面的表显示了将各种字符串值保存到CHAR(4)和VARCHAR(4)列后的结果，说明了CHAR和VARCHAR之间的差别：</p>
+<table>
+<tbody>
+<tr>
+<td>值</td>
+<td>CHAR(4)</td>
+<td>存储需求</td>
+<td>VARCHAR(4)</td>
+<td>存储需求</td>
+
+
+</tr>
+<tr>
+<td>''</td>
+<td>'&nbsp;&nbsp;&nbsp;&nbsp;'</td>
+<td>4个字节</td>
+<td>''</td>
+<td>1个字节</td>
+
+
+</tr>
+<tr>
+<td>'ab'</td>
+<td>'ab&nbsp;&nbsp;'</td>
+<td>4个字节</td>
+<td>'ab '</td>
+<td>3个字节</td>
+
+
+</tr>
+<tr>
+<td>'abcd'</td>
+<td>'abcd'</td>
+<td>4个字节</td>
+<td>'abcd'</td>
+<td>5个字节</td>
+
+
+</tr>
+<tr>
+<td>'abcdefgh'</td>
+<td>'abcd'</td>
+<td>4个字节</td>
+<td>'abcd'</td>
+<td>5个字节</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+<p>
+<br>请注意上表中最后一行的值只适用<em>不使用严格模式</em>时；如果MySQL运行在严格模式，超过列长度不的值<em>不<em>保存</em></em>，并且会出现错误。<br><br>从CHAR(4)和VARCHAR(4)列检索的值并不总是相同，因为检索时从CHAR列删除了尾部的空格。通过下面的例子说明该差别：<br>mysql&gt; CREATE TABLE vc (v VARCHAR(4), c CHAR(4));<br>Query OK, 0 rows affected (0.02 sec)<br>&nbsp;<br>mysql&gt; INSERT INTO vc VALUES ('ab&nbsp; ', 'ab&nbsp; ');<br>Query OK, 1 row affected (0.00 sec)<br>&nbsp;<br>mysql&gt; SELECT CONCAT(v, '+'), CONCAT(c, '+') FROM vc;<br>+----------------+----------------+<br>| CONCAT(v, '+') | CONCAT(c, '+') |<br>+----------------+----------------+<br>| ab&nbsp; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | ab+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>+----------------+----------------+<br>1 row in set (0.00 sec)</p>
+<h2><a name="t5"></a>text和blob</h2>
+<p>&nbsp;</p>
+<p>在使用text和blob字段类型时要注意以下几点，以便更好的发挥数据库的性能。</p>
+<p>
+①BLOB和TEXT值也会引起自己的一些问题，特别是执行了大量的删除或更新操作的时候。删除这种值会在数据表中留下很大的"空洞"，以后填入这些"空洞"的记录可能长度不同,为了提高性能,建议定期使用 OPTIMIZE TABLE 功能对这类表进行碎片整理.<br><br>②使用合成的（synthetic）索引。合成的索引列在某些时候是有用的。一种办法是根据其它的列的内容建立一个散列值，并把这个值存储在单独的数据列中。接下来你就可以通过检索散列值找到数据行了。但是，我们要注意这种技术只能用于精确匹配的查询（散列值对于类似&lt;或&gt;=等范围搜索操作符 是没有用处的）。我们可以使用MD5()函数生成散列值，也可以使用SHA1()或CRC32()，或者使用自己的应用程序逻辑来计算散列值。请记住数值型散列值可以很高效率地存储。同样，如果散列算法生成的字符串带有尾部空格，就不要把它们存储在CHAR或VARCHAR列中，它们会受到尾部空格去除的影响。<br><br>合成的散列索引对于那些BLOB或TEXT数据列特别有用。用散列标识符值查找的速度比搜索BLOB列本身的速度快很多。<br><br>③在不必要的时候避免检索大型的BLOB或TEXT值。例如，SELECT *查询就不是很好的想法，除非你能够确定作为约束条件的WHERE子句只会找到所需要的数据行。否则，你可能毫无目的地在网络上传输大量的值。这也是 BLOB或TEXT标识符信息存储在合成的索引列中对我们有所帮助的例子。你可以搜索索引列，决定那些需要的数据行，然后从合格的数据行中检索BLOB或 TEXT值。<br><br>④把BLOB或TEXT列分离到单独的表中。在某些环境中，如果把这些数据列移动到第二张数据表中，可以让你把原数据表中 的数据列转换为固定长度的数据行格式，那么它就是有意义的。这会减少主表中的碎片，使你得到固定长度数据行的性能优势。它还使你在主数据表上运行 SELECT *查询的时候不会通过网络传输大量的BLOB或TEXT值。</p>
+<h2><a name="t6"></a>浮点数与定点数</h2>
+<p>
+为了能够引起大家的重视，在介绍浮点数与定点数以前先让大家看一个例子：<br>mysql&gt; CREATE TABLE test (c1 float(10,2),c2 decimal(10,2));<br>Query OK, 0 rows affected (0.29 sec)<br><br>mysql&gt; insert into test values(131072.32,131072.32);<br>Query OK, 1 row affected (0.07 sec)<br><br>mysql&gt; select * from test;<br>+-----------+-----------+<br>| c1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | c2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br>+-----------+-----------+<br>| 131072.31 | 131072.32 |<br>+-----------+-----------+<br>1 row in set (0.00 sec)<br><br>从上面的例子中我们看到c1列的值由131072.32变成了131072.31，这就是浮点数的不精确性造成的。<br><br>在mysql中float、double（或real）是浮点数，decimal（或numberic）是定点数。<br><br>浮点数相对于定点数的优点是在长度一定的情况下，浮点数能够表示更大的数据范围；它的缺点是会引起精度问题。在今后关于浮点数和定点数的应用中，大家要记住以下几点：</p>
+<ol>
+<li>浮点数存在误差问题；</li>
+<li>对货币等对精度敏感的数据，应该用定点数表示或存储；</li>
+<li>编程中，如果用到浮点数，要特别注意误差问题，并尽量避免做浮点数比较；</li>
+<li>要注意浮点数中一些特殊值的处理。</li>
+
+
+</ol>
+<div>&nbsp;</div>
+<div>ref：http://www.w3cschool.cc/mysql/mysql-data-types.html</div></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/-xlp/category/1183061.html" target="_blank">mysql</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(8617760,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;01c1862a-5c2e-4e85-54ce-08d4ef52ecb6&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./MySQL中数据类型介绍 - myxlp - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./MySQL中数据类型介绍 - myxlp - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/-xlp/" target="_blank"><img src="./MySQL中数据类型介绍 - myxlp - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/-xlp/">myxlp</a><br>
+            <a href="http://home.cnblogs.com/u/-xlp/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/-xlp/followers">粉丝 - 1</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;01c1862a-5c2e-4e85-54ce-08d4ef52ecb6&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(8617760,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">4</span>
+    </div>
+    <div class="buryit" onclick="votePost(8617760,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/-xlp/p/8513300.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/-xlp/p/8513300.html" title="发布于2018-03-06 11:17">linux 基本操作</a><br><a href="https://www.cnblogs.com/-xlp/p/8665141.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/-xlp/p/8665141.html" title="发布于2018-03-28 17:30">js中xml文件加载</a><br></div>
+</div>
+
+
+		</div>
+		<div class="itemdesc">
+			发表于 <span id="post-date">2018-03-21 16:20</span> <a href="https://www.cnblogs.com/-xlp/">myxlp</a> 阅读(<span id="post_view_count">12138</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=8617760" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/-xlp/p/8617760.html#" onclick="AddToWz(8617760);return false;">收藏</a>
+		</div>
+	</div>
+	<div class="seperator">&nbsp;</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=391989,cb_entryId=8617760,cb_blogApp=currentBlogApp,cb_blogUserGuid='01c1862a-5c2e-4e85-54ce-08d4ef52ecb6',cb_entryCreatedDate='2018/3/21 16:20:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<div class="post">
+<a name="评论"></a>
+<div class="moreinfo">
+	<div class="moreinfotitle">
+		评论
+	</div>
+	
+	
+			<div class="comments">
+		
+			<div class="comment">
+				<div class="comment_title">
+					<a href="https://www.cnblogs.com/-xlp/p/8617760.html#3996025" class="layer">#1楼</a><a name="3996025" id="comment_anchor_3996025"></a><span id="comment-maxId" style="display:none;">3996025</span><span id="comment-maxDate" style="display:none;">2018/6/11 18:03:00</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<div class="comment_content"><div id="comment_body_3996025" class="blog_comment_body">nvarchar这种类型漏了吧</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3996025,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3996025,&#39;Bury&#39;,this)">反对(0)</a></div></div>
+				<div class="comment_footer"><a id="a_comment_author_3996025" href="https://www.cnblogs.com/clever101/" target="_blank">是金子就会灿烂</a> <a href="http://msg.cnblogs.com/send/%E6%98%AF%E9%87%91%E5%AD%90%E5%B0%B1%E4%BC%9A%E7%81%BF%E7%83%82" title="发送站内短消息" class="sendMsg2This">&nbsp;</a> 评论于  <span class="comment_date">2018-06-11 18:03</span></div>
+			</div>
+		
+			</div>
+		
+</div>
+</div>
+<div class="seperator">&nbsp;</div>
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/-xlp/p/8617760.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/-xlp/p/8617760.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://clickc.admaster.com.cn/c/a116493,b2949399,c1705,i0,m101,8a1,8b3,h" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为云&#39;)">【推荐】华为云11.11普惠季 血拼风暴 一促即发</a><br><a href="https://www.grapecity.com.cn/developer/spreadjs?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-SpreadJS&#39;)">【工具】SpreadJS纯前端表格控件，可嵌入应用开发的在线Excel</a><br><a href="https://cloud.tencent.com/act/domainsales?fromSource=gwzcw.1351351.1351351.1351351" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-域名&#39;)">【推荐】腾讯云新注册用户域名抢购1元起</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cloud.tencent.com/act/pro/redis?fromSource=gwzcw.1559146.1559146.1559146" target="_blank"><img width="300" height="250" src="./MySQL中数据类型介绍 - myxlp - 博客园_files/24442-20181023123922818-1967472495.jpg" alt="腾讯云1023" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>系统推荐博文</b>:<br>·  <a href="https://www.cnblogs.com/chmod755/p/3419195.html" target="_blank" onclick="clickRecomItmem(3419195,&#39;/cjrozBnrmwGSON9HS9uZai4hz4nALVb/UMoECwUlOS6HVQ9re/Y2PhnExSdekS6bMM1dZFY5zGBT6AMadJtvwwlDYEy49US+dSDxWQpCYBmPVtCF/V4ovHZ2OHF+wKqyceRhGLHwuxqSREL9w==&#39;)">hibernate mysql映射类型</a><br>·  <a href="https://www.cnblogs.com/xieyuan/p/3787364.html" target="_blank" onclick="clickRecomItmem(3787364,&#39;qOkEo3lkj2i6SzeGCpwWDCtn4gNSeSxVr4Y/bc+iD4iwRF6istiuzMhp2YpySmWl9yRFmSoDQ3mbApFV4aD9VVEwQRcZzQ92gwtFD6g+9KsJQLa2A077bR1+uEgMXG59yFMrr7LCPt3odif79w==&#39;)">MySQL的数据类型</a><br>·  <a href="https://www.cnblogs.com/zsmynl/p/3538621.html" target="_blank" onclick="clickRecomItmem(3538621,&#39;ESF8LfmtAUf6o8qB6VpeY6Lmh/iuN4/BiGRfX1bfzZVL36Xmd9HrUJo46ErBg/lLVWIq2vp22KSDBwg956P1ZBND/FS7yf8K4sYjYldbVhRS73m1RvUX0y9/cGa6j9UaaAOLd5CfI4u82UOhiA==&#39;)">Mysql数据数据[字节、长度、数据范围]一览表</a><br>·  <a href="https://www.cnblogs.com/liu1989/p/hekafeidemao.html" target="_blank" onclick="clickRecomItmem(3433819,&#39;mGsls1Z0eLLRtI6Mjeb/mlsuAQoREAhAtlrfaXI5NXpnbkae2k/8GsxpJUhTe6JCMfXNaea7cFT67anV1/i91u8SDjyYmLQvtHGSor3/8SMq50jaxxHCz1GqzPuRvrhk7aZS8BGa43SHqmUY4g==&#39;)">mysql、oracle和java数据类型的对照</a><br>·  <a href="https://www.cnblogs.com/Coolkaka/p/6034126.html" target="_blank" onclick="clickRecomItmem(6034126,&#39;sNqTd8Nhdw6wXexPfQQXZ2AxTIH9P7PFJxpV3BYpPdd69r1BySMSULf+/rJ6DCkSKrQYlqipUxsbiXXhDJaxBLu3vpWH4lEGkVn+J/rG8hk3LMLzi5+0/9uQFsYwULi63+9ygYVCD/3M0FT1QQ==&#39;)">hibernate的映射类型</a><br></div></div>
+<script async="async" src="./MySQL中数据类型介绍 - myxlp - 博客园_files/gpt.js.下载"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CLq429jCut4CFUo3lgod8R0BuA">
+    <script>
+    if (new Date() >= new Date(2018, 9, 13)) {
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1539008685004-0'); });
+    }
+    </script>
+    <div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./MySQL中数据类型介绍 - myxlp - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="https://kb.cnblogs.com/page/611018/" target="_blank">程序员：用代码改变世界</a><br> ·  <a href="https://kb.cnblogs.com/page/609730/" target="_blank">阿里云的这群疯子</a><br> ·  <a href="https://kb.cnblogs.com/page/606682/" target="_blank">为什么说 Java 程序员必须掌握 Spring Boot ？</a><br> ·  <a href="https://kb.cnblogs.com/page/606645/" target="_blank">在学习中，有一个比掌握知识更重要的能力</a><br> ·  <a href="https://kb.cnblogs.com/page/603663/" target="_blank">如何招到一个靠谱的程序员</a><br></div>» <a href="https://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+                    </div></td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+
+
+<iframe id="google_osd_static_frame_564846929222" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./MySQL中数据类型介绍 - myxlp - 博客园_files/saved_resource(1).html"></iframe></body></html>
