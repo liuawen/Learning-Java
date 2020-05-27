@@ -2595,11 +2595,11 @@ WHERE  department_id = 50;
 
 # 第七章 关联查询（联合查询）
 
-
+关联查询 联合查询
 
 七种结果：
 
-![1557194340352](imgs/1557194340352.png)
+![1557194340352](imgs/2.png)
 
 （1）A∩B
 
@@ -2615,7 +2615,7 @@ WHERE  department_id = 50;
 
 （7）A ∪B- A∩B    或者   (A -  A∩B) ∪ （B - A∩B）
 
-
+关联查询7种结果与关联查询的分类
 
 ```mysql
 /*
@@ -2630,7 +2630,7 @@ WHERE  department_id = 50;
 
 如何实现这些结果？
 1、内连接：inner join 
-	（1）A∩B
+	（1）A∩B  A∩B A交B
 2、外连接
 （1）左外连：left join
 	（2）A
@@ -2639,21 +2639,43 @@ WHERE  department_id = 50;
 	（4）B
 	（5）B - A ∩ B
 （3）全外连接：full join
-	但是不直接支持全外连接，但是可以使用union（合并）结果来实现以下两种结果
+	MySQL但是不直接支持全外连接，但是可以使用union（合并）结果来实现以下两种结果
 	（6）A ∪ B		用  （2）A  union（合并） （4）B
 	（7）A ∪ B - A ∩ B	用  （3）A - A ∩ B  union（合并）（5）B - A ∩ B
 */
 ```
 
+外连接查询将查询多个表中相关联的行，
+
+内连接时，返回查询结果集合中仅是符合查询条件和连接条件的行。有时候需要包含没有关联的行中数据，即返回查询结果集合中不仅包含符合连接条件的行，还包括左表（左外连接或左连接）、右表（右外连接或右连接）或两个边接表（全外连接）中的所有数据行。外连接分为左外连接或左连接和右外连接或右连
 
 
-如何实现？
+
+外连接分为左外连接或左连接和右外连接或右连接：
+
+　LEFT JOIN（左连接）：返回包括左表中的所有记录和右表中连接字段相等的记录。
+
+　RIGHT JOIN（右连接）：返回包括右表中的所有记录和左表中连接字段相等的记录。
+
+外连接包括了三种形式：
+
+左外连接：LEFT JOIN 或 LEFT OUTER JOIN
+右外连接：RIGHT JOIN 或 RIGHT OUTER JOIN
+全外连接：FULL JOIN 或 FULL OUTER JOIN
+
+需要注意的是 MySQL 不支持全外连接，
+
+但是可以使用union（合并）结果来实现以下两种结果
+	A ∪ B		用  A  union（合并） B
+	A ∪ B - A ∩ B	用  A - A ∩ B  union（合并）B - A ∩ B
+
+
 
 （1）内连接
 
 （2）外连接：左外连接、右外连接、全外连接（mysql使用union代替全外连接）
 
-
+语法先上  
 
 1、内连接：实现A∩B
 
@@ -2675,7 +2697,7 @@ WHERE  department_id = 50;
 
 关联条件的个数 = 表数 - 1
 如果少了关联条件，就会笛卡尔积的
-
+5*3*3 45  A∩B 再交
 2、另一种写法
 
 两张表内连接关联查询
@@ -2691,7 +2713,7 @@ from t_employee inner join t_department;
 
 错误
 错误代码： 1052
-Column 'did' in field list is ambiguous
+Column 'did' in field list is ambiguous 模糊不确定
 */
 /*
 select eid,ename,t_employee.did,dname 
@@ -2898,7 +2920,7 @@ WHERE t_employee.did IS NULL
 
 
 
-4、用union代替全外连接
+4、用union代替全外连接   使用union实现全外连接的效果
 
 ```mysql
 /*
