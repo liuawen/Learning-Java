@@ -1,0 +1,32 @@
+SQL：
+1、DDL
+2、DML
+3、DCL
+事务的commit等是属于DCL
+
+事务回滚和提交只对insert, update,delete有效。
+对create,drop等DDL语句是无效的。
+
+
+
+
+
+delete from 【数据库名.]表名称 【where 条件】;
+
+
+如果没有where条件，表示删除整张表的数据;
+
+
+truncate 【数据库名.]表名称;#删除整张表的数据，还可以使用这个语句，效率更高，但是它不能回滚
+
+
+用delete删除整张表和用truncate删除整张表的数据的区别？
+
+（1）truncate速度快
+
+（2）truncate无法回滚
+
+truncate因为底层是把表drop掉，然后新建了一张空表。
+
+delete因为底层是一行一行删数据。
+

@@ -2785,7 +2785,7 @@ WHERE salary>20000 AND gender = '男'
 
 
 
-2、左外连接
+2、左外连接  左连接 
 
 ```mysql
 /*
@@ -2853,7 +2853,7 @@ WHERE t_employee.did IS NULL
 
 
 
-3、右外连接
+3、右外连接 右连接
 
 ```mysql
 /*
@@ -2943,7 +2943,7 @@ SELECT *
 FROM t_employee RIGHT JOIN t_department
 ON t_employee.did = t_department.`did`
 
-#查询那些没有分配部门的员工和没有安排员工的部门
+#查询那些没有分配部门的员工和没有安排员工的部门  从表的
 SELECT * 
 FROM t_employee LEFT JOIN t_department
 ON t_employee.did = t_department.`did`
@@ -3101,7 +3101,7 @@ select语句有6大子句：
    降序：desc
 (6)limit：取几条记录
    limit m,n
-   m表示从第几天记录开始取，n表示最多取n条件
+   m表示从第几条记录开始取，n表示最多取n条件
    通常用于分页查询
 */
 
