@@ -6,6 +6,6 @@ package cn.liuawen.test;
  */
 public class StringTest {
     public static void main(String[] args) {
-        
+
     }
 }
