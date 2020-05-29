@@ -2,13 +2,63 @@
 
 ## 1.1 JDBC概述
 
+JDBC：
+	Java Database Connectivity Java连接数据库的技术。
+	
+
+	JDBC通常指的是SUN为各大数据库厂商Java程序如何连接和操作它这个DBMS软件指定的统一的标准，即公共接口。
+	这个公共接口由各大数据库厂商提供实现类，这些实现类就构成了数据库驱动。
+
+
+​	
+	Java程序员编写Java代码时，只要面向接口编程就可以了，运行时把驱动实现类加到项目中即可。
+	Java程序员只要学习SUN公司提供的JDBC的公共接口就可以了。
+
+
+	如果尚硅谷新开发了一款数据库，想要Java程序连接它，需要实现这些JDBC的公共接口，否则无法连接。	
+	
+
 JDBC：Java Database Connectivity，它是代表一组独立于任何数据库管理系统（DBMS）的API，声明在java.sql与javax.sql包中，是SUN(现在Oracle)提供的一组接口规范。由各个数据库厂商来提供实现类，这些实现类的集合构成了数据库驱动jar。
 
 JDBC JavaDatabase Connectivity  数据库连接 
 
+不同DBMS软件是由不同的公司开发
+
+如果Java程序想要连接和操作DBMS
+
+不仅仅是SQL语句就够了 可能还需要其他的API 类、方法等的支持
+
+如果SUN公司没有进行标准的统一 就会导致每一种DBMS的API是不同
+
+对于Java程序来说就是灾难
+
+你需要学习很多套的API
+
+在DBMS的内容如何连接上 如何操作数据是这个DBMS软件自己说了算 也是它自己更清楚 所有SUN这边没法给出具体的API
+
+SUN这边只能统一标准
+
+所有SUN这边声明了很多的接口
+
+
+
+这些接口由各个DBMS的厂商来实现
+
+填写实现类 这些实现类就是驱动类
+
+jar包  各种各样的
+
+怎么使用连接
+
+
+
 ![1561212287381](imgs/1561212287381.png)
 
 ## 1.2 JDBC使用步骤
+
+Exception in thread "main" java.lang.ClassNotFoundException: com.mysql.jdbc.Driver
+
+
 
 使用步骤：
 
@@ -248,6 +298,48 @@ PreparedStatement解决问题：
    ②每一种blob有各自大小限制：
 
    tinyblob:255字节、blob:65k、mediumblob:16M、longblob:4G
+
+数据类型 
+
+Blob  太小了   图片太大了
+
+mediumblob
+
+表结构改变
+
+
+
+配置文件也改变
+
+
+
+![image-20200529202824461](assets/image-20200529202824461.png)
+
+先停止服务 mysql
+
+
+
+![image-20200529202858096](assets/image-20200529202858096.png)
+
+
+
+
+
+![image-20200529202924706](assets/image-20200529202924706.png)
+
+
+
+
+
+![image-20200529202931696](assets/image-20200529202931696.png)
+
+
+
+  太大了  数据库很大 检索很慢
+
+搞定文件服务器
+
+
 
 ## 2.2 获取自增长键值
 

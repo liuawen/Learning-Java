@@ -3326,6 +3326,7 @@ GROUP BY department_id, job_id ;
 
 ```mysql
 SELECT   department_id, MAX(salary)
+
 FROM     employees
 GROUP BY department_id
 HAVING   MAX(salary)>8000 ;
@@ -3393,6 +3394,175 @@ LIMIT 10,10
 
 # 第九章 子查询
 
+```mysql
+/*
+自连接：一种特殊的联合查询
+因为现在联合查询的两种表本质上是一张表
+通过给表取别名的方式，把一张表虚拟成两张表，通过别名来代表不同的意义。
+
+*/
+
+#查询员工的编号，员工的姓名，他的领导的编号和领导的姓名
+#这些信息都在t_employee表中
+/*
+select 员工的eid,员工的ename,员工的`mid`,领导的ename
+from t_employee
+where 员工的mid = 领导的eid
+*/
+
+SELECT emp.eid, emp.ename, emp.mid, mgr.ename
+FROM t_employee emp INNER JOIN t_employee mgr
+#emp代表员工表角色
+#mgr代表领导表角色
+ON emp.mid = mgr.eid;
+
+```
+
+
+
+```mysql
+/*
+查询的学习的顺序：
+1、简单查询
+2、联合查询
+3、select的6个子句
+4、子查询
+
+子查询：
+   在一个查询中嵌套了另一个查询，那么这个嵌套在里面的查询称为子查询。
+   子查询的结果作为外部查询的条件或者数据的筛选范围来使用。
+
+子查询分为三类：
+1、where型
+	子查询的结果是作为外部查询的条件使用的
+2、from型
+	子查询的结果是作为外部查询的筛选范围来使用
+3、exists型 
+	子查询的结果是作为外部查询的条件使用的
+*/
+
+/*
+where型：
+（1）子查询结果是：单值结果
+比较运算符 后面可以跟单值的结果
+（2）子查询结果是：一列多行的多值结果
+in(),比较运算符 all()，比较运算符 any()
+*/
+#例1：查询运营部的所有员工的信息
+
+#使用联合查询
+SELECT * 
+FROM t_employee INNER JOIN t_department
+ON t_employee.did = t_department.did
+WHERE t_department.dname = '运营部'
+慢一点   用子查询
+/*
+select * 
+from t_employee
+where did = 运营部的did
+*/
+SELECT * 
+FROM t_employee
+WHERE did = (SELECT did FROM t_department WHERE dname = '运营部');
+(先算)
+#例2：查询全公司薪资最高的员工的信息
+#使用order by和limit
+SELECT * 
+FROM t_employee
+ORDER BY salary DESC
+LIMIT 0,1
+
+#使用子查询
+/*
+select *
+from t_employee
+where salary = (最高工资值)
+*/
+SELECT *
+FROM t_employee
+WHERE salary = (SELECT MAX(salary) FROM t_employee);
+
+#例3：查询比孙红雷的工资低的男员工
+#子查询
+/*
+select * 
+from t_employee
+where salary < (孙红雷的薪资) and gender = '男';
+*/
+SELECT * 
+FROM t_employee
+WHERE salary < (SELECT salary FROM t_employee WHERE ename = '孙红雷') AND gender = '男';
+
+#例4：查询运营部、财务部，后勤部的三个部门的女员工
+#子查询
+/*
+select * 
+from t_employee
+where gender = '女' and did in (运营部、财务部，后勤部部门的编号);
+*/
+SELECT * 
+FROM t_employee
+WHERE gender = '女' AND did IN (SELECT did FROM t_department WHERE dname IN ('运营部','财务部','后勤部'));
+
+#例5：查询比孙红雷、范冰冰、李晨三个人的薪资都高的员工
+/*
+select * 
+from t_employee
+where salary  > all(孙红雷、范冰冰、李晨三个人的薪资)
+*/
+SELECT * 
+FROM t_employee
+WHERE salary  > ALL(SELECT salary FROM t_employee WHERE ename IN('孙红雷','范冰冰','李晨'))
+
+#例6：查询，要么和孙红雷，要么和范冰冰，要么和李晨的薪资一样的员工
+/*
+select * 
+from t_employee
+where salary  = any(孙红雷、范冰冰、李晨三个人的薪资)
+*/
+
+SELECT * 
+FROM t_employee
+WHERE salary  = ANY(SELECT salary FROM t_employee WHERE ename IN('孙红雷','范冰冰','李晨'))
+
+/*
+from型
+*/
+#例：查询每个部门的编号，部门名称，部门的人数
+#每个部门的编号，部门名称  在部门表中
+#每个部门的编号，部门的人数，在员工表中统计出来的
+
+
+#每个部门的编号，部门的人数
+SELECT did,COUNT(*) FROM t_employee GROUP BY did;  #把它看成一张临时表，取别名叫做 temp
+/*
+select 部门表.did, 部门表的.dname, temp.部门的人数
+from 部门表 inner join 临时表temp
+on 部门表.did = 临时表temp.did
+*/
+SELECT t_department.did, t_department.dname, temp.countOfDep
+FROM t_department INNER JOIN (SELECT did,COUNT(*) AS countOfDep FROM t_employee GROUP BY did) temp
+ON t_department.did = temp.did
+/*
+对子查询的多行多列的二维表结构的临时表取别名
+给用分组函数统计的结果列取别名
+*/
+
+/*
+exists型
+*/
+#查询部门信息，要求这些部门必须有员工
+SELECT * FROM t_department
+WHERE EXISTS (SELECT * FROM t_employee WHERE t_department.did = t_employee.did)
+/*
+运行的规则，将SELECT * FROM t_department的每一条记录，代入子查询去匹配，
+如果能够查询出记录，就说明要保留这样，否则就去掉
+例如：测试部门的信息 代入 子查询中，是查不出结果，那么就不保留 测试部门的信息
+*/
+```
+
+
+
 嵌套在另一个查询中的查询，根据位置不同，分为：
 
 （1）where型
@@ -3433,7 +3603,154 @@ where exists (select * from 员工表  where 部门表.部门编号 = 员工表.
 
 # 第十章  事务
 
+好几个人同时操作 事务是表示一组操作要么同时成功 要么同时失败
+
+而且事务与事务之间是独立的
+
+```mysql
+1、事务：
+	事务是表示一组操作要么同时成功，要么同时失败，而且事务与事务之间是独立。
+	事务有ACID的特性。
+	（1）原子性（2）一致性（3）隔离性（4）持久性
+	
+银行转账
+
+	张三-》李四转账500元
+	张三原来的余额是1000元，
+	李四原来的余额是0元。
+	
+	（1）张三账户-500
+	（2）李四账户+500
+	
+	一致性：要么张三还是1000，李四是0
+		    要么张三现在是500，李四是500
+			
+	张三-500成功了，要给李四+500时，发现李四的账号异常，那么要回滚，还原刚刚张三-500的操作。
+	如果都成功了，就提交。
+	
+事务：
+	网购，下订单
+	
+	（1）创建订单--》订单表中要添加记录
+	（2）记录订单明细--》订单明细表中要添加订单都买了什么
+	（3）商品表修改-->库存量修改，销量增量	
+
+2、
+mysql默认是自动提交事务，一句SQL是一个事务，执行成功一句就提交一句。
+
+手动开始事务，取消自动提交。
+方式一：
+set autocommit = false;
+	这次客户端连接，在你恢复自动提交之前，
+	接下来所有的SQL执行都必须手动提交了，否则就不生效。
+	
+这个设置只管一个连接，和其他的连接（登录）无关。	
+set autocommit = false;
+....   都是需要手动提交的。
+set autocommit = true;	
+
+
+当只是部分的SQL需要构成事务，手动提交，而其他SQL还是想要自动提交的。
+那么我们选择方式二。
+
+方式二：
+start transaction;
+....   一个事务
+commit;或rollback;
+
+start transaction;
+....   另一个事务
+commit;或rollback;
+
+...    自动提交
+
+
+3、事务的隔离级别
+同一个库的同一个表同一个记录，对于多个事务来说，就是共享数据。
+多个事务被多个线程同时执行时，那么共享数据就会线程安全问题。
+
+隔离级别低   实时性、速度
+针对不同安全级别的要求，设置了不同的隔离级别：
+（1）read uncommitted：可以读取未提交的
+		事务1，可以读取到事务2已经修改，但是还没正式提交的数据
+		会出现脏读、不可重复读、幻读
+（2）read committed：读取已提交的数据
+		事务1，只能读取到事务2已提交的数据
+		会出现不可重复读、幻读
+（3）repeatable READ：
+		原来：会出现幻读
+		现在：幻读也可以避免
+		行锁
+（4）Serializable
+		所有问题都可以避免。
+		表锁
+	锁的级别不一样  性能低	
+几种问题：
+（1）脏读现象
+	事务1对某个记录进行修改，还未提交。事务2就看到了。
+	那么这个被事务1修改还未提交的数据就是脏数据。
+	
+	如何避免脏读，把事务隔离级别设置为（2）（3）（3）都可以避免。
+（2）不可重复的
+	事务1对某个表进行修改，已经提交。
+	但是事务2，在事务1提交之前，查询了一下这个记录，
+	          在事务1提交之后，又查询了一下这个记录，
+		对于事务2来说，出现了不可重复读的现象。
+		在同一个事务中，前后两次对同一个记录的读取发现不一样。
+	如果想要避免不可重复读，那么需要设置隔离级别为（3）（4）	
+	
+（3）幻读
+	事务1给某个表增加了新的记录，或者删除了某个表的记录。（记录数有变化）
+	并且提交了。
+	事务2，在事务1提交之前，查询了这个表
+	          在事务1提交之后，查询了这个表
+			对于事务2来说，前后两次的记录数不一样。好比出现幻觉一样。多出或少了记录。多了少了数据
+			
+	如果想要避免幻读，那么需要设置隔离级别为（4）。
+	但是mysql在5.0之后，升级了。在隔离级别（3）的时候，就可以避免幻读了。
+
+4、如何查询当前连接是什么隔离级别
+mysql默认的隔离级别是：
++-----------------+
+| @@tx_isolation  |
++-----------------+
+| REPEATABLE-READ |
++-----------------+
+
+用户要查看的话：select @@tx_isolation;
+
+5、如何修改当前连接的隔离级别
+set tx_isolation = 'read-uncommitted';
+set tx_isolation = 'read-committed';
+set tx_isolation = 'REPEATABLE-READ';
+set tx_isolation = 'serializable';
+```
+
+
+
+银行 转账
+
+不可再分
+
+状态
+
+没有关系  独立
+
+一但提交  不能修改
+
+事务概念
+
+事务的思想：
+
+很多复杂的事物要分步进行（复杂的东西经常要拆分），但它们组成一个整体，要么整体生效，要么整体失效。这种思想反映到数据库上，就是多个SQL语句，要么所有执行成功，要么所有执行失败。
+
+数据库事务：
+
+数据库事务（Database Transaction）是指将一系列数据库操作当作一个逻辑处理单元的操作，**这个单元中的数据库操作要么完全执行，要么完全不执行。**通过将一组相关操作组合为一个逻辑处理单元，可以简化 错误恢复，并使应用程序更加可靠。
+
 **1、事务处理**（事务操作）：**保证所有事务都作为一个工作单元来执行，即使出现了故障，都不能改变这种执行方式。当在一个事务中执行多个操作时，要么所有的事务都被提交(commit)，那么这些修改就永久地保存下来；要么数据库管理系统将放弃所作的所有修改，整个事务回滚(rollback)到最初状态。**
+
+要么成功 要么失败
 
 2、事务的ACID属性：
 
@@ -3449,8 +3766,32 @@ where exists (select * from 员工表  where 部门表.部门编号 = 员工表.
 （4）**持久性（Durability）**
 持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来的其他操作和数据库故障不应该对其有任何影响
 
+事务：
+	事务是表示一组操作要么同时成功，要么同时失败，而且事务与事务之间是独立。
+	事务有ACID的特性。
+	（1）原子性（2）一致性（3）隔离性（4）持久性
+	
+银行转账
 
+	张三-》李四转账500元
+	张三原来的余额是1000元，
+	李四原来的余额是0元。
+	
+	（1）张三账户-500
+	（2）李四账户+500
+	
+	一致性：要么张三还是1000，李四是0
+		    要么张三现在是500，李四是500
+			
+	张三-500成功了，要给李四+500时，发现李四的账号异常，那么要回滚，还原刚刚张三-500的操作。
+	如果都成功了，就提交。
 
+事务：
+	网购，下订单
+
+	（1）创建订单--》订单表中要添加记录
+	（2）记录订单明细--》订单明细表中要添加订单都买了什么
+	（3）商品表修改-->库存量修改，销量增量	
 3、mysql开始事务和结束事务
 
 mysql默认是自动提交，执行一句就提交一句。
@@ -3505,7 +3846,49 @@ commit; 或 rollback; 或发生异常;
 
   > 注意：这里的隔离级别中间是减号，不是下划线。
 
+
+
+```mysql
+SQL：
+1、DDL
+2、DML
+3、DCL
+事务的commit等是属于DCL
+
+事务回滚和提交只对insert, update,delete有效。
+对create,drop等DDL语句是无效的。
+
+
+
+
+
+delete from 【数据库名.]表名称 【where 条件】;
+
+
+如果没有where条件，表示删除整张表的数据;
+
+
+truncate 【数据库名.]表名称;#删除整张表的数据，还可以使用这个语句，效率更高，但是它不能回滚
+删除了不能回滚
+
+用delete删除整张表和用truncate删除整张表的数据的区别？
+
+（1）truncate速度快
+
+（2）truncate无法回滚
+
+truncate因为底层是把表drop掉，然后新建了一张空表。
+
+delete因为底层是一行一行删数据。
+
+
+```
+
+
+
 # 第十一章  用户与权限
+
+
 
 1、身份认证：
 
@@ -3567,6 +3950,8 @@ show grants for user@host;
 
 ![1561009821823](imgs/1561009821823.png)
 
+alter 、alter routine、create、
+
 # 第十二章  经典问题
 
 ## 1、命令行操作sql乱码问题
@@ -3598,13 +3983,42 @@ set names gbk;是为了告诉服务器,客户端用的GBK编码,防止乱码。
 
 1:通过任务管理器或者服务管理,关掉mysqld(服务进程)
 
+此电脑-管理-服务和应用程序-服务-MySQL
+
+![image-20200529155131477](assets/image-20200529155131477.png)
+
+或者cmd
+
+```
+C:\Users\x1c>net stop mysql
+发生系统错误 5。
+
+拒绝访问。
+```
+
+权限不够，以管理员身份运行打开cmd
+
+```
+C:\WINDOWS\system32>net stop mysql
+MySQL 服务正在停止.
+MySQL 服务已成功停止。
+
+
+C:\WINDOWS\system32>
+
+```
+
+
+
 2:通过命令行+特殊参数开启mysqld
 
 mysqld --skip-grant-tables
 
 3:此时,mysqld服务进程已经打开,并且,不需要权限检查.
 
-4:mysql -uroot  无密码登陆服务器.
+4:mysql -uroot  无密码登陆MySQL,
+
+![image-20200529155503281](assets/image-20200529155503281.png)
 
 5: 修改权限表
 
@@ -3612,7 +4026,15 @@ mysqld --skip-grant-tables
 
 （2） update user set Password = password('123456') where User = 'root';
 
-  （3）flush privileges;
+  （3）flush privileges;  
+
+Host User Password   and host=‘localhost’
+
+```mysql
+
+```
+
+
 
 6:通过任务管理器,关掉mysqld服务进程.
 
@@ -3620,7 +4042,11 @@ mysqld --skip-grant-tables
 
 8:即可用修改后的新密码登陆.
 
+net stop mysql
 
+
+
+mysqld --skip-grant-tables
 
 ## 3、查看字符集和校对规则
 
