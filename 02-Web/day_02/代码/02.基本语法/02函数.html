@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>function</title>
+<script type="text/javascript">
+
+	/*	
+		1.函数声明
+			* 使用function声明函数
+				java: public void methodName(){}
+			* 语法
+				1. 有名函数：function mName(){}
+				2. 匿名函数：function(){}
+		2.函数调用
+			* js中调用函数时，不检查参数的匹配情况
+				* 形参>实参
+					* 实参为number型，返回：NaN
+					* 实参为string型，返回值：+undefined
+				* 形参<实参
+					* 自动忽略后面多余的参数
+			* NaN:not a number
+			* 调用匿名函数
+				1. window.onload = function(){}
+				2. var fun = function(){}
+		*/
+		
+		var fun = function(){
+			alert("dd");
+		}
+		
+// 		window.onload = fun;
+		
+	function add(i,j){
+		return (i+j);
+	}
+    //拼接？
+    // alert(add(1,"2"));//12
+    // alert(add(1))//NaN
+    // alert(add("s"))//sundefined   s  undefined
+    // alert(add(1))//1+undefinde  NaN
+
+// // 	alert(add(2,3,1));	//5   自动省略 shenglue  省略
+
+// 	function subtract(i,j){
+// 		return (i-j);
+// 	}
+// 	alert(subtract(2,"i"));
+		
+</script>
+</head>
+<body>
+
+</body>
+</html>

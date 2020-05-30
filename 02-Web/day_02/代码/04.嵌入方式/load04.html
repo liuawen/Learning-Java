@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>load04</title>
+<!-- 4.使用window.onload，完美解决此问题 -->
+<!--	onload  加载？ window 浏览器对象 整个页面都加载 -->
+<!--	window.onload:当前文档完全加载后执行。
+			完全：指的是包含图片，音频，视频等
+			不常见
+			先执行下面的 加载  加载完再执行
+			？ JS入口
+			-->
+<script type="text/javascript">
+	window.onload=function () {
+		var btnEle = document.getElementById("btnId");
+		btnEle.onclick = function () {
+			alert("hello");
+		}
+	}
+</script>
+</head>
+<body>
+	<button id="btnId">SayHello</button>
+</body>
+</html>

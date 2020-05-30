@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>load05</title>
+<!-- 5.引入外部的js文件 -->
+	<script type="text/javascript" src="demo.js"></script>
+<!--	有src不能写代码了    标签引用外部js 我们可以再写个js-->
+	<script type="text/javascript">
+		window.onload = function(){
+			alert("hello");
+		}
+	// window.onload 覆盖了前面的  一个了  hello
+	</script>
+</head>
+<body>
+	<button id="btnId">SayHello</button>
+</body>
+</html>

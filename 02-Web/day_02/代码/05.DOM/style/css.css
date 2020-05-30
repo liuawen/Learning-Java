@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+
+body {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button {
+	width: 300px;
+	margin-bottom: 10px;
+}
+
+#btnList {
+	float:left;
+}
+
+#total{
+	width: 450px;
+	float:left;
+}
+
+ul{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.inner li{
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+	margin: 5px;
+	background-color: #99ff99;
+	float:left;
+}
+
+.inner{
+	width:400px;
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom: 10px;
+	padding: 10px;
+	float: left;
+}

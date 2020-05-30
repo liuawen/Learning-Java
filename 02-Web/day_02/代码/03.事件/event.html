@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event</title>
+<script type="text/javascript">
+	//借助window.onload事件,在这个页面加载完成后执行程序代码
+	/*注意：
+		* 函数调用时，fun与fun()区别
+			fun():直接执行函数
+			fun:调用函数的引用
+	*/
+	window.onload = function(){
+		//造地雷
+		function dl(){
+			alert("拜拜，小鬼子！");
+		}
+		//找位置，埋地雷
+		var btnEle = document.getElementById("btnId");
+		btnEle.onclick = dl;
+		// btnEle.onclick = dl();//直接执行
+		//小鬼子。
+		
+	};
+</script>
+</head>
+<body>
+	<button id="btnId">SayHello</button>
+</body>
+</html>

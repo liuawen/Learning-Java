@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HelloWorld</title>
+<script type="text/javascript">
+	//借助window.onload事件,在这个页面加载完成后执行程序代码
+	window.onload = function(){
+		//获取按钮对象
+		var btnEle = document.getElementById("btnId");
+		//给按钮对象绑定单击响应函数
+		btnEle.onclick = function(){
+			//弹出警告框
+			alert("Hello");
+		};
+	};
+</script>
+</head>
+<body>
+	<button id="btnId">SayHello</button>
+</body>
+</html>

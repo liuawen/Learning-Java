@@ -1,0 +1,50 @@
+	<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form空白</title>
+<script type="text/javascript">
+	window.onload = function(){
+		
+		var btnEle = document.getElementById("btnSub");
+		btnEle.onclick = function(){
+			//1.取用户名值
+			var uname = document.getElementById("username").value;
+			if(uname == null || "" ==  uname){
+				//confirm 
+				alert("用户名不能为空，请重新输入！");
+// 				var yOn = confirm("确认删除吗？");
+// 				alert(yOn);
+				//取消默认行为
+				return false;
+			}
+		
+		}
+		
+	}
+	
+</script>
+</head>
+<body>
+	<h1>登录</h1>
+	<form action="login_success.html">
+		<table>
+			<tr>
+				<td>用户名:</td>
+				<td><input type="text" name="username" id="username"></td>
+			</tr>
+			<tr>
+				<td align="right">密码:</td>
+				<td><input type="password" name="pwd"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="reset">
+					<input id="btnSub" type="submit" value="登录">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<a href="../index.html">回首页</a>
+</body>
+</html>

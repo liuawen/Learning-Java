@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>load01</title>
+<script type="text/javascript" src="demo.js"></script>
+<script type="text/javascript">
+	alert("hello");
+</script>
+</head>
+<body>
+	<!--
+		* js的嵌入方式
+	 		1.行内js,写到标签的事件属性中：结构与行为相耦合，不建议使用
+			2.内部js,写到script标签中，script标签放到head标签中，无法获取按钮对象
+			3.外部js,引入外部的js文件
+				* <script type="text/javascript" src="demo.js"></script>
+				* 如果script标签中有src属性，此时该标签的作用为引入外部js,不能在该标签中书写js代码。
+		* window.onload:当前文档完全加载后执行。
+			完全：指的是包含图片，音频，视频等
+	 -->
+	<button id="btnId">SayHello</button>
+	
+</body>
+</html>
