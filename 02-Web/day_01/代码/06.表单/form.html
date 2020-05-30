@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+</head>
+<body>
+<!-- 	* 使用form标签制作表单 
+ 			* 使用input标签制作表单项
+ 				* type:表单项类型
+ 					* text:文本框
+ 					* password:密码框
+ 					* reset:重置
+ 					* submit:提交
+ 				* name:名称，有name属性，才可以提交数据到目标位置
+ 				* value:值
+ 				* checked:默认选中（radio|checkbox）
+ 			* 使用select option制作表单项
+ 			* action属性:表单提交的路径（位置）
+ 			* method属性:表单提交方式
+ 				* get
+ 				* post
+ 		 -->
+
+	<form action="success.html" method="post">
+		用户名：<input type="text" name="username"/><br/><br/>
+		密码：<input type="password" name="pwd"/><br/><br/>
+		
+		性别：<input type="radio" name="gender" value="man" />男
+		  	<input type="radio" name="gender" value="woman" checked="checked"/>女<br/><br/>
+		  	
+		 爱好：<input type="checkbox" name="hobby" value="basketball" />篮球
+		  	<input type="checkbox" name="hobby" value="football"/>足球
+		  	<input type="checkbox" name="hobby" value="volleyball" checked="checked"/>排球
+		  	<br/><br/>
+		  	
+	喜欢的明星：<select name="star">
+	            <option value="fbb">范冰冰</option>
+	            <option value="zy">杨颖</option>
+	            <option value="zzy">章子怡</option>
+	         </select>
+	         
+	         <br/>
+	         <br/>
+		<input type="reset">
+		<input type="submit">
+	</form>
+</body>
+</html>

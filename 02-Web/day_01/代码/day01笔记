@@ -1,0 +1,90 @@
+1、HTML语法
+      1)标签分为有开始有结束的标签和自结束标签
+      2)标签不区分大小写
+      3)标签可以嵌套，但不可以交叉嵌套
+      4)标签必须正常关闭
+      5)标签的属性必须有值，且属性值必须用引号括起来
+      6)注释不可以嵌套
+
+2、常用标签
+      1)标题标签h1-h6,大小粗细递减
+      2)<div></div>标签作用布局
+      3)<p></p>段落标签
+      4)转义字符       以&开始，以;结束
+                                          普通空格：&nbsp;
+                                          中文空格：&emsp;
+                                          大于号：&gt;
+                                          小于号：&lt;
+                                          版权号：&copy;
+      5)列表
+                                    有序列表<ol>
+                        <li></li>
+                                 </ol>
+                                    无序列表<ul>
+                        <li></li>
+                                 </ul>    type:disc 实心圆  、circle空心圆 、 square 方块
+
+3、插入图片<img alt="picture" src="img/wm.jpg" title="aaa">
+     img 标签插入图片
+     alt:图片插入路径有误时显示的文本
+     src:图片插入的路径
+     title:鼠标悬停时提示文本
+     ../返回上一级
+     src路径：当目标文件与当前文件在同一包中时可以直接访问。
+                                当目标文件和当前文件不在同一包中时，要先找其父包，再找目标文件。
+
+4、超链接	<a href="pages/target.html" target="_blank">跳转到目标页面，目标页面有美女！</a>
+             使用a标签制作超链接
+          href中是链接路径
+          target中有        _blank在新的页面下打开         
+                      _self在当前界面打开
+
+5、表格
+         <table>
+               <tr>             tr表示行
+                   <th>|<td>    th表头|td单元格
+               </tr>
+         </table>
+         
+         rowspan跨行
+         clospan跨列
+         
+         align="cender"居中
+         width
+         height
+         border边界
+                
+6、表单
+               使用form制作表单
+        input制作表单项
+         type表单项类型
+          text文本框
+          password密码框
+          reset重置
+          submit提交
+         name名称，有name属性才可以提交数据到目标位置
+         value值
+         checked默认选中(radio(单选)|checkbox(复选))
+                 使用select option 制作表单
+       action属性   表单提交的路径
+       method属性     表单提交的方式      get不安全     post安全
+7、CSS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
