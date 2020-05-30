@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+#total {
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+	margin: 5px;
+	background-color: #99ff99;
+	float: left;
+}
+
+.inner {
+	width: 400px;
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	padding: 10px;
+	float: left;
+}
+
+#employeeTable {
+	border-spacing: 1px;
+	background-color: black;
+	margin: 80px auto 10px auto;
+}
+
+th,td {
+	background-color: white;
+}
+
+#formDiv {
+	width: 250px;
+	border-style: solid;
+	border-width: 1px;
+	margin: 50px auto 10px auto;
+	padding: 10px;
+}
+
+#formDiv input {
+	width: 100%;
+}
+
+.word {
+	width: 40px;
+}
+
+.inp {
+	width: 200px;
+}

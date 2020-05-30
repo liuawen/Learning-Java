@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM对象和jQuery对象</title>
+<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//分别使用DOM对象和jQuery对象获取div中的文本
+		/*
+			* jQuery操作文本
+				text()		innerText
+				html()		innerHTML
+				val()		value
+			* DOM->jQuery:$(dom对象)
+			* jQuery->DOM:将jQuery看作为数组|集合
+				* $div[0] | $div.get(0)
+				
+		*/
+		//使用DOM对象调用DOM方法
+		$("#dom2dom").click(function(){
+			var div = document.getElementById("testDiv");
+			alert(div.innerText);
+		});
+		//使用jQuery对象调用jQuery方法
+		$("#jQuery2jQuery").click(function(){
+			var $div = $("#testDiv");
+			alert($div.text());
+		});
+		//使用DOM对象调用jQuery方法
+		$("#dom2jQuery").click(function(){
+			var div = document.getElementById("testDiv");
+			var $div = $(div);
+			alert($div.text());
+		});
+		//使用jQuery对象调用DOM方法
+		$("#jQuery2dom").click(function(){
+			var $div = $("#testDiv");
+// 			alert($div[0].innerText);
+			alert($div.get(0).innerText);
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="testDiv">挤进尚硅谷，注定你优秀！</div>
+	<br/>
+	<button id="dom2dom">使用DOM对象调用DOM方法</button>
+	<button id="dom2jQuery">使用DOM对象调用jQuery方法</button>
+	<button id="jQuery2jQuery">使用jQuery对象调用jQuery方法</button>
+	<button id="jQuery2dom">使用jQuery对象调用DOM方法</button>
+</body>
+</html>

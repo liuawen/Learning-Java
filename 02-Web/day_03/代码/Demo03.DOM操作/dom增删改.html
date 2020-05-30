@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM增删改</title>
+		<link rel="stylesheet" type="text/css" href="style/css.css" />
+		<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				$("#btn01").click(function(){
+					//在#city中添加广州节点 [append()]
+					
+				});
+				
+				$("#btn02").click(function(){
+					//创建一个"广州"节点,添加到#city下[appendTo()]
+					
+				});
+				
+				$("#btn03").click(function(){
+					//在#city中添加广州节点[prepend()]
+				});
+				
+				$("#btn04").click(function(){
+					//创建一个"广州"节点,添加到#city下[prependTo()]
+					
+				});
+				
+				
+				$("#btn05").click(function(){
+					//在#bj前面插入"广州"节点[before()]
+					
+				});
+				
+				$("#btn06").click(function(){
+					//将"广州"节点插入到#bj前面[insertBefore()]
+					
+				});
+				
+				$("#btn07").click(function(){
+					//在#bj后面插入"广州"节点[after()]
+					
+				});
+				
+				$("#btn08").click(function(){
+					//将"广州"节点插入到#bj后面[insertAfter()]
+					
+				});
+				
+				$("#btn09").click(function(){
+					//使用"广州"节点替换#bj节点[replaceWith()]
+					
+				});
+				
+				$("#btn10").click(function(){
+					//使用"广州"节点替换#bj节点[replaceAll()]
+					
+				});
+				
+				$("#btn11").click(function(){
+					//删除#rl节点[remove()]
+					
+				});
+				
+				$("#btn12").click(function(){
+					//掏空#city节点[empty()]
+					
+				});
+				
+				$("#btn13").click(function(){
+					//读取#city内的HTML代码
+					
+				});
+				
+				$("#btn14").click(function(){
+					//设置#bj内的HTML代码
+					
+				});
+				
+			});
+			
+		
+		</script>
+		
+	</head>
+	<body>
+		<div id="total">
+			<div class="inner">
+				<p>
+					你喜欢哪个城市?
+				</p>
+
+				<ul id="city">
+					<li id="bj">北京</li>
+					<li>上海</li>
+					<li>东京</li>
+					<li>首尔</li>
+				</ul>
+
+				<br>
+				<br>
+
+				<p>
+					你喜欢哪款单机游戏?
+				</p>
+
+				<ul id="game">
+					<li id="rl">红警</li>
+					<li>实况</li>
+					<li>极品飞车</li>
+					<li>魔兽</li>
+				</ul>
+
+				<br />
+				<br />
+
+				<p>
+					你手机的操作系统是?
+				</p>
+
+				<ul id="phone"><li>IOS</li><li id="android">Android</li><li>Windows Phone</li></ul>
+			</div>
+
+			<div class="inner">
+				gender:
+				<input type="radio" name="gender" value="male"/>
+				Male
+				<input type="radio" name="gender" value="female"/>
+				Female
+				<br>
+				<br>
+				name:
+				<input type="text" name="name" id="username" value="abcde"/>
+			</div>
+		</div>
+		<div id="btnList">
+			<div><button id="btn01">在#city中添加广州节点[append()]</button></div>
+			<div><button id="btn02">创建一个"广州"节点,添加到#city下[appendTo()]</button></div>
+			<div><button id="btn03">创建一个"广州"节点,添加到#city下[prepend()]</button></div>
+			<div><button id="btn04">创建一个"广州"节点,添加到#city下[prependTo()]</button></div>
+			<div><button id="btn05">在#bj前面插入"广州"节点[before()]</button></div>
+			<div><button id="btn06">将"广州"节点插入到#bj前面[insertBefore()]</button></div>
+			<div><button id="btn07">在#bj后面插入"广州"节点[after()]</button></div>
+			<div><button id="btn08">将"广州"节点插入到#bj后面[insertAfter()]</button></div>
+			<div><button id="btn09">使用"广州"节点替换#bj节点[replaceWith()]</button></div>
+			<div><button id="btn10">使用"广州"节点替换#bj节点[replaceAll()]</button></div>
+			<div><button id="btn11">删除#rl节点[remove()]</button></div>
+			<div><button id="btn12">掏空#city节点[empty()]</button></div>
+			<div><button id="btn13">读取#city内的HTML代码</button></div>
+			<div><button id="btn14">设置#bj内的HTML代码</button></div>
+		</div>
+	</body>
+</html>

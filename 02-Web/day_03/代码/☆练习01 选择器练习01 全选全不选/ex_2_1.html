@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>全选全不选1(空白)</title>
+	<script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+		/* 
+		功能需求：
+			①全选按钮：点击后所有爱好都选中
+			②全不选按钮：点击后所有爱好都不选中
+			③反选按钮：点击后所有爱好选中状态反转
+			④提交按钮：点击后依次弹出选中内容
+			
+			* checked属性值
+				* DOM取值:false|true
+				* jQuery取值:undefined|checked
+		
+		*/
+		$(function(){
+			//①全选按钮：点击后所有爱好都选中
+			$("#checkedAllBtn").click(function(){
+				$(":checkbox").attr("checked",true);
+			});
+			//②全不选按钮：点击后所有爱好都不选中
+			$("#checkedNoBtn").click(function(){
+				$(":checkbox").attr("checked",false);
+			});
+			//③反选按钮：点击后所有爱好选中状态反转
+			$("#checkedRevBtn").click(function(){
+				var $cb = $(":checkbox");
+				$cb.each(function(){
+					//取反
+					this.checked = !this.checked;
+// 					var cd = this.checked;
+// 					var cd = $(this).attr("checked");
+// 					alert(cd);
+
+// 					if(cd == true){
+// 						this.checked = false;
+// 					}else{
+// 						this.checked = true;
+// 					}
+				});
+			});
+			//④提交按钮：点击后依次弹出选中内容
+			$("#sendBtn").click(function(){
+				$(":checkbox:checked").each(function(){
+					alert($(this).val());
+// 					alert(this.value);
+				});
+			});
+		});
+		
+	</script>
+	</head>
+	<body>
+	
+		<form method="post" action="">
+		
+			你爱好的运动是：
+			<br />
+			<input type="checkbox" name="items" value="足球"/>足球
+			<input type="checkbox" name="items" value="篮球" />篮球
+			<input type="checkbox" name="items" value="羽毛球" />羽毛球
+			<input type="checkbox" name="items" value="乒乓球" />乒乓球
+			<br />
+			<input type="button" id="checkedAllBtn" value="全　选" />
+			<input type="button" id="checkedNoBtn" value="全不选" />
+			<input type="button" id="checkedRevBtn" value="反　选" />
+			<input type="button" id="sendBtn" value="提　交" />
+		</form>
+	
+	</body>
+</html>
