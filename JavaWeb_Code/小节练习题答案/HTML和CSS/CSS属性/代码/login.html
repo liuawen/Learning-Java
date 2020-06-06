@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>用户登录</title>
+		<style type="text/css">
+			table {
+				margin: auto;
+				height: 200px;
+				width: 300px;
+				border: 1px solid gray;
+				padding: 0px;
+				background-image: url(images/bg1.jpg);
+				border-radius: 5px;
+			}
+			
+			td {
+				text-align: center;
+				font-size: 14px;
+			}
+			
+			#user, #pass{
+				width: 150px;
+				height: 32px;
+				border: 1px solid black;
+				border-radius: 5px;
+			}
+			
+			th {
+				font-size: 18px;
+			}
+			
+			#user {
+				background-image: url(images/head.png);
+				background-repeat: no-repeat;
+				padding-left: 35px;
+			}
+			
+			#pass {
+				background-image: url(images/keyboard.png);
+				background-repeat: no-repeat;
+				padding-left: 35px;
+			}
+			
+			#user:hover, #pass:hover {
+				border: 1px dashed orange;
+			}
+			
+			#user:focus, #pass:focus {
+				background-color: lightyellow;
+			} 
+			
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th colspan="2">用户登录</th>
+			</tr>
+			<tr>
+				<td>用户名：</td>
+				<td><input type="text" id="user"/></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" id="pass"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="image" src="images/regbtn.jpg" /></td>
+			</tr>
+		</table>
+	</body>
+</html>

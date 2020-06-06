@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+			<script type="text/javascript">
+			function addli(){
+				 //创建文本对象
+				 var addtText=document.getElementById("addText");
+				 var textNode = document.createTextNode(addtText.value);
+				 //创建元素对象li
+				 var liNode = document.createElement("li");
+				 //将文本对象加入到元素对象li中
+				 liNode.appendChild(textNode);
+				 //获取ul
+				 var ulNode = document.getElementById("itcast");
+				 //把li加入到ul下
+				 ulNode.appendChild(liNode);
+				 addtText.value="";
+			}
+		</script>
+	</head>
+
+	<body>
+  		<ul id="itcast">
+  			<li>传智播客</li>
+  			<li>黑马程序员</li>
+  			<li>博学谷</li>
+  		</ul>
+  		<input type="text" id="addText" />
+  		<input type="button" value="动态生成列表项" onclick="addli()"/>
+  </body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>浏览器对象</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<span id="time">5</span>秒后跳转到百度页面</div>
+		
+		<script type="text/javascript">
+			var t = 5;
+			setInterval(refresh, 1000);
+			function refresh() {
+				document.getElementById("time").innerHTML = --t;
+				if (t == 0) {
+					location.href = "http://www.baidu.com";
+				}
+			}
+		</script>
+	</body>
+</html>

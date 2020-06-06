@@ -1,0 +1,96 @@
+<!doctype html>  
+<html lang="en">  
+	 <head>  
+	  	 <meta charset="UTF-8">    
+	  	 <title>三级联动</title> 
+		 <style type="text/css">
+			 body,td,th {font-size: 12px;}
+			 a {color:#006699; text-decoration:none;}
+			 a:hover {color:#f60;text-decoration:underline;}
+			 dd,dl,ul,li,p,form{ margin:0; padding:0;list-style-type:none;}
+			 h1,h2,h3,h4,h5{font-size:14px;margin:0; padding:0; line-height:28px;}
+			 .but{color:#FF8320; border:1px solid #ccc; background:#fff;cursor:pointer;height:25px; line-height:25px;width:80px;}
+			 .checkbox{border:1px solid #FFD7B7; margin:5px auto; background:#FFFBF4; padding:15px; width:600px;}
+			 .Test ul{ margin:0; padding:0;}
+			 .Test li{ border:1px solid #FFFBF4; margin-bottom:4px; cursor:pointer; width:100%; height:30px; line-height:30px; padding-left:5px; background:#FFFBF4}
+			 .Test li.myBox{ border:1px solid #e7e7e7; background:#f7f7f7;}
+			 .Problem{}
+			 .hidden{ display:none;}
+			 #Result p{ margin:8px; padding:8px; line-height:25px;background:#FFF; width:560px; border:1px dotted #FF8E20;}
+			 #Result i{ color:red; font-size:16px; font-style:normal;}
+			 #fu,#mu{ color:#ccc;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				 var inputs = document.getElementsByTagName("input");
+				 var gender_man = inputs[0],gender_woman = inputs[1],father = inputs[2],mother = inputs[3];
+				 var btn = document.getElementById("btn"),reset = document.getElementById("reset"),result = document.getElementById("Result2");
+				 
+				 var isNum = /^-?\d+(?:\.\d*)?(?:e[+\-]?\d+)?$/;
+				 
+				 btn.onclick = function(){
+				 var parseF = parseInt(father.value);
+				 var parseM = parseInt(mother.value);
+				 if(parseF>=250||parseF<=55||parseM>=250||parseM<=55){
+				     alert("您好 ！输入父母身高要都是55-250之间！");
+				 }else if(!isNum.test(father.value)||!isNum.test(mother.value)){
+				      alert('输入父母身高不是数字！');
+				 }else{
+					 if(gender_man.checked){
+					   	if(!isNum.test(father.value)) return;
+					   		result.innerHTML = parseInt(((parseF+parseM)/2)*1.08);
+					  	 }else if(gender_woman.checked){
+					   		 if(!isNum.test(mother.value)) return;
+					    		 result.innerHTML = parseInt((parseF*0.923+parseM)/2);
+					  	 }else{
+					   		 alert('请选择性别！');
+					  	 }
+					 }
+				 }
+				 reset.onclick = function(){
+				 	 
+					 result.innerHTML = '未知';
+					 father.value = '例：175';
+					 mother.value = '例：165';
+				 }
+			}
+			
+		 </script>
+	</head>
+	<body>
+		 <div class="checkbox">
+			 <div class="Test">
+			     <div id="Problem" >		
+				     <h3>儿童身高预测</h3>
+				     <form action="" method="get">
+					  	 <ul>
+					   		<li>儿童性别：<input name="gender" type="radio">男孩<input name="gender" type="radio"> 女孩 </li>
+					 　　　　 <li>爸爸的身高：<input type="text" size="8" maxlength="8" id="fu" fu="例：175" value="例：175" onClick="if(this.getAttribute('value')==this.getAttribute('fu'))this.value=''" onBlur="if(this.value=='')this.value=this.getAttribute('fu');"> 厘米</li>
+					 　　　　 <li>妈妈的身高：<input type="text" size="8" maxlength="8" id="mu" mu="例：165" value="例：165" onClick="if(this.getAttribute('value')==this.getAttribute('mu'))this.value=''" onBlur="if(this.value=='')this.value=this.getAttribute('mu');"> 厘米</li>
+					     </ul>
+					     <input type="button"  class="but"  id="btn" value="查看结果" />　
+					 	 <input type="button"  class="but"  id="reset" value="重新测试" onclick=""/>
+					 </form>
+				 </div>
+				
+				 <div id="Result" >
+				     <h3>测试结果</h3>
+				    <p>
+				　   	小孩未来的身高是：<i id="Result2">未知</i> 厘米
+					 </p>
+				 </div>
+			 </div>
+		 </div>
+		 
+		注解：<br>
+		
+		儿子成年身高=[(父身高+母身高)/2]×1.08<br>
+		女儿成年身高=(父身高×0.923+母身高)/2<br>
+		
+		错误提示有提示：<br>
+		没选择儿童性别！<br>
+		输入父母身高不是数字！<br>
+		<font color="red">输入父母身高要都是55-250之间！
+		
+	</body>
+</html>

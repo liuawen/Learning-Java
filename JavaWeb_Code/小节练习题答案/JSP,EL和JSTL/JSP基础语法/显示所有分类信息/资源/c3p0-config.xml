@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	<!-- 默认配置，如果没有指定则使用这个配置 默认配置最常用 建议放在最开头。 放其他地方也没问题 -->
+	<default-config>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/day38_db
+		</property>
+		<property name="user">root</property>
+		<property name="password">root</property>
+		<property name="checkoutTimeout">30000</property>
+		<property name="idleConnectionTestPeriod">30</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+		<user-overrides user="test-user">
+			<property name="maxPoolSize">10</property>
+			<property name="minPoolSize">1</property>
+			<property name="maxStatements">0</property>
+		</user-overrides>
+	</default-config>
+
+	<!-- 命名的配置 一般的大型项目中，使用最多是命名配置 -->
+	<named-config name="itcast">
+		<!-- 连接数据库的4项基本参数 -->
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/day09_db
+		</property>
+		<property name="user">root</property>
+		<property name="password">1234</property>
+		<!-- 如果池中数据连接不够时一次增长多少个 -->
+		<property name="acquireIncrement">5</property>
+		<!-- 初始化连接数 -->
+		<property name="initialPoolSize">20</property>
+		<!-- 最小连接受 -->
+		<property name="minPoolSize">10</property>
+		<!-- 最大连接数 -->
+		<property name="maxPoolSize">40</property>
+		<!-- -JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量 -->
+		<property name="maxStatements">0</property>
+		<!-- 连接池内单个连接所拥有的最大缓存statements数 -->
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+	<named-config name="heima">
+		<!-- 连接数据库的4项基本参数 -->
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/day10_db
+		</property>
+		<property name="user">root</property>
+		<property name="password">1234</property>
+		<!-- 如果池中数据连接不够时一次增长多少个 -->
+		<property name="acquireIncrement">5</property>
+		<!-- 初始化连接数 -->
+		<property name="initialPoolSize">20</property>
+		<!-- 最小连接受 -->
+		<property name="minPoolSize">10</property>
+		<!-- 最大连接数 -->
+		<property name="maxPoolSize">40</property>
+		<!-- -JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量 -->
+		<property name="maxStatements">0</property>
+		<!-- 连接池内单个连接所拥有的最大缓存statements数 -->
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+</c3p0-config>

@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>鼠标经过链接显示说明信息</title>
+		<style type="text/css">
+			 body {  font-family: "宋体"; font-size: 9pt; margin-top: 0px; margin-left: 0px; margin-right: 0px}
+			 A { COLOR: black; FONT-SIZE: 9pt; FONT-WEIGHT: 400; TEXT-DECORATION: none }
+			 A:hover { COLOR: red; FONT-SIZE: 9pt; FONT-WEIGHT: 400; TEXT-DECORATION: underline }
+			 a:active     { font: 9pt "宋体"; cursor: hand; color: #FF0033 }
+		</style>
+	</head>
+	<body>
+		<table border=1 bordercolor=#000000 borderlight=green style="border-collapse: collapse" cellpadding="0" cellspacing="0">
+		<tr><td align=center><font size=5 color=red face="Arial, Helvetica, sans-serif"><strong>下面为效果显示区!</strong></font></td></tr>
+			<tr>
+				<td align=center>
+					<table border="0">
+						<tr>
+							 <td valign=top width="50">
+								 <a onMouseOver="itcast()" href="http://www.itcast.cn">传智播客</a>
+								 <a onMouseOver="itheima()" href="http://www.itheima.cn">酷丁鱼</a>
+								 <a onMouseOver="coolfish()" href="http://www.itcast.cn">黑马程序员</a>
+							 </td>
+							 <td width="270">
+								<a id="words">把鼠标放在文字链接上，就会出现相应的说明信息.</a>
+							 </td>
+						 </tr>
+					 </table>
+				 </td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

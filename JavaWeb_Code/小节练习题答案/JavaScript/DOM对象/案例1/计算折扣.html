@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script language="JavaScript">
+		
+		//计算书本折扣后价格，并弹出提示
+		function getPrice(){
+			
+			var book_name = document.getElementById("bookname").value;
+			var book_author = document.getElementById("bookauthor").value;
+			var book_price = document.getElementById("bookprice").value;
+			var discount = document.getElementById("booksale").value;
+			
+			var price = book_price * discount;
+			var _alert = "这本书名为《"+book_name+"》，"+book_author+"编著的书，折扣为："+discount+"折，折扣后价格为："+price;
+			alert(_alert);
+		}
+		</script>
+	</head>
+	<body>
+		<form name="myform">
+			书名：<input type="text" name="bookname"  id="bookname"><br/>
+			作者：<input type="text" name="bookauthor"  id="bookauthor"><br/>
+			价格：<input type="text" name="bookprice" id="bookprice"><br/>
+			折扣：<input type="text" name="booksale" id="booksale"><br/>
+			<input type="button" onclick="getPrice()" value="计算折扣价">
+		</form>
+	</body>
+</html>

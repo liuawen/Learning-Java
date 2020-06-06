@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="contentDiv"><span id="time">5</span>秒后显示隐藏的内容</div>
+		<div id="hideDiv" style="display: none;">我是隐藏的div</div>
+	</body>
+	<script type="text/javascript">
+		var t = 5;
+		var time;
+		time=setInterval(refresh, 1000);
+
+		function refresh() {
+			document.getElementById("time").innerHTML = --t;
+			if(t == 0) {
+				document.getElementById("hideDiv").style.display="block";
+				document.getElementById("contentDiv").style.display="none";
+			}
+		}
+	</script>
+
+</html>

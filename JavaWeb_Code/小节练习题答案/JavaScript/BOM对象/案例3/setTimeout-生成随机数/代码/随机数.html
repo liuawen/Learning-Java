@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<span  id="layer">000000</span>
+		<input type="button" value='生成随机数' id="btn" onclick="" />
+		<script>
+			var randomBtn = document.getElementById("btn");
+			randomBtn.onclick = function() {
+				startRoll();
+				setTimeout('clearTimeout(time)', 1000);
+			}
+			
+			function startRoll() {
+				var num = Math.floor((Math.random() * 900000 + 100000));
+				var result = document.getElementById("layer");
+				result.innerHTML = num;
+				time = setTimeout('startRoll()', 10);
+			}
+		</script>
+	</body>
+</html>
