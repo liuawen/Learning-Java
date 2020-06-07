@@ -16,8 +16,13 @@ public class UserDemo {
    @Test
    public void test1(){
       ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
+      ClassPathXmlApplicationContext app2 = new ClassPathXmlApplicationContext("applicationContext.xml");
 
       UserDao userDao =(UserDao) app.getBean("userDao");
+      UserDao userDao2 =(UserDao) app.getBean("userDao");
       userDao.say();
+      ((ClassPathXmlApplicationContext)app).close();
+
+//      app2.close();
    }
 }

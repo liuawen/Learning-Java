@@ -4,5 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    id不重复   这样配置 要存在无参构造  -->
 <!--    默认是singleton的  prototype 多例的 -->
-    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"></bean>
+<!--    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl" scope="prototype"></bean>-->
+    <bean id="userDao" class=" cn.liuawen.factory.StaticFactory" factory-method="getUserDao"></bean>
+<!--    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy">-->
+
+<!--    </bean>-->
 </beans>
