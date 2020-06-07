@@ -1,0 +1,65 @@
+myredis:
+  redis-authentication: 
+    host: 192.168.68.139
+    port: 6379
+    password: mldnjava
+    timeout: 1000
+    database: 0
+    pool:
+      max-active: 10
+      max-idle: 8
+      min-idle: 2
+      max-wait: 100
+  redis-authorization:  # 名字随便写的，没有自动配置的作用，只能够读取
+    host: 192.168.68.139
+    port: 6379
+    password: mldnjava
+    timeout: 1000
+    database: 1
+    pool:
+      max-active: 10
+      max-idle: 8
+      min-idle: 2
+      max-wait: 100
+  redis-activeSessionCache:  # 名字随便写的，没有自动配置的作用，只能够读取
+    host: 192.168.68.139
+    port: 6379
+    password: mldnjava
+    timeout: 1000
+    database: 2
+    pool:
+      max-active: 10
+      max-idle: 8
+      min-idle: 2
+      max-wait: 100
+
+
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml  # 定义mybatis核心配置文件的路径
+  type-aliases-package: cn.mldn.microboot.vo       # 定义别名出现的开发包
+  mapper-locations:
+  - classpath:mybatis/mapping/**/*.xml            # 所有的映射文件路径
+
+spring: 
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  # 配置数据源类型
+    url: jdbc:mysql://localhost:3306/mldn         # 数据库的连接地址
+    driver-class-name: org.gjt.mm.mysql.Driver    # 驱动程序
+    username: root                                # 用户名
+    password: mysqladmin                          # 密码
+    dbcp2:                                        # 数据库连接池配置
+      min-idle: 1                                 # 最小维持连接数
+      max-idle: 1                                 # 最大维持连接数
+      max-total: 1                                # 最大的可用连接数
+      max-wait-millis: 200                        # 最大等待时间
+      initial-size: 1                             # 初始化连接数
+  thymeleaf:
+    prefix: classpath:/templates/pages/ 
+  messages: 
+    basename: i18n/Messages
+
+server: 
+  port: 80   # 定义服务端口
+

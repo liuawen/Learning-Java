@@ -1,0 +1,24 @@
+spring: 
+  jpa:                                            # 定义JPA的相关配置项]
+    show-sql: true                                # 显示执行的SQL
+    properties:                                   # 配置JPA属性
+       hibernate.format_sql: true                 # 格式化SQL
+       hibernate.cache.use_second_level_cache: true   # 二级缓存配置
+       hibernate.cache.region.factory_class : org.hibernate.cache.ehcache.EhCacheRegionFactory
+       hibernate.cache.use_query_cache: true      # 查询缓存
+       javax.persistence.sharedCache.mode: ENABLE_SELECTIVE
+    hibernate: 
+      ddl-auto: update                            # 自动DDL更新
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3306/mldn           # 数据库连接地址
+    username: root                                  # 数据库用户名
+    password: mysqladmin                            # 数据库连接密码
+    dbcp2:                                          # 进行数据库连接池的配置
+      min-idle: 1                                   # 数据库连接池的最小维持连接数    
+      initial-size: 1                               # 初始化提供的连接数
+      max-total: 1                                  # 最大的连接数
+      max-wait-millis: 3000                         # 等待连接获取的最大超时时间
+server:
+  port: 80

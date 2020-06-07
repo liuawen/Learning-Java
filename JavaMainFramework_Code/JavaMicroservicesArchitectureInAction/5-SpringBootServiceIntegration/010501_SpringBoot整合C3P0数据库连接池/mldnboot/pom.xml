@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cn.mldn</groupId>
+	<artifactId>mldnboot</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>					<!-- 定义为pom类型 -->
+
+	<name>mldnboot</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<jdk.version>1.8</jdk.version>
+	<c3p0.version>0.9.1.2</c3p0.version>
+	<mysql-connector-java.version>5.1.21</mysql-connector-java.version>
+		<spring-boot-dependencies.version>1.5.9.RELEASE</spring-boot-dependencies.version>
+<!--		<spring-boot-dependencies.version>2.3.0.RELEASE</spring-boot-dependencies.version>-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>springloaded</artifactId>
+				<version>1.2.4.RELEASE</version>
+			</dependency>
+			<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>${c3p0.version}</version>
+		</dependency>
+			<dependency>			<!-- 定义SpringBoot依赖管理 -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<finalName>mldnboot</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.yml</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+					<include>**/*.p12</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/view</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>									<!-- 配置编译插件 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>		<!-- 源代码使用的开发版本 -->
+					<target>${jdk.version}</target>		<!-- 需要生成的目标class文件的编译版本 -->
+<!--					<encode>${project.build.sourceEncoding}</encode>-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>mldnboot-integration</module>
+		<module>mldnboot-base</module>
+		<module>mldnboot-thymeleaf</module>
+		<module>mldnboot-web</module>
+	</modules>
+</project>

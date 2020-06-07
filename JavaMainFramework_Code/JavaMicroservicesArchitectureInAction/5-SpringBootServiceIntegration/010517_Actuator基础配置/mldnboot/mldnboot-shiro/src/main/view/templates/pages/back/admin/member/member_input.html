@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SpringBoot模版渲染</title>
+	<link rel="icon" type="image/x-icon" th:href="@{/images/mldn.ico}"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/> 
+</head> 
+<body>
+	<form th:action="@{/member_show}" method="post">
+		用户编号：<input type="text" name="mid" id="mid"/><br/>
+		用户姓名：<input type="text" name="name" id="name"/><br/>
+		<input type="submit" value="发送"/>
+		<input type="reset" value="重置"/>
+	</form>
+	
+</body>
+</html>

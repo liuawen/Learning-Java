@@ -1,0 +1,26 @@
+myredis:                    # 自定义Redis连接配置
+  redis-one:                  # 第一个Redis连接
+    host: redis-server-1      # Redis主机
+    port: 6379              # 连接端口
+    password: mldnjava    # 认证信息
+    timeout: 1000       # 连接超时时间
+    database: 0     # 默认数据库
+    pool:               # 连接池配置
+      max-active: 10        # 最大连接数
+      max-idle: 8         # 最大维持连接数
+      min-idle: 2         # 最小维持连接数
+      max-wait: 100         # 最大等待连接超时时间
+  redis-two:  # 第二个Redis连接
+    host: redis-server-2    # Redis主机
+    port: 6379            # 连接端口
+    password: mldnjava      # 认证信息
+    timeout: 1000     # 连接超时时间
+    database: 1   # 默认数据库
+    pool:               # 连接池配置
+      max-active: 10        # 最大连接数
+      max-idle: 8         # 最大维持连接数
+      min-idle: 2         # 最小维持连接数
+      max-wait: 100         # 最大等待连接超时时间
+
+server:
+  port: 80

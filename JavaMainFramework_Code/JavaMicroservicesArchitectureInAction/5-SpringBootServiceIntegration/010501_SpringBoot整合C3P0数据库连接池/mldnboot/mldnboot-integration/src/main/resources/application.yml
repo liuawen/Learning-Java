@@ -1,0 +1,11 @@
+c3p0:                                       # 定义C3P0配置
+  jdbcUrl: jdbc:mysql://localhost:3306/liuawen # 数据库连接地址
+  user: root                                # 数据库用户名
+  password: 123456                          # 数据库密码
+  driverClass: org.gjt.mm.mysql.Driver      # 数据库驱动程序
+  minPoolSize: 1                            # 最小连接数
+  maxPoolSize: 1                            # 最大连接数
+  maxIdleTime: 3000                         # 最大等待时间
+  initialPoolSize: 1                        # 初始化连接数
+server:
+  port: 80

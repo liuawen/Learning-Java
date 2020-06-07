@@ -1,0 +1,6 @@
+server:
+  port: 80
+#management:
+#  security:
+#    enabled: false # 现在关闭系统的安全配置 
+  

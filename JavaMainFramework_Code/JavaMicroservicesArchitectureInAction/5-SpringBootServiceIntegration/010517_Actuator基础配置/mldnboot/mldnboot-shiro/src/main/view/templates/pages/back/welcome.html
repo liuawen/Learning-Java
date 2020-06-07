@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<title>SpringBoot模版渲染</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body> 
+	<h1>显示部门信息的内容</h1>
+	<h2>欢迎：<shiro:principal/></h2>
+	<h2><shiro:hasRole name="dept">拥有dept角色</shiro:hasRole></h2>
+</body>
+</html>

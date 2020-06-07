@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SpringBoot模版渲染</title>
+	<script type="text/javascript" th:src="@{/js/message/message_show.js}"></script> 
+	<link rel="icon" type="image/x-icon" th:href="@{/images/mldn.ico}"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/> 
+</head> 
+<body>
+	<p th:text="${#httpServletRequest.getHeader('Accept-Language')}"/>
+	<p th:text="${#httpServletRequest.getSession().getId()}"/>
+	<p th:text="${#httpSession.getId()}"/> 
+	<p th:text="${#httpServletRequest.getServletContext().getRealPath('/')}"/> 
+	<img th:src="@{/images/qiangzi.jpg}" style="height:100px;"/>
+</body>
+</html>

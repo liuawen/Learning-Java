@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">	<!-- 引入命名空间 -->
+<head>
+	<title>SpringBoot模版渲染</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<link rel="icon" type="image/x-icon" href="/images/mldn.ico"/>
+</head>
+<body> 
+	<table border="1">
+		<tr><td>No.</td><td>key</td><td>编号</td><td>姓名</td><td>年龄</td><td>工资</td><td>生日</td></tr>
+		<tr th:each="memberEntry,memberStat:${allMembers}">
+			<td th:text="${memberStat.index + 1}"/>
+			<td th:text="${memberEntry.key}"/>
+			<td th:text="${memberEntry.value.mid}"/>
+			<td th:text="${memberEntry.value.name}"/>
+			<td th:text="${memberEntry.value.age}"/>
+			<td th:text="${memberEntry.value.salary}"/>
+			<td th:text="${memberEntry.value.birthday}"/>
+		</tr>
+	</table>
+	<hr/>
+	<p th:text="${#maps.containsKey(allMembers,'mldn-3')}"/>	<!-- 判断“key="mldn-3"”是否存在 -->
+	<p th:text="${allMembers['mldn-3'].name}"/>					<!-- 根据key获取指定的成员属性 -->
+	
+</body>
+</html> 

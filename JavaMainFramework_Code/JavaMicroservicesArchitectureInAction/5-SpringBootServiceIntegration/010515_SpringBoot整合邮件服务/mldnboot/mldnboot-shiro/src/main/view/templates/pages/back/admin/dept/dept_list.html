@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<title>SpringBoot模版渲染</title>
+	<script type="text/javascript" th:src="@{jquery/jquery.min.js}"></script>
+	<link type="text/css" rel="stylesheet" th:href="@{bootstrap/css/bootstrap.css}"/>
+	<link rel="icon" type="image/x-icon" th:href="@{/images/mldn.ico}"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/> 
+</head>  
+<body>
+	<h2>欢迎：<shiro:principal/></h2>
+	<h2><shiro:hasRole name="dept">拥有dept角色</shiro:hasRole></h2>
+	<table style="width:80%" border="1">
+		<tr><td>No.</td><td>部门编号</td><td>名称</td><td>位置</td></tr>
+		<tr th:each="dept,deptStat:${allDepts}" th:class="${deptStat.even ? 'text-danger' : 'text-success'}">
+			<td th:text="${deptStat.index + 1}"/>
+			<td th:text="${dept.deptno}"/>
+			<td th:text="${dept.dname}"/>
+			<td th:text="${dept.loc}"/>
+		</tr> 
+	</table>
+</body> 
+</html>

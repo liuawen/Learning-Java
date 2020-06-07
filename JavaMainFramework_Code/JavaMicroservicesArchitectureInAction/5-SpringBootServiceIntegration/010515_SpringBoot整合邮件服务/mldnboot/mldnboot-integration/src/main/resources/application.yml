@@ -1,0 +1,11 @@
+spring:
+  mail:
+    host: smtp.qq.com                       # 邮箱服务器
+    username: 你自己的用户名，mldnjava@qq.com   # 用户名
+    password: ansqwtcvuxnvbgag              # 授权码
+    properties:
+      mail.smtp.auth: true                  # stmp授权开启 
+      mail.smtp.starttls.enable: true       # 启动tls服务
+      mail.smtp.starttls.required: true     # 启动tls支持
+server:
+  port: 80

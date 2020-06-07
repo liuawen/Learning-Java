@@ -1,0 +1,10 @@
+server:
+  port: 80
+#management:
+#  security:
+#    enabled: false # 现在关闭系统的安全配置 
+info:
+  app.name: mldn-microboot              # 应用名称
+  company.name: www.mldn.cn             # 开发公司
+  pom.artifactId: $project.artifactId$   # 项目名称，通过pom获得
+  pom.version: $project.version$        # 项目版本，通过pom获得

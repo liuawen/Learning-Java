@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SpringBoot模版渲染</title>
+	<link rel="icon" type="image/x-icon" th:href="@{/images/mldn.ico}"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/> 
+</head> 
+<body>
+	<p th:text="${#maps.containsKey(allDepts,10L)}"/>
+	<p th:text="${allDepts[10L]}"/>
+	<hr/>
+	<div th:object="${member}">
+		<span th:text="'姓名：' + *{name}"/>、
+		<span th:text="'部门：' + ${allDepts[member.deptno]}"/>、
+	</div>
+	<hr/>  
+	<div th:include="@{/plugins/footer} :: comanyInfo" th:with="iid=2,sid=21"/>
+	
+	
+</body>
+</html>

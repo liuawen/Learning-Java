@@ -1,0 +1,8 @@
+spring: 
+  rabbitmq:
+    addresses: rabbitmq-server      # rabbitmq服务主机名称
+    username: mldnjava              # 用户名
+    password: hello                 # 密码
+    virtual-host: /                 # 虚拟主机
+server:
+  port: 80

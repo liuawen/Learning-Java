@@ -38,7 +38,7 @@ public class ContainerTest {
 
         // 清空容器
         container.clear();
-        System.out.println( c.size() );
+        System.out.println( container.size() );
 
         // 创建一个集合，并进行操作
         ArrayList<String> arrayList = new ArrayList<String>();
@@ -46,8 +46,6 @@ public class ContainerTest {
 
         // 如果此集合包含指定集合中的所有元素，则返回 true
         System.out.println( container.containsAll(arrayList) );
-
-
 
     }
 }
