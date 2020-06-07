@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    id不重复   这样配置 要存在无参构造  -->
+<!--    默认是singleton的  prototype 多例的 -->
+    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"></bean>
+</beans>
