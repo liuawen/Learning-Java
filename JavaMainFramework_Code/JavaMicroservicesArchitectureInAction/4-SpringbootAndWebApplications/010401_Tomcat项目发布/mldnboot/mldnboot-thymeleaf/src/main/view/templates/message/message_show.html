@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">		<!-- 引入命名空间 -->
+<head>
+	<title>SpringBoot模版渲染</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+	<p th:text="'官方网站：' + ${url}"/>
+	<p th:utext="'官方网站：' + ${url}"/>
+	<p th:text="'用户名：' + ${mid}"/>
+	<p th:text="1 + 2"/>				<!-- 加法计算 -->
+	<p th:text="'Hello ' + 'World !'"/>	<!-- 字符串连接 -->
+	
+</body>
+</html>

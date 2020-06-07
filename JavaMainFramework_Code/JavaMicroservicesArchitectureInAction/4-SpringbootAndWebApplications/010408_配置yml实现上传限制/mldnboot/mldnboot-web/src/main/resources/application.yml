@@ -1,0 +1,12 @@
+spring:
+  http:
+    multipart:
+      enabled: true           # 启用http上传
+      max-file-size: 10MB     # 设置支持的单个上传文件的大小限制
+      max-request-size: 20MB  # 设置最大的请求的文件大小，设置总体大小请求
+      file-size-threshold: 512KB   # 当上传文件达到指定配置量的时候会将文件内容写入磁盘
+      location: /             # 设置上传的临时目录
+  messages:                 # 定义资源文件，多个资源文件使用“,”分割
+    basename: i18n/Messages
+server:
+  port: 80

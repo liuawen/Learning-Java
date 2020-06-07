@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">	<!-- 引入命名空间 -->
+<head>
+	<title>SpringBoot模版渲染</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<link rel="icon" type="image/x-icon" href="/images/mldn.ico"/>
+</head>
+<body>
+	<h2 th:text="#{welcome.url}"/>			<!-- 读取资源文件 -->
+	<h2 th:text="#{welcome.msg('李兴华')}"/>	<!-- 读取资源文件 -->
+</body>
+</html>

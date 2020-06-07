@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">	<!-- 引入命名空间 -->
+<head>
+	<title>SpringBoot模版渲染</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<link rel="icon" type="image/x-icon" href="/images/mldn.ico"/>
+</head>
+<body> 
+	<p th:if="${#sets.contains(allInfos,'mldn')}">存在有“mldn”的信息！</p>
+	<p th:text="${'集合长度：' + #sets.size(allInfos)}"/>
+</body>
+</html> 

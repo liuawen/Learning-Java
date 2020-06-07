@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>全局异常处理</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+	<p th:text="${'错误路径：' + url}"/>
+	<p th:text="${'错误信息：' + exception.message}"/>
+</body>
+</html>

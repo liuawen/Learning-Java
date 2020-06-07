@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">		<!-- 引入命名空间 -->
+<head>
+	<title>SpringBoot模版渲染</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+	<p th:text="${'字符串替换：' + #strings.replace('www.mldn.cn','mldn.cn','jixianit.com')}"/>
+	<p th:text="${'字符串转大写：' + #strings.toUpperCase('www.mldn.cn')}"/>
+	<p th:text="${'字符串截取：' + #strings.substring(info,4)}"/>
+</body>
+</html>
