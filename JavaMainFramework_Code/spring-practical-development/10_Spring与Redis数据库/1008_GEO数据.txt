@@ -1,0 +1,9 @@
+geoadd point 116.403963 39.915119 tiananmen 116.417876 39.915411 wangfujing 116.404354 39.904748 qianmen
+
+geopos point tiananmen
+
+geodist point tiananmen qianmen m
+
+georadius point 116.415901 39.914805 1000 m withdist desc count 2 
+
+georadiusbymember point tiananmen 1500 m withdist asc

@@ -1,0 +1,24 @@
+https://github.com/junegunn/redis-stat
+
+apt-get -y install ruby ruby-dev rubygems
+
+apt-get -y install git
+
+cd /usr/local/src
+git clone https://github.com/junegunn/redis-stat.git
+
+cd /usr/local/src/redis-stat/bin/
+
+gem install redis-stat
+
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis.conf
+
+/usr/local/src/redis-stat/bin/redis-stat 192.168.68.139:6379 -a mldnjava
+
+/usr/local/redis/bin/redis-benchmark -h redis-single -p 6379 -n 10000 -d 30 -c 200
+
+/usr/local/src/redis-stat/bin/redis-stat redis-single:6379 -a mldnjava --server=80 --daemon --verbose
+
+192.168.68.139 	redis-single
+
+http://redis-single/

@@ -1,0 +1,19 @@
+redis-master   192.168.68.140
+redis-slave-a   192.168.68.141
+redis-slave-b   192.168.68.142
+
+
+vim /usr/local/redis/conf/redis.conf
+
+slaveof 192.168.68.140 6379
+masterauth mldnjava
+
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis.conf
+
+/usr/local/redis/bin/redis-cli -h 192.168.68.140 -p 6379 -a mldnjava info replication
+
+/usr/local/redis/bin/redis-cli -h 192.168.68.140 -p 6379 -a mldnjava set mldn hello
+
+/usr/local/redis/bin/redis-cli -h 192.168.68.141 -p 6379 -a mldnjava get mldn
+
+/usr/local/redis/bin/redis-cli -h 192.168.68.140 -p 6379 -a mldnjava del mldn

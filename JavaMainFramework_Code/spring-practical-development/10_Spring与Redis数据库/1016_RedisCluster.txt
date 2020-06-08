@@ -1,0 +1,79 @@
+apt-get install ruby ruby-dev rubygems
+
+mkdir -p /usr/data/redis/{redis-6379,redis-6380,redis-6381}/{logs,run,dbcache,config}
+
+cp /usr/local/redis/conf/redis.conf /usr/local/redis/conf/redis-6379.conf
+
+vim /usr/local/redis/conf/redis-6379.conf
+
+protected-mode no
+port 6379
+pidfile /usr/data/redis/redis-6379/run/redis_6379.pid
+dir /usr/data/redis/redis-6379/dbcache
+logfile "/usr/data/redis/redis-6379/logs/redis_6379.log"
+# requirepass mldnjava
+cluster-enabled yes
+cluster-config-file /usr/data/redis/redis-6379/config/nodes-6379.conf
+cluster-node-timeout 15000
+
+
+cp /usr/local/redis/conf/redis-6379.conf /usr/local/redis/conf/redis-6380.conf
+cp /usr/local/redis/conf/redis-6379.conf /usr/local/redis/conf/redis-6381.conf
+
+
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis-6379.conf
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis-6380.conf
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis-6381.conf
+
+
+ps -ef | grep redis
+
+gem install redis
+
+cp /usr/local/src/redis-4.0.8/src/redis-trib.rb /usr/local/redis/bin/
+
+/usr/local/redis/bin/redis-trib.rb create --replicas 2 192.168.68.143:6379 192.168.68.143:6380 192.168.68.143:6381 192.168.68.144:6379 192.168.68.144:6380 192.168.68.144:6381 192.168.68.145:6379 192.168.68.145:6380 192.168.68.145:6381
+
+/usr/local/redis/bin/redis-cli -h 192.168.68.143 -p 6380
+
+config set protected-mode yes
+config set requirepass mldnjava
+auth mldnjava
+config set masterauth mldnjava
+config rewrite
+shutdown
+
+
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis-6379.conf
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis-6380.conf
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis-6381.conf
+
+
+vim /var/lib/gems/2.3.0/gems/redis-4.0.1/lib/redis/client.rb
+
+class Redis
+  class Client
+    DEFAULTS = {
+      :url => lambda { ENV["REDIS_URL"] },
+      :scheme => "redis",
+      :host => "127.0.0.1",
+      :port => 6379,
+      :path => nil,
+      :timeout => 5.0,
+      :password => "mldnjava",
+      :db => 0,
+      :driver => nil,
+      :id => nil,
+      :tcp_keepalive => 0,
+      :reconnect_attempts => 1,
+      :inherit_socket => false
+    }
+
+
+/usr/local/redis/bin/redis-trib.rb check 192.168.68.145:6380
+
+/usr/local/redis/bin/redis-cli -h 192.168.68.145 -p 6379 -a mldnjava -c
+
+set mldn helloworld
+
+get mldn

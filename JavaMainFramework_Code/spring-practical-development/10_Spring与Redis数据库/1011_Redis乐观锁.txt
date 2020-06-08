@@ -1,0 +1,11 @@
+set age 16
+
+watch age
+
+multi
+
+set age 30000
+
+set age 12
+
+exec

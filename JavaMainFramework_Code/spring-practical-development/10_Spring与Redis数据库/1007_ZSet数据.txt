@@ -1,0 +1,12 @@
+zadd keyword-20191010 5.0 mldn
+zadd keyword-20191010 2.0 springboot
+zadd keyword-20191010 3.0 kafka
+
+
+zrange keyword-20191010 0 -1
+
+zrange keyword-20191010 0 -1 withscores
+
+zincrby keyword-20191010 5.0 mldn
+
+zrevrange keyword-20191010 0 2 withscores

@@ -1,0 +1,15 @@
+vim /usr/local/redis/conf/redis.conf
+
+requirepass mldnjava
+# bind 127.0.0.1
+
+
+killall redis-server
+
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis.conf
+
+/usr/local/redis/bin/redis-cli -h redis-single -p 6379
+
+auth mldnjava
+
+/usr/local/redis/bin/redis-cli -h redis-single -p 6379 -a mldnjava

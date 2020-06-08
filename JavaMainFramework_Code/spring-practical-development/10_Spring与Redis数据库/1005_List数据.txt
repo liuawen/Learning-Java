@@ -1,0 +1,25 @@
+lpush mldn-query user-a user-b user-c user-d user-e
+
+rpush mldn-query new-a new-b new-c
+
+lrange mldn-query 0 7
+
+lpop mldn-query
+
+rpop mldn-query
+
+linsert mldn-query before user-c user-admin
+
+linsert mldn-query after new-a new-guest
+
+lset mldn-query 0 user-lee
+
+lpush mldn-query user-test user-test user-test
+
+lrem mldn-query 3 user-test
+
+ltrim mldn-query 3 6
+
+rpoplpush mldn-query mldn-pop
+
+llen mldn-query

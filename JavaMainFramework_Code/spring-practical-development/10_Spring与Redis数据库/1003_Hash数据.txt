@@ -1,0 +1,24 @@
+hset user-mldn name hello
+hset user-mldn addr beijing
+hset user-mldn age 16
+
+
+hget user-mldn name
+
+hsetnx user-mldn name world
+
+hmset user-admin name adminstrator age 10
+
+hmget user-mldn name age addr
+
+hexists user-mldn name
+
+hlen user-mldn
+
+hdel user-mldn name
+
+hkeys user-mldn
+
+hvals user-mldn
+
+hgetall user-mldn

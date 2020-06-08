@@ -1,0 +1,10 @@
+set age 16
+multi
+set age 18
+exec
+
+set hotkey mldn
+multi
+incr hotkey
+set age 18
+exec

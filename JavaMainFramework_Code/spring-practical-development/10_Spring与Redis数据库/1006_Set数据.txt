@@ -1,0 +1,13 @@
+spop user-admin
+
+srandmember user-mldn
+
+sdiff user-admin user-mldn
+
+sdiffstore diff-admin-mldn user-admin user-mldn
+
+sinter user-admin user-mldn
+
+sunion user-admin user-mldn
+
+smove user-admin user-mldn a

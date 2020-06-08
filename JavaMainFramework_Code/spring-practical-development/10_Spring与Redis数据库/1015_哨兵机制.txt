@@ -1,0 +1,21 @@
+cp /usr/local/src/redis-4.0.8/sentinel.conf /usr/local/redis/conf/
+
+vim /usr/local/redis/conf/sentinel.conf
+
+protected-mode no 
+port 26379
+dir /usr/data/redis/sentinel
+sentinel monitor mymaster 192.168.68.140 6379 2
+sentinel auth-pass mymaster mldnjava
+sentinel down-after-milliseconds mymaster 30000
+sentinel parallel-syncs mymaster 1
+sentinel failover-timeout mymaster 180000
+
+
+mkdir -p /usr/data/redis/sentinel
+
+cp /usr/local/src/redis-4.0.8/src/redis-sentinel /usr/local/redis/bin/
+
+/usr/local/redis/bin/redis-sentinel /usr/local/redis/conf/sentinel.conf
+
+killall redis-server

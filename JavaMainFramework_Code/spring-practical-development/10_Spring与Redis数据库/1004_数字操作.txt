@@ -1,0 +1,9 @@
+incr num
+
+incrby num 20
+
+decr num
+
+decrby num 50
+
+hincrby shopcar-mldn goods-a 1

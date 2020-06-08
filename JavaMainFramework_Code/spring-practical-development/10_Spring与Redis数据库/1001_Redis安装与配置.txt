@@ -1,0 +1,47 @@
+apt-get -y install g++ gcc libpcre3 libpcrecpp* libpcre3-dev libssl-dev autoconf automake libtool nfs-kernel-server libncurses5-dev make
+
+tar xzvf /srv/ftp/redis-4.0.8.tar.gz -C /usr/local/src/
+
+cd /usr/local/src/redis-4.0.8/
+
+make
+
+make install
+
+echo "vm.overcommit_memory=1" >> /etc/sysctl.conf
+
+/sbin/sysctl -p
+
+mkdir -p /usr/local/redis/{bin,conf}
+
+cp /usr/local/src/redis-4.0.8/src/redis-server /usr/local/redis/bin/
+cp /usr/local/src/redis-4.0.8/src/redis-cli /usr/local/redis/bin/
+cp /usr/local/src/redis-4.0.8/src/redis-benchmark /usr/local/redis/bin/
+cp /usr/local/src/redis-4.0.8/redis.conf /usr/local/redis/conf/
+
+
+mkdir -p /usr/data/redis/{run,logs,dbcache}
+
+
+
+vim /usr/local/redis/conf/redis.conf
+
+port 6379
+daemonize yes
+pidfile /usr/data/redis/run/redis_6379.pid
+logfile "/usr/data/redis/logs/redis_6379.log"
+dir /usr/data/redis/dbcache
+
+
+/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis.conf
+
+/usr/local/redis/bin/redis-cli
+/usr/local/redis/bin/redis-cli -h 127.0.0.1 -p 6379
+
+
+set mldn java
+get mldn
+keys *
+
+
+/usr/local/redis/bin/redis-benchmark -h 127.0.0.1 -p 6379 -n 10000 -d 30 -c 2000

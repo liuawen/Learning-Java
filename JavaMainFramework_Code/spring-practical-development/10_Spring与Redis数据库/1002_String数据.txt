@@ -1,0 +1,26 @@
+set mldn hello
+
+set user-mldn {name:smith,age:10}
+
+get mldn
+
+keys *
+keys user-*
+
+flushdb
+
+flushall
+
+setnx user-mldn lixinghua
+
+setex user-mldn 10 jixianit
+
+mset user-mldn-name java user-mldn-addreess beijing
+
+msetnx user-mldn-name hello user-mldn-sex male
+
+append user-mldn-name world
+
+strlen user-mldn-name
+
+del user-mldn-name user-mldn-sex
