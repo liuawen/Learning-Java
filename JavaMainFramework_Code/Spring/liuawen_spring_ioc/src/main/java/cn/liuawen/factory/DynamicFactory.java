@@ -5,12 +5,10 @@ import cn.liuawen.dao.impl.UserDaoImpl;
 
 /**
  * @author : Liu Awen Email:willowawen@gmail.com
- * @create : 2020-06-07
- *  工厂静态方法实例化
- *
+ * @create : 2020-06-08
  */
-public class StaticFactory {
-    public static UserDao getUserDao(){
+public class DynamicFactory {
+    public UserDao getUserDao(){
         return new UserDaoImpl();
     }
 }

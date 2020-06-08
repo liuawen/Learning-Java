@@ -14,7 +14,7 @@ Spring是分层的 Java SE/EE应用 full-stack 轻量级开源框架，以 IoC�
 
 小巧 API使用简单 学习成本比较低   轻量级 
 
-full stack 各层都有解决方案  Web层 Dao层 等等
+full stack 各层都有解决方案  Web层 Dao层 
 
 AOP IoC  
 
@@ -316,10 +316,10 @@ destroy-method：指定类中销毁方法名称
 ​      它会根据默认无参构造方法来创建类对象，如果bean中没有默认无参构造函数，将会创建失败
 
 ```xml
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"/>
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"/>
 ```
 
-2） 工厂静态方法实例化
+2） 
 
 要有工厂静态方法
 
@@ -336,7 +336,7 @@ public class StaticFactoryBean {
 ```
 
 ```xml
-<bean id="userDao" class="com.itheima.factory.StaticFactoryBean" 
+<bean id="userDao" class="cn.liuawen.factory.StaticFactoryBean" 
       factory-method="createUserDao" />
 ```
 
@@ -355,11 +355,13 @@ public class DynamicFactoryBean {
 ```
 
 ```xml
-<bean id="factoryBean" class="com.itheima.factory.DynamicFactoryBean"/>
+<bean id="factoryBean" class="cn.liuawen.factory.DynamicFactoryBean"/>
 <bean id="userDao" factory-bean="factoryBean" factory-method="createUserDao"/>
 ```
 
 ### 3.5 Bean的依赖注入入门
+
+
 
 ①创建 UserService，UserService 内部在调用 UserDao的save() 方法
 
@@ -377,7 +379,7 @@ public class UserServiceImpl implements UserService {
 ②将 UserServiceImpl 的创建权交给 Spring
 
 ```xml
-<bean id="userService" class="com.itheima.service.impl.UserServiceImpl"/>
+<bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl"/>
 ```
 
 ③从 Spring 容器中获得 UserService 进行操作
@@ -392,6 +394,8 @@ userService.save();
 
 依赖注入（Dependency Injection）：它是 Spring 框架核心 IOC 的具体实现。
 
+DI 依赖注入  IOC 控制反转
+
 在编写程序时，通过控制反转，把对象的创建交给了 Spring，但是代码中不可能出现没有依赖的情况。
 
 IOC 解耦只是降低他们的依赖关系，但不会消除。例如：业务层仍会调用持久层的方法。
@@ -400,11 +404,19 @@ IOC 解耦只是降低他们的依赖关系，但不会消除。例如：业务�
 
 简单的说，就是坐等框架把持久层对象传入业务层，而不用我们自己去获取
 
+业务层  持久层 
 
+编写程序 控制反转 把对象的创建交个了Spring容器，解耦降低它们的依赖关系 但不会消除 ，业务层任会调用持久层的方法，控制层任会调用业务层的方法，
 
-解耦 降低它们的依赖关系 但不会消除 
+依赖关系交给了Spring来管理。
 
 ### 3.7 Bean的依赖注入方式
+
+构造方法
+
+set方法
+
+
 
 ①构造方法
 
@@ -424,8 +436,8 @@ ApplicationContext applicationContext = new
 ​      配置Spring容器调用有参构造时进行注入
 
 ```xml
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"/>
-<bean id="userService" class="com.itheima.service.impl.UserServiceImpl">      		   	<constructor-arg name="userDao" ref="userDao"></constructor-arg>
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"/>
+<bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl">      		   	<constructor-arg name="userDao" ref="userDao"></constructor-arg>
 </bean>
 ```
 
@@ -449,8 +461,8 @@ public class UserServiceImpl implements UserService {
 ​      配置Spring容器调用set方法进行注入
 
 ```xml
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"/>
-<bean id="userService" class="com.itheima.service.impl.UserServiceImpl">
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"/>
+<bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl">
 	<property name="userDao" ref="userDao"/>
 </bean>
 ```
@@ -468,7 +480,7 @@ xmlns:p="http://www.springframework.org/schema/p"
 其次，需要修改注入方式
 
 ```xml
-<bean id="userService" class="com.itheima.service.impl.UserServiceImpl" p:userDao-
+<bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl" p:userDao-
  ref="userDao"/>
 ```
 
@@ -509,8 +521,8 @@ private String company;
 ```
 
 ```xml
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
-    <property name="company" value="传智播客"></property>
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
+    <property name="company" value="渐若窥宏大"></property>
     <property name="age" value="15"></property>
 </bean>
 ```
@@ -531,7 +543,7 @@ public class UserDaoImpl implements UserDao {
 ```
 
 ```xml
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
     <property name="strList">
         <list>
             <value>aaa</value>
@@ -558,13 +570,13 @@ public void save() {
 ```
 
 ```xml
-<bean id="u1" class="com.itheima.domain.User"/>
-<bean id="u2" class="com.itheima.domain.User"/>
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
+<bean id="u1" class="cn.liuawen.domain.User"/>
+<bean id="u2" class="cn.liuawen.domain.User"/>
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
     <property name="userList">
         <list>
-            <bean class="com.itheima.domain.User"/>
-            <bean class="com.itheima.domain.User"/>
+            <bean class="cn.liuawen.domain.User"/>
+            <bean class="cn.liuawen.domain.User"/>
             <ref bean="u1"/>
             <ref bean="u2"/>       
         </list>
@@ -588,11 +600,11 @@ public void save() {
 ```
 
 ```xml
-<bean id="u1" class="com.itheima.domain.User"/>
-<bean id="u2" class="com.itheima.domain.User"/>
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
+<bean id="u1" class="cn.liuawen.domain.User"/>
+<bean id="u2" class="cn.liuawen.domain.User"/>
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
     <property name="userMap">
-        <map>            
+        <map>   
             <entry key="user1" value-ref="u1"/>
             <entry key="user2" value-ref="u2"/>
         </map>
@@ -616,7 +628,7 @@ public class UserDaoImpl implements UserDao {
 ```
 
 ```xml
-<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
+<bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
     <property name="properties">
         <props>
             <prop key="p1">aaa</prop>
@@ -642,6 +654,8 @@ public class UserDaoImpl implements UserDao {
 applicationContext：接口类型，代表应用上下文，可以通过其实例获得 Spring 容器中的 Bean 对象
 
 ### 4.2 ApplicationContext的实现类
+
+ApplicationContext的实现类
 
 1）ClassPathXmlApplicationContext 
 
@@ -671,6 +685,10 @@ public <T> T getBean(Class<T> requiredType) throws BeansException {   			    	as
 
 当参数的数据类型是Class类型时，表示根据类型从容器中匹配Bean实例，当容器中相同类型的Bean有多个时，则此方法会报错
 
+相同的类型的Bean有多个
+
+
+
 **getBean()方法使用**
 
 ```java
@@ -680,5 +698,21 @@ ApplicationContext applicationContext = new
   UserService userService2 = applicationContext.getBean(UserService.class);
 ```
 
+id  可以出现多个类型相同的Bean   可以区分开
 
+相同类型的   区分不开   不能存在多个相同类型的bean  
+
+
+
+某个类型的只存在一个 可以用Class类型的
+
+
+
+
+
+ClassPathXmlApplicationContext 
+
+getBean  id
+
+getBean Class
 

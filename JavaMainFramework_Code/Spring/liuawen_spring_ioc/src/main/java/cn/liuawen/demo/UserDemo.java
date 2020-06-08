@@ -20,8 +20,9 @@ public class UserDemo {
 
       UserDao userDao =(UserDao) app.getBean("userDao");
       UserDao userDao2 =(UserDao) app.getBean("userDao");
-      userDao.say();
-      ((ClassPathXmlApplicationContext)app).close();
+      userDao.save();
+      userDao2.save();
+//      ((ClassPathXmlApplicationContext)app).close();
 
 //      app2.close();
    }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"></bean>-->
+
+    <!--<bean id="userDao" class="com.itheima.factory.StaticFactory" factory-method="getUserDao"></bean>-->
+
+    <!--<bean id="factory" class="com.itheima.factory.DynamicFactory"></bean>
+    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"/>-->
+
+
+    <!--<bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
+        <property name="username" value="zhangsan"/>
+        <property name="age" value="18"/>
+    </bean>-->
+    <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl">
+        <property name="strList">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+        <property name="userMap">
+            <map>
+                <entry key="u1" value-ref="user1"></entry>
+                <entry key="u2" value-ref="user2"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="p1">ppp1</prop>
+                <prop key="p2">ppp2</prop>
+                <prop key="p3">ppp3</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.itheima.domain.User">
+        <property name="name" value="tom"/>
+        <property name="addr" value="beijing"/>
+    </bean>
+    <bean id="user2" class="com.itheima.domain.User">
+        <property name="name" value="lucy"/>
+        <property name="addr" value="tianjin"/>
+    </bean>
+
+    <!--<bean id="userService" class="com.itheima.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>-->
+
+    <!--<bean id="userService" class="com.itheima.service.impl.UserServiceImpl" p:userDao-ref="userDao"/>-->
+
+    <bean id="userService" class="com.itheima.service.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+    </bean>
+
+    <bean id="userService2" class="com.itheima.service.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+    </bean>
+
+    <!--<import resource="applicationContext-user.xml"/>
+    <import resource="applicationContext-product.xml"/>-->
+
+</beans>

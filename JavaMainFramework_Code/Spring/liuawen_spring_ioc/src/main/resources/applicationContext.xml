@@ -1,12 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    id不重复   这样配置 要存在无参构造  -->
-<!--    默认是singleton的  prototype 多例的 -->
-<!--    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl" scope="prototype"></bean>-->
-    <bean id="userDao" class=" cn.liuawen.factory.StaticFactory" factory-method="getUserDao"></bean>
-<!--    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy">-->
+    <!--    id不重复   这样配置 要存在无参构造  -->
+<!--    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"/>-->
 
+    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
+        <property name="company" value="渐若窥宏大"></property>
+        <property name="age" value="15"></property>
+    </bean>
+
+  <!--  <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl">
+        <property name="strList">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+    </bean>-->
+
+<!--    <bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl">
+&lt;!&ndash;        set方法后面的 第一个单词的字母 大写变小写  setUserDao userDao&ndash;&gt;
+
+        <property name="userDao" ref="userDao"></property>
+    </bean>-->
+
+<!--    引入对象-->
+<!--    <bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl" p:userDao-ref="userDao">
+
+    </bean>-->
+
+    <bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl">
+<!--        name 构造内部参数名  ref 引用容器id -->
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+    </bean>
+
+    <!--    默认是singleton的  prototype 多例的 -->
+    <!--    <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl" scope="prototype"></bean>-->
+    <!--    <bean id="userDao" class=" cn.liuawen.factory.StaticFactory" factory-method="getUserDao"></bean>-->
+<!--
+    <bean id="factory" class="cn.liuawen.factory.DynamicFactory"></bean>
+    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
+
+<!--    无参构造  工厂静态  工厂实例-->
+    <!--    factory这个bean  再创建一个-->
+<!--       <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy">-->
 <!--    </bean>-->
 </beans>
