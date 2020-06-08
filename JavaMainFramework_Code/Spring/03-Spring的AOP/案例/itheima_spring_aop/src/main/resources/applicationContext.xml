@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+
+    <!--目标对象-->
+    <bean id="target" class="com.itheima.aop.Target"></bean>
+
+    <!--切面对象-->
+    <bean id="myAspect" class="com.itheima.aop.MyAspect"></bean>
+
+    <!--配置织入：告诉spring框架 哪些方法(切点)需要进行哪些增强(前置、后置...)-->
+    <aop:config>
+        <!--声明切面-->
+        <aop:aspect ref="myAspect">
+            <!--抽取切点表达式-->
+            <aop:pointcut id="myPointcut" expression="execution(* com.itheima.aop.*.*(..))"></aop:pointcut>
+            <!--切面：切点+通知-->
+            <!--<aop:before method="before" pointcut="execution(public void com.itheima.aop.Target.save())"/>-->
+            <!--<aop:before method="before" pointcut="execution(* com.itheima.aop.*.*(..))"/>
+            <aop:after-returning method="afterReturning" pointcut="execution(* com.itheima.aop.*.*(..))"/>-->
+            <!--<aop:around method="around" pointcut="execution(* com.itheima.aop.*.*(..))"/>
+            <aop:after-throwing method="afterThrowing" pointcut="execution(* com.itheima.aop.*.*(..))"/>
+            <aop:after method="after" pointcut="execution(* com.itheima.aop.*.*(..))"/>-->
+            <aop:around method="around" pointcut-ref="myPointcut"/>
+            <aop:after method="after" pointcut-ref="myPointcut"/>
+
+        </aop:aspect>
+    </aop:config>
+
+</beans>
