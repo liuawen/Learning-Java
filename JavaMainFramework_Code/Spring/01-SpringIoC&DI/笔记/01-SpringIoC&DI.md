@@ -16,7 +16,7 @@ Spring是分层的 Java SE/EE应用 full-stack 轻量级开源框架，以 IoC�
 
 full stack 各层都有解决方案  Web层 Dao层 
 
-AOP IoC  
+AOP 面向切面编程 IoC   控制反转 
 
 Web  Dao  业务层 声明式事务  整合开源很多框架  集成方便
 
@@ -33,7 +33,7 @@ Rod Johnson （ Spring 之父）
 2017  年
 9 月份发布了 Spring 的最新版本 Spring5.0 通用版（GA）
 
-Spring5搞搞 
+Spring5源码不搞搞吗？ 
 
 ### 1.3 Spring的优势（理解）
 
@@ -43,9 +43,9 @@ Spring5搞搞
 
    用户也不必再为单例模式类、属性文件解析等这些很底层的需求编写代码，可以更专注于上层的应用。
 
-对象间的依赖关系交由Spring容器进行控制 控制反转
 
-专注于上层的应用
+
+对象间的依赖关系交由Spring容器进行控制 控制反转 ，避免过度耦合，不必再为单例模式类、属性文件解析等很底层的需求编写代码，使得我们可以更加专注于上层的应用。
 
  
 
@@ -55,13 +55,13 @@ Spring5搞搞
 
 面向切面编程 许多不容易用传统OOP实现的功能可以通过AOP轻松实现
 
-
+面向切面编程呀。 不容易用传统OOP面向对象编程实现的功能？
 
 **声明式事务的支持**
 
 可以将我们从单调烦闷的事务管理代码中解脱出来，通过声明式方式灵活的进行事务管理，提高开发效率和质量。
 
-声明式方式灵活的进行事务管理 提高开发效率和质量
+事务管理代码中解脱出来  声明式方式灵活的进行事务管理 提高开发效率和质量
 
 
 
@@ -69,13 +69,15 @@ Spring5搞搞
 
    可以用非容器依赖的编程方式进行几乎所有的测试工作，测试不再是昂贵的操作，而是随手可做的事情。
 
+要多多测试 
+
 
 
 **方便集成各种优秀框架**
 
    Spring对各种优秀框架（Struts、Hibernate、Hessian、Quartz等）的支持。
 
-Spring 每层都有对应的解决方案
+Spring 几乎为开发阶段的每层都支持对应的优秀的解决方案  
 
 **降低 JavaEE API 的使用难度**
 
@@ -91,7 +93,7 @@ Spring 每层都有对应的解决方案
 
    造诣。它的源代码无意是 Java 技术的最佳实践的范例。
 
-优秀   使用很多思想  设计模式   学习这些设计模式  思想 
+优秀   使用很多思想  设计模式   学习这些设计模式  思想   编程能力 
 
 ### 1.4 Spring的体系结构（了解）
 
@@ -125,7 +127,7 @@ Web Portlet
 
 ![image-20200606230127908](assets/image-20200606230127908.png)
 
-
+Spring框架 xml配置文件 权限定名  反射  对象  
 
 
 
@@ -223,7 +225,7 @@ applicationContext.xml
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--    id不重复   这样配置 要存在无参构造  -->
+<!--    id不重复   这样配置的是要存在无参构造  -->
 <!--    默认是singleton的  prototype 多例的 -->
     <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"></bean>
 </beans>
@@ -237,7 +239,8 @@ applicationContext.xml
 public void test1(){
 		ApplicationContext applicationContext = new  
         ClassPathXmlApplicationContext("applicationContext.xml");
-        UserDao userDao = (UserDao)applicationContext.getBean("userDao");   		userDao.save();
+        UserDao userDao = (UserDao)applicationContext.getBean("userDao");   		
+    	userDao.save();
  }
 ```
 
@@ -275,7 +278,9 @@ scope:指对象的作用范围，取值如下：
 
 bean的创建 
 
-prototype 
+prototype  原型的 多例的
+
+scope  作用域 
 
 1）当scope的取值为singleton时
 
@@ -291,6 +296,8 @@ prototype
 
 对象销毁：当应用卸载，销毁容器时，对象就被销毁了
 
+scope singleton 单例    只要容器在，对象一直活着 应用卸载  销毁容器 对象就被销毁了
+
 2）当scope的取值为prototype时
 
 ​      Bean的实例化个数：多个
@@ -303,7 +310,11 @@ prototype
 
 对象销毁：当对象长时间不用时，被 Java 的垃圾回收器回收了
 
+长期不用 对象拜拜  垃圾回收  我经常不用 我也拜拜了。
+
 ### 3.3 Bean生命周期配置
+
+指定初始化 销毁方法 
 
 init-method：指定类中的初始化方法名称
 
@@ -323,7 +334,7 @@ destroy-method：指定类中销毁方法名称
 
 要有工厂静态方法
 
-静态方法   对象的工厂  告诉Spring 
+静态方法   对象的工厂  要告诉Spring哪个是 怎么搞 
 
 ​      工厂的静态方法返回Bean实例
 
@@ -358,6 +369,10 @@ public class DynamicFactoryBean {
 <bean id="factoryBean" class="cn.liuawen.factory.DynamicFactoryBean"/>
 <bean id="userDao" factory-bean="factoryBean" factory-method="createUserDao"/>
 ```
+
+可以 private  UserDaoImpl userDaoImpl;
+
+return userDaoImpl;
 
 ### 3.5 Bean的依赖注入入门
 
@@ -398,6 +413,8 @@ DI 依赖注入  IOC 控制反转
 
 在编写程序时，通过控制反转，把对象的创建交给了 Spring，但是代码中不可能出现没有依赖的情况。
 
+控制了什么 反转了什么    把对象的创建交给了Spring容器 
+
 IOC 解耦只是降低他们的依赖关系，但不会消除。例如：业务层仍会调用持久层的方法。
 
 那这种业务层和持久层的依赖关系，在使用 Spring 之后，就让 Spring 来维护了。
@@ -424,6 +441,10 @@ set方法
 
 ```java
 public class UserServiceImpl implements UserService {
+     //去Spring配置告诉 我构造
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
 @Override
 public void save() {
 ApplicationContext applicationContext = new 
@@ -463,6 +484,7 @@ public class UserServiceImpl implements UserService {
 ```xml
 <bean id="userDao" class="cn.liuawen.dao.impl.UserDaoImpl"/>
 <bean id="userService" class="cn.liuawen.service.impl.UserServiceImpl">
+    <!--  name是set方法后面的第一个单词的字母 大写变小写  setUserDao userDao  ref 引用的容器id -->
 	<property name="userDao" ref="userDao"/>
 </bean>
 ```
