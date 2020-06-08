@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Test.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript">
+		window.onload = function(){
+			var idx = 0;
+			var imgObj = document.getElementById("img");
+			window.setInterval(function(){
+				idx++;
+				idx %= 21;
+				imgObj.src="imgs/" + idx + ".jpg";
+			}, 1500);
+		}
+	</script>
+  </head>
+  <body>
+  	<center>
+  		<img id="img" alt="图片找不到" src="imgs/0.jpg">
+  	</center>
+  </body>
+</html>

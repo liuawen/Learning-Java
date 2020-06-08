@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>DOM查询</title>
+		<style type="text/css">
+			div, span, p {
+			    width: 140px;
+			    height: 140px;
+			    margin: 5px;
+			    background: #aaa;
+			    border: #000 1px solid;
+			    float: left;
+			    font-size: 17px;
+			    font-family: Verdana;
+			}
+			
+			div.mini {
+			    width: 55px;
+			    height: 55px;
+			    background-color: #aaa;
+			    font-size: 12px;
+			}
+			
+			div.hide {
+			    display: none;
+			}			
+		</style>
+		<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				function anmateIt(){
+					$("#mover").slideToggle("slow", anmateIt);
+				}
+				anmateIt();
+				
+	/**
+					
+	过滤
+	eq(index|-index) 			
+	first() 					
+	last() 						
+	hasClass(class) 			
+	filter(expr|obj|ele|fn) 	
+	is(expr|obj|ele|fn)1.6* 	
+	has(expr|ele) 				
+	not(expr|ele|fn) 			
+	slice(start,[end]) 			
+	
+	查找
+	children([expr]) 			
+	closest(expr,[con]|obj|ele)1.6*   
+	find(expr|obj|ele) 				
+	next([expr]) 					
+	nextall([expr]) 				
+	nextUntil([exp|ele][,fil])1.6* 	
+	parent([expr]) 					
+	parents([expr]) 				
+	parentsUntil([exp|ele][,fil])1.6*  
+	prev([expr]) 					
+	prevall([expr]) 				
+	prevUntil([exp|ele][,fil])1.6* 	
+	siblings([expr]) 				
+	
+	串联
+	add(expr|ele|html|obj[,con]) 	
+							
+	
+	*/
+				
+				//(1)eq()  选择索引值为等于 3 的 div 元素
+				$("#btn1").click(function(){
+					$("div").eq(3).css("background-color","#bfa");
+				});
+				//(2)first()选择第一个 div 元素
+				 $("#btn2").click(function(){
+					 //first()   选取第一个元素
+					$("div").first().css("background-color","#bfa");
+				});
+				//(3)last()选择最后一个 div 元素
+				$("#btn3").click(function(){
+					//last()  选取最后一个元素
+					$("div").last().css("background-color","#bfa");
+				});
+				//(4)filter()在div中选择索引为偶数的
+				$("#btn4").click(function(){
+					//filter()  过滤   传入的是选择器字符串
+					$("div").filter(":even").css("background-color","#bfa");
+				});
+				 //(5)is()判断#one是否为:empty或:parent
+				//is用来检测jq对象是否符合指定的选择器
+				$("#btn5").click(function(){
+					alert( $("#one").is(":empty") );
+				});
+				
+				//(6)has()选择div中包含.mini的
+				$("#btn6").click(function(){
+					//has(selector)  选择器字符串    是否包含selector
+					$("div").has(".mini").css("background-color","#bfa");
+				});
+				//(7)not()选择div中class不为one的
+				$("#btn7").click(function(){
+					//not(selector)  选择不是selector的元素
+					$("div").not('.one').css("background-color","#bfa");
+				});
+				//(8)children()在body中选择所有class为one的div子元素
+				$("#btn8").click(function(){
+					//children()  选出所有的子元素
+					$("body").children("div.one").css("background-color","#bfa");
+				});
+				
+				
+				//(9)find()在body中选择所有class为mini的div元素
+				$("#btn9").click(function(){
+					//find()  选出所有的后代元素
+					$("body").find("div.mini").css("background-color","#bfa");
+				});
+				//(10)next() #one的下一个div
+				$("#btn10").click(function(){
+					//next()  选择下一个兄弟元素
+					$("#one").next("div").css("background-color","#bfa");
+				});
+				//(11)nextAll() #one后面所有的span元素
+				$("#btn11").click(function(){
+					//nextAll()   选出后面所有的元素
+					$("#one").nextAll("span").css("background-color","#bfa");
+				});
+				//(12)nextUntil() #one和span之间的元素
+				$("#btn12").click(function(){
+					//
+					$("#one").nextUntil("span").css("background-color","#bfa")
+				});
+				//(13)parent() .mini的父元素
+				$("#btn13").click(function(){
+					$(".mini").parent().css("background-color","#bfa");
+				});
+				//(14)prev() #two的上一个div
+				$("#btn14").click(function(){
+					//prev()  
+					$("#two").prev("div").css("background-color","#bfa")
+				});
+				//(15)prevAll() span前面所有的div
+				$("#btn15").click(function(){
+					//prevAll()   选出前面所有的元素
+					$("span").prevAll("div").css("background-color","#bfa")
+				});
+				//(16)prevUntil() span向前直到#one的元素
+				$("#btn16").click(function(){
+					//prevUntil(exp)   找到之前所有的兄弟元素直到找到exp停止
+					$("span").prevUntil("#one").css("background-color","#bfa")
+				});
+				//(17)siblings() #two的所有兄弟元素
+				$("#btn17").click(function(){
+					//siblings()    找到所有的兄弟元素，包括前面的和后面的
+					$("#two").siblings().css("background-color","#bfa")
+				});
+				
+				
+				//(18)add()选择所有的 span 元素和id为two的元素
+				$("#btn18").click(function(){
+	
+					//   $("span,#two,.mini,#one")
+					$("span").add("#two").add("#one").css("background-color","#bfa");
+					
+				});
+				
+
+
+			});
+			
+			
+		</script>
+	</head>
+	<body>		
+		<input type="button" value="eq()选择索引值为等于 3 的 div 元素" id="btn1" />
+		<input type="button" value="first()选择第一个 div 元素" id="btn2" />
+		<input type="button" value="last()选择最后一个 div 元素" id="btn3" />
+		<input type="button" value="filter()在div中选择索引为偶数的" id="btn4" />
+		<input type="button" value="is()判断#one是否为:empty或:parent" id="btn5" />
+		<input type="button" value="has()选择div中包含.mini的" id="btn6" />
+		<input type="button" value="not()选择div中class不为one的" id="btn7" />
+		<input type="button" value="children()在body中选择所有class为one的div子元素" id="btn8" />
+		<input type="button" value="find()在body中选择所有class为mini的div后代元素" id="btn9" />
+		<input type="button" value="next()#one的下一个div" id="btn10" />
+		<input type="button" value="nextAll()#one后面所有的span元素" id="btn11" />
+		<input type="button" value="nextUntil()#one和span之间的元素" id="btn12" />
+		<input type="button" value="parent().mini的父元素" id="btn13" />
+		<input type="button" value="prev()#two的上一个div" id="btn14" />
+		<input type="button" value="prevAll()span前面所有的div" id="btn15" />
+		<input type="button" value="prevUntil()span向前直到#one的元素" id="btn16" />
+		<input type="button" value="siblings()#two的所有兄弟元素" id="btn17" />
+		<input type="button" value="add()选择所有的 span 元素和id为two的元素" id="btn18" />
+
+		
+		<h3>基本选择器.</h3>
+		<br /><br />
+		文本框<input type="text" name="account" disabled="disabled" />
+		<br><br>
+		<div class="one" id="one">
+			id 为 one,class 为 one 的div
+			<div class="mini">class为mini</div>
+		</div>
+		<div class="one" id="two" title="test">
+			id为two,class为one,title为test的div
+			<div class="mini" title="other"><b>class为mini,title为other</b></div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini"></div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="tesst">class为mini,title为tesst</div>
+		</div>
+		<div style="display:none;" class="none">style的display为"none"的div</div>
+		<div class="hide">class为"hide"的div</div>
+		<span id="span1">^^span元素 111^^</span>
+		<div>
+			包含input的type为"hidden"的div<input type="hidden" size="8">
+		</div>
+		<span id="span2">^^span元素 222^^</span>
+		<div id="mover">正在执行动画的div元素.</div>
+	</body>
+</html>
+

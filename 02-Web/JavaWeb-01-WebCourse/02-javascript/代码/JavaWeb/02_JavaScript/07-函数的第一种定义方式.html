@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        // 定义一个无参函数
+        function fun(){
+            alert("无参函数fun()被调用了");
+        }
+        // 函数调用===才会执行
+        // fun();
+
+        function fun2(a ,b) {
+            alert("有参函数fun2()被调用了 a=>" + a + ",b=>"+b);
+        }
+
+        // fun2(12,"abc");
+
+        // 定义带有返回值的函数
+        function sum(num1,num2) {
+            var result = num1 + num2;
+            return result;
+        }
+
+        alert( sum(100,50) );
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

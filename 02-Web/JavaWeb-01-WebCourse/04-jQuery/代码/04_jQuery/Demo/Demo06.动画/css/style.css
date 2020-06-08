@@ -1,0 +1,12 @@
+table,td {
+	border: 1px solid;
+	border-collapse: collapse;
+}
+
+span {
+	background-color: #fb6;
+	text-align: center;
+	width: 100px;
+	height: 50px;
+	display: block;
+}

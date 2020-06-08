@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>dom4j - dom4j changes</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+          @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="Maarten Coene"></meta><meta name="email" content="maartenc@users.sourceforge.net"></meta></head><body class="composite"><div id="banner"><a href="http://sourceforge.net/projects/dom4j" id="organizationLogo"><img alt="MetaStuff Ltd." src="http://sourceforge.net/sflogo.php?group_id=16035"></img></a><a href="http://dom4j.org" id="projectLogo"><img alt="dom4j" src="./images/logo.gif"></img></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+              Last published: 16 May 2005
+              <span class="separator">|</span>
+                Doc for 1.6.1
+              </div><div class="xright">
+        
+        <a href="http://www.w3.org/TR/xpath" class="externalLink" title="External Link">XPath Spec</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://jaxen.codehaus.org/" class="externalLink" title="External Link">Jaxen</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://sourceforge.net/projects/dom4j/" class="externalLink" title="External Link">dom4j@SourceForge</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menudom4j"><h5>dom4j</h5><ul><li class="none"><a href="index.html">Home</a></li><li class="none"><a href="faq.html">FAQ</a></li><li class="none"><a href="guide.html">Quick start</a></li><li class="none"><a href="cookbook.html" class="newWindow" title="New Window" target="_blank">Cookbook</a></li><li class="none"><a href="compare.html">Comparison</a></li><li class="none"><a href="goals.html">Goals</a></li><li class="none"><strong><a href="changes-report.html">Changes</a></strong></li><li class="none"><a href="download.html">Download</a></li><li class="none"><a href="license.html">License</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.6.1)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.5.2/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.5.2)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.4/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.4)</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About dom4j</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="expanded"><a href="maven-reports.html">Project Reports</a><ul><li class="none"><a href="changelog-report.html">Change Log</a></li><li class="none"><strong><a href="changes-report.html">Changes</a></strong></li><li class="none"><a href="checkstyle-report.html">Checkstyle</a></li><li class="none"><a href="clover/index.html" class="newWindow" title="New Window" target="_blank">Clover</a></li><li class="none"><a href="developer-activity-report.html">Developer Activity</a></li><li class="none"><a href="faq.html">FAQs</a></li><li class="none"><a href="file-activity-report.html">File Activity</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">JavaDocs</a></li><li class="none"><a href="javadoc.html">JavaDoc Report</a></li><li class="none"><a href="javadoc-warnings-report.html">JavaDoc Warnings Report</a></li><li class="none"><a href="jdepend-report.html">Metrics</a></li><li class="none"><a href="junit-report.html">Unit Tests</a></li><li class="none"><a href="xref/index.html" class="newWindow" title="New Window" target="_blank">Source Xref</a></li><li class="none"><a href="xref-test/index.html" class="newWindow" title="New Window" target="_blank">Test Xref</a></li><li class="none"><a href="license.html">Project License</a></li></ul></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><div id="legend"><h5>Legend</h5><ul><li class="externalLink">External Link</li><li class="newWindow">Opens in a new window</li></ul></div><a href="http://www.cenqua.com/clover" title="Code Coverage by Clover" id="poweredByExternal"><img alt="Code Coverage by Clover" src="http://www.cenqua.com/images/clovered1.gif"></img></a><a href="http://www.sourceforge.net" title="Hosted by SourceForge" id="poweredByExternal"><img alt="Hosted by SourceForge" src="http://sourceforge.net/sflogo.php?group_id=16035&amp;amp;type=1"></img></a><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Release_History"></a><h2>Release History</h2><table class="bodyTable"><tr class="a"><th style="width:50px">Version</th><th>Date</th><th>Description</th></tr><tr class="b"><td>
+            <a href="#1_6_1">1.6.1</a>
+          </td><td>2005-05-16</td><td>
+          </td></tr><tr class="a"><td>
+            <a href="#1_6">1.6</a>
+          </td><td>2005-04-15</td><td>
+          </td></tr><tr class="b"><td>
+            <a href="#1_5_2">1.5.2</a>
+          </td><td>2004-11-15</td><td>
+          </td></tr><tr class="a"><td>
+            <a href="#1_5_1">1.5.1</a>
+          </td><td>2004-10-29</td><td>
+          </td></tr><tr class="b"><td>
+            <a href="#1_5">1.5</a>
+          </td><td>2004-09-03</td><td>
+          </td></tr><tr class="a"><td>
+            <a href="#1_5-rc1">1.5-rc1</a>
+          </td><td>2004-07-04</td><td>
+          </td></tr><tr class="b"><td>
+            <a href="#1_5-beta-2">1.5-beta-2</a>
+          </td><td>2004-05-12</td><td>
+          </td></tr><tr class="a"><td>
+            <a href="#1_5-beta-1">1.5-beta-1</a>
+          </td><td>2004-03-25</td><td>
+          </td></tr></table><p>Get the RSS feed of the last changes
+        <a href="changes.rss">
+          <img src="images/rss.png" alt=""></img>
+        </a>
+      </p></div><div class="section"><a name="Release_1_6_1_-_2005-05-16"></a><h2>Release 1.6.1 - 2005-05-16</h2><a name="1_6_1">
+      </a><table class="bodyTable"><tr class="b"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Updated the XPP2 implementation to version 2.1.10. Thanks to Wolfgang Baer .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a problem with
+            <code>XMLWriter</code>that was causing too many new lines to be written to the resulting XML. Thanks to Thomas Fromm .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Include more information about the cause if an
+            <code>XPathException</code>or
+            <code>InvalidXPathException</code>is thrown. Thanks to Gili Tzabari .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_6_-_2005-04-15"></a><h2>Release 1.6 - 2005-04-15</h2><a name="1_6">
+      </a><table class="bodyTable"><tr class="b"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="a"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added a methods to
+            <code>SAXReader</code>allowing to specify the encoding used when reading XML sources. Thanks to Filip Jirsak .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Changed the
+            <code>DocumentHelper.parseText(String)</code>method to make sure that the XML encoding is always set (if known) on the returned
+            <code>Document</code>, even if the used SAXParser doesn't provide a way to retrieve that encoding.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added a
+            <code>setXMLEncoding(String)</code>method to the
+            <code>Document</code>interface.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Removed a static
+            <code>OutputFormat</code>field from
+            <code>AbstractBranch</code>. This can cause problems if multiple threads are using the
+            <code>asXML()</code>method simultaniously. Thanks to John Plaxton .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a whitespace problem with the pretty-print
+            <code>OutputFormat</code>. Thanks to Brett Porter .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a bug in the
+            <code>DefaultElement.setContent(List)</code>method that caused incorrectly resetting the parent of the nodes in the list. Thanks to Peter Schaefer .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="remove" title="remove" src="images/remove.gif"></img>
+          </td><td>Removed
+            <code>persistence</code>package and sub-package.</td><td>
+            <a href="team-list.html#wolfftw">wolfftw</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Modified
+            <code>SAXEventRecorder</code>to accomodate sax events generated when writing a
+            <code>DOMDocument</code>.</td><td>
+            <a href="team-list.html#wolfftw">wolfftw</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a problem in
+            <code>AbstractDocument.asXML()</code>when an encoding was specified on the
+            <code>Document</code>. Thanks to Pieter Valcke .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>The
+            <code>DefaultNamespace.isReadOnly()</code>method now returns
+            <code>false</code>. This fixes issues with cloning this
+            <code>Node</code>.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Updated
+            <code>DocumentFactory</code>to create the instance untill the first time it is needed. Thanks to Brian Topping .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a bug in
+            <code>Stylesheet</code>when an xpath expressions was used to select the nodes. Thanks to Brett Porter .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added a
+            <code>SingletonStrategy</code>class for managing singletons. This allows to use different strategies for singletons, like: one instance per VM, one instance per thread, ... This change removed the usage of
+            <code>ThreadLocal</code>s.</td><td>
+            <a href="team-list.html#ddlucas">ddlucas</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_5_2_-_2004-11-15"></a><h2>Release 1.5.2 - 2004-11-15</h2><a name="1_5_2">
+      </a><table class="bodyTable"><tr class="b"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="a"><td>
+            <img alt="remove" title="remove" src="images/remove.gif"></img>
+          </td><td>Removed the internal Aelfred2 parser due to incompatible license.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added a
+            <code>SAXEventRecorder</code>that can replay SAX events at a later time. This provides an alternative serialization approach.</td><td>
+            <a href="team-list.html#wolfftw">wolfftw</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_5_1_-_2004-10-29"></a><h2>Release 1.5.1 - 2004-10-29</h2><a name="1_5_1">
+      </a><table class="bodyTable"><tr class="a"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed problem where the namespace prefix was lost using
+            <code>DOMDocument</code>. Thanks to Ara Vartanian .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>Document.asXML()</code>which ignored the encoding of the document. Thanks to David Karlsen .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Updated
+            <code>NamespaceCache</code>to use
+            <code>WeakReference</code>s to allow
+            <code>Namespace</code>objects to be garbage collected.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Updated
+            <code>JAXBReader</code>to allow ElementHandlers to be notified when the specified path is encountered, without having to unmarshall XML content. Thanks to Wonne Keysers .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a bug in
+            <code>XMLWriter</code>where a
+            <code>NullPointerException</code>was thrown if trying to write a CData section containing
+            <code>null</code>content. Thanks to Daniel Hopper .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Modified the internal Aelfred2 parser to no longer support the SAX2 Extensions 1.1 API. As a result, the SAX2 sources are no included with dom4j.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added support for the XPP3 parser. Thanks to Pelle Braendgaard .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_5_-_2004-09-03"></a><h2>Release 1.5 - 2004-09-03</h2><a name="1_5">
+      </a><table class="bodyTable"><tr class="a"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>XMLWriter.characters(...)</code>where the escapeText property of the writer was ignored. Thanks to Dion Gillard .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed the
+            <code>Stylesheet.removeRule(Rule)</code>method which didn't remove the
+            <code>Rule</code>but added it again. Thanks to Peter Stibrany .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>BackedList</code>causing new elements to always be added at the first position if the size of the list is 1. Thanks to Robert Koberg .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Upgraded the internal Aelfred2 parser to the latest version.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added initial JAXB support. Thanks to Wonne Keysers .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Updated the STAX classes to provide document encoding. Thanks to Christian Niles .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added
+            <code>getXMLEncoding()</code>method to
+            <code>org.dom4j.Document</code>which returns the encoding of the document.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_5-rc1_-_2004-07-04"></a><h2>Release 1.5-rc1 - 2004-07-04</h2><a name="1_5-rc1">
+      </a><table class="bodyTable"><tr class="a"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="b"><td>
+            <img alt="remove" title="remove" src="images/remove.gif"></img>
+          </td><td>Removed the
+            <code>DocumentHelper.parseText(String xml, String encoding)</code>method that was introduced in dom4j-1.5-beta2.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Added the GNU JAXP DOM implementation to the default list of implementations in
+            <code>DOMWriter</code>.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Added method to
+            <code>ElementStack</code>and
+            <code>DispatchHandler</code>to check if a handler is registered for a given path. Thanks to Wonne Keysers .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>
+            <code>ElementStack</code>is now a public class. Thanks to Wonne Keysers .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>
+            <code>SAXContentHandler.endElement(...)</code>can now throw
+            <code>SAXException</code>. Thanks to Wonne Keysers .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Added the namespace-prefix of attributes to the paths returned by
+            <code>Attribute.getPath(Element context)</code>and
+            <code>Attribute.getUniquePath(Element context)</code>. Thanks to Aaron Bell .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>
+            <code>Element.declaredNamespaces()</code>now only returns the namespaces that are declared on that element.
+            <code>Element.additionalNamespaces()</code>now only returns namespaces that are declared on that element and is not the same as the namespace of that element. Thanks to Marc Pellmann .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Escape the values of internal DTD entity declarations when serializing to XML. Thanks to Marc Pellmann .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>AbstractElement</code>causing
+            <code>Node.getPath(Element context)</code>to return an absolute path, even if a the current element was the same as the context element. The relative path "." is now returned. Thanks to Rob Grzywinski .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added method to
+            <code>Element</code>to retrieve all
+            <code>Namespaces</code>for a given URI. Thanks to Thomas Diesler .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>DOMReader</code>causing namespace declarations to get lost in some situations. Thanks to Thomas Diesler .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added a
+            <code>booleanValueOf(Object node)</code>method to
+            <code>XPath</code>. Thanks to Ben Scarlet .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>BeanElement</code>which prevented proper execution of the bean samples. Thanks to Wonne Keysers .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>
+            <code>STAXEventWriter</code>now uses
+            <code>XMLEventConsumer</code>instead of
+            <code>XMLEventWriter</code>. Thanks to Christian Niles .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>SAXReader</code>that caused problems parsing files in OSX. Thanks to Paul Libbrecht .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>XMLWriter</code>that caused whitespace to be added between successive calls of the
+            <code>characters(...)</code>method. This is used particularly frequent in Apache Jelly. Thanks to Paul Libbrecht .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Improved performance of
+            <code>NamespaceCache</code>in multithreaded environments. Thanks to Brett Finnell .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_5-beta-2_-_2004-05-12"></a><h2>Release 1.5-beta-2 - 2004-05-12</h2><a name="1_5-beta-2">
+      </a><table class="bodyTable"><tr class="a"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added flag to
+            <code>OutputFormat</code>that supresses newline after XML declaration.</td><td>
+            <a href="team-list.html#wolfftw">wolfftw</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Upgraded dependencies to their latest version on ibiblio.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added method to
+            <code>DocumentHelper</code>that allows user to specify encoding when parsing an xml
+            <code>String</code>. Thanks to Todd Wolff .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a ClassCastException bug in
+            <code>BeanElement</code>.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed a bug in
+            <code>SAXContentHandler</code>which caused a
+            <code>NullPointerException</code>in some situations.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug which prevented an element's namespace prefix from being registered for use in xpath expressions. Thanks to Todd Wolff .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>XMLWriter</code>that caused duplication of the default namespace declaration. Thanks to Todd Wolff .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Added a bunch of patches to make the dom4j DOM classes more DOM compliant. Thanks to Curt Arnold .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Fixed bug in
+            <code>DispatchHandler</code>which made the handler not reusable. Thanks to Ricardo Leon .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>SAXContentHandler</code>that caused incorrect CDATA section parsing. Thanks to Todd Wolff .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>SAXContentHandler</code>that caused incorrect entity handling.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>XMLWriter</code>causing padding to be disabled, even if enabled in the specified outputformat. Thanks to Bo Gundersen .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="add" title="add" src="images/add.gif"></img>
+          </td><td>Added initial support for STaX streams. Thanks to Christian Niles .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr></table></div><div class="section"><a name="Release_1_5-beta-1_-_2004-03-25"></a><h2>Release 1.5-beta-1 - 2004-03-25</h2><a name="1_5-beta-1">
+      </a><table class="bodyTable"><tr class="a"><th style="width:50px">Type</th><th>Changes</th><th style="width:70px">By</th></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed encoding bug in
+            <code>Document.asXML()</code>and
+            <code>DocumentHelper.parseText()</code>.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in
+            <code>SAXReader</code>that caused problems resolving relative URIs when parsing
+            <code>java.io.File</code>Objects. Thanks to Kohsuke Kawaguchi .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>The iterators returned by the
+            <code>Element.elementIterator(...)</code>methods now support
+            <code>remove()</code>.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>
+            <code>DOMWriter</code>writes now DOM Level 2 attributes and elements. Thanks to Geert Dendoncker and Joury Gokel .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Use latest implementation of the Aelfred parser.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed some problems with internal/external DTD declarations. Thanks to Bryan Thompson .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Upgraded to Jaxen 1.1 beta 2.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Ignore attribute order when comparing elements in
+            <code>NodeComparator</code>.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Fixed bug in
+            <code>XMLWriter</code>where namespace declarations were duplicated.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed bug in parsing a
+            <code>ProcessingInstruction</code>. Thanks to Vladimir Kralik .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Added support for
+            <code>Stylesheet</code>modes. Thanks to Mark Diggory .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Don't escape " and ' characters in attribute values if it's not necessary. Thanks to Christian Niles .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed some
+            <code>DOMNodeHelper</code>issues. Thanks to Henner Kollmann .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed some datatype issues. Thanks to Thomas Draier .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed an bug where the EntityResolver was not set on the XMLReader.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed multithreaded access on
+            <code>DefaultElement</code>.</td><td>
+            <a href="team-list.html#slehmann">slehmann</a>
+          </td></tr><tr class="b"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed problem parsing XML Files. Thanks to Geoffrey Vlassaks .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Added xml:space attribute support based on XML Specification 1.0.</td><td>
+            <a href="team-list.html#ddlucas">ddlucas</a>
+          </td></tr><tr class="b"><td>
+            <img alt="update" title="update" src="images/update.gif"></img>
+          </td><td>Maven build of dom4j is now nearly complete. Maven is now used for the website generation.</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr><tr class="a"><td>
+            <img alt="fix" title="fix" src="images/fix.gif"></img>
+          </td><td>Fixed some bugs in BackedList. Thanks to Alessandro Vernet .</td><td>
+            <a href="team-list.html#maartenc">maartenc</a>
+          </td></tr></table></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2001-2005, MetaStuff Ltd.</div><div class="clear"><hr></hr></div></div></body></html>

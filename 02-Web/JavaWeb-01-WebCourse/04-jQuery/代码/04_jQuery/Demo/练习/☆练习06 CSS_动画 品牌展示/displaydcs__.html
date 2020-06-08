@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>品牌展示练习</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 12px;
+	text-align: center;
+}
+
+a {
+	color: #04D;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #F50;
+	text-decoration: underline;
+}
+
+.SubCategoryBox {
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 40px;
+}
+
+.SubCategoryBox ul {
+	list-style: none;
+}
+
+.SubCategoryBox ul li {
+	display: block;
+	float: left;
+	width: 200px;
+	line-height: 20px;
+}
+
+.showmore , .showless{
+	clear: both;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.showmore a , .showless a{
+	display: block;
+	width: 120px;
+	margin: 0 auto;
+	line-height: 24px;
+	border: 1px solid #AAA;
+}
+
+.showmore a span {
+	padding-left: 15px;
+	background: url(img/down.gif) no-repeat 0 0;
+}
+
+.showless a span {
+	padding-left: 15px;
+	background: url(img/up.gif) no-repeat 0 0;
+}
+
+.promoted a {
+	color: #F50;
+}
+</style>
+<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 基本初始状态
+		$("li:gt(5):not(:last)").hide();
+
+		// 给功能的按钮绑定单击事件
+		$("div div a").click(function () {
+			// 让某些品牌，显示，或隐藏
+			$("li:gt(5):not(:last)").toggle();
+			// 判断 品牌，当前是否可见
+			if( $("li:gt(5):not(:last)").is(":hidden") ){
+				// 品牌隐藏的状态 ：1 显示全部品牌    == 角标向下 showmore
+				$("div div a span").text("显示全部品牌");
+
+				$("div div").removeClass();
+				$("div div").addClass("showmore");
+
+				// 去掉高亮
+				$("li:contains('索尼')").removeClass("promoted");
+
+			} else {
+				// 品牌可见的状态：2 显示精简品牌	 == 角标向上 showless
+				$("div div a span").text("显示精简品牌");
+
+				$("div div").removeClass();
+				$("div div").addClass("showless");
+
+				// 加高亮
+				$("li:contains('索尼')").addClass("promoted");
+			}
+
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="SubCategoryBox">
+		<ul>
+			<li><a href="#">佳能</a><i>(30440) </i></li>
+			<li><a href="#">索尼</a><i>(27220) </i></li>
+			<li><a href="#">三星</a><i>(20808) </i></li>
+			<li><a href="#">尼康</a><i>(17821) </i></li>
+			<li><a href="#">松下</a><i>(12289) </i></li>
+			<li><a href="#">卡西欧</a><i>(8242) </i></li>
+			<li><a href="#">富士</a><i>(14894) </i></li>
+			<li><a href="#">柯达</a><i>(9520) </i></li>
+			<li><a href="#">宾得</a><i>(2195) </i></li>
+			<li><a href="#">理光</a><i>(4114) </i></li>
+			<li><a href="#">奥林巴斯</a><i>(12205) </i></li>
+			<li><a href="#">明基</a><i>(1466) </i></li>
+			<li><a href="#">爱国者</a><i>(3091) </i></li>
+			<li><a href="#">其它品牌相机</a><i>(7275) </i></li>
+		</ul>
+		<div class="showmore">
+			<a href="more.html"><span>显示全部品牌</span></a>
+		</div>
+	</div>
+</body>
+</html>
+

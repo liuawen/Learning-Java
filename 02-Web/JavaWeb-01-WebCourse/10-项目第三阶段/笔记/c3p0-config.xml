@@ -1,0 +1,42 @@
+<c3p0-config>
+	<!-- 默认配置  如果向把这个xml文件拷贝到自己的工程，需要修改里面的链接的数目-->
+	<default-config>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/mydb5</property>
+		<property name="user">root</property>
+		<property name="password">root</property>
+		<!-- 最大连接数 -->
+		<property name="maxPoolSize">1000</property>
+		<!-- 最小连接数 -->
+		<property name="minPoolSize">100</property>
+		<!-- 初始化连接数,连接池创建初始化连接数 -->
+		<property name="initialPoolSize">300</property>
+		<!-- 多长时间检测一下链接的可用性，以秒做单位-->
+		<property name="idleConnectionTestPeriod">3600</property>
+		<!-- 如果连接处不够用，一次性创建多少链接 -->
+		<property name="acquireIncrement">50</property>
+		<!-- 链接的最大空闲时间，以分钟做为单位 -->
+		<property name="maxIdleTime">50</property>
+	</default-config>
+	
+	<!-- 用户自定义配置 -->
+	<named-config name="intergalactoApp">
+			<property name="driverClass">com.mysql.jdbc.Driver</property>
+			<property name="jdbcUrl">jdbc:mysql://localhost:3306/mydb5</property>
+			<property name="user">root</property>
+			<property name="password">root</property>
+			<!-- 最大连接数 -->
+			<property name="maxPoolSize">50</property>
+			<!-- 最小连接数 -->
+			<property name="minPoolSize">5</property>
+			<!-- 初始化连接数,连接池创建初始化连接数 -->
+			<property name="initialPoolSize">3</property>
+			<!-- 多长时间检测一下链接的可用性，以秒做单位-->
+			<property name="idleConnectionTestPeriod">3600</property>
+			<!-- 如果连接处不够用，一次性创建多少链接 -->
+			<property name="acquireIncrement">5</property>
+			<!-- 链接的最大空闲时间，以分钟做为单位 -->
+			<property name="maxIdleTime">50</property>
+	</named-config>
+
+</c3p0-config>

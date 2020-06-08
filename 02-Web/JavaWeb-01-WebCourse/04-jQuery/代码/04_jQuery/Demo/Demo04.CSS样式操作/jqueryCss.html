@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	div{
+		width:100px;
+		height:260px;
+	}
+	
+	div.border{
+		border: 2px white solid;
+	}
+	
+	div.redDiv{
+		background-color: red;
+	}
+	
+	div.blackDiv{
+		border: 5px blue solid;
+	}
+	
+	
+	
+	
+</style>
+
+<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	
+
+	$(function(){
+		/*
+CSS
+css(name|pro|[,val|fn])       读写匹配元素的样式属性。 
+								a.css('color')取出a元素的color
+								a.css('color',"red")设置a元素的color为red
+
+CSS 类
+
+addClass(class|fn) 			为元素添加一个class值;<div class="mini big">
+removeClass([class|fn]) 	删除元素的class值；传递一个具体的class值，就会删除具体的某个class
+							a.removeClass()：移除所有的class值
+
+**/
+		
+		var $divEle = $('div:first');
+		
+		$('#btn01').click(function(){
+			//addClass() - 向被选元素添加一个或多个类
+			$divEle.addClass("redDiv blackDiv");
+		});
+		
+		$('#btn02').click(function(){
+			//removeClass() - 从被选元素删除一个或多个类 
+			$divEle.removeClass()
+		});
+
+		
+		$('#btn03').click(function(){
+			//toggleClass() - 对被选元素进行添加/删除类的切换操作 
+			//切换就是如果具有该类那么删除，如果没有那么添加上
+			$divEle.toggleClass("redDiv");
+		});
+		
+		$('#btn04').click(function(){
+			//offset() - 返回第一个匹配元素相对于文档的位置。
+			var os = $divEle.offset();
+			//注意通过offset获取到的是一个对象，这个对象有两个属性top表示顶边距，left表示左边距
+			alert("顶边距："+os.top+" 左边距："+os.left);
+			
+			//调用offset设置元素位置时，也需要传递一个js对象，对象有两个属性top和left
+			//offset({ top: 10, left: 30 });
+			 $divEle.offset({
+				 top:50,
+				 left:60
+			 }); 
+		});
+		
+	})
+</script>
+</head>
+<body>
+
+	<table align="center">
+		<tr>
+			<td>
+				<div class="border">
+				</div>
+			</td>
+			
+			<td>
+				<div class="btn">
+					<input type="button" value="addClass()" id="btn01"/>
+					<input type="button" value="removeClass()" id="btn02"/>
+					<input type="button" value="toggleClass()" id="btn03"/>
+					<input type="button" value="offset()" id="btn04"/>
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	
+	
+	<br /> <br />
+	
+	
+	<br /> <br />
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿jsp
+	jsp 是 java server pages，java的服务器页面。
+
+作用：	jsp的作用是为了代替Servlet程序回传html页面数据。
+
+jsp的本质是：Servlet程序。
+
+jsp有三种脚本：
+	
+1、声明脚本
+	声明脚本它可以声明jsp页面中的代码。
+	格式是：<%!  %>
+
+2、表达式脚本
+	作用： 表达式脚本的作用是在jsp页面上输出数据。
+	格式是：<%=  %>
+
+3、代码脚本
+	作用：可以在jsp页面中定义自己需要的语句。
+	格式是：<%  %>
+
+jsp中有三种注释：
+	1、html注释 
+		<!--  html注释  -->
+		html注释翻译之后会在_jspService()方法以out.write输出到页面
+
+	2、java注释 
+		// 单行注释
+		/*  多行注释 */
+
+		java的多行注释在翻译之后在翻译到servlet程序的源代码中
+
+	3、jsp注释 
+		<%-- jsp注释 --%>
+		jsp注释可以注掉jsp中所有内容，在jsp翻译的时候会被完全忽略掉
+
+
+jsp中的九大内置对象：
+	1、request		
+	2、response
+	3、pageContext
+	4、exception
+	5、application
+	6、out输出
+	7、page 指向this对象，也就是jsp对象
+	8、session
+	9、servletConfig
+
+
+四个域对象
+	pageContext
+	request
+	session
+	application
+
+它们从小到大的顺序分别是：pageContext 、Request、Session 、application
+
+使用的优先顺序是从小到大：pageContext 、Request、Session 、application
+
+out和Response输出的区别。
+	out输出都写到out缓冲区中
+	response输出都写到Respnse的缓冲区中，
+
+	当jsp页面中所有代码都执行完成之后。全做以下两个操作
+	1、执行out.flush()操作，把out缓冲区中的数据都追加到Response缓冲区中
+	2、执行Response的flush()操作。把Response缓冲区中的数据，都写给客户端。
+
+	在jsp页面中，统一使用out来进行输出。 
+
+	out.write()可以输出字符串
+	out.print()可以输出任意数据
+
+
+jsp的常用标签
+	静态包含
+		格式: <%@ include file="">		
+
+	动态包含
+		格式是：<jsp:include page="" >
+
+	请求转发
+		格式是：<jsp:forward page="" >
+
+
+
+	
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+

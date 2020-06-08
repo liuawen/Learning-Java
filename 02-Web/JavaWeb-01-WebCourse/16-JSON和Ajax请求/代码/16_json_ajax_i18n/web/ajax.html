@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			// 在这里使用javaScript语言发起Ajax请求，访问服务器AjaxServlet中javaScriptAjax
+			function ajaxRequest() {
+// 				1、我们首先要创建XMLHttpRequest 
+				var xmlhttprequest = new XMLHttpRequest();
+// 				2、调用open方法设置请求参数
+				xmlhttprequest.open("GET","http://localhost:8080/16_json_ajax_i18n/ajaxServlet?action=javaScriptAjax",true);
+// 				4、在send方法前绑定onreadystatechange事件，处理请求完成后的操作。
+				xmlhttprequest.onreadystatechange = function(){
+					if (xmlhttprequest.readyState == 4 && xmlhttprequest.status == 200) {
+						alert("收到服务器返回的数据：" + xmlhttprequest.responseText);
+						var jsonObj = JSON.parse(xmlhttprequest.responseText);
+						// 把响应的数据显示在页面上
+						document.getElementById("div01").innerHTML = "编号：" + jsonObj.id + " , 姓名：" + jsonObj.name;
+					}
+				}
+// 				3、调用send方法发送请求
+				xmlhttprequest.send();
+
+
+				alert("我是最后一行的代码");
+
+			}
+		</script>
+	</head>
+	<body>
+<!--		<a href="http://localhost:8080/16_json_ajax_i18n/ajaxServlet?action=javaScriptAjax">非Ajax</a>-->
+		<button onclick="ajaxRequest()">ajax request</button>
+		<button onclick="ajaxRequest()">ajax request</button>
+		<button onclick="ajaxRequest()">ajax request</button>
+		<button onclick="ajaxRequest()">ajax request</button>
+		<button onclick="ajaxRequest()">ajax request</button>
+		<div id="div01">
+		</div>
+		<table border="1">
+			<tr>
+				<td>1.1</td>
+				<td>1.2</td>
+			</tr>
+			<tr>
+				<td>2.1</td>
+				<td>2.2</td>
+			</tr>
+		</table>
+	</body>
+</html>

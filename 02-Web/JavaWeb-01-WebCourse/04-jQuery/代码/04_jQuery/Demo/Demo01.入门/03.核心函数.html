@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+
+	//核心函数的4个作用
+    $(function () {
+        // alert("页面加载完成之后，自动调用");
+
+        $("    <div>" +
+            "        <span>div-span1</span>" +
+            "        <span>div-span2</span>" +
+            "    </div>").appendTo("body");
+
+        // alert($("button").length);
+
+        var btnObj = document.getElementById("btn01");
+        // alert(btnObj);
+        // alert( $(btnObj) );
+
+        // alert( $("<h1></h1>") );
+        alert($("button"));
+
+    });
+	//传入参数为[函数]时：在文档加载完成后执行这个函数
+	//传入参数为[HTML字符串]时：根据这个字符串创建元素节点对象
+	//传入参数为[选择器字符串]时：根据这个字符串查找元素节点对象
+	//传入参数为[DOM对象]时：将DOM对象包装为jQuery对象返回
+
+</script>
+</head>
+<body>
+    <button id="btn01">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			// json的定义
+			var jsonObj = {
+				"key1":12,
+				"key2":"abc",
+				"key3":true,
+				"key4":[11,"arr",false],
+				"key5":{
+					"key5_1" : 551,
+					"key5_2" : "key5_2_value"
+				},
+				"key6":[{
+					"key6_1_1":6611,
+					"key6_1_2":"key6_1_2_value"
+				},{
+					"key6_2_1":6621,
+					"key6_2_2":"key6_2_2_value"
+				}]
+			};
+
+			// alert(typeof(jsonObj));// object  json就是一个对象
+			// alert(jsonObj.key1); //12
+			// alert(jsonObj.key2); // abc
+			// alert(jsonObj.key3); // true
+			// alert(jsonObj.key4);// 得到数组[11,"arr",false]
+			//  // json 中 数组值的遍历
+			// for(var i = 0; i < jsonObj.key4.length; i++) {
+			// 	alert(jsonObj.key4[i]);
+			// }
+			// alert(jsonObj.key5.key5_1);//551
+			// alert(jsonObj.key5.key5_2);//key5_2_value
+			// alert( jsonObj.key6 );// 得到json数组
+			//
+			// // 取出来每一个元素都是json对象
+			// var jsonItem = jsonObj.key6[0];
+			// // alert( jsonItem.key6_1_1 ); //6611
+			// alert( jsonItem.key6_1_2 ); //key6_1_2_value
+
+			// alert(jsonObj);
+
+			// 把json对象转换成为 json字符串
+			var jsonObjString = JSON.stringify(jsonObj); // 特别像 Java中对象的toString
+			alert(jsonObjString)
+			// 把json字符串。转换成为json对象
+			var jsonObj2 = JSON.parse(jsonObjString);
+			alert(jsonObj2.key1);// 12
+			alert(jsonObj2.key2);// abc
+
+			// json的访问
+			// json对象转字符串
+			// json字符串转json对象
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

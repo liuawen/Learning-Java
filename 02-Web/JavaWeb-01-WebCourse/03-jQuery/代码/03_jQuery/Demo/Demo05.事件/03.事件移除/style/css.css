@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+#total{
+	width: 450px;
+}
+
+ul{
+	list-style-type: none;
+}
+
+li{
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+	margin: 5px;
+	background-color: #99ff99;
+	float:left;
+}
+
+.inner{
+	width:400px;
+	border-style: solid;
+	border-width: 1px;
+	margin: 10px;
+	padding: 10px;
+	float: left;
+}
+

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>03-全选全不选反选.html</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+	// 动态注册事件，一定要先把这个文档加载 完成的事件先添加上
+	window.onload = function() {
+		
+		// 通过id属性值查找对应的标签对象
+		var checkallButton = document.getElementById("checkall");
+		// 然后通过动态事件注册 的方式。给全选添加单击事件
+		checkallButton.onclick = function() {
+			// 通过name属性值，查找一组 input checkbox多选标签对象。
+			var itemsInput = document.getElementsByName("items");
+			// 通过设置多选标签对象的checked属性来设置是否被选中
+			for (var i = 0; i < itemsInput.length; i++) {
+				itemsInput[i].checked = true;
+			}
+		}
+		var checkallNoButton = document.getElementById("checkallNo");
+		// 然后通过动态事件注册 的方式。给全不选添加单击事件
+		checkallNoButton.onclick = function() {
+			// 通过name属性值，查找一组 input checkbox多选标签对象。
+			var itemsInput = document.getElementsByName("items");
+			// 通过设置多选标签对象的checked属性来设置是否被选中
+			for (var i = 0; i < itemsInput.length; i++) {
+				itemsInput[i].checked = false;
+			}
+		}
+		var check_revsernButton = document.getElementById("check_revsern");
+		check_revsernButton.onclick = function() {
+			// 通过name属性值，查找一组 input checkbox多选标签对象。
+			var itemsInput = document.getElementsByName("items");
+			// 通过设置多选标签对象的checked属性来设置是否被选中
+			for (var i = 0; i < itemsInput.length; i++) {
+				itemsInput[i].checked = !itemsInput[i].checked;
+				
+			}
+		}
+	}
+	
+</script>
+</head>
+<body>
+	您的爱好很广泛!!!
+	<br>
+	<input id="abc" type="checkbox" id="input" />全选/全不选
+	<input type="checkbox" name="items" value="足球" />足球
+	<input type="checkbox" name="items" value="篮球" />篮球
+	<input type="checkbox" name="items" value="游泳" />游泳
+	<input type="checkbox" name="items" value="唱歌" />唱歌
+	<br>
+	<input type="button" name="checkall" id="checkall" value="全选" />
+	<input type="button" name="checkall" id="checkallNo" value="全不选" />
+	<input type="button" name="checkall" id="check_revsern" value="反选" />
+</body>
+
+</html>

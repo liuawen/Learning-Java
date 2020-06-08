@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>06-动态生成表格.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    	table{
+    		border: 1px red solid;
+    		width: 300px;
+    		border-collapse:collapse;
+    	}
+    	td{
+    		border:1px blue solid;
+    		margin: 0px;
+    		padding: 0px;
+    		
+    	}
+    </style>
+    <script type="text/javascript">
+    	var oldTable;
+    
+		function demo() {
+			if (oldTable) {
+				oldTable.parentNode.removeChild(oldTable);
+			}
+			
+			// 获取输入框内输入的行和列的数值
+			var rowValue = parseInt(document.getElementById("row").value);
+			var colValue = parseInt(document.getElementById("col").value);
+			
+			// 创建一个表格对象
+			var tableObj = document.createElement("table");
+			// 遍历创建行
+			for (var row = 0; row < rowValue; row++) {
+				//创建行标签对象
+				var trObj = document.createElement("tr");
+				// 把行标签对象添加到表格对象中
+				tableObj.appendChild(trObj);
+				// 循环创建列对象
+				for (var col = 0; col < colValue; col++) {
+					// 创建td标签对象
+					var tdObj = document.createElement("td");
+					// 给td标签对象添加内容
+					tdObj.innerHTML = row + "-" + col;
+					//把创建td对象添加到行中
+					trObj.appendChild(tdObj);
+				}
+			}
+			// 把创建的表格对象添加到body中
+			document.body.appendChild(tableObj);
+			oldTable = tableObj;
+		}
+    </script>
+  </head>
+  
+  <body>
+  	<div id="one" >
+  		 
+  	</div>
+  	输入行：<input type="text" id="row"/><br />
+  	输入列：<input type="text" id="col"/><br />
+  	<input type="button" value="创建表格" onclick="demo()"/>
+  </body>
+</html>

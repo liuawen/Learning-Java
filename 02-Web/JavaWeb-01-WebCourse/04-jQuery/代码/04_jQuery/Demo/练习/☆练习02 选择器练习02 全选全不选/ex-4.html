@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		
+		var $items = $(":checkbox[name=items]");
+		var items = $("[name='items']");
+		//全选按钮
+		$("#checkedAllBtn").click(function(){
+			items.attr("checked",true);
+			$("#checkedAllBox").attr("checked",true);
+		});
+		//全不选按钮
+		$("#checkedNoBtn").click(function(){
+			items.attr("checked",false);
+			$("#checkedAllBox").attr("checked",false);
+		});
+		
+		//反选按钮
+		$("#checkedRevBtn").click(function(){
+			items.each(function(){
+				this.checked = !this.checked;
+			});
+			var flag = $("[name='items']:checked").length==4;
+			$("#checkedAllBox").attr("checked",flag);
+		});
+		
+		//提交按钮
+		$("#sendBtn").click(function(){
+			$(":checkbox[name='items']:checked").each(function(){
+				alert(this.value);
+			});
+		});
+		
+		//全选/全不选复选框
+		$("#checkedAllBox").click(function(){
+			items.attr("checked",this.checked);
+		});
+		
+		//全选/全不选复选框与items状态同步
+		$("[name='items']").click(function(){
+			var flag = $("[name='items']:checked").length==4;
+			$("#checkedAllBox").attr("checked",flag);
+		});
+	});
+	
+</script>
+</head>
+<body>
+
+	<form method="post" action="">
+	
+		你爱好的运动是？<input type="checkbox" id="checkedAllBox" />全选/全不选 
+		
+		<br />
+		<input type="checkbox" name="items" value="足球" />足球
+		<input type="checkbox" name="items" value="篮球" />篮球
+		<input type="checkbox" name="items" value="羽毛球" />羽毛球
+		<input type="checkbox" name="items" value="乒乓球" />乒乓球
+		<br />
+		<input type="button" id="checkedAllBtn" value="全　选" />
+		<input type="button" id="checkedNoBtn" value="全不选" />
+		<input type="button" id="checkedRevBtn" value="反　选" />
+		<input type="button" id="sendBtn" value="提　交" />
+	</form>
+
+</body>
+</html>

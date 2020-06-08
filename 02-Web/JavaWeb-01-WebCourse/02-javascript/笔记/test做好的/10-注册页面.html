@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>10-注册页面.html</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+	// 添加整个表单的数据验证方法 ，
+	// 当验证数据有非法时，返回false，阻止表单提交 
+	// 当验证数据都合法时，返回true 让表单提交
+	function _validata() {
+
+		if (checkuser() && checkpwd() && checkrepwd() && checksex() && checkhobby() && checkDesc() && checkCountry()) {
+			alert("都成功");
+			return true;
+		} 
+		
+		return false;
+		
+	}
+	
+	// 当点击用户名称 输入框的时候，把里面的提前文本去掉
+	function func() {
+		var userInputObj = document.getElementById("user");
+		userInputObj.value = "";
+	}
+	
+	/*
+	1, 用户名称验证，必须由字母、数字、下划线组成，并且长度为8-15长度
+	*/
+	function checkuser() {
+		// 获取用户名输入框
+		var userInputObjValue = document.getElementById("user").value;
+		
+/* 		var patt = new RegExp("\\w{8,15}");
+		alert(patt); */
+		
+		var patt = /^\w{8,15}$/;
+		
+		var result = patt.test(userInputObjValue);
+		var userspanObj = document.getElementById("userspan");
+		
+		if (result) {
+			userspanObj.innerHTML = "";
+			return true;
+		} else {
+			userspanObj.innerHTML = "用户名必须由字母、数字、下划线组成，并且长度为8-15长度";
+			return false;
+		}
+	}
+	// 验证密码  	2, 用户密码  必须由字母、数字、下划线组成，并且长度为6-12长度
+	function checkpwd(){
+		// 获取用户名输入框
+		var pwdInputObjValue = document.getElementById("pwd").value;
+		
+		var patt = /^\w{6,12}$/;
+		
+		var result = patt.test(pwdInputObjValue);
+		var pwdspanObj = document.getElementById("pwdspan");
+		
+		if (result) {
+			pwdspanObj.innerHTML = "";
+			return true;
+		} else {
+			pwdspanObj.innerHTML = "用户密码  必须由字母、数字、下划线组成，并且长度为6-12长度";
+			return false;
+		}
+	}
+	
+	// 验证确认密码  	3，确认密码必须与用户密码相同
+	function checkrepwd(){
+		// 获取确认密码输入框
+		var repwdInputObjValue = document.getElementById("repwd").value;
+		
+		var patt = /^\w{6,12}$/;
+		
+		var result = patt.test(repwdInputObjValue);
+		var repwdspanObj = document.getElementById("repwdspan");
+		
+		if (result) {
+			// 获取用户名输入框
+			var pwdInputObjValue = document.getElementById("pwd").value;
+			if (repwdInputObjValue === pwdInputObjValue) {
+				repwdspanObj.innerHTML = "";
+				return true;
+			} else {
+				repwdspanObj.innerHTML = "确认密码和用户密码不一致";
+				return false;
+			}
+			
+		} else {
+			repwdspanObj.innerHTML = "确认密码  必须由字母、数字、下划线组成，并且长度为6-12长度";
+			return false;
+		}
+	}
+	// 	4，性别，必须选一个
+	function checksex(){
+		var checked = false;
+		var sexs = document.getElementsByName("sex");
+		for (var i = 0; i < sexs.length; i++) {
+			if (sexs[i].checked) {
+				checked = true;
+				break;
+			}
+		}
+		
+		// 
+		var sexspanObj = document.getElementById("sexspan");
+		if (checked) {
+			sexspanObj.innerHTML = "";			
+			return true;
+		} else {
+			sexspanObj.innerHTML = "性别，必须选一个";	
+			return false;
+		}
+	}
+	
+	// 5, 兴趣爱好也必须至少选一个
+	function checkhobby(){
+		var checked = false;
+		var hobbys = document.getElementsByName("hobby");
+		for (var i = 0; i < hobbys.length; i++) {
+			if (hobbys[i].checked) {
+				checked = true;
+				break;
+			}
+		}
+		
+		// 
+		var hspanObj = document.getElementById("hspan");
+		if (checked) {
+			hspanObj.innerHTML = "";			
+			return true;
+		} else {
+			hspanObj.innerHTML = "兴趣，至少选一个";	
+			return false;
+		}
+	}
+	// 验证国籍 	6，国家也必须选一个（美国，中国，或者英国）
+	function checkCountry(){
+		var countrySelect = document.getElementById("country");
+		var countryspan = document.getElementById("countryspan");
+		if (countrySelect.selectedIndex == 0) {
+			countryspan.innerHTML = "请选择国家！";
+			return false;
+		} else {
+			countryspan.innerHTML = "";
+			return true;
+		}
+	}
+	
+	
+	// 验证详细信息 	7，自我评价 长度为8-15长度
+	function checkDesc() {
+		// 获取用户名输入框
+		var descInputObjValue = document.getElementById("desc").value;
+		alert(descInputObjValue);
+		//new RegExp("^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[a-zA-Z0-9])*$"); 
+		var patt = /^([\u4E00-\u9FA5]|[a-zA-Z0-9]){5,15}$/;
+		
+		var result = patt.test(descInputObjValue);
+		
+		var descspanObj = document.getElementById("descspan");
+		
+		if (result) {
+			descspanObj.innerHTML = "";
+			return true;
+		} else {
+			descspanObj.innerHTML = "自我评价 长度为8-15长度";
+			return false;
+		}		
+		
+	}
+	
+</script>
+</head>
+<body>
+	<fieldset>
+		<legend>注册页面</legend>
+		<!-- 在form标签中有个默认的事件 -->
+		<form action="http://127.0.0.1:9090" method="post" onsubmit="return _validata();">
+			<table>
+				<tr>
+					<td>用户名称：<font color="red">*</font>
+					</td>
+					<td><input id="user" type="text" name="user" value="请输入用户名" onclick="func()"
+						onblur="checkuser()" /> <span style="color: red" id="userspan"></span></td>
+				</tr>
+
+				<tr>
+					<td>用户密码：</td>
+					<td><input id="pwd" type="password" name="pwd" onblur="checkpwd()" /> <span id="pwdspan"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>确认密码：</td>
+					<td><input id="repwd" type="text" name="repwd" onblur="checkrepwd()" /> <span
+						id="repwdspan"></span></td>
+				</tr>
+
+				<tr>
+					<td>选择性别：</td>
+					<td>
+					<input name="sex" type="radio" value="nan" onblur="checksex()" />男 
+					<input name="sex" type="radio" value="nv" onblur="checksex()" />女 <span id="sexspan"></span></td>
+				</tr>
+				<tr>
+					<td>选择爱好：</td>
+					<td>
+					<input type="checkbox" name="hobby" value="C" />C 
+					<input type="checkbox" name="hobby" value="C++" />C++ 
+					<input type="checkbox" name="hobby" value="Java" />Java 
+					<input type="checkbox" name="hobby" value="PHP" />PHP 
+					<input type="checkbox" name="hobby" value=".net" />.net 
+					<span id="hspan"></span></td>
+				</tr>
+				<tr>
+					<td>选择国家：</td>
+					<td><select id="country" name="country">
+							<option>---请选择国家----</option>
+							<option value="CN">中国</option>
+							<option value="US">美国</option>
+							<option value="EN">英国</option>
+					</select><span style="color: red" id="countryspan"></span></td>
+				</tr>
+
+				<tr>
+					<td>自我评价：</td>
+					<td><textarea id="desc" rows="10" cols="40" name="desc"></textarea><span style="color: red" id="descspan"></span></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="注册" /></td>
+					<td><input type="reset" value="重置" /></td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+</body>
+</html>

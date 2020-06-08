@@ -1,0 +1,46 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+	</head>
+	<body>
+		
+		<input type="button" value="使单选下拉框的'选择3号'被选中"/>
+		<input type="button" value="使多选下拉框选中的'选择2号'和'选择4号'被选中"/><br>
+		<input type="button" value="使多选框的'多选2'和'多选4'被选中"/>
+		<input type="button" value="使单选框的'单选2'被选中"/><br>
+		<input type="button" value="打印已经被选中的值"><br>
+ 
+		<br/>
+		
+		<select id="single" name="singlecheck">
+		  <option value="s1">选择1号</option>
+		  <option value="s2">选择2号</option>
+		  <option value="s3">选择3号</option>
+		</select>
+		
+		<select id="multiple" multiple="multiple" name="multiplecheck" style="height:120px;">
+		  <option selected="selected" value="x1">选择1号</option>
+		  <option value="x2">选择2号</option>
+		  <option value="x3">选择3号</option>
+		  <option value="x4">选择4号</option>
+		  <option selected="selected" value="x5">选择5号</option>
+		</select>
+		
+		<br/><br/>
+
+		<input type="checkbox" name="c" value="check1"/> 多选1
+		<input type="checkbox" name="c" value="check2"/> 多选2
+		<input type="checkbox" name="c" value="check3"/> 多选3
+		<input type="checkbox" name="c" value="check4"/> 多选4
+		
+		<br/>
+		
+		<input type="radio" name="r" value="radio1"/> 单选1
+		<input type="radio" name="r"  value="radio2"/> 单选2
+		<input type="radio" name="r"  value="radio3"/> 单选3
+		
+
+	</body>
+</html>

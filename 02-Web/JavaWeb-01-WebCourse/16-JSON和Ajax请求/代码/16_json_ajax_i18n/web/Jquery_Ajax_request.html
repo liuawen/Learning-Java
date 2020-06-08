@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// ajax请求
+				$("#ajaxBtn").click(function(){
+					$.ajax({
+						url:"http://localhost:8080/16_json_ajax_i18n/ajaxServlet",
+						// data:"action=jQueryAjax",
+						data:{action:"jQueryAjax"},
+						type:"GET",
+						success:function (data) {
+							// alert("服务器返回的数据是：" + data);
+							// var jsonObj = JSON.parse(data);
+							$("#msg").html(" ajax 编号：" + data.id + " , 姓名：" + data.name);
+						},
+						dataType : "json"
+					});
+				});
+
+				// ajax--get请求
+				$("#getBtn").click(function(){
+
+					$.get("http://localhost:8080/16_json_ajax_i18n/ajaxServlet","action=jQueryGet",function (data) {
+						$("#msg").html(" get 编号：" + data.id + " , 姓名：" + data.name);
+					},"json");
+					
+				});
+				
+				// ajax--post请求
+				$("#postBtn").click(function(){
+					// post请求
+					$.post("http://localhost:8080/16_json_ajax_i18n/ajaxServlet","action=jQueryPost",function (data) {
+						$("#msg").html(" post 编号：" + data.id + " , 姓名：" + data.name);
+					},"json");
+					
+				});
+
+				// ajax--getJson请求
+				$("#getJSONBtn").click(function(){
+					$.getJSON("http://localhost:8080/16_json_ajax_i18n/ajaxServlet","action=jQueryGetJSON",function (data) {
+						$("#msg").html(" getJSON 编号：" + data.id + " , 姓名：" + data.name);
+					});
+				});
+
+				// ajax请求
+				$("#submit").click(function(){
+					// 把参数序列化
+					$.getJSON("http://localhost:8080/16_json_ajax_i18n/ajaxServlet","action=jQuerySerialize&" + $("#form01").serialize(),function (data) {
+						$("#msg").html(" Serialize 编号：" + data.id + " , 姓名：" + data.name);
+					});
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<button id="ajaxBtn">$.ajax请求</button>
+			<button id="getBtn">$.get请求</button>
+			<button id="postBtn">$.post请求</button>
+			<button id="getJSONBtn">$.getJSON请求</button>
+		</div>
+		<div id="msg">
+
+		</div>
+
+		<br/><br/>
+		<form id="form01" >
+			用户名：<input name="username" type="text" /><br/>
+			密码：<input name="password" type="password" /><br/>
+			下拉单选：<select name="single">
+			  	<option value="Single">Single</option>
+			  	<option value="Single2">Single2</option>
+			</select><br/>
+		  	下拉多选：
+		  	<select name="multiple" multiple="multiple">
+		    	<option selected="selected" value="Multiple">Multiple</option>
+		    	<option value="Multiple2">Multiple2</option>
+		    	<option selected="selected" value="Multiple3">Multiple3</option>
+		  	</select><br/>
+		  	复选：
+		 	<input type="checkbox" name="check" value="check1"/> check1
+		 	<input type="checkbox" name="check" value="check2" checked="checked"/> check2<br/>
+		 	单选：
+		 	<input type="radio" name="radio" value="radio1" checked="checked"/> radio1
+		 	<input type="radio" name="radio" value="radio2"/> radio2<br/>
+		</form>
+		<button id="submit">提交--serialize()</button>
+	</body>
+</html>

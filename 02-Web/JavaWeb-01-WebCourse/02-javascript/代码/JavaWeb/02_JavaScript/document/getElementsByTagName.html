@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            // alert( document.getElementById("btn01") );
+        }
+
+
+        // 全选
+        function checkAll() {
+            alert( document.getElementById("btn01") );
+            // document.getElementsByTagName("input");
+            // 是按照指定标签名来进行查询并返回集合
+            // 这个集合的操作跟数组 一样
+            // 集合中都是dom对象
+            // 集合中元素顺序 是他们在html页面中从上到下的顺序。
+            var inputs = document.getElementsByTagName("input");
+
+            for (var i = 0; i < inputs.length; i++){
+                inputs[i].checked = true;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!--as -->
+    兴趣爱好：
+    <input type="checkbox" value="cpp" checked="checked">C++
+    <input type="checkbox" value="java">Java
+    <input type="checkbox" value="js">JavaScript
+    <br/>
+    <button id="btn01" onclick="checkAll()">全选</button>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	#areaDiv {
+		border: 1px solid black;
+		width: 300px;
+		height: 50px;
+		margin-bottom: 10px;
+	}
+	
+	#showMsg {
+		border: 1px solid black;
+		width: 300px;
+		height: 20px;
+	}
+
+</style>
+<script type="text/javascript" src="jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	//当我们发生一个事件以后，某个事件其实就是一个对象。事件对象
+	//使用jquery获取事件对象，在回调函数中传入event参数，event是jquery定义好的一个变量
+	$(function(){
+		$("#areaDiv").mousemove(function(event){
+			$("#showMsg2").text("x="+event.screenX+" y="+event.screenY)	
+		})
+	})
+
+	window.onload = function(){
+		//使用js获取事件对象
+		var areaDiv = document.getElementById("areaDiv");
+		var showMsg = document.getElementById("showMsg");
+		//同样是将event传入回调函数
+		areaDiv.onmousemove = function(event){
+			var x = event.pageX;//当前页面的坐标
+			var y = event.pageY;//Y
+			showMsg.innerHTML = "x="+x+" y="+y;
+		};
+	}
+	
+	
+
+ 	/* window.onload = function(){
+		var areaDiv = document.getElementById("areaDiv");
+		var showMsg = document.getElementById("showMsg");
+		areaDiv.onmousemove = function(event){
+			var x = event.pageX;
+			var y = event.pageY;
+			showMsg.innerHTML = "x="+x+" y="+y;
+		};
+	}
+	
+	$(function(){
+		$("#areaDiv").mousemove(function(event){
+			$("#showMsg2").text("x="+event.screenX+" y="+event.screenY)		
+		})
+	})  */
+</script>
+</head>
+<body>
+
+	<div id="areaDiv"></div>
+	<div id="showMsg"></div>
+	<div id="showMsg2"></div>
+
+</body>
+</html>

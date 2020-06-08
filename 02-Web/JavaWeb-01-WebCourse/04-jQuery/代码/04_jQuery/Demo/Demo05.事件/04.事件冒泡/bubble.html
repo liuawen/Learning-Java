@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-size: 13px;
+				line-height: 130%;
+				padding: 60px;
+			}
+			#content{
+				width: 220px;
+				border: 1px solid #0050D0;
+				background: #96E555;
+			}
+			span{
+				width: 200px;
+				margin: 10px;
+				background: #666666;
+				cursor: pointer;
+				color: white;
+				display: block;
+			}
+			p{
+				width: 200px;
+				background: #888;
+				color: white;
+				height: 16px;
+			}
+		</style>
+		<script type="text/javascript" src="jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//冒泡就是事件的向上传导，子元素的事件被触发，父元素的响应事件也会触发
+				//解决冒泡问题：return false;
+				
+				//给span绑定一个单击响应函数
+				$("span").click(function(){
+					alert("我是span的单击响应函数");
+					return false;
+				});
+				
+				//给id为content的div绑定一个单击响应函数
+				$("#content").click(function(){
+					alert("我是div的单击响应函数");
+					return false;
+				});
+				
+				//给body绑定一个单击响应函数
+				$("body").click(function(){
+					//alert("我是body的单击响应函数");
+				});
+				
+				//取消默认行为
+				/* $("a").click(function(){
+					return false;
+				}) */
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			外层div元素
+			<span>内层span元素</span>
+			外层div元素
+		</div>
+		
+		<div id="msg"></div>	
+		
+		<br><br>
+		<a href="http://www.hao123.com" onclick="return false;">WWW.HAO123.COM</a>	
+	</body>
+</html>
+

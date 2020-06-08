@@ -1,0 +1,22 @@
+<c3p0-config>
+	<!-- 用户自定义配置 -->
+	<named-config name="book_devoloper">
+			<property name="driverClass">com.mysql.jdbc.Driver</property>
+			<property name="jdbcUrl">jdbc:mysql://localhost:3306/atguigu</property>
+			<property name="user">root</property>
+			<property name="password">root</property>
+			<!-- 最大连接数 -->
+			<property name="maxPoolSize">10</property>
+			<!-- 最小连接数 -->
+			<property name="minPoolSize">5</property>
+			<!-- 初始化连接数,连接池创建初始化连接数 -->
+			<property name="initialPoolSize">3</property>
+			<!-- 多长时间检测一下链接的可用性，以秒做单位-->
+			<property name="idleConnectionTestPeriod">3600</property>
+			<!-- 如果连接处不够用，一次性创建多少链接 -->
+			<property name="acquireIncrement">5</property>
+			<!-- 链接的最大空闲时间，以分钟做为单位 -->
+			<property name="maxIdleTime">50</property>
+	</named-config>	
+
+</c3p0-config>

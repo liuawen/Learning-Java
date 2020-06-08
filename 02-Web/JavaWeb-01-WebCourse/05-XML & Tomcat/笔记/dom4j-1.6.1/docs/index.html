@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>dom4j - dom4j: the flexible XML framework for Java</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+          @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="James Strachan"></meta><meta name="email" content="jstrachan@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://sourceforge.net/projects/dom4j" id="organizationLogo"><img alt="MetaStuff Ltd." src="http://sourceforge.net/sflogo.php?group_id=16035"></img></a><a href="http://dom4j.org" id="projectLogo"><img alt="dom4j" src="./images/logo.gif"></img></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+              Last published: 16 May 2005
+              <span class="separator">|</span>
+                Doc for 1.6.1
+              </div><div class="xright">
+        
+        <a href="http://www.w3.org/TR/xpath" class="externalLink" title="External Link">XPath Spec</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://jaxen.codehaus.org/" class="externalLink" title="External Link">Jaxen</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://sourceforge.net/projects/dom4j/" class="externalLink" title="External Link">dom4j@SourceForge</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menudom4j"><h5>dom4j</h5><ul><li class="none"><strong><a href="index.html">Home</a></strong></li><li class="none"><a href="faq.html">FAQ</a></li><li class="none"><a href="guide.html">Quick start</a></li><li class="none"><a href="cookbook.html" class="newWindow" title="New Window" target="_blank">Cookbook</a></li><li class="none"><a href="compare.html">Comparison</a></li><li class="none"><a href="goals.html">Goals</a></li><li class="none"><a href="changes-report.html">Changes</a></li><li class="none"><a href="download.html">Download</a></li><li class="none"><a href="license.html">License</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.6.1)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.5.2/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.5.2)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.4/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.4)</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><strong><a href="index.html">About dom4j</a></strong></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><div id="legend"><h5>Legend</h5><ul><li class="externalLink">External Link</li><li class="newWindow">Opens in a new window</li></ul></div><a href="http://www.cenqua.com/clover" title="Code Coverage by Clover" id="poweredByExternal"><img alt="Code Coverage by Clover" src="http://www.cenqua.com/images/clovered1.gif"></img></a><a href="http://www.sourceforge.net" title="Hosted by SourceForge" id="poweredByExternal"><img alt="Hosted by SourceForge" src="http://sourceforge.net/sflogo.php?group_id=16035&amp;amp;type=1"></img></a><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Welcome_to_dom4j_"></a><h2>Welcome to dom4j!</h2><p>
+      <i>dom4j</i> is an easy to use, open source library for working with XML, XPath and
+      XSLT on the Java platform using the Java Collections Framework and with full
+      support for DOM, SAX and JAXP.
+      </p></div><div class="section"><a name="News"></a><h2>News</h2><ul>
+        <li>dom4j 1.6.1 has been relased! This is a bugfix relase. Take a look at the <a href="changes-report.html">changelog</a> to see what has changed.</li>
+        <li>dom4j 1.6 has been released! Take a look at the <a href="changes-report.html">changelog</a> to see what has changed.</li>
+        <li><a href="http://www.jetbrains.com/" class="externalLink" title="External Link">JetBrains</a> was so kind to provide an open-source license of its famous 
+            <a href="http://www.jetbrains.com/idea/index.html" class="externalLink" title="External Link">IntelliJ IDEA</a> product.</li>
+        <li>The internal Aelfred2 parser has been removed from the dom4j codebase due to an incompatible license. You can download a version
+            of dom4j without Aelfred2 from the downloads page.</li>
+        <li>A maintenance relase of dom4j is available. Click <a href="changes-report.html">here</a> to see what has changed in dom4j 1.5.1.</li>
+        <li>dom4j 1.5 is finally released! A list of changes can be found <a href="changes-report.html">here</a>.</li>
+        <li>dom4j now has an open source license for the use of <a href="http://www.cenqua.com/clover/" class="externalLink" title="External Link">Clover</a></li>
+        <li><a href="http://www.refactorit.com" class="externalLink" title="External Link">RefactorIT</a> has added dom4j to it's list of featured open source projects. This means that all 
+          the power of RefactorIT is available for the dom4j sources.
+        </li> 
+        <li>The new <a href="status.html">dom4j 1.4</a> release is finally out featuring numerous bug fixes and patches.
+        </li>
+        <li>Check out these new <a href="benchmarks/xpath/index.html">Performance Benchmarks</a> comparing dom4j and Jaxen against Xerces and Xalan. 
+        </li>
+        <li>The new <a href="status.html">dom4j 1.3</a> release is out featuring numerous bug fixes and patches.
+        </li>
+        <li>Check out Dennis Sosnoski's new <a href="http://www-106.ibm.com/developerworks/library/x-injava2/" class="externalLink" title="External Link">article</a> for IBM comparing various XML object models - its good stuff.
+        </li>
+        <li>The new <a href="status.html">dom4j 1.2</a> release is out featuring improved whitespace handling 
+          for more efficient parsing, a new Swing TableModel for displaying XML data in Swing and numerous bug fixes and patches.
+        </li>
+        <li>The <a href="http://jakarta.apache.org/velocity/index.html" class="externalLink" title="External Link">Velocity</a> projects new 
+          <a ref="http://jakarta.apache.org/velocity/dvsl/index.html">DVSL</a> technology uses dom4j.
+        </li>
+        <li>Interesting <a href="http://www.xml.com/pub/a/2001/11/14/dom-sax.html?page=2" class="externalLink" title="External Link">article</a>
+          outlining the social dominance of DOM and SAX and the importance of XPath. 
+        </li>
+        <li>The new <a href="status.html">dom4j 1.1</a> release is out featuring support for DTD declarations and
+          numerous bug fixes and patches.
+        </li>
+        <li>Read the latest performance <a href="http://www-106.ibm.com/developerworks/xml/library/x-injava/index.html" class="externalLink" title="External Link">benchmarks</a> 
+          on IBM's site comparing dom4j against all the other XML document models.
+        </li>
+        <li>The new <a href="status.html">dom4j 1.0</a> release is out featuring better SAX and <a href="http://jaxen.org" class="externalLink" title="External Link">Jaxen</a> support,
+          some performance tuning and numerous patches.
+        </li>
+        <li>Sun's reference implementation of <a href="http://developer.java.sun.com/developer/earlyAccess/xml/jaxm/" class="externalLink" title="External Link">JAXM</a>
+          (Java API for XML Messaging) is based on dom4j!
+        </li>
+        <li>The new <a href="status.html">dom4j 0.9</a> release is out featuring full <a href="http://jaxen.codehaus.org" class="externalLink" title="External Link">Jaxen</a> support!
+        </li>
+        <li>Toby's <a href="cookbook.html">cookbook</a> is now online!
+        </li>
+        <li>Updated the quick start <a href="guide.html">guide</a>
+        </li>
+      </ul></div><div class="section"><a name="Features"></a><h2>Features</h2><ul>
+        <li>designed for the Java platform with full support for the
+        <a href="http://java.sun.com/products/jdk/1.2/docs/guide/collections/index.html" class="externalLink" title="External Link">Java Collections Framework</a>
+        (Java 2 Collections)</li>
+        <li>full support for 
+        <a href="http://java.sun.com/xml/xml_jaxp.html" class="externalLink" title="External Link">JAXP</a>, 
+        <a href="http://java.sun.com/xml/xml_jaxp.html" class="externalLink" title="External Link">TrAX</a>, 
+        <a href="http://www.saxproject.org/" class="externalLink" title="External Link">SAX</a>, 
+        <a href="http://www.w3.org/DOM/" class="externalLink" title="External Link">DOM</a>, 
+        and <a href="http://www.w3.org/TR/xslt.html" class="externalLink" title="External Link">XSLT</a>        
+        </li>
+        <li>fully integrated 
+        <a href="http://www.w3.org/TR/xpath.html" class="externalLink" title="External Link">XPath</a> 
+        support for easy navigation of XML documents
+        </li>
+        <li>event based proccessing mode to support for massive documents or XML streams
+        </li>
+        <li>based on Java interfaces for flexible plug and play implementations.
+        </li>
+        <li>support for 
+         <a href="http://www.w3.org/TR/xmlschema-2/" class="externalLink" title="External Link">XML Schema Data Type</a>
+         support using Kohsuke Kawaguchi's excellent
+         <a href="http://www.sun.com/software/xml/developers/multischema/" class="externalLink" title="External Link">Multi Schema Validator</a> library
+        </li>
+      </ul></div><div class="section"><a name="Getting_Started"></a><h2>Getting Started</h2><p>You can download the current release 
+        or a snapshot build via the <a href="download.html">download page</a>.</p><p>For a quick overview of <i>dom4j</i> and how to use it try the reading the
+        <a href="guide.html">quick start guide</a> or browsing the
+        <a href="faq.html">FAQ</a> or the online 
+        <a href="apidocs/index.html">JavaDoc</a>.
+      </p><p>To see how <i>dom4j</i> compares to other XML object models you could try
+        reading our <a href="compare.html">comparison</a></p><p>Contributors are welcome to join this project. 
+        Once you've browsed the <a href="faq.html">FAQ</a> you could try
+        sending an email to one of the mailing lists below or check out the
+        <a href="http://sourceforge.net/projects/dom4j/" class="externalLink" title="External Link">project page</a>.</p></div><div class="section"><a name="Useful_Links"></a><h2>Useful Links</h2><p>We really like XPath and if you are working with XML we highly recommend
+        you try to experiment with it. If you need help learning XPath
+        try the excellent
+        <a href="http://www.zvon.org/xxl/XPathTutorial/General/examples.html" class="externalLink" title="External Link">Zvon tutorial</a> 
+        .</p><p>Alternatively you could try Elliotte Rusty Harold's great 
+        <a href="http://www.oreilly.com/catalog/xmlnut/chapter/ch09.html" class="externalLink" title="External Link">XML in a nutshell</a> 
+        .</p><p>Finally you could try reading the 
+        <a href="http://www.w3.org/TR/xpath" class="externalLink" title="External Link">XPath spec</a>.
+      </p></div><div class="section"><a name="Mailing_Lists"></a><h2>Mailing Lists</h2><p>For developers there is an email list at 
+        <a href="http://lists.sourceforge.net/lists/listinfo/dom4j-dev" class="externalLink" title="External Link">
+          dom4j-dev
+        </a> 
+        where you can make requests for new features or changes to the API, 
+        discuss alternate implementation strategies, submit patches or just
+        talk about any relevant topic of the day.
+      </p><p>For <i>dom4j</i> users wanting help using dom4j there is an email list at
+        <a href="http://lists.sourceforge.net/lists/listinfo/dom4j-user" class="externalLink" title="External Link">
+          dom4j-user
+        </a> 
+        where you can share ideas and experiences, ask for help, 
+        give us feedback or discuss your requirements.
+      </p><p>You can browse the archives for here
+        <a href="http://www.geocrawler.com/lists/3/SourceForge/8798/0/" class="externalLink" title="External Link">
+          dom4j-dev
+        </a> 
+        or here
+        <a href="http://www.mail-archive.com/dom4j-dev%40lists.sourceforge.net/" class="externalLink" title="External Link">
+          dom4j-dev
+        </a> 
+        and here
+        <a href="http://www.geocrawler.com/lists/3/SourceForge/8797/0/" class="externalLink" title="External Link">
+          dom4j-user
+        </a>
+        or here
+        <a href="http://www.mail-archive.com/dom4j-user%40lists.sourceforge.net/" class="externalLink" title="External Link">
+          dom4j-user
+        </a>
+      </p></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2001-2005, MetaStuff Ltd.</div><div class="clear"><hr></hr></div></div></body></html>

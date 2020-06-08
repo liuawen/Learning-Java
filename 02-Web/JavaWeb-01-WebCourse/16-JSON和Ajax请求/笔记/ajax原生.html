@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			// 
+			var xmlHttp;
+			var xmlHttpData;
+			//
+			function createXHR() {
+				try {
+					// Firefox, Opera 8.0+, Safari , IE7+
+					xmlHttp = new XMLHttpRequest();
+				} catch (e) {
+					// Internet Explorer
+					try {
+						xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (e) {
+							alert("您的浏览器不支持AJAX！");
+							return false;
+						}
+					}
+				}
+				return xmlHttp;
+			}
+
+			function ajaxRequest() {
+				// 先要创建xmlHttpRequest对象
+				var xhr = createXHR();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						document.getElementById("div01").innerHTML = xhr.responseText;
+					}
+				}
+				// 设置请求参数
+				xhr.open("GET", "ajaxServlet?action=ajax1&a=12&d="+new Date(), true);
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				xhr.send(null);
+			}
+			
+				function ajaxGet(url,data,callback,error) {
+					if ( $.isFunction( data ) ) {
+						if ( $.isFunction( callback ) ) {
+							error = callback;
+						}
+						callback = data;
+						data = undefined;
+					}
+					$.ajax({
+						type:"GET",
+						url:url,
+						data:data,
+						success:callback,
+						error: error
+					});
+				}
+
+				function ajaxPost(url,data,callback,error) {
+					if ( $.isFunction( data ) ) {
+						if ( $.isFunction( callback ) ) {
+							error = callback;
+						}
+						callback = data;
+						data = undefined;
+					}
+					$.ajax({
+						type:"POST",
+						url:url,
+						data:data,
+						success:callback,
+						error: error
+					});
+				}
+		</script>
+	</head>
+	<body>	
+		<button onclick="ajaxRequest()">ajax request</button>
+		<div id="div01">
+		</div>
+	</body>
+</html>

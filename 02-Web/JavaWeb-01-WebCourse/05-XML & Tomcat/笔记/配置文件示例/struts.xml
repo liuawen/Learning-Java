@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 修改默认theme -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 激活开发者模式 -->
+<!-- 	<constant name="struts.devMode" value="true" /> -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	
+	<!-- i18n 国际化信息文件 -->
+	<constant name="struts.custom.i18n.resources" value="messages" />
+	
+    <package name="default" namespace="/" extends="json-default">
+    
+    </package>
+</struts>

@@ -1,0 +1,7 @@
+﻿mysql
+jdbc
+反射
+BaseDao
+DBUtils
+数据库连接池
+回去查阅面得接口编程的好处

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+	
+<script type="text/javascript">
+	/* 	
+		基本
+		show([speed,[easing],[fn]]) 
+		hide([speed,[easing],[fn]]) 
+		toggle([speed],[easing],[fn]) 
+		滑动
+		slideDown([spe],[eas],[fn]) 
+		slideUp([speed,[easing],[fn]]) 
+		slideToggle([speed],[easing],[fn]) 
+		淡入淡出
+		fadeIn([speed],[eas],[fn]) 
+		fadeOut([speed],[eas],[fn]) 
+		fadeTo([[spe],opa,[eas],[fn]]) 
+		fadeToggle([speed,[eas],[fn]])
+		*/
+		$(function(){
+			//显示   show()
+			$("#btn1").click(function(){
+				$("#div1").show(1000);
+			});		
+			//隐藏  hide()
+			$("#btn2").click(function(){
+				$("#div1").hide(1000);
+			});	
+			//切换   toggle()
+			$("#btn3").click(function(){
+				$("#div1").toggle(1000);
+			});	
+			
+			
+			//淡入   fadeIn()
+			$("#btn4").click(function(){
+				$("#div1").fadeIn(500);
+			});	
+			//淡出  fadeOut()
+			$("#btn5").click(function(){
+				$("#div1").fadeOut(500);
+			});	
+			
+			//淡化到  fadeTo()
+			$("#btn6").click(function(){
+				$("#div1").fadeTo("slow",Math.random());
+			});	
+			//淡化切换  fadeToggle()
+			$("#btn7").click(function(){
+				$("#div1").fadeToggle("slow","linear");
+			});	
+		})
+</script>
+	
+	</head>
+	<body>
+		<table style="float: left;">
+			<tr>
+				<td><button id="btn1">显示show()</button></td>
+			</tr>
+			<tr>
+				<td><button id="btn2">隐藏hide()</button></td>
+			</tr>
+			<tr>
+				<td><button id="btn3">显示/隐藏切换 toggle()</button></td>
+			</tr>
+			<tr>
+				<td><button id="btn4">淡入fadeIn()</button></td>
+			</tr>
+			<tr>
+				<td><button id="btn5">淡出fadeOut()</button></td>
+			</tr>
+			<tr>
+				<td><button id="btn6">淡化到fadeTo()</button></td>
+			</tr>
+			<tr>
+				<td><button id="btn7">淡化切换fadeToggle()</button></td>
+			</tr>
+		</table>
+		
+		<div id="div1" style="float:left;border: 1px solid;background-color: blue;width: 300px;height: 200px;">
+			jquery动画定义了很多种动画效果，可以很方便的使用这些动画效果
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<style type="text/css">
+			div, span, p {
+			    width: 140px;
+			    height: 140px;
+			    margin: 5px;
+			    background: #aaa;
+			    border: #000 1px solid;
+			    float: left;
+			    font-size: 17px;
+			    font-family: Verdana;
+			}
+			
+			div.mini {
+			    width: 55px;
+			    height: 55px;
+			    background-color: #aaa;
+			    font-size: 12px;
+			}
+			
+			div.hide {
+			    display: none;
+			}			
+		</style>
+		<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				//1.选择 body 内的所有 div 元素
+				$("#btn1").click(function(){
+					$("body div").css("background", "#bbffaa");
+				});
+
+				//2.在 body 内, 选择div子元素  
+				$("#btn2").click(function(){
+					$("body > div").css("background", "#bbffaa");
+				});
+
+				//3.选择 id 为 one 的下一个 div 元素 
+				$("#btn3").click(function(){
+					$("#one+div").css("background", "#bbffaa");
+				});
+
+				//4.选择 id 为 two 的元素后面的所有 div 兄弟元素
+				$("#btn4").click(function(){
+					$("#two~div").css("background", "#bbffaa");
+				});
+			});
+		</script>
+	</head>
+	<body>	
+	
+<!-- 	<div>
+		<h1>层级选择器:根据元素的层级关系选择元素</h1>
+		ancestor descendant  ：
+		parent > child 		   ：
+		prev + next 		   ：
+		prev ~ siblings 	   ：
+	</div>	 -->
+		<input type="button" value="选择 body 内的所有 div 元素" id="btn1" />
+		<input type="button" value="在 body 内, 选择div子元素" id="btn2" />
+		<input type="button" value="选择 id 为 one 的下一个 div 元素" id="btn3" />
+		<input type="button" value="选择 id 为 two 的元素后面的所有 div 兄弟元素" id="btn4" />
+		<br><br>
+		<div class="one" id="one">
+			id 为 one,class 为 one 的div
+			<div class="mini">class为mini</div>
+		</div>
+		<div class="one" id="two" title="test">
+			id为two,class为one,title为test的div
+			<div class="mini" title="other">class为mini,title为other</div>
+			<div class="mini" title="test">class为mini,title为test</div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini"></div>
+		</div>
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title="tesst">class为mini,title为tesst</div>
+		</div>
+		<div style="display:none;" class="none">style的display为"none"的div</div>
+		<div class="hide">class为"hide"的div</div>
+		<div>
+			包含input的type为"hidden"的div<input type="hidden" size="8">
+		</div>
+		<span id="span">^^span元素^^</span>
+	</body>
+</html>
+

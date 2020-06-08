@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	#areaDiv {
+		border: 1px solid black;
+		width: 300px;
+		height: 50px;
+		margin-bottom: 10px;
+	}
+	
+	#showMsg {
+		border: 1px solid black;
+		width: 300px;
+		height: 20px;
+	}
+
+</style>
+<script type="text/javascript" src="jquery-1.7.2.js"></script>
+<script type="text/javascript">
+
+	//1.原生javascript获取 事件对象
+	// window.onload = function () {
+	// 	document.getElementById("areaDiv").onclick = function (event) {
+	// 		console.log(event);
+	// 	}
+	// }
+	//2.JQuery代码获取 事件对象
+	$(function () {
+		// $("#areaDiv").click(function (event) {
+		// 	console.log(event);
+		// });
+		//3.使用bind同时对多个事件绑定同一个函数。怎么获取当前操作是什么事件。
+
+		$("#areaDiv").bind("mouseover mouseout",function (event) {
+			if (event.type == "mouseover") {
+				console.log("鼠标移入");
+			} else if (event.type == "mouseout") {
+				console.log("鼠标移出");
+			}
+		});
+
+
+	});
+
+
+
+</script>
+</head>
+<body>
+
+	<div id="areaDiv"></div>
+	<div id="showMsg"></div>
+
+</body>
+</html>

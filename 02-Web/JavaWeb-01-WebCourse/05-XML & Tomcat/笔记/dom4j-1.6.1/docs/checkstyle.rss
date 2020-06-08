@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Checkstyle report</title>
+    <link>http://dom4j.org</link>
+    <description>Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>Copyright 2004 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 165 , Errors: 0 , Warnings: 7 , Infos: 0</title>
+      <link>http://dom4j.org/checkstyle-report.html</link>
+      <description>
+        <p>Click
+          <a href="http://dom4j.org/checkstyle-report.html">here</a>for the full Checkstyle report.</p>
+        <table border="1" summary="Files">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px">I</th>
+              <th style="width:30px">W</th>
+              <th style="width:30px">E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="http://dom4j.org/checkstyle-report.html#org/dom4j/InvalidXPathException.java">org/dom4j/InvalidXPathException.java</a>
+              </td>
+              <td>0</td>
+              <td>4</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://dom4j.org/checkstyle-report.html#org/dom4j/util/PerThreadSingleton.java">org/dom4j/util/PerThreadSingleton.java</a>
+              </td>
+              <td>0</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://dom4j.org/checkstyle-report.html#org/dom4j/util/SimpleSingleton.java">org/dom4j/util/SimpleSingleton.java</a>
+              </td>
+              <td>0</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://dom4j.org/checkstyle-report.html#org/dom4j/xpath/DefaultXPath.java">org/dom4j/xpath/DefaultXPath.java</a>
+              </td>
+              <td>0</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </description>
+    </item>
+  </channel>
+</rss>

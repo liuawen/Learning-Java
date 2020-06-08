@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            // alert( $("input[name!='newsletter']").length );
+            // alert( $("div").has("span").length );
+            // $("div:first").nextUntil("span").addClass("after");
+            alert($("div").add("span").length)
+        });
+
+    </script>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

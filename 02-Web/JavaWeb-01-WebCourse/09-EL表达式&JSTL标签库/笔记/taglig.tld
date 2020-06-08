@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd ">
+  <!-- 标签的版本 -->
+  <tlib-version>1.0</tlib-version>
+  <!-- 标签的前缀 -->
+  <short-name>my</short-name>
+	<!-- 标签的uri -->  
+  <uri>http://www.atguigu.taglig/my</uri>
+  <tag>
+  	<!-- 标签名 -->
+  	<name>hello</name>
+  	<!-- 标签的具体 实现类 -->
+  	<tag-class>com.atguigu.bean.Hello</tag-class>
+  	<!-- 标签体 -->
+  	<body-content>empty</body-content>
+  </tag>
+</taglib>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+/**
+HTML代码/文本/值
+html([val|fn])    a.html()取出a的html值    a.html(val)  让a的html值变为val
+text([val|fn]) 	  a.text()取出a的text值    a.text(val)  让a的文本值变为val
+val([val|fn|arr]) a.val()  取出a的val值（input）   a.val(v)  设置a的value值为v 
+
+属性
+attr(name|pro|key,val|fn)  
+ 1、a.attr('name')取出a的name值   2、a.attr("name","username")把a的name值设置为username
+ 
+removeAttr(name) 
+a.removeAttr('class')    移除a的class属性
+
+
+prop(name|pro|key,val|fn)1.6+ 
+1、a.prop('id')  取出a的id值   2、a.prop('id',"bj")  设置a的id值为bj
+removeProp(name)1.6+
+a.removeProp('class') 移除a的class属性
+
+
+ 
+ */
+
+</script>
+<script type="text/javascript">
+$(function(){
+	$("#btn1").click(function(){
+	
+	})
+})
+</script>
+
+</head>
+<body>
+<button id="btn1">获取文本框的name值</button>
+<form action="#" id="form1">
+	文本框:<input  name="a" value="abc" type="text"/><br/>
+	多选框:<input type="checkbox" name="interest" value="篮球">
+	<input type="checkbox" name="interest" value="zuqiu">
+	<input type="checkbox" name="interest" value="乒乓">
+	<input type="checkbox" name="interest" value="御马">
+</form>
+
+</body>
+</html>

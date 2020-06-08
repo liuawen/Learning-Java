@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		//testDiv.css("color","red")
+		//testDiv.style.color = "blue";
+
+		// var arr = [12,"abc",true];
+		//
+		// var $btns = $("button");
+		//
+		// for (var i = 0; i < $btns.length; i++){
+		// 	alert($btns[i]);
+		// }
+
+		// document.getElementById("testDiv").innerHTML = "这是dom对象的属性InnerHTML";
+		// $("#testDiv").innerHTML = "这是dom对象的属性InnerHTML";
+
+		// $("#testDiv").click(function () {
+		// 	alert("click()是jQuery对象的方法");
+		// });
+
+		// document.getElementById("testDiv").click(function () {
+		// 	alert("click()是jQuery对象的方法");
+		// });
+
+		// alert( $(document.getElementById("testDiv"))[0] );
+
+		alert( $("button:first") );
+	});
+
+</script>
+</head>
+<body>
+	<div id="testDiv">Atguigu is Very Good!</div>
+	
+	<button id="dom2dom">使用DOM对象调用DOM方法</button>
+	<button id="dom2jQuery">使用DOM对象调用jQuery方法</button>
+	<button id="jQuery2jQuery">使用jQuery对象调用jQuery方法</button>
+	<button id="jQuery2dom">使用jQuery对象调用DOM方法</button>
+
+
+
+</body>
+</html>

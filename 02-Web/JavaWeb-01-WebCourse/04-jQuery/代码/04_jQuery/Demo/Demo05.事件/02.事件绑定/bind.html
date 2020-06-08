@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+		
+			$(function(){
+				//*1.通常绑定事件的方式
+				//给元素绑定事件  
+				//jquery对象.事件方法(回调函数(){ 触发事件执行的代码 }).事件方法(回调函数(){ 触发事件执行的代码 }).事件方法(回调函数(){ 触发事件执行的代码 })
+				//绑定事件可以链式操作
+				$(".head").click(function(){
+					$(".content").toggle();
+				}).mouseover(function(){
+					$(".content").toggle();
+				}); 
+				
+				//*2.jQuery提供的绑定方式：bind(type,[data],fn)函数把元素和事件绑定起来
+				//type表示要绑定的事件   [data]表示传入的数据   fn表示事件的处理方法
+				//bind(事件字符串,回调函数),后来添加的元素不会绑定事件
+				//使用bind()绑定多个事件   type可以接受多个事件类型，使用空格分割多个事件
+				/* $(".head").bind("click mouseover",function(){
+					$(".content").toggle();
+				}); */
+			
+				
+				//3.one()只绑定一次,绑定的事件只会发生一次one(type,[data],fn)函数把元素和事件绑定起来
+				//type表示要绑定的事件   [data]表示传入的数据   fn表示事件的处理方法
+			/* 	$(".head").one("click mouseover",function(){
+					$(".content").toggle();
+				}); */
+
+				//4.live方法会为现在及以后添加的元素都绑定上相应的事件
+			/**	$(".head").live("click",function(){
+					$(".content").toggle();
+				});
+				
+				$("#panel").before("<h5 class='head'>什么是jQuery?</h5>");
+			*/
+			});
+		
+		</script>
+	</head>
+	<body>
+		<div id="panel">
+			<h5 class="head">什么是jQuery?</h5>
+			<div class="content">
+				jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个由 John Resig 创建于2006年1月的开源项目。jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+			</div>
+		</div>
+	</body>
+
+</html>

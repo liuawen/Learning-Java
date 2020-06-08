@@ -1,0 +1,1297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" /><title>ConcurrentReaderHashMap xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../apidocs/org/dom4j/tree/ConcurrentReaderHashMap.html">View Javadoc</a></div><pre>
+
+<a name="1" href="#1">1</a>   <em class="comment">/*</em>
+<a name="2" href="#2">2</a>   <em class="comment"> File: ConcurrentReaderHashMap</em>
+<a name="3" href="#3">3</a>   
+<a name="4" href="#4">4</a>   <em class="comment"> Written by Doug Lea. Adapted and released, under explicit</em>
+<a name="5" href="#5">5</a>   <em class="comment"> permission, from JDK1.2 HashMap.java and Hashtable.java which</em>
+<a name="6" href="#6">6</a>   <em class="comment"> carries the following copyright:</em>
+<a name="7" href="#7">7</a>   
+<a name="8" href="#8">8</a>   <em class="comment"> * Copyright 1997 by Sun Microsystems, Inc.,</em>
+<a name="9" href="#9">9</a>   <em class="comment"> * 901 San Antonio Road, Palo Alto, California, 94303, U.S.A.</em>
+<a name="10" href="#10">10</a>  <em class="comment"> * All rights reserved.</em>
+<a name="11" href="#11">11</a>  <em class="comment"> *</em>
+<a name="12" href="#12">12</a>  <em class="comment"> * This software is the confidential and proprietary information</em>
+<a name="13" href="#13">13</a>  <em class="comment"> * of Sun Microsystems, Inc. ("Confidential Information").  You</em>
+<a name="14" href="#14">14</a>  <em class="comment"> * shall not disclose such Confidential Information and shall use</em>
+<a name="15" href="#15">15</a>  <em class="comment"> * it only in accordance with the terms of the license agreement</em>
+<a name="16" href="#16">16</a>  <em class="comment"> * you entered into with Sun.</em>
+<a name="17" href="#17">17</a>  
+<a name="18" href="#18">18</a>  <em class="comment"> History:</em>
+<a name="19" href="#19">19</a>  <em class="comment"> Date       Who                What</em>
+<a name="20" href="#20">20</a>  <em class="comment"> 28oct1999  dl               Created</em>
+<a name="21" href="#21">21</a>  <em class="comment"> 14dec1999  dl               jmm snapshot</em>
+<a name="22" href="#22">22</a>  <em class="comment"> 19apr2000  dl               use barrierLock</em>
+<a name="23" href="#23">23</a>  <em class="comment"> 12jan2001  dl               public release</em>
+<a name="24" href="#24">24</a>  <em class="comment"> 17nov2001  dl               Minor tunings</em>
+<a name="25" href="#25">25</a>  <em class="comment"> 20may2002  dl               BarrierLock can now be serialized.</em>
+<a name="26" href="#26">26</a>  <em class="comment"> 09dec2002  dl               Fix interference checks.</em>
+<a name="27" href="#27">27</a>  <em class="comment"> */</em>
+<a name="28" href="#28">28</a>  
+<a name="29" href="#29">29</a>  <strong>package</strong> <a href="../../../org/dom4j/tree/package-summary.html">org.dom4j.tree</a>;
+<a name="30" href="#30">30</a>  
+<a name="31" href="#31">31</a>  <strong>import</strong> java.io.IOException;
+<a name="32" href="#32">32</a>  <strong>import</strong> java.io.Serializable;
+<a name="33" href="#33">33</a>  <strong>import</strong> java.util.AbstractCollection;
+<a name="34" href="#34">34</a>  <strong>import</strong> java.util.AbstractMap;
+<a name="35" href="#35">35</a>  <strong>import</strong> java.util.AbstractSet;
+<a name="36" href="#36">36</a>  <strong>import</strong> java.util.Collection;
+<a name="37" href="#37">37</a>  <strong>import</strong> java.util.Enumeration;
+<a name="38" href="#38">38</a>  <strong>import</strong> java.util.Iterator;
+<a name="39" href="#39">39</a>  <strong>import</strong> java.util.Map;
+<a name="40" href="#40">40</a>  <strong>import</strong> java.util.NoSuchElementException;
+<a name="41" href="#41">41</a>  <strong>import</strong> java.util.Set;
+<a name="42" href="#42">42</a>  
+<a name="43" href="#43">43</a>  <em>/**<em>*</em></em>
+<a name="44" href="#44">44</a>  <em> * A version of Hashtable that supports mostly-concurrent reading, but exclusive</em>
+<a name="45" href="#45">45</a>  <em> * writing. Because reads are not limited to periods without writes, a</em>
+<a name="46" href="#46">46</a>  <em> * concurrent reader policy is weaker than a classic reader/writer policy, but</em>
+<a name="47" href="#47">47</a>  <em> * is generally faster and allows more concurrency. This class is a good choice</em>
+<a name="48" href="#48">48</a>  <em> * especially for tables that are mainly created by one thread during the</em>
+<a name="49" href="#49">49</a>  <em> * start-up phase of a program, and from then on, are mainly read (with perhaps</em>
+<a name="50" href="#50">50</a>  <em> * occasional additions or removals) in many threads. If you also need</em>
+<a name="51" href="#51">51</a>  <em> * concurrency among writes, consider instead using ConcurrentHashMap.</em>
+<a name="52" href="#52">52</a>  <em> * &lt;p></em>
+<a name="53" href="#53">53</a>  <em> * </em>
+<a name="54" href="#54">54</a>  <em> * Successful retrievals using get(key) and containsKey(key) usually run without</em>
+<a name="55" href="#55">55</a>  <em> * locking. Unsuccessful ones (i.e., when the key is not present) do involve</em>
+<a name="56" href="#56">56</a>  <em> * brief synchronization (locking). Also, the size and isEmpty methods are</em>
+<a name="57" href="#57">57</a>  <em> * always synchronized.</em>
+<a name="58" href="#58">58</a>  <em> * </em>
+<a name="59" href="#59">59</a>  <em> * &lt;p></em>
+<a name="60" href="#60">60</a>  <em> * Because retrieval operations can ordinarily overlap with writing operations</em>
+<a name="61" href="#61">61</a>  <em> * (i.e., put, remove, and their derivatives), retrievals can only be guaranteed</em>
+<a name="62" href="#62">62</a>  <em> * to return the results of the most recently &lt;em>completed&lt;/em> operations</em>
+<a name="63" href="#63">63</a>  <em> * holding upon their onset. Retrieval operations may or may not return results</em>
+<a name="64" href="#64">64</a>  <em> * reflecting in-progress writing operations. However, the retrieval operations</em>
+<a name="65" href="#65">65</a>  <em> * do always return consistent results -- either those holding before any single</em>
+<a name="66" href="#66">66</a>  <em> * modification or after it, but never a nonsense result. For aggregate</em>
+<a name="67" href="#67">67</a>  <em> * operations such as putAll and clear, concurrent reads may reflect insertion</em>
+<a name="68" href="#68">68</a>  <em> * or removal of only some entries. In those rare contexts in which you use a</em>
+<a name="69" href="#69">69</a>  <em> * hash table to synchronize operations across threads (for example, to prevent</em>
+<a name="70" href="#70">70</a>  <em> * reads until after clears), you should either encase operations in</em>
+<a name="71" href="#71">71</a>  <em> * synchronized blocks, or instead use java.util.Hashtable.</em>
+<a name="72" href="#72">72</a>  <em> * </em>
+<a name="73" href="#73">73</a>  <em> * &lt;p></em>
+<a name="74" href="#74">74</a>  <em> * </em>
+<a name="75" href="#75">75</a>  <em> * This class also supports optional guaranteed exclusive reads, simply by</em>
+<a name="76" href="#76">76</a>  <em> * surrounding a call within a synchronized block, as in &lt;br></em>
+<a name="77" href="#77">77</a>  <em> * &lt;code>ConcurrentReaderHashMap t; ... Object v; &lt;br></em>
+<a name="78" href="#78">78</a>  <em> * synchronized(t) { v = t.get(k); } &lt;/code>&lt;br></em>
+<a name="79" href="#79">79</a>  <em> * </em>
+<a name="80" href="#80">80</a>  <em> * But this is not usually necessary in practice. For example, it is generally</em>
+<a name="81" href="#81">81</a>  <em> * inefficient to write:</em>
+<a name="82" href="#82">82</a>  <em> * </em>
+<a name="83" href="#83">83</a>  <em> * &lt;pre></em>
+<a name="84" href="#84">84</a>  <em> * </em>
+<a name="85" href="#85">85</a>  <em> *  </em>
+<a name="86" href="#86">86</a>  <em> *     ConcurrentReaderHashMap t; ...            // Inefficient version</em>
+<a name="87" href="#87">87</a>  <em> *     Object key; ...</em>
+<a name="88" href="#88">88</a>  <em> *     Object value; ...</em>
+<a name="89" href="#89">89</a>  <em> *     synchronized(t) { </em>
+<a name="90" href="#90">90</a>  <em> *       if (!t.containsKey(key))</em>
+<a name="91" href="#91">91</a>  <em> *         t.put(key, value);</em>
+<a name="92" href="#92">92</a>  <em> *         // other code if not previously present</em>
+<a name="93" href="#93">93</a>  <em> *       }</em>
+<a name="94" href="#94">94</a>  <em> *       else {</em>
+<a name="95" href="#95">95</a>  <em> *         // other code if it was previously present</em>
+<a name="96" href="#96">96</a>  <em> *       }</em>
+<a name="97" href="#97">97</a>  <em> *     }</em>
+<a name="98" href="#98">98</a>  <em> *  </em>
+<a name="99" href="#99">99</a>  <em> *  </em>
+<a name="100" href="#100">100</a> <em> * &lt;/pre></em>
+<a name="101" href="#101">101</a> <em> * </em>
+<a name="102" href="#102">102</a> <em> * Instead, if the values are intended to be the same in each case, just take</em>
+<a name="103" href="#103">103</a> <em> * advantage of the fact that put returns null if the key was not previously</em>
+<a name="104" href="#104">104</a> <em> * present:</em>
+<a name="105" href="#105">105</a> <em> * </em>
+<a name="106" href="#106">106</a> <em> * &lt;pre></em>
+<a name="107" href="#107">107</a> <em> * </em>
+<a name="108" href="#108">108</a> <em> *  </em>
+<a name="109" href="#109">109</a> <em> *     ConcurrentReaderHashMap t; ...                // Use this instead</em>
+<a name="110" href="#110">110</a> <em> *     Object key; ...</em>
+<a name="111" href="#111">111</a> <em> *     Object value; ...</em>
+<a name="112" href="#112">112</a> <em> *     Object oldValue = t.put(key, value);</em>
+<a name="113" href="#113">113</a> <em> *     if (oldValue == null) {</em>
+<a name="114" href="#114">114</a> <em> *       // other code if not previously present</em>
+<a name="115" href="#115">115</a> <em> *     }</em>
+<a name="116" href="#116">116</a> <em> *     else {</em>
+<a name="117" href="#117">117</a> <em> *       // other code if it was previously present</em>
+<a name="118" href="#118">118</a> <em> *     }</em>
+<a name="119" href="#119">119</a> <em> *  </em>
+<a name="120" href="#120">120</a> <em> *  </em>
+<a name="121" href="#121">121</a> <em> * &lt;/pre></em>
+<a name="122" href="#122">122</a> <em> * </em>
+<a name="123" href="#123">123</a> <em> * &lt;p></em>
+<a name="124" href="#124">124</a> <em> * </em>
+<a name="125" href="#125">125</a> <em> * Iterators and Enumerations (i.e., those returned by keySet().iterator(),</em>
+<a name="126" href="#126">126</a> <em> * entrySet().iterator(), values().iterator(), keys(), and elements()) return</em>
+<a name="127" href="#127">127</a> <em> * elements reflecting the state of the hash table at some point at or since the</em>
+<a name="128" href="#128">128</a> <em> * creation of the iterator/enumeration. They will return at most one instance</em>
+<a name="129" href="#129">129</a> <em> * of each element (via next()/nextElement()), but might or might not reflect</em>
+<a name="130" href="#130">130</a> <em> * puts and removes that have been processed since they were created. They do</em>
+<a name="131" href="#131">131</a> <em> * &lt;em>not&lt;/em> throw ConcurrentModificationException. However, these</em>
+<a name="132" href="#132">132</a> <em> * iterators are designed to be used by only one thread at a time. Sharing an</em>
+<a name="133" href="#133">133</a> <em> * iterator across multiple threads may lead to unpredictable results if the</em>
+<a name="134" href="#134">134</a> <em> * table is being concurrently modified. Again, you can ensure interference-free</em>
+<a name="135" href="#135">135</a> <em> * iteration by enclosing the iteration in a synchronized block.</em>
+<a name="136" href="#136">136</a> <em> * &lt;p></em>
+<a name="137" href="#137">137</a> <em> * </em>
+<a name="138" href="#138">138</a> <em> * This class may be used as a direct replacement for any use of</em>
+<a name="139" href="#139">139</a> <em> * java.util.Hashtable that does not depend on readers being blocked during</em>
+<a name="140" href="#140">140</a> <em> * updates. Like Hashtable but unlike java.util.HashMap, this class does NOT</em>
+<a name="141" href="#141">141</a> <em> * allow &lt;tt>null&lt;/tt> to be used as a key or value. This class is also</em>
+<a name="142" href="#142">142</a> <em> * typically faster than ConcurrentHashMap when there is usually only one thread</em>
+<a name="143" href="#143">143</a> <em> * updating the table, but possibly many retrieving values from it.</em>
+<a name="144" href="#144">144</a> <em> * &lt;p></em>
+<a name="145" href="#145">145</a> <em> * </em>
+<a name="146" href="#146">146</a> <em> * Implementation note: A slightly faster implementation of this class will be</em>
+<a name="147" href="#147">147</a> <em> * possible once planned Java Memory Model revisions are in place.</em>
+<a name="148" href="#148">148</a> <em> * </em>
+<a name="149" href="#149">149</a> <em> * &lt;p>[ &lt;a</em>
+<a name="150" href="#150">150</a> <em> * href="<a href="http://gee.cs.oswego.edu/dl/classes/EDU/oswego/cs/dl/util/concurrent/intro.html" target="alexandria_uri">http://gee.cs.oswego.edu/dl/classes/EDU/oswego/cs/dl/util/concurrent/intro.html</a>"></em>
+<a name="151" href="#151">151</a> <em> * Introduction to this package. &lt;/a>]</em>
+<a name="152" href="#152">152</a> <em> * </em>
+<a name="153" href="#153">153</a> <em> */</em>
+<a name="154" href="#154">154</a> 
+<a name="155" href="#155">155</a> <strong>class</strong> <a href="../../../org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a> <strong>extends</strong> AbstractMap implements Map, Cloneable,
+<a name="156" href="#156">156</a>         Serializable {
+<a name="157" href="#157">157</a> 
+<a name="158" href="#158">158</a>     <em class="comment">/*</em>
+<a name="159" href="#159">159</a> <em class="comment">     * The basic strategy is an optimistic-style scheme based on the guarantee</em>
+<a name="160" href="#160">160</a> <em class="comment">     * that the hash table and its lists are always kept in a consistent enough</em>
+<a name="161" href="#161">161</a> <em class="comment">     * state to be read without locking:</em>
+<a name="162" href="#162">162</a> <em class="comment">     * </em>
+<a name="163" href="#163">163</a> <em class="comment">     * Read operations first proceed without locking, by traversing the</em>
+<a name="164" href="#164">164</a> <em class="comment">     * apparently correct list of the apparently correct bin. If an entry is</em>
+<a name="165" href="#165">165</a> <em class="comment">     * found, but not invalidated (value field null), it is returned. If not</em>
+<a name="166" href="#166">166</a> <em class="comment">     * found, operations must recheck (after a memory barrier) to make sure they</em>
+<a name="167" href="#167">167</a> <em class="comment">     * are using both the right list and the right table (which can change under</em>
+<a name="168" href="#168">168</a> <em class="comment">     * resizes). If invalidated, reads must acquire main update lock to wait out</em>
+<a name="169" href="#169">169</a> <em class="comment">     * the update, and then re-traverse.</em>
+<a name="170" href="#170">170</a> <em class="comment">     * </em>
+<a name="171" href="#171">171</a> <em class="comment">     * All list additions are at the front of each bin, making it easy to check</em>
+<a name="172" href="#172">172</a> <em class="comment">     * changes, and also fast to traverse. Entry next pointers are never</em>
+<a name="173" href="#173">173</a> <em class="comment">     * assigned. Remove() builds new nodes when necessary to preserve this.</em>
+<a name="174" href="#174">174</a> <em class="comment">     * </em>
+<a name="175" href="#175">175</a> <em class="comment">     * Remove() (also clear()) invalidates removed nodes to alert read</em>
+<a name="176" href="#176">176</a> <em class="comment">     * operations that they must wait out the full modifications.</em>
+<a name="177" href="#177">177</a> <em class="comment">     * </em>
+<a name="178" href="#178">178</a> <em class="comment">     */</em>
+<a name="179" href="#179">179</a> 
+<a name="180" href="#180">180</a>     <em>/**<em>* A Serializable class for barrier lock * */</em></em>
+<a name="181" href="#181">181</a>     <strong>protected</strong> <strong>static</strong> <strong>class</strong> BarrierLock implements java.io.Serializable {
+<a name="182" href="#182">182</a>     }
+<a name="183" href="#183">183</a> 
+<a name="184" href="#184">184</a>     <em>/**<em>*</em></em>
+<a name="185" href="#185">185</a> <em>     * Lock used only for its memory effects.</em>
+<a name="186" href="#186">186</a> <em>     */</em>
+<a name="187" href="#187">187</a>     <strong>protected</strong> <strong>final</strong> BarrierLock barrierLock = <strong>new</strong> BarrierLock();
+<a name="188" href="#188">188</a> 
+<a name="189" href="#189">189</a>     <em>/**<em>*</em></em>
+<a name="190" href="#190">190</a> <em>     * field written to only to guarantee lock ordering.</em>
+<a name="191" href="#191">191</a> <em>     */</em>
+<a name="192" href="#192">192</a> 
+<a name="193" href="#193">193</a>     <strong>protected</strong> <strong>transient</strong> Object lastWrite;
+<a name="194" href="#194">194</a> 
+<a name="195" href="#195">195</a>     <em>/**<em>*</em></em>
+<a name="196" href="#196">196</a> <em>     * Force a memory synchronization that will cause all readers to see table.</em>
+<a name="197" href="#197">197</a> <em>     * Call only when already holding main synch lock.</em>
+<a name="198" href="#198">198</a> <em>     */</em>
+<a name="199" href="#199">199</a>     <strong>protected</strong> <strong>final</strong> <strong>void</strong> recordModification(Object x) {
+<a name="200" href="#200">200</a>         <strong>synchronized</strong> (barrierLock) {
+<a name="201" href="#201">201</a>             lastWrite = x;
+<a name="202" href="#202">202</a>         }
+<a name="203" href="#203">203</a>     }
+<a name="204" href="#204">204</a> 
+<a name="205" href="#205">205</a>     <em>/**<em>*</em></em>
+<a name="206" href="#206">206</a> <em>     * Get ref to table; the reference and the cells it accesses will be at</em>
+<a name="207" href="#207">207</a> <em>     * least as fresh as from last use of barrierLock</em>
+<a name="208" href="#208">208</a> <em>     */</em>
+<a name="209" href="#209">209</a>     <strong>protected</strong> <strong>final</strong> Entry[] getTableForReading() {
+<a name="210" href="#210">210</a>         <strong>synchronized</strong> (barrierLock) {
+<a name="211" href="#211">211</a>             <strong>return</strong> table;
+<a name="212" href="#212">212</a>         }
+<a name="213" href="#213">213</a>     }
+<a name="214" href="#214">214</a> 
+<a name="215" href="#215">215</a>     <em>/**<em>*</em></em>
+<a name="216" href="#216">216</a> <em>     * The default initial number of table slots for this table (32). Used when</em>
+<a name="217" href="#217">217</a> <em>     * not otherwise specified in constructor.</em>
+<a name="218" href="#218">218</a> <em>     */</em>
+<a name="219" href="#219">219</a>     <strong>public</strong> <strong>static</strong> <strong>int</strong> DEFAULT_INITIAL_CAPACITY = 32;
+<a name="220" href="#220">220</a> 
+<a name="221" href="#221">221</a>     <em>/**<em>*</em></em>
+<a name="222" href="#222">222</a> <em>     * The minimum capacity, used if a lower value is implicitly specified by</em>
+<a name="223" href="#223">223</a> <em>     * either of the constructors with arguments. MUST be a power of two.</em>
+<a name="224" href="#224">224</a> <em>     */</em>
+<a name="225" href="#225">225</a>     <strong>private</strong> <strong>static</strong> <strong>final</strong> <strong>int</strong> MINIMUM_CAPACITY = 4;
+<a name="226" href="#226">226</a> 
+<a name="227" href="#227">227</a>     <em>/**<em>*</em></em>
+<a name="228" href="#228">228</a> <em>     * The maximum capacity, used if a higher value is implicitly specified by</em>
+<a name="229" href="#229">229</a> <em>     * either of the constructors with arguments. MUST be a power of two &lt;= 1 &lt;</em>
+<a name="230" href="#230">230</a> <em>     * &lt;30.</em>
+<a name="231" href="#231">231</a> <em>     */</em>
+<a name="232" href="#232">232</a>     <strong>private</strong> <strong>static</strong> <strong>final</strong> <strong>int</strong> MAXIMUM_CAPACITY = 1 &lt;&lt; 30;
+<a name="233" href="#233">233</a> 
+<a name="234" href="#234">234</a>     <em>/**<em>*</em></em>
+<a name="235" href="#235">235</a> <em>     * The default load factor for this table (1.0). Used when not otherwise</em>
+<a name="236" href="#236">236</a> <em>     * specified in constructor.</em>
+<a name="237" href="#237">237</a> <em>     */</em>
+<a name="238" href="#238">238</a> 
+<a name="239" href="#239">239</a>     <strong>public</strong> <strong>static</strong> <strong>final</strong> <strong>float</strong> DEFAULT_LOAD_FACTOR = 0.75f;
+<a name="240" href="#240">240</a> 
+<a name="241" href="#241">241</a>     <em>/**<em>*</em></em>
+<a name="242" href="#242">242</a> <em>     * The hash table data.</em>
+<a name="243" href="#243">243</a> <em>     */</em>
+<a name="244" href="#244">244</a>     <strong>protected</strong> <strong>transient</strong> Entry[] table;
+<a name="245" href="#245">245</a> 
+<a name="246" href="#246">246</a>     <em>/**<em>*</em></em>
+<a name="247" href="#247">247</a> <em>     * The total number of mappings in the hash table.</em>
+<a name="248" href="#248">248</a> <em>     */</em>
+<a name="249" href="#249">249</a>     <strong>protected</strong> <strong>transient</strong> <strong>int</strong> count;
+<a name="250" href="#250">250</a> 
+<a name="251" href="#251">251</a>     <em>/**<em>*</em></em>
+<a name="252" href="#252">252</a> <em>     * The table is rehashed when its size exceeds this threshold. (The value of</em>
+<a name="253" href="#253">253</a> <em>     * this field is always (int)(capacity * loadFactor).)</em>
+<a name="254" href="#254">254</a> <em>     * </em>
+<a name="255" href="#255">255</a> <em>     * @serial</em>
+<a name="256" href="#256">256</a> <em>     */</em>
+<a name="257" href="#257">257</a>     <strong>protected</strong> <strong>int</strong> threshold;
+<a name="258" href="#258">258</a> 
+<a name="259" href="#259">259</a>     <em>/**<em>*</em></em>
+<a name="260" href="#260">260</a> <em>     * The load factor for the hash table.</em>
+<a name="261" href="#261">261</a> <em>     * </em>
+<a name="262" href="#262">262</a> <em>     * @serial</em>
+<a name="263" href="#263">263</a> <em>     */</em>
+<a name="264" href="#264">264</a>     <strong>protected</strong> <strong>float</strong> loadFactor;
+<a name="265" href="#265">265</a> 
+<a name="266" href="#266">266</a>     <em>/**<em>*</em></em>
+<a name="267" href="#267">267</a> <em>     * Returns the appropriate capacity (power of two) for the specified initial</em>
+<a name="268" href="#268">268</a> <em>     * capacity argument.</em>
+<a name="269" href="#269">269</a> <em>     */</em>
+<a name="270" href="#270">270</a>     <strong>private</strong> <strong>int</strong> p2capacity(<strong>int</strong> initialCapacity) {
+<a name="271" href="#271">271</a>         <strong>int</strong> cap = initialCapacity;
+<a name="272" href="#272">272</a> 
+<a name="273" href="#273">273</a>         <em class="comment">// Compute the appropriate capacity</em>
+<a name="274" href="#274">274</a>         <strong>int</strong> result;
+<a name="275" href="#275">275</a>         <strong>if</strong> (cap > MAXIMUM_CAPACITY || cap &lt; 0) {
+<a name="276" href="#276">276</a>             result = MAXIMUM_CAPACITY;
+<a name="277" href="#277">277</a>         } <strong>else</strong> {
+<a name="278" href="#278">278</a>             result = MINIMUM_CAPACITY;
+<a name="279" href="#279">279</a>             <strong>while</strong> (result &lt; cap)
+<a name="280" href="#280">280</a>                 result &lt;&lt;= 1;
+<a name="281" href="#281">281</a>         }
+<a name="282" href="#282">282</a>         <strong>return</strong> result;
+<a name="283" href="#283">283</a>     }
+<a name="284" href="#284">284</a> 
+<a name="285" href="#285">285</a>     <em>/**<em>*</em></em>
+<a name="286" href="#286">286</a> <em>     * Return hash code for Object x. Since we are using power-of-two tables, it</em>
+<a name="287" href="#287">287</a> <em>     * is worth the effort to improve hashcode via the same multiplicative</em>
+<a name="288" href="#288">288</a> <em>     * scheme as used in IdentityHashMap.</em>
+<a name="289" href="#289">289</a> <em>     */</em>
+<a name="290" href="#290">290</a>     <strong>private</strong> <strong>static</strong> <strong>int</strong> hash(Object x) {
+<a name="291" href="#291">291</a>         <strong>int</strong> h = x.hashCode();
+<a name="292" href="#292">292</a>         <em class="comment">// Multiply by 127 (quickly, via shifts), and mix in some high</em>
+<a name="293" href="#293">293</a>         <em class="comment">// bits to help guard against bunching of codes that are</em>
+<a name="294" href="#294">294</a>         <em class="comment">// consecutive or equally spaced.</em>
+<a name="295" href="#295">295</a>         <strong>return</strong> ((h &lt;&lt; 7) - h + (h >>> 9) + (h >>> 17));
+<a name="296" href="#296">296</a>     }
+<a name="297" href="#297">297</a> 
+<a name="298" href="#298">298</a>     <em>/**<em>*</em></em>
+<a name="299" href="#299">299</a> <em>     * Check for equality of non-null references x and y.</em>
+<a name="300" href="#300">300</a> <em>     */</em>
+<a name="301" href="#301">301</a>     <strong>protected</strong> <strong>boolean</strong> eq(Object x, Object y) {
+<a name="302" href="#302">302</a>         <strong>return</strong> x == y || x.equals(y);
+<a name="303" href="#303">303</a>     }
+<a name="304" href="#304">304</a> 
+<a name="305" href="#305">305</a>     <em>/**<em>*</em></em>
+<a name="306" href="#306">306</a> <em>     * Constructs a new, empty map with the specified initial capacity and the</em>
+<a name="307" href="#307">307</a> <em>     * specified load factor.</em>
+<a name="308" href="#308">308</a> <em>     * </em>
+<a name="309" href="#309">309</a> <em>     * @param initialCapacity</em>
+<a name="310" href="#310">310</a> <em>     *            the initial capacity The actual initial capacity is rounded to</em>
+<a name="311" href="#311">311</a> <em>     *            the nearest power of two.</em>
+<a name="312" href="#312">312</a> <em>     * @param loadFactor</em>
+<a name="313" href="#313">313</a> <em>     *            the load factor of the ConcurrentReaderHashMap</em>
+<a name="314" href="#314">314</a> <em>     * @throws IllegalArgumentException</em>
+<a name="315" href="#315">315</a> <em>     *             if the initial maximum number of elements is less than zero,</em>
+<a name="316" href="#316">316</a> <em>     *             or if the load factor is nonpositive.</em>
+<a name="317" href="#317">317</a> <em>     */</em>
+<a name="318" href="#318">318</a> 
+<a name="319" href="#319">319</a>     <strong>public</strong> <a href="../../../org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a>(<strong>int</strong> initialCapacity, <strong>float</strong> loadFactor) {
+<a name="320" href="#320">320</a>         <strong>if</strong> (loadFactor &lt;= 0)
+<a name="321" href="#321">321</a>             <strong>throw</strong> <strong>new</strong> IllegalArgumentException(<span class="string">"Illegal Load factor: "</span>
+<a name="322" href="#322">322</a>                     + loadFactor);
+<a name="323" href="#323">323</a>         <strong>this</strong>.loadFactor = loadFactor;
+<a name="324" href="#324">324</a> 
+<a name="325" href="#325">325</a>         <strong>int</strong> cap = p2capacity(initialCapacity);
+<a name="326" href="#326">326</a> 
+<a name="327" href="#327">327</a>         table = <strong>new</strong> Entry[cap];
+<a name="328" href="#328">328</a>         threshold = (<strong>int</strong>) (cap * loadFactor);
+<a name="329" href="#329">329</a>     }
+<a name="330" href="#330">330</a> 
+<a name="331" href="#331">331</a>     <em>/**<em>*</em></em>
+<a name="332" href="#332">332</a> <em>     * Constructs a new, empty map with the specified initial capacity and</em>
+<a name="333" href="#333">333</a> <em>     * default load factor.</em>
+<a name="334" href="#334">334</a> <em>     * </em>
+<a name="335" href="#335">335</a> <em>     * @param initialCapacity</em>
+<a name="336" href="#336">336</a> <em>     *            the initial capacity of the ConcurrentReaderHashMap.</em>
+<a name="337" href="#337">337</a> <em>     * @throws IllegalArgumentException</em>
+<a name="338" href="#338">338</a> <em>     *             if the initial maximum number of elements is less than zero.</em>
+<a name="339" href="#339">339</a> <em>     */</em>
+<a name="340" href="#340">340</a> 
+<a name="341" href="#341">341</a>     <strong>public</strong> <a href="../../../org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a>(<strong>int</strong> initialCapacity) {
+<a name="342" href="#342">342</a>         <strong>this</strong>(initialCapacity, DEFAULT_LOAD_FACTOR);
+<a name="343" href="#343">343</a>     }
+<a name="344" href="#344">344</a> 
+<a name="345" href="#345">345</a>     <em>/**<em>*</em></em>
+<a name="346" href="#346">346</a> <em>     * Constructs a new, empty map with a default initial capacity and load</em>
+<a name="347" href="#347">347</a> <em>     * factor.</em>
+<a name="348" href="#348">348</a> <em>     */</em>
+<a name="349" href="#349">349</a> 
+<a name="350" href="#350">350</a>     <strong>public</strong> <a href="../../../org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a>() {
+<a name="351" href="#351">351</a>         <strong>this</strong>(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR);
+<a name="352" href="#352">352</a>     }
+<a name="353" href="#353">353</a> 
+<a name="354" href="#354">354</a>     <em>/**<em>*</em></em>
+<a name="355" href="#355">355</a> <em>     * Constructs a new map with the same mappings as the given map. The map is</em>
+<a name="356" href="#356">356</a> <em>     * created with a capacity of twice the number of mappings in the given map</em>
+<a name="357" href="#357">357</a> <em>     * or 16 (whichever is greater), and a default load factor.</em>
+<a name="358" href="#358">358</a> <em>     */</em>
+<a name="359" href="#359">359</a> 
+<a name="360" href="#360">360</a>     <strong>public</strong> <a href="../../../org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a>(Map t) {
+<a name="361" href="#361">361</a>         <strong>this</strong>(Math.max((<strong>int</strong>) (t.size() / DEFAULT_LOAD_FACTOR) + 1, 16),
+<a name="362" href="#362">362</a>                 DEFAULT_LOAD_FACTOR);
+<a name="363" href="#363">363</a>         putAll(t);
+<a name="364" href="#364">364</a>     }
+<a name="365" href="#365">365</a> 
+<a name="366" href="#366">366</a>     <em>/**<em>*</em></em>
+<a name="367" href="#367">367</a> <em>     * Returns the number of key-value mappings in this map.</em>
+<a name="368" href="#368">368</a> <em>     * </em>
+<a name="369" href="#369">369</a> <em>     * @return the number of key-value mappings in this map.</em>
+<a name="370" href="#370">370</a> <em>     */</em>
+<a name="371" href="#371">371</a> 
+<a name="372" href="#372">372</a>     <strong>public</strong> <strong>synchronized</strong> <strong>int</strong> size() {
+<a name="373" href="#373">373</a>         <strong>return</strong> count;
+<a name="374" href="#374">374</a>     }
+<a name="375" href="#375">375</a> 
+<a name="376" href="#376">376</a>     <em>/**<em>*</em></em>
+<a name="377" href="#377">377</a> <em>     * Returns &lt;tt>true&lt;/tt> if this map contains no key-value mappings.</em>
+<a name="378" href="#378">378</a> <em>     * </em>
+<a name="379" href="#379">379</a> <em>     * @return &lt;tt>true&lt;/tt> if this map contains no key-value mappings.</em>
+<a name="380" href="#380">380</a> <em>     */</em>
+<a name="381" href="#381">381</a> 
+<a name="382" href="#382">382</a>     <strong>public</strong> <strong>synchronized</strong> <strong>boolean</strong> isEmpty() {
+<a name="383" href="#383">383</a>         <strong>return</strong> count == 0;
+<a name="384" href="#384">384</a>     }
+<a name="385" href="#385">385</a> 
+<a name="386" href="#386">386</a>     <em>/**<em>*</em></em>
+<a name="387" href="#387">387</a> <em>     * Returns the value to which the specified key is mapped in this table.</em>
+<a name="388" href="#388">388</a> <em>     * </em>
+<a name="389" href="#389">389</a> <em>     * @param key</em>
+<a name="390" href="#390">390</a> <em>     *            a key in the table.</em>
+<a name="391" href="#391">391</a> <em>     * @return the value to which the key is mapped in this table;</em>
+<a name="392" href="#392">392</a> <em>     *         &lt;code>null&lt;/code> if the key is not mapped to any value in this</em>
+<a name="393" href="#393">393</a> <em>     *         table.</em>
+<a name="394" href="#394">394</a> <em>     * @exception NullPointerException</em>
+<a name="395" href="#395">395</a> <em>     *                if the key is &lt;code>null&lt;/code>.</em>
+<a name="396" href="#396">396</a> <em>     * @see #put(Object, Object)</em>
+<a name="397" href="#397">397</a> <em>     */</em>
+<a name="398" href="#398">398</a> 
+<a name="399" href="#399">399</a>     <strong>public</strong> Object get(Object key) {
+<a name="400" href="#400">400</a> 
+<a name="401" href="#401">401</a>         <em class="comment">// throw null pointer exception if key null</em>
+<a name="402" href="#402">402</a>         <strong>int</strong> hash = hash(key);
+<a name="403" href="#403">403</a> 
+<a name="404" href="#404">404</a>         <em class="comment">/*</em>
+<a name="405" href="#405">405</a> <em class="comment">         * Start off at the apparently correct bin. If entry is found, we need</em>
+<a name="406" href="#406">406</a> <em class="comment">         * to check after a barrier anyway. If not found, we need a barrier to</em>
+<a name="407" href="#407">407</a> <em class="comment">         * check if we are actually in right bin. So either way, we encounter</em>
+<a name="408" href="#408">408</a> <em class="comment">         * only one barrier unless we need to retry. And we only need to fully</em>
+<a name="409" href="#409">409</a> <em class="comment">         * synchronize if there have been concurrent modifications.</em>
+<a name="410" href="#410">410</a> <em class="comment">         */</em>
+<a name="411" href="#411">411</a> 
+<a name="412" href="#412">412</a>         Entry[] tab = table;
+<a name="413" href="#413">413</a>         <strong>int</strong> index = hash &amp; (tab.length - 1);
+<a name="414" href="#414">414</a>         Entry first = tab[index];
+<a name="415" href="#415">415</a>         Entry e = first;
+<a name="416" href="#416">416</a> 
+<a name="417" href="#417">417</a>         <strong>for</strong> (;;) {
+<a name="418" href="#418">418</a>             <strong>if</strong> (e == <strong>null</strong>) {
+<a name="419" href="#419">419</a> 
+<a name="420" href="#420">420</a>                 <em class="comment">// If key apparently not there, check to</em>
+<a name="421" href="#421">421</a>                 <em class="comment">// make sure this was a valid read</em>
+<a name="422" href="#422">422</a> 
+<a name="423" href="#423">423</a>                 Entry[] reread = getTableForReading();
+<a name="424" href="#424">424</a>                 <strong>if</strong> (tab == reread &amp;&amp; first == tab[index])
+<a name="425" href="#425">425</a>                     <strong>return</strong> <strong>null</strong>;
+<a name="426" href="#426">426</a>                 <strong>else</strong> {
+<a name="427" href="#427">427</a>                     <em class="comment">// Wrong list -- must restart traversal at new first</em>
+<a name="428" href="#428">428</a>                     tab = reread;
+<a name="429" href="#429">429</a>                     e = first = tab[index = hash &amp; (tab.length - 1)];
+<a name="430" href="#430">430</a>                 }
+<a name="431" href="#431">431</a> 
+<a name="432" href="#432">432</a>             }
+<a name="433" href="#433">433</a> 
+<a name="434" href="#434">434</a>             <strong>else</strong> <strong>if</strong> (e.hash == hash &amp;&amp; eq(key, e.key)) {
+<a name="435" href="#435">435</a>                 Object value = e.value;
+<a name="436" href="#436">436</a>                 <strong>if</strong> (value != <strong>null</strong>)
+<a name="437" href="#437">437</a>                     <strong>return</strong> value;
+<a name="438" href="#438">438</a> 
+<a name="439" href="#439">439</a>                 <em class="comment">// Entry was invalidated during deletion. But it could</em>
+<a name="440" href="#440">440</a>                 <em class="comment">// have been re-inserted, so we must retraverse.</em>
+<a name="441" href="#441">441</a>                 <em class="comment">// To avoid useless contention, get lock to wait out</em>
+<a name="442" href="#442">442</a>                 <em class="comment">// modifications</em>
+<a name="443" href="#443">443</a>                 <em class="comment">// before retraversing.</em>
+<a name="444" href="#444">444</a> 
+<a name="445" href="#445">445</a>                 <strong>synchronized</strong> (<strong>this</strong>) {
+<a name="446" href="#446">446</a>                     tab = table;
+<a name="447" href="#447">447</a>                 }
+<a name="448" href="#448">448</a>                 e = first = tab[index = hash &amp; (tab.length - 1)];
+<a name="449" href="#449">449</a> 
+<a name="450" href="#450">450</a>             } <strong>else</strong>
+<a name="451" href="#451">451</a>                 e = e.next;
+<a name="452" href="#452">452</a>         }
+<a name="453" href="#453">453</a>     }
+<a name="454" href="#454">454</a> 
+<a name="455" href="#455">455</a>     <em>/**<em>*</em></em>
+<a name="456" href="#456">456</a> <em>     * Tests if the specified object is a key in this table.</em>
+<a name="457" href="#457">457</a> <em>     * </em>
+<a name="458" href="#458">458</a> <em>     * @param key</em>
+<a name="459" href="#459">459</a> <em>     *            possible key.</em>
+<a name="460" href="#460">460</a> <em>     * @return &lt;code>true&lt;/code> if and only if the specified object is a key</em>
+<a name="461" href="#461">461</a> <em>     *         in this table, as determined by the &lt;tt>equals&lt;/tt> method;</em>
+<a name="462" href="#462">462</a> <em>     *         &lt;code>false&lt;/code> otherwise.</em>
+<a name="463" href="#463">463</a> <em>     * @exception NullPointerException</em>
+<a name="464" href="#464">464</a> <em>     *                if the key is &lt;code>null&lt;/code>.</em>
+<a name="465" href="#465">465</a> <em>     * @see #contains(Object)</em>
+<a name="466" href="#466">466</a> <em>     */</em>
+<a name="467" href="#467">467</a> 
+<a name="468" href="#468">468</a>     <strong>public</strong> <strong>boolean</strong> containsKey(Object key) {
+<a name="469" href="#469">469</a>         <strong>return</strong> get(key) != <strong>null</strong>;
+<a name="470" href="#470">470</a>     }
+<a name="471" href="#471">471</a> 
+<a name="472" href="#472">472</a>     <em>/**<em>*</em></em>
+<a name="473" href="#473">473</a> <em>     * Maps the specified &lt;code>key&lt;/code> to the specified &lt;code>value&lt;/code></em>
+<a name="474" href="#474">474</a> <em>     * in this table. Neither the key nor the value can be &lt;code>null&lt;/code>.</em>
+<a name="475" href="#475">475</a> <em>     * &lt;p></em>
+<a name="476" href="#476">476</a> <em>     * </em>
+<a name="477" href="#477">477</a> <em>     * The value can be retrieved by calling the &lt;code>get&lt;/code> method with</em>
+<a name="478" href="#478">478</a> <em>     * a key that is equal to the original key.</em>
+<a name="479" href="#479">479</a> <em>     * </em>
+<a name="480" href="#480">480</a> <em>     * @param key</em>
+<a name="481" href="#481">481</a> <em>     *            the table key.</em>
+<a name="482" href="#482">482</a> <em>     * @param value</em>
+<a name="483" href="#483">483</a> <em>     *            the value.</em>
+<a name="484" href="#484">484</a> <em>     * @return the previous value of the specified key in this table, or</em>
+<a name="485" href="#485">485</a> <em>     *         &lt;code>null&lt;/code> if it did not have one.</em>
+<a name="486" href="#486">486</a> <em>     * @exception NullPointerException</em>
+<a name="487" href="#487">487</a> <em>     *                if the key or value is &lt;code>null&lt;/code>.</em>
+<a name="488" href="#488">488</a> <em>     * @see Object#equals(Object)</em>
+<a name="489" href="#489">489</a> <em>     * @see #get(Object)</em>
+<a name="490" href="#490">490</a> <em>     */</em>
+<a name="491" href="#491">491</a> 
+<a name="492" href="#492">492</a>     <strong>public</strong> Object put(Object key, Object value) {
+<a name="493" href="#493">493</a>         <strong>if</strong> (value == <strong>null</strong>)
+<a name="494" href="#494">494</a>             <strong>throw</strong> <strong>new</strong> NullPointerException();
+<a name="495" href="#495">495</a> 
+<a name="496" href="#496">496</a>         <strong>int</strong> hash = hash(key);
+<a name="497" href="#497">497</a>         Entry[] tab = table;
+<a name="498" href="#498">498</a>         <strong>int</strong> index = hash &amp; (tab.length - 1);
+<a name="499" href="#499">499</a>         Entry first = tab[index];
+<a name="500" href="#500">500</a>         Entry e;
+<a name="501" href="#501">501</a> 
+<a name="502" href="#502">502</a>         <strong>for</strong> (e = first; e != <strong>null</strong>; e = e.next)
+<a name="503" href="#503">503</a>             <strong>if</strong> (e.hash == hash &amp;&amp; eq(key, e.key))
+<a name="504" href="#504">504</a>                 <strong>break</strong>;
+<a name="505" href="#505">505</a> 
+<a name="506" href="#506">506</a>         <strong>synchronized</strong> (<strong>this</strong>) {
+<a name="507" href="#507">507</a>             <strong>if</strong> (tab == table) {
+<a name="508" href="#508">508</a>                 <strong>if</strong> (e == <strong>null</strong>) {
+<a name="509" href="#509">509</a>                     <em class="comment">// make sure we are adding to correct list</em>
+<a name="510" href="#510">510</a>                     <strong>if</strong> (first == tab[index]) {
+<a name="511" href="#511">511</a>                         <em class="comment">// Add to front of list</em>
+<a name="512" href="#512">512</a>                         Entry <strong>new</strong>Entry = <strong>new</strong> Entry(hash, key, value, first);
+<a name="513" href="#513">513</a>                         tab[index] = newEntry;
+<a name="514" href="#514">514</a>                         <strong>if</strong> (++count >= threshold)
+<a name="515" href="#515">515</a>                             rehash();
+<a name="516" href="#516">516</a>                         <strong>else</strong>
+<a name="517" href="#517">517</a>                             recordModification(newEntry);
+<a name="518" href="#518">518</a>                         <strong>return</strong> <strong>null</strong>;
+<a name="519" href="#519">519</a>                     }
+<a name="520" href="#520">520</a>                 } <strong>else</strong> {
+<a name="521" href="#521">521</a>                     Object oldValue = e.value;
+<a name="522" href="#522">522</a>                     <strong>if</strong> (first == tab[index] &amp;&amp; oldValue != <strong>null</strong>) {
+<a name="523" href="#523">523</a>                         e.value = value;
+<a name="524" href="#524">524</a>                         <strong>return</strong> oldValue;
+<a name="525" href="#525">525</a>                     }
+<a name="526" href="#526">526</a>                 }
+<a name="527" href="#527">527</a>             }
+<a name="528" href="#528">528</a> 
+<a name="529" href="#529">529</a>             <em class="comment">// retry if wrong list or lost race against concurrent remove</em>
+<a name="530" href="#530">530</a>             <strong>return</strong> sput(key, value, hash);
+<a name="531" href="#531">531</a>         }
+<a name="532" href="#532">532</a>     }
+<a name="533" href="#533">533</a> 
+<a name="534" href="#534">534</a>     <em>/**<em>*</em></em>
+<a name="535" href="#535">535</a> <em>     * Continuation of put(), called only when synch lock is held and</em>
+<a name="536" href="#536">536</a> <em>     * interference has been detected.</em>
+<a name="537" href="#537">537</a> <em>     */</em>
+<a name="538" href="#538">538</a>     <strong>protected</strong> Object sput(Object key, Object value, <strong>int</strong> hash) {
+<a name="539" href="#539">539</a> 
+<a name="540" href="#540">540</a>         Entry[] tab = table;
+<a name="541" href="#541">541</a>         <strong>int</strong> index = hash &amp; (tab.length - 1);
+<a name="542" href="#542">542</a>         Entry first = tab[index];
+<a name="543" href="#543">543</a>         Entry e = first;
+<a name="544" href="#544">544</a> 
+<a name="545" href="#545">545</a>         <strong>for</strong> (;;) {
+<a name="546" href="#546">546</a>             <strong>if</strong> (e == <strong>null</strong>) {
+<a name="547" href="#547">547</a>                 Entry <strong>new</strong>Entry = <strong>new</strong> Entry(hash, key, value, first);
+<a name="548" href="#548">548</a>                 tab[index] = newEntry;
+<a name="549" href="#549">549</a>                 <strong>if</strong> (++count >= threshold)
+<a name="550" href="#550">550</a>                     rehash();
+<a name="551" href="#551">551</a>                 <strong>else</strong>
+<a name="552" href="#552">552</a>                     recordModification(newEntry);
+<a name="553" href="#553">553</a>                 <strong>return</strong> <strong>null</strong>;
+<a name="554" href="#554">554</a>             } <strong>else</strong> <strong>if</strong> (e.hash == hash &amp;&amp; eq(key, e.key)) {
+<a name="555" href="#555">555</a>                 Object oldValue = e.value;
+<a name="556" href="#556">556</a>                 e.value = value;
+<a name="557" href="#557">557</a>                 <strong>return</strong> oldValue;
+<a name="558" href="#558">558</a>             } <strong>else</strong>
+<a name="559" href="#559">559</a>                 e = e.next;
+<a name="560" href="#560">560</a>         }
+<a name="561" href="#561">561</a>     }
+<a name="562" href="#562">562</a> 
+<a name="563" href="#563">563</a>     <em>/**<em>*</em></em>
+<a name="564" href="#564">564</a> <em>     * Rehashes the contents of this map into a new table with a larger</em>
+<a name="565" href="#565">565</a> <em>     * capacity. This method is called automatically when the number of keys in</em>
+<a name="566" href="#566">566</a> <em>     * this map exceeds its capacity and load factor.</em>
+<a name="567" href="#567">567</a> <em>     */</em>
+<a name="568" href="#568">568</a>     <strong>protected</strong> <strong>void</strong> rehash() {
+<a name="569" href="#569">569</a>         Entry[] oldTable = table;
+<a name="570" href="#570">570</a>         <strong>int</strong> oldCapacity = oldTable.length;
+<a name="571" href="#571">571</a>         <strong>if</strong> (oldCapacity >= MAXIMUM_CAPACITY) {
+<a name="572" href="#572">572</a>             threshold = Integer.MAX_VALUE; <em class="comment">// avoid retriggering</em>
+<a name="573" href="#573">573</a>             <strong>return</strong>;
+<a name="574" href="#574">574</a>         }
+<a name="575" href="#575">575</a> 
+<a name="576" href="#576">576</a>         <strong>int</strong> newCapacity = oldCapacity &lt;&lt; 1;
+<a name="577" href="#577">577</a>         <strong>int</strong> mask = newCapacity - 1;
+<a name="578" href="#578">578</a>         threshold = (<strong>int</strong>) (newCapacity * loadFactor);
+<a name="579" href="#579">579</a> 
+<a name="580" href="#580">580</a>         Entry[] <strong>new</strong>Table = <strong>new</strong> Entry[<strong>new</strong>Capacity];
+<a name="581" href="#581">581</a>         <em class="comment">/*</em>
+<a name="582" href="#582">582</a> <em class="comment">         * Reclassify nodes in each list to new Map. Because we are using</em>
+<a name="583" href="#583">583</a> <em class="comment">         * power-of-two expansion, the elements from each bin must either stay</em>
+<a name="584" href="#584">584</a> <em class="comment">         * at same index, or move to oldCapacity+index. We also eliminate</em>
+<a name="585" href="#585">585</a> <em class="comment">         * unnecessary node creation by catching cases where old nodes can be</em>
+<a name="586" href="#586">586</a> <em class="comment">         * reused because their next fields won't change. Statistically, at the</em>
+<a name="587" href="#587">587</a> <em class="comment">         * default threshhold, only about one-sixth of them need cloning. (The</em>
+<a name="588" href="#588">588</a> <em class="comment">         * nodes they replace will be garbage collectable as soon as they are no</em>
+<a name="589" href="#589">589</a> <em class="comment">         * longer referenced by any reader thread that may be in the midst of</em>
+<a name="590" href="#590">590</a> <em class="comment">         * traversing table right now.)</em>
+<a name="591" href="#591">591</a> <em class="comment">         */</em>
+<a name="592" href="#592">592</a> 
+<a name="593" href="#593">593</a>         <strong>for</strong> (<strong>int</strong> i = 0; i &lt; oldCapacity; i++) {
+<a name="594" href="#594">594</a>             <em class="comment">// We need to guarantee that any existing reads of old Map can</em>
+<a name="595" href="#595">595</a>             <em class="comment">// proceed. So we cannot yet null out each bin.</em>
+<a name="596" href="#596">596</a>             Entry e = oldTable[i];
+<a name="597" href="#597">597</a> 
+<a name="598" href="#598">598</a>             <strong>if</strong> (e != <strong>null</strong>) {
+<a name="599" href="#599">599</a>                 <strong>int</strong> idx = e.hash &amp; mask;
+<a name="600" href="#600">600</a>                 Entry next = e.next;
+<a name="601" href="#601">601</a> 
+<a name="602" href="#602">602</a>                 <em class="comment">// Single node on list</em>
+<a name="603" href="#603">603</a>                 <strong>if</strong> (next == <strong>null</strong>)
+<a name="604" href="#604">604</a>                     newTable[idx] = e;
+<a name="605" href="#605">605</a> 
+<a name="606" href="#606">606</a>                 <strong>else</strong> {
+<a name="607" href="#607">607</a>                     <em class="comment">// Reuse trailing consecutive sequence of all same bit</em>
+<a name="608" href="#608">608</a>                     Entry lastRun = e;
+<a name="609" href="#609">609</a>                     <strong>int</strong> lastIdx = idx;
+<a name="610" href="#610">610</a>                     <strong>for</strong> (Entry last = next; last != <strong>null</strong>; last = last.next) {
+<a name="611" href="#611">611</a>                         <strong>int</strong> k = last.hash &amp; mask;
+<a name="612" href="#612">612</a>                         <strong>if</strong> (k != lastIdx) {
+<a name="613" href="#613">613</a>                             lastIdx = k;
+<a name="614" href="#614">614</a>                             lastRun = last;
+<a name="615" href="#615">615</a>                         }
+<a name="616" href="#616">616</a>                     }
+<a name="617" href="#617">617</a>                     newTable[lastIdx] = lastRun;
+<a name="618" href="#618">618</a> 
+<a name="619" href="#619">619</a>                     <em class="comment">// Clone all remaining nodes</em>
+<a name="620" href="#620">620</a>                     <strong>for</strong> (Entry p = e; p != lastRun; p = p.next) {
+<a name="621" href="#621">621</a>                         <strong>int</strong> k = p.hash &amp; mask;
+<a name="622" href="#622">622</a>                         <strong>new</strong>Table[k] = <strong>new</strong> Entry(p.hash, p.key, p.value,
+<a name="623" href="#623">623</a>                                 newTable[k]);
+<a name="624" href="#624">624</a>                     }
+<a name="625" href="#625">625</a>                 }
+<a name="626" href="#626">626</a>             }
+<a name="627" href="#627">627</a>         }
+<a name="628" href="#628">628</a> 
+<a name="629" href="#629">629</a>         table = newTable;
+<a name="630" href="#630">630</a>         recordModification(newTable);
+<a name="631" href="#631">631</a>     }
+<a name="632" href="#632">632</a> 
+<a name="633" href="#633">633</a>     <em>/**<em>*</em></em>
+<a name="634" href="#634">634</a> <em>     * Removes the key (and its corresponding value) from this table. This</em>
+<a name="635" href="#635">635</a> <em>     * method does nothing if the key is not in the table.</em>
+<a name="636" href="#636">636</a> <em>     * </em>
+<a name="637" href="#637">637</a> <em>     * @param key</em>
+<a name="638" href="#638">638</a> <em>     *            the key that needs to be removed.</em>
+<a name="639" href="#639">639</a> <em>     * @return the value to which the key had been mapped in this table, or</em>
+<a name="640" href="#640">640</a> <em>     *         &lt;code>null&lt;/code> if the key did not have a mapping.</em>
+<a name="641" href="#641">641</a> <em>     * @exception NullPointerException</em>
+<a name="642" href="#642">642</a> <em>     *                if the key is &lt;code>null&lt;/code>.</em>
+<a name="643" href="#643">643</a> <em>     */</em>
+<a name="644" href="#644">644</a> 
+<a name="645" href="#645">645</a>     <strong>public</strong> Object remove(Object key) {
+<a name="646" href="#646">646</a>         <em class="comment">/*</em>
+<a name="647" href="#647">647</a> <em class="comment">         * Find the entry, then 1. Set value field to null, to force get() to</em>
+<a name="648" href="#648">648</a> <em class="comment">         * retry 2. Rebuild the list without this entry. All entries following</em>
+<a name="649" href="#649">649</a> <em class="comment">         * removed node can stay in list, but all preceeding ones need to be</em>
+<a name="650" href="#650">650</a> <em class="comment">         * cloned. Traversals rely on this strategy to ensure that elements will</em>
+<a name="651" href="#651">651</a> <em class="comment">         * not be repeated during iteration.</em>
+<a name="652" href="#652">652</a> <em class="comment">         */</em>
+<a name="653" href="#653">653</a> 
+<a name="654" href="#654">654</a>         <strong>int</strong> hash = hash(key);
+<a name="655" href="#655">655</a>         Entry[] tab = table;
+<a name="656" href="#656">656</a>         <strong>int</strong> index = hash &amp; (tab.length - 1);
+<a name="657" href="#657">657</a>         Entry first = tab[index];
+<a name="658" href="#658">658</a>         Entry e = first;
+<a name="659" href="#659">659</a> 
+<a name="660" href="#660">660</a>         <strong>for</strong> (e = first; e != <strong>null</strong>; e = e.next)
+<a name="661" href="#661">661</a>             <strong>if</strong> (e.hash == hash &amp;&amp; eq(key, e.key))
+<a name="662" href="#662">662</a>                 <strong>break</strong>;
+<a name="663" href="#663">663</a> 
+<a name="664" href="#664">664</a>         <strong>synchronized</strong> (<strong>this</strong>) {
+<a name="665" href="#665">665</a>             <strong>if</strong> (tab == table) {
+<a name="666" href="#666">666</a>                 <strong>if</strong> (e == <strong>null</strong>) {
+<a name="667" href="#667">667</a>                     <strong>if</strong> (first == tab[index])
+<a name="668" href="#668">668</a>                         <strong>return</strong> <strong>null</strong>;
+<a name="669" href="#669">669</a>                 } <strong>else</strong> {
+<a name="670" href="#670">670</a>                     Object oldValue = e.value;
+<a name="671" href="#671">671</a>                     <strong>if</strong> (first == tab[index] &amp;&amp; oldValue != <strong>null</strong>) {
+<a name="672" href="#672">672</a>                         e.value = <strong>null</strong>;
+<a name="673" href="#673">673</a>                         count--;
+<a name="674" href="#674">674</a> 
+<a name="675" href="#675">675</a>                         Entry head = e.next;
+<a name="676" href="#676">676</a>                         <strong>for</strong> (Entry p = first; p != e; p = p.next)
+<a name="677" href="#677">677</a>                             head = <strong>new</strong> Entry(p.hash, p.key, p.value, head);
+<a name="678" href="#678">678</a> 
+<a name="679" href="#679">679</a>                         tab[index] = head;
+<a name="680" href="#680">680</a>                         recordModification(head);
+<a name="681" href="#681">681</a>                         <strong>return</strong> oldValue;
+<a name="682" href="#682">682</a>                     }
+<a name="683" href="#683">683</a>                 }
+<a name="684" href="#684">684</a>             }
+<a name="685" href="#685">685</a> 
+<a name="686" href="#686">686</a>             <em class="comment">// Wrong list or interference</em>
+<a name="687" href="#687">687</a>             <strong>return</strong> sremove(key, hash);
+<a name="688" href="#688">688</a>         }
+<a name="689" href="#689">689</a>     }
+<a name="690" href="#690">690</a> 
+<a name="691" href="#691">691</a>     <em>/**<em>*</em></em>
+<a name="692" href="#692">692</a> <em>     * Continuation of remove(), called only when synch lock is held and</em>
+<a name="693" href="#693">693</a> <em>     * interference has been detected.</em>
+<a name="694" href="#694">694</a> <em>     */</em>
+<a name="695" href="#695">695</a> 
+<a name="696" href="#696">696</a>     <strong>protected</strong> Object sremove(Object key, <strong>int</strong> hash) {
+<a name="697" href="#697">697</a>         Entry[] tab = table;
+<a name="698" href="#698">698</a>         <strong>int</strong> index = hash &amp; (tab.length - 1);
+<a name="699" href="#699">699</a>         Entry first = tab[index];
+<a name="700" href="#700">700</a> 
+<a name="701" href="#701">701</a>         <strong>for</strong> (Entry e = first; e != <strong>null</strong>; e = e.next) {
+<a name="702" href="#702">702</a>             <strong>if</strong> (e.hash == hash &amp;&amp; eq(key, e.key)) {
+<a name="703" href="#703">703</a>                 Object oldValue = e.value;
+<a name="704" href="#704">704</a>                 e.value = <strong>null</strong>;
+<a name="705" href="#705">705</a>                 count--;
+<a name="706" href="#706">706</a>                 Entry head = e.next;
+<a name="707" href="#707">707</a>                 <strong>for</strong> (Entry p = first; p != e; p = p.next)
+<a name="708" href="#708">708</a>                     head = <strong>new</strong> Entry(p.hash, p.key, p.value, head);
+<a name="709" href="#709">709</a> 
+<a name="710" href="#710">710</a>                 tab[index] = head;
+<a name="711" href="#711">711</a>                 recordModification(head);
+<a name="712" href="#712">712</a>                 <strong>return</strong> oldValue;
+<a name="713" href="#713">713</a>             }
+<a name="714" href="#714">714</a>         }
+<a name="715" href="#715">715</a>         <strong>return</strong> <strong>null</strong>;
+<a name="716" href="#716">716</a>     }
+<a name="717" href="#717">717</a> 
+<a name="718" href="#718">718</a>     <em>/**<em>*</em></em>
+<a name="719" href="#719">719</a> <em>     * Returns &lt;tt>true&lt;/tt> if this map maps one or more keys to the</em>
+<a name="720" href="#720">720</a> <em>     * specified value. Note: This method requires a full internal traversal of</em>
+<a name="721" href="#721">721</a> <em>     * the hash table, and so is much slower than method &lt;tt>containsKey&lt;/tt>.</em>
+<a name="722" href="#722">722</a> <em>     * </em>
+<a name="723" href="#723">723</a> <em>     * @param value</em>
+<a name="724" href="#724">724</a> <em>     *            value whose presence in this map is to be tested.</em>
+<a name="725" href="#725">725</a> <em>     * @return &lt;tt>true&lt;/tt> if this map maps one or more keys to the</em>
+<a name="726" href="#726">726</a> <em>     *         specified value.</em>
+<a name="727" href="#727">727</a> <em>     * @exception NullPointerException</em>
+<a name="728" href="#728">728</a> <em>     *                if the value is &lt;code>null&lt;/code>.</em>
+<a name="729" href="#729">729</a> <em>     */</em>
+<a name="730" href="#730">730</a> 
+<a name="731" href="#731">731</a>     <strong>public</strong> <strong>boolean</strong> containsValue(Object value) {
+<a name="732" href="#732">732</a>         <strong>if</strong> (value == <strong>null</strong>)
+<a name="733" href="#733">733</a>             <strong>throw</strong> <strong>new</strong> NullPointerException();
+<a name="734" href="#734">734</a> 
+<a name="735" href="#735">735</a>         Entry tab[] = getTableForReading();
+<a name="736" href="#736">736</a> 
+<a name="737" href="#737">737</a>         <strong>for</strong> (<strong>int</strong> i = 0; i &lt; tab.length; ++i) {
+<a name="738" href="#738">738</a>             <strong>for</strong> (Entry e = tab[i]; e != <strong>null</strong>; e = e.next)
+<a name="739" href="#739">739</a>                 <strong>if</strong> (value.equals(e.value))
+<a name="740" href="#740">740</a>                     <strong>return</strong> <strong>true</strong>;
+<a name="741" href="#741">741</a>         }
+<a name="742" href="#742">742</a> 
+<a name="743" href="#743">743</a>         <strong>return</strong> false;
+<a name="744" href="#744">744</a>     }
+<a name="745" href="#745">745</a> 
+<a name="746" href="#746">746</a>     <em>/**<em>*</em></em>
+<a name="747" href="#747">747</a> <em>     * Tests if some key maps into the specified value in this table. This</em>
+<a name="748" href="#748">748</a> <em>     * operation is more expensive than the &lt;code>containsKey&lt;/code> method.</em>
+<a name="749" href="#749">749</a> <em>     * &lt;p></em>
+<a name="750" href="#750">750</a> <em>     * </em>
+<a name="751" href="#751">751</a> <em>     * Note that this method is identical in functionality to containsValue,</em>
+<a name="752" href="#752">752</a> <em>     * (which is part of the Map interface in the collections framework).</em>
+<a name="753" href="#753">753</a> <em>     * </em>
+<a name="754" href="#754">754</a> <em>     * @param value</em>
+<a name="755" href="#755">755</a> <em>     *            a value to search for.</em>
+<a name="756" href="#756">756</a> <em>     * @return &lt;code>true&lt;/code> if and only if some key maps to the</em>
+<a name="757" href="#757">757</a> <em>     *         &lt;code>value&lt;/code> argument in this table as determined by the</em>
+<a name="758" href="#758">758</a> <em>     *         &lt;tt>equals&lt;/tt> method; &lt;code>false&lt;/code> otherwise.</em>
+<a name="759" href="#759">759</a> <em>     * @exception NullPointerException</em>
+<a name="760" href="#760">760</a> <em>     *                if the value is &lt;code>null&lt;/code>.</em>
+<a name="761" href="#761">761</a> <em>     * @see #containsKey(Object)</em>
+<a name="762" href="#762">762</a> <em>     * @see #containsValue(Object)</em>
+<a name="763" href="#763">763</a> <em>     * @see Map</em>
+<a name="764" href="#764">764</a> <em>     */</em>
+<a name="765" href="#765">765</a> 
+<a name="766" href="#766">766</a>     <strong>public</strong> <strong>boolean</strong> contains(Object value) {
+<a name="767" href="#767">767</a>         <strong>return</strong> containsValue(value);
+<a name="768" href="#768">768</a>     }
+<a name="769" href="#769">769</a> 
+<a name="770" href="#770">770</a>     <em>/**<em>*</em></em>
+<a name="771" href="#771">771</a> <em>     * Copies all of the mappings from the specified map to this one.</em>
+<a name="772" href="#772">772</a> <em>     * </em>
+<a name="773" href="#773">773</a> <em>     * These mappings replace any mappings that this map had for any of the keys</em>
+<a name="774" href="#774">774</a> <em>     * currently in the specified Map.</em>
+<a name="775" href="#775">775</a> <em>     * </em>
+<a name="776" href="#776">776</a> <em>     * @param t</em>
+<a name="777" href="#777">777</a> <em>     *            Mappings to be stored in this map.</em>
+<a name="778" href="#778">778</a> <em>     */</em>
+<a name="779" href="#779">779</a> 
+<a name="780" href="#780">780</a>     <strong>public</strong> <strong>synchronized</strong> <strong>void</strong> putAll(Map t) {
+<a name="781" href="#781">781</a>         <strong>int</strong> n = t.size();
+<a name="782" href="#782">782</a>         <strong>if</strong> (n == 0)
+<a name="783" href="#783">783</a>             <strong>return</strong>;
+<a name="784" href="#784">784</a> 
+<a name="785" href="#785">785</a>         <em class="comment">// Expand enough to hold at least n elements without resizing.</em>
+<a name="786" href="#786">786</a>         <em class="comment">// We can only resize table by factor of two at a time.</em>
+<a name="787" href="#787">787</a>         <em class="comment">// It is faster to rehash with fewer elements, so do it now.</em>
+<a name="788" href="#788">788</a>         <strong>while</strong> (n >= threshold)
+<a name="789" href="#789">789</a>             rehash();
+<a name="790" href="#790">790</a> 
+<a name="791" href="#791">791</a>         <strong>for</strong> (Iterator it = t.entrySet().iterator(); it.hasNext();) {
+<a name="792" href="#792">792</a>             Map.Entry entry = (Map.Entry) it.next();
+<a name="793" href="#793">793</a>             Object key = entry.getKey();
+<a name="794" href="#794">794</a>             Object value = entry.getValue();
+<a name="795" href="#795">795</a>             put(key, value);
+<a name="796" href="#796">796</a>         }
+<a name="797" href="#797">797</a>     }
+<a name="798" href="#798">798</a> 
+<a name="799" href="#799">799</a>     <em>/**<em>*</em></em>
+<a name="800" href="#800">800</a> <em>     * Removes all mappings from this map.</em>
+<a name="801" href="#801">801</a> <em>     */</em>
+<a name="802" href="#802">802</a>     <strong>public</strong> <strong>synchronized</strong> <strong>void</strong> clear() {
+<a name="803" href="#803">803</a>         Entry tab[] = table;
+<a name="804" href="#804">804</a>         <strong>for</strong> (<strong>int</strong> i = 0; i &lt; tab.length; ++i) {
+<a name="805" href="#805">805</a> 
+<a name="806" href="#806">806</a>             <em class="comment">// must invalidate all to force concurrent get's to wait and then</em>
+<a name="807" href="#807">807</a>             <em class="comment">// retry</em>
+<a name="808" href="#808">808</a>             <strong>for</strong> (Entry e = tab[i]; e != <strong>null</strong>; e = e.next)
+<a name="809" href="#809">809</a>                 e.value = <strong>null</strong>;
+<a name="810" href="#810">810</a> 
+<a name="811" href="#811">811</a>             tab[i] = <strong>null</strong>;
+<a name="812" href="#812">812</a>         }
+<a name="813" href="#813">813</a>         count = 0;
+<a name="814" href="#814">814</a>         recordModification(tab);
+<a name="815" href="#815">815</a>     }
+<a name="816" href="#816">816</a> 
+<a name="817" href="#817">817</a>     <em>/**<em>*</em></em>
+<a name="818" href="#818">818</a> <em>     * Returns a shallow copy of this &lt;tt>ConcurrentReaderHashMap&lt;/tt></em>
+<a name="819" href="#819">819</a> <em>     * instance: the keys and values themselves are not cloned.</em>
+<a name="820" href="#820">820</a> <em>     * </em>
+<a name="821" href="#821">821</a> <em>     * @return a shallow copy of this map.</em>
+<a name="822" href="#822">822</a> <em>     */</em>
+<a name="823" href="#823">823</a> 
+<a name="824" href="#824">824</a>     <strong>public</strong> <strong>synchronized</strong> Object clone() {
+<a name="825" href="#825">825</a>         <strong>try</strong> {
+<a name="826" href="#826">826</a>             <a href="../../../org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a> t = (ConcurrentReaderHashMap) <strong>super</strong>.clone();
+<a name="827" href="#827">827</a> 
+<a name="828" href="#828">828</a>             t.keySet = <strong>null</strong>;
+<a name="829" href="#829">829</a>             t.entrySet = <strong>null</strong>;
+<a name="830" href="#830">830</a>             t.values = <strong>null</strong>;
+<a name="831" href="#831">831</a> 
+<a name="832" href="#832">832</a>             Entry[] tab = table;
+<a name="833" href="#833">833</a>             t.table = <strong>new</strong> Entry[tab.length];
+<a name="834" href="#834">834</a>             Entry[] ttab = t.table;
+<a name="835" href="#835">835</a> 
+<a name="836" href="#836">836</a>             <strong>for</strong> (<strong>int</strong> i = 0; i &lt; tab.length; ++i) {
+<a name="837" href="#837">837</a>                 Entry first = <strong>null</strong>;
+<a name="838" href="#838">838</a>                 <strong>for</strong> (Entry e = tab[i]; e != <strong>null</strong>; e = e.next)
+<a name="839" href="#839">839</a>                     first = <strong>new</strong> Entry(e.hash, e.key, e.value, first);
+<a name="840" href="#840">840</a>                 ttab[i] = first;
+<a name="841" href="#841">841</a>             }
+<a name="842" href="#842">842</a> 
+<a name="843" href="#843">843</a>             <strong>return</strong> t;
+<a name="844" href="#844">844</a>         } <strong>catch</strong> (CloneNotSupportedException e) {
+<a name="845" href="#845">845</a>             <em class="comment">// this shouldn't happen, since we are Cloneable</em>
+<a name="846" href="#846">846</a>             <strong>throw</strong> <strong>new</strong> InternalError();
+<a name="847" href="#847">847</a>         }
+<a name="848" href="#848">848</a>     }
+<a name="849" href="#849">849</a> 
+<a name="850" href="#850">850</a>     <em class="comment">// Views</em>
+<a name="851" href="#851">851</a> 
+<a name="852" href="#852">852</a>     <strong>protected</strong> <strong>transient</strong> Set keySet = <strong>null</strong>;
+<a name="853" href="#853">853</a> 
+<a name="854" href="#854">854</a>     <strong>protected</strong> <strong>transient</strong> Set entrySet = <strong>null</strong>;
+<a name="855" href="#855">855</a> 
+<a name="856" href="#856">856</a>     <strong>protected</strong> <strong>transient</strong> Collection values = <strong>null</strong>;
+<a name="857" href="#857">857</a> 
+<a name="858" href="#858">858</a>     <em>/**<em>*</em></em>
+<a name="859" href="#859">859</a> <em>     * Returns a set view of the keys contained in this map. The set is backed</em>
+<a name="860" href="#860">860</a> <em>     * by the map, so changes to the map are reflected in the set, and</em>
+<a name="861" href="#861">861</a> <em>     * vice-versa. The set supports element removal, which removes the</em>
+<a name="862" href="#862">862</a> <em>     * corresponding mapping from this map, via the &lt;tt>Iterator.remove&lt;/tt>,</em>
+<a name="863" href="#863">863</a> <em>     * &lt;tt>Set.remove&lt;/tt>,&lt;tt>removeAll&lt;/tt>,&lt;tt>retainAll&lt;/tt>, and</em>
+<a name="864" href="#864">864</a> <em>     * &lt;tt>clear&lt;/tt> operations. It does not support the &lt;tt>add&lt;/tt> or</em>
+<a name="865" href="#865">865</a> <em>     * &lt;tt>addAll&lt;/tt> operations.</em>
+<a name="866" href="#866">866</a> <em>     * </em>
+<a name="867" href="#867">867</a> <em>     * @return a set view of the keys contained in this map.</em>
+<a name="868" href="#868">868</a> <em>     */</em>
+<a name="869" href="#869">869</a> 
+<a name="870" href="#870">870</a>     <strong>public</strong> Set keySet() {
+<a name="871" href="#871">871</a>         Set ks = keySet;
+<a name="872" href="#872">872</a>         <strong>return</strong> (ks != <strong>null</strong>) ? ks : (keySet = <strong>new</strong> KeySet());
+<a name="873" href="#873">873</a>     }
+<a name="874" href="#874">874</a> 
+<a name="875" href="#875">875</a>     <strong>private</strong> <strong>class</strong> KeySet <strong>extends</strong> AbstractSet {
+<a name="876" href="#876">876</a>         <strong>public</strong> Iterator iterator() {
+<a name="877" href="#877">877</a>             <strong>return</strong> <strong>new</strong> KeyIterator();
+<a name="878" href="#878">878</a>         }
+<a name="879" href="#879">879</a> 
+<a name="880" href="#880">880</a>         <strong>public</strong> <strong>int</strong> size() {
+<a name="881" href="#881">881</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>.size();
+<a name="882" href="#882">882</a>         }
+<a name="883" href="#883">883</a> 
+<a name="884" href="#884">884</a>         <strong>public</strong> <strong>boolean</strong> contains(Object o) {
+<a name="885" href="#885">885</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>.containsKey(o);
+<a name="886" href="#886">886</a>         }
+<a name="887" href="#887">887</a> 
+<a name="888" href="#888">888</a>         <strong>public</strong> <strong>boolean</strong> remove(Object o) {
+<a name="889" href="#889">889</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>.remove(o) != <strong>null</strong>;
+<a name="890" href="#890">890</a>         }
+<a name="891" href="#891">891</a> 
+<a name="892" href="#892">892</a>         <strong>public</strong> <strong>void</strong> clear() {
+<a name="893" href="#893">893</a>             ConcurrentReaderHashMap.<strong>this</strong>.clear();
+<a name="894" href="#894">894</a>         }
+<a name="895" href="#895">895</a>     }
+<a name="896" href="#896">896</a> 
+<a name="897" href="#897">897</a>     <em>/**<em>*</em></em>
+<a name="898" href="#898">898</a> <em>     * Returns a collection view of the values contained in this map. The</em>
+<a name="899" href="#899">899</a> <em>     * collection is backed by the map, so changes to the map are reflected in</em>
+<a name="900" href="#900">900</a> <em>     * the collection, and vice-versa. The collection supports element removal,</em>
+<a name="901" href="#901">901</a> <em>     * which removes the corresponding mapping from this map, via the</em>
+<a name="902" href="#902">902</a> <em>     * &lt;tt>Iterator.remove&lt;/tt>,&lt;tt>Collection.remove&lt;/tt>,</em>
+<a name="903" href="#903">903</a> <em>     * &lt;tt>removeAll&lt;/tt>,&lt;tt>retainAll&lt;/tt>, and &lt;tt>clear&lt;/tt></em>
+<a name="904" href="#904">904</a> <em>     * operations. It does not support the &lt;tt>add&lt;/tt> or &lt;tt>addAll&lt;/tt></em>
+<a name="905" href="#905">905</a> <em>     * operations.</em>
+<a name="906" href="#906">906</a> <em>     * </em>
+<a name="907" href="#907">907</a> <em>     * @return a collection view of the values contained in this map.</em>
+<a name="908" href="#908">908</a> <em>     */</em>
+<a name="909" href="#909">909</a> 
+<a name="910" href="#910">910</a>     <strong>public</strong> Collection values() {
+<a name="911" href="#911">911</a>         Collection vs = values;
+<a name="912" href="#912">912</a>         <strong>return</strong> (vs != <strong>null</strong>) ? vs : (values = <strong>new</strong> Values());
+<a name="913" href="#913">913</a>     }
+<a name="914" href="#914">914</a> 
+<a name="915" href="#915">915</a>     <strong>private</strong> <strong>class</strong> Values <strong>extends</strong> AbstractCollection {
+<a name="916" href="#916">916</a>         <strong>public</strong> Iterator iterator() {
+<a name="917" href="#917">917</a>             <strong>return</strong> <strong>new</strong> ValueIterator();
+<a name="918" href="#918">918</a>         }
+<a name="919" href="#919">919</a> 
+<a name="920" href="#920">920</a>         <strong>public</strong> <strong>int</strong> size() {
+<a name="921" href="#921">921</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>.size();
+<a name="922" href="#922">922</a>         }
+<a name="923" href="#923">923</a> 
+<a name="924" href="#924">924</a>         <strong>public</strong> <strong>boolean</strong> contains(Object o) {
+<a name="925" href="#925">925</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>.containsValue(o);
+<a name="926" href="#926">926</a>         }
+<a name="927" href="#927">927</a> 
+<a name="928" href="#928">928</a>         <strong>public</strong> <strong>void</strong> clear() {
+<a name="929" href="#929">929</a>             ConcurrentReaderHashMap.<strong>this</strong>.clear();
+<a name="930" href="#930">930</a>         }
+<a name="931" href="#931">931</a>     }
+<a name="932" href="#932">932</a> 
+<a name="933" href="#933">933</a>     <em>/**<em>*</em></em>
+<a name="934" href="#934">934</a> <em>     * Returns a collection view of the mappings contained in this map. Each</em>
+<a name="935" href="#935">935</a> <em>     * element in the returned collection is a &lt;tt>Map.Entry&lt;/tt>. The</em>
+<a name="936" href="#936">936</a> <em>     * collection is backed by the map, so changes to the map are reflected in</em>
+<a name="937" href="#937">937</a> <em>     * the collection, and vice-versa. The collection supports element removal,</em>
+<a name="938" href="#938">938</a> <em>     * which removes the corresponding mapping from the map, via the</em>
+<a name="939" href="#939">939</a> <em>     * &lt;tt>Iterator.remove&lt;/tt>,&lt;tt>Collection.remove&lt;/tt>,</em>
+<a name="940" href="#940">940</a> <em>     * &lt;tt>removeAll&lt;/tt>,&lt;tt>retainAll&lt;/tt>, and &lt;tt>clear&lt;/tt></em>
+<a name="941" href="#941">941</a> <em>     * operations. It does not support the &lt;tt>add&lt;/tt> or &lt;tt>addAll&lt;/tt></em>
+<a name="942" href="#942">942</a> <em>     * operations.</em>
+<a name="943" href="#943">943</a> <em>     * </em>
+<a name="944" href="#944">944</a> <em>     * @return a collection view of the mappings contained in this map.</em>
+<a name="945" href="#945">945</a> <em>     */</em>
+<a name="946" href="#946">946</a> 
+<a name="947" href="#947">947</a>     <strong>public</strong> Set entrySet() {
+<a name="948" href="#948">948</a>         Set es = entrySet;
+<a name="949" href="#949">949</a>         <strong>return</strong> (es != <strong>null</strong>) ? es : (entrySet = <strong>new</strong> EntrySet());
+<a name="950" href="#950">950</a>     }
+<a name="951" href="#951">951</a> 
+<a name="952" href="#952">952</a>     <strong>private</strong> <strong>class</strong> EntrySet <strong>extends</strong> AbstractSet {
+<a name="953" href="#953">953</a>         <strong>public</strong> Iterator iterator() {
+<a name="954" href="#954">954</a>             <strong>return</strong> <strong>new</strong> HashIterator();
+<a name="955" href="#955">955</a>         }
+<a name="956" href="#956">956</a> 
+<a name="957" href="#957">957</a>         <strong>public</strong> <strong>boolean</strong> contains(Object o) {
+<a name="958" href="#958">958</a>             <strong>if</strong> (!(o instanceof Map.Entry))
+<a name="959" href="#959">959</a>                 <strong>return</strong> false;
+<a name="960" href="#960">960</a>             Map.Entry entry = (Map.Entry) o;
+<a name="961" href="#961">961</a>             Object v = ConcurrentReaderHashMap.<strong>this</strong>.get(entry.getKey());
+<a name="962" href="#962">962</a>             <strong>return</strong> v != <strong>null</strong> &amp;&amp; v.equals(entry.getValue());
+<a name="963" href="#963">963</a>         }
+<a name="964" href="#964">964</a> 
+<a name="965" href="#965">965</a>         <strong>public</strong> <strong>boolean</strong> remove(Object o) {
+<a name="966" href="#966">966</a>             <strong>if</strong> (!(o instanceof Map.Entry))
+<a name="967" href="#967">967</a>                 <strong>return</strong> false;
+<a name="968" href="#968">968</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>
+<a name="969" href="#969">969</a>                     .findAndRemoveEntry((Map.Entry) o);
+<a name="970" href="#970">970</a>         }
+<a name="971" href="#971">971</a> 
+<a name="972" href="#972">972</a>         <strong>public</strong> <strong>int</strong> size() {
+<a name="973" href="#973">973</a>             <strong>return</strong> ConcurrentReaderHashMap.<strong>this</strong>.size();
+<a name="974" href="#974">974</a>         }
+<a name="975" href="#975">975</a> 
+<a name="976" href="#976">976</a>         <strong>public</strong> <strong>void</strong> clear() {
+<a name="977" href="#977">977</a>             ConcurrentReaderHashMap.<strong>this</strong>.clear();
+<a name="978" href="#978">978</a>         }
+<a name="979" href="#979">979</a>     }
+<a name="980" href="#980">980</a> 
+<a name="981" href="#981">981</a>     <em>/**<em>*</em></em>
+<a name="982" href="#982">982</a> <em>     * Helper method for entrySet.remove</em>
+<a name="983" href="#983">983</a> <em>     */</em>
+<a name="984" href="#984">984</a>     <strong>protected</strong> <strong>synchronized</strong> <strong>boolean</strong> findAndRemoveEntry(Map.Entry entry) {
+<a name="985" href="#985">985</a>         Object key = entry.getKey();
+<a name="986" href="#986">986</a>         Object v = get(key);
+<a name="987" href="#987">987</a>         <strong>if</strong> (v != <strong>null</strong> &amp;&amp; v.equals(entry.getValue())) {
+<a name="988" href="#988">988</a>             remove(key);
+<a name="989" href="#989">989</a>             <strong>return</strong> <strong>true</strong>;
+<a name="990" href="#990">990</a>         } <strong>else</strong>
+<a name="991" href="#991">991</a>             <strong>return</strong> false;
+<a name="992" href="#992">992</a>     }
+<a name="993" href="#993">993</a> 
+<a name="994" href="#994">994</a>     <em>/**<em>*</em></em>
+<a name="995" href="#995">995</a> <em>     * Returns an enumeration of the keys in this table.</em>
+<a name="996" href="#996">996</a> <em>     * </em>
+<a name="997" href="#997">997</a> <em>     * @return an enumeration of the keys in this table.</em>
+<a name="998" href="#998">998</a> <em>     * @see Enumeration</em>
+<a name="999" href="#999">999</a> <em>     * @see #elements()</em>
+<a name="1000" href="#1000">1000</a> <em>     * @see #keySet()</em>
+<a name="1001" href="#1001">1001</a> <em>     * @see Map</em>
+<a name="1002" href="#1002">1002</a> <em>     */</em>
+<a name="1003" href="#1003">1003</a>     <strong>public</strong> Enumeration keys() {
+<a name="1004" href="#1004">1004</a>         <strong>return</strong> <strong>new</strong> KeyIterator();
+<a name="1005" href="#1005">1005</a>     }
+<a name="1006" href="#1006">1006</a> 
+<a name="1007" href="#1007">1007</a>     <em>/**<em>*</em></em>
+<a name="1008" href="#1008">1008</a> <em>     * Returns an enumeration of the values in this table. Use the Enumeration</em>
+<a name="1009" href="#1009">1009</a> <em>     * methods on the returned object to fetch the elements sequentially.</em>
+<a name="1010" href="#1010">1010</a> <em>     * </em>
+<a name="1011" href="#1011">1011</a> <em>     * @return an enumeration of the values in this table.</em>
+<a name="1012" href="#1012">1012</a> <em>     * @see java.util.Enumeration</em>
+<a name="1013" href="#1013">1013</a> <em>     * @see #keys()</em>
+<a name="1014" href="#1014">1014</a> <em>     * @see #values()</em>
+<a name="1015" href="#1015">1015</a> <em>     * @see Map</em>
+<a name="1016" href="#1016">1016</a> <em>     */</em>
+<a name="1017" href="#1017">1017</a> 
+<a name="1018" href="#1018">1018</a>     <strong>public</strong> Enumeration elements() {
+<a name="1019" href="#1019">1019</a>         <strong>return</strong> <strong>new</strong> ValueIterator();
+<a name="1020" href="#1020">1020</a>     }
+<a name="1021" href="#1021">1021</a> 
+<a name="1022" href="#1022">1022</a>     <em>/**<em>*</em></em>
+<a name="1023" href="#1023">1023</a> <em>     * ConcurrentReaderHashMap collision list entry.</em>
+<a name="1024" href="#1024">1024</a> <em>     */</em>
+<a name="1025" href="#1025">1025</a> 
+<a name="1026" href="#1026">1026</a>     <strong>protected</strong> <strong>static</strong> <strong>class</strong> Entry implements Map.Entry {
+<a name="1027" href="#1027">1027</a> 
+<a name="1028" href="#1028">1028</a>         <em class="comment">/*</em>
+<a name="1029" href="#1029">1029</a> <em class="comment">         * The use of volatile for value field ensures that we can detect status</em>
+<a name="1030" href="#1030">1030</a> <em class="comment">         * changes without synchronization. The other fields are never changed,</em>
+<a name="1031" href="#1031">1031</a> <em class="comment">         * and are marked as final.</em>
+<a name="1032" href="#1032">1032</a> <em class="comment">         */</em>
+<a name="1033" href="#1033">1033</a> 
+<a name="1034" href="#1034">1034</a>         <strong>protected</strong> <strong>final</strong> <strong>int</strong> hash;
+<a name="1035" href="#1035">1035</a> 
+<a name="1036" href="#1036">1036</a>         <strong>protected</strong> <strong>final</strong> Object key;
+<a name="1037" href="#1037">1037</a> 
+<a name="1038" href="#1038">1038</a>         <strong>protected</strong> <strong>final</strong> Entry next;
+<a name="1039" href="#1039">1039</a> 
+<a name="1040" href="#1040">1040</a>         <strong>protected</strong> <strong>volatile</strong> Object value;
+<a name="1041" href="#1041">1041</a> 
+<a name="1042" href="#1042">1042</a>         Entry(<strong>int</strong> hash, Object key, Object value, Entry next) {
+<a name="1043" href="#1043">1043</a>             <strong>this</strong>.hash = hash;
+<a name="1044" href="#1044">1044</a>             <strong>this</strong>.key = key;
+<a name="1045" href="#1045">1045</a>             <strong>this</strong>.next = next;
+<a name="1046" href="#1046">1046</a>             <strong>this</strong>.value = value;
+<a name="1047" href="#1047">1047</a>         }
+<a name="1048" href="#1048">1048</a> 
+<a name="1049" href="#1049">1049</a>         <em class="comment">// Map.Entry Ops</em>
+<a name="1050" href="#1050">1050</a> 
+<a name="1051" href="#1051">1051</a>         <strong>public</strong> Object getKey() {
+<a name="1052" href="#1052">1052</a>             <strong>return</strong> key;
+<a name="1053" href="#1053">1053</a>         }
+<a name="1054" href="#1054">1054</a> 
+<a name="1055" href="#1055">1055</a>         <em>/**<em>*</em></em>
+<a name="1056" href="#1056">1056</a> <em>         * Get the value. Note: In an entrySet or entrySet.iterator, unless the</em>
+<a name="1057" href="#1057">1057</a> <em>         * set or iterator is used under synchronization of the table as a whole</em>
+<a name="1058" href="#1058">1058</a> <em>         * (or you can otherwise guarantee lack of concurrent modification),</em>
+<a name="1059" href="#1059">1059</a> <em>         * &lt;tt>getValue&lt;/tt> &lt;em>might&lt;/em> return null, reflecting the fact</em>
+<a name="1060" href="#1060">1060</a> <em>         * that the entry has been concurrently removed. However, there are no</em>
+<a name="1061" href="#1061">1061</a> <em>         * assurances that concurrent removals will be reflected using this</em>
+<a name="1062" href="#1062">1062</a> <em>         * method.</em>
+<a name="1063" href="#1063">1063</a> <em>         * </em>
+<a name="1064" href="#1064">1064</a> <em>         * @return the current value, or null if the entry has been detectably</em>
+<a name="1065" href="#1065">1065</a> <em>         *         removed.</em>
+<a name="1066" href="#1066">1066</a> <em>         */</em>
+<a name="1067" href="#1067">1067</a>         <strong>public</strong> Object getValue() {
+<a name="1068" href="#1068">1068</a>             <strong>return</strong> value;
+<a name="1069" href="#1069">1069</a>         }
+<a name="1070" href="#1070">1070</a> 
+<a name="1071" href="#1071">1071</a>         <em>/**<em>*</em></em>
+<a name="1072" href="#1072">1072</a> <em>         * Set the value of this entry. Note: In an entrySet or</em>
+<a name="1073" href="#1073">1073</a> <em>         * entrySet.iterator), unless the set or iterator is used under</em>
+<a name="1074" href="#1074">1074</a> <em>         * synchronization of the table as a whole (or you can otherwise</em>
+<a name="1075" href="#1075">1075</a> <em>         * guarantee lack of concurrent modification), &lt;tt>setValue&lt;/tt> is</em>
+<a name="1076" href="#1076">1076</a> <em>         * not strictly guaranteed to actually replace the value field obtained</em>
+<a name="1077" href="#1077">1077</a> <em>         * via the &lt;tt>get&lt;/tt> operation of the underlying hash table in</em>
+<a name="1078" href="#1078">1078</a> <em>         * multithreaded applications. If iterator-wide synchronization is not</em>
+<a name="1079" href="#1079">1079</a> <em>         * used, and any other concurrent &lt;tt>put&lt;/tt> or &lt;tt>remove&lt;/tt></em>
+<a name="1080" href="#1080">1080</a> <em>         * operations occur, sometimes even to &lt;em>other&lt;/em> entries, then</em>
+<a name="1081" href="#1081">1081</a> <em>         * this change is not guaranteed to be reflected in the hash table. (It</em>
+<a name="1082" href="#1082">1082</a> <em>         * might, or it might not. There are no assurances either way.)</em>
+<a name="1083" href="#1083">1083</a> <em>         * </em>
+<a name="1084" href="#1084">1084</a> <em>         * @param value</em>
+<a name="1085" href="#1085">1085</a> <em>         *            the new value.</em>
+<a name="1086" href="#1086">1086</a> <em>         * @return the previous value, or null if entry has been detectably</em>
+<a name="1087" href="#1087">1087</a> <em>         *         removed.</em>
+<a name="1088" href="#1088">1088</a> <em>         * @exception NullPointerException</em>
+<a name="1089" href="#1089">1089</a> <em>         *                if the value is &lt;code>null&lt;/code>.</em>
+<a name="1090" href="#1090">1090</a> <em>         * </em>
+<a name="1091" href="#1091">1091</a> <em>         */</em>
+<a name="1092" href="#1092">1092</a> 
+<a name="1093" href="#1093">1093</a>         <strong>public</strong> Object setValue(Object value) {
+<a name="1094" href="#1094">1094</a>             <strong>if</strong> (value == <strong>null</strong>)
+<a name="1095" href="#1095">1095</a>                 <strong>throw</strong> <strong>new</strong> NullPointerException();
+<a name="1096" href="#1096">1096</a>             Object oldValue = <strong>this</strong>.value;
+<a name="1097" href="#1097">1097</a>             <strong>this</strong>.value = value;
+<a name="1098" href="#1098">1098</a>             <strong>return</strong> oldValue;
+<a name="1099" href="#1099">1099</a>         }
+<a name="1100" href="#1100">1100</a> 
+<a name="1101" href="#1101">1101</a>         <strong>public</strong> <strong>boolean</strong> equals(Object o) {
+<a name="1102" href="#1102">1102</a>             <strong>if</strong> (!(o instanceof Map.Entry))
+<a name="1103" href="#1103">1103</a>                 <strong>return</strong> false;
+<a name="1104" href="#1104">1104</a>             Map.Entry e = (Map.Entry) o;
+<a name="1105" href="#1105">1105</a>             <strong>return</strong> (key.equals(e.getKey()) &amp;&amp; value.equals(e.getValue()));
+<a name="1106" href="#1106">1106</a>         }
+<a name="1107" href="#1107">1107</a> 
+<a name="1108" href="#1108">1108</a>         <strong>public</strong> <strong>int</strong> hashCode() {
+<a name="1109" href="#1109">1109</a>             <strong>return</strong> key.hashCode() ^ value.hashCode();
+<a name="1110" href="#1110">1110</a>         }
+<a name="1111" href="#1111">1111</a> 
+<a name="1112" href="#1112">1112</a>         <strong>public</strong> String toString() {
+<a name="1113" href="#1113">1113</a>             <strong>return</strong> key + <span class="string">"="</span> + value;
+<a name="1114" href="#1114">1114</a>         }
+<a name="1115" href="#1115">1115</a> 
+<a name="1116" href="#1116">1116</a>     }
+<a name="1117" href="#1117">1117</a> 
+<a name="1118" href="#1118">1118</a>     <strong>protected</strong> <strong>class</strong> HashIterator implements Iterator, Enumeration {
+<a name="1119" href="#1119">1119</a>         <strong>protected</strong> <strong>final</strong> Entry[] tab; <em class="comment">// snapshot of table</em>
+<a name="1120" href="#1120">1120</a> 
+<a name="1121" href="#1121">1121</a>         <strong>protected</strong> <strong>int</strong> index; <em class="comment">// current slot</em>
+<a name="1122" href="#1122">1122</a> 
+<a name="1123" href="#1123">1123</a>         <strong>protected</strong> Entry entry = <strong>null</strong>; <em class="comment">// current node of slot</em>
+<a name="1124" href="#1124">1124</a> 
+<a name="1125" href="#1125">1125</a>         <strong>protected</strong> Object currentKey; <em class="comment">// key for current node</em>
+<a name="1126" href="#1126">1126</a> 
+<a name="1127" href="#1127">1127</a>         <strong>protected</strong> Object currentValue; <em class="comment">// value for current node</em>
+<a name="1128" href="#1128">1128</a> 
+<a name="1129" href="#1129">1129</a>         <strong>protected</strong> Entry lastReturned = <strong>null</strong>; <em class="comment">// last node returned by next</em>
+<a name="1130" href="#1130">1130</a> 
+<a name="1131" href="#1131">1131</a>         <strong>protected</strong> HashIterator() {
+<a name="1132" href="#1132">1132</a>             tab = ConcurrentReaderHashMap.<strong>this</strong>.getTableForReading();
+<a name="1133" href="#1133">1133</a>             index = tab.length - 1;
+<a name="1134" href="#1134">1134</a>         }
+<a name="1135" href="#1135">1135</a> 
+<a name="1136" href="#1136">1136</a>         <strong>public</strong> <strong>boolean</strong> hasMoreElements() {
+<a name="1137" href="#1137">1137</a>             <strong>return</strong> hasNext();
+<a name="1138" href="#1138">1138</a>         }
+<a name="1139" href="#1139">1139</a> 
+<a name="1140" href="#1140">1140</a>         <strong>public</strong> Object nextElement() {
+<a name="1141" href="#1141">1141</a>             <strong>return</strong> next();
+<a name="1142" href="#1142">1142</a>         }
+<a name="1143" href="#1143">1143</a> 
+<a name="1144" href="#1144">1144</a>         <strong>public</strong> <strong>boolean</strong> hasNext() {
+<a name="1145" href="#1145">1145</a> 
+<a name="1146" href="#1146">1146</a>             <em class="comment">/*</em>
+<a name="1147" href="#1147">1147</a> <em class="comment">             * currentkey and currentValue are set here to ensure that next()</em>
+<a name="1148" href="#1148">1148</a> <em class="comment">             * returns normally if hasNext() returns true. This avoids surprises</em>
+<a name="1149" href="#1149">1149</a> <em class="comment">             * especially when final element is removed during traversal --</em>
+<a name="1150" href="#1150">1150</a> <em class="comment">             * instead, we just ignore the removal during current traversal.</em>
+<a name="1151" href="#1151">1151</a> <em class="comment">             */</em>
+<a name="1152" href="#1152">1152</a> 
+<a name="1153" href="#1153">1153</a>             <strong>for</strong> (;;) {
+<a name="1154" href="#1154">1154</a>                 <strong>if</strong> (entry != <strong>null</strong>) {
+<a name="1155" href="#1155">1155</a>                     Object v = entry.value;
+<a name="1156" href="#1156">1156</a>                     <strong>if</strong> (v != <strong>null</strong>) {
+<a name="1157" href="#1157">1157</a>                         currentKey = entry.key;
+<a name="1158" href="#1158">1158</a>                         currentValue = v;
+<a name="1159" href="#1159">1159</a>                         <strong>return</strong> <strong>true</strong>;
+<a name="1160" href="#1160">1160</a>                     } <strong>else</strong>
+<a name="1161" href="#1161">1161</a>                         entry = entry.next;
+<a name="1162" href="#1162">1162</a>                 }
+<a name="1163" href="#1163">1163</a> 
+<a name="1164" href="#1164">1164</a>                 <strong>while</strong> (entry == <strong>null</strong> &amp;&amp; index >= 0)
+<a name="1165" href="#1165">1165</a>                     entry = tab[index--];
+<a name="1166" href="#1166">1166</a> 
+<a name="1167" href="#1167">1167</a>                 <strong>if</strong> (entry == <strong>null</strong>) {
+<a name="1168" href="#1168">1168</a>                     currentKey = currentValue = <strong>null</strong>;
+<a name="1169" href="#1169">1169</a>                     <strong>return</strong> false;
+<a name="1170" href="#1170">1170</a>                 }
+<a name="1171" href="#1171">1171</a>             }
+<a name="1172" href="#1172">1172</a>         }
+<a name="1173" href="#1173">1173</a> 
+<a name="1174" href="#1174">1174</a>         <strong>protected</strong> Object returnValueOfNext() {
+<a name="1175" href="#1175">1175</a>             <strong>return</strong> entry;
+<a name="1176" href="#1176">1176</a>         }
+<a name="1177" href="#1177">1177</a> 
+<a name="1178" href="#1178">1178</a>         <strong>public</strong> Object next() {
+<a name="1179" href="#1179">1179</a>             <strong>if</strong> (currentKey == <strong>null</strong> &amp;&amp; !hasNext())
+<a name="1180" href="#1180">1180</a>                 <strong>throw</strong> <strong>new</strong> NoSuchElementException();
+<a name="1181" href="#1181">1181</a> 
+<a name="1182" href="#1182">1182</a>             Object result = returnValueOfNext();
+<a name="1183" href="#1183">1183</a>             lastReturned = entry;
+<a name="1184" href="#1184">1184</a>             currentKey = currentValue = <strong>null</strong>;
+<a name="1185" href="#1185">1185</a>             entry = entry.next;
+<a name="1186" href="#1186">1186</a>             <strong>return</strong> result;
+<a name="1187" href="#1187">1187</a>         }
+<a name="1188" href="#1188">1188</a> 
+<a name="1189" href="#1189">1189</a>         <strong>public</strong> <strong>void</strong> remove() {
+<a name="1190" href="#1190">1190</a>             <strong>if</strong> (lastReturned == <strong>null</strong>)
+<a name="1191" href="#1191">1191</a>                 <strong>throw</strong> <strong>new</strong> IllegalStateException();
+<a name="1192" href="#1192">1192</a>             ConcurrentReaderHashMap.<strong>this</strong>.remove(lastReturned.key);
+<a name="1193" href="#1193">1193</a>             lastReturned = <strong>null</strong>;
+<a name="1194" href="#1194">1194</a>         }
+<a name="1195" href="#1195">1195</a> 
+<a name="1196" href="#1196">1196</a>     }
+<a name="1197" href="#1197">1197</a> 
+<a name="1198" href="#1198">1198</a>     <strong>protected</strong> <strong>class</strong> KeyIterator <strong>extends</strong> HashIterator {
+<a name="1199" href="#1199">1199</a>         <strong>protected</strong> Object returnValueOfNext() {
+<a name="1200" href="#1200">1200</a>             <strong>return</strong> currentKey;
+<a name="1201" href="#1201">1201</a>         }
+<a name="1202" href="#1202">1202</a>     }
+<a name="1203" href="#1203">1203</a> 
+<a name="1204" href="#1204">1204</a>     <strong>protected</strong> <strong>class</strong> ValueIterator <strong>extends</strong> HashIterator {
+<a name="1205" href="#1205">1205</a>         <strong>protected</strong> Object returnValueOfNext() {
+<a name="1206" href="#1206">1206</a>             <strong>return</strong> currentValue;
+<a name="1207" href="#1207">1207</a>         }
+<a name="1208" href="#1208">1208</a>     }
+<a name="1209" href="#1209">1209</a> 
+<a name="1210" href="#1210">1210</a>     <em>/**<em>*</em></em>
+<a name="1211" href="#1211">1211</a> <em>     * Save the state of the &lt;tt>ConcurrentReaderHashMap&lt;/tt> instance to a</em>
+<a name="1212" href="#1212">1212</a> <em>     * stream (i.e., serialize it).</em>
+<a name="1213" href="#1213">1213</a> <em>     * </em>
+<a name="1214" href="#1214">1214</a> <em>     * @serialData The &lt;i>capacity &lt;/i> of the ConcurrentReaderHashMap (the</em>
+<a name="1215" href="#1215">1215</a> <em>     *             length of the bucket array) is emitted (int), followed by the</em>
+<a name="1216" href="#1216">1216</a> <em>     *             &lt;i>size &lt;/i> of the ConcurrentReaderHashMap (the number of</em>
+<a name="1217" href="#1217">1217</a> <em>     *             key-value mappings), followed by the key (Object) and value</em>
+<a name="1218" href="#1218">1218</a> <em>     *             (Object) for each key-value mapping represented by the</em>
+<a name="1219" href="#1219">1219</a> <em>     *             ConcurrentReaderHashMap The key-value mappings are emitted in</em>
+<a name="1220" href="#1220">1220</a> <em>     *             no particular order.</em>
+<a name="1221" href="#1221">1221</a> <em>     */</em>
+<a name="1222" href="#1222">1222</a> 
+<a name="1223" href="#1223">1223</a>     <strong>private</strong> <strong>synchronized</strong> <strong>void</strong> writeObject(java.io.ObjectOutputStream s)
+<a name="1224" href="#1224">1224</a>             throws IOException {
+<a name="1225" href="#1225">1225</a>         <em class="comment">// Write out the threshold, loadfactor, and any hidden stuff</em>
+<a name="1226" href="#1226">1226</a>         s.defaultWriteObject();
+<a name="1227" href="#1227">1227</a> 
+<a name="1228" href="#1228">1228</a>         <em class="comment">// Write out number of buckets</em>
+<a name="1229" href="#1229">1229</a>         s.writeInt(table.length);
+<a name="1230" href="#1230">1230</a> 
+<a name="1231" href="#1231">1231</a>         <em class="comment">// Write out size (number of Mappings)</em>
+<a name="1232" href="#1232">1232</a>         s.writeInt(count);
+<a name="1233" href="#1233">1233</a> 
+<a name="1234" href="#1234">1234</a>         <em class="comment">// Write out keys and values (alternating)</em>
+<a name="1235" href="#1235">1235</a>         <strong>for</strong> (<strong>int</strong> index = table.length - 1; index >= 0; index--) {
+<a name="1236" href="#1236">1236</a>             Entry entry = table[index];
+<a name="1237" href="#1237">1237</a> 
+<a name="1238" href="#1238">1238</a>             <strong>while</strong> (entry != <strong>null</strong>) {
+<a name="1239" href="#1239">1239</a>                 s.writeObject(entry.key);
+<a name="1240" href="#1240">1240</a>                 s.writeObject(entry.value);
+<a name="1241" href="#1241">1241</a>                 entry = entry.next;
+<a name="1242" href="#1242">1242</a>             }
+<a name="1243" href="#1243">1243</a>         }
+<a name="1244" href="#1244">1244</a>     }
+<a name="1245" href="#1245">1245</a> 
+<a name="1246" href="#1246">1246</a>     <em>/**<em>*</em></em>
+<a name="1247" href="#1247">1247</a> <em>     * Reconstitute the &lt;tt>ConcurrentReaderHashMap&lt;/tt> instance from a</em>
+<a name="1248" href="#1248">1248</a> <em>     * stream (i.e., deserialize it).</em>
+<a name="1249" href="#1249">1249</a> <em>     */</em>
+<a name="1250" href="#1250">1250</a>     <strong>private</strong> <strong>synchronized</strong> <strong>void</strong> readObject(java.io.ObjectInputStream s)
+<a name="1251" href="#1251">1251</a>             throws IOException, ClassNotFoundException {
+<a name="1252" href="#1252">1252</a>         <em class="comment">// Read in the threshold, loadfactor, and any hidden stuff</em>
+<a name="1253" href="#1253">1253</a>         s.defaultReadObject();
+<a name="1254" href="#1254">1254</a> 
+<a name="1255" href="#1255">1255</a>         <em class="comment">// Read in number of buckets and allocate the bucket array;</em>
+<a name="1256" href="#1256">1256</a>         <strong>int</strong> numBuckets = s.readInt();
+<a name="1257" href="#1257">1257</a>         table = <strong>new</strong> Entry[numBuckets];
+<a name="1258" href="#1258">1258</a> 
+<a name="1259" href="#1259">1259</a>         <em class="comment">// Read in size (number of Mappings)</em>
+<a name="1260" href="#1260">1260</a>         <strong>int</strong> size = s.readInt();
+<a name="1261" href="#1261">1261</a> 
+<a name="1262" href="#1262">1262</a>         <em class="comment">// Read the keys and values, and put the mappings in the table</em>
+<a name="1263" href="#1263">1263</a>         <strong>for</strong> (<strong>int</strong> i = 0; i &lt; size; i++) {
+<a name="1264" href="#1264">1264</a>             Object key = s.readObject();
+<a name="1265" href="#1265">1265</a>             Object value = s.readObject();
+<a name="1266" href="#1266">1266</a>             put(key, value);
+<a name="1267" href="#1267">1267</a>         }
+<a name="1268" href="#1268">1268</a>     }
+<a name="1269" href="#1269">1269</a> 
+<a name="1270" href="#1270">1270</a>     <em>/**<em>*</em></em>
+<a name="1271" href="#1271">1271</a> <em>     * Return the number of slots in this table</em>
+<a name="1272" href="#1272">1272</a> <em>     */</em>
+<a name="1273" href="#1273">1273</a> 
+<a name="1274" href="#1274">1274</a>     <strong>public</strong> <strong>synchronized</strong> <strong>int</strong> capacity() {
+<a name="1275" href="#1275">1275</a>         <strong>return</strong> table.length;
+<a name="1276" href="#1276">1276</a>     }
+<a name="1277" href="#1277">1277</a> 
+<a name="1278" href="#1278">1278</a>     <em>/**<em>*</em></em>
+<a name="1279" href="#1279">1279</a> <em>     * Return the load factor</em>
+<a name="1280" href="#1280">1280</a> <em>     */</em>
+<a name="1281" href="#1281">1281</a>     <strong>public</strong> <strong>float</strong> loadFactor() {
+<a name="1282" href="#1282">1282</a>         <strong>return</strong> loadFactor;
+<a name="1283" href="#1283">1283</a>     }
+<a name="1284" href="#1284">1284</a> }
+</pre>
+<hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
+</html>
+

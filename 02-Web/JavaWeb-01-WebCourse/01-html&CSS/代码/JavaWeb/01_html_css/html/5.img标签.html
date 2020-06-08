@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>5.img标签.html</title>
+</head>
+<body>
+    <!--需求1：使用img标签显示一张美女的照片。并修改宽高，和边框属性
+
+        img标签是图片标签,用来显示图片
+            src属性可以设置图片的路径
+            width属性设置图片的宽度
+            height属性设置图片的高度
+            border属性设置图片边框大小
+            alt属性设置当指定路径找不到图片时,用来代替显示的文本内容
+
+        在JavaSE中路径也分为相对路径和绝对路径.
+            相对路径:从工程名开始算
+
+            绝对路径:盘符:/目录/文件名
+
+        在web中路径分为相对路径和绝对路径两种
+            相对路径:
+                .           表示当前文件所在的目录
+                ..          表示当前文件所在的上一级目录
+                文件名      表示当前文件所在目录的文件,相当于 ./文件名            ./ 可以省略
+
+            绝对路径:
+                正确格式是:  http://ip:port/工程名/资源路径
+
+                错误格式是:  盘符:/目录/文件名
+    -->
+    <img src="1.jpg" width="200" height="260" border="1" alt="美女找不到"/>
+    <img src="../../2.jpg" width="200" height="260" />
+    <img src="../imgs/3.jpg" width="200" height="260" />
+    <img src="../imgs/4.jpg" width="200" height="260" />
+    <img src="../imgs/5.jpg" width="200" height="260" />
+    <img src="../imgs/6.jpg" width="200" height="260" />
+</body>
+</html>

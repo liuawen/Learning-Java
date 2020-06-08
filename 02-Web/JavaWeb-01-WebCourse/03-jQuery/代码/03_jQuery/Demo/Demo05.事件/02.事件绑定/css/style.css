@@ -1,0 +1,33 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body {
+	font-size:13px;
+	line-height: 130%;
+	padding: 60px;
+}
+
+#panel{
+	width: 300px;
+	border: 1px solid #0050D0;
+}
+
+.head{
+	padding: 5px;
+	background: #96E555;
+	cursor: pointer;
+}
+
+.content{
+	padding: 10px;
+	text-indent: 2em;
+	border-top: 1px solid #0050D0;
+	display: block;
+	display: none;
+}
+
+.highlight{
+	background: #FF3300
+}

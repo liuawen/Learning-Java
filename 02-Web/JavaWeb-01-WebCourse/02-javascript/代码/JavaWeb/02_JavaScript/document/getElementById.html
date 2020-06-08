@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" >
+        /*
+        * 需求：当用户点击了较验按钮，要获取输出框中的内容。然后验证其是否合法。<br/>
+        * 验证的规则是：必须由字母，数字。下划线组成。并且长度是5到12位。
+        * */
+        function onclickFun() {
+            // 1 当我们要操作一个标签的时候，一定要先获取这个标签对象。
+            var usernameObj = document.getElementById("username");
+            // [object HTMLInputElement] 它就是dom对象
+            var usernameText = usernameObj.value;
+            // 如何 验证 字符串，符合某个规则 ，需要使用正则表达式技术
+            var patt = /^\w{5,12}$/;
+            /*
+            *  test()方法用于测试某个字符串，是不是匹配我的规则 ，
+            *  匹配就返回true。不匹配就返回false.
+            * */
+
+            var usernameSpanObj = document.getElementById("usernameSpan");
+            // innerHTML 表示起始标签和结束标签中的内容
+            // innerHTML 这个属性可读，可写
+            usernameSpanObj.innerHTML = "国哥真可爱！";
+
+            if (patt.test(usernameText)) {
+                // alert("用户名合法！");
+                // usernameSpanObj.innerHTML = "用户名合法！";
+                usernameSpanObj.innerHTML = "<img src=\"right.png\" width=\"18\" height=\"18\">";
+            } else {
+                // alert("用户名不合法！");
+                // usernameSpanObj.innerHTML = "用户名不合法！";
+                usernameSpanObj.innerHTML = "<img src=\"wrong.png\" width=\"18\" height=\"18\">";
+            }
+        }
+    </script>
+</head>
+<body>
+    用户名：<input type="text" id="username" value="wzg"/>
+    <span id="usernameSpan" style="color:red;">
+
+    </span>
+    <button onclick="onclickFun()">较验</button>
+</body>
+</html>

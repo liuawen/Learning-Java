@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+		select {
+			width: 100px;
+			height: 140px;
+		}
+		
+		div {
+			width: 130px;
+			float: left;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+	<script type="text/javascript">	
+		$(function(){
+			//选中添加到右边
+			$("button:eq(0)").click(function(){
+				$("select[name=sel01] :selected").each(function(){
+					//alert(this);
+					$(this).appendTo("select[name=sel02]");
+				});
+			});
+			
+			//全部添加到右边
+			$("button:eq(1)").click(function(){
+				$("select[name=sel01] option").each(function(){
+					//alert(this);
+					$(this).appendTo("select[name=sel02]");
+				});
+			});
+			
+			//选中删除到左边
+			$("button:eq(2)").click(function(){
+				$("select[name=sel02] :selected").each(function(){
+					//alert(this);
+					$(this).appendTo("select[name=sel01]");
+				});
+			});
+			//全部删除到左边
+			$("button:eq(3)").click(function(){
+				$("select[name=sel02] option").each(function(){
+					//alert(this);
+					$(this).appendTo("select[name=sel01]");
+				});
+			});
+		});
+	
+	</script>
+</head>
+<body>
+
+	<div id="left">
+		<select multiple="multiple" name="sel01">
+			<option value="opt01">选项1</option>
+			<option value="opt02">选项2</option>
+			<option value="opt03">选项3</option>
+			<option value="opt04">选项4</option>
+			<option value="opt05">选项5</option>
+			<option value="opt06">选项6</option>
+			<option value="opt07">选项7</option>
+			<option value="opt08">选项8</option>
+		</select>
+		
+		<button>选中添加到右边</button>
+		<button>全部添加到右边</button>
+	</div>
+	<div id="rigth">
+		<select multiple="multiple" name="sel02">
+		</select>
+		<button>选中删除到左边</button>
+		<button>全部删除到左边</button>
+	</div>
+
+</body>
+</html>

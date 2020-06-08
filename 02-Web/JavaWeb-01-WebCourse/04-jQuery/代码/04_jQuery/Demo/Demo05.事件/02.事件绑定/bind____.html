@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+		
+			$(function(){
+				// $("h5").click(function () { // 传function是绑定事件
+				// 	alert('h5单击事件 == click方法绑定')
+				// });
+
+				// 使用live绑定的单击事件
+				$("h5").live("click",function () {
+					alert('h5单击事件 == live方法绑定');
+				});
+
+				$('<h5 class="head">什么是jQuery?</h5>').appendTo( $("#panel") );
+
+				// $("button").click(function () {
+				// 	$("h5").click(); // 不传function是触发事件
+				// });
+				//鼠标移入
+				// $("h5").mouseover(function () {
+				// 	console.log("你进来了")
+				// });
+				// //鼠标移出
+				// $("h5").mouseout(function () {
+				// 	console.log("你出去了")
+				// });
+
+				// 使用bind绑定事件
+				// $("h5").bind("click mouseover mouseout",function () {
+				// 	console.log("这是bind绑定的事件");
+				// });
+
+				// $("h5").one("click mouseover mouseout",function () {
+				// 	console.log("这是one绑定的事件");
+				// });
+
+				// $("h5").unbind();
+
+
+			});
+		
+		</script>
+	</head>
+	<body>
+		<div id="panel">
+			<h5 class="head">什么是jQuery?</h5>
+			<div class="content">
+				jQuery是继Prototype之后又一个优秀的JavaScript库，它是一个由 John Resig 创建于2006年1月的开源项目。jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax。它独特而又优雅的代码风格改变了JavaScript程序员的设计思路和编写程序的方式。
+			</div>
+			<button>按钮</button>
+		</div>
+	</body>
+
+</html>

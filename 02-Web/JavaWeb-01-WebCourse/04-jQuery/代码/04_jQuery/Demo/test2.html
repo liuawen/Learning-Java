@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+/*
+            // 批量操作单选
+            $(":radio").val(["radio2"]);
+            // 批量操作筛选框的选中状态
+            $(":checkbox").val(["checkbox3","checkbox2"]);
+            // 批量操作多选的下拉框选中状态
+            $("#multiple").val(["mul2","mul3","mul4"]);
+            // 操作单选的下拉框选中状态
+            $("#single").val(["sin2"]);
+*/
+            $("#multiple,#single,:radio,:checkbox").val(["radio2","checkbox1","checkbox3","mul1","mul4","sin3"]);
+        });
+
+    </script>
+</head>
+<body>
+<body>
+    单选：
+    <input name="radio" type="radio" value="radio1" />radio1
+    <input name="radio" type="radio" value="radio2" />radio2
+    <br/>
+    多选：
+    <input name="checkbox" type="checkbox" value="checkbox1" />checkbox1
+    <input name="checkbox" type="checkbox" value="checkbox2" />checkbox2
+    <input name="checkbox" type="checkbox" value="checkbox3" />checkbox3
+    <br/>
+
+    下拉多选 ：
+    <select id="multiple" multiple="multiple" size="4">
+        <option value="mul1">mul1</option>
+        <option value="mul2">mul2</option>
+        <option value="mul3">mul3</option>
+        <option value="mul4">mul4</option>
+    </select>
+    <br/>
+
+    下拉单选 ：
+    <select id="single">
+        <option value="sin1">sin1</option>
+        <option value="sin2">sin2</option>
+        <option value="sin3">sin3</option>
+    </select>
+</body>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>class类型选择器</title>
+	<style type="text/css">
+		.class01{
+			color: blue;
+			font-size: 30px;
+			border: 1px solid yellow;
+		}
+
+		.class02{
+			color: grey;
+			font-size: 26px;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<!--
+		需求1：修改 class 属性值为 class01的 span 或 div 标签，字体颜色为蓝色，字体大小30个像素。边框为1像素黄色实线。
+		需求2：修改 class 属性值为 class02的 div 标签，字体颜色为灰色，字体大小26个像素。边框为1像素红色实线。
+	 -->
+
+	<div class="class02">div标签class01</div>
+	<div class="class02">div标签</div>
+	<span class="class02">span标签class01</span>
+	<span>span标签2</span>
+</body>
+</html>
+

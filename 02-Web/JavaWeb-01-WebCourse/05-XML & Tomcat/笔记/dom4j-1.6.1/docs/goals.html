@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>dom4j - Design Goals</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+          @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><meta name="author" content="James Strachan"></meta><meta name="email" content="jstrachan@apache.org"></meta></head><body class="composite"><div id="banner"><a href="http://sourceforge.net/projects/dom4j" id="organizationLogo"><img alt="MetaStuff Ltd." src="http://sourceforge.net/sflogo.php?group_id=16035"></img></a><a href="http://dom4j.org" id="projectLogo"><img alt="dom4j" src="./images/logo.gif"></img></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+              Last published: 16 May 2005
+              <span class="separator">|</span>
+                Doc for 1.6.1
+              </div><div class="xright">
+        
+        <a href="http://www.w3.org/TR/xpath" class="externalLink" title="External Link">XPath Spec</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://jaxen.codehaus.org/" class="externalLink" title="External Link">Jaxen</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://sourceforge.net/projects/dom4j/" class="externalLink" title="External Link">dom4j@SourceForge</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menudom4j"><h5>dom4j</h5><ul><li class="none"><a href="index.html">Home</a></li><li class="none"><a href="faq.html">FAQ</a></li><li class="none"><a href="guide.html">Quick start</a></li><li class="none"><a href="cookbook.html" class="newWindow" title="New Window" target="_blank">Cookbook</a></li><li class="none"><a href="compare.html">Comparison</a></li><li class="none"><strong><a href="goals.html">Goals</a></strong></li><li class="none"><a href="changes-report.html">Changes</a></li><li class="none"><a href="download.html">Download</a></li><li class="none"><a href="license.html">License</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.6.1)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.5.2/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.5.2)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.4/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.4)</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About dom4j</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="collapsed"><a href="maven-reports.html">Project Reports</a></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><div id="legend"><h5>Legend</h5><ul><li class="externalLink">External Link</li><li class="newWindow">Opens in a new window</li></ul></div><a href="http://www.cenqua.com/clover" title="Code Coverage by Clover" id="poweredByExternal"><img alt="Code Coverage by Clover" src="http://www.cenqua.com/images/clovered1.gif"></img></a><a href="http://www.sourceforge.net" title="Hosted by SourceForge" id="poweredByExternal"><img alt="Hosted by SourceForge" src="http://sourceforge.net/sflogo.php?group_id=16035&amp;amp;type=1"></img></a><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Easy_to_use"></a><h2>Easy to use</h2><p>We think that an XML framework for Java should be simple, easy to use 
+        and intuitive for a Java programmer.
+        We want to take the best features from DOM and SAX and put them 
+        together into a new unified API which is optimised the for the Java 
+        platform.
+      </p></div><div class="section"><a name="Standards_compliant"></a><h2>Standards compliant</h2><p>We want to fully support DOM and SAX together with existing 
+        Java platform standards such as the Java 2 Collections and J2EE.
+      </p></div><div class="section"><a name="Complete_XPath_integration"></a><h2>Complete XPath integration</h2><p>We want complete XPath support integrated into the API and for it to 
+        be very easy to use. XPath is the ideal technology for navigating 
+        around XML documents simply and easily without writing lines and lines 
+        of code.
+      </p></div><div class="section"><a name="Flexible_implementations"></a><h2>Flexible implementations</h2><p>We want to be able to support very flexible, performant and 
+        memory efficient implementations of XML documents.
+        So we want the API to be based on Java interfaces just like the Java 2 
+        Collections framework.
+      </p><p>Just as no single List implementation will suffice (the JDK comes 
+        with at least 3) we believe we need a framework allowing plug and play 
+        XML document implementations. 
+        For some users, using a LinkedList performs better than an ArrayList
+        because their usage characteristics differ. 
+        Others like to use a Vector as it is synchronized. 
+        We believe an XML model should have the same flexibility.
+      </p></div><div class="section"><a name="Handle_very_large_documents"></a><h2>Handle very large documents</h2><p>One of the primary goals of <i>dom4j</i> is to be a flexible XML
+        framework for Java which supports most users needs whether that be
+        fast and efficient parsing with small memory overhead, processing 
+        very large documents or using the latest XML features such as XPath, 
+        XSLT and XML Query.
+      </p><p>We found that we often needed to move from DOM to SAX to 
+        handle very large documents or to move from SAX to DOM to handle 
+        complex documents.
+        Our aim is for <i>dom4j</i> to be the only framework you really need 
+        on the Java platform and for it to be a good citizen supporting and 
+        integrating with existing standards fully.
+      </p></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2001-2005, MetaStuff Ltd.</div><div class="clear"><hr></hr></div></div></body></html>

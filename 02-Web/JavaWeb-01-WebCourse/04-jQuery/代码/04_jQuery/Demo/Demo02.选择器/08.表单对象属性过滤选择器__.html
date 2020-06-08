@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Untitled Document</title>
+		<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				
+		/**
+		:input 		
+		:text 		
+		:password 	
+		:radio 		
+		:checkbox 	
+		:submit 	
+		:image 		
+		:reset 		
+		:button 	
+		:file 		
+		:hidden 	
+		
+		表单对象的属性
+		:enabled 		
+		:disabled 		
+		:checked 		
+		:selected 		
+		*/
+
+					
+				//1.对表单内 可用input 赋值操作
+				$("#btn1").click(function(){
+					// val()可以操作表单项的value属性值
+					// 它可以设置和获取
+					$(":text:enabled").val("我是万能的程序员");
+				});
+				//2.对表单内 不可用input 赋值操作
+				$("#btn2").click(function(){
+					$(":text:disabled").val("管你可用不可用，反正我是万能的程序员");
+				});
+				//3.获取多选框选中的个数  使用size()方法获取选取到的元素集合的元素个数
+				$("#btn3").click(function(){
+					alert( $(":checkbox:checked").length );
+				});
+				//4.获取多选框，每个选中的value值
+				$("#btn4").click(function(){
+					// 获取全部选中的复选框标签对象
+					var $checkboies = $(":checkbox:checked");
+					// 老式遍历
+					// for (var i = 0; i < $checkboies.length; i++){
+					// 	alert( $checkboies[i].value );
+					// }
+
+					// each方法是jQuery对象提供用来遍历元素的方法
+					// 在遍历的function函数中，有一个this对象，这个this对象，就是当前遍历到的dom对象
+					$checkboies.each(function () {
+						alert( this.value );
+					});
+
+				});
+				//5.获取下拉框选中的内容  
+				$("#btn5").click(function(){
+					// 获取选中的option标签对象
+					var $options = $("select option:selected");
+					// 遍历，获取option标签中的文本内容
+					$options.each(function () {
+						// 在each遍历的function函数中，有一个this对象。这个this对象是当前正在遍历到的dom对象
+						alert(this.innerHTML);
+					});
+				});
+			})	
+		</script>
+	</head>
+	<body>
+		<h3>表单对象属性过滤选择器</h3>
+		 <button id="btn1">对表单内 可用input 赋值操作.</button>
+  		 <button id="btn2">对表单内 不可用input 赋值操作.</button><br /><br />
+		 <button id="btn3">获取多选框选中的个数.</button>
+		 <button id="btn4">获取多选框选中的内容.</button><br /><br />
+         <button id="btn5">获取下拉框选中的内容.</button><br /><br />
+		 
+		<form id="form1" action="#">			
+			可用元素: <input name="add" value="可用文本框1"/><br>
+			不可用元素: <input name="email" disabled="disabled" value="不可用文本框"/><br>
+			可用元素: <input name="che" value="可用文本框2"/><br>
+			不可用元素: <input name="name" disabled="disabled" value="不可用文本框"/><br>
+			<br>
+			
+			多选框: <br>
+			<input type="checkbox" name="newsletter" checked="checked" value="test1" />test1
+			<input type="checkbox" name="newsletter" value="test2" />test2
+			<input type="checkbox" name="newsletter" value="test3" />test3
+			<input type="checkbox" name="newsletter" checked="checked" value="test4" />test4
+			<input type="checkbox" name="newsletter" value="test5" />test5
+			
+			<br><br>
+			下拉列表1: <br>
+			<select name="test" multiple="multiple" style="height: 100px" id="sele1">
+				<option>浙江</option>
+				<option selected="selected">辽宁</option>
+				<option>北京</option>
+				<option selected="selected">天津</option>
+				<option>广州</option>
+				<option>湖北</option>
+			</select>
+			
+			<br><br>
+			下拉列表2: <br>
+			<select name="test2">
+				<option>浙江</option>
+				<option>辽宁</option>
+				<option selected="selected">北京</option>
+				<option>天津</option>
+				<option>广州</option>
+				<option>湖北</option>
+			</select>
+		</form>		
+	</body>
+</html>
+

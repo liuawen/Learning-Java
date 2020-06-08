@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Changes report</title>
+    <link>http://dom4j.org</link>
+    <description>Changes report</description>
+    <language>en-us</language>
+    <copyright>Copyright 2004 The Apache Software Foundation</copyright>
+    <item>
+      <title>3 change(s) for version 1.6.1</title>
+      <link>http://dom4j.org/changes-report.html</link>
+      <description>
+        <table border="1">
+          <tr>
+            <th style="width:50px">Type</th>
+            <th>Changes</th>
+            <th style="width:70px">By</th>
+          </tr>
+          <tr>
+            <td>update</td>
+            <td>Updated the XPP2 implementation to version 2.1.10. Thanks to Wolfgang Baer .</td>
+            <td>
+              <a href="http://dom4j.org/team-list.html#maartenc">maartenc</a>
+            </td>
+          </tr>
+          <tr>
+            <td>fix</td>
+            <td>Fixed a problem with XMLWriter that was causing too many new lines to be written to the resulting XML. Thanks to Thomas Fromm .</td>
+            <td>
+              <a href="http://dom4j.org/team-list.html#maartenc">maartenc</a>
+            </td>
+          </tr>
+          <tr>
+            <td>update</td>
+            <td>Include more information about the cause if an XPathException or InvalidXPathException is thrown. Thanks to Gili Tzabari .</td>
+            <td>
+              <a href="http://dom4j.org/team-list.html#maartenc">maartenc</a>
+            </td>
+          </tr>
+        </table>
+      </description>
+    </item>
+  </channel>
+</rss>

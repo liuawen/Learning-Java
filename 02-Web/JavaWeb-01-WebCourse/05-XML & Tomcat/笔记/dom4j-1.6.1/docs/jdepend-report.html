@@ -1,0 +1,1504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title>dom4j - JDepend Source Code Analysis</title><style type="text/css" media="all">
+          @import url("./style/maven-base.css");
+          
+          @import url("./style/maven-theme.css");</style><link rel="stylesheet" href="./style/print.css" type="text/css" media="print"></link><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta><style type="text/css">.jdepend td ul, .jdepend td ul li { margin:0; padding:0; list-style-type: none; }</style></head><body class="jdepend"><div id="banner"><a href="http://sourceforge.net/projects/dom4j" id="organizationLogo"><img alt="MetaStuff Ltd." src="http://sourceforge.net/sflogo.php?group_id=16035"></img></a><a href="http://dom4j.org" id="projectLogo"><img alt="dom4j" src="./images/logo.gif"></img></a><div class="clear"><hr></hr></div></div><div id="breadcrumbs"><div class="xleft">
+              Last published: 16 May 2005
+              <span class="separator">|</span>
+                Doc for 1.6.1
+              </div><div class="xright">
+        
+        <a href="http://www.w3.org/TR/xpath" class="externalLink" title="External Link">XPath Spec</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://jaxen.codehaus.org/" class="externalLink" title="External Link">Jaxen</a>
+      
+        
+          
+            <span class="separator">|</span>
+          
+        
+        <a href="http://sourceforge.net/projects/dom4j/" class="externalLink" title="External Link">dom4j@SourceForge</a>
+      </div><div class="clear"><hr></hr></div></div><div id="leftColumn"><div id="navcolumn"><div id="menudom4j"><h5>dom4j</h5><ul><li class="none"><a href="index.html">Home</a></li><li class="none"><a href="faq.html">FAQ</a></li><li class="none"><a href="guide.html">Quick start</a></li><li class="none"><a href="cookbook.html" class="newWindow" title="New Window" target="_blank">Cookbook</a></li><li class="none"><a href="compare.html">Comparison</a></li><li class="none"><a href="goals.html">Goals</a></li><li class="none"><a href="changes-report.html">Changes</a></li><li class="none"><a href="download.html">Download</a></li><li class="none"><a href="license.html">License</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.6.1)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.5.2/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.5.2)</a></li><li class="none"><a href="http://www.dom4j.org/dom4j-1.4/apidocs/index.html" class="newWindow" title="New Window" target="_blank">Javadoc (1.4)</a></li></ul></div><div id="menuProject_Documentation"><h5>Project Documentation</h5><ul><li class="none"><a href="index.html">About dom4j</a></li><li class="collapsed"><a href="project-info.html">Project Info</a></li><li class="expanded"><a href="maven-reports.html">Project Reports</a><ul><li class="none"><a href="changelog-report.html">Change Log</a></li><li class="none"><a href="changes-report.html">Changes</a></li><li class="none"><a href="checkstyle-report.html">Checkstyle</a></li><li class="none"><a href="clover/index.html" class="newWindow" title="New Window" target="_blank">Clover</a></li><li class="none"><a href="developer-activity-report.html">Developer Activity</a></li><li class="none"><a href="faq.html">FAQs</a></li><li class="none"><a href="file-activity-report.html">File Activity</a></li><li class="none"><a href="apidocs/index.html" class="newWindow" title="New Window" target="_blank">JavaDocs</a></li><li class="none"><a href="javadoc.html">JavaDoc Report</a></li><li class="none"><a href="javadoc-warnings-report.html">JavaDoc Warnings Report</a></li><li class="none"><strong><a href="jdepend-report.html">Metrics</a></strong></li><li class="none"><a href="junit-report.html">Unit Tests</a></li><li class="none"><a href="xref/index.html" class="newWindow" title="New Window" target="_blank">Source Xref</a></li><li class="none"><a href="xref-test/index.html" class="newWindow" title="New Window" target="_blank">Test Xref</a></li><li class="none"><a href="license.html">Project License</a></li></ul></li><li class="none"><a href="http://maven.apache.org/development-process.html" class="externalLink" title="External Link">Development Process</a></li></ul></div><div id="legend"><h5>Legend</h5><ul><li class="externalLink">External Link</li><li class="newWindow">Opens in a new window</li></ul></div><a href="http://www.cenqua.com/clover" title="Code Coverage by Clover" id="poweredByExternal"><img alt="Code Coverage by Clover" src="http://www.cenqua.com/images/clovered1.gif"></img></a><a href="http://www.sourceforge.net" title="Hosted by SourceForge" id="poweredByExternal"><img alt="Hosted by SourceForge" src="http://sourceforge.net/sflogo.php?group_id=16035&amp;amp;type=1"></img></a><a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy"><img alt="Built by Maven" src="./images/logos/maven-button-1.png"></img></a></div></div><div id="bodyColumn"><div class="contentBox"><div class="section"><a name="Metric_Results"></a><h2>Metric Results</h2><p>[
+        <a href="#Summary">summary</a>] [
+        <a href="#Packages">packages</a>] [
+        <a href="#Cycles">cycles</a>] [
+        <a href="#Explanations">explanations</a>]</p><p>The following document contains the results of a
+        <a href="http://www.clarkware.com/software/JDepend.html" class="externalLink" title="External Link">JDepend</a>metric analysis. The various metrics are defined at the bottom of this document.</p></div><div class="section"><a name="Summary"></a><h2>Summary</h2><p>[
+        <a href="#Summary">summary</a>] [
+        <a href="#Packages">packages</a>] [
+        <a href="#Cycles">cycles</a>] [
+        <a href="#Explanations">explanations</a>]</p><table class="bodyTable"><thead>
+          <tr class="b"><th title="Package">Package</th><th style="text-align:right">
+              <acronym title="Total Classes">TC</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Abstract Classes">AC</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Concrete Classes">CC</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Afferent Couplings">AC</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Efferent Couplings">EC</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Abstractness">A</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Instability">I</acronym>
+            </th><th style="text-align:right">
+              <acronym title="Distance">D</acronym>
+            </th></tr>
+        </thead><tbody>
+          <tr class="a"><td>
+              <a href="#org_dom4j">org.dom4j</a>
+            </td><td style="text-align:right">26</td><td style="text-align:right">18</td><td style="text-align:right">8</td><td style="text-align:right">12</td><td style="text-align:right">10</td><td style="text-align:right">0,69</td><td style="text-align:right">45%</td><td style="text-align:right">15%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_bean">org.dom4j.bean</a>
+            </td><td style="text-align:right">5</td><td style="text-align:right">0</td><td style="text-align:right">5</td><td style="text-align:right">0</td><td style="text-align:right">8</td><td style="text-align:right">0</td><td style="text-align:right">100%</td><td style="text-align:right">0%</td></tr>
+          <tr class="a"><td>
+              <a href="#org_dom4j_datatype">org.dom4j.datatype</a>
+            </td><td style="text-align:right">7</td><td style="text-align:right">0</td><td style="text-align:right">7</td><td style="text-align:right">0</td><td style="text-align:right">11</td><td style="text-align:right">0</td><td style="text-align:right">100%</td><td style="text-align:right">0%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_dom">org.dom4j.dom</a>
+            </td><td style="text-align:right">15</td><td style="text-align:right">0</td><td style="text-align:right">15</td><td style="text-align:right">1</td><td style="text-align:right">7</td><td style="text-align:right">0</td><td style="text-align:right">88%</td><td style="text-align:right">12%</td></tr>
+          <tr class="a"><td>
+              <a href="#org_dom4j_dtd">org.dom4j.dtd</a>
+            </td><td style="text-align:right">4</td><td style="text-align:right">0</td><td style="text-align:right">4</td><td style="text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">50%</td><td style="text-align:right">50%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_io">org.dom4j.io</a>
+            </td><td style="text-align:right">36</td><td style="text-align:right">1</td><td style="text-align:right">35</td><td style="text-align:right">4</td><td style="text-align:right">21</td><td style="text-align:right">0,03</td><td style="text-align:right">84%</td><td style="text-align:right">13%</td></tr>
+          <tr class="a"><td>
+              <a href="#org_dom4j_jaxb">org.dom4j.jaxb</a>
+            </td><td style="text-align:right">10</td><td style="text-align:right">3</td><td style="text-align:right">7</td><td style="text-align:right">0</td><td style="text-align:right">11</td><td style="text-align:right">0,3</td><td style="text-align:right">100%</td><td style="text-align:right">30%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_rule">org.dom4j.rule</a>
+            </td><td style="text-align:right">9</td><td style="text-align:right">2</td><td style="text-align:right">7</td><td style="text-align:right">5</td><td style="text-align:right">6</td><td style="text-align:right">0,22</td><td style="text-align:right">55%</td><td style="text-align:right">23%</td></tr>
+          <tr class="a"><td>
+              <a href="#org_dom4j_rule_pattern">org.dom4j.rule.pattern</a>
+            </td><td style="text-align:right">2</td><td style="text-align:right">0</td><td style="text-align:right">2</td><td style="text-align:right">1</td><td style="text-align:right">3</td><td style="text-align:right">0</td><td style="text-align:right">75%</td><td style="text-align:right">25%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_swing">org.dom4j.swing</a>
+            </td><td style="text-align:right">8</td><td style="text-align:right">0</td><td style="text-align:right">8</td><td style="text-align:right">0</td><td style="text-align:right">7</td><td style="text-align:right">0</td><td style="text-align:right">100%</td><td style="text-align:right">0%</td></tr>
+          <tr class="a"><td>
+              <a href="#org_dom4j_tree">org.dom4j.tree</a>
+            </td><td style="text-align:right">49</td><td style="text-align:right">13</td><td style="text-align:right">36</td><td style="text-align:right">7</td><td style="text-align:right">9</td><td style="text-align:right">0,27</td><td style="text-align:right">56%</td><td style="text-align:right">17%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_util">org.dom4j.util</a>
+            </td><td style="text-align:right">14</td><td style="text-align:right">2</td><td style="text-align:right">12</td><td style="text-align:right">3</td><td style="text-align:right">8</td><td style="text-align:right">0,14</td><td style="text-align:right">73%</td><td style="text-align:right">13%</td></tr>
+          <tr class="a"><td>
+              <a href="#org_dom4j_xpath">org.dom4j.xpath</a>
+            </td><td style="text-align:right">4</td><td style="text-align:right">0</td><td style="text-align:right">4</td><td style="text-align:right">1</td><td style="text-align:right">9</td><td style="text-align:right">0</td><td style="text-align:right">90%</td><td style="text-align:right">10%</td></tr>
+          <tr class="b"><td>
+              <a href="#org_dom4j_xpp">org.dom4j.xpp</a>
+            </td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">5</td><td style="text-align:right">0</td><td style="text-align:right">83%</td><td style="text-align:right">17%</td></tr>
+        </tbody></table></div><div class="section"><a name="Packages"></a><h2>Packages</h2><p>[
+        <a href="#Summary">summary</a>] [
+        <a href="#Packages">packages</a>] [
+        <a href="#Cycles">cycles</a>] [
+        <a href="#Explanations">explanations</a>]</p><div class="subsection"><a name="org_dom4j"></a><h3>org.dom4j</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>12</td><td>10</td><td>69%</td><td>45%</td><td>15%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/Attribute.html">Attribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Branch.html">Branch</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/CDATA.html">CDATA</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/CharacterData.html">CharacterData</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Comment.html">Comment</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Document.html">Document</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/DocumentType.html">DocumentType</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Element.html">Element</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/ElementHandler.html">ElementHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/ElementPath.html">ElementPath</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Entity.html">Entity</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Node.html">Node</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/NodeFilter.html">NodeFilter</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/ProcessingInstruction.html">ProcessingInstruction</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Text.html">Text</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Visitor.html">Visitor</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/VisitorSupport.html">VisitorSupport</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/XPath.html">XPath</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/DocumentException.html">DocumentException</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/DocumentFactory.html">DocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/DocumentHelper.html">DocumentHelper</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/IllegalAddException.html">IllegalAddException</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/InvalidXPathException.html">InvalidXPathException</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/Namespace.html">Namespace</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/QName.html">QName</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/XPathException.html">XPathException</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j_bean">org.dom4j.bean</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_datatype">org.dom4j.datatype</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_dom">org.dom4j.dom</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_jaxb">org.dom4j.jaxb</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule_pattern">org.dom4j.rule.pattern</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_swing">org.dom4j.swing</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_util">org.dom4j.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_xpath">org.dom4j.xpath</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_xpp">org.dom4j.xpp</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_util">org.dom4j.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_xpath">org.dom4j.xpath</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen">org.jaxen</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_bean"></a><h3>org.dom4j.bean</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>0</td><td>8</td><td>0%</td><td>100%</td><td>0%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/bean/BeanAttribute.html">BeanAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/bean/BeanAttributeList.html">BeanAttributeList</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/bean/BeanDocumentFactory.html">BeanDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/bean/BeanElement.html">BeanElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/bean/BeanMetaData.html">BeanMetaData</a>
+                  </li>
+                </ul>
+              </td><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_beans">java.beans</a>
+                  </li>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang_reflect">java.lang.reflect</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_datatype"></a><h3>org.dom4j.datatype</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>0</td><td>11</td><td>0%</td><td>100%</td><td>0%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/DatatypeAttribute.html">DatatypeAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/DatatypeDocumentFactory.html">DatatypeDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/DatatypeElement.html">DatatypeElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/DatatypeElementFactory.html">DatatypeElementFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/InvalidSchemaException.html">InvalidSchemaException</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/NamedTypeResolver.html">NamedTypeResolver</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/datatype/SchemaParser.html">SchemaParser</a>
+                  </li>
+                </ul>
+              </td><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#com_sun_msv_datatype">com.sun.msv.datatype</a>
+                  </li>
+                  <li>
+                    <a href="#com_sun_msv_datatype_xsd">com.sun.msv.datatype.xsd</a>
+                  </li>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_util">org.dom4j.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_relaxng_datatype">org.relaxng.datatype</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_dom"></a><h3>org.dom4j.dom</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>1</td><td>7</td><td>0%</td><td>88%</td><td>12%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMAttribute.html">DOMAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMAttributeNodeMap.html">DOMAttributeNodeMap</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMCDATA.html">DOMCDATA</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMComment.html">DOMComment</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMDocument.html">DOMDocument</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMDocumentFactory.html">DOMDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMDocumentType.html">DOMDocumentType</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMElement.html">DOMElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMEntityReference.html">DOMEntityReference</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMNamespace.html">DOMNamespace</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMNodeHelper.html">DOMNodeHelper</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMNodeHelper.html">DOMNodeHelper$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMNodeHelper.html">DOMNodeHelper$EmptyNodeList</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMProcessingInstruction.html">DOMProcessingInstruction</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dom/DOMText.html">DOMText</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j_jaxb">org.dom4j.jaxb</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_util">org.dom4j.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_w3c_dom">org.w3c.dom</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_dtd"></a><h3>org.dom4j.dtd</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>1</td><td>1</td><td>0%</td><td>50%</td><td>50%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/dtd/AttributeDecl.html">AttributeDecl</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dtd/ElementDecl.html">ElementDecl</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dtd/ExternalEntityDecl.html">ExternalEntityDecl</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/dtd/InternalEntityDecl.html">InternalEntityDecl</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_io"></a><h3>org.dom4j.io</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>4</td><td>21</td><td>3%</td><td>84%</td><td>13%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/io/ElementModifier.html">ElementModifier</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/io/DOMReader.html">DOMReader</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/DOMWriter.html">DOMWriter</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/DispatchHandler.html">DispatchHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/DocumentInputSource.html">DocumentInputSource</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/DocumentInputSource.html">DocumentInputSource$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/DocumentResult.html">DocumentResult</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/DocumentSource.html">DocumentSource</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/ElementStack.html">ElementStack</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/HTMLWriter.html">HTMLWriter</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/HTMLWriter.html">HTMLWriter$FormatState</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/JAXPHelper.html">JAXPHelper</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/OutputFormat.html">OutputFormat</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/PruningDispatchHandler.html">PruningDispatchHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/PruningElementStack.html">PruningElementStack</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXContentHandler.html">SAXContentHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXEventRecorder.html">SAXEventRecorder</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXEventRecorder.html">SAXEventRecorder$SAXEvent</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXHelper.html">SAXHelper</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXModifier.html">SAXModifier</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXModifyContentHandler.html">SAXModifyContentHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXModifyElementHandler.html">SAXModifyElementHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXModifyException.html">SAXModifyException</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXModifyReader.html">SAXModifyReader</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXReader.html">SAXReader</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXReader.html">SAXReader$SAXEntityResolver</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXValidator.html">SAXValidator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/SAXWriter.html">SAXWriter</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/STAXEventReader.html">STAXEventReader</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/STAXEventWriter.html">STAXEventWriter</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/STAXEventWriter.html">STAXEventWriter$AttributeIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/STAXEventWriter.html">STAXEventWriter$NamespaceIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/XMLResult.html">XMLResult</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/XMLWriter.html">XMLWriter</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/XPP3Reader.html">XPP3Reader</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/io/XPPReader.html">XPPReader</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_datatype">org.dom4j.datatype</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_jaxb">org.dom4j.jaxb</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang_reflect">java.lang.reflect</a>
+                  </li>
+                  <li>
+                    <a href="#java_net">java.net</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_namespace">javax.xml.namespace</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_parsers">javax.xml.parsers</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_stream">javax.xml.stream</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_stream_events">javax.xml.stream.events</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_stream_util">javax.xml.stream.util</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_transform_sax">javax.xml.transform.sax</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_dtd">org.dom4j.dtd</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_xpp">org.dom4j.xpp</a>
+                  </li>
+                  <li>
+                    <a href="#org_gjt_xpp">org.gjt.xpp</a>
+                  </li>
+                  <li>
+                    <a href="#org_w3c_dom">org.w3c.dom</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax_ext">org.xml.sax.ext</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax_helpers">org.xml.sax.helpers</a>
+                  </li>
+                  <li>
+                    <a href="#org_xmlpull_v1">org.xmlpull.v1</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_jaxb"></a><h3>org.dom4j.jaxb</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>0</td><td>11</td><td>30%</td><td>100%</td><td>30%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBObjectHandler.html">JAXBObjectHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBObjectModifier.html">JAXBObjectModifier</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBSupport.html">JAXBSupport</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBModifier.html">JAXBModifier</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBModifier.html">JAXBModifier$JAXBElementModifier</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBReader.html">JAXBReader</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBReader.html">JAXBReader$PruningElementHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBReader.html">JAXBReader$UnmarshalElementHandler</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBRuntimeException.html">JAXBRuntimeException</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/jaxb/JAXBWriter.html">JAXBWriter</a>
+                  </li>
+                </ul>
+              </td><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_net">java.net</a>
+                  </li>
+                  <li>
+                    <a href="#java_nio_charset">java.nio.charset</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_bind">javax.xml.bind</a>
+                  </li>
+                  <li>
+                    <a href="#javax_xml_transform_stream">javax.xml.transform.stream</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_dom">org.dom4j.dom</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_rule"></a><h3>org.dom4j.rule</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>5</td><td>6</td><td>22%</td><td>55%</td><td>23%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/rule/Action.html">Action</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/Pattern.html">Pattern</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/rule/Mode.html">Mode</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/NullAction.html">NullAction</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/Rule.html">Rule</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/RuleManager.html">RuleManager</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/RuleManager.html">RuleManager$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/RuleSet.html">RuleSet</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/Stylesheet.html">Stylesheet</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule_pattern">org.dom4j.rule.pattern</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_util">org.dom4j.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_xpath">org.dom4j.xpath</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule_pattern">org.dom4j.rule.pattern</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen">org.jaxen</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_rule_pattern"></a><h3>org.dom4j.rule.pattern</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>1</td><td>3</td><td>0%</td><td>75%</td><td>25%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/rule/pattern/DefaultPattern.html">DefaultPattern</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/rule/pattern/NodeTypePattern.html">NodeTypePattern</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_swing"></a><h3>org.dom4j.swing</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>0</td><td>7</td><td>0%</td><td>100%</td><td>0%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/swing/BranchTreeNode.html">BranchTreeNode</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/BranchTreeNode.html">BranchTreeNode$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/DocumentTreeModel.html">DocumentTreeModel</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/LeafTreeNode.html">LeafTreeNode</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/LeafTreeNode.html">LeafTreeNode$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/XMLTableColumnDefinition.html">XMLTableColumnDefinition</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/XMLTableDefinition.html">XMLTableDefinition</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/swing/XMLTableModel.html">XMLTableModel</a>
+                  </li>
+                </ul>
+              </td><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#javax_swing_table">javax.swing.table</a>
+                  </li>
+                  <li>
+                    <a href="#javax_swing_tree">javax.swing.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen">org.jaxen</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_tree"></a><h3>org.dom4j.tree</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>7</td><td>9</td><td>27%</td><td>56%</td><td>17%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractAttribute.html">AbstractAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractBranch.html">AbstractBranch</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractCDATA.html">AbstractCDATA</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractCharacterData.html">AbstractCharacterData</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractComment.html">AbstractComment</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractDocument.html">AbstractDocument</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractDocumentType.html">AbstractDocumentType</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractElement.html">AbstractElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractEntity.html">AbstractEntity</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractNode.html">AbstractNode</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractProcessingInstruction.html">AbstractProcessingInstruction</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/AbstractText.html">AbstractText</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FilterIterator.html">FilterIterator</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/tree/BackedList.html">BackedList</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/BaseElement.html">BaseElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$BarrierLock</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$Entry</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$EntrySet</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$HashIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$KeyIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$KeySet</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$ValueIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ConcurrentReaderHashMap.html">ConcurrentReaderHashMap$Values</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ContentListFacade.html">ContentListFacade</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultAttribute.html">DefaultAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultCDATA.html">DefaultCDATA</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultComment.html">DefaultComment</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultDocument.html">DefaultDocument</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultDocumentType.html">DefaultDocumentType</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultElement.html">DefaultElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultEntity.html">DefaultEntity</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultNamespace.html">DefaultNamespace</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultProcessingInstruction.html">DefaultProcessingInstruction</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/DefaultText.html">DefaultText</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ElementIterator.html">ElementIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ElementNameIterator.html">ElementNameIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/ElementQNameIterator.html">ElementQNameIterator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FlyweightAttribute.html">FlyweightAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FlyweightCDATA.html">FlyweightCDATA</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FlyweightComment.html">FlyweightComment</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FlyweightEntity.html">FlyweightEntity</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FlyweightProcessingInstruction.html">FlyweightProcessingInstruction</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/FlyweightText.html">FlyweightText</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/NamespaceCache.html">NamespaceCache</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/NamespaceStack.html">NamespaceStack</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/QNameCache.html">QNameCache</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/tree/SingleIterator.html">SingleIterator</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_bean">org.dom4j.bean</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_datatype">org.dom4j.datatype</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_dom">org.dom4j.dom</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_util">org.dom4j.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_xpp">org.dom4j.xpp</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang_ref">java.lang.ref</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang_reflect">java.lang.reflect</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_util"></a><h3>org.dom4j.util</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>3</td><td>8</td><td>14%</td><td>73%</td><td>13%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/util/ProxyDocumentFactory.html">ProxyDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/SingletonStrategy.html">SingletonStrategy</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/util/AttributeHelper.html">AttributeHelper</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/IndexedDocumentFactory.html">IndexedDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/IndexedElement.html">IndexedElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/NodeComparator.html">NodeComparator</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/NonLazyDocumentFactory.html">NonLazyDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/NonLazyElement.html">NonLazyElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/PerThreadSingleton.html">PerThreadSingleton</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/SimpleSingleton.html">SimpleSingleton</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/UserDataAttribute.html">UserDataAttribute</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/UserDataDocumentFactory.html">UserDataDocumentFactory</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/UserDataElement.html">UserDataElement</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/util/XMLErrorHandler.html">XMLErrorHandler</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_datatype">org.dom4j.datatype</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_dom">org.dom4j.dom</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang_ref">java.lang.ref</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen">org.jaxen</a>
+                  </li>
+                  <li>
+                    <a href="#org_xml_sax">org.xml.sax</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_xpath"></a><h3>org.dom4j.xpath</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>1</td><td>9</td><td>0%</td><td>90%</td><td>10%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/xpath/DefaultNamespaceContext.html">DefaultNamespaceContext</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/xpath/DefaultXPath.html">DefaultXPath</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/xpath/DefaultXPath.html">DefaultXPath$1</a>
+                  </li>
+                  <li>
+                    <a href="xref/org/dom4j/xpath/XPathPattern.html">XPathPattern</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_io">java.io</a>
+                  </li>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_rule">org.dom4j.rule</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen">org.jaxen</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen_dom4j">org.jaxen.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen_pattern">org.jaxen.pattern</a>
+                  </li>
+                  <li>
+                    <a href="#org_jaxen_saxpath">org.jaxen.saxpath</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div><div class="subsection"><a name="org_dom4j_xpp"></a><h3>org.dom4j.xpp</h3><table class="bodyTable"><thead>
+            <tr class="a"><th>Afferent Couplings</th><th>Efferent Couplings</th><th>Abstractness</th><th>Instability</th><th>Distance</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>1</td><td>5</td><td>0%</td><td>83%</td><td>17%</td></tr>
+          </tbody></table><table class="bodyTable"><thead>
+            <tr class="a"><th>Abstract Classes</th><th>Concrete Classes</th><th>Used by Packages</th><th>Uses Packages</th></tr>
+          </thead><tbody>
+            <tr class="b"><td>
+                <em>None</em>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="xref/org/dom4j/xpp/ProxyXmlStartTag.html">ProxyXmlStartTag</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#org_dom4j_io">org.dom4j.io</a>
+                  </li>
+                </ul>
+              </td><td>
+                <ul>
+                  <li>
+                    <a href="#java_lang">java.lang</a>
+                  </li>
+                  <li>
+                    <a href="#java_util">java.util</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j">org.dom4j</a>
+                  </li>
+                  <li>
+                    <a href="#org_dom4j_tree">org.dom4j.tree</a>
+                  </li>
+                  <li>
+                    <a href="#org_gjt_xpp">org.gjt.xpp</a>
+                  </li>
+                </ul>
+              </td></tr>
+          </tbody></table></div></div><div class="section"><a name="Cycles"></a><h2>Cycles</h2><p>[
+        <a href="#Summary">summary</a>] [
+        <a href="#Packages">packages</a>] [
+        <a href="#Cycles">cycles</a>] [
+        <a href="#Explanations">explanations</a>]</p><table class="bodyTable"><thead>
+          <tr class="a"><th>Package</th><th>Cyclic Dependencies</th></tr>
+        </thead><tbody>
+          <tr class="b"><td>org.dom4j</td><td>
+              <ul>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="a"><td>org.dom4j.bean</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="b"><td>org.dom4j.datatype</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="a"><td>org.dom4j.dom</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="b"><td>org.dom4j.io</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="a"><td>org.dom4j.jaxb</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="b"><td>org.dom4j.rule</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="a"><td>org.dom4j.rule.pattern</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="b"><td>org.dom4j.swing</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="a"><td>org.dom4j.tree</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="b"><td>org.dom4j.util</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+              </ul>
+            </td></tr>
+          <tr class="a"><td>org.dom4j.xpath</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+          <tr class="b"><td>org.dom4j.xpp</td><td>
+              <ul>
+                <li>org.dom4j</li>
+                <li>org.dom4j.util</li>
+                <li>org.dom4j</li>
+              </ul>
+            </td></tr>
+        </tbody></table></div><div class="section"><a name="Explanations"></a><h2>Explanations</h2><p>[
+        <a href="#Summary">summary</a>] [
+        <a href="#Packages">packages</a>] [
+        <a href="#Cycles">cycles</a>] [
+        <a href="#Explanations">explanations</a>]</p><p>The following explanations are for quick reference and are lifted directly from the original
+        <a href="http://www.clarkware.com/software/JDepend.html" class="externalLink" title="External Link">JDepend documentation</a>.</p><table class="bodyTable"><thead>
+          <tr class="a"><th>Term</th><th>Description</th></tr>
+        </thead><tbody>
+          <tr class="b"><td>Number of Classes</td><td>The number of concrete and abstract classes (and interfaces) in the package is an indicator of the extensibility of the package.</td></tr>
+          <tr class="a"><td>Afferent Couplings</td><td>The number of other packages that depend upon classes within the package is an indicator of the package's responsibility.</td></tr>
+          <tr class="b"><td>Efferent Couplings</td><td>The number of other packages that the classes in the package depend upon is an indicator of the package's independence.</td></tr>
+          <tr class="a"><td>Abstractness</td><td>The ratio of the number of abstract classes (and interfaces) in the analyzed package to the total number of classes in the analyzed package. The range for this metric is 0 to 1, with A=0 indicating a completely concrete package and A=1 indicating a completely abstract package.</td></tr>
+          <tr class="b"><td>Instability</td><td>The ratio of efferent coupling (Ce) to total coupling (Ce / (Ce + Ca)). This metric is an indicator of the package's resilience to change. The range for this metric is 0 to 1, with I=0 indicating a completely stable package and I=1 indicating a completely instable package.</td></tr>
+          <tr class="a"><td>Distance</td><td>The perpendicular distance of a package from the idealized line A + I = 1. This metric is an indicator of the package's balance between abstractness and stability. A package squarely on the main sequence is optimally balanced with respect to its abstractness and stability. Ideal packages are either completely abstract and stable (x=0, y=1) or completely concrete and instable (x=1, y=0). The range for this metric is 0 to 1, with D=0 indicating a package that is coincident with the main sequence and D=1 indicating a package that is as far from the main sequence as possible.</td></tr>
+          <tr class="b"><td>Cycles</td><td>Packages participating in a package dependency cycle are in a deadly embrace with respect to reusability and their release cycle. Package dependency cycles can be easily identified by reviewing the textual reports of dependency cycles. Once these dependency cycles have been identified with JDepend, they can be broken by employing various object-oriented techniques.</td></tr>
+        </tbody></table></div></div></div><div class="clear"><hr></hr></div><div id="footer"><div class="xright">© 2001-2005, MetaStuff Ltd.</div><div class="clear"><hr></hr></div></div></body></html>

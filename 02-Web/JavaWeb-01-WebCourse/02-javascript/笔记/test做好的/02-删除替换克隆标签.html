@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>02-删除替换克隆标签.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    	#one{
+    		border: 1px solid blue;
+    		background-color: green;
+    		width: 300px;
+    		height: 150px;
+    	}
+    	#two{
+    		border: 1px solid blue;
+    		background-color: aqua;
+    		width: 250px;
+    		height: 100px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	function demo(){
+    		//第一个步骤，先通过id属性值，查找到这个div标签对象
+    		var divOne = document.getElementById("one");
+    		//alert(divOne);
+    		// 然后通过这个div标签对象的parentNode获取到它的父结点对象
+    		var parentNode = divOne.parentNode;
+    		//alert(parentNode);
+    		// 通过父结点对象调用 removeChild 函数来实现删除
+    		parentNode.removeChild(divOne);
+    	}
+    	
+    	function demo2(){
+    		//第一个步骤，先通过id属性值，查找到这个div标签对象
+    		var divOne = document.getElementById("one");
+    		var divTwo = document.getElementById("two");
+    		// 获取它的父结点
+    		var parentNode = divOne.parentNode;
+    		// 通过父结点调用replaceChild方法可以替换掉孩子结点
+    		// newChild是新的结点
+    		// oldChild是被替换掉的孩子结点
+    		parentNode.replaceChild(divTwo, divOne);
+    	}
+    	
+    	function demo3(){
+    		//第一个步骤，先通过id属性值，查找到这个div标签对象
+    		var divOne = document.getElementById("one");
+    		var divTwo = document.getElementById("two");
+    		// 获取它的父结点
+    		var parentNode = divOne.parentNode;
+    		// 通过父结点调用replaceChild方法可以替换掉孩子结点
+    		// newChild是新的结点
+    		// oldChild是被替换掉的孩子结点
+    		parentNode.replaceChild(divTwo.cloneNode(true), divOne);
+    	}
+    </script>
+  </head>
+  <body>
+  	<div id="one" > 
+  		xxxxxx
+  	</div>
+  	<div id="two" > 
+  		yyyyyy
+  	</div>
+  	<input type="button" value="删除元素" onclick="demo();"/>
+  	<input type="button" value="替换元素" onclick="demo2();"/>
+  	<input type="button" value="克隆和替换" onclick="demo3();"/>
+  </body>
+</html>

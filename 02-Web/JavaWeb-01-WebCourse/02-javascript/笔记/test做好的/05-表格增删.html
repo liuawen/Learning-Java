@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>05-表格增删.html</title>
+</head>
+<script type="text/javascript">
+	// 删除的A标签的点击事件，删除A标签所在的当前行
+	function deleteMyRow(obj){
+		var tr = obj.parentNode.parentNode;
+		tr.parentNode.removeChild(tr);
+	}
+	
+	window.onload = function() {
+		var addUser = document.getElementById("addUser");
+		addUser.onclick = function() {
+			// 获取到姓名输入框的值
+			var nameObjValue = document.getElementById("name").value;
+			//获取电话输入框的值
+			var telObjValue = document.getElementById("tel").value;
+			// 获取地址输入框的值
+			var addrObjValue = document.getElementById("addr").value;
+			
+			
+			// 创建一个表格的行标签对象
+			var tr = document.createElement("tr");
+			// 创建姓名的列，并添加到表格的行中
+			var tdName = document.createElement("td");
+			// 把姓名的内容 放到td中
+			tdName.innerHTML = nameObjValue;
+			// 添加到创建的表格行中
+			tr.appendChild(tdName);
+			
+			// 创建电话的列，并添加到表格的行中
+			var tdTel = document.createElement("td");
+			// 给创建的电话的单元格内设置值
+			tdTel.innerHTML = telObjValue;
+			//把电话的单元格添加到tr行中
+			tr.appendChild(tdTel);
+			
+			
+			// 创建电话的列，并添加到表格的行中
+			var tdAddr = document.createElement("td");
+			// 给创建的电话的单元格内设置值
+			tdAddr.innerHTML = addrObjValue;
+			//把电话的单元格添加到tr行中
+			tr.appendChild(tdAddr);
+			
+			// 创建删除的列，并添加到表格的行中
+			var tdDelete = document.createElement("td");
+			// 创建A标签对象
+			var aObj = document.createElement("a");
+			// 设置连接地址的值
+			aObj.href= "#";
+			// 设置删除的文件
+			aObj.innerHTML = "删除";
+			// 给删除添加单击事件
+			aObj.onclick = function() {
+				deleteMyRow(this);
+			};
+			
+			tdDelete.appendChild(aObj);
+			tr.appendChild(tdDelete);
+			
+			// 通过表格标签把tr标签添加进去
+			var tableObj = document.getElementById("usertable");
+			tableObj.appendChild(tr)
+		}
+	}
+</script>
+<body>
+	<center>
+		<br>
+		<br> 添加用户:<br>
+		<br> 姓名: <input type="text" name="name" id="name" />&nbsp;&nbsp; 电话: <input type="text"
+			name="tel" id="tel" />&nbsp;&nbsp; 住址: <input type="text" name="addr" id="addr" /><br>
+		<br>
+		<button id="addUser">提交</button>
+		<br>
+		<br>
+		<hr>
+		<br>
+		<br>
+		<table id="usertable" border="1" cellpadding="5" cellspacing="0">
+			<tr>
+				<th>姓名</th>
+				<th>电话</th>
+				<th>住址</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>张三</td>
+				<td>110</td>
+				<td>上海</td>
+				<td><a href="#" onclick="deleteMyRow(this);">删除</a>
+				</td>
+			</tr>
+		</table>
+	</center>
+</body>
+</html>
