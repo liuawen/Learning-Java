@@ -44,6 +44,7 @@ public class RoleController {
     @RequestMapping("save")
     public String save(Role role){
         roleService.save(role);
+        //保存完 重定向
         return "redirect:/role/list";
     }
 }

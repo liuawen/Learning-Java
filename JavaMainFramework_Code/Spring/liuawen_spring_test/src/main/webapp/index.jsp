@@ -8,7 +8,6 @@
 <title>主页</title>
 </head>
 <body>
-<%--跳转 main.jsp --%>
 	<%
 		response.sendRedirect(request.getContextPath()+"/pages/main.jsp");
 	%>

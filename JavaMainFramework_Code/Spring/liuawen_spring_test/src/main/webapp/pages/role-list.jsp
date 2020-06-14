@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,6 +59,8 @@
 	href="${pageContext.request.contextPath}/plugins/ionslider/ion.rangeSlider.skinNice.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/plugins/bootstrap-slider/slider.css">
+
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -141,34 +144,18 @@
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach items="${roleList}" var="role">
+										<tr>
+											<td><input name="ids" type="checkbox"></td>
+											<td>${role.id}</td>
+											<td>${role.roleName}</td>
+											<td>${role.roleDesc}</td>
+											<td class="text-center">
+												<a href="javascript:void(0);" class="btn bg-olive btn-xs">删除</a>
+											</td>
+										</tr>
+									</c:forEach>
 
-										<tr>
-											<td><input name="ids" type="checkbox"></td>
-											<td>1</td>
-											<td>院长</td>
-											<td>java学院整体工作管理</td>
-											<td class="text-center">
-												<a href="#" class="btn bg-olive btn-xs">删除</a>
-											</td>
-										</tr>
-										<tr>
-											<td><input name="ids" type="checkbox"></td>
-											<td>2</td>
-											<td>课程研究员</td>
-											<td>课程的研究</td>
-											<td class="text-center">
-												<a href="#" class="btn bg-olive btn-xs">删除</a>
-											</td>
-										</tr>
-										<tr>
-											<td><input name="ids" type="checkbox"></td>
-											<td>3</td>
-											<td>讲师</td>
-											<td>授课工作</td>
-											<td class="text-center">
-												<a href="#" class="btn bg-olive btn-xs">删除</a>
-											</td>
-										</tr>
 								</tbody>
 
 							</table>
