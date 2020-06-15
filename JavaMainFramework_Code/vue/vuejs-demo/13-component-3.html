@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--使用组件-->
+    <my-list :items="lessons" ></my-list>
+</div>
+<script type="text/javascript">
+
+    //定义组件
+    const myList = {
+        template:`
+            <ul>
+            <li v-for="item in items" :key="item.id">{{item.id}}--{{item.name}}</li>
+</ul>
+        `,
+        //定义接收父组件的属性
+        props:{
+            items:{
+                //数据类型，如果是数组则是Array，如果是对象则是Object
+                type:Array,
+                //默认值
+                default:[]
+            }
+        }
+    };
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            msg:"父组件的msg属性数据内容",
+            lessons:[
+                {"id":1, "name":"Java"},
+                {"id":2, "name":"Php"},
+                {"id":3, "name":"前端"}
+            ]
+        },
+        components:{
+            myList
+        }
+    });
+</script>
+</body>
+</html>

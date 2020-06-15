@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" value="Java" v-model="language">Java<br>
+    <input type="checkbox" value="Python" v-model="language">Python<br>
+    <input type="checkbox" value="Swift" v-model="language">Swift<br>
+    <h2>
+        你选择了：{{language.join("，")}}
+    </h2>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            language:[]
+        }
+    });
+</script>
+</body>
+</html>

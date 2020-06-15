@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            color: white;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="color='red'">红色</button>
+    <button @click="color='blue'">蓝色</button>
+    <div :class="color">
+        点击按钮改变背景颜色
+    </div>
+    <hr>
+    <br>
+    <button @click="bool=!bool">点我改变下面色块的颜色</button>
+    <div :class="{red:bool, blue:!bool}">
+        点击按钮改变背景颜色
+    </div>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            color:"red",
+            bool:true
+        }
+    });
+</script>
+</body>
+</html>

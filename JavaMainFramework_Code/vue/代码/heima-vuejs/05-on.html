@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="num++">增加</button>
+    <button @click="decrement">减少</button>
+    <h2>
+        num = {{num}}
+    </h2>
+    <hr>
+    事件冒泡测试：<br>
+    <div style="background-color: lightblue; width:100px;height:100px" @click="print('div被点击了')">
+        <button @click.stop="print('点击了button')">点我试试</button>
+    </div>
+    <br>阻止默认事件：<br>
+    <a href="http://www.itcast.cn" @click.prevent="print('点击了超链接')" >传智播客</a>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        methods: {
+            //递减
+            decrement(){
+                this.num--;
+            },
+            //打印
+            print(str){
+                console.log(str);
+            }
+        }
+    });
+</script>
+</body>
+</html>

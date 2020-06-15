@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(user, index) in users" :key="index">
+            {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+    </ul>
+
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            users:[]
+        },
+        created(){
+            //初始化加载数据
+            axios.post("data.json").then(res=>{
+                console.log(res);
+                //将数据赋值到vue实例中的数据属性users；
+                //不能使用this，在axios回调函数中表示窗口，不是vue实例
+                app.users = res.data;
+            }).catch(err=>alert(err));
+
+            axios.get("http://localhost/user/8").then(res=>{
+                console.log(res.data);
+            }).catch(err=>alert(err));
+/*
+            axios.get("data.json").then(res=>{
+                console.log(res);
+                //将数据赋值到vue实例中的数据属性users；
+                //不能使用this，在axios回调函数中表示窗口，不是vue实例
+                app.users = res.data;
+            }).catch(err=>alert(err));
+*/
+/*
+            axios({
+                url:"data.json",
+                method:"get"
+            }).then(res=>{
+                console.log(res);
+                //将数据赋值到vue实例中的数据属性users；
+                //不能使用this，在axios回调函数中表示窗口，不是vue实例
+                app.users = res.data;
+            }).catch(err=>alert(err));
+*/
+        }
+    });
+</script>
+</body>
+</html>

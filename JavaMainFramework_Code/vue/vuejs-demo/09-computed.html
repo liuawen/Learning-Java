@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>
+        你的生日是：
+        {{new Date(birthday).getFullYear()}}-{{new Date(birthday).getMonth()+1}}-{{new Date(birthday).getDay()}}
+    </h2>
+    <hr>
+    <h2>
+        你的生日是：
+        {{birth}}
+    </h2>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            birthday:1429032123201
+        },
+        computed:{
+            birth(){
+                const date = new Date(this.birthday);
+                return date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDay();
+            }
+        }
+    });
+</script>
+</body>
+</html>

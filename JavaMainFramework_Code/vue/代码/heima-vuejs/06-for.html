@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(user, index) in users" :key="index">
+            {{index}}--{{user.name}}--{{user.age}}--{{user.gender}}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li v-for="(value, key, index) in person">
+            {{index}}--{{key}}--{{value}}
+        </li>
+    </ul>
+
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            users:[
+                {"name":"黑马","age":13,"gender":"男"},
+                {"name":"传智播客","age":13,"gender":"女"},
+                {"name":"酷丁鱼","age":4,"gender":"男"}
+            ],
+            person:{"name":"传智汇","age":13,"gender":"男","address":"中国"}
+        }
+    });
+</script>
+</body>
+</html>

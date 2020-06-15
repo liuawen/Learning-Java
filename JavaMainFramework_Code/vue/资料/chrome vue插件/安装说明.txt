@@ -1,0 +1,4 @@
+
+打开chrome浏览器；输入：chrome://extensions/
+
+点击“加载已解压的扩展程序” 将“资料/chrome vue插件/chrome”文件夹选中即可

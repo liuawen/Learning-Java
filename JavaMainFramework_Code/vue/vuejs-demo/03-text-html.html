@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    v-text:<span v-text="msg"></span><br>
+    v-html:<span v-html="msg"></span><br>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            // msg:"你好呀",
+            msg:"<h1>你好呀</h1>",
+        },
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--使用组件-->
+    <introduce :title="msg"></introduce>
+</div>
+<script type="text/javascript">
+
+    //定义组件
+    const introduce = {
+        template:"<h2>{{title}}</h2>",
+        //定义接收父组件的属性
+        props:["title"]
+    };
+
+    //全局注册组件：在所有的vue实例中都可以使用组件
+    //参数1：组件名称，参数2：具体的组件
+    Vue.component("introduce", introduce);
+
+    var app = new Vue({
+        el:"#app",
+        data:{
+            msg:"父组件的msg属性数据内容"
+        }
+    });
+</script>
+</body>
+</html>
