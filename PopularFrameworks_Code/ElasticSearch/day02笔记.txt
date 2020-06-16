@@ -1,0 +1,106 @@
+一、使用Java客户端管理ES
+1、创建索引库
+步骤：
+	1）创建一个Java工程
+	2）添加jar包，添加maven的坐标
+	3）编写测试方法实现创建索引库
+		1、创建一个Settings对象，相当于是一个配置信息。主要配置集群的名称。
+		2、创建一个客户端Client对象
+		3、使用client对象创建一个索引库
+		4、关闭client对象
+2、使用Java客户端设置Mappings
+	步骤：
+	1）创建一个Settings对象
+	2）创建一个Client对象
+	3）创建一个mapping信息，应该是一个json数据，可以是字符串，也可以是XContextBuilder对象
+	4）使用client向es服务器发送mapping信息
+	5）关闭client对象
+3、添加文档
+	步骤：
+	1）创建一个Settings对象
+	2）创建一个Client对象
+	3）创建一个文档对象，创建一个json格式的字符串，或者使用XContentBuilder
+	4）使用Client对象吧文档添加到索引库中
+	5）关闭client
+4、添加文档第二种方式
+	创建一个pojo类
+	使用工具类把pojo转换成json字符串
+	把文档写入索引库
+
+二、使用es客户端实现搜索
+1、根据id搜索
+	QueryBuilder queryBuilder = QueryBuilders.idsQuery().addIds("1", "2");
+2、根据Term查询（关键词）
+	QueryBuilder queryBuilder = QueryBuilders.termQuery("title", "北方");
+3、QueryString查询方式（带分析的查询）
+	QueryBuilder queryBuilder = QueryBuilders.queryStringQuery("速度与激情")
+                .defaultField("title");
+查询步骤：
+	1）创建一个Client对象
+	2）创建一个查询对象，可以使用QueryBuilders工具类创建QueryBuilder对象。
+	3）使用client执行查询
+	4）得到查询的结果。
+	5）取查询结果的总记录数
+	6）取查询结果列表
+	7）关闭client
+4、分页的处理
+	在client对象执行查询之前，设置分页信息。
+	然后再执行查询
+	 //执行查询
+        SearchResponse searchResponse = client.prepareSearch("index_hello")
+                .setTypes("article")
+                .setQuery(queryBuilder)
+                //设置分页信息
+                .setFrom(0)
+                //每页显示的行数
+                .setSize(5)
+                .get();
+	分页需要设置两个值，一个from、size
+	from：起始的行号，从0开始。
+	size：每页显示的记录数
+5、查询结果高亮显示
+（1）高亮的配置
+	1）设置高亮显示的字段
+	2）设置高亮显示的前缀
+	3）设置高亮显示的后缀
+（2）在client对象执行查询之前，设置高亮显示的信息。
+（3）遍历结果列表时可以从结果中取高亮结果。
+三、SpringDataElasticSearch
+1、工程搭建
+	1）创建一个java工程。
+	2）把相关jar包添加到工程中。如果maven工程就添加坐标。
+	3）创建一个spring的配置文件
+		1、配置elasticsearch:transport-client
+		2、elasticsearch:repositories：包扫描器，扫描dao
+		3、配置elasticsearchTemplate对象，就是一个bean
+2、管理索引库
+	1、创建一个Entity类，其实就是一个JavaBean（pojo）映射到一个Document上
+		需要添加一些注解进行标注。
+	2、创建一个Dao，是一个接口，需要继承ElasticSearchRepository接口。
+	3、编写测试代码。
+
+
+3、创建索引
+	直接使用ElasticsearchTemplate对象的createIndex方法创建索引，并配置映射关系。
+4、添加、更新文档
+	1）创建一个Article对象
+	2）使用ArticleRepository对象向索引库中添加文档。
+5、删除文档
+	直接使用ArticleRepository对象的deleteById方法直接删除。
+6、查询索引库
+	直接使用ArticleRepository对象的查询方法。
+7、自定义查询方法
+	需要根据SpringDataES的命名规则来命名。
+	如果不设置分页信息，默认带分页，每页显示10条数据。
+	如果设置分页信息，应该在方法中添加一个参数Pageable
+		Pageable pageable = PageRequest.of(0, 15);
+	注意：设置分页信息，默认是从0页开始。
+	
+	可以对搜索的内容先分词然后再进行查询。每个词之间都是and的关系。
+8、使用原生的查询条件查询
+	NativeSearchQuery对象。
+	使用方法：
+		1）创建一个NativeSearchQuery对象
+			设置查询条件，QueryBuilder对象
+		2）使用ElasticSearchTemplate对象执行查询
+		3）取查询结果
