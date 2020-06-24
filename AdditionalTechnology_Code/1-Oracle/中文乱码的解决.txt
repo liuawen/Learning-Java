@@ -1,0 +1,12 @@
+ 中文乱码问题解决
+1.查看服务器端编码
+select userenv('language') from dual;
+我实际查到的结果为:AMERICAN_AMERICA.ZHS16GBK
+2.执行语句 select * from V$NLS_PARAMETERS 
+查看第一行中PARAMETER项中为NLS_LANGUAGE 对应的VALUE项中是否和第一步得到的值一样。
+如果不是，需要设置环境变量.
+否则PLSQL客户端使用的编码和服务器端编码不一致,插入中文时就会出现乱码.
+3.设置环境变量
+计算机->属性->高级系统设置->环境变量->新建
+设置变量名:NLS_LANG,变量值:第1步查到的值， 我的是	AMERICAN_AMERICA.ZHS16GBK
+4.重新启动PLSQL,插入数据正常

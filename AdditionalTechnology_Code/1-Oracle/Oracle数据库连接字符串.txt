@@ -1,0 +1,4 @@
+String driver = "oracle.jdbc.driver.OracleDriver";
+String url = "jdbc:oracle:thin:@192.168.79.10:1521:orcl";
+String username = "scott";
+String password = "tiger";
