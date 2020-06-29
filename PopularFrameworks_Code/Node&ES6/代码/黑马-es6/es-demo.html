@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 测试</title>
+    <script type="text/javascript">
+        /*
+                for (let i = 0; i < 5; i++) {
+                    console.log(i)
+                }
+                //console.log("let 循环外：" + i);
+
+                let name = "heima";
+                console.log("hello " + name);
+
+                const name = "heima";
+                console.log(`hello ${name}`);
+
+
+                var msg = "Hi \
+                    \
+                    heima";
+                const template = `<div>
+                <span>hello heima</span>
+        </div>`;
+
+
+        function person5(name, age) {
+            return {name: name, age: age};
+        }
+
+        console.log("es5 => " + JSON.stringify(person5("heima1", 13)));
+
+        //es6
+        function person6(name, age) {
+            return {name, age};
+        }
+
+        console.log("es6 => " + JSON.stringify(person6("heima2", 13)));
+
+
+        var print = function (obj) {
+            console.log(obj);
+        };
+        print("print");
+        //箭头函数
+        var print2 = obj => console.log(obj);
+        print2("print2");
+
+        var sum = function (a, b) {
+            return a+b;
+        };
+        console.log(sum(1,2));
+
+        //箭头函数
+        var sum2 = (a,b) => a+b;
+        console.log(sum2(1,2));
+
+        var sum3 = (a,b) => {
+            console.log(a+b);
+            return a+b;
+        };
+        console.log(sum3(1,2));
+
+        let person = {
+            "name": "heima",
+            learn1: function (course="java") {
+                console.log(this.name + " 在学习 " + course);
+            },
+            //箭头函数；不能使用this
+            learn2: (course) => console.log(person.name + " 在学习 " + course),
+            //简写
+            learn3(course){
+                console.log(this.name + " 在学习 " + course);
+            }
+        };
+        person.learn1("java");
+        person.learn2("js");
+        person.learn3("css");
+
+
+        const person = {
+            name:"heima",
+            age:13,
+            language:["java","js","css"]
+        };
+         function hello(person) {
+             console.log("hello " + person.name);
+         }
+         hello(person);
+
+         //箭头函数、解构表达式
+        var hello2 = ({name}) => console.log("hello2 " + name);
+        hello2(person);
+
+         */
+        const promise = new Promise(function (resolve, reject) {
+            setTimeout(()=>{
+                let num = Math.random();
+                if(num < 0.5){
+                    resolve("操作成功！num=" + num);
+                } else {
+                    reject("操作失败！num=" + num);
+                }
+            },300);
+        });
+
+        promise.then(function (msg) {
+            console.log(msg);
+        }).catch(function (msg) {
+            console.log(msg);
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
