@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for loader/lib/builder.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">loader/lib/builder.js</span></h1>
+    <h2>
+        Statements: <span class="metric">100% <small>(91 / 91)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">86.36% <small>(19 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(9 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(91 / 91)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">loader/lib/</a> &#187; builder.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// 仅在构建时使用，运行时无需引入
+var crypto = require('crypto');
+var util = require('util');
+var path = require('path');
+var fs = require('fs');
+var transform = require('./transform');
+&nbsp;
+// 用于保存编译后的结果，避免重复编译
+var cache = {};
+&nbsp;
+/**
+ * 扫描文本中的静态资源部分，提取出目标路径和文件列表。
+ * 结果如下：
+ * ```
+ * [
+ *   {target: "x.js", assets:["path1", "path2"]},
+ *   {target: "x.css", assets:["path1", "path2"]}
+ * ]
+ * ```
+ * @param {String} view view html code
+ */
+exports.scan = function (view) {
+  var reg = /Loader\([\s\S]*?\.done\(.*\)/gm;
+  var argReg = /Loader\(['"]([^'"]+)['"](?:,\s*['"]([^'"]+)['"])?\)/g;
+  var jsReg = /.js\(['"](.*?)['"]\)/g;
+  var cssReg = /.css\(['"](.*?)['"]\)/g;
+&nbsp;
+  var retVal = [];
+&nbsp;
+  var block;
+  while ((block = reg.exec(view)) !== null) {
+    var find = block[0];
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (find) {
+      var arg;
+      var target = {};
+      while ((arg = argReg.exec(find)) !== null) {
+        target[path.extname(arg[1])] = arg[1];
+        target[path.extname(arg[2])] = arg[2];
+      }
+&nbsp;
+      var jsAssets = [];
+      var js;
+      while ((js = jsReg.exec(find)) !== null) {
+        jsAssets.push(js[1]);
+      }
+      if (jsAssets.length) {
+        retVal.push({target: target[".js"], assets: jsAssets});
+      }
+&nbsp;
+      var cssAssets = [];
+      var css;
+      while ((css = cssReg.exec(find)) !== null) {
+        cssAssets.push(css[1]);
+      }
+      if (cssAssets.length) {
+        retVal.push({target: target[".css"], assets: cssAssets});
+      }
+    }
+  }
+  return retVal;
+};
+&nbsp;
+/**
+ * 根据传入映射关系数组和指定的基本目录地址，调用uglifyjs和cleancss压缩文本
+ * 并生成带MD5签名的压缩文件，以及一个debug文件
+ * ```
+ * [
+ *   {target: "x.js", assets:["path1", "path2"]},
+ *   {target: "x.css", assets:["path1", "path2"]}
+ * ]
+ * =&gt;
+ * [
+ *   {target: "x.js", min: "x.hash.js", debug: "x.hash.debug.js",
+ *      assets:["path1", "path2"]},
+ *   {target: "x.css", min: "x.hash.css", debug: "x.hash.debug.css",
+ *      assets:["path1", "path2"]}
+ * ]
+ * ```
+ * @param {String} basedir 基本目录路径
+ * @param {Array} arr 静态资源数组
+ */
+exports.minify = function (basedir, arr) {
+  arr.forEach(function (item, index) {
+    // combo
+    var content = "";
+    var minified = "";
+    item.assets.forEach(function (asset) {
+      var cached = cache[asset];
+      // 编译，压缩
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!cached) {
+        var file = path.join(basedir, asset);
+        var text = fs.readFileSync(file, 'utf-8');
+        var extname = path.extname(file);
+        if (extname === '.less') {
+          text = transform.transformLess(text);
+        } else if (extname === '.styl') {
+          text = transform.transformStylus(text);
+        } else if (extname === '.coffee') {
+          text = transform.transformCoffee(text);
+        }
+        var transformed;
+        // transformed
+        try {
+          transformed = (extname === ".js" || extname === '.coffee') ? transform.transformScript(text)
+            : transform.transformStyle(text);
+        } catch (ex) {
+          ex.message = util.format('Compress %s has error:\n', asset) + ex.message;
+          throw ex;
+        }
+        cache[asset] = {
+          text: text + '\n',
+          minified: transformed + '\n'
+        };
+        cached = cache[asset];
+      }
+&nbsp;
+      minified += cached.minified;
+      // debug
+      content += cached.text;
+    });
+&nbsp;
+    // add hash
+    var md5 = crypto.createHash('md5');
+    var hash = md5.update(minified).digest('hex').slice(24);
+    var target = item.target;
+    var dir = path.dirname(target);
+    var extname = path.extname(target);
+    var basename = path.basename(target, extname);
+    var format = '%s/%s.%s.%s%s'; // {dir}/{basename}.{hash}.{version}{extname}
+    item.min = util.format(format, dir, basename, hash, 'min', extname);
+    item.debug = util.format(format, dir, basename, hash, 'debug', extname);
+    // clean cache
+    cache = {};
+    // 写入压缩的文件和debug版本的文件
+    fs.writeFileSync(path.join(basedir, item.min), minified);
+    fs.writeFileSync(path.join(basedir, item.debug), content);
+  });
+&nbsp;
+  return arr;
+};
+&nbsp;
+/**
+ * 将压缩生成的文件映射关系转换为map
+ * ```
+ * [
+ *   {target: "x.js", min: "x.hash.js", debug: "x.hash.debug.js",
+ *      assets:["path1", "path2"]},
+ *   {target: "x.css", min: "x.hash.css", debug: "x.hash.debug.css",
+ *      assets:["path1", "path2"]}
+ * ]
+ * =&gt;
+ * {
+ *   "x.js": "x.hash.js",
+ *   "x.css": "x.hash.css"
+ * }
+ * ```
+ * @param {Array} arr 压缩生成的映射关系数组
+ */
+exports.map = function (arr) {
+  var map = {};
+  arr.forEach(function (item) {
+    map[item.target] = item.min;
+  });
+  return map;
+};
+&nbsp;
+/**
+ * 扫描指定目录，生成合并压缩映射关系数组
+ * 生成结构如下：
+ * ```
+ * [
+ *   {target: "x.js", assets:["path1", "path2"]},
+ *   {target: "x.css", assets:["path1", "path2"]}
+ * ]
+ * ```
+ * @param {String} dirpath The dir path
+ */
+exports.scanDir = function (dirpath) {
+  var views = fs.readdirSync(dirpath).sort();
+  var combo = [];
+&nbsp;
+  views = views.filter(function (val, index) {
+    return ['.DS_Store', '.svn', '.git'].indexOf(val) === -1;
+  });
+&nbsp;
+  views.forEach(function (filename, index) {
+    var realPath = path.join(dirpath, filename);
+    var stat = fs.statSync(realPath);
+    if (stat.isFile()) {
+      var section = fs.readFileSync(realPath, "utf8");
+      combo = combo.concat(exports.scan(section));
+    } else <span class="missing-if-branch" title="else path not taken" >E</span>if (stat.isDirectory()) {
+      combo = combo.concat(exports.scanDir(realPath));
+    }
+  });
+&nbsp;
+  return combo;
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 11 2015 13:12:45 GMT+0800 (CST)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
