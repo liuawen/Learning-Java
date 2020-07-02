@@ -449,6 +449,126 @@ public class Producer {
 
 
 
+my
+
+```java
+package cn.liuawen.producer;
+
+/**
+ * @author : Liu Awen Email:willowawen@gmail.com
+ * @create : 2020-06-30
+ */
+
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
+/**
+ * 发送消息
+ */
+
+public class Producer_HelloWorld {
+    public static void main(String[] args) throws IOException, TimeoutException {
+
+
+
+
+
+
+
+
+
+        //1.创建连接工厂
+        ConnectionFactory factory = new ConnectionFactory();
+        //2. 设置参数
+        //我设置的 http://39.99.254.180:15672/
+        factory.setHost("39.99.254.180");//ip  默认值 localhost
+        factory.setPort(5672); //端口  默认值 5672
+        factory.setVirtualHost("/liuawen");//虚拟机 默认值/
+        factory.setUsername("liuawen");//用户名 默认 guest
+        factory.setPassword("liuawen");//密码 默认值 guest
+        //3. 创建连接 Connection
+        Connection connection = factory.newConnection();
+        //4. 创建Channel
+        Channel channel = connection.createChannel();
+        //5. 创建队列Queue
+        /*
+        queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments)
+        参数：
+            1. queue：队列名称
+            2. durable:是否持久化，当mq重启之后，还在
+            3. exclusive：
+                * 是否独占。只能有一个消费者监听这队列
+                * 当Connection关闭时，是否删除队列
+                *
+            4. autoDelete:是否自动删除。当没有Consumer时，自动删除掉
+            5. arguments：参数。
+
+         */
+        //如果没有一个名字叫hello_world的队列，则会创建该队列，如果有则不会创建
+        channel.queueDeclare("hello_world",true,false,false,null);
+        /*
+        basicPublish(String exchange, String routingKey, BasicProperties props, byte[] body)
+        参数：
+            1. exchange：交换机名称。简单模式下交换机会使用默认的 ""
+            2. routingKey：路由名称
+            3. props：配置信息
+            4. body：发送消息数据
+
+         */
+
+        String body = "hello rabbitmq~~~";
+
+        //6. 发送消息
+        channel.basicPublish("","hello_world",null,body.getBytes());
+
+
+        //7.释放资源
+        channel.close();
+        connection.close();
+
+    }
+}
+
+```
+
+
+
+![image-20200701004426893](assets/1.png)
+
+运行一下
+
+```sh
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+Process finished with exit code 0
+```
+
+
+
+![image-20200701004654351](assets/image-20200701004654351.png)
+
+
+
+![image-20200701005337576](assets/2.png)
+
+channel  connection 都关了
+
+我不关呢？ 注释
+
+有连接  有channel
+
+
+
+![image-20200701005001653](assets/3.png)
+
+
+
 在执行上述的消息发送之后；可以登录rabbitMQ的管理控制台，可以发现队列和其消息：
 
 ![1556006638979](assets/1556006638979.png)
@@ -558,6 +678,19 @@ public class Consumer {
 
 
 
+```sh
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+consumerTag：amq.ctag-hvie61k1SqFB655rv3nPHQ
+Exchange：
+RoutingKey：hello_world
+properties：#contentHeader<basic>(content-type=null, content-encoding=null, headers=null, delivery-mode=null, priority=null, correlation-id=null, reply-to=null, expiration=null, message-id=null, timestamp=null, type=null, user-id=null, app-id=null, cluster-id=null)
+body：hello rabbitmq~~~
+```
+
+
+
 ## 3.4. 小结
 
 上述的入门案例中中其实使用的是如下的简单模式：
@@ -648,9 +781,15 @@ RabbitMQ是AMQP协议的Erlang的实现。
 
 `Work Queues`与入门程序的`简单模式`相比，多了一个或一些消费端，多个消费端共同消费同一个队列中的消息。
 
+多个消费端共同消费同一个队列中的消息
+
 **应用场景**：对于 任务过重或任务较多情况使用工作队列可以提高任务处理的速度。
 
+工作队列模式  多了消费端 
+
 ### 4.1.2. 代码
+
+编写代码
 
 `Work Queues`与入门程序的`简单模式`的代码是几乎一样的；可以完全复制，并复制多一个消费者进行多个消费者同时消费消息的测试。
 
@@ -891,6 +1030,10 @@ public class Consumer2 {
   - Topic：通配符，把消息交给符合routing pattern（路由模式） 的队列
 
 **Exchange（交换机）只负责转发消息，不具备存储消息的能力**，因此如果没有任何队列与Exchange绑定，或者没有符合路由规则的队列，那么消息会丢失！
+
+
+
+消费者同时接受 消息
 
 
 
