@@ -1,0 +1,353 @@
+html,body,p,form,ul,hr,h1,h2,h3,h4,h5,h6,td{margin:0;padding:0}
+body,a,li,input,button,textarea{font-family:"Microsoft YaHei" !important}
+a{text-decoration:none}
+li{list-style:none}
+img{border:0 none}
+textarea{line-height:20px}
+input,button,textarea{font-size:14px;outline:0 none;margin:0;padding:0}
+input::-ms-clear,input::-ms-clear{display:none}
+h1,i,em,h2,h3,h4,h5,h6{font-weight:normal}
+table{border-collapse:collapse}
+body{font-size:14px;background-color:#fff}
+
+.dw_wp{position:relative;width:1002px;margin:0 auto 10px}
+.dw_wp .clear{clear:both}
+.dw_wp .mytxt{padding:0}
+.dw_wp .og_but{color:#666;text-align:center;cursor:pointer;background-color:#FFF;border:1px solid #e8e8e8}
+.dw_wp .og_but:hover{color:#FF6000;border-color:#FF6000}
+.dw_wp .tit{height:90px;line-height:90px;font-size:20px;color:#333;margin-bottom:-10px}
+.dw_wp .tit span{padding-left:20px;border-left:3px solid #ff6100}
+
+.dicon{background:url(//img01.51jobcdn.com/im/jobs/list_icon_dw_20171226.png) no-repeat}
+
+/*------搜索条件------*/
+.dw_search{min-height:98px;margin:10px 0 !important;padding:12px 15px 0;background:url(//img01.51jobcdn.com/im/jobs/search_bg_20180209.png) no-repeat}
+.dw_search .dw_search_in{height:86px;background-color:#fff;border-radius:2px;
+	-webkit-box-shadow:0 0 5px rgba(0,0,0,0.3);-moz-box-shadow:0 0 5px rgba(0,0,0,0.3);-ms-box-shadow:0 0 5px rgba(0,0,0,0.3);-o-box-shadow:0 0 5px rgba(0,0,0,0.3);box-shadow:0 0 5px rgba(0,0,0,0.3)}
+.dw_search .el,.dw_search .txt{position:relative;float:left;height:34px;line-height:34px;border:0 none;border-right:1px solid #e8e8e8}
+.dw_search .el.el_q{padding:42px 10px 10px 0}
+.dw_search .el.el_q ul{position:absolute;width:75px;height:56px;top:0;left:0}
+.dw_search .el ul{height:56px;line-height:56px;color:#333;overflow:hidden;cursor:pointer;border:1px solid transparent}
+.dw_search .el ul em{position:absolute;width:8px;height:14px;top:21px;left:57px;background:url(//img01.51jobcdn.com/im/jobs/arror_blue.png) center no-repeat}
+.dw_search .el ul.on{width:150px;top:0;left:0;background-color:#fff;border:1px solid #e8e8e8;z-index:5;
+	-webkit-box-shadow:1px 1px 10px 0 rgba(0,0,0,0.1);-moz-box-shadow:1px 1px 10px 0 rgba(0,0,0,0.1);-o-box-shadow:1px 1px 10px 0 rgba(0,0,0,0.1);-ms-box-shadow:1px 1px 10px 0 rgba(0,0,0,0.1);box-shadow:1px 1px 10px 0 rgba(0,0,0,0.1)}
+.dw_search .el li{float:left;width:75px;font-size:16px;text-indent:15px;color:#636985}
+.dw_search .el li a{display:block;height:56px;font-size:16px;color:#999;text-indent:0;text-align:center}
+.dw_search .el ul.on li:hover{background-color:#f6f6f6}
+.dw_search .el .ul{width:238px;max-height:300px;top:86px;left:0px}
+.dw_search .el .ul .li{width:218px;text-indent:0;padding:0 10px}
+.dw_search .el .ipt{position:relative;width:229px;height:24px;line-height:24px;padding:5px 0 5px 0;background-color:#fff}
+.dw_search .el .mytxt{display:block;width:100%;height:24px;line-height:24px;color:#333;text-align:left;text-indent:15px;padding:0;border:0 none}
+.dw_search .txt.pointer{#display:inline;width:144px;height:66px;padding:10px 15px 10px 0}
+.dw_search .txt.pointer.long{width:210px}
+.dw_search .txt.pointer.brn{border-right:0 none}
+.dw_search .txt .ef{height:24px;line-height:24px;color:#333;text-indent:15px;padding:5px 0}
+.dw_search .txt .ic{height:24px;line-height:24px}
+.dw_search .txt .hdl{height:32px;line-height:38px;font-size:16px;text-indent:15px;color:#636985}
+.dw_search .p_but{float:right;width:90px;height:44px;line-height:44px;font-weight:bold;font-size:16px;margin:22px 17px 0 0;box-sizing:content-box}
+.dw_search .ul .tl span{border:0 none}
+/*------搜索条件 END------*/
+
+/*------过滤条件------*/
+.dw_filter{position:relative;line-height:34px;font-size:12px;margin-bottom:24px;border:1px solid #e8e8e8;border-bottom:0 none;z-index:1}
+.dw_filter .el{display:none;position:relative;height:34px;overflow:hidden;padding:0 135px 0 105px;border-bottom:1px dotted #e8e8e8;z-index:2}
+.dw_filter .el.e2{height:34px;overflow:hidden !important;padding-left:95px;padding-right:0;border-bottom:0 none}
+.dw_filter .el.elp{top:-2px;border-top:1px dotted #e8e8e8;border-bottom:0 none}
+.dw_filter .el.show{overflow:auto;border-bottom:0 none}
+.dw_filter .el.mk,.dw_filter.on .el{display:block}
+.dw_filter .el.on{height:auto}
+.dw_filter .el .err{position:absolute;right:15px;bottom:10px}
+.dw_filter .title{position:absolute;width:85px;height:34px;color:#999;top:0;left:15px;_position:static;_float:left;_margin-left:-85px}
+.dw_filter ul{width:760px;color:#333}
+.dw_filter li{float:left;white-space:nowrap;cursor:pointer;margin-right:25px}
+.dw_filter li.on .check{background:url(//img01.51jobcdn.com/im/2016/icon/icon_checked.png) no-repeat;border-color:#ff6000}
+.dw_filter li.on a{color:#ff6000}
+.dw_filter .e2 li{margin-right:15px}
+.dw_filter li a{font-size:12px;color:#333}
+.dw_filter li a:hover{color:#FF6000}
+.dw_filter .ote{width:905px;overflow:hidden !important}
+.dw_filter .ote li{position:relative;padding:0 20px 0 10px;background:url(//img01.51jobcdn.com/im/jobs/ote_arr.png) right 16px no-repeat}
+.dw_filter .ote li:hover{background-position:right -52px}
+.dw_filter .ote li.on{line-height:32px;background-position:right -18px;border:1px solid #e8e8e8;border-bottom-color:#FFF}
+.dw_filter .ote li.on:hover{background-position:right -86px}
+.dw_filter .ote li span{float:left}
+.dw_filter .ote li span.dw_c_orange{max-width:6em;overflow:hidden}
+.dw_filter .kel{position:relative;line-height:34px;top:-1px;padding-left:5px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;z-index:1}
+.dw_filter .kel a{display:inline-block;color:#333;white-space:nowrap;margin:0 15px 0 10px}
+.dw_filter .kel a:hover{color:#FF6000}
+.dw_filter .nk{margin:0 15px 10px 10px;border:1px solid #e8e8e8}
+.dw_filter .nk a{margin-left:15px}
+.dw_filter .more,.dw_filter .dx{position:absolute;height:20px;line-height:20px;color:#333;cursor:pointer;top:6px}
+.dw_filter .more{width:40px;right:75px;background-position:-143px -122px}
+.dw_filter .more:hover{background-position:-143px -162px}
+.dw_filter .el.on .more{background-position:-143px -142px}
+.dw_filter .el.on .more:hover{background-position:-143px -182px}
+.dw_filter .dx{width:43px;text-indent:16px;right:15px;background-color:#FFF;background-position:-71px -40px;border:1px solid #E8E8E8}
+.dw_filter .dx:hover{background-position:-71px -60px}
+.dw_filter .op{position:relative;top:-1px;border-top:1px solid #e8e8e8;z-index:2}
+.dw_filter .op span{position:absolute;width:310px;height:22px;line-height:22px;text-indent:20px;color:#999;cursor:pointer;top:-1px;left:50%;margin-left:-150px;background-color:#FFF;border:1px solid #e8e8e8;border-top-color:#FFF;z-index:3}
+.dw_filter .op span:hover,.dw_filter .dx:hover,.dw_filter .more:hover,.dw_filter li:hover{color:#FF6000}
+.dw_filter .op em{position:absolute;width:15px;height:7px;top:8px;margin-left:3px;background-position:-170px -80px}
+.dw_filter.on .op em{background-position:-150px -80px}
+.dw_filter .op span:hover em{background-position:-170px -100px}
+.dw_filter.on .op span:hover em{background-position:-150px -100px}
+.dw_filter.on .op span{width:106px;margin-left:-56px}
+.dw_filter .dline_text_bot{margin:0 0 7px;border-color:#e8e8e8}
+.dw_filter .btnbox{text-align:center;margin-bottom:5px}
+.dw_filter .p_but{min-width:42px;height:20px;line-height:20px;font-size:12px}
+.dw_filter .getr{position:relative;width:178px;height:23px;line-height:23px;margin-top:4px;padding-right:50px;border:1px solid #e8e8e8}
+.dw_filter .getr input{display:block;width:100%;height:23px;line-height:23px;font-size:12px;color:#333;text-indent:10px;border:0 none}
+.dw_filter .getr a{position:absolute;width:40px;height:23px;line-height:23px;color:#426892;text-align:center;right:0;top:0}
+.dw_filter .getr a:hover{color:#ff6000}
+.dw_filter .getr a em{position:absolute;width:1px;height:16px;left:0;top:4px;background-color:#e8e8e8}
+
+/*------过滤条件 END------*/
+
+/*------已选条件------*/
+.dw_choice{position:relative;min-height:30px;font-size:12px;overflow:visible;background-color:#FFF}
+.dw_choice .in{position:relative;width:1000px;min-height:30px;margin:0 auto}
+.dw_choice.fix{position:fixed;width:100%;padding:5px 0;top:0;left:0;background-color:#F9F9F9;border-left:0 none;border-right:0 none;z-index:9;
+	-webkit-box-shadow:0 0 4px #CCC;-moz-box-shadow:0 0 4px #CCC;-ms-box-shadow:0 0 4px #CCC;-o-box-shadow:0 0 4px #CCC;box-shadow:0 0 4px #CCC}
+.dw_choice.fix .fxwp{position:relative;width:1002px;margin:0 auto}
+.dw_choice.fix span,.dw_choice.fix p{font-size:14px}
+.dw_choice p{line-height:22px;color:#333;margin:0 100px 0 105px;padding:4px 0}
+.dw_choice.fix p{margin-left:115px}
+.dw_choice .title{position:absolute;height:30px;line-height:30px;color:#999;top:50%;left:15px;margin-top:-15px}
+.dw_choice .og_but{display:none;position:absolute;width:60px;height:30px;line-height:30px;font-size:14px;top:50%;right:15px;margin-top:-15px}
+.dw_choice.fix .og_but{display:block}
+/*------已选条件 END------*/
+
+
+/*------列表表格------*/
+.dw_table{position:relative;color:#999;background-color:#FFF}
+.dw_table .el{height:40px;line-height:40px;font-size:14px;overflow:hidden;padding:0 5px;border-bottom:1px dotted #e8e8e8}
+.dw_table .el:hover,.dw_table .hover{background-color:#F7F7F7}
+.dw_table .el.mk{background-color:#fdfaf2}
+.dw_table .el.mk:hover{background-color:#fcf6e7}
+.dw_table .el.last{border-bottom:1px solid #e8e8e8}
+.dw_table .title{height:30px;line-height:30px;text-align:center;border-bottom:1px solid #e8e8e8}
+.dw_table .title:hover{background-color:#fff}
+.dw_table .title span{height:30px;line-height:30px;font-size:12px;color:#999}
+.dw_table .t1,.dw_table .t2,.dw_table .t3,.dw_table .t4,.dw_table .t5{float:left;height:40px;line-height:40px;font-size:14px;overflow:hidden;padding:0 10px}
+.dw_table .t1{position:relative;width:315px}
+.dw_table .t1 span{float:left;max-width:285px}
+.dw_table .t1 span a{float:left;max-width:285px;font-size:16px;color:#333;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.dw_table .t1 img{float:left;margin:11px 0 0 2px}
+.dw_table .t1.tg1 span,.dw_table .t1.tg1 a{max-width:250px}
+.dw_table .t1.tg2 span,.dw_table .t1.tg2 a{max-width:220px}
+.dw_table .t1.tg3 span,.dw_table .t1.tg3 a{max-width:190px}
+.dw_table .t2{width:255px;color:#666}
+.dw_table .t2 a,.dw_table .t2 a span{font-size:14px;color:#666}
+.dw_table .t2 a:visited,.dw_table .t1 a:visited{color:#999}
+.dw_table .t2 a:active,.dw_table .t1 a:active,.dw_table .t2 a:hover,.dw_table .t1 a:hover{color:#ff6000}
+.dw_table .t3{width:100px;text-align:center}
+.dw_table .t4{width:130px;font-size:16px;color:#FF6000;text-align:center}
+.dw_table .t5{width:90px;text-align:center}
+.dw_table .check{position:relative;float:left;top:15px;margin-right:8px}
+.dw_table .j,.dw_table .s{position:relative;_position:absolute;display:inline-block;width:27px;font:12px/16px "SimSun";color:#FFF;text-align:center;top:-2px;_top:16px;margin-left:3px;background-color:#FF6000}
+.dw_table .s{width:14px;background-color:#55CB60}
+
+.dw_tlc{position:relative;width:1002px;height:42px;line-height:42px;background-color:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;z-index:1}
+.dw_tlc .chall{float:left;width:80px;height:42px;font-size:12px;border-right:1px solid #e8e8e8}
+.dw_tlc .op{float:left}
+.dw_tlc .op span{float:left;width:123px;height:26px;line-height:26px;font-size:12px;cursor:pointer;margin:7px 0 0 15px;
+	-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px}
+.dw_tlc .op i{float:left;width:20px;height:20px;margin:3px 2px 0 25px}
+.dw_tlc .but_sq{color:#FFF;background-color:#FF6000;border:1px solid #FF6000;}
+.dw_tlc .but_sq:hover{background-color:#EA5800}
+.dw_tlc .but_sq i{background-position:-70px 0}
+.dw_tlc .but_sc{color:#FF6000;background-color:#FFF2E3;border:1px solid #FFB865}
+.dw_tlc .but_sc:hover{background-color:#FFE8CD}
+.dw_tlc .but_sc i{background-position:-70px -20px}
+.dw_tlc .rt{position:relative;float:right;width:118px;height:42px;font-size:12px;text-align:center;border-left:1px solid #e8e8e8}
+.dw_tlc #rtPrev,.dw_tlc #rtNext{position:absolute;width:8px;height:14px;top:14px;left:15px;background-position:-150px 0}
+.dw_tlc #rtNext{left:auto;right:15px;background-position:-170px 0}
+.dw_tlc #rtPrev.on{background-position:-150px -20px}
+.dw_tlc #rtNext.on{background-position:-170px -20px}
+.dw_tlc #rtPrev.on:hover{background-position:-150px -40px}
+.dw_tlc #rtNext.on:hover{background-position:-170px -40px}
+.dw_tlc .rt .on{cursor:pointer}
+.dw_tlc .order_time,.dw_tlc .order_auto{position:relative;font-size:14px;text-indent:23px;cursor:pointer}
+.dw_tlc .order_time:hover,.dw_tlc .order_auto:hover{background-color:#E0E0E0}
+.dw_tlc .order_time em,.dw_tlc .order_auto em{position:absolute;width:20px;height:20px;top:11px;left:16px;z-index:2}
+.dw_tlc .order_time em{background-position:0 -20px}
+.dw_tlc .order_time .on{background-position:-25px -20px}
+.dw_tlc .order_auto .on{background-position:-25px 0}
+.dw_tlc .order_time a,.dw_tlc .order_auto a{position:relative;display:block;height:42px;font-size:14px;color:#999;z-index:1}
+.dw_tlc .order_time a:hover,.dw_tlc .order_auto a:hover{background-color:#EEE}
+.dw_tlc .order_time.dw_c_orange a,.dw_tlc .order_auto.dw_c_orange a{color:#FF6000}
+.dw_tlc .ckbox{margin-top:13px;margin-left:15px}
+.dw_tlc .checkbox,.dw_tlc .check{top:12px;*top:11px;left:15px;margin-right:25px;_margin-right:19px}
+.dw_tlc .check{top:16px}
+.dw_tlc .sbox{float:right;display:none;font-size:12px;margin-right:15px}
+.dw_tlc .sbox label{float:left}
+.dw_tlc .sbox .cod{max-width:550px;color:#333}
+.dw_tlc .ipt{float:left;width:153px;height:24px;line-height:24px;overflow:hidden;padding:0 5px;background-color:#FFF;border:1px solid #e8e8e8;border-right:0 none}
+.dw_tlc .ipt .mytxt{width:100%;height:22px;line-height:22px;font-size:12px;border:0 none}
+.dw_tlc .og_but{float:left;width:45px;height:26px;line-height:26px}
+.dw_tlc.fix{position:fixed;top:0;left:50%;margin-left:-501px;border-top:0 none;border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;z-index:9;
+	-webkit-box-shadow:0 2px 0 rgba(0,0,0,0.05);-moz-box-shadow:0 2px 0 rgba(0,0,0,0.05);-ms-box-shadow:0 2px 0 rgba(0,0,0,0.05);-o-box-shadow:0 2px 0 rgba(0,0,0,0.05);box-shadow:0 2px 0 rgba(0,0,0,0.05)}
+.dw_tlc.fix .in{border-right:1px solid #e8e8e8;border-left:1px solid #e8e8e8}
+.dw_tlc.fix .rt{display:none}
+.dw_tlc.fix .sbox{display:block}
+
+.dw_line{position:relative;height:1px;top:-1px;background-color:#e8e8e8}
+.dw_line.dr{background-color:#fff}
+
+.dw_nomsg{line-height:200px;font-size:14px;color:#333;text-align:center}
+
+.dw_hot{position:absolute;width:170px;top:0;left:1002px;background-color:#FFF}
+.dw_hot .name{height:44px;line-height:42px;font-weight:bold;font-size:18px;color:#FF6000;text-indent:10px;background-position:15px -175px;_border:1px solid #F8F8F8}
+.dw_hot ul{margin:0 auto}
+.dw_hot li{padding:0px 10px 5px}
+.dw_hot .cname,.dw_hot .ctitle{line-height:20px;color:#000}
+.dw_hot .ctitle{color:#666}
+.dw_hot .cname:hover,.dw_hot .ctitle:hover{color:#FF6000}
+/*------列表表格 END------*/
+
+/*------意见反馈------*/
+.dw_fb{position:fixed;width:48px;height:48px;overflow:hidden;text-indent:-200px;text-decoration:none !important;bottom:10px;margin-left:1042px;background:url(//img01.51jobcdn.com/im/jobs/fb_img.png) 0 -48px no-repeat}
+.dw_fb:hover{background-position:0 0}
+/*------意见反馈 END------*/
+
+/*------相似职位------*/
+.dw_likejob{position:relative;line-height:20px;color:#000;margin:20px 0;padding:0 16px 0 106px}
+.dw_likejob span{position:absolute;color:#999;left:16px;_margin-left:-106px}
+.dw_likejob a{color:#333;white-space:nowrap;margin-right:25px}
+.dw_likejob a:hover{color:#FF6000}
+/*------相似职位 END------*/
+
+/*------分页------*/
+.dw_page{position:relative;height:30px;line-height:30px;font-size:12px;color:#666;overflow:hidden;padding:15px 0 30px}
+.dw_page .p_box{position:absolute;width:200%;left:-50%}
+.dw_page .p_wp{position:absolute;margin-left:50%}
+.dw_page .p_in{position:relative;float:left;left:-50%}
+.dw_page ul,.dw_page .td,.dw_page .mytxt,.dw_page .og_but{float:left;font-size:14px}
+.dw_page ul{height:30px}
+.dw_page li{float:left;width:30px;height:30px;line-height:30px;text-align:center;margin-right:10px;background-color:#FFF}
+.dw_page li a{display:block;width:30px;font-size:12px;color:#666;border:1px solid #e8e8e8}
+.dw_page li a:hover{color:#FF6000;border-color:#FF6000}
+.dw_page li.on{line-height:31px;color:#FF6000;border:1px solid transparent}
+.dw_page li.bk,.dw_page li.bk a{width:64px}
+.dw_page li.bk span{display:block;color:#BBB;font-size:12px;border:1px solid #e8e8e8}
+.dw_page .mytxt{width:28px;height:28px;line-height:28px;font-size:12px;color:#333;text-align:center;margin:0 5px;border:1px solid #e8e8e8}
+.dw_page .og_but{width:45px;height:30px;line-height:30px;margin-left:10px}
+/*------分页 END------*/
+
+/*------浮层------*/
+.dw_Fixpop{width:791px;border-style:solid;border-color:#FF6000;border-width:5px 1px 1px}
+.dw_Fixpop .tp{height:26px;line-height:26px;padding-left:17px;border-bottom:1px solid #e8e8e8}
+.dw_Fixpop .tp p{float:left;font-weight:bold;color:#333;font-size:12px}
+.dw_Fixpop .tp p span{font-weight:normal;color:#999}
+.dw_Fixpop .but_ok,.dw_Fixpop .but_cancel{float:right;width:42px;height:26px;font-size:12px;color:#FFF;text-align:center;cursor:pointer;background-color:#FF9945}
+.dw_Fixpop .but_ok:hover{background-color:#FF7400}
+.dw_Fixpop .but_cancel{color:#FF6000;background-color:#FFF}
+.dw_Fixpop .but_cancel:hover{background-color:#EFEFEF}
+.dw_Fixpop .vbox{position:relative}
+.dw_Fixpop .vbox span{float:left;width:109px;height:20px;line-height:20px;font-size:12px;margin:12px 20px 0 0}
+.dw_Fixpop .vbox span:hover{color:#FF6000}
+.dw_Fixpop .vwp{float:left;width:774px;padding-left:17px;padding-bottom:12px}
+.dw_Fixpop .ckbox{float:left;width:16px;height:16px;cursor:pointer;margin:3px 4px 0 0;background-position:-2px -42px}
+.dw_Fixpop .checked{color:#FF6000}
+.dw_Fixpop .checked .ckbox{background-position:-27px -42px}
+/*------浮层 END------*/
+
+/*------颜色------*/
+.dw_c_orange{color:#FF6000 !important}
+.dw_c_alert{color:#F56101 !important}
+/*------颜色 END------*/
+
+#KwdSearchResult a{position:relative;display:block;height:24px;line-height:24px;color:#333;text-indent:10px}
+#KwdSearchResult a:hover{color:#F66000;background-color:#EFEFEF}
+#KwdSearchResult a:hover .resultNumble{color:#F66000}
+#KwdSearchResult a .resultNumble{position:absolute;color:#999;top:0;right:10px}
+
+.mainleft.s_search.search_btm0{width:1002px;margin-left:-10px}
+.mainleft.s_search.search_btm0 td{padding:4px 10px}
+#demo table td{padding:0}
+
+/*------相关推荐------*/
+.dw_recommend{position:relative;min-height:34px;font-size:12px}
+.dw_recommend .title{position:absolute;height:34px;line-height:34px;color:#fff;top:50%;left:2px;margin-top:-17px}
+.dw_recommend p{max-height:22px;line-height:24px;overflow:hidden;margin-left:92px;padding:5px 0 7px}
+.dw_recommend p a{float:left;color:#fff;white-space:nowrap;margin-right:25px}
+.dw_recommend p a:hover{color:#ff6000}
+/*------相关推荐 END------*/
+
+/*------返回顶部------*/
+#goTop{position:fixed;display:none;width:48px;height:40px;line-height:16px;color:#FFF;font-size:0;text-align:center;bottom:68px;margin-left:1042px;padding-top:8px;background:url(//img01.51jobcdn.com/im/jobs/img_top.png) center center #C1C1C1 no-repeat}
+#goTop:hover{font-size:12px;background:#FF6000}
+/*------返回顶部 END------*/
+
+/*------提示------*/
+.warn{position:relative;min-height:20px;line-height:20px;font-size:12px;color:#b79442;margin-bottom:15px;padding:5px 15px;background-color:#fffaea;border:1px solid #ede4d0}
+.warn.w1{padding-left:40px;background:url(//img01.51jobcdn.com/im/jobs/warn_d.png) #fffaea 15px center no-repeat}
+/*------提示 END------*/
+
+/*------标题------*/
+.mt{height:44px;line-height:44px;color:#999;margin-bottom:15px;border-bottom:2px solid #efefef}
+.mt .mt_l{float:left;font-size:18px}
+.mt .mt_l li{float:left;padding:0 15px}
+.mt .mt_l li,.mt .mt_l a{font-size:18px;color:#999}
+.mt .mt_l .on{color:#333;border-bottom:2px solid #ff6000}
+/*------标题 END------*/
+
+/*------公司专区------*/
+.company{position:relative;font-size:12px;line-height:24px;color:#666;padding:20px;margin-bottom:10px;border:1px solid #e8e8e8;
+	-webkit-box-shadow:1px 1px 5px #dddddd;-moz-box-shadow:1px 1px 5px #dddddd;-o-box-shadow:1px 1px 5px #dddddd;-ms-box-shadow:1px 1px 5px #dddddd;box-shadow:1px 1px 5px #dddddd}
+.company h1{width:60%;font-size:20px;font-weight:bold}
+.company h1 a{color:#333}
+.company h1 a:hover{color:#ff6000}
+.company h1 img{vertical-align:middle}
+
+.company .ctype{margin:12px 0 16px 0}
+.company .ctype span{position:relative;padding-left:20px;margin-right:18px}
+.company .ctype i{position:absolute;width:20px;height:14px;left:0;top:2px;background:url(//img01.51jobcdn.com/im/jobs/icon_ctype.png) no-repeat}
+.company .ctype .ctype_size{background-position:0 -20px}
+.company .ctype .ctype_trade{background-position:0 -40px}
+
+.company .intro{color:#333;padding-bottom:12px;border-bottom:1px dotted #e8e8e8}
+
+.company .hot_job{margin:16px 0 25px 0;*margin:16px 0 50px 0}
+.company .hot_job h2{position:relative;color:#ff6000;font-weight:bold;font-size:14px;padding-left:20px}
+.company .hot_job .i_hot_job{position:absolute;width:20px;height:20px;left:0;top:1px;background:url(//img01.51jobcdn.com/im/jobs/icon_hot_job.png) no-repeat left center}
+.company .hot_job li{float:left;width:176px;margin-right:20px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.company .hot_job .mr_0{margin-right:0}
+.company .hot_job li a{color:#333}
+.company .hot_job li a:hover{color:#ff6000}
+
+.company .look_more{padding:0 70px;text-align:center;font-size:0;_font-size:0;}
+.company .look_more a{display:inline-block;height:33px;line-height:33px;color:#ff6000;font-size:14px;border:1px solid #ff6000;
+	-webkit-box-shadow:0 0 2px #e8e8e8;-moz-box-shadow:0 0 2px #e8e8e8;-o-box-shadow:0 0 2px #e8e8e8;-ms-box-shadow:0 0 2px #e8e8e8;box-shadow:0 0 2px #e8e8e8;
+	-webkit-border-radius:2px;-moz-border-radius:2px;-o-border-radius:2px;-ms-border-radius:2px;border-radius:2px}
+.company .look_more a:hover{background-color:#fff0e7}
+.company .look_more .more_job{width:496px;margin-right:20px}
+.company .look_more .enter_com{width:298px;margin:0 auto}
+
+.company .com_bg{position:absolute;background:url(//img01.51jobcdn.com/im/jobs/com_bg.png) no-repeat}
+.company .bg_left{width:36px;height:36px;left:4px;bottom:4px;background-position:-324px 0}
+.company .bg_right{width:324px;height:69px;top:0;right:77px;background-position:0 0}
+.company .bg_bottom{width:34px;height:70px;right:5px;bottom:5px;background-position:-366px 0}
+
+.company .com_close{position:absolute;width:40px;height:40px;top:5px;right:5px;cursor:pointer;background:url(//img01.51jobcdn.com/im/jobs/icon_close_s.png) center no-repeat}
+/*------公司专区 END------*/
+
+/*------底部广告 ------*/
+.tResult_bottom_roll{border:1px solid #e8e8e8; padding:0 4px 10px; margin-top:10px;}
+#announcement{margin:0 10px;border-bottom:1px solid #e8e8e8}
+#announcement ul {overflow:hidden;clear:both}
+#announcement div{height:40px;line-height:40px;overflow-y:hidden}
+#announcement li {float:left;font-size:14px;line-height:40px;list-style-type:none;white-space:nowrap;margin-right:35px}
+#announcement a {font-size:12px;color:#333;text-decoration:none}
+#announcement a:hover {color:#ff6000}
+#resumeGuideTopicsBody{overflow-y:hidden;width:auto;height:3pc}
+
+.rollBox h3{height:40px;line-height:40px; font-size:14px;font-weight:normal; color:#666;text-indent:10px}
+.rollBox_oneRow{ overflow:hidden; padding:4px 2px; height:30px;}
+.rollBox_oneRow li{ float:left; margin-right:20px; line-height:30px;}
+.rollBox_twoRow li{ float:left; width:180px; margin-right:10px; line-height:26px; _width:176px;}
+.resumeGuide{clear:both;padding:0}
+.resumeGuide li{float:left;overflow:hidden;font-size:12px;margin-right:10px;margin-left:10px;width:228px;list-style-type:none;text-overflow:ellipsis;white-space:nowrap;line-height:24px}
+#marqueeBox a{color:#333;font-size:9pt}
+#marqueeBox a:hover{color:#ff6000}
+/*------底部广告 END------*/

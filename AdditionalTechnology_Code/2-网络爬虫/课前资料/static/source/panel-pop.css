@@ -1,0 +1,409 @@
+.panel_lnp h1,.panel_lnp h2,.panel_lnp h3,.panel_lnp h4,.panel_lnp h5,.panel_lnp h6,.panel_lnp p,.panel_lnp ul,.panel_py h1,.panel_py h2,.panel_py h3,.panel_py h4,.panel_py h5,.panel_py h6,.panel_py p,.panel_py ul{margin:0;padding:0}
+.panel_lnp li,.panel_py li{list-style:none}
+.panel_lnp input,.panel_lnp button,.panel_lnp textarea,.panel_py input,.panel_py button,.panel_py textarea{font-size:14px;font-family:"microsoft yahei" !important;outline:0 none;margin:0;padding:0}
+.panel_lnp input::-ms-clear,.panel_py input::-ms-clear{display:none}
+.panel_lnp .txline,.panel_py .txline{display:inline-block;word-wrap:break-word;word-break:break-all;text-decoration:underline}
+/*通用*/
+a{text-decoration:none}
+.at,
+.panel_lnp h2 p,.panel_py .rdbox{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.l{float:left}
+.clearfix{*zoom:1}
+.clearfix:before,.clearfix:after{display:table;content:"";clear:both}
+.err{display:block;line-height:18px !important;font-size:12px;color:#ff6000;clear:both;padding:5px 0 0 18px;background:url(//img01.51jobcdn.com/im/2016/form/error.png) 0 7px no-repeat;*background-position:0 5px}
+.panel_lnp .p_but,.panel_lnp .panel_btn_s{min-width:40px;padding:0 20px}
+.panel_lnp .p_but.w110,.panel_lnp .p_but.w130{width:auto}
+.panel_lnp .disabled{color:#b0b0b0;background-color:#f5f5f5;cursor:default}
+
+/*字体大小*/
+.f12{font-size:12px !important}
+.f14{font-size:14px !important}
+.f16{font-size:16px !important}
+.f18{font-size:18px !important}
+.f20{font-size:20px !important}
+.f22{font-size:22px !important}
+.f24{font-size:24px !important}
+.f26{font-size:26px !important}
+.f28{font-size:28px !important}
+.f30{font-size:30px !important}
+
+/*行高*/
+.lh20{line-height:20px !important}
+.lh30{line-height:30px !important}
+.lh40{line-height:40px !important}
+.lh50{line-height:50px !important}
+.lh60{line-height:60px !important}
+
+/*颜色*/
+.c_333{color:#333 !important}
+.c_666{color:#666 !important}
+.c_999{color:#999 !important}
+.c_bbb,
+.placeholder{color:#b0b0b0 !important}
+.c_blue{color:#00457d !important}
+.c_lblue{color:#7c8ea7 !important}
+.c_orange{color:#ff6000 !important}
+.c_yellow{color:#ff9f20 !important}
+/*END*/
+
+.panel_lnp h2{position:relative;height:44px;line-height:44px;font-size:14px;font-family:"Microsoft YaHei";color:#333;padding-right:44px;background-color:#FFF;border-top:4px solid #FF6000;border-bottom:1px solid #e8e8e8}
+.panel_lnp h2 p{font-weight:bold;font-size:18px;line-height:44px;margin-left:15px}
+.panel_lnp h2 a{position:absolute;display:block;width:44px;height:44px;cursor:pointer;top:0;right:0;background-color:#FFF}
+.panel_lnp h2 a i{display:block;width:16px;height:16px;margin:14px;background:url(//img01.51jobcdn.com/im/2016/pop/icon_close2.png) no-repeat}
+.panel_lnp .sp{font-size:12px}
+.panel_lnp .sp strong{font-size:12px;color:#ff6000}
+.panel_lnp .panel_btn_s{display:inline-block;line-height:18px;font-size:14px;font-family:"microsoft yahei";color:#fff;text-decoration:none;cursor:pointer;margin:0 4px;padding:6px 20px;background-color:#ff6000;
+	-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;border-radius:2px}
+.panel_lnp .panel_btn_s:hover{background-color:#ea5800}
+.panel_lnp .panel_btn_s.off,.panel_lnp .panel_btn_s.off:hover{color:#999;cursor:auto;background-color:#ddd}
+.panel_lnp .l-h34{line-height:34px !important}
+.panel_lnp .pannel_body *,.panel_lnp a{font-size:12px;font-family:"Microsoft YaHei"}
+.panel_lnp a.c_blue:hover{color:#ff6000 !important}
+.panel_py{width:500px}
+.panel_py strong{font-weight:bold}
+.panel_py .tstrong{font-weight:bold;font-size:16px;color:#f56101}
+.panel_py .pannel_body{line-height:24px;color:#5e5e5e;padding:15px;background-color:#fff}
+.panel_py .pannel_body.f14 *{font-size:14px}
+.panel_py .pannel_con{line-height:20px;font-family:"Microsoft YaHei";font-size:14px;background-color:#fff}
+.panel_py .p{margin-bottom:10px}
+.panel_py .stage{line-height:24px;color:#666;padding:34px 10px 20px}
+.panel_py .stage.s2{padding-bottom:34px}
+.panel_py .wd{display:block;padding:24px 0 10px}
+.panel_py .wd img{vertical-align:top;margin-bottom:10px}
+.panel_py .gp{padding-top:35px;padding-bottom:35px}
+.panel_py .gp2{padding:10px 2em}
+.panel_py .gp3{padding:10px 2em 24px}
+.panel_py .gp4{padding:15px}
+.panel_py .gp5{padding:15px 2em}
+.panel_py .gp6{padding:2em 15px 10px}
+.panel_py .gp7{padding:15px 2em 0}
+.panel_py .gp8{padding:15px 15px 0}
+.panel_py .center{text-align:center}
+.panel_py .rdbox{float:left;width:48%;height:24px;line-height:24px;margin-right:2%;padding:8px 0 0}
+.panel_py .rdbox .rdo{margin-right:10px}
+.panel_py .rdbox.r2{float:none;display:block;width:auto}
+.panel_py .title{padding:10px 0 25px;border-bottom:1px dotted #c1c1c1}
+.panel_py .t_right{text-align:right;padding:14px 15px}
+.panel_py center{position:relative}
+.panel_py center .t_right{position:absolute;height:20px;line-height:20px;top:50%;right:0;margin-top:-10px;padding:0}
+.panel_py .link{color:#00457d}
+.panel_py .link:hover{color:#ff6000}
+.panel_py .tb{margin:0 auto;border-collapse:collapse;border-spacing:0;border-bottom:1px solid #e8e8e8}
+.panel_py .tb th,.panel_py .tb td{height:28px;padding:0;border:1px solid #e8e8e8}
+.panel_py .tb th{background-color:#e6e6e6}
+.panel_py .tb td{width:128px;text-align:center;border-top-style:dashed;border-bottom-style:dashed}
+.panel_py .cl_orange{color:#f56101}
+.panel_py a.cl_orange{color:#00457d}
+.panel_py a.cl_orange:hover{color:#ff6000}
+.panel_py .tagbox{margin-bottom:20px;padding:0 15px}
+.panel_py .tagbox .e{position:relative;padding-left:75px}
+.panel_py .tagbox label{position:absolute;height:26px;line-height:26px;top:0;left:0}
+.panel_py .tagbox label.l2{line-height:20px;top:11px}
+.panel_py .tagbox textarea{width:274px;line-height:20px;padding:10px;background-color:#FFF;border:1px solid #b1b1b1}
+.panel_py .tags span{display:inline-block;height:26px;line-height:26px;color:#333;margin:0 15px 15px 0;padding:0 10px;background-color:#FFF;border:1px solid #FF9F20}
+.panel_py .ft14{font-size:14px !important}
+.panel_py .aright{text-align:right}
+.panel_py .textarea{width:422px;padding:10px;border:1px solid #b1b1b1}
+.panel_py .w9{display:inline-block;max-width:130px;vertical-align:middle}
+.panel_py .panel_pay li{position:relative;float:left;line-height:40px;font-size:12px;color:#333;text-overflow:ellipsis;-o-text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding-left:20px;margin-right:6%}
+.panel_py .panel_pay li.on{color:#ff6000}
+.panel_py .panel_pay li.on .check{background:url(//img01.51jobcdn.com/im/2016/icon/icon_checked.png) no-repeat;border-color:#ff6000}
+.panel_py .panel_pay .check{position:absolute;top:14px;left:0}
+/*选择文件*/
+.panel_py .chose{position:relative;width:283px;height:28px;line-height:28px;color:#00457d;text-align:center;overflow:hidden;background-color:#fff;border:1px solid #e8e8e8}
+.panel_py .chose:hover{background-color:#eee}
+.panel_py .chose input{position:absolute;font-size:100px;top:0;right:0;filter:alpha(opacity=0);opacity:0;cursor:pointer;z-index:2}
+.panel_py .word{position:relative;z-index:1}
+.panel_py .word em{font-size:12px;font-style:normal}
+.panel_py .word em em{display:inline-block;max-width:120px;vertical-align:bottom;#vertical-align:middle}
+/*地区、职位、行业*/
+.panel_selt{position:relative;font-size:12px;overflow:hidden;padding-bottom:50px;background:url(//img01.51jobcdn.com/im/2016/pop/panel_129.gif) #fff repeat-y}
+.panel_selt .sbar,.panel_selt .con{float:left;width:129px}
+.panel_selt .sbar li{position:relative;line-height:18px;cursor:pointer;word-wrap:break-word;word-break:normal;padding:8px 0 8px 14px}
+.panel_selt .sbar li:hover{background-color:#d9d9d9}
+.panel_selt .sbar em{display:none;position:absolute;width:5px;height:100%;top:0;left:0;background-color:#ff6000}
+.panel_selt .sbar .on,.panel_selt .sbar .on:hover{background-color:#fff}
+.panel_selt .sbar .on{font-weight:bold;color:#ff6000}
+.panel_selt .sbar .on em{display:block}
+.panel_selt .con{width:791px;margin-left:16px}
+.panel_selt .de{position:relative;float:left;width:100%;padding-top:8px}
+.panel_selt .de.dn{padding-top:0}
+.panel_selt .de .name{display:block;color:#999;margin-bottom:15px;padding:0 7px}
+.panel_selt .de span{float:left;margin:0 14px 12px 0}
+.panel_selt .de span em{font-style:normal;display:inline-block;line-height:18px;font-size:12px;cursor:pointer;padding:2px 7px}
+.panel_selt .de span em:hover{background-color:#eee}
+.panel_selt .de .on,.panel_selt .de .on:hover{color:#fff;background-color:#ffa63c}
+.panel_selt .in{position:relative;float:left;width:789px;color:#666;margin-bottom:10px;border:1px solid #e8e8e8}
+.panel_selt .in div{float:left;width:769px;max-height:90px;padding:8px 10px 0 10px;*padding-bottom:4px;overflow-x:hidden;overflow-y:auto}
+.panel_selt .in font{position:absolute;width:14px;height:8px;font-size:0;top:-8px;left:0;background:url(//img01.51jobcdn.com/im/2016/pop/pop_two_level_corner.png) no-repeat}
+.panel_selt .in span{margin-bottom:8px}
+.panel_selt .in span em{margin:0}
+.panel_selt .d0 span{width:auto;white-space:nowrap}
+.panel_selt table{width:100%;font-family:"Arial","Microsoft YaHei"}
+.panel_selt td{vertical-align:top;word-break:break-all}
+.panel_selt td em{display:inline-block;font-size:12px;font-style:normal;color:#333;cursor:pointer;margin:0 0 12px 0;padding:2px 7px}
+.panel_selt td em:hover{background-color:#eee}
+.panel_selt td i{font-size:12px;font-style:normal;vertical-align:middle}
+.panel_selt .d1 em{margin-right:0}
+.panel_selt .d3 td{width:216px}
+.panel_selt .d7 td{width:113px}
+.panel_selt .d7 td em{margin-right:4px}
+.panel_selt .declear{position:relative;height:1px;font-size:0;clear:both;top:-1px;background-color:#fff}
+.panel_selt .dtit{float:left;line-height:18px;font-size:12px;font-weight:bold;color:#999;text-indent:7px;padding-top:8px}
+/*框架尺寸*/
+.panel_ct{width:953px !important}
+.panel_ct2{width:858px !important}
+.panel_ct3{width:500px !important}
+.panel_ct4{width:700px !important}
+.panel_ct5{width:800px !important}
+.panel_ct2 .panel_selt{background-image:url(//img01.51jobcdn.com/im/2016/pop/panel_179.gif)}
+.panel_ct2 .panel_selt .sbar{width:179px}
+.panel_ct2 .panel_selt .con{width:648px}
+.panel_ct2 .panel_selt .in{width:646px}
+.panel_ct2 .panel_selt .in div{width:626px;max-height:210px}
+/*表单*/
+.panel_py .panel_boxtab{display:none;height:55px;text-align:center;background-color:#f7f7f7;border-bottom:1px solid #e8e8e8}
+.panel_py .panel_boxtab p{position:relative;width:365px;top:20px;margin:0 auto;border-right:1px solid #e8e8e8}
+.panel_py .panel_boxtab span{display:inline-block;width:90px;height:34px;line-height:34px;font-size:14px;cursor:pointer;background-color:#ebebeb;border:1px solid #e8e8e8;border-right:0 none}
+.panel_py .panel_boxtab span:hover,.panel_py .panel_boxtab span.on{background-color:#fff;border-bottom-color:#fff}
+.panel_py .panel_boxtab span:hover{border-bottom-color:#e8e8e8}
+.panel_py .panel_boxtab span.on:hover{border-bottom-color:#fff}
+.panel_py .panel_boxtab span.on{cursor:auto}
+.panel_py .inner10{padding:10px}
+.panel_py .iel{position:relative;min-height:30px;line-height:30px;padding-top:10px}
+.panel_py .iel label{position:relative;float:left;width:110px;font-size:14px;text-align:right;padding-right:10px}
+.panel_py .iel label b{position:absolute;color:#fe5b00;font-family:"SimSun";top:0;right:0}
+.panel_py .iel .itext,.panel_py .iel .itextarea{float:left;width:248px;line-height:28px;font-size:14px;font-family:"Microsoft YaHei";margin-right:10px;padding:0 10px;border:1px solid #e8e8e8}
+.panel_py .iel .itext{height:28px}
+.panel_py .iel .itextarea{line-height:20px;padding:3px 10px}
+.panel_py .iel .itext.short{width:150px}
+.panel_py .iel .itext_in{position:relative;float:left;width:270px}
+.panel_py .iel .itext_in .close{display:none;position:absolute;width:28px;height:28px;cursor:pointer;top:1px;right:1px;background:url(//img01.51jobcdn.com/im/2016/pop/input_close.png) #fff center center no-repeat}
+.panel_py .iel .code{float:left;margin-right:10px}
+.panel_py .iel .code_button{width:88px;height:30px;font-size:12px;font-family:"Microsoft YaHei"}
+.panel_py .iel .code_but{font-size:12px;cursor:pointer}
+.panel_py .iel .code_but:hover{color:#ff7300}
+.panel_py .iel .pwd_level{float:left;width:66px;margin-left:10px}
+.panel_py .iel .pwd_level span{float:left;width:20px;height:20px;line-height:20px;color:#000;text-align:center;margin:7px 2px 0 0;background-color:#eee}
+.panel_py .iel .pwd_level .lv1{color:#fff;background-color:#f30}
+.panel_py .iel .pwd_level .lv2{color:#fff;background-color:#f93}
+.panel_py .iel .pwd_level .lv3{color:#fff;background-color:#3c6}
+.panel_py .iel .note_msg{line-height:18px;min-height:18px;font-size:12px;color:#999;margin-left:124px;clear:both}
+.panel_py .iel .note_msg .error{position:static;line-height:18px;color:#ff6000;margin:0;padding-left:18px;background:url(//img01.51jobcdn.com/im/2016/form/error.png) left 2px no-repeat}
+.panel_py .iel .note_msg .error a{color:#00457d}
+.panel_py .iel .note_msg .error a:hover{color:#ff6000}
+.panel_py .iel.on .ul{width:268px;max-height:120px;top:39px;left:120px}
+.panel_py .i2 .iel{float:left}
+.panel_py .i2 .itext_in{width:370px}
+.panel_py .i2 .iel label{width:80px;color:#666}
+.panel_py .i2 .itext,.panel_py .i2 .itextarea{width:338px}
+.panel_py .i2 .note_msg{margin-left:90px}
+.panel_py .i2 .itext.short{width:240px}
+.panel_py .btm_note{font-size:12px;font-family:"Microsoft YaHei";color:#999;text-align:center;padding:10px 0;background-color:#fff}
+.panel_py .btm_note .alink,.panel_py .note_msg .alink{color:#00457d;margin-left:5px;padding-right:15px}
+.panel_py .btm_note .alink:hover,.panel_py .note_msg .alink:hover{color:#ff6000}
+.panel_py .alink_msg{display:none;line-height:24px;font-size:12px;color:#999;padding:10px 0 10px 30px;background-color:#fff;border-top:1px solid #e8e8e8}
+.panel_py .alink_msg.on{display:block}
+.panel_py .jmsg{padding:0 20px 20px}
+/*结果提示*/
+.panel_py .do_result .tl{line-height:45px;font-weight:bold;font-size:18px;color:#f60;text-align:center;padding-bottom:10px;border-bottom:1px dashed #c1c1c1}
+.panel_py .do_result .ls{line-height:24px;font-size:12px;color:#6c6c6c;padding:10px 10px 20px}
+.panel_py .do_result .ls p{margin-bottom:10px}
+.panel_py .do_result .ls img{vertical-align:middle;margin-right:5px}
+.panel_py .do_result .ls a{color:#00457d}
+.panel_py .do_result .ls a:hover{color:#ff6000}
+.panel_py .em{display:inline-block;max-width:175px;vertical-align:top;#vertical-align:middle}
+/*标签*/
+.panel_tags{position:relative;padding:15px 10px 5px;background-color:#fff;border-bottom:1px solid #e8e8e8}
+.panel_tags .tin{overflow:hidden}
+.panel_tags .error{display:none;position:absolute;width:154px;height:28px;line-height:28px;font-size:12px;text-indent:34px;color:#ff6000;overflow:hidden;top:50%;right:15px;margin-top:-14px;background:url(//img01.51jobcdn.com/im/2016/pop/tag_error_box.png) no-repeat}
+.panel_tags.mk{padding-right:180px}
+.panel_tags.mk .error{display:block}
+.shield_tags .error{display:none;position:absolute;width:161px;height:28px;line-height:28px;font-size:12px;font-weight:normal;text-indent:32px;color:#ff6000;overflow:hidden;top:50%;right:60px;margin-top:-14px;background:url(//img01.51jobcdn.com/im/2016/pop/tag_error_box3.png) 0 -30px no-repeat}
+.shield_tags.mk{padding-right:230px}
+.shield_tags.mk .error{display:block}
+.custom_tags .errbox{display:none;position:absolute;top:50%;right:60px;margin-top:-14px;padding-left:7px;background:url(//img01.51jobcdn.com/im/2016/pop/icon_tags.png) 0 center no-repeat}
+.custom_tags .errbox .err{font-weight:normal;padding:5px 7px 5px 30px;background-position:9px 7px;border:1px solid #ccc;border-left:0 none;border-radius:3px}
+.custom_tags.mk .errbox{display:block}
+.panel_lnp .state{position:absolute;font-weight:bold;color:#ff6000;top:0;right:60px}
+/*照片上传*/
+.panel_pin{padding:15px 15px 29px;background-color:#fff}
+.panel_pin .l{float:left;width:296px}
+.panel_pin .r{float:left;width:159px;margin-left:15px}
+.panel_pin .nt{line-height:24px;font-size:12px;margin-bottom:10px}
+.panel_pin .tl{width:90px;font-size:12px;text-align:center;margin:0 auto 5px}
+.panel_pin .buox{width:140px;height:75px;margin:0 auto;padding-top:30px}
+.panel_pin .buox .note{display:block;line-height:18px;font-size:12px;margin-top:5px;padding-left:18px;background:url(//img01.51jobcdn.com/im/2016/pop/note.png) left 2px no-repeat}
+.panel_pin .flbut{position:relative;width:138px;height:28px;line-height:28px;text-align:center;color:#00457d;cursor:pointer;overflow:hidden;background-color:#fff;border:1px solid #b0b0b0;
+	-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;border-radius:3px}
+.panel_pin .flbut:hover{background-color:#eee}
+.panel_pin .flbut input{position:absolute;font-size:60px;opacity:0;filter:alpha(opacity=0);cursor:pointer;top:0;right:0;margin-left:-180px;margin-top:-5px;z-index:2}
+.panel_pin .flbut span{position:relative;display:block;font-size:14px;z-index:1}
+.panel_u_photo{width:296px;height:296px}
+.panel_u_photo img{max-width:100%;max-height:100%;background-color:#ddd}
+.panel_r_photo{width:90px;height:110px;margin:0 auto;border:2px solid #e8e8e8}
+.panel_r_photo.photo2{position:relative;height:90px;overflow:hidden;margin-top:35px;border-radius:50%}
+.panel_r_photo.photo2 img{position:absolute;top:-10px;left:0}
+.pop_image_select-border1,.pop_image_select-border3{background:url(//img01.51jobcdn.com/im/2016/pop/border-v.gif) repeat-y left top}
+.pop_image_select-border3{background-position:right top}
+.pop_image_select-border2,.pop_image_select-border4{background:url(//img01.51jobcdn.com/im/2016/pop/border-h.gif) repeat-x left top}
+.pop_image_select-border4{background-position:left bottom}
+.pop_image_select-outer{background-color:#000;filter:alpha(opacity=50);opacity:0.5}
+/*屏蔽公司*/
+.panel_lnp .terror{position:absolute;width:161px;height:28px;line-height:28px;font-size:12px;color:#f60;text-indent:34px;top:50%;right:60px;margin-top:-14px;background:url(//img01.51jobcdn.com/im/2016/pop/tag_error_box2.png) no-repeat}
+.panel_lnp .aglist{height:312px;overflow-y:auto;padding-top:10px;background-color:#fff}
+.panel_lnp .aglist span{float:left;width:50%;*width:48%;font:12px/26px "Microsoft Yahei"}
+.panel_lnp .aglist input{margin:0 5px 0 10px}
+.panel_lnp .aglist a:hover{color:#ff6000}
+.panel_py .search{min-height:30px;line-height:30px;margin-bottom:10px}
+.panel_py .search.s2{position:relative;padding-right:101px}
+.panel_py .search input{width:100%;height:28px;text-indent:10px;background-color:#fff;border:1px solid #e8e8e8}
+.panel_py .search .p_but{position:absolute;width:98px;top:0;right:0;margin:0;padding:0;border-radius:0}
+.panel_py .panel_box li{position:relative;float:left;width:48%;*width:44%;line-height:25px;font-size:12px;color:#333;white-space:nowrap;margin-right:2%}
+.panel_py .panel_box li .check{float:left;margin-top:5px}
+.panel_py .panel_box li a{position:relative;display:block;width:87%;*width:86%;color:#333;text-overflow:ellipsis;-o-text-overflow:ellipsis;white-space:nowrap;overflow:hidden;margin-left:20px;padding-right:20px;border-bottom:1px solid #e8e8e8}
+.panel_py .panel_box li a:visited,.panel_py .panel_box li a:active,.panel_py .panel_box li a:link{color:#333}
+.panel_py .panel_box li a:hover{color:#ff6000}
+.panel_py .panel_box .icon_gray2{position:absolute;width:16px;height:16px;top:6px;right:0;background:url(//img01.51jobcdn.com/im/2016/icon/icon_gray2.png) right center no-repeat}
+.panel_py .panel_box hr{height:1px;background-color:#ddd;border:0 none}
+.panel_ht .panel_box,.panel_ht2 .panel_box{position:relative;height:330px;overflow-y:auto}
+.panel_ht2 .panel_box{height:294px;padding:0 16px 6px}
+.panel_py .panel_none{font-size:12px;color:#999}
+.panel_py .none{line-height:130px;font-size:14px;text-align:center;color:#999;padding:100px 0;background-color:#fff}
+/*底部按钮*/
+.but_box{text-align:center;padding:14px 0;background-color:#f7f7f7;border-top:1px solid #e8e8e8}
+.but_box.b2{background-color:#fff;border-top:0 none}
+.but_box.alink a.p_but{font-size:14px;font-family:"Microsoft YaHei";color:#fff;text-decoration:none}
+
+/*其他-不定义*/
+.layer_back_drop_class{filter:alpha(opacity=70);opacity:0.7;background:#000000 none repeat scroll 0 0}
+.layer_class{}
+.element_hide{display:none}
+.panel_tags.mk .element_hide{display:none}
+
+/*地区选择*/
+.pop-city{width:600px;padding-bottom:15px;background-color:#fff}
+.pop-city a:visited,.pop-city a:link{font-family:'Microsoft Yahei'}
+.pop-city .tle{position:relative;height:44px;line-height:44px;font-size:18px;font-weight:bold;font-family:"Microsoft YaHei";color:#333;text-indent:15px;background-color:#FFF;border-top:4px solid #FF6000;border-bottom:1px solid #e8e8e8}
+.pop-city .close{position:absolute;width:16px;height:16px;cursor:pointer;top:0;right:0;margin:14px;background:url(//img01.51jobcdn.com/im/2016/pop/icon_close2.png) no-repeat}
+.pop-city .ht{position:relative;float:left;color:#ff6000;margin:20px 15px 10px;*padding-bottom:20px;padding-left:90px}
+.pop-city .ht label{position:absolute;width:90px;font-size:14px;font-weight:bold;text-align:center;top:0;left:0}
+.pop-city .ht a{float:left;font-size:14px;color:#ff6000;white-space:nowrap;margin:0 20px 10px 0}
+.pop-city .ht a:hover{text-decoration:underline}
+.pop-city .cbox{position:relative;height:304px;overflow:hidden;clear:both;margin:0 15px 10px;padding-left:90px;border:1px solid #e8e8e8}
+.pop-city .cbox ul{position:absolute;width:90px;font-size:14px;color:#666;left:0;background-color:#eee}
+.pop-city .cbox li{height:38px;line-height:38px;font-size:14px;text-align:center;text-indent:-3px;cursor:pointer;border-left:4px solid #eee}
+.pop-city .cbox li.on{color:#ff6000;background-color:#fff;border-left-color:#ff6000}
+.pop-city .clst{position:absolute;width:478px;height:304px;top:0;right:0;overflow-y:auto}
+.pop-city .clst span{float:left;line-height:38px;min-width:21%;*min-width:14%;color:#666;font-size:14px;text-align:center;padding:0 2%}
+.pop-city .clst span a{font-size:14px;color:#666}
+.pop-city .clst span a:hover{color:#ff6000}
+.pop-city .btline{position:relative;height:1px;font-size:0;top:-1px;background-color:#ddd}
+
+/*编辑求职信*/
+.panel_py .c{position:relative;float:left;width:572px;min-height:30px;line-height:30px;margin-bottom:10px;padding-left:96px}
+.panel_py .c label{position:absolute;width:80px;color:#666;text-align:right;top:0;left:0}
+.panel_py .c label em{position:absolute;width:15px;text-align:center;color:#ff6000;font-style:normal;top:2px}
+.panel_py .c .textarea{height:120px;overflow:hidden;border:1px solid #e8e8e8}
+.panel_py .c .textarea textarea{float:left;width:550px;height:120px;line-height:20px;border:0 none}
+.panel_py .c.c2{float:none;width:470px;padding:10px 0 0 0}
+.panel_py .c.c2 .l{width:192px}
+.panel_py .c.c2 .l2{float:left;width:130px;margin-left:15px}
+.panel_py .c.c2 .ul{top:28px}
+.panel_py .c.c2 .err{#min-height:18px}
+.panel_py .c.c4 .textarea{width:550px}
+.panel_py .hlf4{height:30px;line-height:30px;font-size:14px}
+.panel_py .hlf4 label{color:#333}
+.panel_py .hlf4 input[type="checkbox"]{vertical-align:-1px;*vertical-align:2px;margin-right:5px;*margin-left:-3px}
+.panel_py .hlf4 .cm{color:#666;margin-left:20px}
+.panel_py .hlf4 .hp{display:inline-block;width:20px;height:18px;vertical-align:middle;cursor:pointer;background:url(//img01.51jobcdn.com/im/2016/form/form.png) 0 -102px no-repeat}
+.panel_py .hlf4 .hp:hover{background-position:-20px -102px}
+
+/*人事来信*/
+.panel_py .cell{padding-top:15px;background-color:#fff}
+.panel_py .cell h3{height:30px;line-height:30px}
+.panel_py .cell h3 p{float:left;max-width:324px;font-size:16px;font-weight:bold;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.panel_py .cell h3 span{float:right;font-size:12px;font-weight:normal;color:#999}
+.panel_py .cell .bbox{position:relative;padding-top:5px;overflow:hidden}
+.panel_py .cell .del{position:absolute;font-size:12px;color:#00457d;top:0;right:0;cursor:pointer}
+.panel_py .cell .del:hover{color:#ff6000}
+.panel_py .cell .bubble{float:left;max-width:390px;line-height:20px;font-size:12px;word-wrap:break-word;padding:3px 5px;border:1px solid #e8e8e8;border-radius:2px}
+.panel_py .cell .arr{position:absolute;width:20px;height:10px;top:-4px;left:0;background:url(//img01.51jobcdn.com/im/2017/my/ns.png) center;background-size:55px auto;background-position:-9px -78px;z-index:2}
+.panel_py .pannel_gray,.panel_py .pannel_gray .but_box{background-color:#f5f5f5;border-top:1px solid #e8e8e8}
+.panel_py .pannel_gray .but_box{border-top:0 none}
+.panel_py .pannel_gray .textarea{width:470px;height:100px;overflow:hidden;padding:0;border:1px solid #e8e8e8}
+.panel_py .pannel_gray textarea{width:450px;height:80px;padding:10px;background-color:#fff;border:0 none}
+.panel_py .pannel_gray .err{float:left;line-height:30px !important;clear:none;padding-top:0;background-position:0 8px}
+.panel_py .tbtm{height:30px;line-height:30px;font-size:12px}
+.panel_py .tbtm .wlst{float:left}
+.panel_py .tbtm .cunt{float:right;color:#999}
+
+/*职位推荐*/
+.panel_ht3 .panel_box{position:relative;height:522px;overflow-y:auto}
+.panel_ht3 .el{height:40px;line-height:40px;font-size:14px;overflow:hidden;margin:0 15px;border-bottom:1px dotted #e8e8e8}
+.panel_ht3 .el .t1,.panel_ht3 .el .t2,.panel_ht3 .el .t3,.panel_ht3 .el .t4,.panel_ht3 .el .t5{float:left;height:40px;line-height:40px !important;font-size:14px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-right:20px}
+.panel_ht3 .el .t1{width:140px;color:#000}
+.panel_ht3 .el .t1 a,.panel_ht3 .el .t2 a{color:#000;font-size:14px;text-decoration:none}
+.panel_ht3 .el .t1 a:hover,.panel_ht3 .el .t2 a:hover{color:#ff6000}
+.panel_ht3 .el .t2{width:180px;color:#333}
+.panel_ht3 .el .t2 a{color:#333}
+.panel_ht3 .el .t3,.panel_ht3 .el .t5{width:97px;color:#888}
+.panel_ht3 .el .t4{width:115px;color:#ff6000}
+.panel_ht3 .el .t5{width:40px;padding-right:0}
+
+/*举报*/
+.panel_py .panel_rdo{float:left;width:160px}
+.panel_py .panel_rdo li{display:block;line-height:20px;font-size:14px;margin-bottom:16px;padding-left:10px}
+.panel_py .panel_rt{float:right;width:489px;padding-left:20px;border-left:1px dotted #e8e8e8}
+.panel_py .panel_rt .e{line-height:30px;color:#333;margin-top:10px}
+.panel_py .panel_rt .tit{color:#666;margin-bottom:5px}
+.panel_py .panel_rt .tit span{font-size:12px;color:#999}
+.panel_py .panel_rt .textarea{width:467px;height:98px;border:1px solid #e8e8e8}
+.panel_py .panel_rt textarea{width:100%;height:100%;background-color:#fff;border:0 none}
+.panel_py .panel_rt label{float:left;height:30px;line-height:30px}
+.panel_py .panel_rt .txt{float:left;width:316px;height:28px;line-height:28px;text-align:left;margin:0 10px;padding:0 10px;border:1px solid #e8e8e8}
+.panel_py .panel_rt .code{vertical-align:top}
+.panel_py .panel_rt .upload{height:100px}
+.panel_py .panel_rt .up{position:relative;float:left;width:150px;height:100px;cursor:pointer;margin-left:19px;background:url(//img01.51jobcdn.com/im/2016/icon/icon_up.png) 60px 35px #eee no-repeat}
+.panel_py .panel_rt .up:first-child{margin-left:0}
+.panel_py .panel_rt .up div{position:relative;width:100%;height:100%;overflow:hidden}
+.panel_py .panel_rt .up input{position:absolute;font-size:100px;cursor:pointer;top:0;right:0;
+	-webkit-opacity:0;-moz-opacity:0;-o-opacity:0;opacity:0;filter:alpha(opacity:0);#zoom:1}
+.panel_py .panel_rt .up em{position:absolute;display:none;width:14px;height:14px;cursor:pointer;top:-6px;right:-6px;background:url(//img01.51jobcdn.com/im/2016/icon/icon_delete.png) center no-repeat}
+.panel_py .panel_rt .up.del em{display:block;z-index:2}
+.panel_py .panel_rt .up img{position:absolute;width:100%;height:100%;cursor:auto;top:0;left:0;z-index:1}
+
+/*国际短信通道*/
+.panel_py .coun{position:relative;z-index:10}
+.panel_py .coun .in{height:28px;cursor:pointer}
+.panel_py .coun .itext{width:172px;border-left:0 none}
+.panel_py .country-list{position:relative;float:left;width:76px;height:28px;line-height:28px;border:1px solid #e8e8e8;border-right:0 none;z-index:2}
+.panel_py .country-list input{float:left;width:63px;height:22px;text-indent:6px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden;pointer-events:none;margin-top:3px;background-color:#fff;border:0 none}
+.panel_py .country-list input::-webkit-input-placeholder{color:#333}
+.panel_py .country-list input:-moz-placeholder{color:#333}
+.panel_py .country-list input:-ms-input-placeholder{color:#333}
+.panel_py .country-list input.nu{width:56px;padding-right:18px;text-align:center;text-indent:0;background:url(//img01.51jobcdn.com/im/2016/icon/arrow.png) 56px 3px no-repeat;border-right:1px solid #e8e8e8}
+.panel_py .country-list ul{width:146px;height:240px;overflow:auto;margin:1px 0 0 -1px;background-color:#fff;border:1px solid #e8e8e8;border-top:0 none}
+.panel_py .country-list ul li{height:30px;line-height:30px;font-size:12px;color:#666;padding-right:6px;cursor:pointer}
+.panel_py .country-list ul li:hover{background-color:#f5f5f5}
+.panel_py .country-list ul li.on{color:#fff;background-color:#fe9f1f}
+.panel_py .country-list ul li i,.country-list ul li span{float:left;width:60%;height:30px}
+.panel_py .country-list ul li span{text-indent:6px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;overflow:hidden}
+.panel_py .country-list ul li i{width:40%;font-style:normal;text-align:right}
+.panel_py .country-list ul .tl{font-weight:bold;color:#333;text-indent:6px;cursor:default;border-top:1px solid #e8e8e8}
+.panel_py .country-list ul .tl:first-child{border-top:0 none}
+.panel_py .country-list ul .tl:hover{background-color:#fff}
+
+/*自定义专业*/
+.panel_py .panel_celt{padding:0 15px 10px;background-color:#fff}
+.panel_py .panel_celt .celt{border-top:1px dotted #e8e8e8}
+.panel_py .panel_celt .celt:first-child{border-top:none}
+.panel_py .panel_celt .celt .tit{font-weight:bold;font-size:12px;color:#999;padding:10px 0}
+.panel_py .panel_celt .celt .ttag{margin:0 15px 15px 0;padding-right:6px;border-color:#e8e8e8}
+.panel_py .panel_celt .celt .ttag.on{color:#fff;background-color:#ff9f20;border-color:#ff9f20}
+.panel_py .panel_celt .celt .search{margin-bottom:0}
+
+/*简历代投*/
+.panel_py .check_box{position:relative;color:#999;font-size:12px;padding:13px 0 8px 15px;border-top:1px solid #e8e8e8;background-color:#fff}
+.panel_py .check_box input{display:none}
+.panel_py .check_box .err{position:absolute;left:15px;top:30px}

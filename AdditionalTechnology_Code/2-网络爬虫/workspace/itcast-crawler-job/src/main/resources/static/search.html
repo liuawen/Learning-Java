@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <link rel="icon" href="https://search.51job.com/favicon.ico" type="image/x-icon">
+    <title>招聘，求职</title>
+    <meta name="description" content="提供最新最全的全国招聘，求职信息。网聚全国各城市的人才信息，找好工作。">
+    <meta name="keywords" content="找工作,求职,人才,招聘">
+    <meta name="mobile-agent" content="format=html5; url=https://m.51job.com/search/joblist.php?jobarea=000000&amp;keyword=&amp;partner=webmeta">
+    <meta name="mobile-agent" content="format=xhtml; url=https://m.51job.com/search/joblist.php?jobarea=000000&amp;keyword=&amp;partner=webmeta">
+    <meta name="robots" content="all">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link href="./source/base.css" rel="stylesheet" type="text/css">
+    <link href="./source/panel-pop.css" rel="stylesheet" type="text/css">
+    <link href="./source/form.css" rel="stylesheet" type="text/css">
+    <link href="./source/dw_joblist.css" rel="stylesheet" type="text/css">
+    <script language="javascript">
+        var _tkd = _tkd || []; //点击量统计用
+        var lang = [];
+        var supporthttps = 1; //浏览器是否支持https
+        var currenthttps = (window.location.protocol === 'https:') ? '1' : '0'; //当前是否为https
+        var systemtime = 1527313759036;
+        var d_system_client_time = systemtime - new Date().getTime();
+        var trackConfig = {
+            'guid': '15271555683871810050',
+            'ip': '106.121.62.225',
+            'accountid': '',
+            'refpage': '/',
+            'domain': 'search.51job.com',
+            'pageName': 'index.php',
+            'partner': 'www_baidu_com'
+        };
+        if (window.localStorage instanceof Object)
+        {
+        }
+        window.cfg = {
+            domain : {
+                my : 'http://my.51job.com',
+                login : 'https://login.51job.com',
+                search : 'https://search.51job.com',
+                www : '//www.51job.com',
+                jobs : 'https://jobs.51job.com',
+                jianli : 'https://jianli.51job.com',
+                company : '//company.51job.com',
+                i : '//i.51job.com',
+                jc : '//jc.51job.com',
+                map : 'https://map.51job.com',
+                m : 'https://m.51job.com',
+                cdn : '//js.51jobcdn.com',
+                img : '//img04.51jobcdn.com'
+            }
+        };
+
+        document.write('<scr'+'ipt type="text/javascript" src="//js.51jobcdn.com/in/js/2016/pointtrack.js?20180330"></sc'+'ript>');
+        window.cfg.lang = 'c';
+        window.cfg.fullLang = 'Chinese';
+        window.cfg.url = {
+            root : 'https://search.51job.com/jobsearch',
+            image : '//img05.51jobcdn.com/im/2009',
+            image_search : '//img05.51jobcdn.com/im/2009/search',
+            i : '//i.51job.com'
+        }
+        window.cfg.fileName = 'index.php';
+        window.cfg.root = 'https://search.51job.com/jobsearch';
+        window.cfg.root_userset_ajax = '//i.51job.com/userset/ajax';
+        window.cfg.isSearchDomain = '1';
+        window.cfg.langs = {
+            sqzwml : 'applyjob',
+            qzzwqdg : '请在要选择的职位前打勾!',
+            myml : 'my',
+            ts_qxjzw : '请选择职位',
+            queren : '确认',
+            guanbi : '关闭',
+            nzdnxj : '您最多能选择',
+            xiang : '项',
+            xzdq : '选择地区',
+            xj_xg : '选择/修改',
+            zycs : '主要城市',
+            sysf : '所有省份',
+            tspd : '特殊频道',
+            buxian : '不限',
+            qingxj : '请选择',
+            yixuan : '已选',
+            znlb : '职能类别',
+            hylb : '行业类别',
+            gzdd : '工作地点',
+            quanbu : '全部',
+            zhineng : '职能',
+            hangye : '行业',
+            didian : '地点',
+            qsrgjz : '请输入关键字',
+            srpcgjz : '输入排除关键字'
+        }
+        window.cfg.stype = '1';
+        window.cfg.isJobview = '1';
+    </script><script type="text/javascript" src="./source/pointtrack.js"></script>
+
+    <script language="javascript" src="./source/CV_QuickApply.js"></script>
+    <script language="javascript" src="./source/Qpost_set.js"></script>
+    <script language="javascript" src="./source/jquery.js"></script>
+    <script language="javascript" src="./source/jquery.placeholder.min.js"></script>
+    <script language="javascript" src="./source/JsBase.js"></script>
+    <script language="javascript" src="./source/login.js"></script>
+    <script language="javascript" src="./source/search_data_c.js"></script>
+    <script language="javascript" src="./source/search_box.js"></script>
+    <script language="javascript" src="./source/search_result.js"></script>
+    <script language="javascript" src="./source/mobile.js"></script>
+    <script language="javascript" src="./source/delivery.js"></script>
+    <script language="javascript" src="./source/search.js"></script>
+    <script language="javascript" src="./source/my_collection.js"></script>
+    <script language="javascript" src="./source/layer.js"></script>
+    <script language="javascript" src="./source/common_layer.js"></script>
+    <script language="javascript" src="./source/common_select.js"></script>
+    <script language="javascript" src="./source/layer_main_map.js"></script>
+    <script language="javascript" src="./source/layer_main.js"></script>
+    <script language="javascript" src="./source/layer_main_navigation.js"></script>
+    <script language="javascript" src="./source/association_main.js"></script>
+    <script language="javascript" src="./source/common_association.js"></script>
+    <script language="javascript" src="./source/merge_data_c.js"></script>
+    <script language="javascript" src="./source/area_array_c.js"></script>
+    <script language="javascript" src="./source/layer_c.js"></script>
+    <script language="javascript" src="./source/indtype_array_c.js"></script>
+    <script language="javascript" src="./source/funtype_array_c.js"></script>
+    <script language="javascript" src="./source/pointtrack_search.js"></script>
+    <script type="text/javascript" src="./source/trackData.js"></script></head>
+<body>
+<div class="header">
+    <!-- bar start -->
+    <div class="bar">
+        <div class="in">
+            <div class="language">
+                <ul id="languagelist">
+                    <li class="tle"><span class="list">简</span><em class="icon_arrow"></em></li>
+                    <li><a href="http://big5.51job.com/gate/big5/www.51job.com/" rel="external nofollow">繁</a></li>
+                    <li class="last"><a href="https://www.51job.com/default-e.php" rel="external nofollow">EN</a></li>
+                    <script language="javascript">
+                        if(location.hostname == "big5.51job.com")
+                        {
+                            $('#languagelist li span').html("繁");
+                            $('#languagelist li:nth-child(2) a').html("简");
+                            $('#languagelist li:nth-child(2) a').attr('href','javascript:void(0)');
+                            $('#languagelist li:nth-child(2) a').click(function(){location.href=window.cfg.domain.www});
+                            $('#languagelist li:nth-child(3) a').attr('href','javascript:void(0)');
+                            $('#languagelist li:nth-child(3) a').click(function(){location.href=window.cfg.domain.www+"/default-e.php"});
+                        }
+                    </script>
+                </ul>
+            </div>
+            <span class="l">|</span>
+            <div class="app">
+                <ul>
+                    <li><em class="e_icon"></em><a href="http://app.51job.com/index.html">APP下载</a><em class="icon_arrow"></em></li>
+                    <li>
+                        <img width="80" height="80" src="./source/web_top.png" alt="app download">
+                        <p><a href="http://app.51job.com/index.html">APP下载</a></p>
+                    </li>
+                </ul>
+            </div>
+            <p class="rlk">
+                <a href="https://jobs.51job.com/" target="_blank">招聘信息</a>
+                <span class="l">|</span>
+                <a href="https://ehire.51job.com/" target="_blank">企业服务</a>
+            </p>
+            <div class="uer">
+                <p class="op">
+                    <a href="https://login.51job.com/login.php?lang=c&amp;url=http%3A%2F%2Fsearch.51job.com%2Flist%2F000000%2C000000%2C0000%2C00%2C9%2C99%2C%252520%2C2%2C1.html%3Flang%3Dc%26stype%3D%26postchannel%3D0000%26workyear%3D99%26cotype%3D99%26degreefrom%3D99%26jobterm%3D99%26companysize%3D99%26providesalary%3D99%26lonlat%3D0%252C0%26radius%3D-1%26ord_field%3D0%26confirmdate%3D9%26fromType%3D%26dibiaoid%3D0%26address%3D%26line%3D%26specialarea%3D00%26from%3D%26welfare%3D" rel="external nofollow">登录</a> / <a href="https://login.51job.com/register.php?lang=c&amp;url=http%3A%2F%2Fsearch.51job.com%2Flist%2F000000%2C000000%2C0000%2C00%2C9%2C99%2C%252520%2C2%2C1.html%3Flang%3Dc%26stype%3D%26postchannel%3D0000%26workyear%3D99%26cotype%3D99%26degreefrom%3D99%26jobterm%3D99%26companysize%3D99%26providesalary%3D99%26lonlat%3D0%252C0%26radius%3D-1%26ord_field%3D0%26confirmdate%3D9%26fromType%3D%26dibiaoid%3D0%26address%3D%26line%3D%26specialarea%3D00%26from%3D%26welfare%3D" rel="external nofollow">注册</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <!-- top end -->
+    <!-- 英文版为body添加class -->
+    <script>
+    </script>
+    <!-- nag start -->
+    <div class="pop-city" style="display:none;position: absolute; z-index: 1000;" id="area_channel_layer">
+        <div class="tle">
+            地区选择        <em class="close" onclick="jvascript:$(&#39;#area_channel_layer,#area_channel_layer_backdrop&#39;).hide();"></em>
+        </div>
+        <div class="pcon">
+            <div class="ht">
+                <label>热门城市</label>
+                <a href="https://www.51job.com/beijing/">北京</a>
+                <a href="https://www.51job.com/shanghai/">上海</a>
+                <a href="https://www.51job.com/guangzhou/">广州</a>
+                <a href="https://www.51job.com/shenzhen/">深圳</a>
+                <a href="https://www.51job.com/wuhan/">武汉</a>
+                <a href="https://www.51job.com/xian/">西安</a>
+                <a href="https://www.51job.com/hangzhou/">杭州</a>
+                <a href="https://www.51job.com/nanjing/">南京</a>
+                <a href="https://www.51job.com/chengdu/">成都</a>
+                <a href="https://www.51job.com/chongqing/">重庆</a>
+            </div>
+            <div class="cbox">
+                <ul id="area_channel_layer_list">
+                    <li class="on" onclick="areaChannelChangeTab(&#39;abc&#39;, this)">A B C</li>
+                    <li onclick="areaChannelChangeTab(&#39;def&#39;, this)">D E F</li>
+                    <li onclick="areaChannelChangeTab(&#39;gh&#39;, this)">G H</li>
+                    <li onclick="areaChannelChangeTab(&#39;jkl&#39;, this)">J K L</li>
+                    <li onclick="areaChannelChangeTab(&#39;mnp&#39;, this)">M N P</li>
+                    <li onclick="areaChannelChangeTab(&#39;qrs&#39;, this)">Q R S</li>
+                    <li onclick="areaChannelChangeTab(&#39;twx&#39;, this)">T W X</li>
+                    <li onclick="areaChannelChangeTab(&#39;yz&#39;, this)">Y Z</li>
+                </ul>
+                <div class="clst" id="area_channel_layer_all">
+                    <div class="e" name="area_channel_div_abc">
+                        <span><a href="https://www.51job.com/anshan/">鞍山</a></span>
+                        <span><a href="https://www.51job.com/anqing/">安庆</a></span>
+                        <span><a href="https://www.51job.com/anyang/">安阳</a></span>
+                        <span><a href="https://www.51job.com/beijing/">北京</a></span>
+                        <span><a href="https://www.51job.com/baotou/">包头</a></span>
+                        <span><a href="https://www.51job.com/baoding/">保定</a></span>
+                        <span><a href="https://www.51job.com/bangbu/">蚌埠</a></span>
+                        <span><a href="https://www.51job.com/baoji/">宝鸡</a></span>
+                        <span><a href="https://www.51job.com/binzhou/">滨州</a></span>
+                        <span><a href="https://www.51job.com/changchun/">长春</a></span>
+                        <span><a href="https://www.51job.com/changsha/">长沙</a></span>
+                        <span><a href="https://www.51job.com/chengdu/">成都</a></span>
+                        <span><a href="https://www.51job.com/chongqing/">重庆</a></span>
+                        <span><a href="https://www.51job.com/changzhou/">常州</a></span>
+                        <span><a href="https://www.51job.com/changde/">常德</a></span>
+                        <span><a href="https://www.51job.com/changshu/">常熟</a></span>
+                        <span><a href="https://www.51job.com/cangzhou/">沧州</a></span>
+                        <span><a href="https://www.51job.com/chaozhou/">潮州</a></span>
+                        <span><a href="https://www.51job.com/chenzhou/">郴州</a></span>
+                        <span><a href="https://www.51job.com/chifeng/">赤峰</a></span>
+                        <span><a href="https://www.51job.com/chuzhou/">滁州</a></span>
+                        <span><a href="https://www.51job.com/changzhi/">长治</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_def" style="display:none">
+                        <span><a href="https://www.51job.com/dalian/">大连</a></span>
+                        <span><a href="https://www.51job.com/dongguan/">东莞</a></span>
+                        <span><a href="https://www.51job.com/dandong/">丹东</a></span>
+                        <span><a href="https://www.51job.com/daqing/">大庆</a></span>
+                        <span><a href="https://www.51job.com/dazhou/">达州</a></span>
+                        <span><a href="https://www.51job.com/datong/">大同</a></span>
+                        <span><a href="https://www.51job.com/deyang/">德阳</a></span>
+                        <span><a href="https://www.51job.com/dezhou/">德州</a></span>
+                        <span><a href="https://www.51job.com/dongying/">东营</a></span>
+                        <span><a href="https://www.51job.com/eerduosi/">鄂尔多斯</a></span>
+                        <span><a href="https://www.51job.com/ezhou/">鄂州</a></span>
+                        <span><a href="https://www.51job.com/fuzhou/">福州</a></span>
+                        <span><a href="https://www.51job.com/foshan/">佛山</a></span>
+                        <span><a href="https://www.51job.com/fushun/">抚顺</a></span>
+                        <span><a href="https://www.51job.com/fz/">抚州</a></span>
+                        <span><a href="https://www.51job.com/fuyang/">阜阳</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_gh" style="display:none">
+                        <span><a href="https://www.51job.com/guangzhou/">广州</a></span>
+                        <span><a href="https://www.51job.com/guiyang/">贵阳</a></span>
+                        <span><a href="https://www.51job.com/ganzhou/">赣州</a></span>
+                        <span><a href="https://www.51job.com/guangan/">广安</a></span>
+                        <span><a href="https://www.51job.com/guangyuan/">广元</a></span>
+                        <span><a href="https://www.51job.com/guigang/">贵港</a></span>
+                        <span><a href="https://www.51job.com/guilin/">桂林</a></span>
+                        <span><a href="https://www.51job.com/harbin/">哈尔滨</a></span>
+                        <span><a href="https://www.51job.com/hangzhou/">杭州</a></span>
+                        <span><a href="https://www.51job.com/hefei/">合肥</a></span>
+                        <span><a href="https://www.51job.com/haikou/">海口</a></span>
+                        <span><a href="https://www.51job.com/huhhot/">呼和浩特</a></span>
+                        <span><a href="https://www.51job.com/huizhou/">惠州</a></span>
+                        <span><a href="https://www.51job.com/hengyang/">衡阳</a></span>
+                        <span><a href="https://www.51job.com/huaian/">淮安</a></span>
+                        <span><a href="https://www.51job.com/huzhou/">湖州</a></span>
+                        <span><a href="https://www.51job.com/handan/">邯郸</a></span>
+                        <span><a href="https://www.51job.com/hanzhong/">汉中</a></span>
+                        <span><a href="https://www.51job.com/heyuan/">河源</a></span>
+                        <span><a href="https://www.51job.com/heze/">菏泽</a></span>
+                        <span><a href="https://www.51job.com/hengshui/">衡水</a></span>
+                        <span><a href="https://www.51job.com/huaihua/">怀化</a></span>
+                        <span><a href="https://www.51job.com/huaibei/">淮北</a></span>
+                        <span><a href="https://www.51job.com/huainan/">淮南</a></span>
+                        <span><a href="https://www.51job.com/huanggang/">黄冈</a></span>
+                        <span><a href="https://www.51job.com/huangshi/">黄石</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_jkl" style="display:none">
+                        <span><a href="https://www.51job.com/jinan/">济南</a></span>
+                        <span><a href="https://www.51job.com/jiaxing/">嘉兴</a></span>
+                        <span><a href="https://www.51job.com/jinhua/">金华</a></span>
+                        <span><a href="https://www.51job.com/jilin/">吉林</a></span>
+                        <span><a href="https://www.51job.com/jiangmen/">江门</a></span>
+                        <span><a href="https://www.51job.com/jingzhou/">荆州</a></span>
+                        <span><a href="https://www.51job.com/jining/">济宁</a></span>
+                        <span><a href="https://www.51job.com/jiujiang/">九江</a></span>
+                        <span><a href="https://www.51job.com/jian/">吉安</a></span>
+                        <span><a href="https://www.51job.com/jiaozuo/">焦作</a></span>
+                        <span><a href="https://www.51job.com/jieyang/">揭阳</a></span>
+                        <span><a href="https://www.51job.com/jinzhou/">锦州</a></span>
+                        <span><a href="https://www.51job.com/jinzhong/">晋中</a></span>
+                        <span><a href="https://www.51job.com/jingmen/">荆门</a></span>
+                        <span><a href="https://www.51job.com/kunming/">昆明</a></span>
+                        <span><a href="https://www.51job.com/kunshan/">昆山</a></span>
+                        <span><a href="https://www.51job.com/kaifeng/">开封</a></span>
+                        <span><a href="https://www.51job.com/lanzhou/">兰州</a></span>
+                        <span><a href="https://www.51job.com/langfang/">廊坊</a></span>
+                        <span><a href="https://www.51job.com/linyi/">临沂</a></span>
+                        <span><a href="https://www.51job.com/luoyang/">洛阳</a></span>
+                        <span><a href="https://www.51job.com/lianyungang/">连云港</a></span>
+                        <span><a href="https://www.51job.com/liuzhou/">柳州</a></span>
+                        <span><a href="https://www.51job.com/leshan/">乐山</a></span>
+                        <span><a href="https://www.51job.com/liaocheng/">聊城</a></span>
+                        <span><a href="https://www.51job.com/linfen/">临汾</a></span>
+                        <span><a href="https://www.51job.com/liuan/">六安</a></span>
+                        <span><a href="https://www.51job.com/loudi/">娄底</a></span>
+                        <span><a href="https://www.51job.com/luzhou/">泸州</a></span>
+                        <span><a href="https://www.51job.com/luohe/">漯河</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_mnp" style="display:none">
+                        <span><a href="https://www.51job.com/mianyang/">绵阳</a></span>
+                        <span><a href="https://www.51job.com/maanshan/">马鞍山</a></span>
+                        <span><a href="https://www.51job.com/maoming/">茂名</a></span>
+                        <span><a href="https://www.51job.com/meishan/">眉山</a></span>
+                        <span><a href="https://www.51job.com/meizhou/">梅州</a></span>
+                        <span><a href="https://www.51job.com/nanjing/">南京</a></span>
+                        <span><a href="https://www.51job.com/ningbo/">宁波</a></span>
+                        <span><a href="https://www.51job.com/nanchang/">南昌</a></span>
+                        <span><a href="https://www.51job.com/nantong/">南通</a></span>
+                        <span><a href="https://www.51job.com/nanning/">南宁</a></span>
+                        <span><a href="https://www.51job.com/nanchong/">南充</a></span>
+                        <span><a href="https://www.51job.com/nanyang/">南阳</a></span>
+                        <span><a href="https://www.51job.com/neijiang/">内江</a></span>
+                        <span><a href="https://www.51job.com/ningde/">宁德</a></span>
+                        <span><a href="https://www.51job.com/pingdingshan/">平顶山</a></span>
+                        <span><a href="https://www.51job.com/putian/">莆田</a></span>
+                        <span><a href="https://www.51job.com/puyang/">濮阳</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_qrs" style="display:none">
+                        <span><a href="https://www.51job.com/qingdao/">青岛</a></span>
+                        <span><a href="https://www.51job.com/quanzhou/">泉州</a></span>
+                        <span><a href="https://www.51job.com/qinhuangdao/">秦皇岛</a></span>
+                        <span><a href="https://www.51job.com/qingyuan/">清远</a></span>
+                        <span><a href="https://www.51job.com/qiqihaer/">齐齐哈尔</a></span>
+                        <span><a href="https://www.51job.com/quzhou/">衢州</a></span>
+                        <span><a href="https://www.51job.com/qujing/">曲靖</a></span>
+                        <span><a href="https://www.51job.com/rizhao/">日照</a></span>
+                        <span><a href="https://www.51job.com/shanghai/">上海</a></span>
+                        <span><a href="https://www.51job.com/shenzhen/">深圳</a></span>
+                        <span><a href="https://www.51job.com/shenyang/">沈阳</a></span>
+                        <span><a href="https://www.51job.com/shijiazhuang/">石家庄</a></span>
+                        <span><a href="https://www.51job.com/suzhou/">苏州</a></span>
+                        <span><a href="https://www.51job.com/sanya/">三亚</a></span>
+                        <span><a href="https://www.51job.com/shaoxing/">绍兴</a></span>
+                        <span><a href="https://www.51job.com/shantou/">汕头</a></span>
+                        <span><a href="https://www.51job.com/shanwei/">汕尾</a></span>
+                        <span><a href="https://www.51job.com/shangqiu/">商丘</a></span>
+                        <span><a href="https://www.51job.com/shangrao/">上饶</a></span>
+                        <span><a href="https://www.51job.com/shaoguan/">韶关</a></span>
+                        <span><a href="https://www.51job.com/shaoyang/">邵阳</a></span>
+                        <span><a href="https://www.51job.com/shiyan/">十堰</a></span>
+                        <span><a href="https://www.51job.com/suizhou/">随州</a></span>
+                        <span><a href="https://www.51job.com/suining/">遂宁</a></span>
+                        <span><a href="https://www.51job.com/suqian/">宿迁</a></span>
+                        <span><a href="https://www.51job.com/sz/">宿州</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_twx" style="display:none">
+                        <span><a href="https://www.51job.com/tianjin/">天津</a></span>
+                        <span><a href="https://www.51job.com/taiyuan/">太原</a></span>
+                        <span><a href="https://www.51job.com/tz/">台州</a></span>
+                        <span><a href="https://www.51job.com/tangshan/">唐山</a></span>
+                        <span><a href="https://www.51job.com/taizhou/">泰州</a></span>
+                        <span><a href="https://www.51job.com/tieling/">铁岭</a></span>
+                        <span><a href="https://www.51job.com/taian/">泰安</a></span>
+                        <span><a href="https://www.51job.com/wuhan/">武汉</a></span>
+                        <span><a href="https://www.51job.com/wuxi/">无锡</a></span>
+                        <span><a href="https://www.51job.com/wenzhou/">温州</a></span>
+                        <span><a href="https://www.51job.com/urumqi/">乌鲁木齐</a></span>
+                        <span><a href="https://www.51job.com/wuhu/">芜湖</a></span>
+                        <span><a href="https://www.51job.com/weifang/">潍坊</a></span>
+                        <span><a href="https://www.51job.com/weihai/">威海</a></span>
+                        <span><a href="https://www.51job.com/weinan/">渭南</a></span>
+                        <span><a href="https://www.51job.com/xian/">西安</a></span>
+                        <span><a href="https://www.51job.com/xiamen/">厦门</a></span>
+                        <span><a href="https://www.51job.com/xuzhou/">徐州</a></span>
+                        <span><a href="https://www.51job.com/xiangyang/">襄阳</a></span>
+                        <span><a href="https://www.51job.com/xiangtan/">湘潭</a></span>
+                        <span><a href="https://www.51job.com/xianyang/">咸阳</a></span>
+                        <span><a href="https://www.51job.com/xining/">西宁</a></span>
+                        <span><a href="https://www.51job.com/xianning/">咸宁</a></span>
+                        <span><a href="https://www.51job.com/xiaogan/">孝感</a></span>
+                        <span><a href="https://www.51job.com/xinxiang/">新乡</a></span>
+                        <span><a href="https://www.51job.com/xinyang/">信阳</a></span>
+                        <span><a href="https://www.51job.com/xingtai/">邢台</a></span>
+                        <span><a href="https://www.51job.com/xuchang/">许昌</a></span>
+                        <span><a href="https://www.51job.com/xuancheng/">宣城</a></span>
+                    </div>
+                    <div class="e" name="area_channel_div_yz" style="display:none">
+                        <span><a href="https://www.51job.com/yantai/">烟台</a></span>
+                        <span><a href="https://www.51job.com/yangzhou/">扬州</a></span>
+                        <span><a href="https://www.51job.com/yichang/">宜昌</a></span>
+                        <span><a href="https://www.51job.com/yancheng/">盐城</a></span>
+                        <span><a href="https://www.51job.com/yiwu/">义乌</a></span>
+                        <span><a href="https://www.51job.com/yingkou/">营口</a></span>
+                        <span><a href="https://www.51job.com/yinchuan/">银川</a></span>
+                        <span><a href="https://www.51job.com/yangjiang/">阳江</a></span>
+                        <span><a href="https://www.51job.com/yibin/">宜宾</a></span>
+                        <span><a href="https://www.51job.com/yichune/">宜春</a></span>
+                        <span><a href="https://www.51job.com/yiyang/">益阳</a></span>
+                        <span><a href="https://www.51job.com/yongzhou/">永州</a></span>
+                        <span><a href="https://www.51job.com/yulin/">玉林</a></span>
+                        <span><a href="https://www.51job.com/yueyang/">岳阳</a></span>
+                        <span><a href="https://www.51job.com/yuncheng/">运城</a></span>
+                        <span><a href="https://www.51job.com/zhangzhou/">漳州</a></span>
+                        <span><a href="https://www.51job.com/zhengzhou/">郑州</a></span>
+                        <span><a href="https://www.51job.com/zhongshan/">中山</a></span>
+                        <span><a href="https://www.51job.com/zhuhai/">珠海</a></span>
+                        <span><a href="https://www.51job.com/zhenjiang/">镇江</a></span>
+                        <span><a href="https://www.51job.com/zhuzhou/">株洲</a></span>
+                        <span><a href="https://www.51job.com/zhanjiang/">湛江</a></span>
+                        <span><a href="https://www.51job.com/zhaoqing/">肇庆</a></span>
+                        <span><a href="https://www.51job.com/zhangjiagang/">张家港</a></span>
+                        <span><a href="https://www.51job.com/zibo/">淄博</a></span>
+                        <span><a href="https://www.51job.com/zaozhuang/">枣庄</a></span>
+                        <span><a href="https://www.51job.com/zhangjiakou/">张家口</a></span>
+                        <span><a href="https://www.51job.com/zhoukou/">周口</a></span>
+                        <span><a href="https://www.51job.com/zhumadian/">驻马店</a></span>
+                        <span><a href="https://www.51job.com/zunyi/">遵义</a></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="area_channel_layer_backdrop" class="layer_back_drop_class" style="z-index:999;position:absolute;z-index:999;left:0;top:0;display:none"></div>
+    <script>
+        function areaChannelChangeTab(sName, oEvent)
+        {
+            $("#area_channel_layer_all").children().hide();
+            $("#area_channel_layer_list").children().removeClass("on");
+            $(oEvent).addClass("on");
+            $("#area_channel_layer_all").children("div[name='area_channel_div_" + sName + "']").show();
+            $("#area_channel_layer_backdrop").show();
+        }
+
+        function openAreaChannelLayer()
+        {
+            setLayerPosition();
+            $("#area_channel_layer,#area_channel_layer_backdrop").show();
+        }
+
+        function setLayerPosition()
+        {
+            var dl = $(document).scrollLeft();
+            var dt = $(document).scrollTop();
+            var ww = $(document).width();
+            var dwh = $(document).height();
+            var wwh = $(window).height();
+            var ow = $("#area_channel_layer").width();
+            var oh = $("#area_channel_layer").height();
+            var fLeft = (ww - ow) / 2 + dl;
+            var fTop = (wwh - oh) * 382 / 1000 + dt;//黄金比例
+            $("#area_channel_layer").css({'left': Math.max(parseInt(fLeft), dl), 'top': Math.max(parseInt(fTop), dt)});
+            $("#area_channel_layer_backdrop").css({'width': ww + 'px', 'height': dwh + 'px'});
+        }
+
+        $(window).resize(function(){
+            if(!$("#area_channel_layer").is(":hidden"))
+            {
+                setLayerPosition();
+            }
+        });
+    </script>    <div class="nag" id="topIndex">
+
+    <script type="text/javascript">
+        function changePage(p) {
+            var curpage = Number(document.getElementById("pageid").value);
+            curpage = curpage + p;
+            if(curpage >= 1){
+                document.getElementById("pageid").value = curpage;
+            }
+            submitForm();
+        }
+
+        function filter_salary(e,data) {
+            $(".dw_c_orange").removeClass("dw_c_orange");
+            e.setAttribute("class","dw_c_orange");
+            $("#salaryid").val(data);
+            submitForm();
+        }
+
+        function submitForm(){
+            //获取地点条件
+            var jobarea = $("#jobarea").val().split(",");
+            var jobareas = new Array();
+            jobarea.forEach(function (value) {
+                jobareas.push(area[value]);
+            });
+            $("#jobareaid").val(jobareas.join(","));
+
+
+            $.ajax({
+                type: "POST",
+                url: "/search",
+                data: $("#searchFormId").serialize(),
+                dataType: "json",
+                success: function(data){
+                  $("div[result]").remove();
+                  for (var r in data.rows){
+                    $("#resultList>div:nth-child(2)" ).after(
+                    '<div class="el" result="result">'
+                       + '<p class="t1">'
+                           + '<em class="check"></em>'
+                           + '<span>'
+                               + '<a target="_blank" style="color: #333;" title="'+data.rows[r].jobName+'" href="#">'+data.rows[r].jobName+'</a>'
+                           + '</span>'
+                       + '</p>'
+                       + '<span class="t2">'
+                           + '<a target="_blank" title="'+data.rows[r].companyName+'" href="#">'+data.rows[r].companyName+'</a>'
+                       + '</span>'
+                       + '<span class="t3">'+ data.rows[r].jobAddr+'</span>'
+                       + '<span class="t4">'+ data.rows[r].salaryMin/10000 +'-'+ data.rows[r].salaryMax/10000 +'万/年</span>'
+                       + '<span class="t5">'+ data.rows[r].time +'</span>'
+                   + '</div>');
+                }
+
+                    //写入页码数和总页数
+                    $("#wd_page").html("第"+$("#pageid").val()+"页&nbsp;&nbsp;共"+data.pageTotal+"页");
+                },
+                error: function(){
+
+
+                }
+            });
+        }
+    </script>
+
+    <div class="in">
+            <p class="nlink">
+            <a class="" href="https://www.51job.com/">首页</a>
+            <a class="on" href="https://search.51job.com/">职位搜索</a>
+            <a class="" href="javascript:openAreaChannelLayer();">地区频道</a>
+            <a class="" href="https://mkt.51job.com/careerpost/default_res.php">职场资讯</a>
+            <a class="" href="https://xy.51job.com/default-xs.php">校园招聘</a>
+        </p>
+    </div>
+</div>
+    <!-- nag end -->
+</div>
+<div class="dw_wp">
+    <a name="search"></a>
+    <form name="searchForm" id="searchFormId" method="post" action="search.action">
+        <input type="hidden" id="salaryid" name="salary" value="*-*">
+        <input type="hidden" id="pageid"  name="page" value="1">
+        <input type="hidden" id="jobareaid"  name="jobaddr" value="*">
+        <!--搜索条件-->
+        <div class="dw_search clearfix Fm">
+            <div class="dw_search_in">
+                <!-- 全文及相关关键字 -->
+                <div class="el on el_q" style="width: 500px;">
+                    <ul>
+                        <li>全文<em class="dicon Dm"></em></li>
+                        <li><a href="javascript:void(0);" onclick="kwdtypeChangeResult(1);">公司</a></li>
+                    </ul>
+                    <p class="ipt">
+                        <input type="text" maxlength="400" id="kwdselectid" placeholder="请输入关键字" autocomplete="off" vindex="-1" name="keyword" value="" class="mytxt at" preval="">
+                    </p>
+                    <div class="ul" id="KwdSearchResult" style="display:none;">
+                    </div>
+                </div>
+                <!--地点 -->
+                <div class="txt pointer" id="work_position_click">
+                    <p class="hdl">地点</p>
+                    <input autocomplete="off" id="work_position_input" readonly="readonly" type="text" class="ef" placeholder="选择地点" value="全国">
+                    <input name="jobarea" id="jobarea" type="hidden" value="">
+                </div>
+
+                <!-- 搜索按钮 -->
+                <button class="p_but" type="button" onclick="submitForm()">搜&nbsp;索</button>
+            </div>
+        </div>
+    </form>
+    <div class="dw_filter dw_filter on">
+        <div class="el mk" id="filter_providesalary">
+            <span class="title">年薪范围：</span>
+            <ul>
+                <li><a event-type="20" onclick="filter_salary(this,'*-*')" class="dw_c_orange" href="#">所有</a></li>
+                <li><a event-type="20" onclick="filter_salary(this,'*-5')" href="#">5万以下</a></li>
+                <li><a event-type="20" onclick="filter_salary(this,'5-10')" href="#">5-10万</a></li>
+                <li><a event-type="20" onclick="filter_salary(this,'10-15')" href="#">10-15万</a></li>
+                <li><a event-type="20" onclick="filter_salary(this,'15-20')" href="#">15-20万</a></li>
+                <li><a event-type="20" onclick="filter_salary(this,'20-*')" href="#">20万以上</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!--列表表格-->
+    <div class="dw_table" id="resultList">
+        <div id="dw_tlc_mk" style="height: 0px;"></div>
+        <div class="el title">
+            <span class="t1">职位名</span>
+            <span class="t2">公司名</span>
+            <span class="t3">工作地点</span>
+            <span class="t4">薪资</span>
+            <span class="t5">发布时间</span>
+        </div>
+        <div class="el" result="result">
+            <p class="t1">
+                <em class="check"></em>
+                <span>
+                  <a target="_blank" style="color: #333;" title="热线客服专员底薪3500" href="#">热线客服专员底薪3500</a>
+                </span>
+            </p>
+            <span class="t2">
+                <a target="_blank" title="青岛东溢和源商贸有限公司" href="#">青岛东溢和源商贸有限公司</a>
+            </span>
+            <span class="t3">青岛-市北区</span>
+            <span class="t4">0.5-1万/月</span>
+            <span class="t5">05-26</span>
+        </div>
+        <div class="el" result="result">
+            <p class="t1 ">
+                <em class="check" name="delivery_em" onclick="checkboxClick(this)"></em>
+                <input class="checkbox" type="checkbox" name="delivery_jobid" value="101363632" jt="0" style="display:none">
+                <span>
+                                <a target="_blank" title="销售 4500+提成，有人教，不应酬出差，行业好,常熟" href="https://jobs.51job.com/changshu/101363632.html?s=01&amp;t=0" onmousedown="">
+                                    销售 4500+提成，有人教，不应酬出差，行业好,常熟                                </a>
+                            </span>
+            </p>
+            <span class="t2"><a target="_blank" title="常熟市德晟光电有限公司" href="https://jobs.51job.com/all/co3756849.html">常熟市德晟光电有限公司</a></span>
+            <span class="t3">异地招聘</span>
+            <span class="t4">0.4-1.5万/月</span>
+            <span class="t5">05-26</span>
+        </div>
+        <!--列表表格 END-->
+        <div class="dw_line"></div>
+        <!--分页-->
+
+        <div class="dw_page">
+            <div class="p_box">
+                <div class="p_wp">
+                    <div class="p_in">
+                        <ul>
+                            <li class="bk"><a onclick="changePage(-1)" href="#">上一页</a></li>
+                            <li class="bk"><a onclick="changePage(1)" href="#">下一页</a></li>
+                        </ul>
+                        <span id="wd_page" class="td">第1页&nbsp;&nbsp;共1页</span>
+
+        <a href="https://search.51job.com/list/000000,000000,0000,00,9,99,%2520,2,1.html?lang=c&amp;stype=&amp;postchannel=0000&amp;workyear=99&amp;cotype=99&amp;degreefrom=99&amp;jobterm=99&amp;companysize=99&amp;providesalary=99&amp;lonlat=0%2C0&amp;radius=-1&amp;ord_field=0&amp;confirmdate=9&amp;fromType=&amp;dibiaoid=0&amp;address=&amp;line=&amp;specialarea=00&amp;from=&amp;welfare=#top" id="goTop" style="display: inline;">回到<br>顶部</a>
+        <a href="https://i.51job.com/userset/advice.php?from=search" target="_blank" class="dw_fb">意见反馈</a>
+
+        <!-- getPageFormHtml start -->
+        <form name="pageForm" action="https://search.51job.com/list/000000,000000,0000,00,9,99,%2520,2,1.html?lang=c&amp;stype=&amp;postchannel=0000&amp;workyear=99&amp;cotype=99&amp;degreefrom=99&amp;jobterm=99&amp;companysize=99&amp;providesalary=99&amp;lonlat=0%2C0&amp;radius=-1&amp;ord_field=0&amp;confirmdate=9&amp;fromType=&amp;dibiaoid=0&amp;address=&amp;line=&amp;specialarea=00&amp;from=&amp;welfare=" method="post" style="display:none">
+            <input type="hidden" name="postchannel" value="0000">
+            <input type="hidden" name="stype" value="1">
+            <input type="hidden" name="jobarea" value="000000,00">
+            <input type="hidden" name="district" value="000000">
+            <input type="hidden" name="dibiaoid" value="0">
+            <input type="hidden" name="address" value="">
+            <input type="hidden" name="lonlat" value="0,0">
+            <input type="hidden" name="line" value="">
+            <input type="hidden" name="radius" value="-1">
+            <input type="hidden" name="funtype" value="0000">
+            <input type="hidden" name="industrytype" value="00">
+            <input type="hidden" name="issuedate" value="9">
+            <input type="hidden" name="keywordtype" value="2">
+            <input type="hidden" name="keyword" value="">
+            <input type="hidden" id="workyear" name="workyear" value="99">
+            <input type="hidden" id="providesalary" name="providesalary" value="99">
+            <input type="hidden" id="cotype" name="cotype" value="99">
+            <input type="hidden" id="degreefrom" name="degreefrom" value="99">
+            <input type="hidden" name="jobterm" value="99">
+            <input type="hidden" name="ord_field" value="0">
+            <input type="hidden" name="list_type" value="0">
+            <input type="hidden" name="curr_page" value="1">
+            <input type="hidden" name="nStart" value="1">
+            <input type="hidden" name="ppc_num" value="0">
+            <input type="hidden" name="ads_num" value="0">
+            <input type="hidden" name="personnel_department_ad_num" value="0">
+            <input type="hidden" name="jobid_list" value="102088231~102727367~101473691~102655291~96186986~90639764~102505564~100416440~102730053~102727354~97892962~76925636~102727361~94048130~102727352~93505539~58624161~102727356~83185107~101896778~101832618~102727355~102406239~102727312~101669912~102727353~102727351~102727334~102722702~98296801~102727347~102551931~64919214~101447677~99678626~102727276~85622674~102729374~102730088~97204351~67605048~102724950~102590286~102727335~100958554~84943470~102727327~93341352~102727332~101363632">
+            <input type="hidden" name="jobid_count" value="100000">
+            <input type="hidden" name="schTime" value="364">
+            <input type="hidden" name="confirmdate" value="9">
+            <input type="hidden" name="welfare" value="">
+            <input type="hidden" name="fromType" value="">
+            <input type="hidden" id="companysize" name="companysize" value="99">
+            <input type="hidden" name="from" value="">
+            <input type="hidden" id="providesalary_tmp" name="providesalary_tmp" value="99">
+            <input type="hidden" id="cotype_tmp" name="cotype_tmp" value="99">
+            <input type="hidden" id="workyear_tmp" name="workyear_tmp" value="99">
+            <input type="hidden" id="degreefrom_tmp" name="degreefrom_tmp" value="99">
+            <input type="hidden" id="companysize_tmp" name="companysize_tmp" value="99">
+            <input type="hidden" name="pagejump" value="https://search.51job.com/list/000000,000000,0000,00,9,99,%2B,2,&lt;&lt;pagecode&gt;&gt;.html?lang=c&amp;stype=1&amp;postchannel=0000&amp;workyear=99&amp;cotype=99&amp;degreefrom=99&amp;jobterm=99&amp;companysize=99&amp;lonlat=0%2C0&amp;radius=-1&amp;ord_field=0&amp;confirmdate=9&amp;fromType=&amp;dibiaoid=0&amp;address=&amp;line=&amp;specialarea=00&amp;from=&amp;welfare=">
+        </form>
+        <!-- getPageFormHtml end -->
+        <script>
+            $(function(){//返回顶部
+                var stop='';
+                $(window).scroll(function(){
+                    $('#goTop').hide();
+                    stop=$(this).scrollTop();
+                    if(stop>0){
+                        $('#goTop').show();
+                    }else{
+                        $('#goTop').hide();
+                    }
+                });
+            })
+        </script>
+    </div>
+</div>
+</body></html>

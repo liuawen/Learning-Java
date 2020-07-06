@@ -1,0 +1,102 @@
+.Fm .li,.Fm .txt.pointer .ef,.Fm .ul.u2 .li span{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+
+.Fm .ic,.Fm .prev,.Fm .next,.Fm .bg,.Fm .btox em{background:url(//img01.51jobcdn.com/im/2016/form/form.png) 100px 100px no-repeat}
+.Fm .i_add{background:url(//img01.51jobcdn.com/im/jobs/dw_orange_add.png) center center no-repeat}
+.Fm .i_calendar{background-position:0 0}
+.Fm .i_block{background-position:-36px 0}
+.Fm .i_arrow{background-position:-72px 0}
+.Fm .b_key,.Fm .b_his{padding-left:20px;background-position:0 -40px}
+.Fm .b_his{background:url(//img01.51jobcdn.com/im/jobs/lx_type.png) 0 3px no-repeat}
+
+.Fm .clear{line-height:0;font-size:0;clear:both}
+.Fm .txt{position:relative;background-color:#fff;border:1px solid #ddd;z-index:1}
+.Fm .txt.disabled{background-color:#f5f5f5}
+.Fm .txt.on{z-index:2}
+.Fm .pointer,.Fm .pointer .ef{cursor:pointer}
+.Fm .txt,.Fm .txt .ef{height:28px;font:14px/28px "Microsoft YaHei"}
+.Fm .txt.pointer{padding-right:37px}
+.Fm .ic{position:absolute;width:36px;height:18px;line-height:18px;font-size:12px;color:#00457d;text-align:center;top:5px;right:0;border-left:1px solid #ddd}
+.Fm .ic:hover{color:#ff6000}
+
+.Fm .txt .ef{float:left;width:100%;text-indent:10px;background-color:transparent;border:0 none}
+
+.Fm .flbox,.Fm .ul{display:none;position:absolute;width:336px;color:#333;text-align:center;cursor:auto;top:29px;left:-1px;background-color:#fff;border:1px solid #ddd}
+.Fm .on .flbox,.Fm .on .ul,.Fm .on .udbox{display:block;z-index:4}
+.Fm .off{cursor:auto !important}
+.Fm .ftitle{position:relative;height:38px;line-height:38px;color:#999;background-color:#f1f1f1;border-bottom:1px solid #ddd}
+.Fm .ftitle.f2{color:#333}
+.Fm .ftitle em{position:absolute;width:8px;height:14px;cursor:pointer;top:12px;left:10px;background-position:-60px -18px}
+
+.Fm .ftitle .prev:hover{background-position:-80px -18px}
+.Fm .fin{position:relative;width:276px;height:195px;font-size:12px;padding:0 30px;background-color:#fff;z-index:1}
+.Fm .fin.f2,.Fm .fin.f3{width:336px;padding:0}
+.Fm .fin em{position:absolute;display:block;width:9px;height:19px;cursor:pointer;top:50%;margin-top:-10px}
+.Fm .year_box em{display:block}
+.Fm .fin .prev{left:10px;background-position:0 -18px}
+.Fm .fin .prev:hover{background-position:-40px -18px}
+.Fm .fin .prev.off,.Fm .fin .prev.off:hover{background-position:-20px -18px}
+.Fm .fin .next{right:10px;background-position:-10px -18px}
+.Fm .fin .next:hover{background-position:-50px -18px}
+.Fm .fin .next.off,.Fm .fin .next.off:hover{background-position:-30px -18px}
+.Fm .fin .ek{float:left;width:25%;height:39px;line-height:39px;cursor:pointer}
+.Fm .fin.f2 .ek{height:65px;line-height:65px}
+.Fm .fin.f3 .ek{width:48px}
+.Fm .fin .ek:hover,.Fm .li:hover,.Fm .tl:hover,.Fm .now:hover{background-color:#eee}
+.Fm .flbox .on,.Fm .flbox .on:hover,.Fm .li.on,.Fm .li.on:hover{font-weight:bold;color:#ff9f20}
+.Fm .fin .off,.Fm .fin .off:hover,.Fm .li.off,.Fm .li.off:hover,.Fm .tl.off:hover{color:#999;background-color:#fff}
+.Fm .fin .e{display:none}
+.Fm .fin .e.mk{display:block}
+.Fm .now{position:absolute;width:100%;height:38px;line-height:38px;font-size:14px;cursor:pointer;bottom:-40px;left:-1px;background-color:#fff;border:1px solid #ddd;z-index:2}
+.Fm .ul{width:100%;max-height:210px;font-size:12px;text-align:left;overflow-y:auto}
+.Fm .ul .tl{display:block;height:30px;line-height:29px;color:#999;text-indent:0;cursor:pointer}
+.Fm .ul .tl span{display:block;margin-left:10px;border-bottom:1px solid #ddd}
+.Fm .ul.u2 .li{width:298px;padding-right:100px}
+.Fm .ul.u2 .li span{display:block}
+.Fm .ul.u2 .li i{position:absolute;font-style:normal;top:0;right:10px}
+.Fm .ul.u3 .li{text-indent:20px}
+.Fm .ul.u3 .li.off{text-indent:10px}
+.Fm .li{position:relative;display:block;height:30px;line-height:30px;text-indent:10px;cursor:pointer}
+.Fm .txt .ef.disabled{color:#b0b0b0;background-color:#f5f5f5;cursor:default}
+.Fm .txt .ic.disabled{cursor:default}
+.Fm .btox em{display:inline-block;width:20px;height:20px;vertical-align:middle;margin-right:5px}
+.Fm .nan em{background-position:0 -80px}
+.Fm .nv em{background-position:-40px -80px}
+.Fm .nan.on em{background-position:-20px -80px}
+.Fm .nv.on em{background-position:-60px -80px}
+.Fm .txt .ef.cursor{cursor:auto}
+.Fm .ul .tlw{font-weight:bold;color:#333}
+.Fm .ul .tlw.off:hover{color:#333;background-color:#fff}
+.Fm .udbox{position:absolute;display:none;width:100%;top:29px;left:-1px;background-color:#fff;border:1px solid #ddd}
+.Fm .udbox .ul{position:relative;display:block;top:0;left:0;border:0 none}
+.Fm .diy{font-size:14px;color:#333;text-indent:0;text-align:center;border-top:1px solid #ddd}
+/*文本框*/
+.editorarea{padding:0 8px 15px}
+.editorarea textarea{width:748px !important;height:390px;resize:none;padding:5px !important}
+
+/*标签*/
+.ttag{position:relative;float:left;height:26px;line-height:26px;font-size:12px;color:#333;white-space:nowrap;margin:0 8px 5px 0;padding:0 20px 0 6px;background-color:#fff;border:1px solid #ff9f20;cursor:pointer}
+.ttag:hover{color:#fff;background-color:#ff9f20}
+.ttag:hover em{background-image:url(//img01.51jobcdn.com/im/2016/form/close3.png)}
+.ttag em{position:absolute;width:20px;top:0;right:0;height:26px;background:url(//img01.51jobcdn.com/im/2016/form/close2.png) center no-repeat}
+
+/*按钮*/
+.p_but{display:inline-block;min-width:80px;height:28px;line-height:28px;font-size:14px;font-family:"Microsoft YaHei";color:#fff;text-align:center;cursor:pointer;margin:0 10px;background-color:#ff6000;border:1px solid #ff6000;
+	-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;border-radius:2px}
+.p_but:hover{background-color:#ea5800;border-color:#ea5800}
+.p_but.gray{color:#999;background-color:#fff;border-color:#b0b0b0}
+.p_but.gray:hover{background-color:#eee;border-color:#b0b0b0}
+.p_but.geige{color:#ff6000;background-color:#fff2e3;border-color:#ffb865}
+.p_but.geige:hover{background-color:#ffe8cd;border-color:#ffb865}
+.p_but.flesh{color:#ff6000;background-color:#fff}
+.p_but.flesh:hover{background-color:#fff0e7}
+.p_but.unclick,.p_but.unclick:hover{color:#fff;cursor:auto;background-color:#ddd;border-color:#ddd}
+.p_but.w110{width:108px}
+.p_but.w130{width:128px}
+
+.btox{height:28px;line-height:28px;border:1px solid #ddd}
+.btn{float:left;width:50%;color:#333;text-align:center;cursor:pointer;background-color:#fff}
+.btn:hover{background-color:#eee}
+.btn.on{color:#fff;background-color:#ff9f20}
+.btn.unclick,.btn.unclick:hover{color:#fff;cursor:auto;background-color:#ddd;border-color:#ddd}
+
+.focusinput .txt,.focusinput.txt,.focusinput textarea,textarea.focusinput{border-color:#ff9f20 !important}
