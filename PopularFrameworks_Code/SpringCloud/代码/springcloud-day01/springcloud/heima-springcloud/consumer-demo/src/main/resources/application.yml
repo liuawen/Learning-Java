@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: consumer-demo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    # 获取服务地址列表间隔时间，默认30秒
+    registry-fetch-interval-seconds: 10
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+      circuitBreaker:
+        errorThresholdPercentage: 50 # 触发熔断错误比例阈值，默认值50%
+        sleepWindowInMilliseconds: 10000 # 熔断后休眠时长，默认值5秒
+        requestVolumeThreshold: 10 # 熔断触发最小请求次数，默认值是20

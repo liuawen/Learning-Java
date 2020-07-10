@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: consumer-demo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    # 获取服务地址列表间隔时间，默认30秒
+    registry-fetch-interval-seconds: 10
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+      circuitBreaker:
+        errorThresholdPercentage: 50 # 触发熔断错误比例阈值，默认值50%
+        sleepWindowInMilliseconds: 10000 # 熔断后休眠时长，默认值5秒
+        requestVolumeThreshold: 10 # 熔断触发最小请求次数，默认值是20
+ribbon:
+  ConnectTimeout: 1000 # 连接超时时长
+  ReadTimeout: 2000 # 数据通信超时时长
+  MaxAutoRetries: 0 # 当前服务器的重试次数
+  MaxAutoRetriesNextServer: 0 # 重试多少次服务
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试
+feign:
+  hystrix:
+    enabled: true # 开启Feign的熔断功能
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小下限
+    response:
+      enabled: true
+logging:
+  level:
+    com.itheima: debug

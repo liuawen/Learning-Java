@@ -1,0 +1,26 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/goheima/heima-config.git
+  # 配置rabbitmq信息；如果是都与默认值一致则不需要配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        # 暴露触发消息总线的地址
+        include: bus-refresh
