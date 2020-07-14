@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: /springboot
+
+# 监控配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+
+# info 端点的信息配置
+info:
+  app:
+    name: Spring Boot Actuator
+    version: "1.0"
+  author:
+    name: 刘水镜
+    blog: https://liushuijinger.blog.csdn.net

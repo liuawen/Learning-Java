@@ -1,0 +1,11 @@
+server:
+  servlet:
+    context-path: /springboot
+spring:
+  devtools:
+      restart:
+        enabled: true
+#        trigger-file: .reloadtrigger
+        log-condition-evaluation-delta: false
+        poll-interval: 20000
+        quiet-period: 10000
