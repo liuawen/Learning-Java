@@ -10,7 +10,13 @@
 
 ——尼采
 
+为互联网而生的持久化框架 Mybatis
 
+abatis
+
+abattoir
+ [abatwa:r] 
+屠宰场
 
 # 1. What is Mybatis
 

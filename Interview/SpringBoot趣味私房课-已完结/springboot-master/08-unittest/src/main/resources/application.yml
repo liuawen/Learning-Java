@@ -4,3 +4,5 @@
 server:
   servlet:
     context-path: /springboot
+  port:
+    8088

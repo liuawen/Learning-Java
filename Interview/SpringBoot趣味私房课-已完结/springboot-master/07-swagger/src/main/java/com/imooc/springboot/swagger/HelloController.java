@@ -19,9 +19,13 @@ public class HelloController {
     @ApiOperation(value = "Hello Spring Boot 方法")
     @GetMapping(value = "/hello",headers = "version=2")
     public String hello(@RequestParam(required = false) @ApiParam("名字") String name) {
-        if (name == null || "".equals(name)) {
-            name = "Spring Boot";
+//        if (name == null || "".equals(name)) {
+//            name = "Spring Boot";
+//        }
+//        return "Hello "+name;
+        if (name != null && !"".equals(name)) {
+            return "Hello " + name;
         }
-        return "Hello "+name;
+        return "Hello Spring Boot";
     }
 }

@@ -1,6 +1,6 @@
 **07 懒惰使人进步-Spring Boot集成Swagger2**
 
-07 懒惰使人进步-Spring Boot集成Swagger2
+# 07 懒惰使人进步-Spring Boot集成Swagger2
 
 更新时间：2020-05-26 11:42:35
 
@@ -20,13 +20,31 @@ Java Web 从最开始的 JSP 到后来加入 Ajax 异步交互，再到现在的
 
 
 
+Java Web   JSP   Ajax异步交互 
+
+现在前后端分离
+
+后端业务逻辑
+
+分工越来越精细 联系越来越松散
+
+接口文档成了前后端配合的一道关键桥梁
+
+
+
 接口文档  永远落后于实际代码实现 
 
 ## 2. Swagger是什么
 
 Swagger 是一款用于生成、描述、调用和可视化 RESTful 风格的 Web 服务接口文档的框架。其最大的特点莫过于可以使接口文档与代码实时同步。
 
-Swagger 
+Swagger  是一款用于生成 描述 调用 和 可视化  RESTful 
+
+风格的Web 服务接口文档的框架
+
+接口文档与代码实时同步 
+
+
 
 ## 3. 整合
 
@@ -90,7 +108,33 @@ public class HelloController {
 
 
 
+application
+
+```yml
+#logging:
+#  level:
+#    root: debug
+server:
+  servlet:
+    context-path: /springboot
+  port: 8088
+```
+
+
+
+```
+http://localhost:8088/springboot/hello?name=%E6%9F%B3%E5%B0%8F%E5%AD%90
+```
+
+
+
+```
+Hello 柳小子
+```
+
 ## 4. 效果
+
+
 
 经过以上三个步骤，我们的 Swagger 就已经集成到我们的工程里了，现在启动工程，然后访问：http://localhost:8080/swagger-ui.html。 如果看到如下效果，就说明我们的 Swagger 已经配置成功。
 
@@ -125,6 +169,16 @@ public class HelloController {
 | @ApiParam         | 参数       | 描述接口参数                         |
 
 以上为我们最常用的五个注解。在上面的例子中，我们使用了 `@Api` `@ApiOperation` `@ApiParam` 三个注解，另外两个我们会在后面的学习中使用到。
+
+@Api
+
+@ApiModel
+
+@ApiOperation
+
+@ApiModelProperty
+
+@ApiParam
 
 
 
@@ -179,6 +233,18 @@ Unable to infer base url. This is common when using dynamic servlet registration
 
 
 ### 6.3 采坑总结
+
+```
+http://localhost:8088/springboot/v2/api-docs
+```
+
+
+
+```json
+{"swagger":"2.0","info":{"description":"Spring Boot实战的RESTFul接口文档说明","version":"1.0","title":"Spring Boot实战"},"host":"localhost:8088","basePath":"/springboot","tags":[{"name":"hello-controller","description":"Hello Controller"}],"paths":{"/hello":{"get":{"tags":["hello-controller"],"summary":"Hello Spring Boot 方法","operationId":"helloUsingGET","produces":["*/*"],"parameters":[{"name":"name","in":"query","description":"名字","required":false,"type":"string"},{"name":"version","in":"header","required":true,"type":"string","default":"2","enum":["2"]}],"responses":{"200":{"description":"OK","schema":{"type":"string"}},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"Not Found"}}}}}}
+```
+
+
 
 在 Swagger 的使用中，如果遇到问题，可以安以下思路去排查：
 

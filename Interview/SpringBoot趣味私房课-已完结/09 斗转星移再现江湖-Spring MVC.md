@@ -2,7 +2,7 @@
 
 
 
-09 斗转星移再现江湖-Spring MVC
+# 09 斗转星移再现江湖-Spring MVC
 
 更新时间：2020-05-26 11:44:44
 
@@ -14,7 +14,7 @@
 
 ——爱因斯坦
 
-
+SpringMVC
 
 # 1. 思想与原理
 
@@ -31,6 +31,16 @@ Spring MVC，对于熟悉它的人自然不必多说。但如果你对它不太�
 - **模型（Model）** Model 则是由一个实体 Bean 来实现，主要对应数据层。
 
 
+
+Spring MVC 
+
+Spring彰显了它的家族身份  MVC代表它的能力 
+
+MVC究竟是什么呢
+
+MVC
+
+Model  View  Controller
 
 ## 1.2 原理
 

@@ -1,6 +1,6 @@
 **12 数据库操作之简单到令人发指的JPA**
 
-12 数据库操作之简单到令人发指的JPA
+# 12 数据库操作之简单到令人发指的JPA
 
 更新时间：2020-05-26 11:47:03
 
@@ -18,15 +18,65 @@
 
 
 
+数据  数据安全 和 数据处理 操作
+
+
+
+
+
+腾讯的用户数据丢失 很多人就此断了联系
+
+支付宝 银行的数据丢失  diushi
+
+
+
 # 1. 历史发展
 
 持久化操作（对数据库的操作）一直都是 Java 的核心内容，在 Java 的发展历史中，数据库持久化层面的框架也在不断地发展与更新。
 
+持久化操作 对数据库的操作  一直都是Java的核心内容
+
+数据库持久化层面的框架也在不断地发展与更新
+
+
+
+Java中访问数据库的规范  
+
+
+
 JDBC（ Java DataBase Connectivity ）是 Java 中访问数据库的规范，由 SUN 公司制定（目前 SUN 已经被 Oracle 收购）。原生的 JDBC 代码臃肿、冗余，非常难用。这一度使得 Java EE 在当时备受质疑。所以 SUN 公司推出了大名鼎鼎的 EJB，现在已经很少人有提及 EJB 了，当年曾经大名鼎鼎也是因为是 SUN 公司的产品（连技术圈也开始拼爹了）。但由于 EJB 太重量级，太难用，很快就被当时的新晋小生 Hibernate 所取代（事实再一次告诉我们，爹再牛逼也只能帮你一时，关键还得看自己）。
+
+看自己  给力不 
+
+HIbernate
+
+
 
 Hibernate 凭借自身强大的功能迅速走红，与 Struts 和 Spring 组成了当时风靡一时的 SSH 三人组。后来 SUN 公司借鉴了 Hibernate 的设计思路，制定了 JPA（ Java Persistence API ）规范。在 Hibernate 后来的版本中，也实现了对于 JPA 的完全支持。这也使 HIbernate 在当时进一步巩固了自己在持久层框架的霸主地位。
 
+JPA
+
 随着互联网的发展，尤其是移动互联网的飞速扩展，HIbernate 对于性能和灵活性的需求显得捉襟见肘，已经无法满足日新月异的互联网业务场景了。这个时候，又一个年轻人站了出来，它就是 Mybatis。Mybatis 凭借着其简单、高效、灵活等特点迅速成为了新时代的宠儿。
+
+性能 灵活性 
+
+
+
+日新月异的互联网业务场景了 
+
+
+
+这个时候   又一个年轻人站了出来
+
+它就是Mybatis
+
+它 简单 高效  灵活 
+
+新时代的宠儿 cho
+
+我要和别人讲  说   
+
+我好好看看  
 
 
 
@@ -38,6 +88,32 @@ Spring Data JPA 对 JPA（ Java Persistence API ）进行了进一步的封装�
 
 
 
+
+
+数据库 表
+
+JDBC做一定的封装
+
+
+
+JDBC冗余的样板代码 隐藏起来
+
+变得方便和快捷  Mybatis
+
+
+
+Java Entity  
+
+实体类来映射表之间的关系 
+
+Spring Data JPA就是基于HIbernate实现的 
+
+Spring Data JPA对JPA进行了进一步的封装
+
+使得对数据库的常用操作变得异常简单
+
+
+
 # 3. 动手
 
 
@@ -45,6 +121,14 @@ Spring Data JPA 对 JPA（ Java Persistence API ）进行了进一步的封装�
 ## 3.1 准备
 
 在使用 Spring Data JPA 之前，我们需要做一些准备工作。因为 Spring Data JPA 是持久层的组件，那么我们肯定会就要用到数据库了。所以，我们需要先安装数据库，不用说你也想到了，我们使用的数据库是 MySQL（如何安装 MySQL 就不用我多说了吧）。MySQL 安装完成后，我们需要创建一个数据库，在本专栏里，数据库的名字叫做 springboot，当然你也可以选择你喜欢的名字。
+
+
+
+在使用Spring Data JPA
+
+
+
+我的数据库就叫SB  SpringBoot
 
 
 
@@ -64,6 +148,8 @@ Spring Data JPA 对 JPA（ Java Persistence API ）进行了进一步的封装�
 ```
 
 
+
+坐标  
 
 ## 3.3 添加配置
 
@@ -97,6 +183,10 @@ spring:
 
 **database-platform** 也不难，用来指定使用哪种 MySQL 的存储引擎，我们这里使用的是 InnoDB。
 
+```
+ddl-auto: update
+```
+
 **ddl-auto** 这个配置简单说一下，它有四个值可选，具体含义如下：
 
 - create 每次启动重新创建表（启动过程中原来的数据会被清除）
@@ -105,6 +195,8 @@ spring:
 - validate 每次启动验证表结构，如果不一致则报错
 
 
+
+使用update
 
 ## 3.4 创建实体
 
@@ -155,6 +247,10 @@ engine=InnoDB
 ![图片描述](http://img1.sycdn.imooc.com/5e9ac17a00019eea12240492.png)
 
 OK，user 表的结构跟我们的 User 实体类一致。
+
+
+
+desc user;
 
 
 
@@ -232,6 +328,10 @@ public class UserController {
 
 
 
+去把玩吧
+
+
+
 # 4. 扩展
 
 
@@ -246,6 +346,12 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 }
 ```
 
+定义相应的接口即可
+
+没错
+
+只定义个接口  不需要写实现 
+
 在 UserRepository 中加入上面一句代码就完成了根据年龄查询用户的功能。当然，我们需要在 Controller 里面调用一下：
 
 ```java
@@ -257,6 +363,8 @@ public List<User> getByAge(@PathVariable Integer age) {
 ```
 
 OK，这样就搞定了，可以去 Swagger 上测试一下了，效果就不在这里展示了。
+
+
 
 **更多关键字规则对照表：**
 
@@ -310,7 +418,7 @@ public Page<User> list(String property, String direction, Integer page, Integer 
 
 嗯，这操作很 Spring Boot！这种感觉就像在《万事开头难？Spring Boot表示不服！》小节讲的一样，Spring Boot 就是想让你只专注于你想专注的事情，其他脏活累活它来帮你完成。其实这些都是基于一个理念——约定由于配置。
 
-
+约定优于配置
 
 # 5. 总结
 
