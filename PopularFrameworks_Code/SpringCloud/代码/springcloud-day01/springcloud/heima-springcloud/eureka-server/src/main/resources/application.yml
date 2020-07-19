@@ -1,5 +1,7 @@
 server:
   port: ${port:10086}
+#  有就用前面的port  没有才自己的
+#  port: 10086
 spring:
   application:
     name: eureka-server
@@ -8,7 +10,7 @@ eureka:
     service-url:
       # eureka 服务地址，如果是集群的话；需要指定其它集群eureka地址
       defaultZone: http://127.0.0.1:10086/eureka
-    # 不注册自己
+    # 不注册自己   自身不提供服务  集群要注册
     register-with-eureka: false
     # 不拉取服务
     fetch-registry: false

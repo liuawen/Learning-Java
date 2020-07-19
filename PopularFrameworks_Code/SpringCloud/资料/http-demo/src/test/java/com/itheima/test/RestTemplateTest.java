@@ -18,10 +18,7 @@ public class RestTemplateTest {
     @Test
     public void test(){
         String url = "http://localhost/user/8";
-        //restTemplate可以对json格式字符串进行反序列化
         User user = restTemplate.getForObject(url, User.class);
         System.out.println(user);
-
-        //序列化 Java格式对象转json格式字符串
     }
 }

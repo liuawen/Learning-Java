@@ -5,7 +5,8 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/springcloud
     username: root
-    password: root
+#    password: root
+    password: 123456
   application:
     name: user-service
 mybatis:

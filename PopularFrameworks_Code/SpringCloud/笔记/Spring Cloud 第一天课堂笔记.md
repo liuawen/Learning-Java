@@ -272,7 +272,11 @@ HTTP
 - okHttp
 - JDK原生URLConnection
 
+http服务调用   httpClient okHttp JDK原生URLConnection 
+
 spring 提供了RestTemplate的工具类对上述的3种http客户端工具类进行了封装，可在spring项目中使用RestTemplate进行服务调用。
+
+
 
 **小结**：
 
@@ -301,12 +305,74 @@ public class RestTemplateTest {
 
 **目标**：Spring Cloud整合的组件和版本特征
 
+SpringCloud整合的组件和版本特征
+
+微服务是一种架构方式 技术架构是去实施 
+
+微服务是一种架构方式，最终肯定需要技术架构去实施。
+微服务的实现方式很多，但是最火的莫过于Spring Cloud了。为什么？
+
+
+
+后台硬：作为Spring家族的一员，有整个Spring全家桶靠山，背景十分强大。
+技术强：Spring作为Java领域的前辈，可以说是功力深厚。有强力的技术团队支撑，一般人还真比不了
+群众基础好：可以说大多数程序员的成长都伴随着Spring框架，试问：现在有几家公司开发不用Spring？
+Spring Cloud与Spring的各个框架无缝整合，对大家来说一切都是熟悉的配方，熟悉的味道。
+使用方便：相信大家都体会到了SpringBoot给我们开发带来的便利，而Spring Cloud完全支持Spring Boot的开发，用很少的配置就能完成微服务框架的搭建
+
+
+
+后台硬
+
+技术强
+
+群众基础好
+
+使用方便 
+
+简介
+
+Spring Cloud是Spring旗下的项目之一，官网地址：http://projects.spring.io/spring-cloud/
+Spring最擅长的就是集成，把世界上最好的框架拿过来，集成到自己的项目中。
+Spring Cloud也是一样，它将现在非常流行的一些技术整合到一起，实现了诸如：配置管理，服务发现，智能路由，负载均衡，熔断器，控制总线，集群状态等功能；协调分布式环境中各个系统，为各类服务提供模板性配置。其主要
+涉及的组件包括：
+Eureka：注册中心
+Zuul、Gateway：服务网关
+Ribbon：负载均衡
+Feign：服务调用
+Hystrix或Resilience4j：熔断器
+
+以上只是其中一部分，架构图：
+
+![image-20200719100914342](assets/image-20200719100914342.png)
+
+
+
+版本
+
+Spring Cloud不是一个组件，而是许多组件的集合；它的版本命名比较特殊，是以A到Z的为首字母的一些单词（其
+实是伦敦地铁站的名字）组成：
+
+我们在项目中，使用最新稳定的Greenwich版本。
+
+![image-20200719101008417](assets/image-20200719101008417.png)
+
+
+
+
+
 **小结**：
 
 - 整合的组件可以有很多组件；常见的组件有：eureka注册中心，Gateway网关，Ribbon负载均衡，Feign服务调用，Hystrix熔断器。在有需要的时候项目添加对于的启动器依赖即可。
 - 版本特征：以英文单词命名（伦敦地铁站名）
 
 ## 6. 创建微服务工程
+
+微服务场景模拟
+
+首先，我们需要模拟一个服务调用的场景。方便后面学习微服务架构
+
+
 
 **目标**：创建微服务父工程heima-springcloud、用户服务工程user-service、服务消费工程consumer-demo
 
@@ -315,8 +381,160 @@ public class RestTemplateTest {
 需求：查询数据库中的用户数据并输出到浏览器
 
 - 父工程heima-springcloud：添加spring boot父坐标和管理其它组件的依赖
+
+父坐标  管理其他组件的依赖  
+
+父工程 
+
 - 用户服务工程user-service：整合mybatis查询数据库中用户数据；提供查询用户服务
 - 服务消费工程consumer-demo：利用查询用户服务获取用户数据并输出到浏览器
+
+首先，我们需要模拟一个服务调用的场景。方便后面学习微服务架构
+
+创建父工程
+
+微服务中需要同时创建多个项目，为了方便课堂演示，先创建一个父工程，然后后续的工程都以这个工程为父，实现
+maven的聚合。这样可以在一个窗口看到所有工程，方便讲解。在实际开发中，每个微服务可独立一个工程。
+
+![image-20200719102259034](assets/image-20200719102259034.png)
+
+编写项目信息：
+
+liuawen-springcloud
+
+cn.liuawen
+
+![image-20200719102554024](assets/image-20200719102554024.png)
+
+编写保存位置：
+
+![image-20200719102606635](assets/image-20200719102606635.png)
+
+编写保存位置：
+然后将pom.xml 修改成如下（请从 资料\heima-springcloud.xml 文件中复制）：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.itheima</groupId>
+    <artifactId>heima-springcloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <mapper.starter.version>2.1.5</mapper.starter.version>
+        <mysql.version>5.1.46</mysql.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- springCloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 通用Mapper启动器 -->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper.starter.version}</version>
+            </dependency>
+            <!-- mysql驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+这里已经对大部分要用到的依赖的版本进行了 管理，方便后续使用
+
+### 服务提供者
+
+新建一个项目user-service，对外提供查询用户的服务。
+
+#### 创建module
+
+选中父工程：heima-springcloud
+
+![image-20200719102702663](assets/image-20200719102702663.png)
+
+我是模块下面模块
+
+填写module信息：
+
+![image-20200719102721645](assets/image-20200719102721645.png)
+
+注意，子模块要在父工程的下级目录：
+
+![image-20200719103531576](assets/image-20200719103531576.png)
+
+
+
+![image-20200719104128040](assets/image-20200719104128040.png)
+
+
+
+#### 添加依赖
+
+代码量
+
+pom.xml 文件中的内容如下：
+
+```
+
+```
+
+项目结构：
+
+![image-20200719103635256](assets/image-20200719103635256.png)
+
+
+
+编写配置文件
+
+创建user-service\src\main\resources\application.yml 属性文件,这里我们采用了yaml语法，而不是
+properties：
+
+
 
 **小结**：
 
@@ -334,6 +552,10 @@ public class RestTemplateTest {
 
 通过 `scope` 的import可以继承 `spring-cloud-dependencies` 工程中的依赖
 
+spring-cloud
+
+很多组件  这么加
+
 ## 7. 搭建配置user-service工程
 
 **目标**：配置user-service工程并能够根据用户id查询数据库中用户
@@ -342,13 +564,18 @@ public class RestTemplateTest {
 
 需求：可以访问http://localhost:9091/user/8输出用户数据
 
+一个浏览器中可以访问的地址  
+
 实现步骤：
 
 1. 添加启动器依赖（web、通用Mapper）；
 2. 创建启动引导类和配置文件；
-3. 修改配置文件中的参数；
-4. 编写测试代码（UserMapper，UserService，UserController）；
-5. 测试
+
+编写创建  修改  
+
+1. 修改配置文件中的参数；
+2. 编写测试代码（UserMapper，UserService，UserController）；
+3. 测试
 
 **小结**：
 
@@ -377,6 +604,10 @@ public class RestTemplateTest {
 
 
 
+JBLSpringBootAppGen 简介 在使用SpringBoot项目的时候都需要创建启动引导类**Application； 使用该插件可以快速创建启动引导类**Application类内容。 bug 或问题请邮件。
+
+
+
 - 编写配置文件
 
 ```yml
@@ -396,6 +627,10 @@ mybatis:
 
 
 
+就是添加了启动器依赖 
+
+
+
 ## 8. 搭建配置consumer-demo工程
 
 **目标**：编写测试类使用restTemplate访问user-service的路径根据id查询用户
@@ -403,6 +638,8 @@ mybatis:
 **分析**：
 
 需求：访问http://localhost:8080/consumer/8 使用RestTemplate获取http://localhost:9091/user/8的数据
+
+处理器  
 
 实现步骤：
 
@@ -423,7 +660,37 @@ mybatis:
 
 上述的问题都可以通过Spring Cloud的各种组件解决。
 
+这些问题  
+
+怎么解决 
+
+
+
 ## 9. Eureka注册中心说明
+
+服务管理
+如何自动注册和发现
+如何实现状态监管
+如何实现动态路由
+
+Eureka做什么？
+
+Eureka就好比是滴滴，负责管理、记录服务提供者的信息。服务调用者无需自己寻找服务，而是把自己的需求告诉
+Eureka，然后Eureka会把符合你需求的服务告诉你。
+同时，服务提供方与Eureka之间通过“心跳” 机制进行监控，当某个服务提供方出现问题，Eureka自然会把它从服务
+列表中剔除。
+这就实现了服务的自动注册、发现、状态监控。
+
+
+
+Eureka：就是服务注册中心（可以是一个集群），对外暴露自己的地址
+提供者：启动后向Eureka注册自己信息（地址，提供什么服务）
+消费者：向Eureka订阅服务，Eureka会将对应服务的所有提供者地址列表发送给消费者，并且定期更新
+心跳(续约)：提供者定期通过http方式向Eureka刷新自己的状态
+
+
+
+
 
 **目标**：说出Eureka的主要功能
 
@@ -431,7 +698,31 @@ mybatis:
 
 Eureka的主要功能是进行服务管理，定期检查服务状态，返回服务地址列表。
 
+服务管理 定期检查服务状态 返回服务地址列表 
+
+
+
+
+
 ![1560439174201](assets/1560439174201.png)
+
+将服务注册道eureka
+
+记录服务
+
+user-service
+
+http://localhost:9091
+
+http://localhost:9092
+
+从eureka获取服务列表
+
+基于负载均衡算法从地址列表选择一个服务地址调用服务
+
+定期发送心跳
+
+
 
 ## 10. 搭建eureka-server工程
 
@@ -440,6 +731,10 @@ Eureka的主要功能是进行服务管理，定期检查服务状态，返回�
 **分析**：
 
 Eureka是服务注册中心，只做服务注册；自身并不提供服务也不消费服务。可以搭建web工程使用Eureka，可以使用Spring Boot方式搭建。
+
+服务注册中心  只做服务注册  
+
+ 
 
 搭建步骤：
 
