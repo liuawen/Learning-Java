@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			#bcid {
+				width: 100%;
+				top: 44px;
+				bottom: 0px;
+				position: absolute;
+				text-align: center;
+				background-color: #222222;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">扫一扫</h1>
+		</header>
+
+		<div id="bcid"></div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			var scan;
+
+			mui.plusReady(function() {
+				// 延迟开启，避免手机卡顿
+				setTimeout("startScan()", 500);
+			});
+
+			function startRecognize() {
+			}
+
+			function startScan() {
+				scan = new plus.barcode.Barcode('bcid');
+				scan.onmarked = onmarked;
+				scan.start();
+			}
+
+			function cancelScan() {
+				scan.cancel();
+			}
+
+			function setFlash() {
+				scan.setFlash();
+			}
+			
+			// 二维码扫描后触发
+			function onmarked(type, result) {
+				
+				console.log("二维码扫描:" + result);
+				if(type == 0) { // 二维码
+					var arr = result.split("user_code:");
+					
+					if(arr.length != 2) {
+						mui.toast("解析好友失败");
+					}
+					else {
+						var friendUsername = arr[1];
+						var user = util.getUser();
+
+						mui.ajax(config.SERVER_URL + "/user/search?userid=" + user.id + "&friendUsername=" + friendUsername, {
+							data: {},
+							dataType: 'json', //服务器返回json格式数据
+							type: 'post', //HTTP请求类型
+							timeout: 10000, //超时时间设置为10秒；
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							success: function(data) {
+								console.log(JSON.stringify(data));
+								mui.openWindow({
+									url: "search_friend_result.html",
+									id: "search_friend_result",
+									extras: {
+										friend: data.result
+									}
+								});
+							}
+						});
+						scan.start();
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

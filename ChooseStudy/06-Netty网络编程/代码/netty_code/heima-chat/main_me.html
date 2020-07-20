@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a id="mephoto" href="javascript:;">
+						<span class="mui-pull-right mui-icon mui-icon-arrowright" style="line-height: 42px;color:gray;margin-left:3px;"></span>
+						<img id="picSmall" class="mui-media-object mui-pull-right" src="http://placehold.it/40x30">
+						<div class="mui-media-body" style="line-height: 42px;color:gray;margin-left:3px;">
+							头像
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a id="nickname1" href="javascript:;">
+						<span class="mui-pull-right mui-icon mui-icon-arrowright" style="line-height: 42px;color:gray;margin-left:3px;"></span>
+						<span id="nickname" class="mui-pull-right" style="line-height: 42px;color:gray;margin-left:3px;"></span>
+						<div class="mui-media-body" style="line-height: 42px;color:gray;margin-left:3px;">
+							昵称
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<span id="username" class="mui-pull-right" style="line-height: 42px;color:gray;margin-left:3px;"></span>
+						<div class="mui-media-body">
+							账号
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a id="qrcode" href="javascript:;">
+						<span class="mui-pull-right mui-icon mui-icon-arrowright" style="line-height: 42px;color:gray;margin-left:3px;"></span>
+						<img id="qrCodeIcon" class="mui-media-object mui-pull-right">
+						<div class="mui-media-body">
+							二维码
+						</div>
+					</a>
+				</li>
+			</ul>
+			
+			<br />
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" style="text-align: center;">
+					<a id="exit" href="javascript:;">
+						<div class="mui-media-body">
+							退出登录
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+		// 定义页面组
+		var pageList = [{
+			id: "main_hchat.html",
+			url: "main_hchat.html"
+		}, {
+			id: "main_contact.html",
+			url: "main_contact.html"
+		}, {
+			id: "main_discover.html",
+			url: "main_discover.html"
+		}, {
+			id: "main_me.html",
+			url: "main_me.html"
+		}];
+		
+			
+		mui.init();
+		
+		
+		// 组件初始化	
+		var img_picSmall = document.getElementById("picSmall");
+		var ele_nickname = document.getElementById("nickname");
+		var ele_username = document.getElementById("username");
+		var img_qrCodeIcon = document.getElementById("qrCodeIcon");
+			
+			mui.plusReady(function() {
+				img_picSmall = document.getElementById("picSmall");
+				ele_nickname = document.getElementById("nickname");
+				ele_username = document.getElementById("username");
+				img_qrCodeIcon = document.getElementById("qrCodeIcon");
+			
+				// 获取当前webview
+				var webview = plus.webview.currentWebview();
+				// 监听当前页面webview的加载事件
+				webview.addEventListener("show", function() {
+					loadMe();
+				});
+				
+				webview.addEventListener("refresh", function() {
+					loadMe();
+				});
+				
+				// 绑定点击头像跳转到显示页面
+				var mephoto = document.getElementById("mephoto");
+				mephoto.addEventListener("tap", function() {
+					mui.openWindow("me_photo.html", "me_photo");
+				});
+				
+				// 绑定点击修改昵称到显示页面
+				var nickname1 = document.getElementById("nickname1");
+				nickname1.addEventListener("tap", function() {
+					mui.openWindow("me_nickname.html", "nickname");
+				});
+				
+				// 绑定点击二维码到显示页面
+				var qrcode = document.getElementById("qrcode");
+				qrcode.addEventListener("tap", function() {
+					mui.openWindow("me_qrcode.html", "me_qrcode");
+				});
+				
+				var exit = document.getElementById("exit");
+				exit.addEventListener("tap", function() {
+					// 清空用户信息
+					plus.storage.removeItem("user");
+					plus.runtime.restart();
+				})
+				
+				// 处理refresh自定义事件
+				window.addEventListener("refresh", function() {
+					console.log("重新加载数据");
+					loadMe();
+				});
+			});
+			
+			// 加载当前用户信息
+			function loadMe() {
+				var user = Cache.get("user");
+				console.log("获取内部存储数据:" + JSON.stringify(user));
+				
+				var picSmall = document.getElementById("picSmall");
+				var nickname = document.getElementById("nickname");
+				var username = document.getElementById("username");
+				var qrCodeIcon = document.getElementById("qrCodeIcon");
+				
+				if(util.isEmpty(user.picSmall)) {
+					picSmall.src = "image/default_user_pic.png";
+				}
+				else {
+					picSmall.src = user.picSmall;
+				}
+				nickname.innerHTML = user.nickname;
+				username.innerHTML = user.username;
+				qrCodeIcon.src = "image/qrcode.png";
+			}
+		</script>
+	</body>
+
+</html>

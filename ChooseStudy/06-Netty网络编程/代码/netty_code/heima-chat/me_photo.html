@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a id="menu" class="mui-icon mui-icon mui-icon-right-nav mui-pull-right">...</a>
+			<h1 class="mui-title">我的头像</h1>
+		</header>
+
+		<div class="mui-content">
+			<img id="myphoto" src="" />
+		</div>
+
+		<div id="sheet" class="mui-popover mui-popover-bottom mui-popover-action ">
+			<!-- 可选择菜单 -->
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a id="choose" href="#">选择</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="save" href="#">保存</a>
+				</li>
+			</ul>
+			<!-- 取消菜单 -->
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#sheet"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			mui.plusReady(function() {
+				var user = util.getUser();
+
+				// 获取图片组件
+				var myphoto = document.getElementById("myphoto");
+				// 获取屏幕宽度
+				var screenWidth = document.body.clientWidth;
+
+				// 设置图片大小
+				myphoto.width = screenWidth;
+				myphoto.height = screenWidth;
+
+				// 获取菜单
+				var menu = document.getElementById("menu");
+
+				// 弹出菜单
+				menu.addEventListener("tap", function() {
+					mui("#sheet").popover("toggle");
+				});
+
+				// 选择菜单
+				var choose = document.getElementById("choose");
+				choose.addEventListener("tap", function() {
+					// 选择照片
+					plus.gallery.pick(function(path) {
+						
+						// -------
+						// 后端TODO:
+						// 设置后端用于上传文件的地址
+						// 后端应返回带头像完整URL的用户信息
+						// -------
+						var task = plus.uploader.createUpload(config.SERVER_URL + "/user/upload", {
+								method: "POST",
+								blocksize: 204800,
+								priority: 100
+							},
+							function(t, status) {
+								// 上传完成
+								if(status == 200) {
+
+									var data = JSON.parse(t.responseText);
+									console.log(JSON.stringify(data));
+
+									if(data.success) {
+										// 加载当前图片
+										myphoto.src = data.result.picNormal;
+										// 更新用户信息
+										user.picNormal = data.result.picNormal;
+										user.picSmall = data.result.picSmall;
+										util.saveUser(user);
+
+										// 获取main_me的webview
+										var main_me = plus.webview.getWebviewById("main_me.html");
+										// 触发refresh自定义事件
+										mui.fire(main_me, "refresh");
+									} else {
+										mui.toast("上传失败");
+									}
+								} else {
+									mui.toast("上传失败");
+								}
+							}
+						);
+						task.addFile(path, {
+							key: "file"
+						});
+						task.addData("userid", user.id);
+						//task.addEventListener( "statechanged", onStateChanged, false );
+						task.start();
+
+					}, function(e) {
+						console.log("取消选择图片");
+					}, {
+						filter: "image"
+					});
+
+					mui("#sheet").popover("toggle");
+				});
+
+				// 下载
+				var save = document.getElementById("save");
+				save.addEventListener("tap", function() {
+					// 隐藏菜单
+					mui("#sheet").popover("toggle");
+					// 获取图片的大图
+					var imageUrl = user.picNormal;
+
+					var dtask = plus.downloader.createDownload(imageUrl, {}, function(d, status) {
+						// 下载完成
+						if(status == 200) {
+							// 将临时文件保存到相册
+							plus.gallery.save(d.filename, function() {
+								mui.toast("保存图片到相册成功");
+							});
+						} else {
+							mui.toast("下载错误");
+						}
+					});
+					dtask.start();
+				});
+
+				if(util.isEmpty(user.picNormal)) {
+					myphoto.src = "image/default_user_pic_normal.png";
+				} else {
+					myphoto.src = user.picNormal;
+				}
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/chat.css" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				overflow: hidden;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 id="chatting-nickname" class="mui-title">朋友</h1>
+		</header>
+		
+		<div id="msg-outter" class="mui-content">
+			<div id='msg'>
+				
+				<!--<div class="friend_lists">
+					<div class="header_img">
+						<img src="image/default_user_pic.png" width="40px" height="40px" />
+					</div>
+					<div class="msg-wrapper right">
+						<p class="msg-left-white">晚上过来吃饭？</p>
+					</div>
+				</div>
+
+				<div class="me_lists">
+					<div class="header_img">
+						<img src="image/default_user_pic.png" width="40px" height="40px" />
+					</div>
+					<div class="msg-wrapper left">
+						<p class="msg-right-green">好的，没问题！时间地点？</p>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		
+		<footer>
+			<div class="footer-center">
+				<textarea id='msg-text' type="text" class='input-text'></textarea>
+			</div>
+			<label for="" class="footer-right">
+				<button type="button" class="mui-btn mui-btn-green" id="send">发送</button>
+			</label>
+		</footer>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			
+			// 页面传递过来的朋友参数
+			var friendid;
+			var nickname;
+			var picsmall;
+			
+			mui.plusReady(function() {
+				var user = util.getUser();
+				
+				var webview = plus.webview.currentWebview();
+				// 设置聊天页面的软键盘样式
+				webview.setStyle({
+					softinputMode: "adjustResize"
+				});
+				
+				friendid = webview.friendid;
+				nickname = webview.nickname;
+				picsmall = webview.picsmall;
+				
+				// 设置标题为朋友的昵称
+				document.getElementById("chatting-nickname").innerHTML = nickname;
+				// 加载本地聊天记录
+				loadChatRecord();
+				
+				var areaMsgList = document.getElementById("msg");
+				// 设置聊天记录自动滚动到最后一条
+				areaMsgList.scrollTop = areaMsgList.scrollHeight + areaMsgList.offsetHeight;
+		
+				window.addEventListener("resize", function() {
+					var areaMsgList = document.getElementById("msg");
+					// 设置聊天记录自动滚动到最后一条
+					areaMsgList.scrollTop = areaMsgList.scrollHeight + areaMsgList.offsetHeight;
+					document.getElementById("msg-outter").style.paddingBottom = "50px";
+				});
+				
+				var send = document.getElementById("send");
+				// 发送消息点击事件
+				send.addEventListener("tap", function() {
+					// 判断网络状态
+					var networkStatsu = plus.networkinfo.getCurrentType();
+					if(networkStatsu == 0 || networkStatsu == 1) {
+						mui.toast("请打开网络连接");
+						return;
+					}
+					
+					// 判断用户是否输入文本
+					var msg_text = document.getElementById("msg-text");
+					var msg = msg_text.value;
+					
+					if(util.isEmpty(msg)) {
+						return;
+					}
+					
+					var user = util.getUser();
+					console.log(JSON.stringify(user));
+					var msgHtml = '<div class="me_lists">'
+									+ '<div class="header_img">'
+										+ '<img src="' + user.picSmall +'" width="40px" height="40px" />'
+									+ '</div>'
+									+ '<div class="msg-wrapper left">'
+										+ '<p class="msg-right-green">' + msg + '</p>'
+									+ '</div>'
+								+ '</div>';
+					var msg_list = document.getElementById("msg");
+					msg_list.insertAdjacentHTML("beforeend", msgHtml);
+					
+					
+					// 构建发给服务器的消息体
+					var message = util.getMessage(config.MSG_TYPE_SEND, user.id, friendid, msg_text.value, null, null);
+					// 发送消息
+					console.log("发送消息:" + message);
+					
+					
+					// 保存自己发送的消息
+					util.saveChatRecord(user.id, friendid, msg_text.value, 1);
+					
+					// 保存聊天快照
+					util.saveChatSnapshot(user.id, friendid, msg_text.value, 1);
+					
+					// 使用webview执行js脚本
+					var webview = plus.webview.getWebviewById("main_hchat.html");
+					webview.evalJS("CHAT.chat('" + JSON.stringify(message) + "')");
+					
+					// 清空文本框内容
+					msg_text.value = "";
+					
+					var areaMsgList = document.getElementById("msg");
+					// 设置聊天记录自动滚动到最后一条
+					areaMsgList.scrollTop = areaMsgList.scrollHeight + areaMsgList.offsetHeight;
+				});
+			});
+			
+			function resize() {
+				var areaMsgList = document.getElementById("msg");
+				// 设置聊天记录自动滚动到最后一条
+				areaMsgList.scrollTop = areaMsgList.scrollHeight + areaMsgList.offsetHeight;
+			}
+			
+			function recMessage(msg) {
+				var msgHtml = '<div class="friend_lists">'
+					+ '<div class="header_img">'
+						+ '<img src="' + picsmall + '" width="40px" height="40px" />'
+					+ '</div>'
+					+ '<div class="msg-wrapper right">'
+						+ '<p class="msg-left-white">' + msg + '</p>'
+					+ '</div>'
+				+ '</div>';
+				var msg_list = document.getElementById("msg");
+				console.log(msgHtml);
+				msg_list.insertAdjacentHTML("beforeend", msgHtml);
+			}
+			
+			// 加载消息
+			function loadChatRecord() {
+				var user = util.getUser();
+				var msg_list = document.getElementById("msg");
+				
+				// 加载服务器上的消息
+				mui.ajax(config.SERVER_URL + "/chatrecord/findByUserIdAndFriendId?userid=" + user.id + "&friendid=" + friendid, {
+					data: {},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					success: function(data) {
+						console.log("聊天记录列表:" + JSON.stringify(data));
+						var html = "";
+						var user = util.getUser();
+						
+						for(var i = 0; i < data.length; ++i) {
+							var msg = data[i];
+							
+							// 更新聊天快照
+							util.saveChatSnapshot(msg.friendid, msg.userid, msg.message, 1);
+							
+							if(msg.userid == user.id) {
+								// 构建自己的消息
+								var msgHtmlMe = '<div class="me_lists">'
+										+ '<div class="header_img">'
+											+ '<img src="' + user.picSmall +'" width="40px" height="40px" />'
+										+ '</div>'
+										+ '<div class="msg-wrapper left">'
+											+ '<p class="msg-right-green">' + msg.message + '</p>'
+										+ '</div>'
+									+ '</div>';
+								html += msgHtmlMe;
+							}
+							else {
+								// 构建朋友的消息
+								var msgHtmlFriend = '<div class="friend_lists">'
+									+ '<div class="header_img">'
+										+ '<img src="' + picsmall + '" width="40px" height="40px" />'
+									+ '</div>'
+									+ '<div class="msg-wrapper right">'
+										+ '<p class="msg-left-white">' + msg.message + '</p>'
+									+ '</div>'
+								+ '</div>';
+								html += msgHtmlFriend;
+							}
+						}
+						
+						msg_list.innerHTML = html;
+						var areaMsgList = document.getElementById("msg");
+						// 设置聊天记录自动滚动到最后一条
+						areaMsgList.scrollTop = areaMsgList.scrollHeight + areaMsgList.offsetHeight;
+						
+						var webview = plus.webview.getWebviewById("main_hchat.html");
+						webview.evalJS("loadChatSnapshot()");
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

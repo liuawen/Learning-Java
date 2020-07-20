@@ -1,0 +1,183 @@
+﻿/*图片气泡*/
+.friend_lists {
+	margin: 0 50px 0px 10px;
+	position: relative;
+}
+
+.friend_lists .header_img {
+	position: absolute;
+	top: 5px;
+}
+
+.me_lists {
+	position: relative;
+	margin: 0 10px 0px 50px;
+}
+
+.me_lists .msg {
+	float: right;
+	margin-right: 73px;
+}
+
+.me_lists .header_img {
+	position: absolute;
+	top: 5px;
+	right: 0px;
+}
+
+
+/*背景气泡*/
+.msg-left-white {
+	background-color: #FFFFFF;
+	font-size: 16px;
+}
+
+.msg-right-green {
+	background-color: #a0e759;
+	font-size: 16px;
+}
+
+.msg-wrapper p {
+	color: black;
+	display: inline-block;
+	padding: 12px;
+	margin: 10px;
+	position: relative;
+	border-radius: 5px;
+}
+
+.msg-wrapper.right p {
+	margin-left: 60px;
+}
+
+.msg-wrapper.right p:before {
+	width: 0;
+	position: absolute;
+	top: 15px;
+	border-style: solid;
+	content: "";
+}
+
+.msg-wrapper.right p:before {
+	left: -12px;
+	border-color: transparent #FFFFFF;
+	border-width: 0 12px 12px 0;
+}
+
+.msg-wrapper.left p:before {
+	width: 0;
+	position: absolute;
+	top: 15px;
+	border-style: solid;
+	content: "";
+}
+
+.msg-wrapper.left p {
+	margin-right: 60px;
+}
+
+.msg-wrapper.left {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.msg-wrapper.left p:before {
+	right: -12px;
+	border-color: transparent #a0e759;
+	border-width: 0 0 12px 12px;
+}
+
+.cur_time {
+	text-align: center;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.cur_time span {
+	width: auto;
+	display: inline-block;
+	padding: 2px 10px;
+	font-size: 14px;
+	border-radius: 3px;
+	background: #CECECE;
+	color: white;
+}
+
+footer {
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	min-height: 50px;
+	border-top: solid 1px #bbb;
+	left: 0px;
+	bottom: 0px;
+	overflow: hidden;
+	padding: 0px 65px 0 10px;
+	background-color: #fafafa;
+}
+
+.footer-left {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 0px;
+	bottom: 0px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100%;
+	padding: 12px 4px;
+}
+
+.footer-right {
+	position: absolute;
+	width: 60px;
+	height: 50px;
+	right: 0px;
+	bottom: 0px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100%;
+	padding: 8px 15px 0 0;
+	display: inline-block;
+}
+
+.footer-center {
+	height: 100%;
+	padding: 5px 0px;
+}
+
+.footer-center [class*=input] {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+.footer-center .input-text {
+	background: #fff;
+	border: solid 1px #ddd;
+	padding: 10px !important;
+	font-size: 16px !important;
+	line-height: 18px !important;
+	font-family: verdana !important;
+	overflow: hidden;
+}
+
+.footer-center .input-sound {
+	background-color: #eee;
+}
+
+.mui-content {
+	height: 100%;
+	padding: 0px 0px 50px 0px;
+	overflow: auto;
+	background-color: #eaeaea;
+}
+
+#msg {
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}

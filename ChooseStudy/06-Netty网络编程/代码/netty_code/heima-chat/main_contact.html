@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.indexedlist.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索朋友">
+				</div>
+				<div class="mui-indexed-list-bar">
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+					<a>#</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul id="ul" class="mui-table-view">
+						<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+						<li data-tags="AKeSu" class="mui-media mui-table-view-cell mui-indexed-list-item">
+							<img class="mui-media-object mui-pull-left" src="image/default_user_pic.png" style="max-width: 35px;height:35px;padding: 8px 10px;"/>
+							<div class="mui-media-body" style="line-height: 35px;">阿拉山</div>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.indexedlist.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/hanzi_pinyin.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			
+			// 二维数组，用于保存联系人数据
+			var charNumMapping = {
+				'A':0,'B':1,'C':2,'D':3,'E':4,'F':5,'G':6,'H':7,'I':8,'G':9,
+				'K':10,'L':11,'M':12,'N':13,'O':14,'P':15,'Q':16,'R':17,'S':18,'T':19,
+				'U':20,'V':21,'W':22,'X':23,'Y':24,'Z':25,
+			};
+			
+			// 根据数字查找字母
+			function getCharByNum(num) {
+				for(var key in charNumMapping) {
+					if(charNumMapping[key] == num) {
+						return key;
+					}
+				}
+				
+				return "#";
+			}
+			
+			var data = [
+				[],[],[],[],[],[],[],[],[],[],
+				[],[],[],[],[],[],[],[],[],[],
+				[],[],[],[],[],[],[]
+			];
+			
+			mui.plusReady(function() {
+				reload();
+				
+				var webview = plus.webview.currentWebview();
+				webview.addEventListener("show", function() {
+					reload();
+				});
+				
+				webview.addEventListener("refresh", function() {
+					reload();
+				});
+			});
+			
+			function reload() {
+				
+				// 加载后端好友数据
+				var user = util.getUser();
+				
+				// 加载我的好友数据
+				mui.ajax(config.SERVER_URL + "/friend/findFriendByUserid?userid=" + user.id, {
+					data: {
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					success: function(data) {
+						console.log("我的好友:" + JSON.stringify(data));
+						// 将好友数据缓存到本地
+						plus.storage.setItem("contactList", JSON.stringify(data));
+					}
+				});
+				
+				// 加载好友数据
+				loadContact();
+				
+				// 显示通信录
+				showContact();
+			}
+			
+			function loadContact() {
+				// 获取本地缓存的好友数据
+				var contactListStr = plus.storage.getItem("contactList");
+				var friendList = [];
+				if(!util.isEmpty(contactListStr)) {
+					friendList = JSON.parse(contactListStr);
+					
+					for(var i = 0; i < friendList.length; ++i) {
+						var friend = friendList[i];
+						// 将好友转换为拼音
+						var pinyin = words.convertPinyin(friend.nickname);
+						// 获取首字母
+						var firstChar = pinyin.substr(0, 1).toUpperCase();
+						// 字母转数字 A - 0, B - 1...
+						// 数字 转换为26
+						var num = charNumMapping[firstChar] ? charNumMapping[firstChar]: '26';
+						// 将好友放入二维数组
+						data[num].push(friend);
+					}
+					
+					var html = '';
+					for(var i = 0; i < data.length; ++i) {
+						var arr = data[i];
+						if(arr.length > 0) {
+							console.log("好友：" + JSON.stringify(arr));
+							html += '<li data-group="' + getCharByNum(i) +'" class="mui-table-view-divider mui-indexed-list-group">'+ getCharByNum(i) +'</li>';
+							
+							for(var j = 0; j < arr.length; ++j) {
+								html += '<li data-friendid="' + arr[j].id + '" ' + 'data-nickname="' + arr[j].nickname + '"data-picsmall="' + arr[j].picSmall +'" class="chat-with-friend mui-media mui-table-view-cell mui-indexed-list-item">'
+											+ '<img class="mui-media-object mui-pull-left" src="' + arr[j].picSmall +'" style="max-width: 45px;height:45px;"/>'
+											+ '<div class="mui-media-body" style="line-height: 35px;">' + arr[j].nickname +'</div>'
+							}
+							
+							html += '</li>';
+							
+						}
+					}
+						
+					document.getElementById("ul").innerHTML = html;
+					console.log(html);
+					
+					// 清空数组
+					data = [
+						[],[],[],[],[],[],[],[],[],[],
+						[],[],[],[],[],[],[],[],[],[],
+						[],[],[],[],[],[]
+					];
+				
+					
+					// 批量绑定事件
+					mui("#ul").on("tap", ".chat-with-friend", function(e) {
+						// 获取每一个标签上的自定义属性数据
+						var friendid = this.getAttribute("data-friendid");
+						var nickname = this.getAttribute("data-nickname");
+						var picsmall = this.getAttribute("data-picsmall");
+						
+						console.log("朋友webviewid:" + ("chat-" + friendid));
+						mui.openWindow({
+							url: "chat.html",
+							id: "chat-" + friendid,
+							extras: {
+								friendid: friendid,
+								nickname: nickname,
+								picsmall: picsmall
+							}
+						});
+					});
+				}
+			}
+			
+			function showContact() {
+				var list = document.getElementById('list');
+				//calc hieght
+				list.style.height = document.body.offsetHeight + 'px';
+				// 创建列表
+				window.indexedList = new mui.IndexedList(list);
+			}
+		</script>
+	</body>
+
+
+</html>

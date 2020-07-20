@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			 <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">注册</h1>
+		</header>
+		
+		<div class="mui-content">
+			<form class="mui-input-group" id="form">
+				<div class="mui-input-row">
+					<label>用户名</label>
+					<input type="text" class="mui-input-clear" placeholder="用户名" id="username">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input type="password" class="mui-input-clear" placeholder="密码" id="password">
+				</div>
+				<div class="mui-input-row">
+					<label>确认密码</label>
+					<input type="password" class="mui-input-clear" placeholder="确认密码" id="confirm_password">
+				</div>
+
+				<div class="mui-content-padded" align="center">
+					<button type="submit" class="mui-btn mui-btn-green" id="reg">注册</button>
+				</div>
+			</form>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			mui.plusReady(function() {
+				var form = document.getElementById("form");
+				var username = document.getElementById("username");
+				var password = document.getElementById("password");
+				var confirm_password = document.getElementById("confirm_password");
+
+				// 绑定提交事件
+				form.addEventListener("submit", function(e) {
+					// 判断输入是否为空，为空获取焦点
+					if(util.isEmpty(username.value)) {
+						username.focus();
+						mui.toast("请输入用户名");
+						return false;
+					}
+
+					if(util.isEmpty(password.value)) {
+						password.focus();
+						mui.toast("请输入密码");
+						return false;
+					}
+
+					// 判断两次输入密码是否一致
+					if(password.value != confirm_password.value) {
+						password.focus();
+						mui.toast("两次输入密码不一致");
+						return false;
+					}
+
+					// 提交请求
+					mui.ajax(config.SERVER_URL + '/user/register', {
+						data: {
+							username: username.value,
+							password: password.value,
+							clientId: plus.push.getClientInfo().clientid
+						},
+						dataType: 'json',
+						type: 'post',
+						timeout: 10000,
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						success: function(res) {
+							console.log(JSON.stringify(res));
+
+							// 设置键盘失去焦点
+							username.blur();
+							password.blur();
+
+							mui.toast(res.message);
+							
+							if(res.success) {
+								mui.back();
+							}
+						}
+					});
+
+					// 阻止默认表单提交
+					e.preventDefault();
+				});
+			})
+		</script>
+	</body>
+
+</html>

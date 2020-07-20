@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">搜索结果</h1>
+		</header>
+
+		<div class="mui-content">
+
+			<br />
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img id="photo" class="mui-media-object mui-pull-left" src="image/default_user_pic.png">
+						<div class="mui-media-body">
+							<span id="nickname">昵称名</span>
+							<p class="mui-ellipsis">HChat号:<span id="username">123123</span></p>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<div style="margin:10px;">
+				<button id="add" type="button" class="mui-btn mui-btn-blue mui-btn-block">添加</button>
+				<button id="back" type="button" class="mui-btn mui-btn-block">返回</button>
+			</div>
+
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			mui.plusReady(function() {
+				var photo = document.getElementById("photo");
+				var nickname = document.getElementById("nickname");
+				var username = document.getElementById("username");
+
+				// 接收从上一个页面传递过来的数据
+				var friend = plus.webview.currentWebview().friend;
+
+				// 设置前端组件数据
+				photo.src = friend.picSmall;
+				nickname.innerHTML = friend.nickname;
+				username.innerHTML = friend.username;
+
+				var add = document.getElementById("add");
+				add.addEventListener("tap", function() {
+
+					var user = util.getUser();
+
+					mui.ajax(config.SERVER_URL + "/friend/sendRequest", {
+						data: {
+							fromUserid: user.id,
+							toUserid: friend.id
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						success: function(data) {
+							console.log("好友请求结果:" + JSON.stringify(data));
+
+							if(data.success) {
+								mui.toast(data.message);
+								mui.openWindow({
+									url: "index.html",
+									id: "index"
+								});
+							}
+							else {
+								mui.toast(data.message);
+							}
+						}
+					});
+				});
+
+				var back = document.getElementById("back");
+				back.addEventListener("tap", function() {
+					mui.back();
+				});
+			});
+		</script>
+	</body>
+
+</html>

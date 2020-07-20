@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a id="save" class="mui-icon mui-icon mui-icon-right-nav mui-pull-right" style="font-size: 16px;line-height: 25px;">保存</a>
+			<h1 class="mui-title">修改昵称</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-input-row">
+				<input id="nickname" type="text" class="mui-input-clear" placeholder="昵称">
+			</div>
+
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			mui.plusReady(function() {
+				// 加载用户昵称
+				var user = util.getUser();
+
+				var nickname = document.getElementById("nickname");
+				nickname.value = user.nickname;
+
+				var save = document.getElementById("save");
+				save.addEventListener("tap", function() {
+					
+
+					mui.ajax(config.SERVER_URL + "/user/updateNickname", {
+						data: {
+							id: user.id,
+							nickname: nickname.value
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						success: function(result) {
+							mui.toast(result.message);
+							
+							if(result.success) {
+								var user = util.getUser();
+								reloadUser(user.id);
+							}
+						}
+					});
+				});
+			});
+			
+			function reloadUser(userid) {
+				// 重新加载用户信息保存到本地缓存
+				mui.ajax(config.SERVER_URL + "/user/findById?userid=" + userid, {
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					success: function(res) {
+						console.log("重新加载用户信息:" + JSON.stringify(res));
+						util.saveUser(res);
+						
+						// 触发自定义的refresh事件重新加载昵称
+						// 获取main_me的webview
+						var main_me = plus.webview.getWebviewById("main_me.html");
+						// 触发refresh自定义事件
+						mui.fire(main_me, "refresh");
+
+						// 返回到main_me页面
+						mui.back();
+
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

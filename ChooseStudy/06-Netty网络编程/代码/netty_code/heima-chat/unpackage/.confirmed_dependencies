@@ -1,0 +1,67 @@
+{
+	"index.html": {
+		"resources": [
+			"main_hchat.html",
+			"main_me.html"
+		],
+		"refer": [
+			"main_me.html",
+			"main_contact.html",
+			"main_hchat.html",
+			"main_discover.html"
+		]
+	},
+	"register.html": {
+		"refer": [
+			"register.html",
+			"login.html"
+		],
+		"resources": []
+	},
+	"login.html": {
+		"refer": [
+			"register.html",
+			"login.html",
+			"index.html"
+		]
+	},
+	"main_me.html": {
+		"refer": [
+			"me_photo.html",
+			"me_nickname.html",
+			"me_qrcode.html",
+			"login.html"
+		]
+	},
+	"me_photo.html": {
+		"refer": [
+			"js/cropper/image-uploader.html"
+		]
+	},
+	"js/cropper/image-uploader.html": {
+		"refer": [
+			"js/cropper/index.html"
+		]
+	},
+	"main_discover.html": {
+		"refer": [
+			"search_friend.html",
+			"scan.html"
+		]
+	},
+	"search_friend.html": {
+		"refer": [
+			"search_friend_result.html"
+		]
+	},
+	"main_contact.html": {
+		"refer": [
+			"chat.html"
+		]
+	},
+	"main_hchat.html": {
+		"refer": [
+			"chat.html"
+		]
+	}
+}

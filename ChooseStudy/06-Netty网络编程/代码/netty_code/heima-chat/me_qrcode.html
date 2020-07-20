@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">二维码</h1>
+		</header>
+
+		<div id="content" class="mui-content">
+			<div class="mui-card">
+				<!--页眉，放置标题-->
+				<div class="mui-card-header">
+					<img id="myphoto" src="" />
+					<spa id="username"></span>
+				</div>
+				<!--内容区-->
+				<div class="mui-card-content">
+					<img id="myqrcode" src="" />
+				</div>
+				<!--页脚，放置补充信息或支持的操作-->
+				<div class="mui-card-footer">扫一扫上面的二维码，加我HiChat</div>
+			</div>
+			
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			mui.plusReady(function() {
+				var user = util.getUser();
+				
+				// 设置头像
+				var myphoto = document.getElementById("myphoto");
+				if(util.isEmpty(user.picSmall)) {
+					myphoto.src = config.SERVER_URL + config.DEFAULT_PIC_IMG;
+				}
+				else {
+					myphoto.src = user.picSmall;
+				}
+				
+				// 设置昵称
+				var username = document.getElementById("username");
+				username.innerHTML = user.nickname;
+
+				// 获取图片组件
+				var myqrcode = document.getElementById("myqrcode");
+				// 获取屏幕宽度
+				var screenWidth = document.body.clientWidth;
+				var screenHeight = document.body.clientHeight;
+
+				// 设置图片大小
+				myqrcode.width = screenWidth;
+				myqrcode.height = screenWidth;
+
+				var user = util.getUser();
+				myqrcode.src = user.qrcode;
+			});
+		</script>
+	</body>
+
+</html>

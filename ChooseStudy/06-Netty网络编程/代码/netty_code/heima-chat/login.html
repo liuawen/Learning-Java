@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content" id="form">
+			<div style="height: 80px;"></div>
+			<form class="mui-input-group" id="form">
+				<div class="mui-input-row">
+					<input type="text" class="mui-input-clear" placeholder="用户名" id="username" style="font-size: 18px;">
+				</div>
+				<div class="mui-input-row" style="margin-top: 10px;">
+					<input type="password" class="mui-input-clear" placeholder="密码" id="password" style="font-size: 18px;">
+				</div>
+				<div class="mui-content-padded" align="center" style="margin-top: 10px;">
+					<button type="submit" class="mui-btn mui-btn-blue" id="login" style="width: 100%;margin-bottom: 5px;">登陆</button>
+					<a class="mui-btn mui-btn-green" id="reg" href="register.html" style="width: 100%;">注册</a>
+				</div>
+				<br />
+			</form>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			var input_username;
+			var input_password;
+			var form_login;
+
+			mui.plusReady(function() {
+				
+				// 组件初始化
+				input_username = document.getElementById("username");
+				input_password = document.getElementById("password");
+				form_login = document.getElementById("form");
+				
+				// 禁用回退按钮
+				mui.back = function() {
+					return false;
+				}
+				
+				doShow();
+
+				// 绑定提交事件
+				form_login.addEventListener("submit", function(e) {
+					doSumit();
+					// 阻止默认表单提交
+					e.preventDefault();
+				})
+			});
+			
+			function doShow() {
+				// 判断用户是否已经登录
+				var user = util.getUser();
+				console.log("获取登录用户:" + JSON.stringify(user));
+				if(user != null) {
+					mui.openWindow("index.html", "index");
+				}
+			}
+			
+			function doSumit() {
+				// 判断输入是否为空，为空获取焦点
+				if(util.isEmpty(input_username.value)) {
+					input_username.focus();
+					mui.toast("请输入用户名");
+					return false;
+				}
+
+				if(util.isEmpty(input_password.value)) {
+					input_password.focus();
+					mui.toast("请输入密码");
+					return false;
+				}
+				
+				util.ajax("/user/login", {
+					username: input_username.value,
+					password: input_password.value
+				},  function(data) {
+						doLogin(data);
+					}
+				);
+			}
+			
+			// 登录成功后调用
+			// 将用户信息缓存到手机本地
+			function doLogin(data) {
+				// 设置键盘失去焦点
+				input_username.blur();
+				input_password.blur();
+
+				mui.toast(data.message);
+				if(data.success) {
+					util.saveUser(data.result);
+					mui.openWindow("index.html", "index");
+				}
+			}
+		</script>
+	</body>
+
+</html>

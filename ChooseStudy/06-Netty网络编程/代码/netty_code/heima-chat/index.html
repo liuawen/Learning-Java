@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">HiChat</h1>
+	</header>
+	
+	<nav class="mui-bar mui-bar-tab">
+	    <a id="hchat" class="mui-tab-item mui-active" data-tab-index="0">
+	        <span class="mui-icon mui-icon-chatbubble"></span>
+	        <span class="mui-tab-label">HChat</span>
+	    </a>
+	    <a class="mui-tab-item" data-tab-index="1">
+	        <span class="mui-icon mui-icon-contact"></span>
+	        <span class="mui-tab-label">通讯录</span>
+	    </a>
+	    <a class="mui-tab-item" data-tab-index="2">
+	        <span class="mui-icon mui-icon-paperplane"></span>
+	        <span class="mui-tab-label">发现</span>
+	    </a>
+	    <a class="mui-tab-item" data-tab-index="3">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">我</span>
+	    </a>
+	</nav>
+	
+	<script>
+		// 定义页面组
+		var pageList = [{
+			id: "main_hchat.html",
+			url: "main_hchat.html"
+		}, {
+			id: "main_contact.html",
+			url: "main_contact.html"
+		}, {
+			id: "main_discover.html",
+			url: "main_discover.html"
+		}, {
+			id: "main_me.html",
+			url: "main_me.html"
+		}];
+		
+		mui.plusReady(function() {
+			// 禁用回退按钮
+			mui.back = function() {
+				return false;
+			}
+			
+			// 初始化底部Tab
+			doInitTab();
+		});
+		
+		function doInitTab() {
+			// 获取当前的webview
+			var webview_current = plus.webview.currentWebview();
+			
+			for(var i = 0; i < pageList.length; ++i) {
+				var page = pageList[i];
+				// 为每一个页面创建webview
+				var webview_subpage = plus.webview.create(page.url, page.id, {
+					// 设置子页面显示位置
+					top: "44px",
+					bottom: "50px"
+				});
+				// 隐藏子页面webview
+				webview_subpage.hide();
+				// 将每一个页面添加到主webview
+				webview_current.append(webview_subpage);
+			}
+			// 显示第一个webview
+			plus.webview.show(pageList[0].id);
+			
+			// 绑定底部按钮点击事件
+			mui(".mui-bar-tab").on("tap", "a", function() {
+				// 获取标签中data-tab-index属性值
+				var index = this.getAttribute("data-tab-index");
+				
+				// 显示当前选中的页面
+				plus.webview.show(pageList[index].id);
+				// 隐藏所有其他未选中的页面
+				for(var i = 0; i < pageList.length; ++i) {
+					if(i != index) {
+						plus.webview.hide(pageList[i].id);
+					}
+				}
+			});
+		}
+		
+		function fireRefresh() {
+			var mewebview = plus.webview.getWebviewById("main_me.html");
+			mui.fire(mewebview, "refresh");
+			
+			var hchatwebview = plus.webview.getWebviewById("main_hchat.html");
+			mui.fire(hchatwebview, "refresh");
+			
+			var hchatwebview = plus.webview.getWebviewById("main_contact.html");
+			mui.fire(hchatwebview, "refresh");
+		}
+	</script>
+</body>
+</html>

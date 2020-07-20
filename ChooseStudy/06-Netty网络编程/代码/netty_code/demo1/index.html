@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">登录页面</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>用户名</label>
+					<input id="username" type="text" class="mui-input-clear" placeholder="请输入用户名" value="zhangsan">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
+				</div>
+				<div class="mui-button-row">
+					<button id="confirm" type="button" class="mui-btn mui-btn-primary">确认</button>
+					<button type="button" class="mui-btn mui-btn-danger">取消</button>
+				</div>
+			</form>
+		</div>
+		<script>
+			mui.init();
+
+			mui.plusReady(function() {
+				// 使用document.getElementById来获取Input组件数据
+				var username = document.getElementById("username");
+				var password = document.getElementById("password");
+				var confirm = document.getElementById("confirm");
+
+				// 绑定事件
+				confirm.addEventListener("tap", function() {
+					// 发送ajax请求
+					mui.ajax('http://192.168.1.106:9000/login', {
+						data: {
+							username: username.value,
+							password: password.value
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						success: function(data) {
+							// 使用JSON.stringify可以将JSON对象转换为String字符串
+							console.log(JSON.stringify(data));
+							
+							var jsonStr = JSON.stringify(data);
+							var jsonObj = JSON.parse(jsonStr);
+							
+							if(data.success) {
+								var user =  {
+									username: username.value,
+									password: password.value
+								}
+								// 将对象数据放入到缓存中，需要转换为字符串
+								plus.storage.setItem("user", JSON.stringify(user));
+								
+								mui.openWindow({
+								    url: 'login_success.html', 
+								    id:'login_succss.html'
+								  });
+							}
+							else {
+								mui.openWindow({
+								    url: 'login_failed.html', 
+								    id:'login_failed.html'
+								 });
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+							console.log(type);
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>
