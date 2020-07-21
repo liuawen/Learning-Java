@@ -1,0 +1,12 @@
+error:
+  whitelabel:
+    enabled: false
+
+amazon:
+  associate_id: habuma-20
+
+logging:
+  level:
+    root: INFO
+    com:
+      h2: DEBUG

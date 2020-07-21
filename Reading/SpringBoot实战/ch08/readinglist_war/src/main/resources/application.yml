@@ -1,0 +1,21 @@
+error:
+  whitelabel:
+    enabled: false
+
+amazon:
+  associate_id: habuma-20
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+      
+---
+spring:
+  profiles: production
+  datasource:
+    url: jdbc:postgresql://localhost:5432/readinglist
+    username: habuma
+    password: 
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

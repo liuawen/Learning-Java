@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: habuma
+      changes:
+        - createTable:
+            tableName: reader
+            columns:
+              - column:
+                  name: username
+                  type: varchar(25)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fullname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: book
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: author
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: isbn
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reader_username
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+                    references: reader(username)
+                    foreignKeyName: fk_reader_username
+        - createSequence:
+            sequenceName: hibernate_sequence
+        - insert:
+           tableName: reader
+           columns:
+             - column:
+                name: username
+                value: craig
+             - column:
+                name: password
+                value: password
+             - column:
+                name: fullname
+                value: Craig Walls
+                
