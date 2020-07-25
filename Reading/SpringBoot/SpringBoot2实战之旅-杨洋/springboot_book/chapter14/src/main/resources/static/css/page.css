@@ -1,0 +1,28 @@
+.pages{
+    list-style: none;
+}
+.pages>li{
+    float: left;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.pages .pageItem{
+    border: solid thin #DDDDDD;
+    margin: 5px;
+}
+.pages .pageItemActive{
+    border: solid thin #6610f2;
+    margin: 5px;
+    background-color: #6610f2;
+    color:white;
+}
+.pages .pageItem:hover{
+    border: solid thin #6610f2;
+    background-color: #6610f2;
+    color:white;
+}
+.pages .pageItemDisable{
+    border: solid thin #DDDDDD;
+    margin: 5px;
+    background-color: #DDDDDD;
+}

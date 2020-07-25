@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+  <head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+
+  <div th:include="common/common_navigation :: commonNavigation"></div>
+	<div class="container pt">
+		<div class="row mt centered">
+			<div class="col-lg-4">
+				<a class="zoom green" th:href="@{/articleDetailDemo}"><img class="img-responsive" th:src="@{/img/portfolio/port01.jpg}" alt="" /></a>
+				<p>SpringBoot</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" th:href="@{/articleDetailDemo}"><img class="img-responsive" th:src="@{/img/portfolio/port02.jpg}" alt="" /></a>
+				<p>SpringCloud</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" th:href="@{/articleDetailDemo}"><img class="img-responsive" th:src="@{/img/portfolio/port03.jpg}" alt="" /></a>
+				<p>Linux</p>
+			</div>
+		</div>
+		<div class="row mt centered">
+			<div class="col-lg-4">
+				<a class="zoom green" th:href="@{/articleDetailDemo}"><img class="img-responsive" th:src="@{/img/portfolio/port04.jpg}" alt="" /></a>
+				<p>微服务</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" th:href="@{/articleDetailDemo}"><img class="img-responsive" th:src="@{/img/portfolio/port05.jpg}" alt="" /></a>
+				<p>多线程</p>
+			</div>
+			<div class="col-lg-4">
+				<a class="zoom green" th:href="@{/articleDetailDemo}"><img class="img-responsive" th:src="@{/img/portfolio/port06.jpg}" alt="" /></a>
+				<p>消息队列</p>
+			</div>
+		</div>
+	</div>
+  <div th:include="common/common_footer :: commonFooter"></div>
+  </body>
+  <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+</html>

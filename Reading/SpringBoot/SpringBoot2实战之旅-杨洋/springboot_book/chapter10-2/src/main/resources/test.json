@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "id": {
+      "type": "long"
+    },
+    "contentName": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    },
+    "articleContent": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    },
+    "readCount": {
+      "type": "long"
+    },
+    "authorName": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    },
+    "authorAge": {
+      "type": "long"
+    },
+    "authorAddress": {
+      "type": "text",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    }
+  }
+}

@@ -1,0 +1,251 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+
+
+<head th:include="common/common_head::commonHeader('dalaoyang')"></head>
+
+
+
+<body>
+    <div id="wrapper">
+
+        <div th:include="common/navigation :: navigation"></div>
+
+        <div id="page-wrapper">
+            <div id="page-inner">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            网站统计<small>网站内容具体统计</small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-green">
+                            <div class="panel-body">
+                                <i class="fa fa-bar-chart-o fa-5x"></i>
+                                <h3 th:text="${articleCount}"></h3>
+                            </div>
+                            <div class="panel-footer back-footer-green">
+                                <a  th:class="${urlPre=='article'}?'active-menu'"  th:href="@{/articleList}">文章数量</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-blue">
+                            <div class="panel-body">
+                                <i class="fa fa-tags fa-5x"></i>
+                                <h3 th:text="${tagCount}"></h3>
+                            </div>
+                            <div class="panel-footer back-footer-blue">
+                                <a th:class="${urlPre=='tag'}?'active-menu'" class="active-menu"  th:href="@{/tagList}">标签数量</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-red">
+                            <div class="panel-body">
+                                <i class="fa fa fa-link fa-5x"></i>
+                                <h3 th:text="${linkCount}"></h3>
+                            </div>
+                            <div class="panel-footer back-footer-red">
+                                <a th:class="${urlPre=='link'}?'active-menu'" class="active-menu"  th:href="@{/linkList}">友链数量</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-brown">
+                            <div class="panel-body">
+                                <i class="fa fa-users fa-5x"></i>
+                                <h3 th:text="${websiteSystemInfo.todayWebsiteVisits}"></h3>
+                            </div>
+                            <div class="panel-footer back-footer-brown">
+                                今日访问数量
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                访问人数统计
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-bar-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                缓存管理
+                            </div>
+                            <div class="panel-body">
+                                <a style="cursor: pointer;" class="list-group-item" onclick="deleteCache('all')"><i class="fa fa-fw fa-bomb"></i>清空网站所有缓存</a>
+                                <a style="cursor: pointer;"  class="list-group-item" onclick="deleteCache('article')"><i class="fa fa-fw fa-table"></i>清空文章列表缓存</a>
+                                <a style="cursor: pointer;"  class="list-group-item" onclick="deleteCache('tag')"><i class="fa fa-fw fa-tags"></i>清空标签列表缓存</a>
+                                <a style="cursor: pointer;"  class="list-group-item" onclick="deleteCache('link')"><i class="fa fa-fw fa-link"></i>清空友链列表缓存</a>
+                                <a style="cursor: pointer;"  class="list-group-item" onclick="deleteCache('system')"><i class="fa fa-fw fa-cog"></i>清空系统配置缓存</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                近期发布文章
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group"  th:each="al,iterStat : ${articleList}">
+                                    <a class="list-group-item">
+                                        <span class="badge" th:text="${#dates.format(al.articleInputDate, 'yyyy-MM-dd')}"></span>
+                                        <i class="fa fa-fw fa-comment"></i> <span th:text="${al.articleName}"></span>
+                                    </a>
+                                </div>
+                                <div class="text-right">
+                                    <a th:class="${urlPre=='article'}?'active-menu'"  th:href="@{/articleList}">文章列表<i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                管理员列表
+                            </div> 
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>登录名</th>
+                                                <th>真实姓名</th>
+                                                <th>邮箱</th>
+                                                <th>手机号</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody  th:each="al,iterStat : ${userList}">
+                                            <tr>
+                                                <td th:text="${al.id}"></td>
+                                                <td th:text="${al.userName}"></td>
+                                                <td th:text="${al.trueName}"></td>
+                                                <td th:text="${al.email}"></td>
+                                                <td th:text="${al.phone}"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+				<footer>
+                    <div th:include="common/footer :: footer"></div>
+                </footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+    <script type="text/javascript"  th:inline="javascript">
+
+        var urlPrefix = "http://211.159.147.203:8888/";
+        function  deleteCache(flag){
+            var url = "";
+            if(!flag){
+                return;
+            }else if('all'==flag){
+                url = urlPrefix + "deleteAllCache";
+            }else if('article'==flag){
+                url = urlPrefix + "deleteCache_index";
+            }else if('tag'==flag){
+                url = urlPrefix + "deleteCache_tagList";
+            }else if('link'==flag){
+                url = urlPrefix + "deleteCache_linkList";
+            }else if('system'==flag){
+                url = urlPrefix + "deleteCache_websiteProperty";
+            }
+            if(!url){
+                return false;
+            }
+            $.get(url, function(result){
+                alert("清除缓存成功！");
+            });
+        }
+
+        /*------------------------------------------------------
+    Author : www.webthemez.com
+    License: Commons Attribution 3.0
+    http://creativecommons.org/licenses/by/3.0/
+---------------------------------------------------------  */
+
+        (function ($) {
+            "use strict";
+            var mainApp = {
+
+                initFunction: function () {
+                    /*MENU
+                    ------------------------------------*/
+                    $('#main-menu').metisMenu();
+
+                    $(window).bind("load resize", function () {
+                        if ($(this).width() < 768) {
+                            $('div.sidebar-collapse').addClass('collapse')
+                        } else {
+                            $('div.sidebar-collapse').removeClass('collapse')
+                        }
+                    });
+
+                    /* MORRIS BAR CHART
+                    -----------------------------------------*/
+                    Morris.Bar({
+                        element: 'morris-bar-chart',
+                        data: [[${websiteAccessInfoList}]],
+                        xkey: ['accessDateStr'],
+                        ykeys: ['accessCount'],
+                        labels: ['访问人数'],
+                        hideHover: 'auto',
+                        resize: true
+                    });
+
+                },
+
+                initialization: function () {
+                    mainApp.initFunction();
+                }
+
+            }
+            // Initializing ///
+
+            $(document).ready(function () {
+                mainApp.initFunction();
+            });
+
+        }(jQuery));
+
+
+    </script>
+
+</body>
+
+</html>

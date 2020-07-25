@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head th:include="common/common_head::commonHeader(${applicationName})"></head>
+
+<body class="sub-page">
+
+    <div th:include="common/navigation :: navigation"></div>
+	<div th:include="common/img :: img"></div>
+
+	<div th:include="common/header :: header"></div>
+
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="single-page">
+		<div class="container">
+			<div class="row">
+				<div id="main-content">
+					<article>
+						<div class="art-content  markdown_views">
+							<div class="row">
+								<div class="col-md-12 box-item">
+									<h3>联系方式</h3>
+									<span>如果有什么问题，欢迎随时联系我。</span><br> <br>
+									   <p><a target="_blank" th:href="@{/img/wechat/dalaoyang.jpeg}" title="WECHAT">wechat：dawanzi520</a><br>
+									<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=397600342&site=qq&menu=yes">QQ :397600342</a></p>
+									   <p><a href="mailto:yangyang@dalaoyang.com">email :yangyang@dalaoyang.com</a></p>
+                                       <p>base :北京</p>
+									<hr/>
+									   <p>需要交换友链可以发送邮件给我或者在下面留言给我。</p>
+									    <p>网站名称：dalaoyang</p>
+									    <p>网站地址：https://www.dalaoyang.cn/</p>
+								</div>
+							</div>
+						</div>
+
+					</article>
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<!-- FOOTER -->
+	<footer>
+		<div th:include="common/footer :: footer"></div>
+	</footer>
+
+	<div th:include="common/common_onload_js :: onLoadJs"></div>
+
+</body>
+</html>

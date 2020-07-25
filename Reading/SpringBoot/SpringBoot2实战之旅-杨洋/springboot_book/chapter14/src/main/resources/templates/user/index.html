@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">用户列表页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a th:href="@{/index}">首页</a></li>
+              <li class="breadcrumb-item active">用户列表页</li>
+            </ul>
+          </div>
+          <section class="tables">   
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <div class="card-body">
+                        <form class="form-inline">
+                          <div class="form-group">
+                            用户ID：
+                            <input id="userId" type="text" placeholder="" th:value="${userId}" class="mr-1 form-control">
+                          </div>
+                          <div class="form-group">
+                            用户名称：
+                            <input id="username" type="text" placeholder="" th:value="${username}" class="mr-3 form-control">
+                          </div>
+                          <div class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="search()">查询</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                          <tr>
+                            <th>用户ID</th>
+                            <th>用户名称</th>
+                            <th>用户邮箱</th>
+                            <th>操作</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <div  th:each="al,iterStat : ${userList}">
+                          <tr>
+                            <td th:text="${al.userId}"></td>
+                            <td th:text="${al.username}"></td>
+                            <td th:text="${al.email}"></td>
+                            <th>
+                              <a th:onclick="'javascript:edit('+${al.userId}+');'" href="#" class="edit"> <i class="fa fa-gear"></i>修改</a>
+                              <span th:if="${al.isEnable==0}">
+                                  <a th:onclick="'javascript:pulishUser('+${al.userId}+');'" href="#" class="edit"> <i class="fa fa-check"></i>启用</a>
+                                  <a th:onclick="'javascript:deleteUser('+${al.userId}+');'" href="#" class="edit"> <i class="fa fa-trash"></i>删除</a>
+                                </span>
+                              <span th:if="${al.isEnable==1}">
+                                  <a th:onclick="'javascript:cancleUser('+${al.userId}+');'" href="#" class="edit"> <i class="fa fa-remove"></i>禁用</a>
+                                </span>
+                            </th>
+                          </tr>
+                          </div>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div><ul class="pages" maxshowpageitem="5" pagelistcount="10"  id="page"></ul></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+  </body>
+<script type="text/javascript"  th:inline="javascript">
+  var totalCount =  [[${totalCount}]];
+  var pageNumber =  [[${pageNumber}]];
+  var GG = {
+    "kk":function(mm){
+      var userId = $('#userId').val();
+      var username = $('#username').val();
+      window.location.href=getRootPath_dc()+"user/list?userId="+userId+"&username="+username +"&pageNumber="+mm;
+    }
+  }
+  $("#page").initPage(totalCount,pageNumber,GG.kk);
+
+  function search() {
+    var userId = $('#userId').val();
+    var username = $('#username').val();
+    window.location.href = getRootPath_dc() + "user/list?userId=" + userId + "&username=" + username;
+  }
+
+  //修改
+  function  edit(userId){
+    window.open(getRootPath_dc()+"user/saveOrUpdatePage?userId="+userId,"_href");
+  }
+
+  //发布
+  function  pulishUser(userId){
+    if(confirm('确定继续？')){
+      $.ajax({
+        type: 'POST',
+        url: getRootPath_dc() +"user/updateUserIsEnable",
+        data:
+                {
+                  userId:userId,
+                  isEnable:1
+                },
+        success: function(){
+          alert('启用成功！');
+          search();
+        }
+      });
+    }
+  }
+
+  //取消发布
+  function  cancleUser(userId){
+    if(confirm('确定继续？')){
+      $.ajax({
+        type: 'POST',
+        url: getRootPath_dc() +"user/updateUserIsEnable",
+        data:
+                {
+                  userId:userId,
+                  isEnable:0
+                },
+        success: function(){
+          alert('禁用成功！');
+          search();
+        }
+      });
+    }
+  }
+
+  //删除文章
+  function  deleteUser(userId){
+    if(confirm('确定继续？')){
+      $.ajax({
+        type: 'POST',
+        url: getRootPath_dc() +"user/delete",
+        data: {userId:userId},
+        success: function(){
+          alert('删除成功！');
+          search();
+        }
+      });
+    }
+  }
+
+
+</script>
+</html>

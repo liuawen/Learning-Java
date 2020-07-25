@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="commonFooter">
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4><a th:href="@{/tag}">标签</a></h4>
+                    <p class="footer-tags">
+                         <span th:each="al,iterStat : ${tagList}">
+                         <a  target="_blank" th:href="${'/tag/'+al.tagName}" th:text="${al.tagName}"></a>
+                        </span>
+                    </p>
+
+
+                </div>
+
+                <div class="col-lg-4">
+                    <h4>友情链接</h4>
+                    <p >
+                        <span th:each="al,iterStat : ${linkList}">
+                         <a  target="_blank" th:href="${al.linkUrl}" th:text="${al.linkName}" th:title="${al.remark}"></a><br/>
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-lg-4">
+                    <h4>关于网站</h4>
+                    <p>Copyright © 2019. <span th:text="${websiteConfig.domainName}"></span>  </p>
+                    <p>All rights reserved.</p>
+                    <p><span th:text="${websiteConfig.recordNumber}"></span></p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

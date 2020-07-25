@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div th:fragment="onLoadJs">
+    <!-- JavaScript files-->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/popper.js/umd/popper.min.js}"> </script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/vendor/jquery.cookie/jquery.cookie.js}"> </script>
+    <script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+    <script th:src="@{/vendor/jquery-validation/jquery.validate.min.js}"></script>
+    <!--<script th:src="@{/js/charts-custom.js}"></script>-->
+    <script th:src="@{/js/page.js}"></script>
+    <script th:src="@{/js/jquery.validate.min.js}"></script>
+    <script th:src="@{/js/messages_zh.js}"></script>
+    <!-- Main File-->
+    <script th:src="@{/js/front.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.js"></script>
+
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script th:src="@{/js/html5shiv.min.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript"  th:inline="javascript">
+        function getRootPath_dc() {
+            return window.location.protocol + '//' + window.location.host+"/";
+        }
+    </script>
+</div>
+</body>
+</html>

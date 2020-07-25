@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head th:include="common/common_head::commonHeader"></head>
+<body>
+<div th:include="common/common_navigation :: commonNavigation"></div>
+
+<div>
+	<p> </p>
+	<div th:each="al,iterStat : ${articleList}">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<p><img th:src="@{/img/user.png}" width="50px" height="50px"> <span th:text="${al.articleAuthors}"></span></p>
+					<p th:text="${al.articleInputDate}"></p>
+					<h4 th:text="${al.articleName}"></h4>
+					<p th:text="${al.articleIntroduction}"></p>
+					<p><a th:href="${'/article/'+al.articleId}">查看详情...</a></p>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+<div style="margin-bottom: 50px;">
+    <div class="col-md-3" ></div>
+    <div class="col-md-6"><ul class="page" maxshowpageitem="5" pagelistcount="10"  id="page"></ul></div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+	<div th:include="common/common_footer :: commonFooter"></div>
+  </body>
+  <div th:include="common/common_onload_js :: onLoadJs"></div>
+<script type="text/javascript"  th:inline="javascript">
+	var totalCount =  [[${totalCount}]];
+	var pageNumber =  [[${pageNumber}]];
+	var urlPre =  "blog/";
+	var GG = {
+		"kk":function(mm){
+			if(mm==1){
+				window.location.href = getRootPath_dc()+urlPre;
+			}else{
+				window.location.href=  getRootPath_dc()+urlPre+mm;
+			}
+		}
+	}
+	$("#page").initPage(totalCount,pageNumber,GG.kk);
+
+	function getRootPath_dc() {
+		return window.location.protocol + '//' + window.location.host+"/";
+	}
+
+</script>
+</html>

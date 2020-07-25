@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.WebsiteSystemPropertyDao">
+
+
+    <resultMap id="WebsiteSystemPropertyResultMap" type="com.dalaoyang.entity.WebsiteSystemProperty">
+        <result property="websiteUrl" column="WEBSITE_URL"/>
+        <result property="wechatName" column="WEBSITE_NAME"/>
+        <result property="domainName" column="DOMAIN_NAME"/>
+        <result property="beianNumber" column="BEIAN_NUMBER"/>
+        <result property="wechatName" column="WECHAT_NAME"/>
+        <result property="weiboUrl" column="WEIBO_URL"/>
+        <result property="giteeUrl" column="GITEE_URL"/>
+        <result property="emailUrl" column="EMAIL_URL"/>
+        <result property="csdnUrl" column="CSDE_URL"/>
+        <result property="blogUrl" column="BLOG_URL"/>
+        <result property="jianshuUrl" column="JIANSHU_URL"/>
+        <result property="gongzhonghaoName" column="GONGZHONGHAO_NAME"/>
+        <result property="gongzhonghaoTrueName" column="GONGZHONGHAO_TURENAME"/>
+        <result property="websiteName" column="WEBSITE_NAME"/>
+        <result property="id" column="ID"/>
+    </resultMap>
+
+    <sql id="columns">
+       ID,WEBSITE_URL, WEBSITE_NAME, DOMAIN_NAME, BEIAN_NUMBER, WECHAT_NAME, WEIBO_URL, GITEE_URL, EMAIL_URL, CSDE_URL, BLOG_URL, JIANSHU_URL, GONGZHONGHAO_NAME, GONGZHONGHAO_TURENAME
+	</sql>
+
+    <select id="getWebsiteSystemProperty" resultMap="WebsiteSystemPropertyResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM WEBSITE_SYSTEM_PROPERTY
+        WHERE ID = 1
+    </select>
+
+    <update id="updateSystemProperty" parameterType="com.dalaoyang.entity.WebsiteSystemProperty">
+        UPDATE WEBSITE_SYSTEM_PROPERTY
+        SET
+        WEBSITE_URL=#{websiteUrl},
+        WEBSITE_NAME=#{websiteName},
+        DOMAIN_NAME=#{domainName},
+        BEIAN_NUMBER=#{beianNumber},
+        WECHAT_NAME=#{wechatName},
+        WEIBO_URL=#{weiboUrl},
+        GITEE_URL=#{giteeUrl},
+        EMAIL_URL=#{emailUrl},
+        CSDE_URL=#{csdnUrl},
+        BLOG_URL=#{blogUrl},
+        JIANSHU_URL=#{jianshuUrl},
+        GONGZHONGHAO_NAME=#{gongzhonghaoName},
+        GONGZHONGHAO_TURENAME=#{gongzhonghaoTrueName}
+        WHERE
+        ID =#{id}
+    </update>
+
+</mapper>

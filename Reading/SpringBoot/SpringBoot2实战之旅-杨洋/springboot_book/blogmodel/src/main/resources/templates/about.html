@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head th:include="common/common_head::commonHeader"></head>
+
+<body>
+
+<div th:include="common/common_navigation :: commonNavigation"></div>
+
+<div id="ww">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 centered">
+                <img th:src="@{img/user.png}" alt="DALAOYANG">
+                <h1>About DALAOYANG!</h1>
+                <p>大家好，我是SpringBoot2实战之旅的作者杨洋，感谢大家对我的支持，谢谢。</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:include="common/common_footer :: commonFooter"></div>
+
+</body>
+<div th:include="common/common_onload_js :: onLoadJs"></div>
+
+</html>
+

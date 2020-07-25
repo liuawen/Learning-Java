@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="commonNavigation">
+    <nav class="side-navbar">
+        <div class="sidebar-header d-flex align-items-center">
+            <div class="avatar"><img th:src="@{/img/user.png}" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="title">
+                <h1 class="h4" th:text="${username}"></h1>
+            </div>
+        </div>
+        <span class="heading"></span>
+        <ul class="list-unstyled">
+            <li th:class="${menuFlag==1?'active':''}"><a th:href="@{/index}"> <i class="icon-home"></i>首页</a></li>
+            <li th:if="${#lists.contains(userRoleList,2)}" th:class="${menuFlag==2?'active':''}">
+                <a href="#article" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-book"></i>文章管理</a>
+                <ul id="article" class="collapse list-unstyled ">
+                    <li><a th:href="@{/article/list}">文章列表</a></li>
+                    <li><a th:href="@{/article/saveOrUpdatePage}">新增文章</a></li>
+                </ul>
+            </li>
+            <li  th:if="${#lists.contains(userRoleList,3)}" th:class="${menuFlag==3?'active':''}">
+                <a href="#tag" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-tag"></i>标签管理</a>
+                <ul id="tag" class="collapse list-unstyled ">
+                    <li><a th:href="@{/tag/list}">标签列表</a></li>
+                </ul>
+            </li>
+            <li  th:if="${#lists.contains(userRoleList,4)}" th:class="${menuFlag==4?'active':''}">
+                <a href="#link" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-link"></i>友情链接管理</a>
+                <ul id="link" class="collapse list-unstyled ">
+                    <li><a th:href="@{/link/list}">友情链接列表</a></li>
+                    <li><a th:href="@{/link/saveOrUpdatePage}">新增友情链接</a></li>
+                </ul>
+            </li>
+            <li  th:if="${#lists.contains(userRoleList,5)}" th:class="${menuFlag==5?'active':''}">
+                <a href="#user" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>用户管理</a>
+                <ul id="user" class="collapse list-unstyled ">
+                    <li><a th:href="@{/user/list}">用户列表</a></li>
+                    <li><a th:href="@{/user/saveOrUpdatePage}">新增用户</a></li>
+                </ul>
+            </li>
+            <li th:if="${#lists.contains(userRoleList,6)}" th:class="${menuFlag==6?'active':''}"><a th:href="@{/message/list}"> <i class="icon-mail"></i>消息列表 </a></li>
+            <li th:if="${#lists.contains(userRoleList,7)}" th:class="${menuFlag==7?'active':''}"><a th:href="@{/system/edit}"> <i class="fa fa-newspaper-o"></i>系统配置 </a></li>
+
+
+        </ul>
+    </nav>
+</div>

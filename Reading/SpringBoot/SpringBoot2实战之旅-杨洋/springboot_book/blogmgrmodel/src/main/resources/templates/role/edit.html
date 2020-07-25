@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">权限编辑页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a th:href="@{/index}">首页</a></li>
+              <li class="breadcrumb-item active">权限编辑页</li>
+            </ul>
+          </div>
+          <!-- Forms Section-->
+          <section class="forms"> 
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Form Elements -->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">All form elements</h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Normal</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">Help text</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control"><small class="help-block-none">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">角色菜单<br></label>
+                          <div class="col-sm-9">
+                            <div class="i-checks">
+                              <input id="checkboxCustom1" type="checkbox" value="" class="checkbox-template">
+                              <label for="checkboxCustom1">文章管理</label>
+                            </div>
+                            <div class="i-checks">
+                              <input id="checkboxCustom2" type="checkbox" value="" checked="" class="checkbox-template">
+                              <label for="checkboxCustom2">标签管理</label>
+                            </div>
+                            <div class="i-checks">
+                              <input id="checkboxCustom" type="checkbox" value="" disabled="" checked="" class="checkbox-template">
+                              <label for="checkboxCustom">友情链接管理</label>
+                            </div>
+                            <div class="i-checks">
+                              <input id="checkboxCustom3" type="checkbox" value="" class="checkbox-template">
+                              <label for="checkboxCustom3">用户管理</label>
+                            </div>
+                            <div class="i-checks">
+                              <input id="checkboxCustom4" type="checkbox" value="" checked="" class="checkbox-template">
+                              <label for="checkboxCustom4">权限管理</label>
+                            </div>
+                            <div class="i-checks">
+                              <input id="checkboxCustom5" type="checkbox" value="" disabled="" checked="" class="checkbox-template">
+                              <label for="checkboxCustom5">消息管理</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <div class="col-sm-4 offset-sm-3">
+                            <button type="submit" class="btn btn-secondary">取消</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF" packages="org.graylog2.log4j2">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss:SSS} - %-5level  - %pid - %t - %c{1.}:%L - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <GELF name="gelfAppender" server="106.13.35.42" port="12201" hostName="appserver01.example.com">
+            <PatternLayout pattern="%logger{36} - %msg%n"/>
+            <Filters>
+                <Filter type="MarkerFilter" marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="DENY" onMismatch="ACCEPT"/>
+            </Filters>
+            <!-- Additional fields -->
+            <KeyValuePair key="foo" value="bar"/>
+            <KeyValuePair key="jvm" value="${java:vm}"/>
+        </GELF>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="gelfAppender"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

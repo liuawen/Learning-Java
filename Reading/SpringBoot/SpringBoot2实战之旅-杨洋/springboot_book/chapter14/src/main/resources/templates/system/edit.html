@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">系统配置页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a th:href="@{/index}">首页</a></li>
+              <li class="breadcrumb-item active">系统配置页</li>
+            </ul>
+          </div>
+          <!-- Forms Section-->
+          <section class="forms"> 
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Form Elements -->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">博客信息配置</h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal" id="websiteconfig_form">
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">博客名称</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${websiteConfig.blogName}" id="blogName" name="blogName">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">作者名称</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${websiteConfig.authorName}" id="authorName" name="authorName">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label" >发件邮箱账号</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${websiteConfig.emailUsername}" id="emailUsername" name="emailUsername">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">关于页文章ID</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${websiteConfig.aboutPageArticleId}"  id="aboutPageArticleId" name="aboutPageArticleId">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">备案号</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" th:value="${websiteConfig.recordNumber}" id="recordNumber" name="recordNumber">
+                        </div>
+                       </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">域名</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${websiteConfig.domainName}" id="domainName" name="domainName">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <div class="col-sm-4 offset-sm-3">
+                            <button type="button" class="btn btn-primary"  onclick="saveWebsiteConfig()">保存</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+    <script type="text/javascript">
+      function saveWebsiteConfig(){
+        if(!$('#websiteconfig_form').valid()){
+          return false;
+        }
+        var url = getRootPath_dc() + "system/saveOrUpdayeWebsiteConfig";
+        var blogName = $('#blogName').val();
+        var authorName = $('#authorName').val();
+        var emailUsername = $('#emailUsername').val();
+        var emailPassword = $('#emailPassword').val();
+        var emailEmailSmtp = $('#emailEmailSmtp').val();
+        var aboutPageArticleId = $('#aboutPageArticleId').val();
+        var recordNumber = $('#recordNumber').val();
+        var domainName = $('#domainName').val();
+
+        $.ajax({
+          type : "POST",
+          url : url,
+          dataType : "text",
+          contentType: "application/json;charset=UTF-8",
+          data : JSON.stringify({
+            "id":1,
+            "blogName": blogName,
+            "authorName": authorName,
+            "emailUsername": emailUsername,
+            "emailPassword": emailPassword,
+            "emailEmailSmtp":emailEmailSmtp,
+            "aboutPageArticleId":aboutPageArticleId,
+            "recordNumber":recordNumber,
+            "domainName":domainName
+          }),
+          success: function() {
+            alert("提交成功！");
+          },
+          error:function(){
+            alert("error");
+          }
+        });
+      }
+
+    </script>
+  </body>
+</html>

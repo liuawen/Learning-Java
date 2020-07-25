@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.UserMapper">
+
+    <resultMap id="userResult" type="com.dalaoyang.entity.User">
+        <id property="userId" column="user_id" />
+        <result property="userName" column="user_name" />
+        <!-- 一对一关联 -->
+        <association property="city"  column="user_id" javaType="com.dalaoyang.entity.City" >
+            <result property="cityId" column="city_id"/>
+            <result property="cityName" column="city_name"/>
+        </association>
+        <!-- 一对多关联 -->
+        <collection property="roleList" javaType="java.util.List" resultMap="roleResult"/>
+    </resultMap>
+
+    <resultMap type="com.dalaoyang.entity.Role" id="roleResult">
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+    </resultMap>
+
+    <select id="findUserByUsername" parameterType="String" resultMap="userResult">
+        SELECT * FROM USER u
+        LEFT JOIN USER_ROLE ru ON ru.USER_ID = u.USER_ID
+        LEFT JOIN ROLE r ON r.ROLE_ID = ru.ROLE_ID
+        LEFT JOIN CITY c ON c.USER_ID = u.USER_ID
+        WHERE u.user_name=#{1}
+    </select>
+
+</mapper>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">文章编辑页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+              <li class="breadcrumb-item active">文章编辑页</li>
+            </ul>
+          </div>
+          <!-- Forms Section-->
+          <section class="forms"> 
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Form Elements -->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">
+                        <span th:if="${article.articleId != 0}">修改 </span>
+                        <span th:if="${article.articleId == 0}">新增 </span>
+                        文章
+                      </h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal" id="article_form">
+                        <div hidden="true">
+                          <input type="text" class="form-control" th:value="${article.articleReadingTime}" id="articleReadingTime" >
+                          <input type="text" class="form-control" th:value="${article.isEnable}" id="isEnable" >
+                          <input type="text" class="form-control" th:value="${article.articleInputUser}" id="articleInputUser" >
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">文章标题</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${article.articleName}" id="articleName" name="articleName" required>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">文章作者</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" th:value="${article.articleAuthors}"  id="articleAuthors" name="articleAuthors" required>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">文章标签</label>
+                          <div class="col-sm-9">
+                            <small class="help-block-none">多个标签之间用逗号,分割，例如springboot,springcloud</small>
+                            <input type="text" class="form-control"  th:value="${article.tagsStr}"  id="tagsStr" name="tagsStr" required>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">是否置顶</label>
+                          <div class="col-sm-9">
+                            <label class="checkbox-inline">
+                              <input type="radio" name="isTop" value="1" th:checked="${article.isTop==1}"> 是
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="radio" name="isTop" value="0" th:checked="${article.isTop==0 || article.articleId == 0}"> 否
+                            </label>
+
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row has-success">
+                          <label class="col-sm-3 form-control-label">文章内容</label>
+                          <div class="col-sm-9">
+                            <small class="help-block-none">建议使用编辑好的markdown格式直接粘贴</small>
+                            <textarea class="form-control" id="articleContent" name="articleContent"  th:text="${article.articleContent}" required rows="20" onkeyup="compile()"></textarea>
+                          </div>
+
+                        </div>
+
+                        <div class="form-group row has-success">
+                          <label class="col-sm-3 form-control-label">文章内容预览</label>
+                          <div class="col-sm-9">
+                            <div id="result"></div>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <div class="col-sm-4 offset-sm-3">
+                            <button class="btn btn-secondary" onclick="back()">返回列表页</button>
+                            <button class="btn btn-primary" onclick="saveArticle()">保存</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+    <script type="text/javascript">
+      var articleId =  [[${article!=null?article.articleId:''}]];
+      if(articleId != 0){
+        compile();
+      }
+      function compile(){
+        var text = $("#articleContent").val();
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(text);
+        $("#result").html(html);
+      }
+
+      function back(){
+        window.open(getRootPath_dc()+"article/list","_href");
+      }
+
+      function saveArticle(){
+        if(!$('#article_form').valid()){
+          return false;
+        }
+        var url = getRootPath_dc() + "article/saveOrUpdate";
+        var articleName = $('#articleName').val();
+        var articleAuthors = $('#articleAuthors').val();
+        var tagsStr = $('#tagsStr').val();
+        var isTop = $('input[name="isTop"]:checked').val();
+        var articleContent = $('#articleContent').val();
+        var articleReadingTime = $('#articleReadingTime').val();
+        var isEnable = $('#isEnable').val();
+        var articleInputUser = $('#articleInputUser').val();
+
+        if(articleId == 0){
+            articleId = null;
+        }
+        $.ajax({
+          type : "POST",
+          url : url,
+          dataType : "text",
+          contentType: "application/json;charset=UTF-8",
+          data : JSON.stringify({
+            "articleId":articleId,
+            "articleName": articleName,
+            "articleAuthors": articleAuthors,
+            "tagsStr": tagsStr,
+            "isTop": isTop,
+            "articleContent":articleContent,
+            "articleReadingTime":articleReadingTime,
+            "isEnable":isEnable,
+            "articleInputUser":articleInputUser
+          }),
+          success: function() {
+              alert("提交成功！");
+          },
+          error:function(){
+              alert("error");
+          }
+        });
+      }
+
+    </script>
+  </body>
+</html>

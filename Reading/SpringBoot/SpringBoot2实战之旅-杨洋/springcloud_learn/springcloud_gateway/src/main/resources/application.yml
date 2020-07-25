@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+      - id: dalaoyang
+        uri: http://localhost:9002/*
+        predicates:
+          - Path=/**
+

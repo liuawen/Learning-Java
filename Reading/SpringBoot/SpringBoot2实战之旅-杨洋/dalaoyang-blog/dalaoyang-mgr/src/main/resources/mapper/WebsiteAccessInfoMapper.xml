@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.WebsiteAccessInfoDao">
+
+    <resultMap id="WebsiteSystemInfoResultMap" type="com.dalaoyang.entity.WebsiteAccessInfo">
+        <result property="id" column="ID"/>
+        <result property="accessDate" column="ACCESS_DATE"/>
+        <result property="accessCount" column="ACCESS_COUNT"/>
+    </resultMap>
+
+    <sql id="columns">
+        ID, ACCESS_DATE, ACCESS_COUNT
+	</sql>
+
+    <select id="getThisWeekWebsiteAccessInfo" resultMap="WebsiteSystemInfoResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        WEBSITE_ACCESS_INFO
+        ORDER BY ACCESS_DATE DESC
+        LIMIT 7
+    </select>
+
+
+</mapper>

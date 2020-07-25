@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head th:include="common/common_head::commonHeader"></head>
+
+<body>
+
+<div th:include="common/common_navigation :: commonNavigation"></div>
+	<div id="white">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<p><img th:src="@{/img/user.png}" width="50px" height="50px"> <span th:text="${article.articleAuthors}"></span> </p>
+					<p >
+						<i class="fa fa-clock-o"></i><a th:text="${article.articleInputDate}"></a>
+						<i class="fa fa-eye"></i><a th:text="${article.articleReadingTime}"></a>
+					</p>
+					<h4 th:text="${article.articleName}"></h4>
+					<div th:utext="${article.articleShowContent}" style="overflow:hidden" > </div>
+					<p>标签:
+						<span th:each="al,iterStat : ${article.tagList}">
+                         <i class="fa fa-tag"></i><a  target="_blank" th:href="${'/tag/'+al.tagName}" th:text="${al.tagName}"></a>
+                        </span>
+					</p>
+					<hr>
+					<p><a th:href="@{/blog}"># 返回博客列表</a></p>
+				</div>
+
+			</div>
+	    </div>
+	</div>
+	<div th:include="common/common_footer :: commonFooter"></div>
+
+  </body>
+  <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+</html>

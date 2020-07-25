@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head th:include="common/common_head::commonHeader"></head>
+
+<body>
+
+<div th:include="common/common_navigation :: commonNavigation"></div>
+
+
+<div class="search d2" style="margin-top:20px">
+	<form >
+		<input type="text" placeholder="搜索从这里开始..." th:value="${word}" id="word">
+		<button type="button" onclick="search();" id="btn" ></button>
+	</form>
+</div>
+<p> </p>
+<div >
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<p><img th:src="@{/img/user.png}" width="50px" height="50px"> <ba>DALAOYANG </ba></p>
+				<p><bd>January 3, 2014</bd></p>
+				<h4>第二篇博客</h4>
+				<p>这是第二篇博客的摘要。这是<font color="#FF0000">第二篇博客</font>的摘要。这是第二篇博客的摘要。这是第二篇博客的摘要。这是第二篇博客的摘要。这是第二篇博客的摘要。这是第二篇博客的摘要。</p>
+				<p><a th:href="@{articleDetailDemo}">查看详情...</a></p>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div style="margin-bottom: 50px;">
+	<div class="col-md-3" ></div>
+	<div class="col-md-6"><ul class="page" maxshowpageitem="5" pagelistcount="12"  id="page"></ul></div>
+	<div class="col-md-3"></div>
+</div>
+	<div th:include="common/common_footer :: commonFooter"></div>
+
+  </body>
+  <div th:include="common/common_onload_js :: onLoadJs"></div>
+<script type="text/javascript"  th:inline="javascript">
+
+	var GG = {
+		"kk":function(mm){
+			if(mm==1){
+				window.location.href = getRootPath_dc();
+			}else{
+				window.location.href=getRootPath_dc();
+			}
+		}
+	}
+	$("#page").initPage(100,10,GG.kk);
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head th:include="common/common_head::commonHeader"></head>
+
+<body>
+
+<div th:include="common/common_navigation :: commonNavigation"></div>
+	<div class="container pt">
+		<div class="row mt">
+			<div class="col-lg-6 col-lg-offset-3 centered">
+				<h3>联系 我</h3>
+				<hr>
+				<p>欢迎随时与我交流，发一封邮件给我吧！</p>
+			</div>
+		</div>
+		<div class="row mt">	
+			<div class="col-lg-8 col-lg-offset-2">
+				<form role="form">
+				  <div class="form-group">
+				    <input type="name" class="form-control" id="NameInputEmail1" placeholder="您的名称..">
+				    <br>
+				  </div>
+				  <div class="form-group">
+				    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="您的邮箱..">
+				    <br>
+				  </div>
+				  <div class="form-group">
+				    <input type="email" class="form-control" id="subject" placeholder="标题">
+				    <br>
+				  </div>
+				  <textarea class="form-control" rows="6" placeholder="给我留言吧.."></textarea>
+				    <br>
+				  <button type="submit" class="btn btn-success">提交</button>
+				</form>    			
+			</div>
+		</div>
+	</div>
+<div th:include="common/common_footer :: commonFooter"></div>
+</body>
+<div th:include="common/common_onload_js :: onLoadJs"></div>
+</html>

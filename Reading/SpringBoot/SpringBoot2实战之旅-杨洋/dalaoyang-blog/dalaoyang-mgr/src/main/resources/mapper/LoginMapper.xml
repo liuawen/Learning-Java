@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.LoginDao">
+
+    <resultMap id="UserResultMap" type="com.dalaoyang.entity.UserInfo">
+        <result property="id" column="ID"/>
+        <result property="userName" column="USERNAME"/>
+        <result property="passWord" column="PASSWORD"/>
+        <result property="phone" column="PHONE"/>
+        <result property="email" column="EMAIL"/>
+        <result property="trueName" column="TRUENAME"/>
+    </resultMap>
+
+
+    <sql id="columns">
+        ID, USERNAME, PASSWORD, TRUENAME, EMAIL, PHONE
+	</sql>
+
+    <select id="findUserByUserNameAndPassword" resultMap="UserResultMap" parameterType="HashMap">
+        SELECT
+        <include refid="columns"/>
+        FROM SYS_USER
+        WHERE USERNAME=#{userName} AND PASSWORD =#{passWord}
+    </select>
+
+    <select id="getUserList" resultMap="UserResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM SYS_USER
+        ORDER BY ID
+    </select>
+
+</mapper>

@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="commonHeader(title)">
+    <!-- META DATA -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="Java,Linux,Spring Boot, Spring Cloud, 微服务,Dalaoyang,dalaoyang,大老杨">
+    <meta name="description" content="本网站是dalaoyang-大老杨的技术分享博客。内容涵盖Java、Linux、Spring Boot、Spring Cloud、微服务架构、踩坑历程。" />
+    <meta name="author" content="Dalaoyang-大老杨" />
+    <meta name="baidu-site-verification" content="Fnam9cBGig" />
+
+    <title th:text="${title}"></title>
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  type="text/css">
+
+    <!-- Owl Carousel Assets -->
+    <link th:href="@{/owl-carousel/owl.carousel.css}"  rel="stylesheet">
+    <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}"  >
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet"  th:href="@{/font-awesome-4.4.0/css/font-awesome.min.css}"  type="text/css">
+    <link rel="stylesheet" th:href="@{/dalaoyang/csdn/style.css}">
+    <link rel="stylesheet" th:href="@{/dalaoyang/blogger/style.css}">
+    <link rel="stylesheet" th:href="@{/dalaoyang/jian/style.css}">
+    <link rel="stylesheet" th:href="@{/page/page.css}">
+
+    <link rel="stylesheet" th:href="@{/search/css/style.css}">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5989781169786896",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141227371-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-141227371-1');
+    </script>
+
+    <style>
+    </style>
+
+    <!---<link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>--->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script  th:src="@{/js/html5shiv.js}"  ></script>
+    <script  th:src="@{/js/respond.min.js}" ></script>
+    <![endif]-->
+
+</head>
+</html>

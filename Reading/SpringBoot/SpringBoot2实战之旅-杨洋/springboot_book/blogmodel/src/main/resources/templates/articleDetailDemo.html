@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head th:include="common/common_head::commonHeader"></head>
+
+<body>
+
+<div th:include="common/common_navigation :: commonNavigation"></div>
+	<div id="white">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<p><img th:src="@{/img/user.png}" width="50px" height="50px"> <ba>DALAOYANG </ba></p>
+					<p><bd>January 3, 2019</bd></p>
+					<h4>如何制作博客</h4>
+					<p><img class="img-responsive" th:src="@{/img/blog01.jpg}" alt=""></p>
+					<p>本文介绍如何制作一个博客系统</p>
+					<br>
+					<p><bt>TAGS: <a href="#">SpringBoot</a> - <a href="#">Java</a></bt></p>
+					<hr>
+					<p><a th:href="@{/blog}"># Back</a></p>
+				</div>
+			</div>
+	    </div>
+	</div>
+	<div th:include="common/common_footer :: commonFooter"></div>
+  </body>
+  <div th:include="common/common_onload_js :: onLoadJs"></div>
+</html>

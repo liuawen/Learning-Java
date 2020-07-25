@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.UserMapper">
+    <resultMap id="user" type="com.dalaoyang.entity.User"/>
+    <parameterMap id="user" type="com.dalaoyang.entity.User"/>
+
+    <select id="getUserList" resultMap="user">
+        SELECT  * FROM USER
+    </select>
+</mapper>

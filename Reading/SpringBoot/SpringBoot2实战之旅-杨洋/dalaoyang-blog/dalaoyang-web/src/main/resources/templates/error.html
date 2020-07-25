@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head th:include="common/common_head::commonHeader(${applicationName})"></head>
+
+
+<body class="sub-page">
+
+    <div th:include="common/navigation :: navigation"></div>
+	<div th:include="common/img :: img"></div>
+
+	<div th:include="common/header :: header"></div>
+
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="single-page">
+		<div class="container">
+			<div class="row">
+				<div id="main-content">
+					<article>
+						<!--<div class='embed-container maps'>-->
+							<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.289259162295!2d-120.7989351!3d37.5246781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8091042b3386acd7%3A0x3b4a4cedc60363dd!2sMain+St%2C+Denair%2C+CA+95316%2C+Hoa+K%E1%BB%B3!5e0!3m2!1svi!2s!4v1434016649434" width="100%" height="450px" frameborder="0" style="border: 0"></iframe>-->
+						<!--</div>-->
+						<div class="art-content"  >
+							<!--start-content------>
+								<!--start-content------>
+								<div class="content four0fourdiv" >
+									<img th:src="@{/images/error-img.png}" title="error" />
+									<p>真的很抱歉，我们搞砸了页面</p>
+									<p>要不去主页看看？</p>
+									<a th:href="@{/}" class="btn btn-skin">Back To Home</a>
+								</div>
+								<!--End-Cotent------>
+							<!--End-wrap--->
+						</div>
+						<div id="SOHUCS" style="display: none;"></div>
+
+					</article>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<!-- FOOTER -->
+	<footer>
+		<div th:include="common/footer :: footer"></div>
+	</footer>
+
+	<div th:include="common/common_onload_js :: onLoadJs"></div>
+</body>
+</html>

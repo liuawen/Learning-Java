@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.TagDao">
+
+    <resultMap id="TagResultMap" type="com.dalaoyang.entity.TagInfo">
+        <result property="tagId" column="TAG_ID"/>
+        <result property="tagName" column="TAG_NAME"/>
+    </resultMap>
+
+    <sql id="columns">
+        TAG_ID, TAG_NAME
+	</sql>
+
+    <sql id="columnsForJoin">
+        TI.TAG_ID, TI.TAG_NAME
+	</sql>
+
+    <select id="getTagList" resultMap="TagResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        TAG_INFO
+    </select>
+
+    <select id="getTagByArticleId" resultMap="TagResultMap" parameterType="Integer">
+        SELECT
+        <include refid="columnsForJoin"/>
+        FROM TAG_INFO TI
+        LEFT JOIN ARTICLE_TAG AT
+        ON TI.TAG_ID= AT.TAG_ID
+        WHERE AT.ARTICLE_ID=#{1}
+    </select>
+</mapper>

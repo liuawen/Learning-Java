@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.UserMapper">
+    <resultMap id="user" type="com.dalaoyang.entity.User"/>
+    <parameterMap id="user" type="com.dalaoyang.entity.User"/>
+    <select id="findUserByUsername" parameterType="String" resultMap="user">
+        SELECT * FROM user
+        WHERE user_name=#{1}
+    </select>
+
+
+    <update id="updateUserByUsername" parameterMap="user">
+        UPDATE USER SET USER_PASSWORD=#{user_password} WHERE USER_NAME=#{user_name}
+    </update>
+
+    <delete id="deleteUserByUsername" parameterType="String">
+        DELETE FROM USER WHERE USER_NAME=#{1}
+    </delete>
+
+    <!-- 使用alias自定义的parameterType-->
+    <insert id="saveUser" parameterType="user">
+        INSERT INTO USER (user_password,user_name) VALUES (#{user_password},#{user_name})
+    </insert>
+
+    <select id="getUserList" resultMap="user">
+        SELECT  * FROM USER
+    </select>
+</mapper>

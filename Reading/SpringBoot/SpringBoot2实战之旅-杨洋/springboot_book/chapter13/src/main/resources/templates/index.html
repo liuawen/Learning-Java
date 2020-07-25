@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+  <head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+
+  <div th:include="common/common_navigation :: commonNavigation"></div>
+	<div class="container pt">
+		<div class="row mt centered">
+
+			<div class="col-lg-4" th:each="al,iterStat : ${articleList}">
+				<a class="zoom green" th:href="${'/article/'+al.articleId}"><img class="img-responsive" th:src="${'/img/portfolio/port0'+al.imageNo+'.jpg'}" alt="" /></a>
+				<p th:text="${al.articleName}"></p>
+			</div>
+		</div>
+	</div>
+
+
+	</div>
+  <div th:include="common/common_footer :: commonFooter"></div>
+  </body>
+  <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+</html>

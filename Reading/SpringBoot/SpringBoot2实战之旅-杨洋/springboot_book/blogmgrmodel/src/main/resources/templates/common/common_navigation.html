@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="commonNavigation">
+    <!-- Side Navbar -->
+    <nav class="side-navbar">
+        <!-- Sidebar Header-->
+        <div class="sidebar-header d-flex align-items-center">
+            <div class="avatar"><img th:src="@{/img/avatar-1.jpg}" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="title">
+                <h1 class="h4">Mark Stephen</h1>
+                <p>Web Designer</p>
+            </div>
+        </div>
+        <span class="heading">Main</span>
+        <ul class="list-unstyled">
+            <li><a th:href="@{/index}"> <i class="icon-home"></i>首页</a></li>
+            <li class="active"><a href="#article" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-keyboard-o"></i>文章管理</a>
+                <ul id="article" class="collapse list-unstyled ">
+                    <li><a th:href="@{/article}">文章列表</a></li>
+                    <li><a th:href="@{/editArticle}">新增文章</a></li>
+                </ul>
+            </li>
+            <li><a href="#tag" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-tag"></i>标签管理</a>
+                <ul id="tag" class="collapse list-unstyled ">
+                    <li><a th:href="@{/tag}">标签列表</a></li>
+                </ul>
+            </li>
+            <li><a href="#link" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-link"></i>友情链接管理</a>
+                <ul id="link" class="collapse list-unstyled ">
+                    <li><a th:href="@{/link}">友情链接列表</a></li>
+                    <li><a th:href="@{/editLink}">新增友情链接</a></li>
+                </ul>
+            </li>
+            <li><a href="#user" aria-expanded="false" data-toggle="collapse"> <i class="icon-user"></i>用户管理</a>
+                <ul id="user" class="collapse list-unstyled ">
+                    <li><a th:href="@{/user}">用户列表</a></li>
+                    <li><a th:href="@{/editUser}">新增用户</a></li>
+                </ul>
+            </li>
+            <li><a href="#role" aria-expanded="false" data-toggle="collapse"> <i class="icon-flask"></i>权限管理</a>
+                <ul id="role" class="collapse list-unstyled ">
+                    <li><a th:href="@{/role}">权限列表</a></li>
+                    <li><a th:href="@{/editRole}">新增权限</a></li>
+                </ul>
+            </li>
+            <li><a th:href="@{/message}"> <i class="icon-mail"></i>消息列表 </a></li>
+            <li><a th:href="@{/system}"> <i class="fa fa-newspaper-o"></i>系统配置 </a></li>
+
+
+            <li><a th:href="@{/login}"> <i class="icon-interface-windows"></i>Login page </a></li>
+        </ul>
+    </nav>
+</div>

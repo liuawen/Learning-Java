@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.ArticleDao">
+
+    <resultMap id="ArticleResultMap" type="com.dalaoyang.entity.ArticleInfo">
+        <result property="articleId" column="ARTICLE_ID"/>
+        <result property="articleName" column="ARTICLE_NAME"/>
+        <result property="articleContent" column="ARTICLE_CONTENT"/>
+        <result property="articleAuthors" column="ARTICLE_AUTHORS"/>
+        <result property="articleInputDate" column="ARTICLE_INPUT_DATE"/>
+        <result property="articleReadingTime" column="ARTICLE_READING_TIME"/>
+        <result property="articleIsTop" column="ARTICLE_IS_TOP"/>
+        <result property="articleIsRelease" column="ARTICLE_IS_RELEASE"/>
+        <result property="articleTag" column="ARTICLE_TAG"/>
+    </resultMap>
+
+    <sql id="columns">
+        ARTICLE_ID, ARTICLE_NAME, ARTICLE_CONTENT, ARTICLE_AUTHORS, ARTICLE_INPUT_DATE, ARTICLE_READING_TIME, ARTICLE_IS_TOP, ARTICLE_TAG, ARTICLE_IS_RELEASE
+	</sql>
+
+    <select id="getArticleInfoById" resultMap="ArticleResultMap" parameterType="int">
+        SELECT * FROM  ARTICLE_INFO WHERE ARTICLE_ID =#{1} AND ARTICLE_IS_RELEASE='Y'
+    </select>
+
+    <update id="updateArticleReadingTime" parameterType="int">
+        UPDATE ARTICLE_INFO SET  ARTICLE_READING_TIME=ARTICLE_READING_TIME+1 WHERE ARTICLE_ID =#{1}
+    </update>
+
+    <select id="getArticleCount" resultType="int">
+        SELECT COUNT(1) FROM  ARTICLE_INFO WHERE  ARTICLE_IS_RELEASE='Y'
+    </select>
+
+    <select id="getArticleByPage" resultMap="ArticleResultMap" parameterType="int">
+        SELECT
+        <include refid="columns"/>
+        FROM ARTICLE_INFO
+        WHERE ARTICLE_IS_RELEASE='Y'
+        ORDER BY ARTICLE_INPUT_DATE DESC
+        LIMIT #{1},12
+    </select>
+
+    <select id="getArticleByTagCount" resultType="int" parameterType="String">
+        SELECT COUNT(1) FROM  ARTICLE_INFO ai
+        LEFT JOIN ARTICLE_TAG AT ON AI.ARTICLE_ID=AT.ARTICLE_ID
+        LEFT JOIN TAG_INFO ti ON AT.TAG_ID=TI.TAG_ID
+        WHERE  TAG_NAME=#{1} AND ARTICLE_IS_RELEASE='Y'
+    </select>
+
+    <select id="getArticleListByTagNamePage" resultMap="ArticleResultMap" parameterType="HashMap">
+        SELECT
+        ai.*
+        FROM  ARTICLE_INFO ai
+        LEFT JOIN ARTICLE_TAG AT ON AI.ARTICLE_ID=AT.ARTICLE_ID
+        LEFT JOIN TAG_INFO ti ON AT.TAG_ID=TI.TAG_ID
+        WHERE ti.TAG_NAME=#{tagName} AND ARTICLE_IS_RELEASE='Y' ORDER BY ARTICLE_INPUT_DATE DESC
+        LIMIT #{page},12
+    </select>
+
+    <select id="viewArticleById" resultMap="ArticleResultMap" parameterType="int">
+        SELECT
+        <include refid="columns"/>
+        FROM ARTICLE_INFO
+        WHERE ARTICLE_ID =#{1}
+    </select>
+
+    <select id="getArticleListByWord" resultMap="ArticleResultMap" parameterType="HashMap">
+        SELECT
+        <include refid="columns"/>
+        FROM ARTICLE_INFO
+        WHERE ARTICLE_IS_RELEASE='Y'
+        AND (ARTICLE_NAME LIKE CONCAT(CONCAT('%', #{word}), '%')
+        OR ARTICLE_CONTENT LIKE CONCAT(CONCAT('%', #{word}), '%'))
+        ORDER BY ARTICLE_INPUT_DATE DESC
+        LIMIT #{page},12
+    </select>
+
+    <select id="getArticleListByWordCount" resultType="int" parameterType="HashMap">
+        SELECT COUNT(1) FROM  ARTICLE_INFO
+        WHERE   ARTICLE_IS_RELEASE='Y'
+        AND  (ARTICLE_NAME LIKE CONCAT(CONCAT('%', #{word}), '%')
+        OR ARTICLE_CONTENT LIKE CONCAT(CONCAT('%', #{word}), '%'))
+    </select>
+
+
+    <select id="getCommonArticleList" resultMap="ArticleResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM ARTICLE_INFO
+        WHERE ARTICLE_IS_RELEASE='Y'
+        ORDER BY ARTICLE_INPUT_DATE DESC
+        LIMIT 0,5
+    </select>
+
+    <select id="getArticleListForSitemap" resultMap="ArticleResultMap" parameterType="int">
+        SELECT
+        <include refid="columns"/>
+        FROM ARTICLE_INFO
+        WHERE ARTICLE_IS_RELEASE='Y'
+    </select>
+
+    <update id="modifyArticleImages" parameterType="HashMap">
+        UPDATE ARTICLE_INFO SET  ARTICLE_CONTENT=#{articleContent} WHERE ARTICLE_ID =#{articleId}
+    </update>
+</mapper>

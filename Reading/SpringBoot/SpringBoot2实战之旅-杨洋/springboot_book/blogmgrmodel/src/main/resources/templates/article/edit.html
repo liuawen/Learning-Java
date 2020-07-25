@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">文章编辑页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+              <li class="breadcrumb-item active">文章编辑页</li>
+            </ul>
+          </div>
+          <!-- Forms Section-->
+          <section class="forms"> 
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Form Elements -->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">新建/修改 文章</h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">文章标题</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">文章作者</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">文章标签</label>
+                          <div class="col-sm-9">
+                            <small class="help-block-none">多个标签之间用逗号,分割，例如springboot,springcloud</small>
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">是否置顶</label>
+                          <div class="col-sm-9">
+                            <label class="checkbox-inline">
+                              <input id="inlineCheckbox1" type="checkbox" value="option1"> 是
+                            </label>
+                            <label class="checkbox-inline">
+                              <input id="inlineCheckbox2" type="checkbox" value="option2"> 否
+                            </label>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row has-success">
+                          <label class="col-sm-3 form-control-label">文章内容</label>
+                          <div class="col-sm-9">
+                            <small class="help-block-none">建议使用编辑好的markdown格式直接粘贴</small>
+                            <textarea class="form-control" id="articleContent" name="articleContent" required="" rows="20"></textarea>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <div class="col-sm-4 offset-sm-3">
+                            <button type="submit" class="btn btn-secondary">取消</button>
+                            <button type="submit" class="btn btn-primary">保存</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+  </body>
+</html>

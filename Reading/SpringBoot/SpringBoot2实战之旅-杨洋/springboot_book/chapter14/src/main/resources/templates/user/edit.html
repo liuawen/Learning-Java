@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">用户编辑页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a th:href="@{/index}">首页</a></li>
+              <li class="breadcrumb-item active">用户编辑页</li>
+            </ul>
+          </div>
+          <!-- Forms Section-->
+          <section class="forms"> 
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Form Elements -->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">
+                        <span th:if="${user.userId != 0}">修改 </span>
+                        <span th:if="${user.userId == 0}">新增 </span>
+                        用户信息</h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal" id="user_form">
+                        <div hidden="true">
+                          <input type="text" class="form-control" th:value="${user.isEnable}" id="isEnable" >
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">用户名称</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="username" name="username" th:value="${user.username}" required>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">用户邮箱</label>
+                          <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" name="email" th:value="${user.email}" required>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">用户密码</label>
+                          <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" name="password" th:value="${user.password}" required>
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">用户角色</label>
+                          <div class="col-sm-9 offset-sm-3">
+                            <select multiple="" class="form-control"  id="roleIdList" name="roleIdList" required>
+                              <div  th:each="al,iterStat : ${roleList}">
+                                <option th:value="${al.roleId}" th:text="${al.roleName}" th:selected="${al.isHave==1}"></option>
+                              </div>
+                            </select>
+                          </div>
+                        </div>
+                        <!--<div class="line"></div>-->
+                        <!--<div class="form-group row">-->
+                          <!--<label for="fileInput" class="col-sm-3 form-control-label">上传头像</label>-->
+                          <!--<div class="col-sm-9">-->
+                            <!--<input id="fileInput" type="file" class="form-control-file">-->
+                          <!--</div>-->
+                        <!--</div>-->
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <div class="col-sm-4 offset-sm-3">
+                            <button type="button" class="btn btn-secondary"  onclick="back()">返回列表页</button>
+                            <button type="button" class="btn btn-primary" onclick="saveUser()">保存</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+    <script type="text/javascript">
+      var userId =  [[${user!=null?user.userId:''}]];
+
+      function back(){
+        window.open(getRootPath_dc()+"user","_href");
+      }
+
+      function saveUser(){
+        if(!$('#user_form').valid()){
+          return false;
+        }
+        var url = getRootPath_dc() + "user/saveOrUpdate";
+        var username = $('#username').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var roleIdList = $('#roleIdList').val();
+        var isEnable = $('#isEnable').val();
+
+        if(userId == 0){
+          userId = null;
+        }
+        $.ajax({
+          type : "POST",
+          url : url,
+          dataType : "text",
+          contentType: "application/json;charset=UTF-8",
+          data : JSON.stringify({
+            "userId":userId,
+            "username": username,
+            "email": email,
+            "password": password,
+            "roleIdList": roleIdList,
+            "isEnable":isEnable
+          }),
+          success: function() {
+            alert("保存成功！");
+          },
+          error:function(){
+            alert("error");
+          }
+        });
+      }
+
+    </script>
+  </body>
+</html>

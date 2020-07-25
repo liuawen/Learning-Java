@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<html>
+
+ <head th:include="common/common_head::commonHeader(${applicationName})"></head>
+ <body class="index-page">
+
+    <div th:include="common/navigation :: navigation"></div>
+
+
+ <!-- CAROUSEL -->
+	<div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel" data-interval="4000">
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			<div class="item active" th:href="@{/tag/springcloud}" >
+				<img src="images/banner1.jpg" alt="...">
+				<!-- Static Header -->
+				<div class="container">
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>Welcome</h1>
+						<hr>
+						<p>本站所有文章均为本人日常学习历程或日常踩坑日记。</p>
+					</div>
+				</div><!-- /header-text -->
+				</div>
+			</div>
+			<div class="item" th:href="@{/tag/springcloud}" >
+				<img src="images/banner2.jpg" alt="...">
+				<!-- Static Header -->
+				<div class="header-text hidden-xs">
+					<div class="col-md-12 text-center">
+						<h1>Welcome</h1>
+						<hr>
+						<p>一个怀揣着梦想的程序猿。</p>
+					</div>
+				</div><!-- /header-text -->
+			</div>
+			
+		</div>
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div> <!-- Carousel -->
+
+	<!-- Navigation -->
+	<header class="container">
+
+		<div class="site-branding">
+			<h1 class="site-title">
+				<a href="/">
+					<span>Dalaoyang</span>
+				</a>
+			</h1>
+			<h2 class="site-description">Welcome to Us !</h2>
+		</div>
+
+		<div class="search d7 site-branding" style="float:right;">
+			<form  style="float:right;">
+				<input type="text" placeholder="搜索站内文章..." th:value="${word}" id="word">
+				<button type="button" onclick="search();" id="btn" ></button>
+			</form>
+		</div>
+	</header>
+
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content">
+
+		<!-- ////////////Content Box 01 -->
+		<section class="box-content box-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4" style="height: 650px;" th:each="al,iterStat : ${articleList}">
+						<div class="box-item"  style="height: 95%">
+							<a  th:href="${'/article/'+al.articleId}" target="_blank">
+								<img style="height: 240px;width:100%" th:src="${'/images/'+al.articleImgNo+'.jpg'}" class="img-responsive"/></a>
+							<div class="content">
+								<h3 style="height: 52px;"><a th:href="${'/article/'+al.articleId}" target="_blank"  th:text="${al.articleName}"></a></h3>
+								<i class="fa fa-user"></i>
+								<span href="#" th:text="${al.articleAuthors}"></span>&nbsp;
+								<i class="fa fa-clock-o"></i>
+								<span th:text="${#dates.format(al.articleInputDate, 'yyyy-MM-dd')}"></span>
+								<br>
+								<p> </p>
+								<div style="height: 150px;">
+									<p th:text="${al.articleContent}"></p>
+								</div>
+
+								<br>
+								<span th:each="tl,iterStat : ${al.tagInfoList}">
+								<i class="fa fa-tags"></i><a target="_blank"  th:href="${'/tag/'+tl.tagName}" th:text="${tl.tagName}"></a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="margin-bottom: 30px;">
+					<div class="col-md-3" ></div>
+					<div class="col-md-6"><ul class="page" maxshowpageitem="5" pagelistcount="12"  id="page"></ul></div>
+					<div class="col-md-3"></div>
+				</div>
+
+				<div id="SOHUCS" style="display: none;"></div>
+
+			</div>
+		</section>
+	</div>
+	
+	<!-- FOOTER -->
+	<footer>
+		<div th:include="common/footer :: footer"></div>
+	</footer>
+	<div th:include="common/common_onload_js :: onLoadJs"></div>
+
+	<script type="text/javascript"  th:inline="javascript">
+        var totalCount =  [[${totalCount}]];
+        var pageNumber =  [[${pageNumber}]];
+        var urlPre =  [[${urlPre}]];
+
+        var GG = {
+            "kk":function(mm){
+                if(mm==1){
+                    window.location.href = getRootPath_dc();
+				}else{
+                    window.location.href=getRootPath_dc()+urlPre+mm+"#page-content";
+                }
+            }
+        }
+        $("#page").initPage(totalCount,pageNumber,GG.kk);
+
+        function getRootPath_dc() {
+            return window.location.protocol + '//' + window.location.host+"/";
+        }
+	</script>
+ </body>
+</html>

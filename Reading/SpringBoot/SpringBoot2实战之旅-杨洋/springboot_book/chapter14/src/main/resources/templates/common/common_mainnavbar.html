@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="commonMainNavbar">
+    <header class="header">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header">
+                        <a th:href="@{/index}" class="navbar-brand d-none d-sm-inline-block">
+                        <div class="brand-text d-none d-lg-inline-block"><span>SpringBoot</span><strong>博客后台</strong></div>
+                        <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div></a>
+                        <a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+                    </div>
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <!-- Notifications-->
+                        <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner" th:text="${sumCount}"></span></a>
+                            <ul aria-labelledby="notifications" class="dropdown-menu">
+                                <li><a rel="nofollow" th:href="@{/message/list}" class="dropdown-item">
+                                    <div class="notification">
+                                        <div class="notification-content"><i class="fa fa-envelope bg-green"></i>
+                                            您有<span th:text="${messageCount}"></span>条未读消息。
+                                        </div>
+                                    </div></a></li>
+                                <li><a rel="nofollow" th:href="@{/article/list}" class="dropdown-item">
+                                    <div class="notification">
+                                        <div class="notification-content"><i class="fa fa-keyboard-o bg-blue"></i>
+                                            今天有<span th:text="${articleCount}"></span>篇新增文章。</div>
+                                    </div></a></li>
+                                <li><a rel="nofollow" th:href="@{/tag/list}" class="dropdown-item">
+                                    <div class="notification">
+                                        <div class="notification-content"><i class="fa fa-tag bg-blue"></i>
+                                            今天有<span th:text="${tagCount}"></span>个新增标签。</div>
+                                    </div></a></li>
+                            </ul>
+                        </li>
+                        <!-- Messages                        -->
+                        <li class="nav-item dropdown">
+                            <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                            <i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner" th:text="${mainbarMessageListCount}"></span>
+                            </a>
+                            <ul aria-labelledby="notifications" class="dropdown-menu">
+                                <div  th:each="al,iterStat : ${mainbarMessageList}">
+                                <li><a rel="nofollow" th:href="@{'/message/messageInfo?messageId='+al.messageId}" class="dropdown-item d-flex">
+                                    <div class="msg-profile"> <img th:src="@{/img/user.png}" alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="msg-body">
+                                        <h3 class="h5" th:text="${al.name}"></h3><span th:text="${al.subject}"></span>
+                                    </div></a></li>
+                                </div>
+                                <li><a rel="nofollow" th:href="@{/message}" class="dropdown-item all-notifications text-center">
+                                    <strong>
+                                        <span th:if="${mainbarMessageListCount == 0}">暂时没有未读消息。</span>
+                                        <span th:if="${mainbarMessageListCount != 0}">阅读所有消息。</span>
+                                    </strong>
+                                </a></li>
+
+                            </ul>
+                        </li>
+                        <!-- Logout    -->
+                        <li class="nav-item"><a th:href="@{/logout}" class="nav-link logout"> <span class="d-none d-sm-inline">退出</span><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>

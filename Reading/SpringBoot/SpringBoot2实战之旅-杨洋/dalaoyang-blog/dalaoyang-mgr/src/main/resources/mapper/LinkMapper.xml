@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dalaoyang.dao.LinkDao">
+
+    <resultMap id="LinkResultMap" type="com.dalaoyang.entity.LinkInfo">
+        <result property="linkId" column="LINK_ID"/>
+        <result property="linkName" column="LINK_NAME"/>
+        <result property="linkUrl" column="LINK_URL"/>
+        <result property="remark" column="REMARK"/>
+    </resultMap>
+
+    <sql id="columns">
+       LINK_ID, LINK_NAME, LINK_URL, REMARK
+	</sql>
+
+    <select id="getLinkListPage" resultMap="LinkResultMap" parameterType="HashMap">
+        SELECT
+        <include refid="columns"/>
+        FROM LINK_INFO
+        WHERE 1 = 1
+        <if test="linkName != '' and linkName != null ">
+            AND LINK_NAME LIKE CONCAT(#{linkName}, '%')
+        </if>
+        ORDER BY LINK_ID
+        Limit #{page},10
+    </select>
+
+    <select id="getLinkListCount" resultType="int" parameterType="HashMap">
+        SELECT COUNT(1) FROM LINK_INFO
+        WHERE 1 = 1
+        <if test="linkName != '' and linkName != null ">
+            AND LINK_NAME LIKE CONCAT(#{linkName}, '%')
+        </if>
+    </select>
+
+    <select id="getLinkInfoById" resultMap="LinkResultMap" parameterType="int">
+        SELECT
+        <include refid="columns"/>
+        FROM LINK_INFO
+        WHERE LINK_ID =#{1}
+    </select>
+
+    <update id="editLink" parameterType="HashMap">
+        UPDATE LINK_INFO SET LINK_NAME=#{linkName},LINK_URL=#{linkUrl},REMARK=#{remark} WHERE LINK_ID=#{linkId}
+    </update>
+
+    <insert id="saveLink" parameterType="HashMap">
+          INSERT INTO
+           `LINK_INFO`
+          ( `LINK_NAME`, `LINK_URL`, `REMARK`)
+          VALUES
+          ( #{linkName}, #{linkUrl},#{remark})
+    </insert>
+
+    <select id="getLastId" resultType="int">
+        SELECT last_insert_id()
+    </select>
+
+    <delete id="deleteLink" parameterType="int">
+        DELETE FROM LINK_INFO WHERE LINK_ID =#{1}
+    </delete>
+</mapper>

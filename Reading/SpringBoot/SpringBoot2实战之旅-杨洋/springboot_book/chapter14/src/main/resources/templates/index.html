@@ -1,0 +1,187 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+<body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">博客数据面板</h2>
+            </div>
+          </header>
+          <!-- Dashboard Counts Section-->
+          <section class="dashboard-counts no-padding-bottom">
+            <div class="container-fluid">
+              <div class="row bg-white has-shadow">
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet"><i class="fa fa-book"></i></div>
+                    <div class="title"><span>文章<br>数量</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 25%; height: 4px;"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong th:text="${articleTotalCount}"></strong></div>
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="fa fa-tag"></i></div>
+                    <div class="title"><span>标签<br>数量</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 70%; height: 4px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong th:text="${tagTotalCount}"></strong></div>
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-green"><i class="fa fa-link"></i></div>
+                    <div class="title"><span>友链<br>数量</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 40%; height: 4px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong th:text="${linkTotalCount}"></strong></div>
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="icon-mail"></i></div>
+                    <div class="title"><span>消息<br>数量</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong th:text="${messageTotalCount}"></strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Dashboard Header Section    -->
+          <section class="dashboard-header">
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Statistics -->
+                <div class="statistics col-lg-3 col-12">
+                  <div class="statistic d-flex align-items-center bg-white has-shadow">
+                    <div class="icon bg-red"><i class="fa fa fa-battery-quarter"></i></div>
+                    <div class="text"><strong th:text="${todayWebsiteVisit}"></strong><br><small>今日访问量</small></div>
+                  </div>
+                  <div class="statistic d-flex align-items-center bg-white has-shadow">
+                    <div class="icon bg-green"><i class="fa fa-battery-half"></i></div>
+                    <div class="text"><strong th:text="${weekWebsiteVisit}"></strong><br><small>本周访问量</small></div>
+                  </div>
+                  <div class="statistic d-flex align-items-center bg-white has-shadow">
+                    <div class="icon bg-orange"><i class="fa fa-battery-three-quarters"></i></div>
+                    <div class="text"><strong th:text="${monthWebsiteVisit}"></strong><br><small>本月访问量</small></div>
+                  </div>
+                  <div class="statistic d-flex align-items-center bg-white has-shadow">
+                    <div class="icon bg-blue"><i class="fa fa-battery-full"></i></div>
+                    <div class="text"><strong th:text="${totalWebsiteVisit}"></strong><br><small>总访问量</small></div>
+                  </div>
+                </div>
+                <!-- Line Chart            -->
+                <div class="chart col-lg-9 col-12">
+                  <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
+                    <canvas id="lineCahrt"></canvas>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+
+    <script type="text/javascript"  th:inline="javascript">
+      var websiteAccessDateList =  [[${websiteAccessDateList}]];
+      var websiteAccessCountList =  [[${websiteAccessCountList}]];
+
+      $(document).ready(function () {
+        'use strict';
+
+        // ------------------------------------------------------- //
+        // Line Chart
+        // ------------------------------------------------------ //
+        var legendState = true;
+        if ($(window).outerWidth() < 576) {
+          legendState = false;
+        }
+
+
+        var LINECHART = $('#lineCahrt');
+        var myLineChart = new Chart(LINECHART, {
+          type: 'line',
+          options: {
+            scales: {
+              xAxes: [{
+                display: true,
+                gridLines: {
+                  display: false
+                }
+              }],
+              yAxes: [{
+                display: true,
+                gridLines: {
+                  display: false
+                }
+              }]
+            },
+            legend: {
+              display: legendState
+            }
+          },
+          data: {
+            labels: websiteAccessDateList,
+            datasets: [
+              {
+                label: "博客访问统计",
+                fill: true,
+                lineTension: 0,
+                backgroundColor: "transparent",
+                borderColor: '#f15765',
+                pointBorderColor: '#da4c59',
+                pointHoverBackgroundColor: '#da4c59',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                borderWidth: 1,
+                pointBackgroundColor: "#fff",
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBorderColor: "#fff",
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 0,
+                data: websiteAccessCountList,
+                spanGaps: false
+              }
+            ]
+          }
+        });
+
+
+      });
+    </script>
+</body>
+</html>

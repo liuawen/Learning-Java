@@ -1,0 +1,16 @@
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision 93470171708d4407a980c4eb58aa9d890b4c20bb)
++++ .idea/vcs.xml	(date 1529656979000)
+@@ -3,6 +3,6 @@
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
+     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$/springboot_mybatis_pagehelper" vcs="" />
++    <mapping directory="$PROJECT_DIR$/springboot_mybatis_pagehelper" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file

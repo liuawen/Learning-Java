@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/common_head::commonHeader"></head>
+
+  <body>
+    <div class="page">
+      <div th:include="common/common_mainnavbar :: commonMainNavbar"></div>
+
+      <div class="page-content d-flex align-items-stretch">
+        <div th:include="common/common_navigation :: commonNavigation"></div>
+
+        <div class="content-inner">
+          <!-- Page Header-->
+          <header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">友情链接编辑页</h2>
+            </div>
+          </header>
+          <!-- Breadcrumb-->
+          <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a th:href="@{/index}">首页</a></li>
+              <li class="breadcrumb-item active">友情链接编辑页</li>
+            </ul>
+          </div>
+          <!-- Forms Section-->
+          <section class="forms"> 
+            <div class="container-fluid">
+              <div class="row">
+                <!-- Form Elements -->
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">
+                        <span th:if="${link.linkId != 0}">修改 </span>
+                        <span th:if="${link.linkId == 0}">新增 </span>
+                        友链信息</h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal" id="link_form">
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">友链名称</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="linkName" name="linkName" th:value="${link.linkName}">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">友链地址</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="linkUrl" name="linkUrl" th:value="${link.linkUrl}">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label class="col-sm-3 form-control-label">友链备注</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="remark" name="remark" th:value="${link.remark}">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <div class="col-sm-4 offset-sm-3">
+                            <button type="button" class="btn btn-secondary" onclick="back()">返回列表页</button>
+                            <button type="button" class="btn btn-primary" onclick="saveLink()">保存</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div th:include="common/common_footer :: commonFooter"></div>
+
+        </div>
+      </div>
+    </div>
+    <div th:include="common/common_onload_js :: onLoadJs"></div>
+    <script type="text/javascript">
+      var linkId =  [[${link!=null?link.linkId:''}]];
+
+      function back(){
+        window.open(getRootPath_dc()+"link/list","_href");
+      }
+
+      function saveLink(){
+        if(!$('#link_form').valid()){
+          return false;
+        }
+        var url = getRootPath_dc() + "link/saveOrUpdate";
+        var linkName = $('#linkName').val();
+        var linkUrl = $('#linkUrl').val();
+        var remark = $('#remark').val();
+
+
+        if(linkId == 0){
+          linkId = null;
+        }
+        $.ajax({
+          type : "POST",
+          url : url,
+          dataType : "text",
+          contentType: "application/json;charset=UTF-8",
+          data : JSON.stringify({
+            "linkId":linkId,
+            "linkName": linkName,
+            "linkUrl": linkUrl,
+            "remark": remark
+          }),
+          success: function() {
+            alert("提交成功！");
+          },
+          error:function(){
+            alert("error");
+          }
+        });
+      }
+
+    </script>
+  </body>
+</html>
