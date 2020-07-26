@@ -1,0 +1,13 @@
+### src文件夹
+- api 请求文件
+- assets 静态资源 图片 icon之类的
+- components 公共组件
+- config 里面是一些配置 router.config.js页面配置路由的
+- mock 本地模拟数据
+- router 里面有说明
+- store 是vuex
+- utils 工具库
+- views 是页面文件夹，根据浏览器路由找相应文件
+- app.vue 主页面
+- main.js主入口
+- permission.js 前置路由拦截 
