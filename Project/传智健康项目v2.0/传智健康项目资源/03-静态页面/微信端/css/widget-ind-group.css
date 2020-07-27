@@ -1,0 +1,65 @@
+/*
+ * colors variables
+ */
+.group {
+  padding: 2% 3%;
+}
+
+.group .tit {
+  position: relative;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.group .tit span {
+  position: absolute;
+  font-weight: normal;
+  right: 10px;
+  top: 10px;
+  font-size: 16px;
+  color: #787d82;
+}
+
+.group .cont {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.group .cont .item {
+  background: #333;
+  width: 49%;
+  margin-left: 2%;
+  margin-top: 2%;
+  padding: 3%;
+  display: flex;
+}
+
+.group .cont .item img {
+  width: 80%;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.group .cont .item div {
+  font-size: 18px;
+  flex: 1;
+}
+
+.group .cont .item .info {
+  flex: 2;
+}
+
+.group .cont .item .name {
+  font-weight: bold;
+}
+
+.group .cont .item .des {
+  font-size: 16px;
+  color: #787d82;
+}
+
+.group .cont .item:nth-child(2n-1) {
+  margin-left: 0px;
+}

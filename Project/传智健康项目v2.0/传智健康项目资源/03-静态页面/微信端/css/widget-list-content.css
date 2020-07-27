@@ -1,0 +1,24 @@
+/*
+ * colors variables
+ */
+.list-content .fix-info {
+  padding: 0 5.3%;
+  margin-bottom: 2%;
+  background-color: #fff;
+}
+
+.list-content ul li {
+  padding: 2% 0;
+  line-height: 2;
+  border-bottom: 1px solid #f3f2f7;
+}
+
+.list-content ul li span {
+  font-size: 16px;
+}
+
+.list-content ul li .tit {
+  color: #9b9b9b;
+  width: 30%;
+  display: inline-block;
+}

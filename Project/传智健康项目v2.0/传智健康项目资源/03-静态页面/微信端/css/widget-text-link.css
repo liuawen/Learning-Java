@@ -1,0 +1,40 @@
+/*
+ * colors variables
+ */
+.text-link {
+  padding: 2%;
+}
+
+.text-link .list-box {
+  margin-right: -4%;
+  margin-bottom: -10px;
+  overflow: auto;
+}
+
+.text-link .list-box li {
+  width: 46%;
+  height: 180px;
+  margin: 0 4% 10px 0;
+  background-color: #fff;
+  float: left;
+  display: table;
+  text-align: center;
+}
+
+.text-link .list-box li a {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.text-link .list-box li a:focus, .text-link .list-box li a:visited {
+  background-color: transparent;
+}
+
+.text-link .list-box li a i {
+  display: block;
+  font-size: 36px;
+}
+
+.text-link .list-box li a span {
+  color: #333;
+}

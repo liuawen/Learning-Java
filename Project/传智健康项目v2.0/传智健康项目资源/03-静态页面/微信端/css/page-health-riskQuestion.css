@@ -1,0 +1,588 @@
+/*
+ * colors variables
+ */
+html, body {
+  min-height: 100%;
+  height: 100%;
+  background: #f3f2f7;
+  line-height: 2;
+  font-family: Helvetica;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+p {
+  font-size: 12px;
+}
+
+em, i {
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link-page {
+  display: block;
+}
+
+img {
+  width: 100%;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.img-parent {
+  overflow: hidden;
+}
+
+:focus {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #d1d1d6;
+}
+
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #d1d1d6;
+}
+
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #d1d1d6;
+}
+
+input::-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #d1d1d6;
+}
+
+@font-face {
+  font-family: 'health-icon';
+  src: url("../fonts/health-icon.eot?fvtb2l");
+  src: url("./../fonts/health-icon.eot?fvtb2l#iefix") format("embedded-opentype"), url("./../fonts/health-icon.ttf?fvtb2l") format("truetype"), url("./../fonts/health-icon.woff?fvtb2l") format("woff"), url("./../fonts/health-icon.svg?fvtb2l#health-icon") format("svg");
+  font-weight: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'health-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-case .path1:before {
+  content: "\e91a";
+  color: #48bcf5;
+}
+
+.icon-case .path2:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-case .path3:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-case .path4:before {
+  content: "\e91d";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-case .path5:before {
+  content: "\e91e";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-case .path6:before {
+  content: "\e91f";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-case .path7:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-case .path8:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-case .path9:before {
+  content: "\e922";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-case .path10:before {
+  content: "\e923";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-case .path11:before {
+  content: "\e924";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-case .path12:before {
+  content: "\e925";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path1:before {
+  content: "\e926";
+  color: #48bcf5;
+}
+
+.icon-allergy .path2:before {
+  content: "\e927";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-allergy .path3:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-allergy .path4:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-allergy .path5:before {
+  content: "\e92a";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-allergy .path6:before {
+  content: "\e92b";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path7:before {
+  content: "\e92c";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path8:before {
+  content: "\e92d";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path9:before {
+  content: "\e92e";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path10:before {
+  content: "\e92f";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path11:before {
+  content: "\e930";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-allergy .path12:before {
+  content: "\e931";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-allergy .path13:before {
+  content: "\e932";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-allergy .path14:before {
+  content: "\e933";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-baseinfo .path1:before {
+  content: "\e934";
+  color: #48bcf5;
+}
+
+.icon-baseinfo .path2:before {
+  content: "\e935";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-family .path1:before {
+  content: "\e936";
+  color: #48bcf5;
+}
+
+.icon-family .path2:before {
+  content: "\e937";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-family .path3:before {
+  content: "\e938";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-family .path4:before {
+  content: "\e939";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-family .path5:before {
+  content: "\e93a";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-family .path6:before {
+  content: "\e93b";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-family .path7:before {
+  content: "\e93c";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-family .path8:before {
+  content: "\e93d";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-family .path9:before {
+  content: "\e93e";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-family .path10:before {
+  content: "\e93f";
+  margin-left: -1em;
+  color: #407afd;
+}
+
+.icon-rit-arrow:before {
+  content: "\e919";
+}
+
+.icon-back:before {
+  content: "\e900";
+  color: #fff;
+}
+
+.icon-more:before {
+  content: "\e901";
+  color: #fff;
+}
+
+.icon-zhen .path1:before {
+  content: "\e902";
+  color: #48bcf5;
+}
+
+.icon-zhen .path2:before {
+  content: "\e904";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-search .path1:before {
+  content: "\e903";
+  color: #48bcf5;
+}
+
+.icon-search .path2:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-search .path3:before {
+  content: "\e917";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-search .path4:before {
+  content: "\e918";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-record .path1:before {
+  content: "\e906";
+  color: #48bcf5;
+}
+
+.icon-record .path2:before {
+  content: "\e907";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-record .path3:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-record .path4:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: #48bcf5;
+}
+
+.icon-record .path5:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-star .path1:before {
+  content: "\e90b";
+  color: #48bcf5;
+}
+
+.icon-star .path2:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-plus .path1:before {
+  content: "\e90d";
+  color: #48bcf5;
+}
+
+.icon-plus .path2:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: #4076fd;
+}
+
+.icon-person .path1:before {
+  content: "\e90f";
+  color: #48bcf5;
+}
+
+.icon-person .path2:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-date:before {
+  content: "\e911";
+  color: #4b88fc;
+}
+
+.icon-data:before {
+  content: "\e912";
+  color: #fff;
+}
+
+.icon-ask-cur:before {
+  content: "\e913";
+  color: #fff;
+}
+
+.icon-ask-circle .path1:before {
+  content: "\e914";
+  color: #48bcf5;
+}
+
+.icon-ask-circle .path2:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: #4076fe;
+}
+
+.icon-tizhi:before {
+  content: "\e916";
+  color: #fff;
+}
+
+/*
+ * colors variables
+ */
+.top-header {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+/*
+ * colors variables
+ */
+.question .q-tit {
+  padding: 4.7% 4.7% 22.7%;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+}
+
+.question .q-tit p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.question .q-tit .type-num {
+  padding: 0 0 5%;
+}
+
+.question .q-tit .type-num .cur-num {
+  font-size: 22px;
+  font-family: Helvetica !important;
+}
+
+.question .q-tit .type-num .total-num {
+  font-size: 16px;
+}
+
+.question .q-choose {
+  padding: 4.7%;
+  margin: -12% 4.7% 0;
+  background-color: #fff;
+  box-shadow: 0 0 9px 0px #dedcdc;
+}
+
+.question .q-choose .choose-items .input-row {
+  clear: left;
+  overflow: hidden;
+  position: relative;
+}
+
+.question .q-choose .choose-items .radio {
+  position: relative;
+  padding: 3.3% 0;
+  line-height: 3;
+}
+
+.question .q-choose .choose-items .radio label {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+}
+
+.question .q-choose .choose-items .radio input {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+}
+
+.question .q-choose .choose-items .radio input:checked + label {
+  border: 3px solid #038bdf;
+}
+
+.question .q-choose .choose-items .radio span {
+  padding-left: 10px;
+  color: #777;
+}
+
+.question .q-choose .tool-btn {
+  padding: 20% 0;
+  text-align: center;
+  line-height: 2;
+}
+
+.question .q-choose .tool-btn .btn {
+  font-size: 18px;
+  border-radius: 30px;
+}
+
+.question .q-choose .tool-btn .btn.next-btn {
+  padding: 4.7% 20%;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+  color: #fff;
+  border: 0;
+}
+
+.question .q-choose .tool-btn .btn.cancle-btn {
+  padding: 0 6.7%;
+  border: 0;
+  letter-spacing: 5px;
+  color: #0088dc;
+  background-color: transparent;
+}

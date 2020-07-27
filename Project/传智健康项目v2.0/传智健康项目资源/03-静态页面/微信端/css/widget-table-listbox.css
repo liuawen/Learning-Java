@@ -1,0 +1,74 @@
+/*
+ * colors variables
+ */
+.table-listbox .box-title {
+  position: relative;
+  padding: 3.3%;
+  font-size: 14px;
+  background-color: #fff;
+  margin: 2% 0;
+  color: #666;
+}
+
+.table-listbox i {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.table-listbox .box-table {
+  background-color: #fff;
+}
+
+.table-listbox .box-table .flex2 {
+  flex: 2;
+}
+
+.table-listbox .box-table .flex3 {
+  flex: 3;
+}
+
+.table-listbox .box-table .table-title {
+  display: flex;
+  padding: 2% 0;
+  border-bottom: 1px solid #f3f2f7;
+}
+
+.table-listbox .box-table .table-title .tit-item {
+  border-right: 1px solid #dbdbdb;
+  line-height: 2;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.table-listbox .box-table .table-content .table-list {
+  padding: 0 2.7% 0 0;
+}
+
+.table-listbox .box-table .table-content .table-list .table-item {
+  display: flex;
+  padding: 3.3% 0;
+  border-bottom: 1px solid #E3E3E3;
+}
+
+.table-listbox .box-table .table-content .table-list .table-item .item {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+  padding-left: 7px;
+}
+
+.table-listbox .box-table .table-content .table-list .table-item .item:first-child {
+  text-align: center;
+}
+
+.table-listbox .box-button .order-btn {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 0;
+  padding: 3.5% 0;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+}

@@ -1,0 +1,42 @@
+/*
+ * colors variables
+ */
+.list-column2 ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3% 0 0 3%;
+}
+
+.list-column2 ul li {
+  width: 47%;
+  background-color: #fff;
+  border-radius: 15px;
+  position: relative;
+  margin-right: 3%;
+  margin-bottom: 18px;
+}
+
+.list-column2 ul li:nth-child(2n) {
+  margin-right: 0;
+}
+
+.list-column2 ul li a {
+  padding: 20px;
+  position: relative;
+}
+
+.list-column2 ul li a h3 {
+  color: #333;
+}
+
+.list-column2 ul li a p {
+  color: #999;
+}
+
+.list-column2 ul li a .type-icon {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  font-size: 36px;
+}

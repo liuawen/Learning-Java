@@ -1,0 +1,74 @@
+/*
+ * colors variables
+ */
+.list-row3 {
+  padding-top: 3%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.list-row3 .report-item {
+  margin-top: 3.3%;
+  border: 1px solid #ededef;
+  border-radius: .08rem;
+  background-color: #fff;
+  font-size: 0;
+  display: flex;
+}
+
+.list-row3 .report-item .item-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  flex: 3.6;
+  padding: 4%;
+}
+
+.list-row3 .report-item .item-name .name {
+  display: block;
+  font-size: 18px;
+  color: #424242;
+  line-height: 2;
+}
+
+.list-row3 .report-item .item-name .sex {
+  font-size: 14px;
+  color: #a9a9a9;
+}
+
+.list-row3 .report-item .item-content {
+  flex: 9.4;
+  padding: 4% 0;
+}
+
+.list-row3 .report-item .item-content .box {
+  padding-left: 4%;
+  border-left: 1px solid #f3f2f7;
+}
+
+.list-row3 .report-item .item-content .box li {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #999;
+}
+
+.list-row3 .report-item .item-content .box li span {
+  color: #424242;
+}
+
+.list-row3 .report-item .item-link {
+  flex: 1;
+  background-color: #038bdf;
+  color: #fff;
+  font-size: 14px;
+  word-wrap: break-word;
+  letter-spacing: 20px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 8px 8px 0;
+  padding-left: 2%;
+  width: 6.7%;
+}

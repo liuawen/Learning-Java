@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/asset-favico.ico">
+    <title>编辑信息</title>
+
+    <link rel="stylesheet" href="../css/page-health-orderInfo.css" />
+</head>
+
+<body data-spy="scroll" data-target="#myNavbar" data-offset="150">
+    <div class="app">
+        <!-- 页面头部 -->
+        <div class="top-header">
+            <span class="f-left"><i class="icon-back"></i>返回</span>
+            <span class="center">传智健康</span>
+            <span class="f-right"><i class="icon-more"></i></span>
+        </div>
+        <!-- 页面内容 -->
+        <div class="contentBox">
+            <div class="card">
+                <div class="project-img">
+                    <img src="../img/widget-detail.png" width="100%" height="100%" />
+                </div>
+                <div class="project-text">
+                    <h4 class="tit">孕前检查套餐（女）-精英版</h4>
+                    <p class="subtit">该套餐共23项检查项</p>
+                    <p class="keywords"><span>女</span><span>20-70</span></p>
+                </div>
+                <div class="project-know">
+                    <a href="health-orderNotice.html" class="link-page">
+            <i class="icon-ask-circle"><span class="path1"></span><span class="path2"></span></i>
+            <span class="word">预约须知</span>
+            <span class="arrow"><i class="icon-rit-arrow"></i></span>
+        </a>
+                </div>
+            </div>
+            <div class="form-info">
+                <div class="info-title">
+                    <span class="name">体检人信息</span>
+                </div>
+                <form class="input-group info-form">
+                    <div class="input-row">
+                        <label>体检人</label>
+                        <input type="text" class="input-clear" placeholder="请输入用户名">
+                    </div>
+                    <div class="input-row single-radio">
+                        <label class="radio-title">性别</label>
+                        <div class="radio-list">
+                            <div class="radio">
+                                <input id="item1" type="radio" name="sex" value="选项一" checked>
+                                <label for="item1"></label>
+                                <span>男</span>
+                            </div>
+                            <div class="radio">
+                                <input id="item2" type="radio" name="sex" value="选项二">
+                                <label for="item2"></label>
+                                <span>女</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label>手机号</label>
+                        <input type="text" class="input-clear" placeholder="请输入手机号">
+                    </div>
+                    <div class="input-row">
+                        <label>身份证号</label>
+                        <input type="text" class="input-clear" placeholder="请输入身份证号">
+                    </div>
+                    <div class="input-row">
+                        <label>出生日期</label>
+                        <input type="text" class="input-clear" placeholder="请输入出生日期">
+                    </div>
+                    <div class="input-row single-radio">
+                        <label class="radio-title">婚否</label>
+                        <div class="radio-list">
+                            <div class="radio">
+                                <input id="item3" type="radio" name="marry" value="选项一" checked>
+                                <label for="item3"></label>
+                                <span>已婚</span>
+                            </div>
+                            <div class="radio">
+                                <input id="item4" type="radio" name="marry" value="选项二">
+                                <label for="item4"></label>
+                                <span>未婚</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="date">
+                        <label>体检日期选择</label>
+                        <i class="icon-date" class="picktime"></i>
+                        <input type="text" class="picktime" value="03-27 15:00" readonly>
+                    </div>
+
+
+                </form>
+                <div class="box-button">
+                    <button type="button" class="btn order-btn">提交预约</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 页面 css js -->
+    <!-- <link rel="stylesheet" href="./../../plugins/zepto/zepto.mtimer.css">
+    <script src="./../../plugins/jquery/dist/jquery.min.js"></script>
+    <script src="./../../plugins/zepto/zepto.js"></script>
+    <script src="./../../plugins/zepto/zepto.mtimer.js"></script> -->
+
+    <script src="../plugins/datapicker/datePicker.js"></script>
+    <script>
+        var calendar = new datePicker();
+        calendar.init({
+            'trigger': '.picktime',
+            /*按钮选择器，用于触发弹出插件*/
+            'type': 'date',
+            /*模式：date日期；datetime日期时间；time时间；ym年月；*/
+            'minDate': '1900-1-1',
+            /*最小日期*/
+            'maxDate': '2100-12-31',
+            /*最大日期*/
+            'onSubmit': function() { /*确认时触发事件*/
+                var theSelectData = calendar.value;
+            },
+            'onClose': function() { /*取消时触发事件*/ }
+        });
+    </script>
+</body>

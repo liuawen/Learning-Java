@@ -1,0 +1,116 @@
+/*
+ * colors variables
+ */
+.select-drop {
+  position: relative;
+  border-bottom: 1px solid #eee;
+  padding: 1% 3%;
+  background-color: #fff;
+}
+
+.select-drop label {
+  padding-right: 10px;
+  border-right: 1px solid #e3e3e3;
+}
+
+.select-drop .filter-box {
+  position: relative;
+  display: inline-block;
+}
+
+.select-drop .filter-box .filter-text {
+  position: relative;
+  width: 14%;
+  cursor: pointer;
+  padding: 0 30px 0 10px;
+  background-color: transparent;
+}
+
+.select-drop .filter-box .filter-text input {
+  font-size: 15px;
+}
+
+.select-drop .filter-box .filter-text .filter-title {
+  height: 36px;
+  line-height: 36px;
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+}
+
+.select-drop .filter-box .filter-text .icon {
+  position: absolute;
+}
+
+.select-drop .filter-box .filter-text .icon.icon-filter-arrow {
+  width: 8px;
+  height: 6px;
+  background-repeat: no-repeat;
+  background-image: url(../img/widget-icon_arrow.png);
+  background-size: 100%;
+  right: 10px;
+  top: 15px;
+  transition: all .2s;
+}
+
+.select-drop .filter-box .filter-text .icon.icon-filter-arrow.filter-show {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.select-drop .filter-box select {
+  display: none;
+}
+
+.select-drop .filter-box .filter-list {
+  display: none;
+  width: 30%;
+  max-height: 300px;
+  background: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 99;
+  border: 1px solid #e3e3e3;
+  overflow: auto;
+}
+
+.select-drop .filter-box .filter-list li a {
+  display: block;
+  padding: 0 10px;
+  line-height: 36px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.select-drop .filter-box .filter-list li.filter-selected {
+  background-color: #26acff;
+}
+
+.select-drop .filter-box .filter-list li.filter-selected a {
+  display: block;
+  color: #fff;
+  line-height: 28px;
+}
+
+.select-drop .filter-box .filter-list li.filter-disabled:hover a {
+  cursor: not-allowed !important;
+  background-color: #fff;
+}
+
+.select-drop .filter-box .filter-list li.filter-disabled a {
+  display: block;
+  color: #d2d2d2;
+}
+
+.select-drop .filter-box .filter-list li:hover {
+  background-color: #f2f2f2;
+}
+
+.select-drop .filter-box .filter-list li.filter-null a {
+  color: #d2d2d2;
+}

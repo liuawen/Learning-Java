@@ -1,0 +1,12 @@
+/*
+ * colors variables
+ */
+.top-header {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  padding: 0 10px;
+}

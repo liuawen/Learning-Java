@@ -1,0 +1,63 @@
+/*
+ * colors variables
+ */
+.bg-link {
+  padding: 3.3%;
+  background-color: #fff;
+}
+
+.bg-link .risk-item {
+  margin-bottom: 3.3%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 0 -2px;
+  width: 100%;
+  height: 143px;
+  border-radius: 10px;
+  background-size: cover;
+  position: relative;
+}
+
+.bg-link .risk-item::before {
+  content: '';
+  width: 100%;
+  height: 142px;
+  background-color: #555555;
+  opacity: .6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+.bg-link .risk-item.item-one {
+  background-image: url(../img/widget-risk01.png);
+}
+
+.bg-link .risk-item.item-two {
+  background-image: url(../img/widget-risk02.png);
+}
+
+.bg-link .risk-item.item-three {
+  background-image: url(../img/widget-risk03.png);
+}
+
+.bg-link .risk-item .icon-text {
+  position: absolute;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg-link .risk-item .icon-text i {
+  font-size: 36px;
+}
+
+.bg-link .risk-item .icon-text span {
+  display: block;
+  line-height: 1.5;
+}

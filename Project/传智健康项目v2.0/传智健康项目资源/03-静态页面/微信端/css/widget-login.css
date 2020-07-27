@@ -1,0 +1,113 @@
+/*
+ * colors variables
+ */
+.login {
+  height: 100%;
+  background-color: #fff;
+}
+
+.login input {
+  font-size: 18px;
+}
+
+.login :focus {
+  outline: none;
+}
+
+.login input:focus {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.login input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-size: 18px;
+}
+
+.login input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-size: 18px;
+}
+
+.login input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-size: 18px;
+}
+
+.login input::-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-size: 18px;
+}
+
+.login #login-form {
+  padding: 4% 5.3%;
+}
+
+.login #login-form label {
+  float: left;
+  padding: 0;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #333;
+  width: 35%;
+  line-height: 2;
+  font-family: 'Helvetica Neue',Helvetica,sans-serif;
+}
+
+.login #login-form .input-row {
+  clear: left;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  margin-bottom: 2.7%;
+  border-bottom: 1px solid #f3f2f7;
+}
+
+.login #login-form .input-row label ~ input {
+  height: auto;
+  line-height: 2.5;
+  float: left;
+  width: 65%;
+  margin-bottom: 0;
+  padding-left: 0;
+  border: 0;
+}
+
+.login #login-form .btn {
+  font-weight: 400;
+  line-height: 1.42;
+  display: block;
+  margin-bottom: 0;
+  margin-top: 4.7%;
+  cursor: pointer;
+  -webkit-transition: all;
+  transition: all;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 3px;
+  background-clip: padding-box;
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+
+.login #login-form .btn a {
+  color: #fff;
+}
+
+.login #login-form .btn.yes-btn, .login #login-form .btn.cancel-btn {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  color: #fff;
+}
+
+.login #login-form .btn.cancel-btn {
+  background-image: linear-gradient(90deg, #7cc8f6, #57b3ec);
+}
+
+.login #login-form .btn.yes-btn {
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+}

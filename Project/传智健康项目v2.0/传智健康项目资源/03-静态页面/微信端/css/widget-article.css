@@ -1,0 +1,31 @@
+/*
+ * colors variables
+ */
+.article {
+  padding: 3% 5.3%;
+  background-color: #fff;
+}
+
+.article .title {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+.article .subtitle {
+  padding-top: 2%;
+  font-size: 12px;
+  line-height: 2;
+  color: #999;
+}
+
+.article .box {
+  padding-top: 3.3%;
+}
+
+.article .box p {
+  margin-bottom: 2%;
+  font-size: 14px;
+  color: #3b3b3b;
+  line-height: 1.8;
+}

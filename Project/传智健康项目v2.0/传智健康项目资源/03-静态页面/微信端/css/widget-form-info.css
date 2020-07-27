@@ -1,0 +1,139 @@
+/*
+ * colors variables
+ */
+.form-info {
+  margin: 2% 0 0;
+}
+
+.form-info .info-title {
+  font-size: 16px;
+  color: #333;
+  line-height: 1;
+  position: relative;
+  padding: 3.5%;
+  background-color: #fff;
+}
+
+.form-info .info-title:before {
+  content: '';
+  width: 8px;
+  height: 26px;
+  border-radius: 6px;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+  display: table-cell;
+}
+
+.form-info .info-title .name {
+  display: table-cell;
+  vertical-align: middle;
+  text-indent: 12px;
+}
+
+.form-info .info-form {
+  position: relative;
+}
+
+.form-info .info-form .input-row {
+  padding: 3.5%;
+  position: relative;
+  height: auto;
+  border-bottom: 1px solid #f3f2f7;
+  background-color: #fff;
+  display: flex;
+}
+
+.form-info .info-form .input-row label {
+  color: #555;
+  flex: 1;
+  font-size: 14px;
+}
+
+.form-info .info-form .input-row .radio-list {
+  flex: 3;
+}
+
+.form-info .info-form .input-row input[type=text] {
+  flex: 3;
+  line-height: 1.1;
+  height: auto;
+  border: none;
+  font-size: 14px;
+}
+
+.form-info .info-form .input-row .radio {
+  position: relative;
+  display: inline-block;
+}
+
+.form-info .info-form .input-row .radio label {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+}
+
+.form-info .info-form .input-row .radio input {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+.form-info .info-form .input-row .radio input:checked + label {
+  border: 3px solid #038bdf;
+}
+
+.form-info .info-form .input-row .radio span {
+  padding-left: 10px;
+  color: #777;
+  font-size: 14px;
+}
+
+.form-info .info-form .date {
+  background-color: #fff;
+  margin: 2% 0 6.7%;
+  padding: 4% 3.7%;
+  font-size: 14px;
+  position: relative;
+  line-height: 1;
+  color: #555;
+}
+
+.form-info .info-form .date i {
+  position: absolute;
+  right: 6%;
+  line-height: 1;
+  top: 23px;
+}
+
+.form-info .info-form .date input {
+  width: 75%;
+  line-height: 26px;
+  text-indent: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  padding: 0;
+  border: 0;
+}
+
+.form-info .box-button .order-btn {
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 0;
+  padding: 3.6% 0;
+  border: none;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+}
+
+.date_ctrl {
+  background-color: #fff !important;
+}
+
+.date_btn {
+  font-weight: normal !important;
+}

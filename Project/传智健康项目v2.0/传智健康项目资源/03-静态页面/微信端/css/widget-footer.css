@@ -1,0 +1,35 @@
+/*
+ * colors variables
+ */
+footer {
+  width: 100%;
+  background: #333;
+  display: flex;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  text-align: center;
+  font-size: 12px;
+  height: 50px;
+}
+
+footer div {
+  flex: 1;
+  cursor: pointer;
+}
+
+footer .active {
+  color: #21b97a;
+}
+
+footer .active i:before {
+  color: #21b97a;
+}
+
+footer i {
+  display: block;
+  margin: 4px 0px;
+  line-height: 30px;
+  font-size: 24px;
+  width: 100%;
+}

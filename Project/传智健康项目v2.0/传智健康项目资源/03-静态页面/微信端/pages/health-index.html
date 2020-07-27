@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../img/asset-favico.ico">
+    <title>医疗健康</title>
+
+    <link rel="stylesheet" href="../css/page-health-index.css" />
+</head>
+
+<body data-spy="scroll" data-target="#myNavbar" data-offset="150">
+    <div class="app">
+        <!-- 页面头部 -->
+        <div class="top-header">
+            <span class="f-left"><i class="icon-back"></i>返回</span>
+            <span class="center">传智健康</span>
+            <span class="f-right"><i class="icon-more"></i></span>
+        </div>
+        <div class="carousel">
+            <div class="banner-roll">
+                <div class="banner-item">
+                    <div class="item" style="background-image: url(../img/widget-banner_01.png);"><img src="../img/widget-banner_01.png" alt=""></div>
+                    <div class="item" style="background-image: url(../img/widget-banner_02.png);"><img src="../img/widget-banner_02.png" alt=""></div>
+                    <div class="item" style="background-image: url(../img/widget-banner_03.png);"><img src="../img/widget-banner_03.png" alt=""></div>
+                </div>
+                <div class="indicators"></div>
+            </div>
+        </div>
+        <!-- 页面内容 -->
+        <div class="contentBox">
+            <div class="list-column2">
+                <ul class="list">
+                    <li class="type-item">
+                        <a href="health-order.html" class="link-page">
+                            <div class="type-title">
+                                <h3>体检预约</h3>
+                                <p>实时预约</p>
+                            </div>
+                            <div class="type-icon">
+                                <i class="icon-zhen">
+                                <span class="path1"></span><span class="path2"></span>
+                            </i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="type-item">
+                        <a href="health-login.html" class="link-page">
+                            <div class="type-title">
+                                <h3>报告查询</h3>
+                                <p>一键查询</p>
+                            </div>
+                            <div class="type-icon">
+                                <i class="icon-search"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="type-item">
+                        <a href="health-risk.html" class="link-page">
+                            <div class="type-title">
+                                <h3>健康评估</h3>
+                                <p>了解自身健康</p>
+                            </div>
+                            <div class="type-icon">
+                                <i class="icon-star"><span class="path1"></span><span class="path2"></span></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="type-item">
+                        <a href="health-intervention.html" class="link-page">
+                            <div class="type-title">
+                                <h3>健康干预</h3>
+                                <p>采集状况</p>
+                            </div>
+                            <div class="type-icon">
+                                <i class="icon-plus"><span class="path1"></span><span class="path2"></span></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="type-item">
+                        <a href="health-record.html" class="link-page">
+                            <div class="type-title">
+                                <h3>健康档案</h3>
+                                <p>掌上查询</p>
+                            </div>
+                            <div class="type-icon">
+                                <i class="icon-record"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="type-item">
+                        <a href="health-information.html" class="link-page">
+                            <div class="type-title">
+                                <h3>健康咨询</h3>
+                                <p>咨询一览</p>
+                            </div>
+                            <div class="type-icon">
+                                <i class="icon-person"><span class="path1"></span><span class="path2"></span></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-parent">
+                <img src="../img/asset-ad.png" width="100%" height="100%" />
+            </div>
+        </div>
+    </div>
+    <!-- 页面 css js -->
+
+    <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
+    <script>
+        $(function() {
+            var ht = $('.banner-item').find('img').eq(0).height()
+            var tg = $('.banner-item .item');
+            var num = 0;
+            for (i = 0; i < tg.length; i++) {
+                $('.indicators').append('<span></span>');
+                $('.indicators').find('span').eq(num).addClass('active');
+            }
+            $(".banner-item,.banner-roll").css('height', ht)
+
+            function roll() {
+                tg.eq(num).animate({
+                    'opacity': '1',
+                    'z-index': num
+                }, 2000).siblings().animate({
+                    'opacity': '0',
+                    'z-index': 0
+                }, 2000);
+                $('.indicators').find('span').eq(num).addClass('active').siblings().removeClass('active');
+                if (num >= tg.length - 1) {
+                    num = 0;
+                } else {
+                    num++;
+                }
+            }
+            $('.indicators').find('span').click(function() {
+                num = $(this).index();
+                roll();
+            });
+            var timer = setInterval(roll, 3000);
+            $('.banner-item').mouseover(function() {
+                clearInterval(timer)
+            });
+            $('.banner-item').mouseout(function() {
+                timer = setInterval(roll, 3000)
+            });
+        })
+        $(window).resize(function() {
+            var ht = $('.banner-item').find('img').eq(0).height()
+            $(".banner-item,.banner-roll").css('height', ht)
+        });
+    </script>
+    <script src="../js/page-health-index.js"></script>
+</body>

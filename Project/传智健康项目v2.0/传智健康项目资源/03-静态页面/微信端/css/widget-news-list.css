@@ -1,0 +1,49 @@
+/*
+ * colors variables
+ */
+.news-list {
+  padding: 0 4.8% 6.7%;
+  background-color: #fff;
+}
+
+.news-list .news .news-item {
+  padding: 5% 0 6%;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #f3f2f7;
+}
+
+.news-list .news .news-item .img-object {
+  max-width: 28%;
+  height: auto;
+  margin-right: 2.7%;
+}
+
+.news-list .news .news-item .item-body .ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.news-list .news .news-item .item-body .ellipsis-more {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+  line-height: 1.5;
+}
+
+.news-list .news .news-item .item-body .item-title {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 2;
+  color: #333;
+}
+
+.news-list .news .news-item .item-body .item-desc {
+  font-size: 14px;
+  color: #666;
+}

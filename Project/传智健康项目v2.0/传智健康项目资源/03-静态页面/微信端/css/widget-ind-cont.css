@@ -1,0 +1,92 @@
+/*
+ * colors variables
+ */
+.contItem {
+  background: #333;
+  padding: 3%;
+}
+
+.contItem .tit {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contItem .contNav {
+  display: flex;
+  border-bottom: solid 1px #ccc;
+  font-size: 14px;
+  height: 50px;
+}
+
+.contItem .contNav select {
+  flex: 1;
+  text-align: center;
+}
+
+.contItem .cont .item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: solid 1px #ccc;
+}
+
+.contItem .cont .item img {
+  width: 90%;
+}
+
+.contItem .cont .item div {
+  flex: 6;
+  max-width: 170px;
+}
+
+.contItem .cont .item .message {
+  flex: 7;
+  max-width: 100%;
+}
+
+.contItem .cont .item .message .name {
+  font-size: 18px;
+}
+
+.contItem .cont .item .message .des {
+  font-size: 14px;
+  color: #787d82;
+}
+
+.contItem .cont .item .message .lab span {
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 4px 5px;
+  margin: 0 1px;
+  line-height: 12px;
+}
+
+.contItem .cont .item .message .lab .lab1 {
+  color: #3fc28c;
+  background: rgba(63, 194, 140, 0.3);
+}
+
+.contItem .cont .item .message .lab .lab2 {
+  color: #39becd;
+  background: rgba(57, 190, 205, 0.3);
+}
+
+.contItem .cont .item .message .lab .lab3 {
+  color: #5aabfd;
+  background: rgba(90, 171, 253, 0.3);
+}
+
+.contItem .cont .item .message .pic {
+  font-size: 14px;
+  color: #fa5741;
+}
+
+.contItem .cont .item .message .pic em {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contItem .cont .item:last-child {
+  border: none;
+}

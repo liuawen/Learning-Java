@@ -1,0 +1,60 @@
+/*
+ * colors variables
+ */
+.notice-article {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #fff;
+}
+
+.notice-article .info-title {
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  position: relative;
+  padding: 3.5% 3.5% 5px;
+  background-color: #fff;
+}
+
+.notice-article .info-title:before {
+  content: '';
+  width: 5px;
+  height: 24px;
+  border-radius: 6px;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+  display: table-cell;
+}
+
+.notice-article .info-title .name {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 15px;
+  font-size: 16px;
+}
+
+.notice-article .notice-item {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.notice-article .notice-item .item-title {
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  padding: 3.5%;
+}
+
+.notice-article .notice-item .item-subtitle {
+  font-size: 13px;
+  padding: 2.5% 3.5% 5px;
+}
+
+.notice-article .notice-item .item-content {
+  padding-bottom: 2%;
+}
+
+.notice-article .notice-item .item-content p {
+  font-size: 2.5%;
+  color: #888;
+  line-height: 2;
+  padding: 0 3.5%;
+}

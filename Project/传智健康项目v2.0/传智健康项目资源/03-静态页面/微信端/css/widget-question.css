@@ -1,0 +1,97 @@
+/*
+ * colors variables
+ */
+.question .q-tit {
+  padding: 4.7% 4.7% 22.7%;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+}
+
+.question .q-tit p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.question .q-tit .type-num {
+  padding: 0 0 5%;
+}
+
+.question .q-tit .type-num .cur-num {
+  font-size: 22px;
+  font-family: Helvetica !important;
+}
+
+.question .q-tit .type-num .total-num {
+  font-size: 16px;
+}
+
+.question .q-choose {
+  padding: 4.7%;
+  margin: -12% 4.7% 0;
+  background-color: #fff;
+  box-shadow: 0 0 9px 0px #dedcdc;
+}
+
+.question .q-choose .choose-items .input-row {
+  clear: left;
+  overflow: hidden;
+  position: relative;
+}
+
+.question .q-choose .choose-items .radio {
+  position: relative;
+  padding: 3.3% 0;
+  line-height: 3;
+}
+
+.question .q-choose .choose-items .radio label {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+}
+
+.question .q-choose .choose-items .radio input {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+}
+
+.question .q-choose .choose-items .radio input:checked + label {
+  border: 3px solid #038bdf;
+}
+
+.question .q-choose .choose-items .radio span {
+  padding-left: 10px;
+  color: #777;
+}
+
+.question .q-choose .tool-btn {
+  padding: 20% 0;
+  text-align: center;
+  line-height: 2;
+}
+
+.question .q-choose .tool-btn .btn {
+  font-size: 18px;
+  border-radius: 30px;
+}
+
+.question .q-choose .tool-btn .btn.next-btn {
+  padding: 4.7% 20%;
+  background-image: linear-gradient(90deg, #26acff, #0088dc);
+  color: #fff;
+  border: 0;
+}
+
+.question .q-choose .tool-btn .btn.cancle-btn {
+  padding: 0 6.7%;
+  border: 0;
+  letter-spacing: 5px;
+  color: #0088dc;
+  background-color: transparent;
+}
