@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入ElementUI样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入ElementUI组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            current-change：内置的事件，当前页码改变时会触发，可以获取到改变之后的页码
+        -->
+        <el-pagination
+                @current-change="handleCurrentChange"
+                current-page="5"
+                page-size="10"
+                layout="total, prev, pager, next, jumper"
+                :total="305">
+        </el-pagination>
+        <script>
+            new Vue({
+                el:'#app',
+                methods:{
+                    handleCurrentChange(page){
+                        alert(page);
+                    }
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

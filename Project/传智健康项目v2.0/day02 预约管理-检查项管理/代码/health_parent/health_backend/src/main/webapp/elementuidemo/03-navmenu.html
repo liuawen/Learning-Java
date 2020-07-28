@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入ElementUI样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入ElementUI组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-menu>
+            <el-submenu index="1">
+                <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span slot="title">导航一</span>
+                </template>
+                <el-menu-item>选项1</el-menu-item>
+                <el-menu-item>选项2</el-menu-item>
+                <el-menu-item>选项3</el-menu-item>
+            </el-submenu>
+            <el-submenu index="2">
+                <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">导航二</span>
+                </template>
+                <el-menu-item>选项1</el-menu-item>
+                <el-menu-item>选项2</el-menu-item>
+                <el-menu-item>选项3</el-menu-item>
+            </el-submenu>
+        </el-menu>
+    </div>
+    <script>
+        new Vue({
+            el:'#app'
+        });
+    </script>
+</body>
+</html>

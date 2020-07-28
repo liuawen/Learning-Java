@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入ElementUI样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入ElementUI组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-table :data="tableData" stripe>
+            <el-table-column prop="date" label="日期"></el-table-column>
+            <el-table-column prop="name" label="姓名"></el-table-column>
+            <el-table-column prop="address" label="地址"></el-table-column>
+            <el-table-column label="操作" align="center">
+                <!--
+                    slot-scope：作用域插槽，可以获取表格数据
+                    scope：代表表格数据，可以通过scope.row来获取表格当前行数据，scope不是固定写法
+                -->
+                <template slot-scope="scope">
+                    <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
+                    <el-button type="danger" size="mini"  @click="handleDelete(scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                //定义VUE对象的模型数据，用于table展示
+                tableData:[
+                    {date:'2019.10.10',name:'小明',address:'北京'},//每个json对象对应表格中一条数据
+                    {date:'2019.10.10',name:'小李',address:'南京'}
+                ]
+            },
+            methods:{
+                //定义VUE对象的方法
+                handleUpdate(row){
+                    alert(row.name);
+                },
+                handleDelete(row){
+                    alert(row.date);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
