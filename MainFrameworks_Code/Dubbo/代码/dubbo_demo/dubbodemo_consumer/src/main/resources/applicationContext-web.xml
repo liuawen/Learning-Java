@@ -14,7 +14,10 @@
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context.xsd">
     <dubbo:application name="dubbodemo_consumer"></dubbo:application>
-    <dubbo:registry address="zookeeper://39.97.237.124:2181"></dubbo:registry>
+<!--    39.99.254.180 -->
+<!--    <dubbo:registry address="zookeeper://39.97.237.124:2181"></dubbo:registry>-->
+    <dubbo:registry address="zookeeper://39.99.254.180:2181"></dubbo:registry>
+<!--    controller 自己的-->
     <dubbo:annotation package="com.itheima.controller"></dubbo:annotation>
     <dubbo:consumer check="false"></dubbo:consumer>
 </beans>

@@ -17,9 +17,13 @@
     <!--每个dubbo应用(服务提供方和服务消费方)都必须指定一个唯一的名称-->
     <dubbo:application name="dubbodemo_provider"></dubbo:application>
     <!--指定服务的注册中心-->
-    <dubbo:registry address="zookeeper://39.97.237.124:2181"></dubbo:registry>
+<!--    39.99.254.180-->
+<!--    <dubbo:registry address="zookeeper://39.97.237.124:2181"></dubbo:registry>-->
+    <dubbo:registry address="zookeeper://39.99.254.180:2181"></dubbo:registry>
     <!--配置协议和端口-->
-    <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
+<!--    20880-->
+<!--    <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>-->
+    <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
     <!--指定包扫描，用于发布dubbo服务-->
     <dubbo:annotation package="com.itheima.service.impl"></dubbo:annotation>
 
