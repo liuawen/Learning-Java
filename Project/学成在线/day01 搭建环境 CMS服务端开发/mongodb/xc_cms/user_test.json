@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5abe3b9c5b05aa218434f4cf" }, "_class" : "com.xuecheng.framework.domain.test.UserTest", "name" : "传智播客", "createTime" : { "$date" : "2018-03-30T13:29:00.235+0000" } }
+{ "_id" : { "$oid" : "5abe4af65b05aa36f03ddb64" }, "_class" : "com.xuecheng.framework.domain.test.UserTest", "name" : "传智播客", "createTime" : { "$date" : "2018-03-30T14:34:30.695+0000" } }

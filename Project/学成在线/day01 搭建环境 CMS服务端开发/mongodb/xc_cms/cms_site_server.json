@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5a754bdb6abb500ad05688db" }, "_class" : "com.xuecheng.framework.domain.cms.CmsSiteServer", "ip" : "127.0.0.1", "port" : "80", "webPath" : "/", "serverName" : "门户服务器", "uploadPath" : "/upload", "siteId" : "5a751fab6abb5044e0d19ea1" }
+{ "_id" : { "$oid" : "5a7554126abb503210700cb1" }, "_class" : "com.xuecheng.framework.domain.cms.CmsSiteServer", "siteId" : "5a751fab6abb5044e0d19ea1", "ip" : "fff", "port" : "dd", "webPath" : "sss", "serverName" : "sss", "uploadPath" : "fff" }
