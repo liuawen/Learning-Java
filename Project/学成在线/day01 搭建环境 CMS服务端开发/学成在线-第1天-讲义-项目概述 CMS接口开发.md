@@ -540,6 +540,11 @@ Spring全家桶
 CMS （Content Management System）即内容管理系统，不同的项目对CMS的定位不同，比如：一个在线教育网
 站，有些公司认为CMS系统是对所有的课程资源进行管理，而在早期网站刚开始盛行时很多公司的业务是网站制
 作，当时对CMS的定位是创建网站，即对网站的页面、图片等静态资源进行管理。
+
+什么是CMS  内容管理系统 
+
+不同的项目对CMS的定位不同 比如  一个在线教育网站  有些公司认为CMS系统 
+
 2、CMS有哪些类型？
 上边也谈到每个公司对每个项目的CMS定位不同，CMS基本上分为：针对后台数据内容的管理、针对前端页面的
 管理、针对样式风格的管理等 。比如：一个给企业做网站的公司，其CMS系统主要是网站页面管理及样式风格的
@@ -549,9 +554,39 @@ CMS 内容管理系统
 
 不同的类型  
 
+后台数据内容的管理 
+
+CMS 内容管理系统 前端页面的管理   样式风格的管理
+
+一个给企业做网站的公司 
+
+
+
+网站页面管理 及 样式风格管理 
+
+
+
+运营的需要
+
+轮播图 换一下 改一下  轮播图 广告    更改图片
+
+网站的页面管理   包括很多页面  很多很多 小的页面 管理起来
+
+CMS 更改  自动发布  门户 
+
+页面改动需求多  
+
 3、本项目CMS的定位是什么？
 本项目作为一个大型的在线教育平台，对CMS系统的定位是对各各网站（子站点）页面的管理，主要管理由于运营
 需要而经常变动的页面，从而实现根据运营需要快速进行页面开发、上线的需求。
+
+大型的在线教育平台   对各各网站 子站点  页面的管理   
+
+运营需要而经常变动的页面  
+
+实现根本运营需要快速进行页面开发 上线的需求 
+
+
 
 ![image-20200803205144723](assets/image-20200803205144723.png)
 
@@ -752,13 +787,64 @@ D:\Projects\xcEdu\xcEduUI01\xc-ui-pc-static-portal
 
 ## SSI服务端包含技术
 
+IIS  Tomcat
+
+![image-20200804122826518](assets/image-20200804122826518.png)
+
+页面  大页面 
+
+小页面  我要更改页面的一小部分
+
 本节分析首页的管理方案。
+
+首页的管理方案 
+
 1、页面内容多如何管理？
 将页面拆分成一个一个的小页面，通过cms去管理这些小页面，当要更改部分页面内容时只需要更改具体某个小页
 面即可。
+
+拆分一个一个的小页面  cms去管理这些小页面  更改部分页面内容时只需要更改具体某个小页面即可 
+
+小页面  大页面怎么浏览
+
+拼
+
+
+
+页面所属于网站
+
 2、页面拆出来怎么样通过web服务浏览呢？
 使用web服务(例如nginx)的SSI技术，将多个子页面合并渲染输出。
+
+页面拆出来   web服务浏览
+
+Nginx SSI技术  多个子页面合并渲染输出 
+
+
+
 3、SSI是什么？![image-20200803201129281](assets/image-20200803201129281.png)
+
+SSI Server SIde Include是一种类似于服务器的网页制作技术
+
+在服务器端  拼接  
+
+SSI
+
+WEB服务器 
+
+讲内容发送到浏览器之前  可以使用服务器端 包含SSI 指令 文本  图形  应用 网页中
+
+重复出现的文本 图形
+
+使用包含文件是一种简便的方法  将内容存入一个包含文件中即可
+
+服务端  拼装  大页面 
+
+不必将内容输入所有文件
+
+简单的语句 调用包含文件
+
+使用了包含文件  只需在一个地方就能完成 
 
 ssi包含类似于jsp页面中的incluce指令，ssi是在web服务端将include指定 的页面包含在网页中，渲染html网页响
 应给客户端 。nginx、apache等多数web容器都支持SSI指令。
@@ -768,7 +854,53 @@ ssi指令如下：
 <!‐‐#include virtual="/../....html"‐‐>
 ```
 
+index virtual   html
+
+
+
+![image-20200804133336768](assets/image-20200804133336768.png)
+
+
+
+整个大页面 拆分小页面  
+
+一个个小页面   SSI   服务端包含技术  来搞
+
+Nginx Apache 服务端来处理
+
+遇到include  就来  渲染
+
+JSP
+
+服务端  渲染   CMS对这些小页面管理
+
+页面  换头部Logo
+
+轮播图换掉   我只需要更改轮播图
+
+一个大页面  
+
 4、将首页拆分成
+
+首页主体内容
+
+头部区域
+
+页尾
+
+index
+
+header
+
+index_banner
+
+index_category
+
+footer
+
+轮播图
+
+左侧列表导航
 
 ```
 index.html：首页主体内容
@@ -780,6 +912,8 @@ include/footer.html：页尾
 
 5、在nginx虚拟主机中开通SSI
 
+打开 
+
 ```
 server{
 listen 80;
@@ -789,25 +923,87 @@ ssi_silent_errors on;
 ......
 ```
 
-ssi的配置参数如下： ssi on： 开启ssi支持 ssi_silent_errors on：默认为off，设置为on则在处理SSI文件出错时不
-输出错误信息 ssi_types：默认为 ssi_types text/html，如果需要支持shtml（服务器执行脚本，类似于jsp）则需
-要设置为ssi_types text/shtml
+ssi的配置参数如下： 
+
+ssi on： 开启ssi支持 
+
+ssi_silent_errors on：默认为off，设置为on则在处理SSI文件出错时不输出错误信息
+
+找不到文件 
+
+ssi_types：默认为 ssi_types text/html，如果需要支持shtml（服务器执行脚本，类似于jsp）则需要设置为ssi_types text/shtml
 6、测试
 去掉某个#include查看页面效果。
 
 
 
+管理小页面 为什么呢   发布提交小页面
+
+无需改小的   SSI
+
+目的是什么呢？页面管理  
+
 ## CMS页面管理需求
+
+当我们需要改动某个页面   改小页面 
+
+为什么小页面  html    改HTML  
+
+小的   大的 怎么浏览    SSI  拼  服务端
+
+拆分  通过更改小页面   来修改 
+
+技术方案可行   
+
+页面怎么 被管理呢    很多信息  
+
+页头 页尾   
+
+
+
+页面属于某一个网站 
+
+门户  轮播图   一个页面信息 
+
+创建站点
+
+创建模板
+
+创建页面
+
+  
+
+页面所属于网站
+
+创建  
 
 1、这些页面的管理流程是什么？
 1）创建站点：
 一个网站有很多子站点，比如：学成在线有主门户、学习中心、问答系统等子站点。具体的哪个页面是归属于具体
 的站点，所以要管理页面，先要管理页面所属的站点。
 
+管理流程是什么
+
+创建站点
+
+一个网站有很多子站点
+
+学成在线有主门户 学习中心 问答系统等子站点 
+
+具体的哪个页面是归属于具体的站点  要管理页面 要管理页面所属的站点 
+
+创建站点
+
 2）创建模板：
 页面如何创建呢？比如电商网站的商品详情页面，每个页面的内容布局、板式是相同的，不同的只是内容，这个页
 面的布局、板式就是页面模板，模板+数据就组成一个完整的页面，最终要创建一个页面文件需要先定义此页面的
 模板，最终拿到页面的数据再结合模板就拼装成一个完整的页面。
+
+创建模板
+
+页面如何创建呢 
+
+
 
 3）创建页面：
 创建页面是指填写页面的基本信息，如：页面的名称、页面的url地址等。
@@ -827,3 +1023,358 @@ ssi的配置参数如下： ssi on： 开启ssi支持 ssi_silent_errors on：默
 页面发布成功，用户即可在浏览器浏览到最新发布的页面，整个页面添加、发布的过程由于软件自动执行，无需人
 工登录服务器操作。
 
+# CMS服务端工程搭建
+
+## 开发工具配置
+
+取个名字好难呀 
+
+在线教育
+
+服务端工程使用IntellijIDEA开发。
+1、创建工程代码目录 XcEduCode（本教程创建XcEduCode01目录），并且IDEA打开。
+2、配置maven环境
+拷贝老师提供的maven仓库，setting.xml文件中配置maven仓库，maven仓库的目录位置不要去使用中文。
+	![image-20200804135604537](assets/image-20200804135604537.png)
+
+3、配置编码
+
+![image-20200804135616267](assets/image-20200804135616267.png)
+
+![image-20200804140058968](assets/image-20200804140058968.png)
+
+4、配置JDK1.8
+安装JDK1.8，并设置环境变量
+在IDEA配置JDK1.8
+
+![image-20200804135639116](assets/image-20200804135639116.png)
+
+
+
+
+
+这里也应该选择JDK1.8的
+
+5、配置快捷键
+IDEA可以集成Eclipse的快捷键
+
+![image-20200804135703962](assets/image-20200804135703962.png)
+
+如需自定义则点击“copy”复制一份进行修改
+
+6、自动导入包 快捷方式：
+idea可以自动优化导入包，但是有多个同名的类调用不同的包，必须自己手动Alt+Enter设置
+
+alter + enter 提示 
+
+
+
+设置idea导入包
+
+![image-20200804135722000](assets/image-20200804135722000.png)
+
+
+
+![image-20200804140353732](assets/image-20200804140353732.png)
+
+
+
+
+
+7、代码模板
+自定义自己的代码模板
+![image-20200804135733045](assets/image-20200804135733045.png)
+
+
+
+![image-20200804140501953](assets/image-20200804140501953.png)
+
+
+
+8、提示忽略大小写
+默认IDEA的提示是区分大小写的，这里设置为提示忽略大小写
+
+![image-20200804135743732](assets/image-20200804135743732.png)
+
+![image-20200804140653630](assets/image-20200804140653630.png)
+
+
+
+9、配置虚拟机内存
+修改idea64.exe.vmoptions（64位电脑选择此文件）
+
+一个例子，电脑内存8G，设置如下：
+-Xms1024m -Xmx4096m -XX:MaxPermSize=1024m -XX:ReservedCodeCacheSize=1024m
+
+## 导入基础工程
+
+![image-20200804183921072](assets/image-20200804183921072.png)
+
+导入  
+
+工程结构
+
+工程结构 CMS及其他服务端工程基于Maven进行构建  首先需要创建如下基础工程
+
+
+
+CMS及其它服务端工程基于maven进行构建，首先需要创建如下基础工程：
+parent工程：父工程，提供依赖管理。
+common工程：通用工程，提供各层封装
+model工程：模型工程，提供统一的模型类管理
+utils工程：工具类工程，提供本项目所使用的工具类
+Api工程：接口工程，统一管理本项目的服务接口。
+
+工程结果如下：
+
+父工程  提供依赖管理  
+
+![image-20200804135835707](assets/image-20200804135835707.png)
+
+基础工程代码及pom.xml配置参考课程资料“基础工程”。
+
+导入父工程
+
+1、将课程资料中的parent工程拷贝到代码目录
+2、点击Import Model，选择parent工程目录
+
+![image-20200804135858264](assets/image-20200804135858264.png)
+
+选择Maven，下一步。
+
+![image-20200804135908863](assets/image-20200804135908863.png)
+
+3、导入成功
+
+![image-20200804135923965](assets/image-20200804135923965.png)
+
+导入其它工程
+
+依次导入utils、model、common、api工程，方法同parent工和的导入。
+
+![image-20200804141357580](assets/image-20200804141357580.png)
+
+model  实体类
+
+common 
+
+## MongoDB入门
+
+
+
+安装MongoDB
+
+CMS采用MongoDB数据库存储CMS页面信息，CMS选用Mongodb的原因如下：
+1、Mongodb是非关系型数据库，存储Json格式数据 ,数据格式灵活。
+2、相比课程管理等核心数据CMS数据不重要，且没有事务管理要求。
+参考“mongodb安装.md”安装Mongodb Server及 Studio 3T客户端软件。
+
+数据存储灵活 
+
+项目的核心数据   MySQL
+
+
+
+为什么CMS 选用Mongodb原因 
+
+非关系型数据库 存储JSON格式数据 数据格式灵活
+
+核心数据  CMS数据不重要  没用事务管理要求 
+
+
+
+MongoDB入门
+
+参考“mongodb安装及入门”文档进行学习。
+
+我去安装MongoDB
+
+```
+D:\databases\MongoDB\Server\3.4\bin>mongod.exe --config "d:\databases\MongoDB\Server\3.4\mongo.conf" --install
+
+D:\databases\MongoDB\Server\3.4\bin>
+```
+
+
+
+导入CMS数据库
+
+导入cms数据库：
+使用Studio 3T软件导入cms数据库
+1、创建xc_cms数据库
+
+![image-20200804141509358](assets/image-20200804141509358.png)
+
+2、导入 cms数据库
+右键数据库，点击导入数据库
+
+![image-20200804141521339](assets/image-20200804141521339.png)
+
+打开窗口，选择第一个 json。
+下一步，选择要导入的数据文件（json文件）
+
+![image-20200804141533910](assets/image-20200804141533910.png)
+
+
+
+下一步操作即可完成。
+导入成功：
+![image-20200804141547196](assets/image-20200804141547196.png)
+
+# 页面查询接口定义
+
+## 定义模型
+
+需求分析
+
+在梳理完用户需求后就要去定义前后端的接口，接口定义后前端和后端就可以依据接口去开发功能了。
+本次定义页面查询接口，本接口供前端请求查询页面列表，支持分页及自定义条件查询方式。
+具体需求如下：
+1、分页查询CmsPage 集合下的数据
+2、根据站点Id、模板Id、页面别名查询页面信息
+3、接口基于Http Get请求，响应Json数据
+
+模型类介绍
+
+接口的定义离不开数据模型，根据前边对需求的分析，整个页面管理模块的数据模型如下：
+
+![image-20200804141640864](assets/image-20200804141640864.png)
+
+
+
+CmsSite：站点模型
+CmsTemplate：页面模板
+CmsPage：页面信息
+页面信息如下：
+
+```
+@Data
+@ToString
+@Document(collection = "cms_page")
+public class CmsPage {
+/**
+* 页面名称、别名、访问地址、类型（静态/动态）、页面模版、状态
+*/
+//站点ID
+private String siteId;
+//页面ID
+@Id
+private String pageId;
+//页面名称
+private String pageName;
+//别名
+private String pageAliase;
+//访问地址
+private String pageWebPath;
+//参数
+private String pageParameter;
+//物理路径
+private String pagePhysicalPath;
+//类型（静态/动态）
+private String pageType;
+//页面模版
+private String pageTemplate;
+//页面静态化内容
+private String pageHtml;
+//状态
+private String pageStatus;
+//创建时间
+private Date pageCreateTime;
+//模版id
+private String templateId;
+//参数列表，暂不用
+private List<CmsPageParam> pageParams;
+//模版文件Id
+// private String templateFileId;
+//静态文件Id
+private String htmlFileId;
+//数据Url
+private String dataUrl;
+}
+```
+
+属性说明：
+1、定义一个页面需要指定页面所属站点
+一个站点包括多个页面，比如：学成在线的门户站点（网站）包括了多个页面。
+2、定义一个页面需要指定页面使用的模板
+多个页面可以使用相同的模板，比如：商品信息模板，每个商品就是一个页面，所有商品使用同一个商品信息模板
+注解说明：
+@Data、@ToString、@Document注解表示什么意思？
+@Data、@ToString：是Lombok提供的注解，下边会介绍。
+@Document：是Spring Data mongodb提供的注解，最终CMS的开发会使用Mongodb数据库。
+
+Lombok
+
+上边的Data注解表示什么意思呢？Data注解，ToString注解都是Lombok提供的注解。
+Lombok是一个实用的java工具，使用它可以消除java代码的臃肿，Lombok提供一系列的注解，使用这些注解可
+以不用定义getter/setter、equals、构造方法等，它会在编译时在字节码文件自动生成这些通用的方法，简化开发
+人员的工作。
+项目官方地址：https://www.projectlombok.org/
+比如上节创建的UserTest模型，@Data注解可以自动生成getter/setter方法，@ToString生成tostring方法。
+使用方法：
+1、在项目中添加Lombok的依赖
+作用：项目在编译时根据Lombok注解生成通用方法。
+
+```
+<dependency>
+<groupId>org.projectlombok</groupId>
+<artifactId>lombok</artifactId>
+</dependency>
+
+```
+
+2、在IDEA开发工具中添加Lombok插件
+作用：使用IDEA开发时根据Lombok注解生成通用方法，不报错。
+
+![image-20200804141758055](assets/image-20200804141758055.png)
+
+
+
+![image-20200804141806761](assets/image-20200804141806761.png)
+
+
+
+## 定义接口
+
+定义请求及响应类型
+
+1、定义请求模型QueryPageRequest，此模型作为查询条件类型
+为后期扩展需求，请求类型统一继承RequestData类型。
+
+```
+package com.xuecheng.framework.domain.cms.request;
+import com.xuecheng.framework.model.request.RequestData;
+import lombok.Data;
+@Data
+public class QueryPageRequest extends RequestData {
+//站点id
+private String siteId;
+//页面ID
+private String pageId;
+//页面名称
+private String pageName;
+//别名
+private String pageAliase;
+//模版id
+private String templateId;
+}
+```
+
+2、响应结果类型，分页查询统一使用QueryResponseResult
+
+定义接口
+
+在Api接口工程专门定义接口，在Api工程单独定义接口的原因如下：
+1、接口集中管理
+2、Api工程的接口将作为各微服务远程调用使用。
+页面查询接口定义如下：
+
+```
+public interface CmsPageControllerApi {
+public QueryResponseResult findList(int page, int size, QueryPageRequest queryPageRequest) ;
+}
+```
+
+此接口编写后会在CMS服务工程编写Controller类实现此接口。
+
+# 页面查询服务端开发
