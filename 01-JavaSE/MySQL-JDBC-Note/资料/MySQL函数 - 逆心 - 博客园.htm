@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MySQL函数 - 逆心 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-BlackSun.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-BlackSun-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/kissdodog/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/kissdodog/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/kissdodog/wlwmanifest.xml">
+<script type="text/javascript" src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js"></script><script src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'kissdodog', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="top">
+	
+<div>
+	<table class="HeaderTitles">
+		<tbody><tr>
+			<td>
+				<h1 class="HeaderTitle"><a id="Header1_HeaderTitle" class="HeaderMainTitle" href="http://www.cnblogs.com/kissdodog/">逆心</a></h1>
+				<p id="tagline">船停在港湾是很安全的，但那不是造船的目的！</p>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+<div>
+	<table id="HeaderBar" class="HeaderBar">
+		<tbody><tr>
+			<td class="HeaderBarTab" nowrap="nowrap">
+				
+&nbsp;
+<a id="blog_nav_sitehome" href="http://www.cnblogs.com/">博客园</a>&nbsp;::
+<a id="blog_nav_myhome" href="http://www.cnblogs.com/kissdodog/">首页</a>&nbsp;::
+<a id="blog_nav_newpost" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>&nbsp;::
+<a id="blog_nav_contact" accesskey="9" rel="nofollow" href="https://msg.cnblogs.com/send/%E9%80%86%E5%BF%83">联系</a>&nbsp;::
+<a id="blog_nav_rss" href="http://www.cnblogs.com/kissdodog/rss">订阅</a>
+<a id="blog_nav_rss_image" class="XMLLink" href="http://www.cnblogs.com/kissdodog/rss"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/xml.gif" alt="订阅"></a>&nbsp;::
+<a id="blog_nav_admin" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+			</td>
+			
+			<td class="HeaderBarTabBack" width="100%" nowrap="nowrap">
+				<div id="blog_stats">
+
+	<table class="BlogStatsBar">
+		<tbody><tr>
+			<td width="100%">
+			</td>
+			<td class="BlogStatsBar" nowrap="nowrap">
+				&nbsp;
+				490 
+				Posts&nbsp;::
+				0 Stories
+				::
+				423 Comments
+				::
+				0 Trackbacks
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+
+</div>
+<table id="maintable">
+	<tbody><tr><td id="leftmenu">
+	
+		
+<h3>公告</h3>
+<div class="News">
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/kissdodog/">逆心</a><br>园龄：<a href="http://home.cnblogs.com/u/kissdodog/" title="入园时间：2011-11-04">5年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/kissdodog/followers/">1618</a><br>关注：<a href="http://home.cnblogs.com/u/kissdodog/followees/">31</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('8ec8d629-bd06-e111-b7b9-842b2b196315')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+		<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/kissdodog/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/kissdodog/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/kissdodog/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/kissdodog/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/kissdodog/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div class="mainMenuBackground">
+
+		<h3>随笔分类</h3>
+		
+				<ul>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/kissdodog/category/437242.html">.Net基础(55)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/kissdodog/category/519160.html">.Net模块：Ado.net (5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/kissdodog/category/553597.html">.Net模块：Asp.net(6)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/kissdodog/category/464176.html">.Net模块：多线程(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/kissdodog/category/467023.html">.Net模块：反射(3)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/kissdodog/category/468516.html">.Net模块：配置文件(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/kissdodog/category/450785.html">C#集合(3)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/kissdodog/category/606401.html">MySQL：MySQL基础(10)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/kissdodog/category/819317.html">MySQL性能(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/kissdodog/category/519404.html">Oracle：Oracle基础(1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/kissdodog/category/637658.html">PowerDesigner熟悉(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/kissdodog/category/491903.html">SQLServer：T-SQL语法(11)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/kissdodog/category/525064.html">SQLServer：查询反模式(5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/kissdodog/category/534292.html">SQLServer：存储过程重编译(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/kissdodog/category/457131.html">SQLServer：基础(18)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/kissdodog/category/525801.html">SQLServer：开发反模式(3)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/kissdodog/category/488819.html">SQLServer：索引(13)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/kissdodog/category/531084.html">SQLServer：统计分析(5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/kissdodog/category/490053.html">SQLServer：系统函数(6)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/kissdodog/category/529319.html">SQLServer：性能优化(8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/kissdodog/category/491914.html">SQLServer：语句(8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/kissdodog/category/532309.html">SQLServer：执行计划(5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/kissdodog/category/454370.html">XML：XML学习(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/kissdodog/category/580666.html">测试：LoadRunner(4)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_24" href="http://www.cnblogs.com/kissdodog/category/579272.html">调试：Windbg,SOS(14)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_25" href="http://www.cnblogs.com/kissdodog/category/570223.html">感悟(1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_26" href="http://www.cnblogs.com/kissdodog/category/471122.html">工具：CodeSmith(4)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_27" href="http://www.cnblogs.com/kissdodog/category/455639.html">工具：Reflector(1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_28" href="http://www.cnblogs.com/kissdodog/category/449813.html">工具：Visual Studio,SVN(6)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_29" href="http://www.cnblogs.com/kissdodog/category/471079.html">技巧(6)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_30" href="http://www.cnblogs.com/kissdodog/category/537089.html">进程、线程、应用程序域(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_31" href="http://www.cnblogs.com/kissdodog/category/443797.html">框架：Asp.net MVC(14)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_32" href="http://www.cnblogs.com/kissdodog/category/562046.html">框架：Autofac(3)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_33" href="http://www.cnblogs.com/kissdodog/category/453229.html">框架：HtmlAgilityPack HTML解析(8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_34" href="http://www.cnblogs.com/kissdodog/category/513606.html">框架：Ibatis.Net学习(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_35" href="http://www.cnblogs.com/kissdodog/category/449919.html">框架：Linq学习笔记(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_36" href="http://www.cnblogs.com/kissdodog/category/564300.html">框架：Lucene.net(8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_37" href="http://www.cnblogs.com/kissdodog/category/453550.html">框架：NHibernate(20)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_38" href="http://www.cnblogs.com/kissdodog/category/609353.html">框架：WWF(16)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_39" href="http://www.cnblogs.com/kissdodog/category/540043.html">垃圾箱(4)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_40" href="http://www.cnblogs.com/kissdodog/category/463276.html">面向对象(1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_41" href="http://www.cnblogs.com/kissdodog/category/445476.html">命名空间：System.IO(12)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_42" href="http://www.cnblogs.com/kissdodog/category/453050.html">命名空间：System.Net(1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_43" href="http://www.cnblogs.com/kissdodog/category/444361.html">命名空间：System.Web(8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_44" href="http://www.cnblogs.com/kissdodog/category/478115.html">其他：序列化(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_45" href="http://www.cnblogs.com/kissdodog/category/455323.html">其他：学习方法(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_46" href="http://www.cnblogs.com/kissdodog/category/473291.html">其他：正则表达式(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_47" href="http://www.cnblogs.com/kissdodog/category/607454.html">前端：Bootstrap(3)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_48" href="http://www.cnblogs.com/kissdodog/category/433002.html">前端：css学习笔记(7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_49" href="http://www.cnblogs.com/kissdodog/category/436674.html">前端：HTML(6)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_50" href="http://www.cnblogs.com/kissdodog/category/438266.html">前端：javascript笔记(37)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_51" href="http://www.cnblogs.com/kissdodog/category/432436.html">前端：jQuery笔记(28)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_52" href="http://www.cnblogs.com/kissdodog/category/475231.html">前端：Json(6)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_53" href="http://www.cnblogs.com/kissdodog/category/479911.html">前端：Open Flash Chart(2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_54" href="http://www.cnblogs.com/kissdodog/category/607496.html">三大数据库差异</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_55" href="http://www.cnblogs.com/kissdodog/category/460052.html">设计模式(26)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_56" href="http://www.cnblogs.com/kissdodog/category/821009.html">数据结构(1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_57" href="http://www.cnblogs.com/kissdodog/category/484026.html">数据库设计：SQL反模式笔记(11)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_58" href="http://www.cnblogs.com/kissdodog/category/471733.html">算法：算法(4)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_59" href="http://www.cnblogs.com/kissdodog/category/465903.html">协议：HTTP(5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_60" href="http://www.cnblogs.com/kissdodog/category/478211.html">性能：缓存(8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_0_Link_61" href="http://www.cnblogs.com/kissdodog/category/549298.html">原理：Asp.net 原理(9)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				</ul>
+			
+	
+		<h3>随笔档案</h3>
+		
+				<ul>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/kissdodog/archive/2016/07.html">2016年7月 (5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/kissdodog/archive/2016/05.html">2016年5月 (3)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/kissdodog/archive/2016/04.html">2016年4月 (24)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/kissdodog/archive/2015/10.html">2015年10月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/kissdodog/archive/2015/07.html">2015年7月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/kissdodog/archive/2015/06.html">2015年6月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/kissdodog/archive/2015/02.html">2015年2月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/kissdodog/archive/2015/01.html">2015年1月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/kissdodog/archive/2014/12.html">2014年12月 (8)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/kissdodog/archive/2014/11.html">2014年11月 (5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/kissdodog/archive/2014/10.html">2014年10月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/kissdodog/archive/2014/09.html">2014年9月 (15)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/kissdodog/archive/2014/08.html">2014年8月 (7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/kissdodog/archive/2014/07.html">2014年7月 (1)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/kissdodog/archive/2014/06.html">2014年6月 (2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/kissdodog/archive/2014/05.html">2014年5月 (17)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/kissdodog/archive/2014/04.html">2014年4月 (9)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/kissdodog/archive/2014/03.html">2014年3月 (9)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/kissdodog/archive/2014/02.html">2014年2月 (10)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/kissdodog/archive/2014/01.html">2014年1月 (7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/kissdodog/archive/2013/12.html">2013年12月 (5)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/kissdodog/archive/2013/11.html">2013年11月 (24)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/kissdodog/archive/2013/10.html">2013年10月 (26)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/kissdodog/archive/2013/09.html">2013年9月 (26)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/kissdodog/archive/2013/08.html">2013年8月 (2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/kissdodog/archive/2013/07.html">2013年7月 (10)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/kissdodog/archive/2013/06.html">2013年6月 (42)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/kissdodog/archive/2013/05.html">2013年5月 (31)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/kissdodog/archive/2013/04.html">2013年4月 (32)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/kissdodog/archive/2013/03.html">2013年3月 (44)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/kissdodog/archive/2013/02.html">2013年2月 (30)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/kissdodog/archive/2013/01.html">2013年1月 (50)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/kissdodog/archive/2012/12.html">2012年12月 (32)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/kissdodog/archive/2012/11.html">2012年11月 (7)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				<li class="menuItemList">
+					<a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/kissdodog/archive/2012/10.html">2012年10月 (2)</a>
+					<span style="width:10px">
+						
+					</span> 
+				</li>
+			
+				</ul>
+			
+	
+		<h3>内容</h3>
+		
+	
+</div></div><div id="sidebar_scorerank" class="sidebar-block">
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		719995
+	</li><li>
+		排名 -
+		114
+	</li>
+</ul>
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/kissdodog/archive/2012/12/15/2819025.html#3592977">1. Re:jQuery插件之ajaxFileUpload</a></li>
+        <li class="recent_comment_body">哥们，我的在上传的时候跨域了，应该怎么解决啊</li>
+        <li class="recent_comment_author">--webtao</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/kissdodog/archive/2012/12/15/2819025.html#3591338">2. Re:jQuery插件之ajaxFileUpload</a></li>
+        <li class="recent_comment_body">@小、牧童、、 我也被坑，请问为什么要加name属性呢？？？？...</li>
+        <li class="recent_comment_author">--JohnnyYu</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/kissdodog/archive/2012/12/25/2833213.html#3591059">3. Re:javascript之DOM操作</a></li>
+        <li class="recent_comment_body">fcrf 支持支持。。很有用。。</li>
+        <li class="recent_comment_author">--牛腩</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/kissdodog/p/3630487.html#3588970">4. Re:执行搜索 《第三篇》</a></li>
+        <li class="recent_comment_body">good，非常详细，感谢分享</li>
+        <li class="recent_comment_author">--Tinkerc</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/kissdodog/p/3158701.html#3587966">5. Re:SQL Server 非聚集索引的覆盖，连接，交叉和过滤 &lt;第二篇&gt;</a></li>
+        <li class="recent_comment_body">@爱上-睡觉表数据比较小的情况下，的确是这样，表数据大了，应该还是先查非聚集索引。...</li>
+        <li class="recent_comment_author">--逆心</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/kissdodog/archive/2012/12/15/2819025.html">1. jQuery插件之ajaxFileUpload(218369)</a></li><li><a href="http://www.cnblogs.com/kissdodog/p/3875992.html">2. jqGrid使用记录(71636)</a></li><li><a href="http://www.cnblogs.com/kissdodog/archive/2013/06/03/3116284.html">3. SQL语句 - 嵌套查询(70528)</a></li><li><a href="http://www.cnblogs.com/kissdodog/p/4174421.html">4. MySQL 数据备份与还原(56914)</a></li><li><a href="http://www.cnblogs.com/kissdodog/p/3398523.html">5. SQL Server Profiler工具(55462)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/kissdodog/archive/2012/12/15/2819025.html">1. jQuery插件之ajaxFileUpload(25)</a></li><li><a href="http://www.cnblogs.com/kissdodog/archive/2013/02/28/2936950.html">2. HtmlAgilityPack 之 HtmlNode类(16)</a></li><li><a href="http://www.cnblogs.com/kissdodog/archive/2013/01/29/2882195.html">3. C#集合(12)</a></li><li><a href="http://www.cnblogs.com/kissdodog/archive/2013/05/07/3064895.html">4. System.Web.Caching.Cache类  缓存 各种缓存依赖(12)</a></li><li><a href="http://www.cnblogs.com/kissdodog/p/3572084.html">5. ServiceStack.Redis之IRedisClient&lt;第三篇&gt;(11)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/kissdodog/archive/2012/12/15/2819025.html">1. jQuery插件之ajaxFileUpload(26)</a></li><li><a href="http://www.cnblogs.com/kissdodog/archive/2013/01/16/2863515.html">2. C#枚举(25)</a></li><li><a href="http://www.cnblogs.com/kissdodog/p/3398523.html">3. SQL Server Profiler工具(22)</a></li><li><a href="http://www.cnblogs.com/kissdodog/archive/2013/05/07/3064895.html">4. System.Web.Caching.Cache类  缓存 各种缓存依赖(22)</a></li><li><a href="http://www.cnblogs.com/kissdodog/p/3160560.html">5. SQL Server执行计划的理解(21)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+	
+</td><td id="main">
+	
+<div id="post_detail">
+<div class="post">
+			<div class="postTitle">
+				<a id="cb_post_title_url" href="http://www.cnblogs.com/kissdodog/p/4168721.html">MySQL函数</a>
+			</div>
+	
+	<div class="postText">
+		<div id="cnblogs_post_body"><p>　　MySQL数据库提供了很多函数包括：</p>
+<ul>
+<li>数学函数；</li>
+<li>字符串函数；</li>
+<li>日期和时间函数；</li>
+<li>条件判断函数；</li>
+<li>系统信息函数；</li>
+<li>加密函数；</li>
+<li>格式化函数；</li>
+</ul>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">一、数学函数</span></h1>
+<p>　　数学函数主要用于处理数字，包括整型、浮点数等。</p>
+<table border="0">
+<tbody>
+<tr style="background-color: #dcdcdc;">
+<td>函数</td>
+<td>作用</td>
+</tr>
+<tr>
+<td>ABS(x)</td>
+<td>
+<p>返回x的绝对值　　</p>
+<p>SELECT ABS(-1)<span class="Apple-tab-span"> -- 返回1</span></p>
+</td>
+</tr>
+<tr>
+<td>CEIL(x),CEILING(x)</td>
+<td>
+<p>返回大于或等于x的最小整数　　</p>
+<p>SELECT CEIL(1.5)<span class="Apple-tab-span"> -- 返回2</span></p>
+</td>
+</tr>
+<tr>
+<td>FLOOR(x)</td>
+<td>
+<p>返回小于或等于x的最大整数　　</p>
+<p>SELECT FLOOR(1.5)<span class="Apple-tab-span"> -- 返回1</span></p>
+</td>
+</tr>
+<tr>
+<td>RAND()</td>
+<td>
+<p>返回0-&gt;1的随机数　　</p>
+<p>SELECT RAND()<span class="Apple-tab-span"> --0.93099315644334</span></p>
+</td>
+</tr>
+<tr>
+<td>RAND(x)</td>
+<td>
+<p>返回0-&gt;1的随机数，x值相同时返回的随机数相同　　</p>
+<p>SELECT RAND(2)<span class="Apple-tab-span"> --1.5865798029924</span></p>
+</td>
+</tr>
+<tr>
+<td>SIGN(x)</td>
+<td>
+<p>返回x的符号，x是负数、0、正数分别返回-1、0和1　　</p>
+<p>SELECT SIGN(-10) -- (-1)</p>
+</td>
+</tr>
+<tr>
+<td>PI()</td>
+<td>
+<p>返回圆周率(3.141593）　　</p>
+<p>SELECT PI()<span class="Apple-tab-span"> --3.141593</span></p>
+</td>
+</tr>
+<tr>
+<td>TRUNCATE(x,y)</td>
+<td>
+<p>返回数值x保留到小数点后y位的值（与ROUND最大的区别是不会进行四舍五入）　　</p>
+<p>SELECT TRUNCATE(1.23456,3) -- 1.234</p>
+</td>
+</tr>
+<tr>
+<td>ROUND(x)</td>
+<td>返回离x最近的整数　　SELECT ROUND(1.23456)<span class="Apple-tab-span"> --1</span></td>
+</tr>
+<tr>
+<td>ROUND(x,y)</td>
+<td>
+<p>保留x小数点后y位的值，但截断时要进行四舍五入　　</p>
+<p>SELECT ROUND(1.23456,3)<span class="Apple-tab-span"> --</span>&nbsp;<span class="Apple-tab-span">1.235</span></p>
+</td>
+</tr>
+<tr>
+<td>POW(x,y).POWER(x,y)</td>
+<td>
+<p>返回x的y次方　　</p>
+<p>SELECT POW(2,3)<span class="Apple-tab-span"> -- 8</span></p>
+</td>
+</tr>
+<tr>
+<td>SQRT(x)</td>
+<td>
+<p>返回x的平方根　　</p>
+<p>SELECT SQRT(25)<span class="Apple-tab-span"> -- 5</span></p>
+</td>
+</tr>
+<tr>
+<td>EXP(x)</td>
+<td>
+<p>返回e的x次方　　</p>
+<p>SELECT EXP(3)<span class="Apple-tab-span"> -- 20.085536923188</span></p>
+</td>
+</tr>
+<tr>
+<td>MOD(x,y)</td>
+<td>
+<p>返回x除以y以后的余数　　</p>
+<p>SELECT MOD(5,2)<span class="Apple-tab-span"> -- 1</span></p>
+</td>
+</tr>
+<tr>
+<td>LOG(x)</td>
+<td>
+<p>返回自然对数(以e为底的对数)　　</p>
+<p>SELECT LOG(20.085536923188) -- 3</p>
+</td>
+</tr>
+<tr>
+<td>LOG10(x)</td>
+<td>
+<p>返回以10为底的对数　　</p>
+<p>SELECT LOG10(100)<span class="Apple-tab-span"> -- 2</span></p>
+</td>
+</tr>
+<tr>
+<td>RADIANS(x)</td>
+<td>
+<p>将角度转换为弧度　　</p>
+<p>SELECT RADIANS(180) -- 3.1415926535898</p>
+</td>
+</tr>
+<tr>
+<td>DEGREES(x)</td>
+<td>
+<p>将弧度转换为角度　　</p>
+<p>SELECT DEGREES(3.1415926535898)<span class="Apple-tab-span"> -- 180</span></p>
+</td>
+</tr>
+<tr>
+<td>SIN(x)</td>
+<td>
+<p>求正弦值(参数是弧度)　　</p>
+<p>SELECT SIN(RADIANS(30))<span class="Apple-tab-span"> -- 0.5</span></p>
+</td>
+</tr>
+<tr>
+<td>ASIN(x)</td>
+<td>求反正弦值(参数是弧度)</td>
+</tr>
+<tr>
+<td>COS(x)</td>
+<td>求余弦值(参数是弧度)</td>
+</tr>
+<tr>
+<td>ACOS(x)</td>
+<td>求反余弦值(参数是弧度)</td>
+</tr>
+<tr>
+<td>TAN(x)</td>
+<td>求正切值(参数是弧度)</td>
+</tr>
+<tr>
+<td>ATAN(x)<span class="Apple-tab-span"> ATAN2(x)</span></td>
+<td>求反正切值(参数是弧度)</td>
+</tr>
+<tr>
+<td>COT(x)</td>
+<td>求余切值(参数是弧度)</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">二、字符串函数</span></h1>
+<p>　　字符串函数是MySQL中最常用的一类函数，字符串函数主要用于处理表中的字符串。</p>
+<table border="0">
+<tbody>
+<tr style="background-color: #dcdcdc;">
+<td>函数</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>CHAR_LENGTH(s)</td>
+<td>
+<p>返回字符串s的字符数</p>
+<p><span class="Apple-tab-span">SELECT CHAR_LENGTH('你好123') -- 5</span></p>
+</td>
+</tr>
+<tr>
+<td>LENGTH(s)</td>
+<td>
+<p>返回字符串s的长度</p>
+<p><span class="Apple-tab-span"> SELECT LENGTH('你好123') -- 9</span></p>
+</td>
+</tr>
+<tr>
+<td>CONCAT(s1,s2,...)</td>
+<td>
+<p>将字符串s1,s2等多个字符串合并为一个字符串</p>
+<p><span class="Apple-tab-span">SELECT CONCAT('12','34')<span class="Apple-tab-span"> -- 1234</span></span></p>
+</td>
+</tr>
+<tr>
+<td>CONCAT_WS(x,s1,s2,...)</td>
+<td>
+<p>同CONCAT(s1,s2,...)函数，但是每个字符串直接要加上x</p>
+<p><span class="Apple-tab-span"> SELECT CONCAT_WS('@','12','34')<span class="Apple-tab-span"> -- 12@34</span></span></p>
+</td>
+</tr>
+<tr>
+<td>INSERT(s1,x,len,s2)</td>
+<td>
+<p>将字符串s2替换s1的x位置开始长度为len的字符串</p>
+<p><span class="Apple-tab-span">SELECT INSERT('12345',1,3,'abc')<span class="Apple-tab-span"> -- abc45</span></span></p>
+</td>
+</tr>
+<tr>
+<td>UPPER(s),UCAASE(S)</td>
+<td>
+<p>将字符串s的所有字母变成大写字母</p>
+<p><span class="Apple-tab-span"> SELECT UPPER('abc')<span class="Apple-tab-span"> -- ABC</span></span></p>
+</td>
+</tr>
+<tr>
+<td>LOWER(s),LCASE(s)</td>
+<td>
+<p>将字符串s的所有字母变成小写字母</p>
+<p><span class="Apple-tab-span"> SELECT LOWER('ABC') -- abc</span></p>
+</td>
+</tr>
+<tr>
+<td>LEFT(s,n)</td>
+<td>
+<p>返回字符串s的前n个字符</p>
+<p><span class="Apple-tab-span">SELECT LEFT('abcde',2)<span class="Apple-tab-span"> -- ab</span></span></p>
+</td>
+</tr>
+<tr>
+<td>RIGHT(s,n)</td>
+<td>
+<p>返回字符串s的后n个字符</p>
+<p><span class="Apple-tab-span"> SELECT RIGHT('abcde',2) -- de</span></p>
+</td>
+</tr>
+<tr>
+<td>LPAD(s1,len,s2)</td>
+<td>
+<p>字符串s2来填充s1的开始处，使字符串长度达到len</p>
+<p><span class="Apple-tab-span">SELECT LPAD('abc',5,'xx')<span class="Apple-tab-span"> -- xxabc</span></span></p>
+</td>
+</tr>
+<tr>
+<td>RPAD(s1,len,s2)</td>
+<td>
+<p>字符串s2来填充s1的结尾处，使字符串的长度达到len</p>
+<p><span class="Apple-tab-span">SELECT RPAD('abc',5,'xx')<span class="Apple-tab-span"> -- abcxx</span></span></p>
+</td>
+</tr>
+<tr>
+<td>LTRIM(s)</td>
+<td>去掉字符串s开始处的空格</td>
+</tr>
+<tr>
+<td>RTRIM(s)</td>
+<td>去掉字符串s结尾处的空格</td>
+</tr>
+<tr>
+<td>TRIM(s)</td>
+<td>去掉字符串s开始和结尾处的空格</td>
+</tr>
+<tr>
+<td>TRIM(s1 FROM s)</td>
+<td>
+<p>去掉字符串s中开始处和结尾处的字符串s1</p>
+<p><span class="Apple-tab-span">SELECT TRIM('@' FROM '@@abc@@')<span class="Apple-tab-span"> -- abc</span></span></p>
+</td>
+</tr>
+<tr>
+<td>REPEAT(s,n)</td>
+<td>
+<p>将字符串s重复n次</p>
+<p><span class="Apple-tab-span">SELECT REPEAT('ab',3)<span class="Apple-tab-span"> -- ababab</span></span></p>
+</td>
+</tr>
+<tr>
+<td>SPACE(n)</td>
+<td>返回n个空格</td>
+</tr>
+<tr>
+<td>REPLACE(s,s1,s2)</td>
+<td>
+<p>将字符串s2替代字符串s中的字符串s1</p>
+<p><span class="Apple-tab-span">SELECT REPLACE('abc','a','x')<span class="Apple-tab-span"> --xbc</span></span></p>
+</td>
+</tr>
+<tr>
+<td>STRCMP(s1,s2)</td>
+<td>比较字符串s1和s2</td>
+</tr>
+<tr>
+<td>SUBSTRING(s,n,len)</td>
+<td>获取从字符串s中的第n个位置开始长度为len的字符串</td>
+</tr>
+<tr>
+<td>MID(s,n,len)</td>
+<td>同SUBSTRING(s,n,len)</td>
+</tr>
+<tr>
+<td>LOCATE(s1,s),POSITION(s1 IN s)</td>
+<td>
+<p>从字符串s中获取s1的开始位置</p>
+<p><span class="Apple-tab-span">SELECT LOCATE('b', 'abc') -- 2</span></p>
+</td>
+</tr>
+<tr>
+<td>INSTR(s,s1)</td>
+<td>
+<p>从字符串s中获取s1的开始位置</p>
+<p><span class="Apple-tab-span">SELECT INSTR('abc','b') -- 2</span></p>
+</td>
+</tr>
+<tr>
+<td>REVERSE(s)</td>
+<td>
+<p>将字符串s的顺序反过来</p>
+<p><span class="Apple-tab-span">SELECT REVERSE('abc')<span class="Apple-tab-span"> -- cba</span></span></p>
+</td>
+</tr>
+<tr>
+<td>ELT(n,s1,s2,...)</td>
+<td>
+<p>返回第n个字符串</p>
+<p><span class="Apple-tab-span">SELECT ELT(2,'a','b','c') -- b</span></p>
+</td>
+</tr>
+<tr>
+<td>EXPORT_SET(x,s1,s2)</td>
+<td>
+<p>返回一个字符串，在这里对于在“bits”中设定每一位，你得到一个“on”字符串，并且对于每个复位(reset)的位，你得到一个 
+“off”字符串。每个字符串用“separator”分隔(缺省“,”)，并且只有“bits”的“number_of_bits” 
+(缺省64)位被使用。</p>
+<p>SELECT EXPORT_SET(5,'Y','N',',',4)<span class="Apple-tab-span"> -- Y,N,Y,N</span></p>
+</td>
+</tr>
+<tr>
+<td>FIELD(s,s1,s2...)</td>
+<td>
+<p>返回第一个与字符串s匹配的字符串位置</p>
+<p><span class="Apple-tab-span">SELECT FIELD('c','a','b','c') -- 3</span></p>
+</td>
+</tr>
+<tr>
+<td>FIND_IN_SET(s1,s2)</td>
+<td>返回在字符串s2中与s1匹配的字符串的位置</td>
+</tr>
+<tr>
+<td>MAKE_SET(x,s1,s2)</td>
+<td>返回一个集合 (包含由<samp>“,”</samp>
+<p>字符分隔的子串组成的一个 字符串)，由相应的位在<code>bits</code>集合中的的字符串组成。<code>str1</code>对应于位0，<code>str2</code>对 应位1，等等。</p>
+<p>SELECT MAKE_SET(1|4,'a','b','c');<span class="Apple-tab-span"> -- a,c</span></p>
+</td>
+</tr>
+<tr>
+<td>SUBSTRING_INDEX</td>
+<td>
+<p>返回从字符串str的第count个出现的分隔符delim之后的子串。</p>
+<p>如果count是正数，返回第count个字符左边的字符串。</p>
+<p>如果count是负数，返回第(count的绝对值(从右边数))个字符右边的字符串。</p>
+<p>SELECT SUBSTRING_INDEX('a*b','*',1) -- a<br>SELECT SUBSTRING_INDEX('a*b','*',-1)	-- b<br>SELECT SUBSTRING_INDEX(SUBSTRING_INDEX('a*b*c*d*e','*',3),'*',-1)		-- c</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>LOAD_FILE(file_name)</td>
+<td>
+<p>读入文件并且作为一个字符串返回文件内容。文件必须在服务器上，你必须指定到文件的完整路径名，而且你必须有file权 限。文件必须所有内容都是可读的并且小于max_allowed_packet。 如果文件不存在或由于上面原因之一不能被读出，函数返回NULL。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+<p>&nbsp;</p>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">三、日期时间函数</span></h1>
+<p>　　MySQL的日期和时间函数主要用于处理日期时间。</p>
+<table border="0">
+<tbody>
+<tr style="background-color: #dcdcdc;">
+<td>函数</td>
+<td>说明</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>CURDATE(),CURRENT_DATE()</td>
+<td>
+<p>返回当前日期</p>
+<p>SELECT CURDATE()<br>	-&gt;2014-12-17</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>CURTIME(),CURRENT_TIME</td>
+<td>
+<p>返回当前时间</p>
+<p>SELECT CURTIME()<br>	-&gt;15:59:02</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>
+<p>NOW(),CURRENT_TIMESTAMP(),LOCALTIME(),</p>
+<p>SYSDATE(),LOCALTIMESTAMP()</p>
+
+
+
+
+
+</td>
+<td>
+<p>返回当前日期和时间</p>
+<p>SELECT NOW()<br>	-&gt;2014-12-17 15:59:02</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>UNIX_TIMESTAMP()</td>
+<td>
+<p>以UNIX时间戳的形式返回当前时间</p>
+<p>SELECT UNIX_TIMESTAMP()<br>	-&gt;1418803177</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>UNIX_TIMESTAMP(d)</td>
+<td>
+<p>将时间d以UNIX时间戳的形式返回</p>
+<p>SELECT UNIX_TIMESTAMP('2011-11-11 11:11:11')<br>	-&gt;1320981071</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>FROM_UNIXTIME(d)</td>
+<td>
+<p>将UNIX时间戳的时间转换为普通格式的时间</p>
+<p>SELECT FROM_UNIXTIME(1320981071)<br>	-&gt;2011-11-11 11:11:11</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>UTC_DATE()</td>
+<td>
+<p>返回UTC日期</p>
+<p>SELECT UTC_DATE()<br>	-&gt;2014-12-17</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>UTC_TIME()</td>
+<td>
+<p>返回UTC时间</p>
+<p>SELECT UTC_TIME()<br>	-&gt;08:01:45	(慢了8小时)</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>MONTH(d)</td>
+<td>
+<p>返回日期d中的月份值，1-&gt;12</p>
+<p>SELECT MONTH('2011-11-11 11:11:11')<br>	-&gt;11</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>MONTHNAME(d)</td>
+<td>
+<p>返回日期当中的月份名称，如Janyary</p>
+<p>SELECT MONTHNAME('2011-11-11 11:11:11')<br>	-&gt;November</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DAYNAME(d)</td>
+<td>
+<p>返回日期d是星期几，如Monday,Tuesday</p>
+<p>SELECT DAYNAME('2011-11-11 11:11:11')<br>	-&gt;Friday</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DAYOFWEEK(d)</td>
+<td>
+<p>日期d今天是星期几，1星期日，2星期一</p>
+<p>SELECT DAYOFWEEK('2011-11-11 11:11:11')<br>	-&gt;6</p>
+
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>WEEKDAY(d)</td>
+<td>
+<p>日期d今天是星期几，</p>
+<p>&nbsp;0表示星期一，1表示星期二</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>WEEK(d)，WEEKOFYEAR(d)</td>
+<td>
+<p>计算日期d是本年的第几个星期，范围是0-&gt;53</p>
+<p>SELECT WEEK('2011-11-11 11:11:11')<br>	-&gt;45</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DAYOFYEAR(d)</td>
+<td>
+<p>计算日期d是本年的第几天</p>
+<p>SELECT DAYOFYEAR('2011-11-11 11:11:11')<br>-&gt;315</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DAYOFMONTH(d)</td>
+<td>
+<p>计算日期d是本月的第几天</p>
+<p>SELECT DAYOFMONTH('2011-11-11 11:11:11')<br>	-&gt;11</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>QUARTER(d)</td>
+<td>
+<p>返回日期d是第几季节，返回1-&gt;4</p>
+<p>SELECT QUARTER('2011-11-11 11:11:11')<br>	-&gt;4</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>HOUR(t)</td>
+<td>
+<p>返回t中的小时值</p>
+<p>SELECT HOUR('1:2:3')<br>	-&gt;1</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>MINUTE(t)</td>
+<td>
+<p>返回t中的分钟值</p>
+<p>SELECT MINUTE('1:2:3')<br>	-&gt;2</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>SECOND(t)</td>
+<td>
+<p>返回t中的秒钟值</p>
+<p>SELECT SECOND('1:2:3')<br>	-&gt;3</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>EXTRACT(type FROM d)</td>
+<td>
+<p>从日期d中获取指定的值，type指定返回的值</p>
+<p>SELECT EXTRACT(MINUTE FROM '2011-11-11 11:11:11') <br>	-&gt;11</p>
+<p>type可取值为：</p>
+<p>MICROSECOND<br>SECOND<br>MINUTE<br>HOUR<br>DAY<br>WEEK<br>MONTH<br>QUARTER<br>YEAR<br>SECOND_MICROSECOND<br>MINUTE_MICROSECOND<br>MINUTE_SECOND<br>HOUR_MICROSECOND<br>HOUR_SECOND<br>HOUR_MINUTE<br>DAY_MICROSECOND<br>DAY_SECOND<br>DAY_MINUTE<br>DAY_HOUR<br>YEAR_MONTH</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>TIME_TO_SEC(t)</td>
+<td>
+<p>将时间t转换为秒</p>
+<p>SELECT TIME_TO_SEC('1:12:00')<br>	-&gt;4320</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>SEC_TO_TIME(s)</td>
+<td>
+<p>将以秒为单位的时间s转换为时分秒的格式</p>
+<p>SELECT SEC_TO_TIME(4320)<br>	-&gt;01:12:00</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>TO_DAYS(d)</td>
+<td>
+<p>计算日期d距离0000年1月1日的天数</p>
+<p>SELECT TO_DAYS('0001-01-01 01:01:01')<br>	-&gt;366</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>FROM_DAYS(n)</td>
+<td>
+<p>计算从0000年1月1日开始n天后的日期</p>
+<p>SELECT FROM_DAYS(1111)<br>	-&gt;0003-01-16</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DATEDIFF(d1,d2)</td>
+<td>
+<p>计算日期d1-&gt;d2之间相隔的天数</p>
+<p>SELECT DATEDIFF('2001-01-01','2001-02-02')<br>	-&gt;-32</p>
+
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>ADDDATE(d,n)</td>
+<td>
+<p>计算其实日期d加上n天的日期</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>ADDDATE(d，INTERVAL expr type)</td>
+<td>
+<p>计算起始日期d加上一个时间段后的日期</p>
+<p>SELECT ADDDATE('2011-11-11 11:11:11',1)<br>	-&gt;2011-11-12 11:11:11	(默认是天)</p>
+<p>SELECT ADDDATE('2011-11-11 11:11:11', INTERVAL 5 MINUTE)<br>	-&gt;2011-11-11 11:16:11 (TYPE的取值与上面那个列出来的函数类似)</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DATE_ADD(d,INTERVAL expr type)</td>
+<td>同上</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>SUBDATE(d,n)</td>
+<td>
+<p>日期d减去n天后的日期</p>
+<p>SELECT SUBDATE('2011-11-11 11:11:11', 1)<br>	-&gt;2011-11-10 11:11:11 (默认是天)</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>SUBDATE(d,INTERVAL expr type)</td>
+<td>
+<p>日期d减去一个时间段后的日期</p>
+<p>SELECT SUBDATE('2011-11-11 11:11:11', INTERVAL 5 MINUTE)<br>	-&gt;2011-11-11 11:06:11 (TYPE的取值与上面那个列出来的函数类似)</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>ADDTIME(t,n)</td>
+<td>
+<p>时间t加上n秒的时间</p>
+<p>SELECT ADDTIME('2011-11-11 11:11:11', 5)<br>	-&gt;2011-11-11 11:11:16 (秒)</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>SUBTIME(t,n)</td>
+<td>
+<p>时间t减去n秒的时间</p>
+<p>SELECT SUBTIME('2011-11-11 11:11:11', 5)<br>	-&gt;2011-11-11 11:11:06 (秒)</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>DATE_FORMAT(d,f)</td>
+<td>
+<p>按表达式f的要求显示日期d</p>
+<p>SELECT DATE_FORMAT('2011-11-11 11:11:11','%Y-%m-%d %r')<br>	-&gt;2011-11-11 11:11:11 AM</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>TIME_FORMAT(t,f)</td>
+<td>
+<p>按表达式f的要求显示时间t</p>
+<p>SELECT TIME_FORMAT('11:11:11','%r')<br>	11:11:11 AM</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+<tr>
+<td>GET_FORMAT(type,s)</td>
+<td>
+<p>获得国家地区时间格式函数</p>
+<p>select get_format(date,'usa')<br>	-&gt;%m.%d.%Y (注意返回的就是这个奇怪的字符串(format字符串))</p>
+
+
+
+
+
+
+
+
+
+</td>
+
+
+
+
+
+
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+</tbody>
+
+
+
+
+
+
+
+
+
+
+
+</table>
+<p>&nbsp;</p>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">四、条件判断函数</span></h1>
+<p>　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">　1、IF(expr,v1,v2)函数</span></strong></span></p>
+<p>　　如果表达式expr成立，返回结果v1；否则，返回结果v2。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> IF(<span style="color: #800080;">1</span> &gt; <span style="color: #800080;">0</span>,<span style="color: #800000;">'</span><span style="color: #800000;">正确</span><span style="color: #800000;">'</span>,<span style="color: #800000;">'</span><span style="color: #800000;">错误</span><span style="color: #800000;">'</span><span style="color: #000000;">)    
+</span><span style="color: #008000;">-&gt;正确</span></pre>
+</div>
+<p>　　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">2、IFNULL(v1,v2)函数</span></strong></span></p>
+<p>　　如果v1的值不为NULL，则返回v1，否则返回v2。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> IFNULL(<span style="color: #0000ff;">null</span>,<span style="color: #800000;">'</span><span style="color: #800000;">Hello Word</span><span style="color: #800000;">'</span><span style="color: #000000;">)
+</span><span style="color: #008000;">-&gt;Hello Word</span></pre>
+</div>
+<p>　　<span style="font-size: 18px;"><strong><span style="color: #0000ff;">3、CASE</span></strong></span></p>
+<p>　　<strong>语法1：</strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #ff00ff;">CASE</span> 
+　　<span style="color: #0000ff;">WHEN</span><span style="color: #000000;"> e1
+　　</span><span style="color: #0000ff;">THEN</span><span style="color: #000000;"> v1
+　　</span><span style="color: #0000ff;">WHEN</span><span style="color: #000000;"> e2
+　　</span><span style="color: #0000ff;">THEN</span><span style="color: #000000;"> e2
+　　...
+　　</span><span style="color: #0000ff;">ELSE</span><span style="color: #000000;"> vn
+</span><span style="color: #0000ff;">END</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　CASE表示函数开始，END表示函数结束。如果e1成立，则返回v1,如果e2成立，则返回v2，当全部不成立则返回vn，而当有一个成立之后，后面的就不执行了。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">SELECT</span> <span style="color: #ff00ff;">CASE</span> 
+　　<span style="color: #0000ff;">WHEN</span> <span style="color: #800000; font-weight: bold;">1</span> <span style="color: #808080;">&gt;</span> <span style="color: #800000; font-weight: bold;">0</span>
+　　<span style="color: #0000ff;">THEN</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">1 &gt; 0</span><span style="color: #ff0000;">'</span>
+　　<span style="color: #0000ff;">WHEN</span> <span style="color: #800000; font-weight: bold;">2</span> <span style="color: #808080;">&gt;</span> <span style="color: #800000; font-weight: bold;">0</span>
+　　<span style="color: #0000ff;">THEN</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">2 &gt; 0</span><span style="color: #ff0000;">'</span>
+　　<span style="color: #0000ff;">ELSE</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">3 &gt; 0</span><span style="color: #ff0000;">'</span>
+　　<span style="color: #0000ff;">END</span>
+<span style="color: #808080;">-&gt;</span><span style="color: #800000; font-weight: bold;">1</span> <span style="color: #808080;">&gt;</span> <span style="color: #800000; font-weight: bold;">0</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　<strong>语法2：</strong></p>
+<div class="cnblogs_code">
+<pre><span style="color: #ff00ff;">CASE</span><span style="color: #000000;"> expr 
+　　</span><span style="color: #0000ff;">WHEN</span> e1 <span style="color: #0000ff;">THEN</span><span style="color: #000000;"> v1
+　　</span><span style="color: #0000ff;">WHEN</span> e1 <span style="color: #0000ff;">THEN</span><span style="color: #000000;"> v1
+　　...
+　　</span><span style="color: #0000ff;">ELSE</span><span style="color: #000000;"> vn
+</span><span style="color: #0000ff;">END</span></pre>
+</div>
+<p>　　如果表达式expr的值等于e1，返回v1；如果等于e2,则返回e2。否则返回vn。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> <span style="color: #ff00ff;">CASE</span> <span style="color: #800000; font-weight: bold;">1</span> 
+　　<span style="color: #0000ff;">WHEN</span> <span style="color: #800000; font-weight: bold;">1</span> <span style="color: #0000ff;">THEN</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">我是1</span><span style="color: #ff0000;">'</span>
+　　<span style="color: #0000ff;">WHEN</span> <span style="color: #800000; font-weight: bold;">2</span> <span style="color: #0000ff;">THEN</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">我是2</span><span style="color: #ff0000;">'</span>
+<span style="color: #0000ff;">ELSE</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">你是谁</span><span style="color: #ff0000;">'</span></pre>
+</div>
+<p>&nbsp;</p>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">五、系统信息函数</span></h1>
+<p>　　系统信息函数用来查询MySQL数据库的系统信息。</p>
+<table border="0">
+<tbody>
+<tr style="background-color: #dcdcdc;">
+<td>函数</td>
+<td>作用</td>
+</tr>
+<tr>
+<td>VERSION()</td>
+<td>
+<p>返回数据库的版本号</p>
+<p>SELECT VERSION()<br>	<span style="color: #008000;">-&gt;5.0.67-community-nt</span></p>
+
+
+
+
+
+</td>
+
+
+
+
+
+</tr>
+<tr>
+<td>CONNECTION_ID()<span class="Apple-tab-span">&nbsp;</span></td>
+<td>返回服务器的连接数</td>
+
+
+
+
+
+</tr>
+<tr>
+<td>DATABASE()、SCHEMA</td>
+<td>返回当前数据库名</td>
+
+
+
+
+
+</tr>
+<tr>
+<td>
+<p>USER()、SYSTEM_USER()、SESSION_USER()、</p>
+<p>CURRENT_USER()、CURRENT_USER</p>
+
+
+
+
+
+</td>
+<td>返回当前用户</td>
+
+
+
+
+
+</tr>
+<tr>
+<td>CHARSET(str)</td>
+<td>返回字符串str的字符集</td>
+
+
+
+
+
+</tr>
+<tr>
+<td>COLLATION(str)</td>
+<td>返回字符串str的字符排列方式</td>
+
+
+
+
+
+</tr>
+<tr>
+<td>LAST_INSERT_ID()</td>
+<td>返回最近生成的AUTO_INCREMENT值</td>
+
+
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+
+
+
+</table>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">六、加密函数</span></h1>
+<p>　　加密函数是MySQL用来对数据进行加密的函数。</p>
+<p>　　<span style="color: #0000ff; font-size: 18px;"><strong>1、PASSWORD(str)</strong></span></p>
+<p> 　　该函数可以对字符串str进行加密，一般情况下，PASSWORD(str)用于给用户的密码加密。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> PASSWORD(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">123</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;*23AE809DDACAF96AF0FD78ED04B6A265E05AA257</span></pre>
+</div>
+<p>　　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">2、MD5</span></strong></span></p>
+<p>　　MD5(str)函数可以对字符串str进行散列，可以用于一些普通的不需要解密的数据加密。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> md5(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">123</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;202cb962ac59075b964b07152d234b70</span></pre>
+</div>
+<p>　　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">3、ENCODE(str,pswd_str)与DECODE(crypt_str,pswd_str)</span></strong></span></p>
+<p>　　ENCODE函数可以使用加密密码pswd_str来加密字符串str，加密结果是二进制数，需要使用BLOB类型的字段保存。该函数与DECODE是一对，需要同样的密码才能够解密。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> ENCODE(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">123</span><span style="color: #ff0000;">'</span>,<span style="color: #ff0000;">'</span><span style="color: #ff0000;">xxoo</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;;vx
+</span><span style="color: #0000ff;">SELECT</span> DECODE(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">;vx</span><span style="color: #ff0000;">'</span>,<span style="color: #ff0000;">'</span><span style="color: #ff0000;">xxoo</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">123</span></span></pre>
+</div>
+<p>&nbsp;</p>
+<h1 style="background-color: #000; font-size: 24px;"><span style="color: #ffffff;">七、其他函数</span></h1>
+<p>　　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">1、格式化函数FORMAT(x,n)</span></strong></span></p>
+<p>　　FORMAT(x,n)函数可以将数字x进行格式化，将x保留到小数点后n位。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> FORMAT(<span style="color: #800000; font-weight: bold;">3.1415926</span>,<span style="color: #800000; font-weight: bold;">3</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">3.142</span></span></pre>
+</div>
+<p>　　<span style="font-size: 18px;"><strong><span style="color: #0000ff;">2、不同进制的数字进行转换</span></strong></span></p>
+<ul>
+<li>ASCII(s) 返回字符串s的第一个字符的ASCII码；</li>
+<li>BIN（x） 返回x的二进制编码；</li>
+<li>HEX(x) 返回x的十六进制编码；</li>
+<li>OCT(x) 返回x的八进制编码；</li>
+<li>CONV(x,f1,f2) 返回f1进制数变成f2进制数；</li>
+</ul>
+<p>　　<span style="color: #0000ff;"><strong>3、IP地址与数字相互转换的函数</strong></span></p>
+<ul>
+<li>INET_ATON(IP)函数可以将IP地址转换为数字表示；IP值需要加上引号；</li>
+<li>INET_NTOA(n)函数可以将数字n转换成IP形式。</li>
+</ul>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> INET_ATON(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">192.168.0.1</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">3232235521</span></span>
+<span style="color: #0000ff;">SELECT</span> INET_NTOA(<span style="color: #800000; font-weight: bold;">3232235521</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">192.168</span>.<span style="font-weight: bold;">0.1</span></span></pre>
+</div>
+<p>　　<span style="color: #0000ff; font-size: 18px;"><strong>4、加锁函数和解锁函数</strong></span></p>
+<ul>
+<li><span style="color: #000000;"> GET_LOCK(name,time)函数定义一个名称为nam、持续时间长度为time秒的锁。如果锁定成功，则返回1；如果尝试超时，则返回0；如果遇到错误，返回NULL。</span></li>
+<li><span style="color: #000000;"> RELEASE_LOCK(name)函数解除名称为name的锁。如果解锁成功，则返回1；如果尝试超时，返回0了如果解锁失败，返回NULL；</span></li>
+<li><span style="color: #000000;"> IS_FREE_LOCK(name)函数判断是否已使用名为name的锁定。如果使用，返回0，否则，返回1；</span></li>
+</ul>
+<p>&nbsp;</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> GET_LOCK(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">MySQL</span><span style="color: #ff0000;">'</span>,<span style="color: #800000; font-weight: bold;">10</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">1</span>    (持续10秒)
+</span><span style="color: #0000ff;">SELECT</span> IS_FREE_LOCK(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">MySQL</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">1</span></span>    
+<span style="color: #0000ff;">SELECT</span> RELEASE_LOCK(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">MySQL</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">1</span></span></pre>
+</div>
+<p>　　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">5、重复执行指定操作的函数</span></strong></span></p>
+<p>　　BENCHMARK(count.expr)函数将表达式expr重复执行count此，然后返回执行时间。该函数可以用来判断MySQL处理表达式的速度。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> BENCHMARK(<span style="color: #800000; font-weight: bold;">10000</span><span style="color: #000000;">,NOW())
+    </span><span style="color: #008000;">-&gt;<span style="font-weight: bold;">0</span>    返回系统时间1万</span></pre>
+</div>
+<p>　　<span style="color: #0000ff; font-size: 18px;"><strong>6、改变字符集的函数</strong></span></p>
+<p>　　CONVERT(s USING cs)函数将字符串s的字符集变成cs。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">SELECT</span> CHARSET(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">ABC</span><span style="color: #ff0000;">'</span><span style="color: #000000;">)
+    </span><span style="color: #008000;">-&gt;utf-<span style="font-weight: bold;">8</span> </span>   
+
+<span style="color: #0000ff;">SELECT</span> CHARSET(<span style="color: #ff00ff;">CONVERT</span>(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">ABC</span><span style="color: #ff0000;">'</span><span style="color: #000000;"> USING gbk))
+    </span><span style="color: #008000;">-&gt;gbk</span></pre>
+</div>
+<p>　　<span style="color: #0000ff;"><strong><span style="font-size: 18px;">7、转换数据类型</span></strong></span></p>
+<ul>
+<li>CAST(x AS type)</li>
+<li>CONVERT(x,type)</li>
+</ul>
+<p>　　这两个函数只对BINARY、CHAR、DATE、DATETIME、TIME、SIGNED INTEGER、UNSIGNED INTEGER。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">SELECT</span> <span style="color: #ff00ff;">CAST</span>(<span style="color: #ff0000;">'</span><span style="color: #ff0000;">123</span><span style="color: #ff0000;">'</span> <span style="color: #0000ff;">AS</span> UNSIGNED <span style="color: #0000ff;">INTEGER</span>) <span style="color: #808080;">+</span> <span style="color: #800000; font-weight: bold;">1</span>
+    <span style="color: #008000;">-&gt;<span style="font-weight: bold;">124</span></span>
+
+<span style="color: #0000ff;">SELECT</span> <span style="color: #ff0000;">'</span><span style="color: #ff0000;">123</span><span style="color: #ff0000;">'</span> <span style="color: #808080;">+</span> <span style="color: #800000; font-weight: bold;">1</span>
+    <span style="color: #008000;">-&gt;<span style="font-weight: bold;">124</span> 其实MySQL能默认转换
+
+</span><span style="color: #0000ff;">SELECT</span> <span style="color: #ff00ff;">CAST</span>(NOW() <span style="color: #0000ff;">AS</span> DATE)<br>　　-&gt;2014-12-18</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/kissdodog/category/606401.html" target="_blank">MySQL：MySQL基础</a>,<a href="http://www.cnblogs.com/kissdodog/category/445476.html" target="_blank">命名空间：System.IO</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4168721,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('8ec8d629-bd06-e111-b7b9-842b2b196315');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/kissdodog/" target="_blank"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/20140125113312.jpg" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/kissdodog/">逆心</a><br>
+            <a href="http://home.cnblogs.com/u/kissdodog/followees">关注 - 31</a><br>
+            <a href="http://home.cnblogs.com/u/kissdodog/followers">粉丝 - 1618</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('8ec8d629-bd06-e111-b7b9-842b2b196315');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4168721,'Digg')">
+        <span class="diggnum" id="digg_count">7</span>
+    </div>
+    <div class="buryit" onclick="votePost(4168721,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/kissdodog/p/4159176.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/kissdodog/p/4159176.html" title="发布于2014-12-12 16:07">MySQL数据类型</a><br><a href="http://www.cnblogs.com/kissdodog/p/4173337.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/kissdodog/p/4173337.html" title="发布于2014-12-19 17:09">MySQL用户管理</a><br></div>
+</div>
+
+
+	</div>
+	
+	<div class="postfoot">
+		posted on <span id="post-date">2014-12-17 13:52</span> <a href="http://www.cnblogs.com/kissdodog/">逆心</a> 阅读(<span id="post_view_count">12848</span>) 评论(<span id="post_comment_count">3</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=4168721" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4168721);return false;">收藏</a>
+	</div>
+</div>
+<script type="text/javascript">var allowComments=true,cb_blogId=113280,cb_entryId=4168721,cb_blogApp=currentBlogApp,cb_blogUserGuid='8ec8d629-bd06-e111-b7b9-842b2b196315',cb_entryCreatedDate='2014/12/17 13:52:00';loadViewCount(cb_entryId);</script>
+
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<a name="feedback"></a>
+<div id="comments">
+<h3>Feedback</h3>
+
+
+<div class="comment_block">			
+<div class="commentTitle"><a href="#3217234" class="layer">#1楼</a><a name="3217234" id="comment_anchor_3217234"></a><span> <span class="comment_date">2015-06-29 00:03</span></span><a id="a_comment_author_3217234" href="http://home.cnblogs.com/u/604308/" target="_blank">晨雨零稀</a> <a href="http://msg.cnblogs.com/send/%E6%99%A8%E9%9B%A8%E9%9B%B6%E7%A8%80" title="发送站内短消息" class="sendMsg2This">&nbsp;</a></div>
+<div class="commentText"><div id="comment_body_3217234" class="blog_comment_body">太棒了!有必要下载网页当文档使用。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3217234,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3217234,'Bury',this)">反对(0)</a></div></div>
+<div class="commentFooter">&nbsp;&nbsp;<span class="comment_actions"></span></div>
+</div>
+
+<div class="comment_block">			
+<div class="commentTitle"><a href="#3578406" class="layer">#2楼</a><a name="3578406" id="comment_anchor_3578406"></a><span> <span class="comment_date">2016-12-12 11:46</span></span><a id="a_comment_author_3578406" href="http://www.cnblogs.com/xxy4296/" target="_blank">xxy4296</a> <a href="http://msg.cnblogs.com/send/xxy4296" title="发送站内短消息" class="sendMsg2This">&nbsp;</a></div>
+<div class="commentText"><div id="comment_body_3578406" class="blog_comment_body">不错不错，整理得挺完善的！收藏了！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3578406,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3578406,'Bury',this)">反对(0)</a></div></div>
+<div class="commentFooter">&nbsp;&nbsp;<span class="comment_actions"></span></div>
+</div>
+
+<div class="comment_block">			
+<div class="commentTitle"><a href="#3578422" class="layer">#3楼</a><a name="3578422" id="comment_anchor_3578422"></a><span id="comment-maxId" style="display:none;">3578422</span><span id="comment-maxDate" style="display:none;">2016/12/12 11:56:10</span><span> <span class="comment_date">2016-12-12 11:56</span></span><a id="a_comment_author_3578422" href="http://www.cnblogs.com/xxy4296/" target="_blank">xxy4296</a> <a href="http://msg.cnblogs.com/send/xxy4296" title="发送站内短消息" class="sendMsg2This">&nbsp;</a></div>
+<div class="commentText"><div id="comment_body_3578422" class="blog_comment_body">在“5、系统信息函数”中，表格第三行，函数“SCHEMA”漏了括号，应该是“SCHEMA()”才对！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3578422,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3578422,'Bury',this)">反对(0)</a></div></div>
+<div class="commentFooter">&nbsp;&nbsp;<span class="comment_actions"></span></div>
+</div>
+
+</div><div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://arcapp.anruichina.com/arctrac/trac?tid=smb_azure_1212_CNBlog" target="_blank">【福利】微软Azure给博客园的你专属双重好礼</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg" target="_blank">【推荐】BPM免费下载</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20161031104652361-1905759806.gif" alt="" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/560071/" target="_blank">推动计算机人才培养，Google 2017 CS4HS项目启动</a><br> ·  <a href="http://news.cnblogs.com/n/560070/" target="_blank">华为轮值CEO徐直军：2016年收入5200亿 大涨32%</a><br> ·  <a href="http://news.cnblogs.com/n/560069/" target="_blank">董明珠逢大跌就买 两年来29次买入格力电器</a><br> ·  <a href="http://news.cnblogs.com/n/560068/" target="_blank">墨迹PK美图商业模式：一个靠广告，一个靠卖手机</a><br> ·  <a href="http://news.cnblogs.com/n/560067/" target="_blank">从轻芒杂志说起，究竟该如何做一款兴趣阅读应用?</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg" target="_blank"><img src="MySQL%E5%87%BD%E6%95%B0%20-%20%E9%80%86%E5%BF%83%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/35695-20161213142353073-1602158633.jpg" alt="" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br> ·  <a href="http://kb.cnblogs.com/page/553682/" target="_blank">陈皓：什么是工程师文化？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"><b>历史上的今天:</b><br>2012-12-17 <a href="http://www.cnblogs.com/kissdodog/archive/2012/12/17/2821142.html">javascript之对象</a><br></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+</td></tr>
+</tbody></table>
+
+<p id="footer">
+	Copyright @
+	逆心<br>
+	Powered by:
+	<a href="http://scottwater.com/blog" target="_blank">.Text</a> and 
+	<a href="http://asp.net/" target="_blank">ASP.NET</a>
+	<br>
+	Theme by: <a href="http://www.dotnetmonster.com/" target="_blank">.NET Monster</a>
+</p>
+
+
+<!--PageEndHtml Block Begin-->
+<div style="margin:0 auto; text-align:center; "><a href="http://www.xiaojiaju8.com/" style="width: 50px; margin: 0 auto;">小家居</a></div>
+<!--PageEndHtml Block End-->
+
+
+</body></html>

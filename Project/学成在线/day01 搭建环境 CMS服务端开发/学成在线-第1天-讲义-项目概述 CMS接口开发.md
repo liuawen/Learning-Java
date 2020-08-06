@@ -1187,13 +1187,75 @@ MongoDB入门
 
 参考“mongodb安装及入门”文档进行学习。
 
+
+
 我去安装MongoDB
+
+```
+#数据库路径
+dbpath=d:\databases\MongoDB\Server\3.4\data
+#日志输出文件路径
+logpath=d:\databases\MongoDB\Server\3.4\logs\mongo.log
+#错误日志采用追加模式
+logappend=true
+#启用日志文件，默认启用
+journal=true
+#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false
+quiet=true
+#端口号 默认为27017
+port=27017
+```
+
+
+
+```
+2020-08-04T19:53:54.617+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2020-08-04T19:53:55.260+0800 I CONTROL  [main] Trying to install Windows service 'MongoDB'
+2020-08-04T19:53:55.261+0800 I CONTROL  [main] Error connecting to the Service Control Manager: 拒绝访问。 (5)
+2020-08-04T19:56:18.884+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2020-08-04T19:56:19.519+0800 I CONTROL  [main] Trying to install Windows service 'MongoDB'
+2020-08-04T19:56:19.519+0800 I CONTROL  [main] Error connecting to the Service Control Manager: 拒绝访问。 (5)
+2020-08-04T20:00:15.295+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2020-08-04T20:00:15.932+0800 I CONTROL  [main] Trying to install Windows service 'MongoDB'
+2020-08-04T20:00:15.933+0800 I CONTROL  [main] Error connecting to the Service Control Manager: 拒绝访问。 (5)
+2020-08-04T20:11:01.434+0800 I CONTROL  [main] ***** SERVER RESTARTED *****
+2020-08-04T20:11:02.026+0800 I CONTROL  [main] Trying to install Windows service 'MongoDB'
+2020-08-04T20:11:02.029+0800 I CONTROL  [main] Service 'MongoDB' (MongoDB) installed with command line 'D:\databases\MongoDB\Server\3.4\bin\mongod.exe --config d:\databases\MongoDB\Server\3.4\mongo.conf --service'
+2020-08-04T20:11:02.029+0800 I CONTROL  [main] Service can be started from the command line with 'net start MongoDB'
+
+```
+
+
 
 ```
 D:\databases\MongoDB\Server\3.4\bin>mongod.exe --config "d:\databases\MongoDB\Server\3.4\mongo.conf" --install
 
 D:\databases\MongoDB\Server\3.4\bin>
 ```
+
+
+
+拒绝访问
+
+要有权限 
+
+![image-20200804202715770](assets/image-20200804202715770.png)
+
+![image-20200804201008543](assets/image-20200804201008543.png)
+
+
+
+![image-20200804202951291](assets/image-20200804202951291.png)
+
+
+
+![image-20200804203006723](assets/image-20200804203006723.png)
+
+
+
+
+
+
 
 
 
@@ -1225,10 +1287,22 @@ D:\databases\MongoDB\Server\3.4\bin>
 
 ## 定义模型
 
-需求分析
+### 需求分析
+
+查询接口定义 定义模型 需求分析 
 
 在梳理完用户需求后就要去定义前后端的接口，接口定义后前端和后端就可以依据接口去开发功能了。
+
+根据接口去开发功能了 
+
+
+
 本次定义页面查询接口，本接口供前端请求查询页面列表，支持分页及自定义条件查询方式。
+
+查询页面列表  支持分页及自定义条件查询方式
+
+
+
 具体需求如下：
 1、分页查询CmsPage 集合下的数据
 2、根据站点Id、模板Id、页面别名查询页面信息
