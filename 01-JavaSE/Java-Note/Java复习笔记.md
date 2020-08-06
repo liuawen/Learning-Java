@@ -8,6 +8,10 @@
 
 
 
+复习
+
+2020-08-05
+
 
 
 
@@ -28,9 +32,11 @@ Java之父是詹姆斯.高斯林(James Gosling)。
 
 JDK14来了
 
-复习
+比较有有代表性的几个版本：JDK1.2（引入了集合框架等）、JDK1.4（引入了NIO）、JDK1.5（枚举、泛型、可变参数、foreach循环、自动装箱拆箱。。。）、JDK1.7（switch对字符串的支持，try...with...resource）、JDK1.8（接口、日期时间API、Optional类、Lambda表达式和StreamAPI）
 
-2020-08-05
+NIO 
+
+*java* non-blocking
 
 
 
