@@ -1257,6 +1257,12 @@ D:\databases\MongoDB\Server\3.4\bin>
 
 
 
+![image-20200806191517259](assets/image-20200806191517259.png)
+
+![image-20200806191528356](assets/image-20200806191528356.png)
+
+
+
 
 
 导入CMS数据库
@@ -1285,6 +1291,61 @@ D:\databases\MongoDB\Server\3.4\bin>
 
 # 页面查询接口定义
 
+页面查询接口定义 
+
+Cannot resolve org.springframework.cloud:spring-cloud-starter-feign:unknown
+
+一般使用
+
+```html
+<!-- SpringCloud 整合 Feign -->
+
+
+
+<dependency>
+
+
+
+	<groupId>org.springframework.cloud</groupId>
+
+
+
+	<artifactId>spring-cloud-starter-feign</artifactId>
+
+
+
+</dependency>
+```
+
+换成因为版本的原因如果有父工程记得把父工程中的版本控制删除要不不能更新
+
+```html
+ <dependency>
+
+
+
+            <groupId>org.springframework.cloud</groupId>
+
+
+
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+
+
+
+        </dependency>
+```
+
+ xc-framework-common
+
+```
+ <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+```
+
+nice，非常
+
 ## 定义模型
 
 ### 需求分析
@@ -1295,9 +1356,15 @@ D:\databases\MongoDB\Server\3.4\bin>
 
 根据接口去开发功能了 
 
+在梳理完用户需求后就要去定义前后端的接口 接口定义后前端和后端就可以依据接口去开发功能了
 
+接口开发
 
 本次定义页面查询接口，本接口供前端请求查询页面列表，支持分页及自定义条件查询方式。
+
+
+
+前端请求
 
 查询页面列表  支持分页及自定义条件查询方式
 
@@ -1308,17 +1375,66 @@ D:\databases\MongoDB\Server\3.4\bin>
 2、根据站点Id、模板Id、页面别名查询页面信息
 3、接口基于Http Get请求，响应Json数据
 
+Spring  Data  JPA  MongoDB
+
+
+
+查询CmsPage集合下的数据
+
+根据站点Id 模板Id 页面别名查询页面信息
+
+接口基于Http Get请求 响应Json数据
+
+![image-20200806192539210](assets/image-20200806192539210.png)
+
+Class
+
+
+
+![image-20200806192555189](assets/image-20200806192555189.png)
+
+
+
+![image-20200806193642928](assets/image-20200806193642928.png)
+
+
+
+一个站点多个页面
+
+siteId  
+
+
+
+页面的布局 是一样的  这个布局  就是模板   + 数据就是页面
+
+
+
+商品   商品信息
+
+数据不一样  + 模板  就是页面 
+
+
+
+
+
 模型类介绍
 
 接口的定义离不开数据模型，根据前边对需求的分析，整个页面管理模块的数据模型如下：
 
 ![image-20200804141640864](assets/image-20200804141640864.png)
 
+接口的定义离不开数据模型
+
+前边对需求的分析 
+
 
 
 CmsSite：站点模型
 CmsTemplate：页面模板
 CmsPage：页面信息
+
+
+
 页面信息如下：
 
 ```
@@ -1452,3 +1568,757 @@ public QueryResponseResult findList(int page, int size, QueryPageRequest queryPa
 此接口编写后会在CMS服务工程编写Controller类实现此接口。
 
 # 页面查询服务端开发
+
+## 创建CMS服务工程
+
+创建CMS工程结构
+
+![image-20200806201509792](assets/image-20200806201509792.png)
+
+
+
+
+
+创建maven工程， CMS工程的名称为 xc-service-manage-cms，父工程为xc-framework-parent。
+
+xc-service-manage-cms
+
+pom.xml如下：
+
+```
+<?xml version="1.0" encoding="UTF‐8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema‐instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+http://maven.apache.org/xsd/maven‐4.0.0.xsd">
+<parent>
+<artifactId>xc‐framework‐parent</artifactId>
+<groupId>com.xuecheng</groupId>
+<version>1.0‐SNAPSHOT</version>
+<relativePath>../xc‐framework‐parent/pom.xml</relativePath>
+</parent>
+<modelVersion>4.0.0</modelVersion>
+<artifactId>xc‐service‐manage‐cms</artifactId>
+<dependencies>
+<dependency>
+<groupId>com.xuecheng</groupId>
+<artifactId>xc‐service‐api</artifactId>
+<version>1.0‐SNAPSHOT</version>
+</dependency>
+<dependency>
+<groupId>com.xuecheng</groupId>
+<artifactId>xc‐framework‐model</artifactId>
+<version>1.0‐SNAPSHOT</version>
+</dependency>
+<dependency>
+<groupId>com.xuecheng</groupId>
+<artifactId>xc‐framework‐utils</artifactId>
+<version>1.0‐SNAPSHOT</version>
+</dependency>
+<dependency>
+<groupId>com.xuecheng</groupId>
+<artifactId>xc‐framework‐common</artifactId>
+<version>1.0‐SNAPSHOT</version>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring‐boot‐starter‐web</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring‐boot‐starter‐freemarker</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring‐boot‐starter‐data‐mongodb</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring‐boot‐starter‐amqp</artifactId>
+</dependency>
+<dependency>
+<groupId>com.squareup.okhttp3</groupId>
+<artifactId>okhttp</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring‐boot‐starter‐test</artifactId>
+</dependency>
+</dependencies>
+</project>
+```
+
+由于cms工程要连接mongodb所以需要在在cms服务端工程添加如下依赖：
+项目使用spring data mongodb操作mongodb数据库
+
+```
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring‐boot‐starter‐data‐mongodb</artifactId>
+</dependency>
+```
+
+spring boot starter 
+
+starter-web  我们进行web开发
+
+自动导入 
+
+Spring MVC 很多的 Controller 
+
+2、创建基本的包结构：
+com.xuecheng.manage_cms.config：配置类目录，数据库配置、MQ配置等
+com.xuecheng.manage_cms.dao：dao接口目录
+com.xuecheng.manage_cms.service：service类目录
+com.xuecheng.manage_cms.web.controller：controller类目录
+工程结构如下：
+![image-20200806195048882](assets/image-20200806195048882.png)
+
+3、配置文件
+在classpath下配置application.yml
+
+xml
+
+port  记得一个空格
+
+
+
+```
+server:
+port: 31001
+spring:
+application:
+name: xc‐service‐manage‐cms
+data:
+mongodb:
+uri: mongodb://root:123@localhost:27017
+database: xc_cms
+```
+
+端口不要改哦 
+
+```yml
+server:
+  port: 31001
+spring:
+  application:
+    name: xc-service-manage-cms
+  data:
+    mongodb:
+      uri:  mongodb://root:123@localhost:27017
+      database: xc_cms
+```
+
+mongodb://root:123@localhost:27017/admin
+
+
+
+另外从课程资料下“cms工程配置文件”中拷贝logback-spring.xml，此文件为工程的日志配置文件。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!--定义日志文件的存储地址,使用绝对路径-->
+    <property name="LOG_HOME" value="d:/logs"/>
+
+    <!-- Console 输出设置 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <fileNamePattern>${LOG_HOME}/xc.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>512</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="FILE"/>
+    </appender>
+
+
+    <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="org.springframework.boot" level="DEBUG"/>
+    <root level="info">
+        <!--<appender-ref ref="ASYNC"/>-->
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+
+
+
+4、SpringBoot 启动类
+
+@ComponentScan(basePackages={"com.xuecheng.api"})//扫描接口
+@ComponentScan(basePackages={"com.xuecheng.manage_cms"})//扫描本项目下的所有类
+
+告诉启动类要去扫描
+
+
+
+Spring Boot应用需要创建一个应用启动类，启动过程中会扫描Bean并注入spring 容器
+注意：此类创建在本工程com.xuecheng.manage_cms包下 :
+
+```
+@SpringBootApplication
+@EntityScan("com.xuecheng.framework.domain.cms")//扫描实体类
+@ComponentScan(basePackages={"com.xuecheng.api"})//扫描接口
+@ComponentScan(basePackages={"com.xuecheng.manage_cms"})//扫描本项目下的所有类
+public class ManageCmsApplication {
+public static void main(String[] args) {
+SpringApplication.run(ManageCmsApplication.class,args);
+}
+}
+```
+
+启动扫描  扫描  sao  miao  包   扫描 
+
+启动类放到本项目内  
+
+测试Controller
+使用springMVC完成接口实现开发，这里暂时使用测试数据，稍后会让controller调用service来查询数据。
+
+使用SpringMVC完成接口 实现开发 
+
+```java
+package com.xuecheng.manage_cms.web.controller;
+import com.xuecheng.api.cms.CmsPageControllerApi;
+import com.xuecheng.framework.domain.cms.request.QueryPageRequest;
+import com.xuecheng.framework.model.response.QueryResponseResult;
+import com.xuecheng.manage_cms.service.PageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+public class CmsPageController implements CmsPageControllerApi {
+@Override
+@GetMapping("/list/{page}/{size}")
+public QueryResponseResult findList(@PathVariable("page") int page,@PathVariable("size") int
+size,QueryPageRequest queryPageRequest) {
+//暂时采用测试数据，测试接口是否可以正常运行
+QueryResult queryResult = new QueryResult();
+queryResult.setTotal(2);
+//静态数据列表
+List list = new ArrayList();
+CmsPage cmsPage = new CmsPage();
+cmsPage.setPageName("测试页面");
+list.add(cmsPage)
+queryResult.setList(list);
+QueryResponseResult queryResponseResult = new
+QueryResponseResult(CommonCode.SUCCESS,queryResult);
+return queryResponseResult;
+}
+}
+```
+
+使用浏览器测试
+输入：http://localhost:31001/cms/page/list/1/10 查询第1页，每页显示10条记录。
+
+
+
+## Dao
+
+分页查询测试
+
+定义Dao接口
+
+本项目使用Spring Data Mongodb完成Mongodb数据库的查询，Spring Data Mongodb提供一套快捷操作
+mongodb的方法。
+创建Dao，继承MongoRepository，并指定实体类型和主键类型。
+
+```
+public interface CmsPageRepository extends MongoRepository<CmsPage,String> {
+}
+```
+
+CmsPageRepository   MongoRepository 
+
+
+
+编写测试类
+
+![image-20200806195905725](assets/image-20200806195905725.png)
+
+test下的包路径与main下的包路径保持一致。
+
+SpringBootTest 
+
+RunWith  Spring.Runner.class
+
+去找启动类  扫描设置  
+
+@Autowired
+
+
+
+测试程序使用@SpringBootTest和@RunWith(SpringRunner.class)注解，启动测试类会从main下找springBoot启
+动类，加载spring容器。
+测试代码如下：
+
+```
+package com.xuecheng.manage_cms;
+import com.xuecheng.framework.domain.cms.CmsPage;
+import com.xuecheng.manage_cms.dao.CmsPageRepository;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.*;
+import org.springframework.test.context.junit4.SpringRunner;
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class CmsPageRepositoryTest {
+@Autowired
+CmsPageRepository cmsPageRepository;
+}
+
+```
+
+分页查询测试
+
+```
+//分页测试
+@Test
+public void testFindPage() {
+int page = 0;//从0开始
+int size = 10;//每页记录数
+Pageable pageable = PageRequest.of(page,size);
+Page<CmsPage> all = cmsPageRepository.findAll(pageable);
+System.out.println(all);
+}
+```
+
+SpringBoot Data   MongoDB 提供了好多的 
+
+page 从零开始 
+
+int  page  int size   Pageable  
+
+![image-20200807123216554](assets/image-20200807123216554.png)
+
+
+
+
+
+![image-20200807123222456](assets/image-20200807123222456.png)
+
+
+
+
+
+基础方法测试
+
+这里Dao接口继承了MongoRepository，在MongoRepository中定义了很多现成的方法，如save、delete等，通
+过下边的代码来测试这里父类方法。
+此小节内容请同学们自行测试。
+
+save   delete
+
+添加
+
+```
+//添加
+@Test
+public void testInsert(){
+//定义实体类
+CmsPage cmsPage = new CmsPage();
+cmsPage.setSiteId("s01");
+cmsPage.setTemplateId("t01");
+cmsPage.setPageName("测试页面");
+cmsPage.setPageCreateTime(new Date());
+List<CmsPageParam> cmsPageParams = new ArrayList<>();
+CmsPageParam cmsPageParam = new CmsPageParam();
+cmsPageParam.setPageParamName("param1");
+cmsPageParam.setPageParamValue("value1");
+cmsPageParams.add(cmsPageParam);
+cmsPage.setPageParams(cmsPageParams);
+cmsPageRepository.save(cmsPage);
+System.out.println(cmsPage);
+}
+```
+
+删除
+
+```
+//删除
+@Test
+public void testDelete() {
+cmsPageRepository.deleteById("5b17a2c511fe5e0c409e5eb3");
+}
+```
+
+修改 找到  
+
+public  
+
+Optional   JDK1.8引入的类型
+
+空指针  引起的Bug ![image-20200807124655487](assets/image-20200807124655487.png)
+
+dataUrl为空 
+
+
+
+修改
+
+```
+//修改
+@Test
+public void testUpdate() {
+Optional<CmsPage> optional = cmsPageRepository.findOne("5b17a34211fe5e2ee8c116c9");
+if(optional.isPresent()){
+CmsPage cmsPage = optional.get();
+cmsPage.setPageName("测试页面01");
+cmsPageRepository.save(cmsPage);
+}
+}
+```
+
+optional.isPresent()
+
+Optional 
+
+关于Optional：
+Optional是jdk1.8引入的类型，Optional是一个容器对象，它包括了我们需要的对象，使用isPresent方法判断所包
+含对象是否为空，isPresent方法返回false则表示Optional包含对象为空，否则可以使用get()取出对象进行操作。
+Optional的优点是：
+1、提醒你非空判断。
+2、将对象非空检测标准化。
+
+ present  现在的
+
+
+
+自定义Dao方法
+
+同Spring Data JPA一样Spring Data mongodb也提供自定义方法的规则，如下：
+
+同Spring Data JPA 一样 
+
+按照findByXXX，findByXXXAndYYY、countByXXXAndYYY等规则定义方法，实现查询操作。
+
+```
+public interface CmsPageRepository extends MongoRepository<CmsPage,String> {
+//根据页面名称查询
+CmsPage findByPageName(String pageName);
+//根据页面名称和类型查询
+CmsPage findByPageNameAndPageType(String pageName,String pageType);
+//根据站点和页面类型查询记录数
+int countBySiteIdAndPageType(String siteId,String pageType);
+//根据站点和页面类型分页查询
+Page<CmsPage> findBySiteIdAndPageType(String siteId,String pageType, Pageable pageable);
+}
+```
+
+Service
+
+定义页面查询方法，根据条件查询暂时不实现：
+
+```java
+package com.xuecheng.manage_cms.service;
+import com.xuecheng.framework.domain.cms.CmsPage;
+import com.xuecheng.framework.domain.cms.request.QueryPageRequest;
+import com.xuecheng.framework.model.response.CommonCode;
+import com.xuecheng.framework.model.response.QueryResponseResult;
+import com.xuecheng.framework.model.response.QueryResult;
+import com.xuecheng.manage_cms.dao.CmsPageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+@Service
+public class PageService {
+@Autowired
+CmsPageRepository cmsPageRepository;
+/**
+* 页面列表分页查询
+* @param page 当前页码
+* @param size 页面显示个数
+* @param queryPageRequest 查询条件
+* @return 页面列表
+*/
+public QueryResponseResult findList(int page,int size,QueryPageRequest queryPageRequest){
+if (queryPageRequest == null) {
+queryPageRequest = new QueryPageRequest();
+}
+if (page <= 0) {
+page = 1;
+}
+page = page ‐ 1;//为了适应mongodb的接口将页码减1
+if (size <= 0) {
+size = 20;
+}
+//分页对象
+Pageable pageable = new PageRequest(page, size);
+//分页查询
+Page<CmsPage> all = cmsPageRepository.findAll(pageable);
+QueryResult<CmsPage> cmsPageQueryResult = new QueryResult<CmsPage>();
+cmsPageQueryResult.setList(all.getContent());
+cmsPageQueryResult.setTotal(all.getTotalElements());
+//返回结果
+return new QueryResponseResult(CommonCode.SUCCESS,cmsPageQueryResult);
+}
+}
+```
+
+0 还是 1 
+
+页面  0   1   还是1 
+
+Controller
+
+使用springMVC完成接口实现开发。
+
+```
+package com.xuecheng.manage_cms.web.controller;
+import com.xuecheng.api.cms.CmsPageControllerApi;
+import com.xuecheng.framework.domain.cms.request.QueryPageRequest;
+import com.xuecheng.framework.model.response.QueryResponseResult;
+import com.xuecheng.manage_cms.service.PageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+public class CmsPageController implements CmsPageControllerApi {
+@Autowired
+PageService pageService;
+@Override
+@GetMapping("/list/{page}/{size}")
+public QueryResponseResult findList(@PathVariable("page") int page, @PathVariable("size")
+int size, QueryPageRequest queryPageRequest) {
+return pageService.findList(page,size,queryPageRequest);
+}
+}
+```
+
+使用浏览器测试
+输入：http://localhost:31001/cms/page/list/1/10 查询第1页，每页显示10条记录。
+
+## 接口开发规范
+
+Api请求及响应规范
+为了严格按照接口进行开发，提高效率，对请求及响应格式进行规范化。
+1、get 请求时，采用key/value格式请求，SpringMVC可采用基本类型的变量接收，也可以采用对象接收。
+
+?name=abc
+
+![image-20200807195048771](assets/image-20200807195048771.png)
+
+2、Post请求时，可以提交form表单数据（application/x-www-form-urlencoded）和Json数据（Content-
+Type=application/json），文件等多部件类型（multipart/form-data）三种数据格式，SpringMVC接收Json数据
+使用@RequestBody注解解析请求的json数据。
+
+
+
+4、响应结果统一信息为：是否成功、操作代码、提示信息及自定义数据。
+
+查询列表  
+
+![image-20200807195200807](assets/image-20200807195200807.png)
+
+
+
+
+
+
+
+5、响应结果统一格式为json。
+
+Api定义约束
+
+Api定义使用SpringMVC来完成，由于此接口后期将作为微服务远程调用使用，在定义接口时有如下限制：
+1、@PathVariable 统一指定参数名称，如：@PathVariable("id") 2、@RequestParam统一指定参数名称，如：
+@RequestParam（"id"）
+
+
+
+对接口的开发  
+
+
+
+
+
+ 
+
+
+
+![image-20200807201107796](assets/image-20200807201107796.png)
+
+
+
+
+
+![image-20200807201122897](assets/image-20200807201122897.png)
+
+
+
+
+
+# 页面查询接口测试
+
+上边的代码是基于服务端编写接口，如果前端人员等待服务端人员将接口开发完毕再去开发前端内容这样做效率是
+非常低下的，所以当接口定义完成，可以使用工具生成接口文档，前端人员查看接口文档即可进行前端开发，这样
+前端和服务人员并行开发，大大提高了生产效率。
+本章节介绍两种接口开发工具，Swagger和Postman。
+
+## Swagger
+
+### Swagger介绍
+
+OpenAPI规范（OpenAPI Specification 简称OAS）是Linux基金会的一个项目，试图通过定义一种用来描述API格
+式或API定义的语言，来规范RESTful服务开发过程，目前版本是V3.0，并且已经发布并开源在github上。
+（https://github.com/OAI/OpenAPI-Specification）
+Swagger是全球最大的OpenAPI规范（OAS）API开发工具框架，支持从设计和文档到测试和部署的整个API生命周
+期的开发。 (https://swagger.io/)
+Spring Boot 可以集成Swagger，生成Swagger接口，Spring Boot是Java领域的神器，它是Spring项目下快速构建
+项目的框架。
+
+### Swagger常用注解
+
+在Java类中添加Swagger的注解即可生成Swagger接口，常用Swagger注解如下：
+@Api：修饰整个类，描述Controller的作用 @ApiOperation：描述一个类的一个方法，或者说一个接口
+@ApiParam：单个参数描述 @ApiModel：用对象来接收参数 @ApiModelProperty：用对象接收参数时，描述对
+象的一个字段 @ApiResponse：HTTP响应其中1个描述 @ApiResponses：HTTP响应整体描述 @ApiIgnore：使用
+该注解忽略这个API @ApiError ：发生错误返回的信息 @ApiImplicitParam：一个请求参数
+@ApiImplicitParams：多个请求参数
+@ApiImplicitParam属性：
+
+属性取值作用
+paramType 查询参数类型
+path 以地址的形式提交数据
+query 直接跟参数完成自动映射赋值
+body 以流的形式提交 仅支持POST
+header 参数在request headers 里边提交
+form 以form表单的形式提交 仅支持POST
+dataType 参数的数据类型 只作为标志说明，并没有实际验证
+Long
+String
+name 接收参数名
+value 接收参数的意义描述
+required 参数是否必填
+true 必填
+false 非必填
+defaultValue 默认值
+
+![image-20200806195507133](assets/image-20200806195507133.png)
+
+
+
+### Swagger接口定义
+
+修改接口工程中页面查询接口，添加Swagger注解。
+
+```
+@Api(value="cms页面管理接口",description = "cms页面管理接口，提供页面的增、删、改、查")
+public interface CmsPageControllerApi {
+@ApiOperation("分页查询页面列表")
+@ApiImplicitParams({
+@ApiImplicitParam(name="page",value = "页
+码",required=true,paramType="path",dataType="int"),
+@ApiImplicitParam(name="size",value = "每页记录
+数",required=true,paramType="path",dataType="int")
+})
+public QueryResponseResult findList(int page, int size, QueryPageRequest queryPageRequest) ;
+}
+```
+
+在QueryPageRequest类中使用注解 ApiModelProperty 对属性注释：
+
+```
+@Data
+public class QueryPageRequest extends RequestData {
+//站点id
+@ApiModelProperty("站点id")
+private String siteId;
+//页面ID
+@ApiModelProperty("页面ID")
+private String pageId;
+//页面名称
+@ApiModelProperty("页面名称")
+private String pageName;
+//页面别名
+@ApiModelProperty("页面别名")
+private String pageAliase;
+//模版id
+@ApiModelProperty("模版id")
+private String templateId;
+}
+
+```
+
+### Swagger接口测试
+
+Swagger接口生成工作原理：
+1、系统启动，扫描到api工程中的Swagger2Configuration类
+2、在此类中指定了包路径com.xuecheng，找到在此包下及子包下标记有@RestController注解的controller类
+3、根据controller类中的Swagger注解生成接口文档。
+
+启动cms服务工程，查看接口文档，请求：http://localhost:31001/swagger-ui.html
+点
+
+![image-20200806195607099](assets/image-20200806195607099.png)
+
+点击“分页查询页面列表”，打开接口详情
+
+![image-20200806195617047](assets/image-20200806195617047.png)
+
+使用Swagger工具测试服务接口：
+1）在cms服务接口中打断点
+2）打开接口文档页面，输入请求参数，点击“Try it out”发起请求。
+
+![image-20200806195625494](assets/image-20200806195625494.png)
+
+## Postman
+
+Postman是一款功能强大的http接口测试工具，使用postman可以完成http各种请求的功能测试。
+官方地址：https://www.getpostman.com/
+1、安装Postman
+本教程使用，双击打开 Postman-win64-6.0.10-Setup.exe
+新建一个Postman窗口
+
+![image-20200806195639212](assets/image-20200806195639212.png)
+
+
+
+![image-20200806195654371](assets/image-20200806195654371.png)
+
+
+
+2、使用postman测试http接口
+
+![image-20200806195704105](assets/image-20200806195704105.png)
+
+3、请求参数设置
+1） get请求参数设置
+
+![image-20200806195714799](assets/image-20200806195714799.png)
+
+2）post请求参数设置
+
+![image-20200806195723987](assets/image-20200806195723987.png)
+
+form-data：将表单的数据转为键值对，并且可以包括文件
+x-www-form-urlencoded: content-type为application/x-www-from-urlencoded，将表单的数据转为键值对
+raw：请求text、json、xml、html，比如如果请求json数据则使用此格式
+binary：content-type为application/octet-stream，可用于上传文件。

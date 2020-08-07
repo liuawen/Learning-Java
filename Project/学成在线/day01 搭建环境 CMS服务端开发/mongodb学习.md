@@ -293,9 +293,25 @@ db.collection.drop()
 db.student.drop() 删除student集合
 ```
 
+
+
+![image-20200806183631031](assets/image-20200806183631031.png)
+
+
+
+
+
+创建集合 
+
+
+
 # 文档
 
-插入文档
+插入文档   
+
+MySQL记录   JSON格式  
+
+
 
 mongodb中文档的格式是json格式，下边就是一个文档，包括两个key：_id主键和name
 
@@ -343,8 +359,19 @@ options：选项
 db.student.update({"name":"黑马程序员"},{"name":"北京黑马程序员","age":10})
 ```
 
+先删除再插入  
+
+
+
 2、$set修改器
 使用$set修改器指定要更新的key，key不存在则创建，存在则更新。
+
+你更新那个字段 就更新什么  
+
+完全特换 
+
+
+
 将符合条件 "name":"北京黑马程序"的所有文档更新name和age的值。
 
 ```
@@ -354,6 +381,8 @@ db.student.update({"name":"黑马程序员"},{$set:{"name":"北京黑马程序�
 multi：false表示更新第一个匹配的文档，true表示更新所有匹配的文档。
 
 multi：false表示更新第一个匹配的文档，true表示更新所有匹配的文档。
+
+set修改器 来更新 
 
 删除文档
 
@@ -366,6 +395,11 @@ query：删除条件，相当于sql语句中的where
 
 1、删除所有文档
 db.student.remove({})
+
+删除所有文档 db.student.remove({})
+
+
+
 2、删除符合条件的文档
 db.student.remove({"name":"黑马程序员"})
 
@@ -379,3 +413,217 @@ query：查询条件，可不填
 projection：投影查询key，可不填
 ```
 
+
+
+每一个文档  可以不一样  灵活
+
+集合 建议  相同类型的问题存一块  就是想要    域保持一致
+
+3、投影查询
+只显示name和age两个key，_id主键不显示。
+
+```
+db.student.find({"name":"黑马程序员"},{name:1,age:1,_id:0})
+```
+
+
+
+![image-20200806184747215](assets/image-20200806184747215.png)
+
+
+
+
+
+![image-20200806184801342](assets/image-20200806184801342.png)
+
+
+
+格式灵活
+
+
+
+![image-20200806184826539](assets/image-20200806184826539.png)
+
+
+
+
+
+![image-20200806185533278](assets/image-20200806185533278.png)
+
+
+
+
+
+![image-20200806185545377](assets/image-20200806185545377.png)
+
+
+
+
+
+![image-20200806185615011](assets/image-20200806185615011.png)
+
+
+
+查询 
+
+
+
+# 用户
+
+创建用户
+
+```
+mongo>db.createUser(
+{ user: "<name>",
+pwd: "<cleartext password>",
+customData: { <any information> },
+roles: [
+{ role: "<role>", db: "<database>" } | "<role>",
+...
+]}
+)
+```
+
+账号 密码  角色  必须的 
+
+![image-20200806185905636](assets/image-20200806185905636.png)
+
+
+
+![image-20200806185913300](assets/image-20200806185913300.png)
+
+
+
+![image-20200806190057996](assets/image-20200806190057996.png)
+
+认证成功 
+
+
+
+![image-20200806190116191](assets/image-20200806190116191.png)
+
+
+
+
+
+![image-20200806190207188](assets/image-20200806190207188.png)
+
+
+
+
+
+![image-20200806190259885](assets/image-20200806190259885.png)
+
+
+
+
+
+![image-20200806190310846](assets/image-20200806190310846.png)
+
+
+
+
+
+例子：
+创建root用户，角色为root
+
+```json
+use admin
+db.createUser(
+{
+user:"root",
+pwd:"123",
+roles:[{role:"root",db:"admin"}]
+}
+)
+```
+
+内置角色如下：
+1. 数据库用户角色：read、readWrite;
+2. 数据库管理角色：dbAdmin、dbOwner、userAdmin；
+
+3. 集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager；
+4. 备份恢复角色：backup、restore；
+5. 所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、
+dbAdminAnyDatabase
+6. 超级用户角色：root
+
+# 认证登录
+
+为了安全需要，Mongodb要打开认证开关，即用户连接Mongodb要进行认证，其中就可以通过账号密码方式进行
+认证。
+1、在mono.conf中设置 auth=true
+2、重启Mongodb
+3、使用账号和密码连接数据库
+1）mongo.exe连接
+
+```
+mongo.exe ‐u root ‐p 123 ‐‐authenticationDatabase admin
+```
+
+2）Studio 3T连接
+
+![image-20200806185258085](assets/image-20200806185258085.png)
+
+查询用户
+
+查询当前库下的所有用户：
+show users
+
+![image-20200806190610419](assets/image-20200806190610419.png)
+
+
+
+删除用户
+语法格式：
+
+db.dropUser("用户名")
+例子：
+删除test1用户
+db.dropUser("test1")
+
+修改用户
+语法格式：
+
+```json
+db.updateUser(
+"<username>",
+{
+customData : { <any information> },
+roles : [
+{ role: "<role>", db: "<database>" } | "<role>",
+...
+],
+pwd: "<cleartext password>"
+},
+writeConcern: { <write concern> })
+```
+
+例子：
+先创建test1用户：
+
+```json
+db.createUser(
+{
+user:"test1",
+pwd:"test1",
+roles:[{role:"root",db:"admin"}]
+}
+)
+```
+
+修改test1用户的角色为readWriteAnyDatabase
+
+```
+use admin
+db.updateUser("test1",{roles:[{role:"readWriteAnyDatabase",db:"admin"}]})
+```
+
+修改密码
+语法格式：
+db.changeUserPassword("username","newPasswd")
+例子：
+
+修改test1用户的密码为123
+use admin
+db.changeUserPassword("test1","123")
