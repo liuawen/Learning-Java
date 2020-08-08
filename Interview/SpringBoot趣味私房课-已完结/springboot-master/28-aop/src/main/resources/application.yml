@@ -1,6 +1,0 @@
-server:
-  servlet:
-    context-path: /springboot
-logging:
-  level:
-    root: debug

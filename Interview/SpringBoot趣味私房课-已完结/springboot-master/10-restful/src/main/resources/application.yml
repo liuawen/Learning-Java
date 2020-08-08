@@ -1,8 +1,0 @@
-#logging:
-#  level:
-#    root: debug
-server:
-  servlet:
-    context-path: /springboot
-
-  port: 8088
