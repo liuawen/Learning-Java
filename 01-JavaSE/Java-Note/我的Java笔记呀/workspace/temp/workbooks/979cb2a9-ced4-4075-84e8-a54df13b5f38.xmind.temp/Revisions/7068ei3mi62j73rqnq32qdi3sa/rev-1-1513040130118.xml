@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><xmap-revision-content xmlns="urn:xmind:xmap:xmlns:revision:1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink"><sheet id="7068ei3mi62j73rqnq32qdi3sa" modified-by="" style-id="0kstj9p5njfq9famsfnsd1bk44" theme="xminddefaultthemeid" timestamp="1513040027802"><topic id="7ahcc0rkuhkv2avc0ktoru1mph" modified-by="" structure-class="org.xmind.ui.map.unbalanced" timestamp="1513039869025"><title>反射机制</title><extensions><extension provider="org.xmind.ui.map.unbalanced"><content><right-number>2</right-number></content></extension></extensions><children><topics type="attached"><topic id="75ap3focngkct538ucqm7flpn0" modified-by="" timestamp="1513039339241"><title>为什么要用反射？</title><children><topics type="attached"><topic id="4sdlu9vs868bknpakf5vpma8iv" modified-by="" timestamp="1513039405682"><title svg:width="500">因为Java是静态的强类型语言，在编译阶段就需要确定类型</title><children><topics type="attached"><topic id="2hhourjhfkc9fgknavinhevfsu" modified-by="" timestamp="1513039842426"><title>Java为了实现“动态性“特征，引入了反射机制</title><children><topics type="attached"><topic id="0j6j7m3ida2jhtaj867u2toir1" modified-by="" timestamp="1513039489365"><title svg:width="500">变量可以使用Object声明，然后在运行时确定某个对象的运行时类型</title></topic><topic id="299qhflgqs8p0h6jdsuso98t3u" modified-by="" timestamp="1513039526843"><title svg:width="500">或者在运行时动态的”注入“某个类型的对象，动态的创建某个类型的对象</title><children><topics type="attached"><topic id="0rqdo3o0n1b1ht9vq756ijc4lc" modified-by="" timestamp="1513039540571"><title svg:width="500">例如：用这个类型的Class对象，然后创建它的实例</title></topic></topics></children></topic><topic id="3ba2b56nru91htu1pgp3p2moo1" modified-by="" timestamp="1513039847191"><title>。。。。</title></topic></topics></children></topic></topics></children></topic><topic id="5kb0310eu1487vots4ffu5aici" modified-by="" timestamp="1513039373516"><title svg:width="500">例如：JS等是动态的弱类型的语言，在运行时确定变量的类型，根据赋的值确定变量的类型</title></topic></topics></children></topic><topic id="7c39fhkbkffiien8r2thkfvpci" modified-by="" timestamp="1513039877632"><title>反射的根源</title><children><topics type="attached"><topic id="0pap2qm32f8964e1k2a682ttk9" modified-by="" timestamp="1513039901216"><title>java.lang.Class</title><children><topics type="attached"><topic id="4fk691plab5a9mkj2i050fpjul" modified-by="" timestamp="1513039968687"><title svg:width="500">Class 类的实例表示正在运行的 Java 应用程序中的类和接口。枚举是一种类，注释是一种接口。每个数组属于被映射为 Class 对象的一个类，所有具有相同元素类型和维数的数组都共享该 Class 对象。基本的 Java 类型（boolean、byte、char、short、int、long、float 和 double）和关键字 void 也表示为 Class 对象。 </title><children><topics type="attached"><topic id="6u5rnpu2etvcna9pnc02bt805k" modified-by="" timestamp="1513040025766"><title>示例代码</title><children><topics type="attached"><topic id="14254lghnq3papk9dinbpbqrbc" modified-by="" timestamp="1513040027802"><title svg:width="500">	@Test&#13;
+	public void test() {&#13;
+		Class c1 = int.class;&#13;
+		Class c2 = void.class;&#13;
+		Class c3 = String.class;&#13;
+		Class c4 = Comparable.class;&#13;
+		Class c5 = ElementType.class;&#13;
+		Class c6 = Override.class;&#13;
+		Class c7 = int[].class;&#13;
+		&#13;
+		int[] arr1 = new int[5];&#13;
+		int[] arr2 = new int[10];&#13;
+		&#13;
+		System.out.println(arr1.getClass() == arr2.getClass());&#13;
+		System.out.println(int[].class == arr2.getClass());&#13;
+		&#13;
+		int[][] arr3 = new int[5][10];&#13;
+		System.out.println(arr1.getClass());&#13;
+		System.out.println(arr3.getClass());&#13;
+	}</title></topic></topics></children></topic></topics></children></topic></topics></children></topic></topics></children></topic></topics></children></topic><title>画布 15</title></sheet></xmap-revision-content>
