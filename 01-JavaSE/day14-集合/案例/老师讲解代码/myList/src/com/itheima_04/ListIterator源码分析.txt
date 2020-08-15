@@ -1,0 +1,38 @@
+public interface List<E> {
+    Iterator<E> iterator();
+    ListIterator<E> listIterator();
+}
+
+public abstract class AbstractList<E> {
+    protected int modCount = 0;
+}
+
+public class ArrayList<E> extends AbstractList<E> implements List<E> {
+    public Iterator<E> iterator() {
+        return new Itr();
+    }
+
+    private class Itr implements Iterator<E> {
+        ...
+    }
+
+    public ListIterator<E> listIterator() {
+        return new ListItr(0);
+    }
+
+    private class ListItr extends Itr implements ListIterator<E> {
+        public void add(E e) {
+            checkForComodification();
+
+            try {
+                int i = cursor;
+                ArrayList.this.add(i, e);
+                cursor = i + 1;
+                lastRet = -1;
+                expectedModCount = modCount;
+            } catch (IndexOutOfBoundsException ex) {
+                throw new ConcurrentModificationException();
+            }
+        }
+    }
+}

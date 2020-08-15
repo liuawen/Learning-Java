@@ -1,0 +1,52 @@
+public interface List<E> {
+    Iterator<E> iterator();
+    boolean add(E e);
+}
+
+public abstract class AbstractList<E> {
+    protected int modCount = 0;
+}
+
+public class ArrayList<E> extends AbstractList<E> implements List<E> {
+
+    public E get(int index) {
+        Objects.checkIndex(index, size);
+        return elementData(index);
+    }
+
+    public boolean add(E e) {
+        modCount++;
+        add(e, elementData, size);
+        return true;
+    }
+
+    public Iterator<E> iterator() {
+        return new Itr();
+    }
+
+    private class Itr implements Iterator<E> {
+        int expectedModCount = modCount;
+        /*
+            modCount:实际修改集合的次数
+            expectedModCount:预期修改集合的次数
+        */
+
+        public E next() {
+            checkForComodification();
+            int i = cursor;
+            if (i >= size)
+                throw new NoSuchElementException();
+            Object[] elementData = ArrayList.this.elementData;
+            if (i >= elementData.length)
+                throw new ConcurrentModificationException();
+            cursor = i + 1;
+            return (E) elementData[lastRet = i];
+        }
+
+        final void checkForComodification() {
+            if (modCount != expectedModCount)
+                throw new ConcurrentModificationException();
+        }
+    }
+
+}
