@@ -1,3 +1,13 @@
+![image-20200816223153880](assets/image-20200816223153880.png)
+
+
+
+![image-20200816223505872](assets/image-20200816223505872.png)
+
+
+
+
+
 ## 1. switch语句
 
 ### 1.1 switch语句结构（掌握）
@@ -78,6 +88,93 @@ public class Demo1 {
 * 注意：如果switch中得case，没有对应break的话，则会出现case穿透的现象。
 
 ## 2. for循环
+
+![image-20200816223533725](assets/image-20200816223533725.png)
+
+
+
+![image-20200816223538041](assets/image-20200816223538041.png)
+
+1：通过代码要在控制台输出多次HelloWorld，来引入循环结构，然后讲解完毕for循环的格式，执行流程后，在回到代码中用循环改进，完毕只有，回到PPT用执行流程图做总结。
+
+
+
+![image-20200816223556148](assets/image-20200816223556148.png)
+
+
+
+```java
+for (int i = 1; i <= 5; i++) {    System.out.println(i);}System.out.println("--------");for (int i = 5; i >= 1; i--) {    System.out.println(i);}
+
+```
+
+
+
+![image-20200816223614598](assets/image-20200816223614598.png)
+
+
+
+```
+for (int i = 1; i <= 5; i++) {    System.out.println(i);}System.out.println("--------");for (int i = 5; i >= 1; i--) {    System.out.println(i);}
+
+```
+
+
+
+![image-20200816223634589](assets/image-20200816223634589.png)
+
+
+
+```
+int sum = 0;for (int i = 1; i <= 5; i++) {    sum += i;}System.out.println("1-5之间的数据和是：" + sum);
+
+```
+
+
+
+![image-20200816223648797](assets/image-20200816223648797.png)
+
+
+
+```
+int sum = 0;for (int i = 1; i <= 100; i++) {    if (i % 2 == 0) {        sum += i;    }}System.out.println("1-100之间的偶数和是：" + sum);
+
+```
+
+
+
+![image-20200816223703561](assets/image-20200816223703561.png)
+
+```
+for (int i = 100; i < 1000; i++) {    int ge = i % 10;    int shi = i / 10 % 10;    int bai = i / 10 / 10 % 10;    int result = ge * ge * ge + shi * shi * shi + bai * bai * bai;    if (result == i) {        System.out.println(i);    }}
+
+```
+
+![image-20200816223712040](assets/image-20200816223712040.png)
+
+```
+for (int i = 100; i < 1000; i++) {    int ge = i % 10;    int shi = i / 10 % 10;    int bai = i / 10 / 10 % 10;    int result = ge * ge * ge + shi * shi * shi + bai * bai * bai;    if (result == i) {        System.out.println(i);    }}
+
+```
+
+
+
+![image-20200816223720220](assets/image-20200816223720220.png)
+
+```
+
+```
+
+![image-20200816223726206](assets/image-20200816223726206.png)
+
+```
+int count = 0;for (int i = 100; i < 1000; i++) {    int ge = i % 10;    int shi = i / 10 % 10;    int bai = i / 10 / 10 % 10;    int result = ge * ge * ge + shi * shi * shi + bai * bai * bai;    if (result == i) {        count++;    }}System.out.println("水仙花共有：" + count + "个");
+
+```
+
+
+
+
 
 ### 2.1 for循环结构（掌握）
 
@@ -258,6 +355,32 @@ public class ForTest05 {
 
 ## 3. while循环
 
+![image-20200816223740596](assets/image-20200816223740596.png)
+
+
+
+![image-20200816223810981](assets/image-20200816223810981.png)
+
+
+
+讲解完毕格式和执行流程就可以说，while和for循环其实是可以等价转换的。然后回来演示案例。再最后回来看执行流程图解。
+
+
+
+![image-20200816223818480](assets/image-20200816223818480.png)
+
+
+
+```
+首先，我把这两个数据改成同一个单位，毫米。
+8844.43米 = 8844.43*1000毫米 = 8844430毫米
+
+int count = 0;int zf = 8844430;double paper = 0.1;while(paper <= zf) {    count++;    paper *= 2;}System.out.println(count);
+
+```
+
+
+
 ### 3.1 while结构（掌握）
 
 * while循环完整格式：
@@ -337,7 +460,13 @@ public class WhileTest {
 
 ## 4. 循环细节
 
+![image-20200816223840504](assets/image-20200816223840504.png)
+
 ### 4.1 do...while循环结构（掌握）
+
+![image-20200816223911142](assets/image-20200816223911142.png)
+
+
 
 * 完整格式：
 
@@ -388,6 +517,10 @@ public class DoWhileDemo {
 
 ### 4.2 三种循环的区别（理解）
 
+![image-20200816223920068](assets/image-20200816223920068.png)
+
+
+
 * 三种循环的区别
   * for循环和while循环先判断条件是否成立，然后决定是否执行循环体（先判断后执行）
   * do...while循环先执行一次循环体，然后判断条件是否成立，是否继续执行循环体（先执行后判断）
@@ -401,13 +534,69 @@ public class DoWhileDemo {
 
 ### 4.3 跳转控制语句（掌握）
 
+![image-20200816223927647](assets/image-20200816223927647.png)
+
+
+
+![image-20200816223934250](assets/image-20200816223934250.png)
+
+```
+for (int i = 1; i <= 5; i++) {    if (i % 2 == 0) {        //break;        continue;    }    System.out.println(i);}
+
+这个内容简单讲解即可，重点
+
+```
+
+
+
 * 跳转控制语句（break）
   * 跳出循环，结束循环
 * 跳转控制语句（continue）
   * 跳过本次循环，继续下次循环
 * 注意： continue只能在循环中进行使用！
 
+![image-20200816223946434](assets/image-20200816223946434.png)
+
+```
+for (int i = 1; i <= 5; i++) {    if (i % 2 == 0) {        //break;        continue;    }    System.out.println(i);}
+
+这个内容简单讲解即可，重点
+
+```
+
+![image-20200816223956152](assets/image-20200816223956152.png)
+
+```
+for (int i = 1; i <= 5; i++) {    if (i % 2 == 0) {        //break;        continue;    }    System.out.println(i);}
+
+这个内容简单讲解即可，重点
+
+```
+
+![image-20200816224005410](assets/image-20200816224005410.png)
+
+```
+for (int i = 1; i <= 5; i++) {    if (i % 2 == 0) {        //break;        continue;    }    System.out.println(i);}
+
+这个内容简单讲解即可，重点
+
+```
+
+![image-20200816224013922](assets/image-20200816224013922.png)
+
+
+
+
+
 ### 4.4 循环嵌套（理解）
+
+![image-20200816224021496](assets/image-20200816224021496.png)
+
+
+
+![image-20200816224024892](assets/image-20200816224024892.png)
+
+
 
 * 循环嵌套概述：在循环中，继续定义循环
 
@@ -435,7 +624,32 @@ public class DoWhileDemo {
 
 ## 5. Random
 
+![image-20200816224031517](assets/image-20200816224031517.png)
+
+
+
 ### 5.1 Random产生随机数（掌握）
+
+![image-20200816224036601](assets/image-20200816224036601.png)
+
+
+
+![image-20200816224040250](assets/image-20200816224040250.png)
+
+```
+Random r = new Random();int number = r.nextInt(100) + 1;while (true) {    Scanner sc = new Scanner(System.in);    System.out.println("请输入你要猜的数据(1-100)：");    int guessNumber = sc.nextInt();    if (guessNumber > number) {        System.out.println("你猜的数据" + guessNumber + "大了");    } else if (guessNumber < number) {        System.out.println("你猜的数据" + guessNumber + "小了");    } else {        System.out.println("恭喜你,猜中了");        break;    }
+
+```
+
+
+
+![image-20200816224053714](assets/image-20200816224053714.png)
+
+
+
+
+
+
 
 * 概述：
 
