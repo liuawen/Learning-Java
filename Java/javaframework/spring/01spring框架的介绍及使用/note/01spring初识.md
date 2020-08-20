@@ -14,7 +14,7 @@
 
 ​		随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统确保架构有条不紊的演进。
 
-![image](E:\lian\spring\image\dubbo-architecture-roadmap.jpg)
+![image](assets/dubbo-architecture-roadmap.jpg)
 
 ​		单一应用架构
 
@@ -38,7 +38,7 @@
 
 ​		2、MVC三层架构
 
-![mvc](E:\lian\spring\image\mvc.png)
+![mvc](assets/mvc.png)
 
 ​		3、使用EJB进行应用的开发，但是EJB是重量级框架（在使用的时候，过多的接口和依赖，侵入性强），在使用上比较麻烦
 
@@ -114,7 +114,7 @@ Spring 是开源的。它拥有一个庞大而且活跃的社区，提供不同�
 
 **spring的模块划分图**
 
-![overview](E:\lian\spring\image\spring-overview.png)
+![overview](f:\Learning-Java\Java\javaframework\spring\image\spring-overview.png)
 
 ```
 模块解释：
@@ -354,15 +354,15 @@ public class SpringDemoTest {
 
 ​		在面向对象设计的软件系统中，底层的实现都是由N个对象组成的，所有的对象通过彼此的合作，最终实现系统的业务逻辑。
 
-![](E:\lian\spring\image\耦合对象.jpg)
+![](assets/耦合对象.jpg)
 
 ​		需要注意的是，在这样的组合关系中，一旦某一个对象出现了问题，那么其他对象肯定回有所影响，这就是耦合性太高的缘故，但是对象的耦合关系是无法避免的，也是必要的。随着应用程序越来越庞大，对象的耦合关系可能越来越复杂，经常需要多重依赖关系，因此，无论是架构师还是程序员，在面临这样的场景的时候，都需要减少这些对象的耦合性。
 
-![](E:\lian\spring\image\2011052709390013.jpg)
+![](assets/2011052709390013.jpg)
 
 ​		耦合的关系不仅仅是对象与对象之间，也会出现在软件系统的各个模块之间，是我们需要重点解决的问题。而为了解决对象之间的耦合度过高的问题，我们就可以通过IOC来实现对象之间的解耦，spring框架就是IOC理论最最广泛的应用。
 
-![](E:\lian\spring\image\ioc.jpg)
+![](assets/ioc.jpg)
 
 ​		从上图中可以看到，当引入了第三方的容器之后，几个对象之间就没有了耦合关系，全部对象都交由容器来控制，这个容器就相当于粘合剂，将系统的对象粘合在一起发挥作用。
 
