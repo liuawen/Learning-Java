@@ -1,0 +1,17 @@
+org.springframework.jdbc
+org.springframework.jdbc.config
+org.springframework.jdbc.core
+org.springframework.jdbc.core.metadata
+org.springframework.jdbc.core.namedparam
+org.springframework.jdbc.core.simple
+org.springframework.jdbc.core.support
+org.springframework.jdbc.datasource
+org.springframework.jdbc.datasource.embedded
+org.springframework.jdbc.datasource.init
+org.springframework.jdbc.datasource.lookup
+org.springframework.jdbc.object
+org.springframework.jdbc.support
+org.springframework.jdbc.support.incrementer
+org.springframework.jdbc.support.lob
+org.springframework.jdbc.support.rowset
+org.springframework.jdbc.support.xml

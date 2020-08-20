@@ -1,0 +1,17 @@
+com.mchange.v2.c3p0
+com.mchange.v2.c3p0.cfg
+com.mchange.v2.c3p0.codegen
+com.mchange.v2.c3p0.debug
+com.mchange.v2.c3p0.example
+com.mchange.v2.c3p0.filter
+com.mchange.v2.c3p0.impl
+com.mchange.v2.c3p0.jboss
+com.mchange.v2.c3p0.management
+com.mchange.v2.c3p0.mbean
+com.mchange.v2.c3p0.servlet
+com.mchange.v2.c3p0.stmt
+com.mchange.v2.c3p0.subst
+com.mchange.v2.c3p0.test
+com.mchange.v2.c3p0.test.junit
+com.mchange.v2.c3p0.util
+com.mchange.v2.resourcepool

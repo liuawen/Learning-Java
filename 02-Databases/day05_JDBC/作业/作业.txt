@@ -1,0 +1,13 @@
+1.JDBC_快速入门
+2.JDBC练习insert语句
+3.JDBC练习_update语句
+4.JDBC练习_update_DDL语句
+5.JDBC各个类详解_ResultSet_基本使用
+6.JDBC各个类详解_ResultSet_遍历结果集
+7.定义一个方法，查询emp表的数据将其封装为对象，然后装载集合，返回。
+8.完成JDBC工具类的编写
+9.JDBC练习_登录案例
+10.练习PreparedStatement
+11.JDBC管理事务_实现
+
+
