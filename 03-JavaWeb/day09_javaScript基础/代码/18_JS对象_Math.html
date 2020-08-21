@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math对象</title>
+    <script >
+
+        /*
+
+           Math：数学对象
+                1. 创建：
+                    * 特点：Math对象不用创建，直接使用。  Math.方法名();
+
+                2. 方法：
+                    random():返回 0 ~ 1 之间的随机数。 含0不含1
+                    ceil(x)：对数进行上舍入。
+                    floor(x)：对数进行下舍入。
+                    round(x)：把数四舍五入为最接近的整数。
+                3. 属性：
+                    PI
+
+         *
+         */
+
+        document.write(Math.PI +"<br>");
+        document.write(Math.random() +"<br>");
+        document.write(Math.round(3.14) +"<br>");
+        document.write(Math.ceil(3.14) +"<br>");
+        document.write(Math.floor(3.14) +"<br>");
+
+        /**
+         * 取 1~100之间的随机整数
+         *      1. Math.random()产生随机数：范围 [0,1)小数
+         *      2. 乘以 100 --> [0,99.9999] 小数
+         *      3. 舍弃小数部分 ：floor --> [0,99] 整数
+         *      4. +1 -->[0,99] 整数 [1,100]
+         *
+         *
+         */
+
+       var number =  Math.floor((Math.random() * 100)) + 1;
+       document.write(number);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

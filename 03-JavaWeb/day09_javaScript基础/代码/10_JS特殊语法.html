@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>特殊语法</title>
+    <script>
+        //1. 语句以;结尾，如果一行只有一条语句则 ;可以省略 (不建议)
+        var a = 3;
+        //alert(a);
+
+        /*
+            2. 变量的定义使用var关键字，也可以不使用
+                * 用： 定义的变量是局部变量
+                * 不用：定义的变量是全局变量(不建议)
+         */
+
+     /*   b = 4;
+        alert(b);*/
+        var b ;
+        function fun(){
+            b = 4;
+        }
+        fun();
+
+        alert(b);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比较运算符</title>
+    <script>
+        /*
+         * 逻辑运算符:
+         *  &&: 与（短路）
+         *  ||: 或 (短路)
+         *  !：非
+         *      * 其他类型转boolean：
+         *          1. number：0或NaN为假，其他为真
+         *          2. string：除了空字符串("")，其他都是true
+         *          3. null&undefined:都是false
+         *          4. 对象：所有对象都为true
+         *
+         *
+         */
+        var flag = true;
+        document.write(flag+"<br>");
+        document.write(!flag+"<br>");
+
+        document.write("<hr>");
+        //number
+        var num = 3;
+        var num2 = 0;
+        var num3 = NaN;
+        document.write(!!num+"<br>");
+        document.write(!!num2+"<br>");
+        document.write(!!num3+"<br>");
+
+        /*while(1){
+
+        }*/
+
+        document.write("<hr>");
+        //string
+
+        var str1 = "abc";
+        var str2 = "";
+        document.write(!!str1+"<br>");
+        document.write(!!str2+"<br>");
+
+        document.write("<hr>");
+
+
+        // null & undefined
+        var obj = null;
+        var obj2;
+        document.write(!!obj+"<br>");
+        document.write(!!obj2+"<br>");
+
+        document.write("<hr>");
+
+        // null & undefined
+        var date = new Date();
+        document.write(!!date+"<br>");
+
+        document.write("<hr>");
+
+
+
+        obj = "123";
+        if(obj != null && obj.length > 0){//防止空指针异常
+            alert(123);
+        }
+        //js中可以这样定义，简化书写。
+        if(obj){//防止空指针异常
+            alert(111);
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
