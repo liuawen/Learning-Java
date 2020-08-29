@@ -1,0 +1,26 @@
+server:
+  port: 9013
+spring:
+  application:
+    name: tensquare-encrypt
+zuul:
+  routes:
+    tensquare-base: #基础
+      path: /base/** #配置请求URL的请求规则
+      serviceId: tensquare-base #指定Eureka注册中心中的服务id
+      strip-prefix: true
+      sentiviteHeaders:
+      customSensitiveHeaders: true
+    tensquare-article: #基础
+      path: /article/** #配置请求URL的请求规则
+      serviceId: tensquare-article #指定Eureka注册中心中的服务id
+      strip-prefix: true
+      sentiviteHeaders:
+      customSensitiveHeaders: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    prefer-ip-address: true
