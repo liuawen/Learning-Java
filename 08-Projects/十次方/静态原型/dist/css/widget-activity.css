@@ -1,0 +1,11 @@
+.activity {
+  margin-bottom: 10px;
+}
+
+.activity .acti {
+  margin-bottom: 8px;
+}
+
+.activity .acti:last-child {
+  margin-bottom: 0;
+}

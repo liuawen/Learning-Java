@@ -1,0 +1,277 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.tag-intro {
+  margin-bottom: 10px;
+  padding: 15px;
+  line-height: 28px;
+}
+
+.tag-intro .title {
+  padding-bottom: 5px;
+}
+
+.tag-intro .title img {
+  width: 24px;
+  height: 24px;
+  vertical-align: top;
+  padding-right: 5px;
+}
+
+.tag-intro .title .guanzhu {
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.tag-intro .words {
+  font-size: 14px;
+}
+
+.tabtags-bottom-line .author {
+  margin-bottom: 5px;
+}
+
+.tabtags-bottom-line .author .name {
+  padding-right: 10px;
+  color: #0077cc;
+}
+
+.tabtags-bottom-line .sui-tag {
+  margin-bottom: 0;
+}
+
+.tabtags-bottom-line .sui-tag li {
+  margin-right: 10px;
+  border: 0;
+  border-radius: 4px;
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.tabtags-bottom-line .info .number {
+  text-align: right;
+}
+
+.tabtags-bottom-line .info .number .border {
+  display: inline-block;
+  padding: 7px 10px;
+  margin-right: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.tabtags-bottom-line .info .number .useful {
+  border: 1px solid #f06c4c;
+}
+
+.tabtags-bottom-line .info .number .useful .usenum {
+  color: #f06c4c;
+}
+
+.tabtags-bottom-line .info .number .answer {
+  border: 1px solid #5fba7d;
+}
+
+.tabtags-bottom-line .info .number .answer .ansnum {
+  color: #5fba7d;
+}
+
+.tabtags-bottom-line .info .brower {
+  padding-right: 10px;
+  margin-top: 5px;
+  color: #a8a8a8;
+}
+
+.tabtags-bottom-line .sui-nav {
+  margin-bottom: 5px;
+  border-bottom: 0;
+  padding-left: 0;
+  background-color: #fff;
+}
+
+.tabtags-bottom-line .sui-nav li > a {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 2px solid transparent;
+  line-height: 36px;
+  font-size: 16px;
+  color: #000;
+}
+
+.tabtags-bottom-line .sui-nav li > a .fa {
+  padding-right: 6px;
+}
+
+.tabtags-bottom-line .sui-nav li > a:hover {
+  color: #e64620;
+}
+
+.tabtags-bottom-line .sui-nav > .active > a {
+  font-weight: bold;
+  border: 0;
+  border-bottom: 2px solid #e64620;
+  color: #000;
+}
+
+.tabtags-bottom-line .qa-list .show-type {
+  margin-bottom: 5px;
+  padding: 8px 15px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.tabtags-bottom-line .qa-list .show-type .sui-btn {
+  font-family: '微软雅黑';
+  background-color: #fff;
+}
+
+.tabtags-bottom-line .qa-list .show-type .sui-btn.active {
+  background-color: #e1e1e1;
+}
+
+.tabtags-bottom-line .qa-list .show-type .order {
+  margin-right: 10px;
+  margin-left: 15px;
+  line-height: 20px;
+  color: #999;
+}
+
+.tabtags-bottom-line .qa-list .qa-item {
+  position: relative;
+  padding: 11px 22px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record {
+  margin-right: 20px;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record .number {
+  text-align: right;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record .number .border {
+  display: inline-block;
+  padding: 3px 10px;
+  margin-right: 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 10px;
+  margin-bottom: 7px;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record .number .useful {
+  border: 1px solid #f06c4c;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record .number .useful .usenum {
+  color: #f06c4c;
+  font-size: 16px;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record .number .answer {
+  border: 1px solid #5fba7d;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .record .number .answer .ansnum {
+  color: #5fba7d;
+  font-size: 16px;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .info .question .author {
+  margin-bottom: 8px;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .info .question .author .name {
+  padding-right: 10px;
+  color: #0077cc;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .info .question .title {
+  float: left;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.tabtags-bottom-line .qa-list .qa-item .info .question .sui-tag {
+  float: left;
+  padding-top: 0;
+}
+
+.tabtags-bottom-line .qa-list .sui-pagination {
+  text-align: center;
+}
+
+.tabtags-bottom-line .qa-list .sui-pagination ul .active a {
+  background-color: #f06c4c;
+  color: #fff;
+  border-color: #f06c4c;
+}
+
+.tabtags-bottom-line .qa-list .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #f06c4c;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.tabtags-bottom-line .qa-list .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #f06c4c;
+  font-size: 15px;
+}
+
+.tabtags-bottom-line .qa-list .sui-pagination ul > li > a:hover, .tabtags-bottom-line .qa-list .sui-pagination ul > li > a:focus {
+  border-color: #f06c4c;
+  background-color: #f06c4c;
+  color: #fff;
+}
+
+.tabtags-bottom-line .article-item {
+  padding: 14px 20px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.tabtags-bottom-line .article-item .info {
+  padding-right: 20px;
+}
+
+.tabtags-bottom-line .article-item .info .border {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.tabtags-bottom-line .article-item .article .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tabtags-bottom-line .article-item .article .desc {
+  margin: 10px 0;
+  line-height: 24px;
+}
+
+.tabtags-bottom-line .article-item .article .author img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+
+.tabtags-bottom-line .baike {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.tabtags-bottom-line .baike p {
+  text-indent: 28px;
+}

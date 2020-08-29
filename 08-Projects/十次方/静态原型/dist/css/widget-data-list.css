@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.data-list .headline .headline-item {
+  padding: 20px 25px;
+  margin-bottom: 8px;
+  list-style-type: none;
+  background-color: #fff;
+  color: #696969;
+}
+
+.data-list .headline .headline-item .indexImg {
+  margin-right: 10px;
+}
+
+.data-list .headline .headline-item h3 {
+  margin-bottom: 8px;
+  margin-top: 0;
+  font-weight: normal;
+  color: #000;
+}
+
+.data-list .headline .headline-item h3 .vip {
+  margin-top: -4px;
+}
+
+.data-list .headline .headline-item h5 {
+  margin-top: 0;
+  font-family: "微软雅黑";
+  font-weight: normal;
+}
+
+.data-list .headline .headline-item h5 .attention {
+  padding-right: 30px;
+}
+
+.data-list .headline .headline-item h5 .attention .attentionText {
+  border-right: 1px solid #ccc;
+  padding-right: 15px;
+  cursor: pointer;
+  color: #e64620;
+}
+
+.data-list .headline .headline-item h5 .attention .beforeclose {
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 6px;
+}
+
+.data-list .headline .headline-item h5 .attention .beforeclose .delete {
+  line-height: 17px;
+  cursor: pointer;
+}
+
+.data-list .headline .headline-item h5 .attention .beforeclose .nolike {
+  color: #fff;
+  opacity: 0;
+}
+
+.data-list .headline .headline-item h5 .attention .afterclose {
+  background-color: #e64620;
+}
+
+.data-list .headline .headline-item h5 .authorName {
+  margin-right: 20px;
+}
+
+.data-list .headline .headline-item h5 .authorName img {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  margin-bottom: 3px;
+  vertical-align: bottom;
+  border-radius: 4px;
+}
+
+.data-list .headline .headline-item .content {
+  margin-top: 25px;
+  margin-bottom: 0;
+  font-family: '宋体';
+}
+
+.data-list .stop {
+  padding: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  background-color: #e64620;
+}
+
+.data-list .stop a {
+  color: #fff;
+  text-decoration: none;
+}

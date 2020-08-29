@@ -1,0 +1,75 @@
+/*
+ * colors variables
+ */
+.form {
+  width: 75%;
+  margin: 0 auto;
+  font-family: 'Microsoft Yahei';
+}
+
+.form .loginsign-title {
+  margin-bottom: 20px;
+  font-weight: normal;
+  font-size: 20px;
+  color: #676666;
+}
+
+.form .sui-form .control-label {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.form .sui-form input[type="text"] {
+  height: 32px;
+  padding-left: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+  box-shadow: none;
+  color: #999;
+}
+
+.form .sui-form .control-group {
+  margin-bottom: 15px;
+}
+
+.form .sui-form .control-group label .type-text {
+  font-size: 16px;
+  font-family: 'icon-pc' ,'Microsoft Yahei';
+  color: #666;
+}
+
+.form .sui-form .control-group .msg-input {
+  width: 250px;
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.form .sui-form .control-group .msg-btn {
+  border-color: #ccc;
+  border-radius: 0 5px 5px 0;
+  line-height: 32px;
+  background-color: transparent;
+  font-family: 'Microsoft Yahei';
+}
+
+.form .sui-form .control-group.btn-signup {
+  width: 357px;
+  margin-top: 25px;
+}
+
+.form .sui-form .control-group .btn-yes {
+  padding: 6px 15px;
+  margin-left: 100px;
+  border-radius: 3px;
+  font-family: 'Microsoft Yahei';
+  font-size: 20px;
+}
+
+.form .sui-form .different .getcode {
+  width: 248px;
+}
+
+.form .sui-form .different .email {
+  display: none;
+}

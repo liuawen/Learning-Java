@@ -1,0 +1,108 @@
+/*
+ * colors variables
+ */
+.myfocus-list {
+  width: 100%;
+  float: left;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.myfocus-list .fr {
+  float: right;
+}
+
+.myfocus-list .nav-tabs {
+  margin-bottom: 5px;
+  padding: 0;
+  margin-left: 5px;
+  border-bottom: 0;
+  background-color: #fff;
+}
+
+.myfocus-list .nav-tabs li a {
+  padding: 0 20px;
+  border: 0;
+  line-height: 38px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.myfocus-list .nav-tabs li a:hover {
+  color: #e64620;
+}
+
+.myfocus-list .nav-tabs > .active > a {
+  border: 0;
+  border-bottom: 2px solid #e64620;
+  color: #e64620;
+  background-color: transparent;
+}
+
+.myfocus-list .nav-tabs > .active > a:hover {
+  color: #e64620;
+  background-color: transparent;
+}
+
+.myfocus-list .tab-content {
+  margin-left: 5px;
+  border: 0;
+  background-color: #fff;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item,
+.myfocus-list .tab-content .focustag-list .pro-item {
+  padding-right: 15px;
+  margin-bottom: 10px;
+  list-style: none;
+  border-bottom: 1px solid #ECE5E5;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item .intro .title,
+.myfocus-list .tab-content .focustag-list .pro-item .intro .title {
+  font-size: 14px;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item .sui-tag,
+.myfocus-list .tab-content .focustag-list .pro-item .sui-tag {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item .sui-tag li,
+.myfocus-list .tab-content .focustag-list .pro-item .sui-tag li {
+  border: 0;
+  border-radius: 4px;
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item .sui-tag li:hover,
+.myfocus-list .tab-content .focustag-list .pro-item .sui-tag li:hover {
+  background-color: #7CBAEC;
+  color: #fff;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item .btns span,
+.myfocus-list .tab-content .focustag-list .pro-item .btns span {
+  text-align: center;
+  display: block;
+  color: #999;
+}
+
+.myfocus-list .tab-content .focuspro-list .pro-item .btns .btn-cancel,
+.myfocus-list .tab-content .focustag-list .pro-item .btns .btn-cancel {
+  margin-top: 3px;
+  padding: 3px 21px;
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+}
+
+.myfocus-list .tab-content .focustag-list .pro-item {
+  padding-bottom: 10px;
+}
+
+.myfocus-list .tab-content .focustag-list .sui-tag {
+  margin: 0 !important;
+  padding: 0 !important;
+}

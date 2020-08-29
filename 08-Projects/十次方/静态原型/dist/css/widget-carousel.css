@@ -1,0 +1,21 @@
+.carousel {
+  margin-bottom: 10px;
+}
+
+.carousel .sui-carousel {
+  margin-bottom: 0;
+}
+
+.carousel .sui-carousel .carousel-indicators {
+  right: 40%;
+  top: auto;
+  bottom: 15px;
+}
+
+.carousel .sui-carousel .carousel-indicators li {
+  cursor: pointer;
+}
+
+.carousel .sui-carousel .carousel-indicators .active {
+  width: 18px;
+}

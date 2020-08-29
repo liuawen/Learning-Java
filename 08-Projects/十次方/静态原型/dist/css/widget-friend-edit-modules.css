@@ -1,0 +1,111 @@
+/*
+ * colors variables
+ */
+.friend-edit-modules {
+  margin-top: 10px;
+}
+
+.friend-edit-modules .item {
+  padding: 11px 16px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.friend-edit-modules h4 {
+  margin-bottom: 12px;
+  line-height: 26px;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.friend-edit-modules h4 span {
+  float: right;
+  cursor: pointer;
+  font-size: 15px;
+  color: #b3b8bb;
+}
+
+.friend-edit-modules li {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-right: 10px;
+}
+
+.friend-edit-modules .edit-add {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.friend-edit-modules .edit-add .sui-form {
+  margin-bottom: 10px;
+}
+
+.friend-edit-modules .edit-add .sui-form .input-xxlarge {
+  font-family: inherit;
+}
+
+.friend-edit-modules .edit-add .btn-upadd {
+  line-height: 26px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.friend-edit-modules .edit-add .often li {
+  background: #fff;
+  color: #333333;
+  border: 1px solid #e0e3e4;
+}
+
+.friend-edit-modules .edit-add .btn-submit {
+  margin-top: 10px;
+}
+
+.friend-edit-modules .edit-add .btn-submit .sui-btn {
+  line-height: 26px;
+  margin-right: 10px;
+}
+
+.friend-edit-modules .edit-add .btn-submit .btn-save {
+  background-color: #0077cc;
+  color: #fff;
+  font-family: inherit;
+}
+
+.friend-edit-modules .edit-add .btn-submit .btn-cancel {
+  font-family: inherit;
+}
+
+.friend-edit-modules .places li {
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.friend-edit-modules .tags li {
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.friend-edit-modules .loves .sports {
+  margin-bottom: 10px;
+}
+
+.friend-edit-modules .loves .sports li {
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.friend-edit-modules .loves .songs {
+  margin-bottom: 10px;
+}
+
+.friend-edit-modules .loves .songs li {
+  background: #00a8ff;
+  color: #ffffff;
+}
+
+.friend-edit-modules .loves .points li {
+  background: #45a4d6;
+  color: #ffffff;
+}

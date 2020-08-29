@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.job-position .job-type {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  background-color: #fff;
+}
+
+.job-position .head .title {
+  border-left: 2px solid #55cbc4;
+  padding-left: 15px;
+  font-size: 16px;
+  color: #55cbc4;
+}
+
+.job-position .head .more a {
+  font-size: 14px;
+  color: #999;
+}
+
+.job-position .job-list {
+  padding: 18px;
+  list-style: none;
+}
+
+.job-position .job-list .job-item {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.job-position .job-list .job-item p {
+  line-height: 28px;
+}
+
+.job-position .job-list .job-item .name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 25px;
+  color: #000;
+}
+
+.job-position .job-list .job-item .name a {
+  color: #000;
+  text-decoration: none;
+}
+
+.job-position .job-list .job-item .city {
+  color: #999;
+  font-size: 14px;
+}
+
+.job-position .job-list .job-item .need {
+  font-size: 16px;
+}
+
+.job-position .job-list .job-item .need .money {
+  color: #e64620;
+  font-weight: bold;
+}
+
+.job-position .job-list .job-item .company {
+  color: #999;
+  font-size: 14px;
+}

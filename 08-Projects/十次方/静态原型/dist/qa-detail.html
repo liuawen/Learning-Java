@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./img/asset-favicon.ico">
+    <title>社交-问答详情</title>
+
+    <!-- 页面 css js -->
+    <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/widget-base.css" />
+    <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css" />
+    <link rel="stylesheet" type="text/css" href="./css/page-sj-qa-detail.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--引用组件-->
+        <!--头部导航-->
+<header>
+  <div class="sui-navbar">
+    <div class="navbar-inner">
+      <a href="index-logined.html" class="sui-brand"><img src="./img/asset-logo-black.png" alt="社交"/></a>
+      <ul class="sui-nav">
+        <li class="active"><a href="./headline-logined.html">头条</a></li>
+        <li><a href="./qa-logined.html" >问答</a></li>
+        <li><a href="./activity-index.html" >活动</a></li>
+        <li><a href="./makeFriends-index.html" >交友</a></li>
+        <li><a href="./spit-index.html" >吐槽</a></li>
+        <li><a href="./recruit-index.html"  >招聘</a></li>
+      </ul>
+      <form class="sui-form sui-form pull-left">
+        <input type="text" placeholder="输入关键词...">
+        <span class="btn-search fa fa-search"></span>
+      </form>
+      <div class="sui-nav pull-right info">
+          <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li>
+          <li class="hover">
+            <span class="fa fa-plus "></span>
+            <ul class="hoverinfo">
+              <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li>
+              <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li>
+              <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li>
+              <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li>
+            </ul>
+          </li>
+          <li><a href="./person-homepage.html" target="_blank" class="homego"><img src="./img/widget-photo.png" alt="用户头像"></a></li> 
+      </div>
+  </div>
+  </div>
+  
+</header>
+    
+
+    </div>
+    <div class="tab-nav ">
+    <div class="wrapper">
+        <ul class="fl sui-nav nav-tabs navbar-dark">
+            <li class="active"><a href="#index" data-toggle="tab">首页</a></li>
+            <li><a href="#php" data-toggle="tab">Php</a></li>
+            <li><a href="#js" data-toggle="tab">Javascript </a></li>
+            <li><a href="#python" data-toggle="tab">Python</a></li>
+            <li><a href="#java" data-toggle="tab">Java</a></li>
+        </ul>
+        <span class="fr more"><a href="./qa-allTag.html" target="_blank">更多</a></span>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+    <!--两列布局-->
+    <div class="wrapper qa-content">
+        
+<div class="qa-title">
+    <div class="fl title">
+       <h2>PHP进阶的有关问题</h2>
+       <p>
+           <span class="tag">PHPPP</span>
+           <span class="author">PHP大牛</span>
+           <span>2小时前提问 · 30分钟前更新</span>
+       </p>
+    </div>
+    <div class="fr share">
+        <h4>分享到：</h4>
+        <ul class="share-go">
+            <li><img src="./img/widget-weibo.png" alt=""></li>
+            <li><img src="./img/widget-weixin.png" alt=""></li>
+            <li><img src="./img/widget-weibo.png" alt=""></li>
+            <li><img src="./img/widget-weixin.png" alt=""></li>
+        </ul>
+        
+    </div>
+    <div class="clearfix"></div>
+</div>
+        <div class="fl left-list">
+            <div class="problem-detail">
+    <div class="title-intro">
+        <div class="sidebar">
+
+            <button type="button" class="like" data-placement="right" data-toggle="tooltip" title="问题对人有帮助，内容完整，我也想知道答案"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+            <span class="count">0</span>
+            <button type="button" class="hate" data-placement="right" data-toggle="tooltip" title="问题没有实际价值，缺少关键内容，没有改进余地"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+
+        </div>
+        <div class="title">
+            <div class="detail">
+                <p>比如，我有一个表单页，需要填tit,tel以及上传的文件</p>
+                <pre><code>&lt;div class="box"&gt;
+    &lt;input type="text" value="标题" name="tit" class="tit"&gt;
+    &lt;input type="text" value="联系方式" name="tel" class="tel"&gt;
+    &lt;input type="file" multiple="multiple" value="" name="file" class="file"&gt;
+    &lt;div class="sub-btn"&gt;提交&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+var tit=document.querySelector(".tit").value,
+    tel=tit=document.querySelector(".tit").value,
+    file=document.querySelector(".file"),
+    btn=document.querySelector(".sub-btn"),
+    xhr=new XMLHttpRequest(),
+    data={
+        tit:tit,
+        tel:tel,
+        file:null
+    },
+    _file=new FormData()
+    ;
+ btn.onclick=function(){
+     //先测试1个文件;
+     file.files[0].formEnctype = "multipart/form-data";
+     _file.append("file", file.files[0]);
+     data.file=_file;
+     xhr.open("post","http://10.10.1.110/getInfo.do");
+     xhr.send(data);//----A处
+ }
+&lt;/script&gt;
+</code></pre>
+                <p>在chrome network中看request playload 中显示的是 [object object],并不是</p>
+                <pre><code>------WebKitFormBoundaryBcQMnHoeJT0GafEe
+Content-Disposition: form-data; name="file"; filename="xxx.zip"
+Content-Type: application/octet-stream
+------WebKitFormBoundaryBcQMnHoeJT0GafEe--
+            </code></pre>
+                <p>这类信息。</p>
+                <p>是上传文件必须和传递其他文本数据分开吗，还是我的方法使用错误？</p>
+            </div>
+            <div class="clearfix"></div>
+            <div class="operate">
+                <span class="time">1小时前提问</span>
+                <span class="comment">评论</span>
+                <span class="edit">编辑</span>
+                <span class="jubao">举报</span>
+            </div>
+            <div class="comment-box">
+                <form class="comment-form">
+                    <textarea row="1" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题"></textarea>
+                    <button type="submit" class="sui-btn submit-comment">提交评论</button>
+                </form>
+                <div class="tips">
+                    <p>评论支持部分 Markdown 语法：**bold**_italic_[link](http://example.com)> 引用`code`- 列表。 同时，被你 @ 的用户也会收到通知</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="answer-intro">
+        <h4 class="answer-num">1个回答</h4>
+
+        <div class="sidebar">
+            <button type="button" class="like" data-placement="right" data-toggle="tooltip" title="问题对人有帮助，内容完整，我也想知道答案"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+            <span class="count">0</span>
+            <button type="button" class="hate" data-placement="right" data-toggle="tooltip" title="问题没有实际价值，缺少关键内容，没有改进余地"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+        </div>
+        <div class="title">
+            <p>不需要分开传的 你看到的是由于你使用了 new FormData()</p>
+            <div class="operate">
+                <div class="tool pull-left">
+                    <span class="time">1小时前提问</span>
+                    <span class="comment">评论</span>
+                    <span class="edit">编辑</span>
+                    <span class="jubao">举报</span>
+                </div>
+
+                <div class="myanswer pull-right">
+                    <img src="./img/widget-photo.jpg" alt=""> <a href="#">我的回答</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="comment-box">
+                <form class="comment-form">
+                    <textarea row="1" placeholder="使用评论询问更多信息或提出修改意见，请不要在评论里回答问题"></textarea>
+                    <button type="submit" class="sui-btn submit-comment">提交评论</button>
+                </form>
+                <div class="tips">
+                    <p>评论支持部分 Markdown 语法：**bold**_italic_[link](http://example.com)> 引用`code`- 列表。 同时，被你 @ 的用户也会收到通知</p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="edit-answer">
+        <h4>撰写答案</h4>
+        <div class="edit-tip">
+            <h4>你正在撰写答案</h4>
+            <p>如果你是要对问题或其他回答进行点评或询问，请使用“评论”功能。</p>
+        </div>
+    </div>
+</div>
+<!-- <script>
+    $(function () {
+        $(".comment").click(function () {
+            $(this).parents(".operate").siblings(".comment-box").toggle();
+        });
+        $(".sidebar .fa").hover(function () {
+            $(this).css("color", "#e64620");
+        }, function () {
+            $(this).css("color", "#000");
+        })
+    })
+
+</script> -->
+        </div>
+        <div class="fl right-tag">
+            <div class="similar-problem">
+    <h3 class="title">相似问题</h3>
+    <ul class="problem-list">
+        <li class="list-item">
+            <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+            <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+        <li class="list-item">
+            <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+            <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+         <li class="list-item">
+            <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+            <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+         <li class="list-item">
+            <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+            <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+    </ul>
+</div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-bottom">
+    <div class="link">
+        <dl>
+            <dt>网站相关</dt>
+            <dd>关于我们</dd>
+            <dd>服务条款</dd>
+            <dd>帮助中心</dd>
+            <dd>编辑器语法</dd>
+        </dl>
+        <dl>
+            <dt>常用链接</dt>
+            <dd>传智播客</dd>
+            <dd>传智论坛</dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd>联系我们</dd>
+            <dd>加入我们</dd>
+            <dd>建议反馈</dd>
+        </dl>
+        <dl>
+            <dt>关注我们</dt>
+            <dd>微博</dd>
+            <dd>twitter</dd>
+        </dl>
+
+        <div class="xuke">
+            <h3>内容许可</h3>
+            <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p>
+            <p>本站由 传智研究院 提供更新服务</p>
+        </div>
+    </div>
+
+
+    <p class="Copyright">Copyright © 2017 传智问答社区 当前版本 0.0.1</p>
+</div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+// $(function(){
+//   $(".hover").hover(function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "show"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#e64620");
+//   },function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "hide"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#000");
+//   })
+// })
+</script>
+</body>

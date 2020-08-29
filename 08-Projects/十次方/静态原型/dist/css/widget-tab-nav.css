@@ -1,0 +1,45 @@
+/*
+ * colors variables
+ */
+.tab-nav {
+  background: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tab-nav .sui-nav {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.tab-nav .sui-nav.navbar-dark {
+  padding-left: 0;
+  border-bottom: 0;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li {
+  margin-bottom: -2px;
+  line-height: 36px;
+}
+
+.tab-nav .sui-nav.navbar-dark li a {
+  padding-left: 35px;
+  padding-right: 35px;
+  line-height: 36px;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li.active a {
+  border: 0;
+  border-radius: 0;
+  background-color: #e64620;
+}
+
+.tab-nav .more {
+  line-height: 40px;
+}
+
+.tab-nav .more a {
+  color: #fff;
+}

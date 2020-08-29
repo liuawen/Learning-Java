@@ -1,0 +1,42 @@
+/*
+ * colors variables
+ */
+.qa-title {
+  padding: 15px 25px 15px 20px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.qa-title .title h2 {
+  margin-bottom: 10px;
+}
+
+.qa-title .title .tag {
+  padding: 1px 7px;
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.qa-title .title .author {
+  font-weight: bold;
+  color: #0077cc;
+}
+
+.qa-title .share {
+  height: 60px;
+}
+
+.qa-title .share .share-go {
+  padding-top: 15px;
+  list-style: none;
+}
+
+.qa-title .share .share-go li {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.qa-title .share .share-go li img {
+  width: 20px;
+  height: 20px;
+}

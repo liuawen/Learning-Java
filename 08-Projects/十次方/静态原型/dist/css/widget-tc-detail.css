@@ -1,0 +1,142 @@
+/*
+ * colors variables
+ */
+.tc-detail .fa {
+  cursor: pointer;
+}
+
+.tc-detail .detail-tit {
+  margin-bottom: 8px;
+  padding: 6px 20px;
+  line-height: 26px;
+  background-color: #fff;
+}
+
+.tc-detail .detail-tit .detail-author {
+  color: #999;
+}
+
+.tc-detail .detail-tit .detail-content {
+  font-size: 14px;
+}
+
+.tc-detail .detail-tit .detail-content img {
+  margin-top: 6px;
+}
+
+.tc-detail .detail-tit .detail-tool {
+  overflow: hidden;
+  padding-right: 6px;
+}
+
+.tc-detail .detail-tit .detail-tool ul {
+  float: right;
+  list-style: none;
+}
+
+.tc-detail .detail-tit .detail-tool ul li {
+  margin-left: 35px;
+  display: inline-block;
+  clear: both;
+  color: #999;
+  font-size: 12px;
+}
+
+.tc-detail .detail-tit .detail-tool ul li a {
+  cursor: pointer;
+}
+
+.tc-detail .detail-tit .detail-tool ul li .fa {
+  font-size: 16px;
+}
+
+.tc-detail .comment span {
+  color: #999;
+}
+
+.tc-detail .comment span img {
+  width: 25px;
+  height: 25px;
+  border-radius: 6px;
+}
+
+.tc-detail .form {
+  margin-top: 10px;
+}
+
+.tc-detail .form .remark {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.tc-detail .form .remark .sui-btn {
+  padding: 5px 20px;
+  font-size: 14px;
+}
+
+.tc-detail .comment-area {
+  background-color: #fff;
+}
+
+.tc-detail .comment-area .comment-tit {
+  padding: 10px 0;
+}
+
+.tc-detail .comment-area .comment-tit span {
+  padding-left: 18px;
+  font-size: 16px;
+  border-left: 2px solid #e64620;
+}
+
+.tc-detail .comment-area .comment-list {
+  padding: 10px 30px;
+  overflow: hidden;
+  list-style: none;
+}
+
+.tc-detail .comment-area .comment-list li {
+  position: relative;
+  border-bottom: 1px solid #E8E8E8;
+  overflow: hidden;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
+}
+
+.tc-detail .comment-area .comment-list li .item-photo {
+  float: left;
+  margin-right: 15px;
+}
+
+.tc-detail .comment-area .comment-list li .item-photo img {
+  border-radius: 8px;
+  vertical-align: middle;
+}
+
+.tc-detail .comment-area .comment-list li .item-content {
+  float: left;
+  width: 85%;
+  line-height: 26px;
+}
+
+.tc-detail .comment-area .comment-list li .item-content .author {
+  color: #999999;
+}
+
+.tc-detail .comment-area .comment-list li .item-content .content {
+  font-size: 14px;
+}
+
+.tc-detail .comment-area .comment-list li .item-thumb {
+  position: absolute;
+  top: 25%;
+  right: 0;
+  font-size: 12px;
+  color: #999999;
+}
+
+.tc-detail .comment-area .comment-list li .item-thumb .fa {
+  cursor: pointer;
+  font-size: 16px;
+}

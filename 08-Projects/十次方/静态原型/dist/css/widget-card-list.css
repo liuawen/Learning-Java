@@ -1,0 +1,104 @@
+/*
+ * colors variables
+ */
+.card-list {
+  margin-top: 15px;
+}
+
+.card-list .head {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  background-color: #fff;
+}
+
+.card-list .head .title {
+  padding-left: 15px;
+  margin: 0;
+  border-left: 2px solid #e64620;
+  color: #e64620;
+}
+
+.card-list .list ul .card-item {
+  padding: 14px;
+  margin-bottom: 5px;
+  width: 270px;
+  font-size: 14.35px;
+  list-style-type: none;
+  background-color: #fff;
+}
+
+.card-list .list ul .card-item:first-child {
+  box-shadow: 0 0 5px #C0C0C0;
+}
+
+.card-list .list ul .card-item:last-child {
+  margin-bottom: 0;
+}
+
+.card-list .list ul .card-item .attention {
+  padding: 0 6px;
+}
+
+.card-list .list ul .card-item .attention .degree {
+  font-size: 16px;
+  color: #e64620;
+}
+
+.card-list .list ul .card-item .attention .fa-heart-o {
+  color: #e64620;
+  padding-right: 4px;
+  cursor: pointer;
+}
+
+.card-list .list ul .card-item .attention .fa-heart {
+  color: #e64620;
+  padding-right: 4px;
+}
+
+.card-list .list ul .card-item .attention .fa-times {
+  border-left: 1px solid #B8B8B8;
+  padding-left: 4px;
+  color: #999;
+  cursor: pointer;
+}
+
+.card-list .list ul .card-item .img {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card-list .list ul .card-item .info .photo {
+  margin-right: 10px;
+}
+
+.card-list .list ul .card-item .info .photo img {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+}
+
+.card-list .list ul .card-item .info .intro .name {
+  line-height: 20px;
+  color: #696969;
+  font-size: 12px;
+}
+
+.card-list .list ul .card-item .info .intro .date {
+  padding-left: 15px;
+}
+
+.card-list .list .btn-more {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 0;
+  font-size: 14px;
+  border-color: #e64620;
+  color: #e64620;
+  background-color: #fff;
+}
+
+.card-list .list .btn-more:hover {
+  background-color: #e64620;
+  color: #fff;
+}

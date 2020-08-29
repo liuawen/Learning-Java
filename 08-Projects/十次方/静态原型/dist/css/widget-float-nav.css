@@ -1,0 +1,20 @@
+/*
+ * colors variables
+ */
+.float-nav .sui-nav.nav-tabs.tab-vertical {
+  width: 163px;
+  border: 0;
+}
+
+.float-nav .sui-nav.nav-tabs.tab-vertical li {
+  text-align: center;
+}
+
+.float-nav .sui-nav.nav-tabs.tab-vertical li.active a {
+  border-radius: 7px;
+  background: #e64620;
+}
+
+.float-nav .sui-nav.nav-tabs.tab-vertical li a {
+  line-height: 40px;
+}

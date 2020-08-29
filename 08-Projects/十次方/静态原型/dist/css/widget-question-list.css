@@ -1,0 +1,69 @@
+/*
+ * colors variables
+ */
+.question-list {
+  margin-top: 15px;
+  padding: 15px 0 0;
+  background-color: #fff;
+}
+
+.question-list .title {
+  padding-left: 15px;
+  margin: 0;
+  border-left: 2px solid #e64620;
+  color: #e64620;
+}
+
+.question-list .lists ul {
+  padding: 15px;
+}
+
+.question-list .lists ul .list-item {
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  list-style-type: none;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.question-list .lists ul .list-item:first-child .list-title {
+  font-weight: bold;
+}
+
+.question-list .lists ul .list-item:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.question-list .lists ul .list-item.top .list-title {
+  font-weight: bold;
+}
+
+.question-list .lists ul .list-item .list-title {
+  font-size: 15px;
+}
+
+.question-list .lists ul .list-item .authorName img {
+  width: 18px;
+  height: 18px;
+  margin-top: -4px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.question-list .lists ul .list-item .authorInfo {
+  line-height: 34px;
+}
+
+.question-list .lists .btn-more {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 0;
+  font-size: 14px;
+  border-color: #e64620;
+  color: #e64620;
+}
+
+.question-list .lists .btn-more:hover {
+  background-color: #e64620;
+  color: #fff;
+}

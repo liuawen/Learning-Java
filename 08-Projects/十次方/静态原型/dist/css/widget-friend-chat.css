@@ -1,0 +1,110 @@
+.friend-chat {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff;
+}
+
+.friend-chat h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.friend-chat .chat-bg {
+  background: #f9fcfd;
+  height: 100%;
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+.friend-chat .chat-bg .chat-box {
+  height: 100%;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.friend-chat .chat-bg .chat-box .chat-trip {
+  display: block;
+  line-height: 26px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background-color: #F4F4F4;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv {
+  padding: 20px;
+  min-height: 300px;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .bubbleItem {
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  clear: both;
+  overflow: hidden;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .leftBubble {
+  position: relative;
+  background-color: #EFF6F9;
+  margin-left: 1rem;
+  line-height: 36px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .rightBubble {
+  position: relative;
+  margin-right: 1rem;
+  float: right;
+  background-color: #6F83FF;
+  color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 7px;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .rightBubble .topLevel {
+  position: absolute;
+  top: 1rem;
+  right: -8px;
+  border-bottom: 10px solid #6F83FF;
+  border-right: 10px solid transparent;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .doctor-head {
+  float: left;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .doctor-head img {
+  border-radius: 10px;
+}
+
+.friend-chat .chat-bg .chat-edit {
+  border-top: 1px solid #eee;
+  background: #fff;
+  padding: 10px 5% 10px 3%;
+}
+
+.friend-chat .chat-bg .chat-edit .chat-info {
+  width: 100%;
+  border: 1px solid #eee;
+  resize: none;
+  padding: 0.6rem 0.4rem;
+  font-size: 14px;
+  color: #666;
+  overflow-y: visible;
+}
+
+.friend-chat .chat-bg .chat-edit .send-btn {
+  padding: 0.6rem 1rem;
+  border: 0;
+  background: #6F83FF;
+  color: #fff;
+  min-width: 4rem;
+  border-radius: 0.4rem;
+  margin-left: 3%;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}

@@ -1,0 +1,653 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.tab-nav {
+  background: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tab-nav .sui-nav {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.tab-nav .sui-nav.navbar-dark {
+  padding-left: 0;
+  border-bottom: 0;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li {
+  margin-bottom: -2px;
+  line-height: 36px;
+}
+
+.tab-nav .sui-nav.navbar-dark li a {
+  padding-left: 35px;
+  padding-right: 35px;
+  line-height: 36px;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li.active a {
+  border: 0;
+  border-radius: 0;
+  background-color: #e64620;
+}
+
+.tab-nav .more {
+  line-height: 40px;
+}
+
+.tab-nav .more a {
+  color: #fff;
+}
+
+/*
+ * colors variables
+ */
+.myhome-personinfo {
+  height: 200px;
+  background-repeat: no-repeat;
+}
+
+.myhome-personinfo .wrapper {
+  padding: 12px 0;
+}
+
+.myhome-personinfo .fa {
+  width: 15px;
+}
+
+.myhome-personinfo .person-baseinfo .photo {
+  float: left;
+}
+
+.myhome-personinfo .person-baseinfo .photo .person {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.myhome-personinfo .person-baseinfo .photo .share {
+  padding: 10px;
+}
+
+.myhome-personinfo .person-baseinfo .photo .share img {
+  opacity: .6;
+}
+
+.myhome-personinfo .person-baseinfo .info {
+  float: left;
+  margin-left: 15px;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 .allinfo {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 .allinfo a {
+  color: #e64620;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill {
+  padding-left: 10px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .fa {
+  font-size: 16px;
+  color: #666;
+  text-align: right;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .sui-form input[type="text"] {
+  border-color: #999;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .sui-form .btn-danger {
+  padding: 4px 30px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li {
+  line-height: 32px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li .sui-form {
+  display: none;
+  margin-bottom: 0;
+  margin-left: 25px;
+  margin-top: -25px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li span {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #666;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li span:hover {
+  border-radius: 6px;
+  background-color: #FCF8E3;
+  color: #8A6D3B;
+  padding-right: 5px;
+}
+
+.myhome-personinfo .edit-info {
+  float: right;
+  width: 300px;
+}
+
+.myhome-personinfo .edit-info h4 {
+  padding: 0 10px;
+  line-height: 36px;
+  font-weight: normal;
+  background-color: #E3E3E3;
+  color: #e64620;
+}
+
+.myhome-personinfo .edit-info h4 span {
+  float: right;
+  cursor: pointer;
+}
+
+.myhome-personinfo .edit-info h4 .addedit {
+  color: #999;
+}
+
+.myhome-personinfo .edit-info h4 .addedit img {
+  margin-top: -2px;
+  margin-right: 5px;
+}
+
+.myhome-personinfo .edit-info .info-box {
+  padding: 10px;
+  height: 120px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.myhome-personinfo .edit-info .info-box .edit-intro .btns {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.myhome-personinfo .edit-info .info-box .edit-intro .btns button {
+  margin-left: 10px;
+}
+
+.myhome-personinfo .edit-info .info-box .editarea {
+  width: 84%;
+  height: 60px;
+  margin-left: 10px;
+  border-color: #D0D0D0;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42858;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+/*
+ * colors variables
+ */
+.myhome-list {
+  width: 160px;
+  margin-top: 10px;
+}
+
+.myhome-list ul {
+  width: 90%;
+  padding-bottom: 10px;
+}
+
+.myhome-list ul.bottom {
+  padding-top: 10px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.myhome-list li {
+  padding: 0 10px;
+  margin: 5px 0;
+  text-align: center;
+  list-style: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.myhome-list li.active {
+  background-color: #f7d1c8;
+}
+
+.myhome-list li.active a {
+  color: #e64620;
+}
+
+.myhome-list li a {
+  line-height: 34px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+}
+
+/*
+ * colors variables
+ */
+.file-edit {
+  margin-top: 15px;
+}
+
+.file-edit .tit {
+  font-weight: normal;
+  background-color: #fff;
+}
+
+.file-edit .tit span {
+  padding-left: 25px;
+  border-left: 2px solid #e64620;
+}
+
+.file-edit .name {
+  line-height: 36px;
+  color: #999;
+}
+
+.file-edit h3 {
+  font-weight: normal;
+}
+
+.file-edit .edit {
+  font-size: 14px;
+  color: #999;
+  line-height: 36px;
+  cursor: pointer;
+  float: right;
+}
+
+.file-edit .info {
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.file-edit .info .person {
+  margin: 0 auto;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.file-edit .info .person .item {
+  padding-left: 27px;
+  margin-left: 0;
+}
+
+.file-edit .info .person .item p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  clear: both;
+}
+
+.file-edit .info .skill {
+  padding: 10px 0;
+}
+
+.file-edit .info .skill h3 {
+  line-height: 36px;
+  padding: 0 20px;
+}
+
+.file-edit .info .skill .edit {
+  float: right;
+}
+
+.file-edit .info .skill .tag {
+  list-style: none;
+  padding: 0 20px;
+}
+
+.file-edit .info .skill .tag li {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: #39739d;
+  background-color: #e1ecf4;
+}
+
+.file-edit .canadd {
+  margin-top: 15px;
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.file-edit .canadd .add-list {
+  padding: 0 27px;
+}
+
+.file-edit .canadd .add-list li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  list-style: none;
+}
+
+.file-edit .canadd .add-list li .date {
+  line-height: 28px;
+  font-size: 14px;
+  color: #999;
+}
+
+.file-edit .canadd .add-list .add a {
+  font-size: 14px;
+  line-height: 28px;
+  color: #e64620;
+}
+
+.file-edit .btns {
+  text-align: right;
+  margin-top: 18px;
+}
+
+.file-edit .sui-btn {
+  padding: 5px 35px;
+  border-radius: 5px;
+  margin-right: 30px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.file-edit .btn-cancel {
+  border: 1px solid #ececec;
+  color: #999;
+  background: #fff;
+}
+
+.file-edit .btn-save {
+  background: #e64620;
+  color: #fff;
+  border-color: #e64620;
+}
+
+.file-edit .form-show {
+  display: none;
+  padding: 20px 25px;
+  background-color: #fffdeb;
+}
+
+.file-edit .form-show .photo {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.file-edit .form-show .photo img {
+  display: inline-block;
+}
+
+.file-edit .form-show .photo .text {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 32px;
+  color: #999;
+  margin-left: 10px;
+}
+
+.file-edit .form-show .photo .text .btn-default {
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+}
+
+.file-edit .form-show .sui-form {
+  margin-bottom: 10px;
+}
+
+.file-edit .form-show .sui-form .control-label {
+  line-height: 26px;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #999;
+}
+
+.file-edit .form-show .sui-form .radio-pretty:hover span:before {
+  color: #999;
+}
+
+.file-edit .form-show .sui-form .radio-pretty span {
+  font-family: 'icon-pc','Microsoft Yahei';
+  font-size: 14px;
+}
+
+.file-edit .form-show .sui-form .radio-pretty.checked span:before {
+  color: #999;
+}
+
+.file-edit .form-show .sui-form input {
+  width: 260px;
+  line-height: 24px;
+  height: 24px;
+  box-shadow: none;
+}
+
+.file-edit .form-show .sui-form input, .file-edit .form-show .sui-form textarea {
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.file-edit .form-show .sui-form input::-webkit-input-placeholder, .file-edit .form-show .sui-form textarea::-webkit-input-placeholder {
+  color: #555;
+}
+
+.file-edit .form-show .sui-form input::-moz-input-placeholder, .file-edit .form-show .sui-form textarea::-moz-input-placeholder {
+  color: #555;
+}
+
+.file-edit .form-show .sui-form input::-ms-input-placeholder, .file-edit .form-show .sui-form textarea::-ms-input-placeholder {
+  color: #555;
+}
+
+.file-edit .form-show .sui-form .dropdown-inner {
+  line-height: 24px;
+  background-color: #fff;
+  font-size: 14px;
+  width: 260px;
+}
+
+.file-edit .form-show .sui-form .date input {
+  width: 120px;
+}
+
+.file-edit .form-skill .input-title {
+  margin-bottom: 10px;
+}
+
+.file-edit .form-skill .input-title input {
+  width: 98.3% !important;
+}
+
+.file-edit .form-skill .input-tags {
+  line-height: 27px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.file-edit .form-skill .input-tags .tags-detail {
+  margin-right: 5px;
+  padding: 2px 4px;
+  border: 0;
+  background: #e1ecf4;
+  color: #0077cc;
+  cursor: pointer;
+}
+
+.file-edit .form-skill .input-tags .tags-detail i {
+  padding-left: 3px;
+}
+
+.file-edit .form-skill .input-tags span {
+  line-height: 32px;
+  vertical-align: middle;
+}
+
+.file-edit .form-skill .input-tags input {
+  font-family: 'Microsoft Yahei';
+  padding-top: 0  !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  border: 0;
+  box-shadow: none;
+}
+
+.file-edit .form-skill .tags-box {
+  display: none;
+  position: absolute;
+  margin-top: 5px;
+  background-color: #FFF;
+  z-index: 999;
+}
+
+.file-edit .form-skill .tags-box .tag-bordered {
+  width: 280px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.18);
+  border-color: #ddd;
+}
+
+.file-edit .form-skill .tags-box .tag-bordered .tag-item {
+  border: 0;
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.tab-nav {
+  margin-bottom: 0;
+}
+
+header {
+  margin: 15px 0;
+}
+
+.sj-myhome-list {
+  margin-top: 0;
+}
+
+.sui-layout.layout3 .content {
+  margin-right: 315px;
+}
+
+.sui-layout.layout3 .right {
+  width: 300px;
+}
+
+.right {
+  width: 300px;
+  background-color: #fff;
+}
+
+.right h3 span {
+  padding-left: 20px;
+  border-left: 2px solid #e64620;
+}
+
+.right .sui-progress {
+  margin: 15px 25px;
+  border: 1px solid #f0ad4e;
+  background: #fff;
+}
+
+.right .sui-progress.progress-success .bar {
+  background-color: #f0ad4e;
+}

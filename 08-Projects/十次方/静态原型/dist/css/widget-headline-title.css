@@ -1,0 +1,17 @@
+/*
+ * colors variables
+ */
+.headline-title {
+  padding: 15px 25px 15px 20px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.headline-title .title h2 {
+  margin-bottom: 10px;
+}
+
+.headline-title .time-tool .author {
+  font-weight: bold;
+  color: #0077cc;
+}

@@ -1,0 +1,39 @@
+/*
+ * colors variables
+ */
+.hot-tags {
+  margin-top: 10px;
+  padding-bottom: 15px;
+  background-color: #fff;
+}
+
+.hot-tags .head {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  background-color: #fff;
+}
+
+.hot-tags .head .title {
+  padding-left: 15px;
+  margin: 0;
+  border-left: 2px solid #e64620;
+  color: #e64620;
+}
+
+.hot-tags .tags {
+  margin: 0 0 0 15px;
+}
+
+.hot-tags .tags .sui-tag {
+  margin-bottom: 0;
+}
+
+.hot-tags .tags .sui-tag > li {
+  padding: 0 9px;
+  margin: 0 10px 10px 0;
+  border: 0;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #39739d;
+  background: #e1ecf4;
+}

@@ -1,0 +1,512 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+header .sui-navbar {
+  margin-bottom: 0;
+}
+
+header .sui-navbar .navbar-inner {
+  padding-right: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+header .sui-navbar .navbar-inner .sui-brand {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+header .sui-navbar .navbar-inner .sui-nav li {
+  line-height: 45px;
+}
+
+header .sui-navbar .navbar-inner .sui-nav li a {
+  font-size: 20px;
+  color: #000;
+}
+
+@media (max-width: 1024px) {
+  header .sui-navbar .navbar-inner .sui-nav li a {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 14px;
+  }
+}
+
+header .sui-navbar .navbar-inner .sui-nav li.active a {
+  background: transparent;
+  color: #e64620;
+  font-weight: bold;
+}
+
+header .sui-navbar .navbar-inner .sui-form {
+  line-height: 59px;
+}
+
+header .sui-navbar .navbar-inner .sui-form input {
+  display: inline-block;
+  width: auto;
+  height: 40px;
+  padding: 2px 10px;
+  margin-top: 0;
+  border: 0;
+  border-radius: 25px;
+  line-height: 38px;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+@media (min-width: 1200px) {
+  header .sui-navbar .navbar-inner .sui-form input {
+    width: 290px;
+  }
+}
+
+header .sui-navbar .navbar-inner .sui-form .btn-search {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -40px;
+  line-height: 38px;
+  font-size: 20px;
+}
+
+header .sui-navbar .navbar-inner .info li {
+  padding: 10px;
+}
+
+header .sui-navbar .navbar-inner .info li .notice {
+  padding: 0;
+  font-size: 14px;
+}
+
+header .sui-navbar .navbar-inner .info li .homego {
+  padding: 0;
+}
+
+header .sui-navbar .navbar-inner .info li img {
+  border-radius: 15px;
+}
+
+header .sui-navbar .navbar-inner .info li.hover {
+  cursor: pointer;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo {
+  display: none;
+  margin-left: -21px;
+  margin-top: -1px;
+  list-style: none;
+  width: 80px;
+  float: right;
+  position: fixed;
+  z-index: 9999;
+  padding: 6px;
+  border: 1px solid #e4e4e4;
+  background-color: #fff;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo li {
+  padding: 0;
+  line-height: 26px;
+  text-align: center;
+  font-size: 14px;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo li:hover {
+  color: #e64620;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo li a {
+  font-size: 12px;
+}
+
+/*
+ * colors variables
+ */
+.card {
+  margin-bottom: 15px;
+  padding: 15px 15px 8px;
+  background-color: #fff;
+}
+
+.card .photo-name img {
+  float: left;
+}
+
+.card .photo-name .name-edit {
+  float: left;
+  padding-left: 15px;
+  line-height: 20px;
+}
+
+.card .photo-name .name-edit .name {
+  font-size: 16px;
+}
+
+.card .photo-name .name-edit .edit {
+  color: #b5b5b5;
+}
+
+.card .like {
+  margin-top: 15px;
+}
+
+.card .like span {
+  display: inline-block;
+  width: 48%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.card .like span.like1 {
+  border-right: 1px solid #b5b5b5;
+}
+
+.card .like span .num {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.friend-mymsg {
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.friend-mymsg .num {
+  color: red;
+}
+
+/*
+ * colors variables
+ */
+.friend-edit-modules {
+  margin-top: 10px;
+}
+
+.friend-edit-modules .item {
+  padding: 11px 16px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.friend-edit-modules h4 {
+  margin-bottom: 12px;
+  line-height: 26px;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.friend-edit-modules h4 span {
+  float: right;
+  cursor: pointer;
+  font-size: 15px;
+  color: #b3b8bb;
+}
+
+.friend-edit-modules li {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-right: 10px;
+}
+
+.friend-edit-modules .edit-add {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.friend-edit-modules .edit-add .sui-form {
+  margin-bottom: 10px;
+}
+
+.friend-edit-modules .edit-add .sui-form .input-xxlarge {
+  font-family: inherit;
+}
+
+.friend-edit-modules .edit-add .btn-upadd {
+  line-height: 26px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.friend-edit-modules .edit-add .often li {
+  background: #fff;
+  color: #333333;
+  border: 1px solid #e0e3e4;
+}
+
+.friend-edit-modules .edit-add .btn-submit {
+  margin-top: 10px;
+}
+
+.friend-edit-modules .edit-add .btn-submit .sui-btn {
+  line-height: 26px;
+  margin-right: 10px;
+}
+
+.friend-edit-modules .edit-add .btn-submit .btn-save {
+  background-color: #0077cc;
+  color: #fff;
+  font-family: inherit;
+}
+
+.friend-edit-modules .edit-add .btn-submit .btn-cancel {
+  font-family: inherit;
+}
+
+.friend-edit-modules .places li {
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.friend-edit-modules .tags li {
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.friend-edit-modules .loves .sports {
+  margin-bottom: 10px;
+}
+
+.friend-edit-modules .loves .sports li {
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.friend-edit-modules .loves .songs {
+  margin-bottom: 10px;
+}
+
+.friend-edit-modules .loves .songs li {
+  background: #00a8ff;
+  color: #ffffff;
+}
+
+.friend-edit-modules .loves .points li {
+  background: #45a4d6;
+  color: #ffffff;
+}
+
+/*
+ * colors variables
+ */
+.block-btn {
+  padding: 10px 15px 13px 25px;
+  border: 1px solid #e64620;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.block-btn p {
+  margin-bottom: 12px;
+}
+
+.block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #e64620;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+.card {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+header {
+  margin-bottom: 0;
+}
+
+.banner {
+  background-color: #00a8ff;
+}
+
+.banner img {
+  margin: 0 auto;
+}
+
+.tag-item .left-list {
+  margin-right: 10px;
+}
+
+@media (min-width: 1200px) {
+  .tag-item .left-list {
+    width: 860px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .left-list {
+    width: 710px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .left-list {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tag-item .right-tag {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .right-tag {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .right-tag {
+    width: 190px;
+  }
+}
+
+.tag-item .right-tag .block-btn {
+  padding: 10px 15px 13px 17px;
+  border: 1px solid #00a8ff;
+  font-size: 14px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .block-btn p {
+  margin-bottom: 12px;
+}
+
+.tag-item .right-tag .block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #00a8ff;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+.tag-item .right-tag .rank {
+  margin-top: 10px;
+  padding-bottom: 15px;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .rank .head {
+  padding-top: 15px;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .rank .head .title {
+  padding-left: 15px;
+  margin: 0;
+  border-left: 2px solid #00a8ff;
+  color: #00a8ff;
+}
+
+.tag-item .right-tag .rank .rank-list {
+  padding: 0 20px;
+}
+
+.tag-item .right-tag .rank .rank-list .rank {
+  list-style: none;
+}
+
+.tag-item .right-tag .rank .rank-list .rank li {
+  overflow: hidden;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+.tag-item .right-tag .rank .rank-list .rank li .fr {
+  color: #00a8ff;
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

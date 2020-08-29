@@ -1,0 +1,58 @@
+/*
+ * colors variables
+ */
+.company-job .intro {
+  text-align: center;
+}
+
+.company-job .intro img {
+  border: 1px solid #e1e1e1;
+}
+
+.company-job .intro .title {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.company-job .intro .content {
+  text-align: left;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+.company-job .tag {
+  margin-top: 10px;
+}
+
+.company-job .tag li {
+  color: #55cbc4;
+  border: 1px solid #55cbc4;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.company-job .btns {
+  margin-top: 10px;
+}
+
+.company-job .btns .sui-btn {
+  padding: 5px 20px;
+  border-radius: 4px;
+  margin-right: 18px;
+  color: #fff;
+  border: 0;
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+}
+
+.company-job .btns .btn-home {
+  background-color: #5bc0de;
+}
+
+.company-job .btns .btn-position {
+  background-color: #f0ad4e;
+}

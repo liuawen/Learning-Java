@@ -1436,7 +1436,7 @@ Java连接的     Mongo官方出的   mongodb-driver
 
 创建工程，并添加以下依赖：
 
-```
+```xml
 <dependency>
     <groupId>org.mongodb</groupId>
     <artifactId>mongodb-driver</artifactId>
@@ -1444,13 +1444,45 @@ Java连接的     Mongo官方出的   mongodb-driver
 </dependency>
 ```
 
- 
+创建一个
+
+一个依赖
+
+![image-20200828204832109](assets/image-20200828204832109.png)
+
+
+
+都会执行下   before  after  生命周期
+
+
 
 ### 3.2 使用mongodb-driver
 
+mongodb-driver
+
+查询所有
+
+
+
 #### 3.2.1 查询所有
 
-```
+查询所有
+
+
+
+创建连接
+
+打开数据库
+
+获取集合
+
+查询
+
+
+
+查询记录获取文档集合 
+
+```java
 @Test
 public void test1() {
     //创建连接
@@ -1475,13 +1507,33 @@ public void test1() {
 }
 ```
 
- 
+ 可以没有参数 127.0.0.1
+
+
+
+![image-20200828210448189](assets/image-20200828210448189.png)
+
+
+
+MongoClient mongoClient  = new MongoClient("");
+
+创建操作MongoDB的客户端 
+
+Mongo
 
 #### 3.2.2 根据_id查询
 
+```
+public class BasicDBObject extends BasicBSONObject implements DBObject, Bson 
+```
+
+
+
 每次使用都要用到MongoCollection，进行抽取：
 
-```
+
+
+```java
 private MongoClient client;
 private MongoCollection<Document> comment;
 
@@ -1505,7 +1557,7 @@ public void after() {
 
 测试根据_id查询：
 
-```
+```java
 @Test
 public void test2() {
     //查询
@@ -1521,11 +1573,45 @@ public void test2() {
 }
 ```
 
- 
+ ![image-20200829093402633](assets/image-20200829093402633.png)
+
+key  value  
+
+保证基本盘 
+
+ ```java
+// 根据条件_id查询数据，db.comment.find({"_id" : "1"})
+    @Test
+    public void test2() {
+        // 封装查询条件
+        BasicDBObject bson = new BasicDBObject("_id", "1");
+
+        // 执行查询
+        FindIterable<Document> documents = comment.find(bson);
+
+        for (Document document : documents) {
+            System.out.println("------------------------------");
+            System.out.println("_id:" + document.get("_id"));
+            System.out.println("content:" + document.get("content"));
+            System.out.println("userid:" + document.get("userid"));
+            System.out.println("thumbup:" + document.get("thumbup"));
+        }
+    }
+ ```
+
+根据条件查询
+
+这里一个查询
+
+![image-20200829094038893](assets/image-20200829094038893.png)
+
+
+
+
 
 #### 3.2.3 新增
 
-```
+```java
 @Test
 public void test3() {
     Map<String, Object> map = new HashMap();
@@ -1542,9 +1628,36 @@ public void test3() {
 
  
 
+```java
+ // 新增db.comment.insert({"_id" : "5", "content" : "坚持就是胜利123", "userid" : "1018", "thumbup" : 1212})
+    @Test
+    public void test3() {
+        // 封装新增数据
+        Map<String, Object> map = new HashMap<>();
+        map.put("_id", "6");
+        map.put("content", "新增测试");
+        map.put("userid", "1019");
+        map.put("thumbup", "666");
+
+        // 封装新增文档对象
+        Document document = new Document(map);
+
+        // 执行新增
+        comment.insertOne(document);
+    }
+```
+
+insertOne
+
+![image-20200829094335247](assets/image-20200829094335247.png)
+
+
+
+comment.insertOne(document)
+
 #### 3.2.4 修改
 
-```
+```java
 @Test
 public void test4() {
     //修改的条件
@@ -1558,9 +1671,37 @@ public void test4() {
 
  
 
+```java
+ // 修改，db.comment.update({"_id" : "5"},{$set:{"userid" : "888"}})
+    @Test
+    public void test4() {
+        //创建修改的条件
+        BasicDBObject filter = new BasicDBObject("_id", "6");
+        //创建修改的值
+        BasicDBObject update = new BasicDBObject("$set", new Document("userid", "999"));
+
+        // 执行修改
+        comment.updateOne(filter, update);
+    }
+```
+
+之前的  更新什么的
+
+BasicDBObject  
+
+"$set"      用这个修改  不然其他属性都没了的 
+
+
+
+![image-20200829094918416](assets/image-20200829094918416.png)
+
+
+
+
+
 #### 3.2.5 删除
 
-```
+```java
 @Test
 public void test5() {
     //删除的条件
@@ -1572,11 +1713,175 @@ public void test5() {
 
  
 
+```java
+ // 删除，db.comment.remove({"_id" : "5"})
+    @Test
+    public void test5() {
+        // 创建删除的条件
+        BasicDBObject bson = new BasicDBObject("_id", "6");
+
+        // 执行删除
+        comment.deleteOne(bson);
+    }
+```
+
+
+
+
+
+```java
+package test;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.BSON;
+import org.bson.Document;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MongoTest {
+
+    // 客户端
+    private MongoClient mongoClient;
+    // 集合
+    private MongoCollection<Document> comment;
+
+    @Before
+    public void init() {
+        //1. 创建操作MongoDB的客户端
+        mongoClient = new MongoClient("192.168.200.128");
+        // MongoClient mongoClient = new MongoClient("192.168.200.128",27017);
+
+        //2. 选择数据库 use commentdb
+        MongoDatabase commentdb = mongoClient.getDatabase("commentdb");
+
+        //3. 获取集合 db.comment
+        comment = commentdb.getCollection("comment");
+    }
+
+
+    //查询所有数据db.comment.find()
+    @Test
+    public void test1() {
+        //4. 使用集合进行查询，查询所有数据db.comment.find()
+        FindIterable<Document> documents = comment.find();
+
+        //5. 解析结果集（打印）
+        // "_id" : "1", "content" : "到底为啥出错", "userid" : "1012", "thumbup" : 2020 }
+        for (Document document : documents) {
+            System.out.println("------------------------------");
+            System.out.println("_id:" + document.get("_id"));
+            System.out.println("content:" + document.get("content"));
+            System.out.println("userid:" + document.get("userid"));
+            System.out.println("thumbup:" + document.get("thumbup"));
+        }
+
+    }
+
+
+    @After
+    public void after() {
+        // 释放资源,关闭客户端
+        mongoClient.close();
+    }
+
+
+    // 根据条件_id查询数据，db.comment.find({"_id" : "1"})
+    @Test
+    public void test2() {
+        // 封装查询条件
+        BasicDBObject bson = new BasicDBObject("_id", "1");
+
+        // 执行查询
+        FindIterable<Document> documents = comment.find(bson);
+
+        for (Document document : documents) {
+            System.out.println("------------------------------");
+            System.out.println("_id:" + document.get("_id"));
+            System.out.println("content:" + document.get("content"));
+            System.out.println("userid:" + document.get("userid"));
+            System.out.println("thumbup:" + document.get("thumbup"));
+        }
+    }
+
+    // 新增db.comment.insert({"_id" : "5", "content" : "坚持就是胜利123", "userid" : "1018", "thumbup" : 1212})
+    @Test
+    public void test3() {
+        // 封装新增数据
+        Map<String, Object> map = new HashMap<>();
+        map.put("_id", "6");
+        map.put("content", "新增测试");
+        map.put("userid", "1019");
+        map.put("thumbup", "666");
+
+        // 封装新增文档对象
+        Document document = new Document(map);
+
+        // 执行新增
+        comment.insertOne(document);
+    }
+
+    // 修改，db.comment.update({"_id" : "5"},{$set:{"userid" : "888"}})
+    @Test
+    public void test4() {
+        //创建修改的条件
+        BasicDBObject filter = new BasicDBObject("_id", "6");
+        //创建修改的值
+        BasicDBObject update = new BasicDBObject("$set", new Document("userid", "999"));
+
+        // 执行修改
+        comment.updateOne(filter, update);
+    }
+
+    // 删除，db.comment.remove({"_id" : "5"})
+    @Test
+    public void test5() {
+        // 创建删除的条件
+        BasicDBObject bson = new BasicDBObject("_id", "6");
+
+        // 执行删除
+        comment.deleteOne(bson);
+    }
+}
+
+```
+
+
+
 ## 4 文章评论实现
 
-SpringDataMongoDB是SpringData家族成员之一，用于操作MongoDb的持久层框架，封装了底层的mongodb-driver。本功能使用SpringDataMongoDB进行开发
+SpringDataMongoDB是 SpringData家族成员之一，用于操作MongoDb的持久层框架，封装了底层的mongodb-driver。本功能使用SpringDataMongo DB进行开发
+
+SpringDataMongoDB是SpringData家族成员之一 用于操作MongoD的持久层框架
+
+时间差不多了
+
+
+
+传统项目 老项目   mongodb-driver
+
+需求分析 数据库 搞好
+
+
+
+SpringData家族成员之一 用于操作MongoDb的持久层框架
+
+MongoDB的持久层框架     
 
 ### 4.1 需求分析
+
+可以对文章进行评论   还能评论的评论
+
+我之前是弄了个点赞表
+
+
 
 评论集合结构：
 
@@ -1597,15 +1902,75 @@ SpringDataMongoDB是SpringData家族成员之一，用于操作MongoDb的持久�
 2. 根据文章id查询评论
 3. 评论点赞
 
- 
+ 文章 展示   评论也要展示
 
- 
+评论点赞功能 
+
+
+
+评论一篇文章  评论的评论  评论的评论  一直评论呢  ？？？？
+
+
+
+我觉得你的评论有意思 我再评论呢
+
+回复  
+
+ 递归 读文章  读评论
+
+一次所有的评论内容都查询出来好一些 还是单个查询好一些
+
+层次结构
+
+单个查询好一些 
+
+
+
+单个 为什么呢？
+
+比较OK   我们期望的答案
+
+直观的评论  先展示出来    不感需求的
+
+点开看下    你感兴趣  自己去点开吧  
+
+我首先要最直观的评价  我觉得你的这个有道理 或者 我想看一看你们为什么 讨论这些呢  我再看看  发送一个请求
+
+![image-20200829100335260](assets/image-20200829100335260.png)
+
+用户的体验
+
+数据深了   递归效率低了     不应该一次查询出来  
+
+评论存储评论  没有必要    用户感兴趣自己去搞
+
+文档结构非常凌乱    存Id   相同数据的类型 
+
+JSON嵌套JSON    
+
+![image-20200829100521549](assets/image-20200829100521549.png)
+
+
+
+
+
+增删改查怎么写
+
+文章查询评论
+
+评论点赞
+
+
 
 ### 4.2 开发准备
 
+来整合了 
+
+
+
 在文章微服务添加依赖：
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -1614,16 +1979,44 @@ SpringDataMongoDB是SpringData家族成员之一，用于操作MongoDb的持久�
 
  
 
+```xml
+  <!--添加SpringDataMongoDB依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+```
+
+
+
 添加配置文件：
 
-```
+```yml
   data:
     mongodb:
       database: commentdb
       host: 192.168.200.128
 ```
 
- 
+ 默认27017
+
+```yml
+spring:
+  application:
+    name: tensquare-article #服务名称
+  datasource: # 数据库连接四大属性
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.200.128:3306/tensquare_article?characterEncoding=utf-8
+    username: root
+    password: root
+  data:
+    mongodb:
+      host: 192.168.200.128
+      database: commentdb
+
+```
+
+
 
 ### 4.3 功能实现
 
@@ -1631,7 +2024,7 @@ SpringDataMongoDB是SpringData家族成员之一，用于操作MongoDb的持久�
 
 创建实体类:
 
-```
+```java
 public class Comment implements Serializable {
     @Id
     private String _id;
@@ -1646,20 +2039,59 @@ public class Comment implements Serializable {
 }
 ```
 
- 
+文章评论POJO  评论的    
+
+java.util
+
+主键id
+
+toString   get  set
 
 在com.tensquare.article.repository包中编写CommentRepository，注意不要和MyBatis的接口放在一个包：
 
-```
+![image-20200829103105642](assets/image-20200829103105642.png)
+
+
+
+```java
 public interface CommentRepository extends MongoRepository<Comment, String> {
 }
 ```
 
- 
+ 继承MongoRepository
+
+```java
+package com.tensquare.article.repository;
+
+import com.tensquare.article.pojo.Comment;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.Date;
+import java.util.List;
+
+public interface CommentRepository extends MongoRepository<Comment, String> {
+
+    //SpringDataMongoDB，支持通过查询方法名进行查询定义的方式
+    //根据文章id查询文章评论数据
+    List<Comment> findByArticleid(String articleId);
+
+
+    //根据发布时间和点赞数查询查询
+    // List<Comment> findByPublishdateAndThumbup(Date date, Integer thumbup);
+
+    //根据用户id查询，并且根据发布时间倒序排序
+    // List<Comment> findByUseridOrderbOrderByPublishdateDesc(String userid);
+}
+
+```
+
+
 
 编写Service：
 
-```
+这个错误  commentDao
+
+```java
 @Service
 public class CommentService {
 
@@ -1699,9 +2131,106 @@ public class CommentService {
 
  
 
-编写Controller：
+```java
+package com.tensquare.article.service;
+
+import com.tensquare.article.pojo.Comment;
+import com.tensquare.article.repository.CommentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
+import util.IdWorker;
+
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class CommentService {
+
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private IdWorker idWorker;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
+    public List<Comment> findAll() {
+        List<Comment> list = commentRepository.findAll();
+        return list;
+    }
+
+    public Comment findById(String commentId) {
+        Comment comment = commentRepository.findById(commentId).get();
+        return comment;
+    }
+
+    public void save(Comment comment) {
+        //分布式id生成器生成id
+        String id = idWorker.nextId() + "";
+        comment.set_id(id);
+
+        //初始化点赞数据，发布时间等
+        comment.setThumbup(0);
+        comment.setPublishdate(new Date());
+
+        //保存数据
+        commentRepository.save(comment);
+    }
+
+    public void updateById(Comment comment) {
+        //使用的是MongoRepository的方法
+        //其中save方法，主键如果存在，执行修改，如果不存在执行新增
+        commentRepository.save(comment);
+    }
+
+    public void deleteById(String commentId) {
+        commentRepository.deleteById(commentId);
+    }
+
+    public List<Comment> findByArticleId(String articleId) {
+        //调用持久层，根据文章id查询
+        List<Comment> list = commentRepository.findByArticleid(articleId);
+        return list;
+    }
+
+    public void thumbup(String commentId) {
+        // //根据评论id查询评论数据
+        // Comment comment = commentRepository.findById(commentId).get();
+        // //对评论点赞数据加一
+        // comment.setThumbup(comment.getThumbup() + 1);
+        // //保存修改数据
+        // commentRepository.save(comment);
+
+        //点赞功能优化
+        //封装修改的条件
+        Query query = new Query();
+        query.addCriteria(Criteria.where("_id").is(commentId));
+
+        //封装修改的数值
+        Update update = new Update();
+        //使用inc列值增长
+        update.inc("thumbup", 1);
+
+        //直接修改数据
+        //第一个参数是修改的条件
+        //第二个参数是修改的数值
+        //第三个参数是MongoDB的集合名称
+        mongoTemplate.updateFirst(query, update, "comment");
+    }
+}
 
 ```
+
+
+
+编写Controller：
+
+```java
 @RestController
 @RequestMapping("comment")
 @CrossOrigin
@@ -1751,11 +2280,246 @@ public class CommentController {
 
  
 
+```java
+package com.tensquare.article.controller;
+
+import com.tensquare.article.pojo.Comment;
+import com.tensquare.article.service.CommentService;
+import entity.Result;
+import entity.StatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("comment")
+public class CommentController {
+
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    //PUT /comment/thumbup/{commentId} 根据评论id点赞评论
+    @RequestMapping(value = "thumbup/{commentId}", method = RequestMethod.PUT)
+    public Result thumbup(@PathVariable String commentId) {
+        //把用户点赞信息保存到Redis中
+        //每次点赞之前，先查询用户点赞信息
+        //如果没有点赞信息，用户可以点赞
+        //如果有点赞信息，用户不能重复点赞
+
+        //模拟用户id
+        String userId = "123";
+
+        //查询用户点赞信息，根据用户id和评论id
+        Object flag = redisTemplate.opsForValue().get("thumbup_" + userId + "_" + commentId);
+
+        //判断查询到的结果是否为空
+        if (flag == null) {
+            //如果为空，表示用户没有点过赞，可以点赞
+            commentService.thumbup(commentId);
+
+            //点赞成功，保存点赞信息
+            redisTemplate.opsForValue().set("thumbup_" + userId + "_" + commentId, 1);
+
+            return new Result(true, StatusCode.OK, "点赞成功");
+        }
+
+        //如果不为空，表示用户点过赞，不可以重复点赞
+        return new Result(false, StatusCode.REPERROR, "不能重复点赞");
+
+    }
+
+    //GET /comment/article/{articleId} 根据文章id查询文章评论
+    @RequestMapping(value = "article/{articleId}", method = RequestMethod.GET)
+    public Result findByArticleId(@PathVariable String articleId) {
+        List<Comment> list = commentService.findByArticleId(articleId);
+        return new Result(true, StatusCode.OK, "查询成功", list);
+    }
+
+    //GET /comment 查询所有评论
+    @RequestMapping(method = RequestMethod.GET)
+    public Result findAll() {
+        List<Comment> list = commentService.findAll();
+
+        return new Result(true, StatusCode.OK, "查询成功", list);
+    }
+
+
+    //GET /comment/{commentId} 根据评论id查询评论数据
+    @RequestMapping(value = "{commentId}", method = RequestMethod.GET)
+    public Result findById(@PathVariable String commentId) {
+        Comment comment = commentService.findById(commentId);
+        return new Result(true, StatusCode.OK, "查询成功", comment);
+    }
+
+    //POST /comment 新增评论
+    @RequestMapping(method = RequestMethod.POST)
+    public Result save(@RequestBody Comment comment) {
+        commentService.save(comment);
+        return new Result(true, StatusCode.OK, "新增成功");
+    }
+
+    //PUT /comment/{commentId} 修改评论
+    @RequestMapping(value = "{commentId}", method = RequestMethod.PUT)
+    public Result updateById(@PathVariable String commentId, @RequestBody Comment comment) {
+        //设置评论主键
+        comment.set_id(commentId);
+        //执行修改
+        commentService.updateById(comment);
+
+        return new Result(true, StatusCode.OK, "修改成功");
+    }
+
+    //DELETE /comment/{commentId} 根据id删除评论
+    @RequestMapping(value = "{commentId}", method = RequestMethod.DELETE)
+    public Result deleteById(@PathVariable String commentId) {
+        commentService.deleteById(commentId);
+        return new Result(true, StatusCode.OK, "删除成功");
+    }
+
+}
+
+```
+
+
+
+
+
+新增 评论   POST  /comment
+
+![image-20200829104748945](assets/image-20200829104748945.png)
+
+@RequestBody
+
+Service
+
+![image-20200829104855221](assets/image-20200829104855221.png)
+
+
+
+![image-20200829105851472](assets/image-20200829105851472.png)
+
+
+
+![image-20200829110428477](assets/image-20200829110428477.png)
+
+
+
+自动生成？？
+
+A的  B的  相同的id
+
+![image-20200829110512565](assets/image-20200829110512565.png)
+
+创建索引   c_id     
+
+数据量大了   c_id >> id的
+
+
+
+
+
+一行记录    父id  
+
+
+
+![image-20200829110711119](assets/image-20200829110711119.png)
+
+
+
+
+
+进行的一个评论  
+
+
+
+![image-20200829110809002](assets/image-20200829110809002.png)
+
+
+
+文章 查文章的评论   再点一下 评论的评论  
+
+
+
+修改的Controller
+
+![image-20200829110937464](assets/image-20200829110937464.png)
+
+
+
+
+
+
+
+删除
+
+
+
+![image-20200829115250787](assets/image-20200829115250787.png)
+
+根据id删除评论
+
+
+
+public void deleteById
+
+![image-20200829115340693](assets/image-20200829115340693.png)
+
+
+
+主键如果存在  执行修改  如果不存在执行新增
+
+
+
 #### 4.3.2 根据文章id查询评论
+
+从Controller
+
+![image-20200829115626257](assets/image-20200829115626257.png)
+
+
+
+都有提示可以搞出来
+
+
+
+![image-20200829115838790](assets/image-20200829115838790.png)
+
+
+
+![image-20200829115854938](assets/image-20200829115854938.png)
+
+
+
+![image-20200829115912263](assets/image-20200829115912263.png)
+
+
+
+常规的   
+
+定制的   自己去编写的
+
+SpringData   动态去生成  SQL    语法 
+
+定址  findBy   我要通过什么来查询     
+
+自动去解析   该生成什么就生成什么
+
+名字特别特别长      但不用写SQL   
+
+重点 ![image-20200829120151272](assets/image-20200829120151272.png)
+
+Desc   Asc
+
+
 
 编写Controller
 
-```
+```java
 //根据文章id查询评论列表
 @RequestMapping(value = "{articleId}", method = RequestMethod.GET)
 public Result findByarticleId(@PathVariable String articleId) {
@@ -1766,9 +2530,33 @@ public Result findByarticleId(@PathVariable String articleId) {
 
  
 
-编写Service
+```java
+//GET /comment/article/{articleId} 根据文章id查询文章评论
+    @RequestMapping(value = "article/{articleId}", method = RequestMethod.GET)
+    public Result findByArticleId(@PathVariable String articleId) {
+        List<Comment> list = commentService.findByArticleId(articleId);
+        return new Result(true, StatusCode.OK, "查询成功", list);
+    }
 
 ```
+
+
+
+```java
+ //GET /comment 查询所有评论
+    @RequestMapping(method = RequestMethod.GET)
+    public Result findAll() {
+        List<Comment> list = commentService.findAll();
+
+        return new Result(true, StatusCode.OK, "查询成功", list);
+    }
+```
+
+
+
+编写Service
+
+```java
 public List<Comment> findByarticleId(String articleId) {
     return commentDao.findByArticleid(articleId);
 }
@@ -1776,24 +2564,123 @@ public List<Comment> findByarticleId(String articleId) {
 
  
 
-编写dao
+```java
+public List<Comment> findByArticleId(String articleId) {
+        //调用持久层，根据文章id查询
+        List<Comment> list = commentRepository.findByArticleid(articleId);
+        return list;
+    }
+```
+
+
+
+```java
+ public List<Comment> findAll() {
+        List<Comment> list = commentRepository.findAll();
+        return list;
+    }
 
 ```
+
+
+
+编写dao
+
+```java
 public interface CommentDao extends MongoRepository<Comment, String> {
     //根据文章id查询评论列表
     List<Comment> findByArticleid(String articleId);
 }
 ```
 
- 
+ ```java
+public interface CommentRepository extends MongoRepository<Comment, String> {
+
+    //SpringDataMongoDB，支持通过查询方法名进行查询定义的方式
+    //根据文章id查询文章评论数据
+    List<Comment> findByArticleid(String articleId);
+
+
+    //根据发布时间和点赞数查询查询
+    // List<Comment> findByPublishdateAndThumbup(Date date, Integer thumbup);
+
+    //根据用户id查询，并且根据发布时间倒序排序
+    // List<Comment> findByUseridOrderbOrderByPublishdateDesc(String userid);
+}
+ ```
+
+
+
+![image-20200829104211251](assets/image-20200829104211251.png)
+
+
+
+![image-20200829104221038](assets/image-20200829104221038.png)
+
+
+
+```java
+ public Comment findById(String commentId) {
+        Comment comment = commentRepository.findById(commentId).get();
+        return comment;
+    }
+```
+
+可能异常的     如果没有找到呢 commentId  有错误的
+
+![image-20200829104326728](assets/image-20200829104326728.png)
+
+可以解决空指针异常 但引入一个新的异常了
+
+这么写比较好点
+
+![image-20200829104503875](assets/image-20200829104503875.png)
+
+Optional  Comment
+
+
 
 #### 4.3.4 评论点赞
+
+怎么知道自己去什么东西点赞了呢
+
+怎么取消点赞呢 
+
+以我为单位  
+
+先根据评论的id查询 再对点赞数加一 
+
+编写service  
+
+评论点赞
+
+
+
+Redis要来了吗？
+
+![image-20200829120539979](assets/image-20200829120539979.png)
+
+
+
+save存在就修改 不存在就新增加
+
+![image-20200829120925280](assets/image-20200829120925280.png)
+
+
+
+![image-20200829120951692](assets/image-20200829120951692.png)
+
+
+
+点了好几下   每点一下执行一下
+
+
 
 先根据评论的id查询，再对点赞数加一
 
 编写service
 
-```
+```java
 public void thumbup(String id) {
     //查询评论
     Comment comment = commentDao.findById(id).get();
@@ -1806,7 +2693,7 @@ public void thumbup(String id) {
 
 编写Controller
 
-```
+```java
 //评论点赞
 @RequestMapping(value = "thumbup/{id}", method = RequestMethod.PUT)
 public Result thumbup(@PathVariable String id) {
@@ -1819,7 +2706,7 @@ public Result thumbup(@PathVariable String id) {
 
 以上操作需要操作两次数据库，性能较低，service方法优化如下：
 
-```
+```java
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -1841,9 +2728,135 @@ public Result thumbup(@PathVariable String id) {
     }
 ```
 
- 
+ i++;操作
+
+先拿出来  再++   查询了两次 
+
+有线程并发安全问题的
+
+一起执行  同时查询
+
+10  11   两个同学同事更新
+
+
+
+![image-20200829123316051](assets/image-20200829123316051.png)
+
+集群    **Serializable**   不行
+
+搞错了  synchronized ()  这个  
+
+你来你的  我来我的  同一台
+
+![image-20200829123431694](assets/image-20200829123431694.png)
+
+没有必要   除非是特别特别重要的数据    分布式锁 redis/zookeeper
+
+并发严重的问题
+
+改进  
+
+线程安全  问题
+
+
+
+我们可以利用 MongoDB 本身的  来操作
+
+  @Autowired
+    private MongoTemplate mongoTemplate;
+
+用自己的
+
+![image-20200829124332969](assets/image-20200829124332969.png)
+
+
+
+ mongoTemplate.updateFirst(query, update, "comment");
+
+开搞开搞开搞
+
+![image-20200829124524523](assets/image-20200829124524523.png)
+
+需要什么我就给你什么呢  怎么样  嘿嘿 
+
+性能更好  我来操作一次数据库
+
+![image-20200829124639172](assets/image-20200829124639172.png)
+
+where  _id   is  commentId
+
+以后就使用这样方式
+
+先查询再更新
+
+query  update  comment
+
+mongoTemplate  template 
+
+代码去写一下 
+
+下午结束了 晚上再来
+
+![image-20200829123856225](assets/image-20200829123856225.png)
+
+优化
+
+评论点赞优化
+
+service编写有点麻烦
+
+
+
+![image-20200829123945015](assets/image-20200829123945015.png)
+
+
+
+列值
+
+```java
+ @Autowired
+    private RedisTemplate redisTemplate;
+
+    //PUT /comment/thumbup/{commentId} 根据评论id点赞评论
+    @RequestMapping(value = "thumbup/{commentId}", method = RequestMethod.PUT)
+    public Result thumbup(@PathVariable String commentId) {
+        //把用户点赞信息保存到Redis中
+        //每次点赞之前，先查询用户点赞信息
+        //如果没有点赞信息，用户可以点赞
+        //如果有点赞信息，用户不能重复点赞
+
+        //模拟用户id
+        String userId = "123";
+
+        //查询用户点赞信息，根据用户id和评论id
+        Object flag = redisTemplate.opsForValue().get("thumbup_" + userId + "_" + commentId);
+
+        //判断查询到的结果是否为空
+        if (flag == null) {
+            //如果为空，表示用户没有点过赞，可以点赞
+            commentService.thumbup(commentId);
+
+            //点赞成功，保存点赞信息
+            redisTemplate.opsForValue().set("thumbup_" + userId + "_" + commentId, 1);
+
+            return new Result(true, StatusCode.OK, "点赞成功");
+        }
+
+        //如果不为空，表示用户点过赞，不可以重复点赞
+        return new Result(false, StatusCode.REPERROR, "不能重复点赞");
+
+    }
+```
+
+
 
 #### 4.3.5 不能重复点赞
+
+晚自习了
+
+点赞功能完成后 发现可以重复点赞    改为一个人只能点赞一次
+
+
 
 点赞功能完成后，发现可以重复点赞，我们应该改为一个人只能点赞一次。
 
@@ -1851,9 +2864,13 @@ public Result thumbup(@PathVariable String id) {
 
  
 
+我可以评论id  +  用户id 进行标记  两个确认唯一   一个用户只能点赞一次 可以使用redis保存点赞信息  速度较快点
+
+
+
 pom.xml添加依赖：
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -1868,7 +2885,44 @@ pom.xml添加依赖：
 docker run -id --name=tensquare_redis -p 6379:6379 redis
 ```
 
- 
+ docker ps 
+
+docker images
+
+
+
+```bash
+[root@liuawen ~]# docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                      NAMES
+cd98c23ca61b        mongo                     "docker-entrypoint.sh"   17 hours ago        Up 17 hours         0.0.0.0:27017->27017/tcp   tensquare_mongo
+934545b082c6        centos/mysql-57-centos7   "container-entrypoint"   2 days ago          Up 2 days           0.0.0.0:3306->3306/tcp     tensquare_mysql
+[root@liuawen ~]# docker images
+REPOSITORY                          TAG                 IMAGE ID            CREATED             SIZE
+docker.io/rancher/server            latest              85b3b338d0be        2 years ago         1.084 GB
+docker.io/centos/mysql-57-centos7   latest              26d536c931ea        2 years ago         445.9 MB
+docker.io/mongo                     latest              f93ff881751f        2 years ago         367.6 MB
+docker.io/rabbitmq                  management          c51d1c73d028        2 years ago         148.7 MB
+docker.io/elasticsearch             5.6.8               6c0bdf761f3b        2 years ago         569.8 MB
+docker.io/registry                  latest              d1fd7d86a825        2 years ago         33.26 MB
+docker.io/tomcat                    7-jre7              e1ac7618b15d        2 years ago         454.3 MB
+docker.io/redis                     latest              1fb7b6c8c0d0        2 years ago         106.6 MB
+docker.io/nginx                     latest              1e5ab59102ce        2 years ago         108.3 MB
+docker.io/centos                    7                   196e0ce0c9fb        2 years ago         196.6 MB
+docker.io/mobz/elasticsearch-head   5                   b19a5c98e43b        3 years ago         823.9 MB
+[root@liuawen ~]# docker run -id --name=tensquare_redis -p 6379:6379 redis
+fe57aa70d5b9b807bc2d06e122052153fe355349a9ce3c4012348ab4c9ca5358
+[root@liuawen ~]# docker ps
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                      NAMES
+fe57aa70d5b9        redis                     "docker-entrypoint.sh"   6 seconds ago       Up 5 seconds        0.0.0.0:6379->6379/tcp     tensquare_redis
+cd98c23ca61b        mongo                     "docker-entrypoint.sh"   17 hours ago        Up 17 hours         0.0.0.0:27017->27017/tcp   tensquare_mongo
+934545b082c6        centos/mysql-57-centos7   "container-entrypoint"   2 days ago          Up 2 days           0.0.0.0:3306->3306/tcp     tensquare_mysql
+[root@liuawen ~]# 
+
+```
+
+
+
+
 
 配置文件添加配置：
 
@@ -1879,9 +2933,30 @@ docker run -id --name=tensquare_redis -p 6379:6379 redis
 
  
 
+```yml
+server:
+  port: 9004 # 服务访问端口号
+spring:
+  application:
+    name: tensquare-article #服务名称
+  datasource: # 数据库连接四大属性
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.200.128:3306/tensquare_article?characterEncoding=utf-8
+    username: root
+    password: root
+  data:
+    mongodb:
+      host: 192.168.200.128
+      database: commentdb
+  redis:
+    host: 192.168.200.128
+```
+
+
+
 修改Controller方法：
 
-```
+```java
 @Autowired
 private RedisTemplate redisTemplate;
 
@@ -1911,4 +2986,470 @@ public Result thumbup(@PathVariable String id) {
 
  
 
- 
+```java
+@Autowired
+    private RedisTemplate redisTemplate;
+
+    //PUT /comment/thumbup/{commentId} 根据评论id点赞评论
+    @RequestMapping(value = "thumbup/{commentId}", method = RequestMethod.PUT)
+    public Result thumbup(@PathVariable String commentId) {
+        //把用户点赞信息保存到Redis中
+        //每次点赞之前，先查询用户点赞信息
+        //如果没有点赞信息，用户可以点赞
+        //如果有点赞信息，用户不能重复点赞
+
+        //模拟用户id
+        String userId = "123";
+
+        //查询用户点赞信息，根据用户id和评论id
+        Object flag = redisTemplate.opsForValue().get("thumbup_" + userId + "_" + commentId);
+
+        //判断查询到的结果是否为空
+        if (flag == null) {
+            //如果为空，表示用户没有点过赞，可以点赞
+            commentService.thumbup(commentId);
+
+            //点赞成功，保存点赞信息
+            redisTemplate.opsForValue().set("thumbup_" + userId + "_" + commentId, 1);
+
+            return new Result(true, StatusCode.OK, "点赞成功");
+        }
+
+        //如果不为空，表示用户点过赞，不可以重复点赞
+        return new Result(false, StatusCode.REPERROR, "不能重复点赞");
+
+    }
+```
+
+
+
+ 晚自习来了
+
+![image-20200829125646578](assets/image-20200829125646578.png)
+
+
+
+#### 晚自习
+
+等个几分钟就可以了
+
+面试宝典好几百页怎么去搞呢
+
+![image-20200829125825894](assets/image-20200829125825894.png)
+
+
+
+视图
+
+![image-20200829125851905](assets/image-20200829125851905.png)
+
+
+
+过几遍 
+
+JVM基础知识
+
+没有机会 没有能力  JVM调优   
+
+你知道就行   问得比较少点
+
+Java基础   反射 动态代理
+
+复制 txt  看   第一天   第二天早上  回答出来
+
+
+
+JavaSE
+
+JavaEE
+
+MySQL
+
+笔试的时候
+
+面试问优化的  
+
+笔试的重点  MySQL 30   创建表  关联查询 子查询 条件查询   
+
+![image-20200829130343861](assets/image-20200829130343861.png)
+
+
+
+每个月  都有对老师考试
+
+修改   基本的SQL语句  行转换为列  列转换为行
+
+过笔试   Java基础  数据库  80  90  分
+
+笔试问题不大  面试  不同的面试官   
+
+项目  基础   项目的具体的实现   
+
+
+
+面中到了 过的概率   
+
+传统  互联网   
+
+问Java基础  Spring   事务管理   什么是脏读
+
+互联网 分布式相关的    你用过的Dubbo   支持什么并发控制  负载均衡   分布式 什么的什么的
+
+
+
+面试宝典  做准备  非常看重你的基础    基础搞明白
+
+面试  阶段
+
+HR  看 
+
+
+
+需求 基本信息  HR发需求  看简历 里面有没有关键字
+
+项目高不高端   行业  高端很多  做的项目   行业  职责   
+
+感觉经验  厉不厉害  OK不OK    技术  负责人  池子
+
+技术进一步审核   技术 项目经验 负责的模块
+
+能不能胜任     HR  再来  邀请你来我们公司进行面试
+
+
+
+第一轮 技术面试      基本功
+
+二轮    团队 起来什么作用  对团队贡献    不和别人去交流 不开腔 不喜欢这样的
+
+各个方面   综合素质
+
+不错 留下来   8000    合适  
+
+工资达不到预期   
+
+问一下 最低能接收多少   实在是  
+
+期望  不能少得太多  
+
+HR 交流   话术   胆怯   要就要    他会给
+
+
+
+公司不同而不同的
+
+学历不错 技术好点  
+
+毕业 付出很多 高点
+
+学习  找工作  选择  双向
+
+
+
+
+
+![image-20200829131417129](assets/image-20200829131417129.png)
+
+
+
+
+
+
+
+![image-20200829131431380](assets/image-20200829131431380.png)
+
+
+
+JDBC Template 
+
+不是最优的  配置 
+
+有框架  更优的
+
+
+
+封装程度不一样
+
+![image-20200829131639169](assets/image-20200829131639169.png)
+
+很担心
+
+
+
+顶不住
+
+积极性  不高  
+
+![image-20200829131715047](assets/image-20200829131715047.png)
+
+进去啥都敲不出来    会不会顶不住额
+
+
+
+代码量提上去
+
+量变  质变 
+
+什么知识点 可以讲    
+
+过一周忘了  二周忘了
+
+
+
+几个项目
+
+传智健康项目  
+
+数据库增删改查 加点Redis
+
+初级  中级  
+
+我连这个都顶不住的   
+
+初级开发 中级开发 
+
+进一步    畅购  
+
+理解   书写   开发的流程  开发的步骤
+
+能做的 
+
+0到1   写出来
+
+
+
+工作的重点   
+
+技术的知识   基础  
+
+理论 代码   
+
+工作重点
+
+敲不出来    一点思路都没有
+
+
+
+
+
+完整做了一个项目
+
+业务需求  开发遇到了问题
+
+开发的理解   拥有一定解决问题的能力的
+
+
+
+不是来听课的  是来抄代码的
+
+
+
+![image-20200829132258283](assets/image-20200829132258283.png)
+
+
+
+视频抄代码  抄代码视频    自己去写  才好的
+
+
+
+
+
+畅购项目
+
+非常基础的  常规的
+
+分布锁  集群  异常 
+
+Bug 紧急的  
+
+水平 中级水平 
+
+技术的使用 功能的开发 
+
+加密   算法     
+
+相应的专家来搞 
+
+数学  算法  应用层
+
+各个行业   顶级专家  搞定  
+
+
+
+
+
+本科水平        畅购    好的  10K  学得非常不错的
+
+
+
+不熟悉 
+
+权限 分布式 
+
+Controller  Service  Dao   常规的功能 
+
+第一次接触到 第一次  难
+
+
+
+多写几遍
+
+写个好几遍的    
+
+吃力  传智健康  我来敲了四遍
+
+第一遍 没什么感觉  懂了一点点  还是要参考笔记 视频  
+
+再写一遍  又好一点 好一点 再写一遍  又好一点
+
+四遍   不参考任何东西  都能自己写出来的
+
+
+
+![image-20200829134549627](assets/image-20200829134549627.png)
+
+
+
+
+
+你做后端开发 Nginx  比较好点
+
+Nginx也不复杂 
+
+操作少了
+
+提交到git  就部署到线上了 
+
+
+
+
+
+讲只能讲
+
+
+
+能不能写出来
+
+靠自己
+
+
+
+你不懂我可以讲
+
+但讲懂了 不一定可以写出来的
+
+
+
+懂  做  出来  
+
+
+
+#### 评论点赞 
+
+不能重复点赞 
+
+评论id  用户id  点赞之前先查询一下  这个用户在这个评论点赞过 
+
+查询一波   速度比较快点  Redis  点赞这个操作
+
+
+
+![image-20200829135122736](assets/image-20200829135122736.png)
+
+
+
+使用Redis服务了
+
+SpringBoot  Data  Redis
+
+
+
+添加SpringDataRedis依赖 
+
+去配置一下
+
+redis
+
+6379
+
+![image-20200829135240566](assets/image-20200829135240566.png)
+
+
+
+![image-20200829135341946](assets/image-20200829135341946.png)
+
+还没有写用户的
+
+
+
+redis加个前缀 
+
+ //查询用户点赞信息，根据用户id和评论id
+        Object flag = redisTemplate.opsForValue().get("thumbup_" + userId + "_" + commentId);
+
+
+
+去Redis里面查询 看下能不能查询到 呢 
+
+不需要知道结果是什么 直接能查询就可以的
+
+评论文章 点了赞  这样设置也不合理 点了就是唯一的 不能取消了
+
+可以取消  
+
+if
+
+else
+
+可以删除掉  再点一下取消点赞  
+
+笔试 面试  重点  
+
+
+
+get得到就是get呢  
+
+得到一个结果 一个标记
+
+
+
+            //点赞成功，保存点赞信息
+            redisTemplate.opsForValue().set("thumbup_" + userId + "_" + commentId, 1);
+这是设置  key  value  
+
+
+
+```java
+@Autowired
+    private RedisTemplate redisTemplate;
+
+    //PUT /comment/thumbup/{commentId} 根据评论id点赞评论
+    @RequestMapping(value = "thumbup/{commentId}", method = RequestMethod.PUT)
+    public Result thumbup(@PathVariable String commentId) {
+        //把用户点赞信息保存到Redis中
+        //每次点赞之前，先查询用户点赞信息
+        //如果没有点赞信息，用户可以点赞
+        //如果有点赞信息，用户不能重复点赞
+
+        //模拟用户id
+        String userId = "123";
+
+        //查询用户点赞信息，根据用户id和评论id
+        Object flag = redisTemplate.opsForValue().get("thumbup_" + userId + "_" + commentId);
+
+        //判断查询到的结果是否为空
+        if (flag == null) {
+            //如果为空，表示用户没有点过赞，可以点赞
+            commentService.thumbup(commentId);
+
+            //点赞成功，保存点赞信息
+            redisTemplate.opsForValue().set("thumbup_" + userId + "_" + commentId, 1);
+
+            return new Result(true, StatusCode.OK, "点赞成功");
+        }
+
+        //如果不为空，表示用户点过赞，不可以重复点赞
+        return new Result(false, StatusCode.REPERROR, "不能重复点赞");
+
+    }
+```
+

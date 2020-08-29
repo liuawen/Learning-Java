@@ -1,0 +1,280 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.tc-data-list .tc-list .qa-item {
+  padding: 14px 35px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.tc-data-list .tc-list .qa-item .record {
+  margin-right: 30px;
+  margin-top: 5px;
+}
+
+.tc-data-list .tc-list .qa-item .record .number {
+  text-align: right;
+}
+
+.tc-data-list .tc-list .qa-item .record .number a {
+  color: #999;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .border {
+  padding: 6px 16px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .color {
+  color: #e64620;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .useful {
+  padding: 8px;
+  border: 1px solid #999;
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .useful .usenum {
+  color: #999;
+  font-size: 16px;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .answer {
+  border: 1px solid #999;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .answer .fa {
+  font-size: 14px;
+}
+
+.tc-data-list .tc-list .qa-item .info .text {
+  font-size: 14px;
+  line-height: 21px;
+  color: #000;
+}
+
+.tc-data-list .tc-list .qa-item .info .text a {
+  color: #555;
+  text-decoration: none;
+}
+
+.tc-data-list .tc-list .qa-item .info .other {
+  overflow: hidden;
+  margin-top: 13px;
+  color: #999;
+  margin-left: 76px;
+}
+
+.tc-data-list .tc-list .qa-item .info .other .remark {
+  line-height: 25px;
+}
+
+.tc-data-list .tc-list .qa-item .info .other .remark a {
+  margin-right: 10px;
+  color: #999;
+  text-decoration: none;
+}
+
+.tc-data-list .jiathis_style_32x32 {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.tc-data-list .jiathis_style_32x32 span {
+  padding-right: 10px;
+}
+
+.tc-data-list .comment span {
+  color: #999;
+}
+
+.tc-data-list .comment span img {
+  width: 25px;
+  height: 25px;
+  border-radius: 6px;
+}
+
+.tc-data-list .form {
+  margin-top: 10px;
+}
+
+.tc-data-list .form .remark {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.tc-data-list .form .remark .sui-btn {
+  padding: 5px 20px;
+  font-size: 14px;
+}
+
+/*
+ * colors variables
+ */
+.block-btn {
+  padding: 10px 15px 13px 25px;
+  border: 1px solid #e64620;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.block-btn p {
+  margin-bottom: 12px;
+}
+
+.block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #e64620;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+header {
+  margin: 15px 0;
+}
+
+.tag-item .left-list {
+  margin-right: 10px;
+}
+
+@media (min-width: 1200px) {
+  .tag-item .left-list {
+    width: 860px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .left-list {
+    width: 710px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .left-list {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tag-item .right-tag {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .right-tag {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .right-tag {
+    width: 190px;
+  }
+}
+
+.tag-item .right-tag .block-btn {
+  padding: 10px 15px 13px 17px;
+  border: 1px solid #e64620;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .block-btn p {
+  margin-bottom: 12px;
+}
+
+.tag-item .right-tag .block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #e64620;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

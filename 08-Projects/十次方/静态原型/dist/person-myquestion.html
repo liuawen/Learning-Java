@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --> 
+  <meta name="description" content="" /> 
+  <meta name="author" content="" /> 
+  <link rel="icon" href="./img/asset-favicon.ico" /> 
+  <title>社交-我的提问</title> 
+  <!-- 页面 css js --> 
+  <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js"></script> --> 
+  <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/widget-base.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/page-sj-person-myquestion.css" /> 
+ </head> 
+ <body> 
+  <div class="wrapper"> 
+   <!--引用组件--> 
+   <!--头部导航--> 
+   <header> 
+    <div class="sui-navbar"> 
+     <div class="navbar-inner"> 
+      <a href="index-logined.html" class="sui-brand"><img src="./img/asset-logo-black.png" alt="社交" /></a> 
+      <ul class="sui-nav"> 
+       <li class="active"><a href="./headline-logined.html">头条</a></li> 
+       <li><a href="./qa-logined.html">问答</a></li> 
+       <li><a href="./activity-index.html">活动</a></li> 
+       <li><a href="./makeFriends-index.html">交友</a></li> 
+       <li><a href="./spit-index.html">吐槽</a></li> 
+       <li><a href="./recruit-index.html">招聘</a></li> 
+      </ul> 
+      <form class="sui-form sui-form pull-left"> 
+       <input type="text" placeholder="输入关键词..." /> 
+       <span class="btn-search fa fa-search"></span> 
+      </form> 
+      <div class="sui-nav pull-right info"> 
+       <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li> 
+       <li class="hover"> <span class="fa fa-plus "></span> 
+        <ul class="hoverinfo"> 
+         <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li> 
+         <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li> 
+         <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li> 
+         <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li> 
+        </ul> </li> 
+       <li><a href="./person-homepage.html" target="_blank" class="homego"><img src="./img/widget-photo.png" alt="用户头像" /></a></li> 
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+  </div> 
+ 
+  <div class="myhome-personinfo" style="background-color:#AEDD81"> 
+   <div class="wrapper"> 
+    <div class="person-baseinfo"> 
+     <!--头像信息--> 
+     <div class="photo"> 
+      <img src="./img/widget-myphoto.jpg" alt="" class="person" /> 
+      <div class="share"> 
+       <span><img src="./img/asset-QQ.png" alt="" width="34" height="28" /></span> 
+       <span><img src="./img/asset-weixin.png" alt="" width="28" height="28" /></span> 
+       <span><img src="./img/asset-weibo.png" alt="" width="28" height="28" /></span> 
+      </div> 
+     </div> 
+     <!--文字信息--> 
+     <div class="info"> 
+      <h1>Web爱好者<span class="allinfo"><a href="./person-myfile.html" target="_blank">查看完整档案</a></span></h1> 
+      <ul class="fill"> 
+       <li> <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="edit-item"> 填写现居城市</span> 
+        <form action="" class="sui-form form-inline"> 
+         <input type="text" placeholder="现居城市" /> 
+         <button class="sui-btn btn-danger save-btn">保存</button> 
+        </form> </li> 
+       <li> <i class="fa fa-graduation-cap" aria-hidden="true"></i> <span class="edit-item"> 填写毕业院校</span> 
+        <form action="" class="sui-form form-inline"> 
+         <input type="text" placeholder="院校名称" /> 
+         <input type="text" placeholder="所学专业" /> 
+         <button class="sui-btn btn-danger save-btn">保存</button> 
+        </form> </li> 
+       <li> <i class="fa fa-shopping-bag" aria-hidden="true"></i> <span class="edit-item"> 填写所在公司/组织</span> 
+        <form action="" class="sui-form form-inline"> 
+         <input type="text" placeholder="公司/组织名称" /> 
+         <input type="text" placeholder="职位头衔" /> 
+         <button class="sui-btn btn-danger save-btn">保存</button> 
+        </form> </li> 
+       <li> <i class="fa fa-link" aria-hidden="true"></i> <span class="edit-item"> 填写个人网站</span> 
+        <form action="" class="sui-form form-inline"> 
+         <input type="text" placeholder="个人网站" /> 
+         <button class="sui-btn btn-danger save-btn">保存</button> 
+        </form> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <!--右侧编辑--> 
+    <div class="edit-info"> 
+     <h4>个人简介<span class="addedit"><img src="./img/widget-edit.png" width="12" height="12" />编辑</span></h4> 
+     <div class="info-box"> 
+      <div class="edit-intro">
+       暂时没有个人简介
+      </div> 
+     </div> 
+    </div> 
+    <div class="clearfix"></div> 
+   </div> 
+  </div> 
+  <!-- <script>
+    $(function(){
+        $(".share .fa").hover(function(){
+            $(this).css("opacity","1.0");
+        },function(){
+            $(this).css("opacity","0.6") 
+        })
+    })
+</script>
+<script>
+$(function(){
+    // 个人简介
+    $(".addedit").click(function(){
+        var editBox = $(".edit-intro");
+        var editBoxtxt = editBox.text();
+        var input = $("<div><textarea class='editarea' type='text' /><div class='btns'><button class='sui-btn btn-default btn-cancel'>取消</button><button class='sui-btn btn-info btn-save'>保存</button></div></div>"); 
+        editBox.html(input);
+
+        // 点击保存
+        $(".edit-intro .btn-save").click(function(){       
+            var newval = $(".editarea").val();
+            if(newval == ""){
+              editBox.html("暂时没有个人简介")
+            }else if($.trim(newval) != $.trim(editBoxtxt)){
+               editBox.html(newval);
+            }
+        })
+        //点击取消
+        $(".edit-intro .btn-cancel").click(function(){       
+          editBox.html("暂时没有个人简介")
+        })
+
+    });
+    $(".edit-item").click(function(){  
+        var txt = $(this).text();  //可变的值
+
+        var rightform = $(this).siblings(".sui-form");
+        var rightinput = $(this).siblings(".sui-form input").val(); // 输入的值
+
+        rightform.show();
+
+        // $(".save-btn").click(function(){
+        //     console.log(rightinput);
+        // })
+
+
+
+    })
+    
+
+})
+</script> --> 
+  <!--两列布局--> 
+  <div class="wrapper  myhome"> 
+   <div class="left-list"> 
+    <div class="myhome-list"> 
+     <ul class="home-list"> 
+      <li class="active"><a href="./person-homepage.html">我的主页</a></li> 
+      <li><a href="./person-myanswer.html">我的回答</a></li> 
+      <li><a href="./person-myquestion.html">我的提问</a></li> 
+      <li><a href="./person-myshare.html">我的分享</a></li> 
+     </ul> 
+     <ul class="home-list bottom"> 
+      <li><a href="./person-dynamic.html">个人动态</a></li> 
+      <li><a href="./person-myfocus.html">我的关注</a></li> 
+      <li><a href="./person-mycollect.html">我的收藏</a></li> 
+      <li><a href="./person-myreaded.html">浏览记录</a></li> 
+      <li><a href="./person-account.html">账户设置</a></li> 
+     </ul> 
+    </div> 
+    <!-- <script>
+    $(function(){
+        $(".home-list li").click(function(){
+            $(this).addClass("active");
+            $(this).siblings().removeClass("active");
+        })
+    })
+</script> --> 
+   </div> 
+   <div class="right-content"> 
+    <div class="questions"> 
+     <h4><span>我的提问</span></h4> 
+     <ul class="question-list"> 
+      <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关PHP初级进阶的问题</a></span> <span class="fr date">4月6日</span> <span class="clearfix"></span> </li> 
+      <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关JAVA初级进阶的问题</a></span> <span class="fr date">4月6日</span> <span class="clearfix"></span> </li> 
+      <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关HTML5初级进阶的问题</a></span> <span class="fr date">4月6日</span> <span class="clearfix"></span> </li> 
+      <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关C++初级进阶的问题</a></span> <span class="fr date">4月6日</span> <span class="clearfix"></span> </li> 
+      <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关python初级进阶的问题</a></span> <span class="fr date">4月6日</span> <span class="clearfix"></span> </li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div class="clearfix"></div> 
+  </div> 
+  <div class="footer"> 
+   <div class="wrapper"> 
+    <div class="footer-bottom"> 
+     <div class="link"> 
+      <dl> 
+       <dt>
+        网站相关
+       </dt> 
+       <dd>
+        关于我们
+       </dd> 
+       <dd>
+        服务条款
+       </dd> 
+       <dd>
+        帮助中心
+       </dd> 
+       <dd>
+        编辑器语法
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        常用链接
+       </dt> 
+       <dd>
+        传智播客
+       </dd> 
+       <dd>
+        传智论坛
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        联系我们
+       </dt> 
+       <dd>
+        联系我们
+       </dd> 
+       <dd>
+        加入我们
+       </dd> 
+       <dd>
+        建议反馈
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        关注我们
+       </dt> 
+       <dd>
+        微博
+       </dd> 
+       <dd>
+        twitter
+       </dd> 
+      </dl> 
+      <div class="xuke"> 
+       <h3>内容许可</h3> 
+       <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p> 
+       <p>本站由 传智研究院 提供更新服务</p> 
+      </div> 
+     </div> 
+     <p class="Copyright">Copyright &copy; 2017 传智问答社区 当前版本 0.0.1</p> 
+    </div> 
+   </div> 
+  </div> 
+  <script>
+// $(function(){
+//   $(".hover").hover(function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "show"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#e64620");
+//   },function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "hide"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#000");
+//   })
+// })
+</script> 
+ </body>
+</html>

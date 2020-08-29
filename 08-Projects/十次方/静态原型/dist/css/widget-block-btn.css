@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.block-btn {
+  padding: 10px 15px 13px 25px;
+  border: 1px solid #e64620;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.block-btn p {
+  margin-bottom: 12px;
+}
+
+.block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #e64620;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}

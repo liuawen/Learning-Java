@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.qa-login {
+  padding: 26px 24px 25px;
+  border: 1px solid #e64620;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.qa-login p {
+  text-align: center;
+  color: #000;
+}
+
+.qa-login p a {
+  color: #e64620;
+  text-decoration: underline;
+}
+
+.qa-login .sui-form {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.qa-login .sui-form .control-group .control-label {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.qa-login .sui-form .control-group .radio-circle {
+  line-height: 30px;
+}
+
+.qa-login .sui-form .control-group .radio-circle input[type="radio"] {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-top: -2px;
+}
+
+.qa-login .sui-form .control-group .radio-circle span {
+  font-size: 14px;
+  color: #999;
+}
+
+.qa-login .sui-form .control-group .controls input[type="text"], .qa-login .sui-form .control-group .controls input[type="password"] {
+  width: 95%;
+  height: 24px;
+  padding-left: 8px;
+  line-height: 24px;
+  font-family: "微软雅黑";
+}
+
+.qa-login .sui-form .control-group .controls .btn-login {
+  padding: 3px 25px;
+  border: 0;
+  line-height: 24px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #e64620;
+  color: #fff;
+  font-family: "微软雅黑";
+}

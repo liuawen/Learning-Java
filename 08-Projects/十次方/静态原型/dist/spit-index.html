@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --> 
+  <meta name="description" content="" /> 
+  <meta name="author" content="" /> 
+  <link rel="icon" href="./img/asset-favicon.ico" /> 
+  <title>社交-吐槽</title> 
+  <!-- 页面 css js --> 
+  <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/widget-base.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/bootstrap/dist/css/bootstrap.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/page-sj-spit-index.css" /> 
+ </head> 
+ <body> 
+  <div class="wrapper"> 
+   <!--引用组件--> 
+   <!--头部导航--> 
+   <header> 
+    <div class="sui-navbar"> 
+     <div class="navbar-inner"> 
+      <a href="index-logined.html" class="sui-brand"><img src="./img/asset-logo-black.png" alt="社交" /></a> 
+      <ul class="sui-nav"> 
+       <li class="active"><a href="./headline-logined.html">头条</a></li> 
+       <li><a href="./qa-logined.html">问答</a></li> 
+       <li><a href="./activity-index.html">活动</a></li> 
+       <li><a href="./makeFriends-index.html">交友</a></li> 
+       <li><a href="./spit-index.html">吐槽</a></li> 
+       <li><a href="./recruit-index.html">招聘</a></li> 
+      </ul> 
+      <form class="sui-form sui-form pull-left"> 
+       <input type="text" placeholder="输入关键词..." /> 
+       <span class="btn-search fa fa-search"></span> 
+      </form> 
+      <div class="sui-nav pull-right info"> 
+       <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li> 
+       <li class="hover"> <span class="fa fa-plus "></span> 
+        <ul class="hoverinfo"> 
+         <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li> 
+         <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li> 
+         <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li> 
+         <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li> 
+        </ul> </li> 
+       <li><a href="./person-homepage.html" target="_blank" class="homego"><img src="./img/widget-photo.png" alt="用户头像" /></a></li> 
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+   <!--两列布局--> 
+   <div class="wrapper tag-item"> 
+    <div class="fl left-list"> 
+     <div class="tc-data-list"> 
+      <div class="tc-list"> 
+       <ul class="detail-list"> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 11 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-7-23 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 10 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-6-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 12 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-6-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 10 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-4-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 10 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-1-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 12 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-6-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 10 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-4-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+        <li class="qa-item"> 
+         <div class="fl record"> 
+          <div class="number"> 
+           <div class="border useful"> 
+            <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p> 
+            <p class="zannum"> 10 </p> 
+           </div> 
+           <div class="border answer"> 
+            <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="info"> 
+          <p class="text"> <a href="./spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p> 
+          <div class="other"> 
+           <div class="fl date"> 
+            <span>2017-1-22 12:02</span> 
+           </div> 
+           <div class="fr remark"> 
+            <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a> 
+            <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a> 
+           </div> 
+          </div> 
+         </div> 
+         <div class="clearfix"></div> </li> 
+       </ul>        
+      </div> 
+     </div> 
+     <!-- <script>
+    $(function () {
+        $(".zan").click(function () {
+            $(this).children(".fa").toggleClass("color");
+            var c = parseInt($(this).parent().siblings(".zannum").html());
+            c = c++;
+        });
+        $(".star").click(function () {
+            console.log("eeee");
+            $(this).children(".fa").removeClass("fa-star-o").addClass("fa-star color");
+        });
+        $(".detail-list").unbind("scroll").bind("scroll", function (e) {
+            var sum = this.scrollHeight;
+            if (sum - 10 <= $(this).scrollTop() + $(this).height()) {
+                $(".detail-list").append($("li").clone());
+            }
+        });
+    })
+
+</script> --> 
+    </div> 
+    <div class="fl right-tag"> 
+     <div class="block-btn"> 
+      <p>来个匿名吐槽，发泄一下你心中的怒火吧！</p> 
+      <a class="sui-btn btn-block btn-share" href="./spit-submit.html" target="_blank">发吐槽</a> 
+     </div> 
+    </div> 
+    <div class="clearfix"></div> 
+   </div> 
+  </div> 
+  <div class="footer"> 
+   <div class="wrapper"> 
+    <div class="footer-bottom"> 
+     <div class="link"> 
+      <dl> 
+       <dt>
+        网站相关
+       </dt> 
+       <dd>
+        关于我们
+       </dd> 
+       <dd>
+        服务条款
+       </dd> 
+       <dd>
+        帮助中心
+       </dd> 
+       <dd>
+        编辑器语法
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        常用链接
+       </dt> 
+       <dd>
+        传智播客
+       </dd> 
+       <dd>
+        传智论坛
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        联系我们
+       </dt> 
+       <dd>
+        联系我们
+       </dd> 
+       <dd>
+        加入我们
+       </dd> 
+       <dd>
+        建议反馈
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        关注我们
+       </dt> 
+       <dd>
+        微博
+       </dd> 
+       <dd>
+        twitter
+       </dd> 
+      </dl> 
+      <div class="xuke"> 
+       <h3>内容许可</h3> 
+       <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p> 
+       <p>本站由 传智研究院 提供更新服务</p> 
+      </div> 
+     </div> 
+     <p class="Copyright">Copyright &copy; 2017 传智问答社区 当前版本 0.0.1</p> 
+    </div> 
+   </div> 
+  </div> 
+
+ </body>
+</html>

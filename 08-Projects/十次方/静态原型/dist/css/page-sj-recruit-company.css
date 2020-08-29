@@ -1,0 +1,330 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.hot-company .mail {
+  line-height: 36px;
+  padding: 0 10px;
+  background-color: #e1e1e1;
+  color: #999;
+  font-size: 14px;
+}
+
+.hot-company .company {
+  background-color: #fff;
+}
+
+.hot-company .company .head {
+  padding-top: 15px;
+}
+
+.hot-company .company .head h4 {
+  border-left: 2px solid #55cbc4;
+  padding-left: 15px;
+  font-size: 16px;
+  color: #55cbc4;
+}
+
+.hot-company .company .company {
+  padding: 10px;
+}
+
+.hot-company .company .company .company-item {
+  font-family: "微软雅黑";
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+  margin-bottom: 10px;
+}
+
+.hot-company .company .company .company-item p {
+  line-height: 24px;
+}
+
+.hot-company .company .company .company-item .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hot-company .company .company .company-item .position {
+  font-size: 14px;
+  color: #e64620;
+}
+
+.hot-company .company .company .company-item .position a {
+  color: #e64620;
+  text-decoration: none;
+}
+
+/*
+ * colors variables
+ */
+.job-intro {
+  padding: 15px 0;
+}
+
+.job-intro div {
+  line-height: 32px;
+}
+
+.job-intro .left-img {
+  float: left;
+  margin-right: 15px;
+  border: 1px solid #e1e1e1;
+}
+
+.job-intro .middle-intro {
+  float: left;
+}
+
+.job-intro .middle-intro .name {
+  font-size: 20px;
+}
+
+.job-intro .middle-intro .intro {
+  font-size: 16px;
+}
+
+.job-intro .middle-intro .tag li {
+  display: inline-block;
+  border-radius: 16px;
+  margin-right: 8px;
+  list-style: none;
+  border: 1px solid #55cbc4;
+  color: #55cbc4;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+.job-intro .middle-intro .link {
+  line-height: 32px;
+}
+
+.job-intro .middle-intro .link a {
+  color: #55cbc4;
+  font-size: 16px;
+}
+
+.job-intro .right-tool {
+  float: right;
+}
+
+.job-intro .right-tool .btn-collect {
+  background-color: #fff;
+  color: #55cbc4;
+  border-color: #55cbc4;
+  padding: 4px 25px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.job-intro .right-tool span {
+  color: #999;
+  font-size: 14px;
+  vertical-align: middle;
+  padding-right: 5px;
+  padding-left: 3px;
+}
+
+.tag-item .tit {
+  font-size: 18px;
+  color: #55cbc4;
+  margin-bottom: 10px;
+}
+
+.tag-item .company-index {
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.tag-item .company-index li {
+  list-style-type: none;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.tag-item .company-index li span {
+  padding: 3px 25px;
+}
+
+.tag-item .company-index li.active span {
+  border-bottom: 2px solid #55cbc4;
+  font-weight: bold;
+}
+
+.tag-item .left-list {
+  margin-right: 10px;
+  padding: 20px;
+  background: #fff;
+}
+
+.tag-item .left-list .content {
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.tag-item .left-list .content p {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+  .tag-item .left-list {
+    width: 820px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .left-list {
+    width: 670px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .left-list {
+    width: 560px;
+  }
+}
+
+.tag-item .right-tag {
+  padding: 20px;
+  background: #fff;
+}
+
+.tag-item .right-tag .job-item {
+  margin-bottom: 15px;
+}
+
+.tag-item .right-tag .more {
+  text-align: right;
+}
+
+.tag-item .right-tag .more a {
+  font-size: 14px;
+  color: #999;
+}
+
+.tag-item .right-tag p {
+  line-height: 28px;
+}
+
+.tag-item .right-tag .name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 25px;
+  color: #000;
+}
+
+.tag-item .right-tag .city {
+  color: #999;
+  font-size: 14px;
+}
+
+.tag-item .right-tag .need {
+  font-size: 16px;
+}
+
+.tag-item .right-tag .need .money {
+  color: #e64620;
+  font-weight: bold;
+}
+
+.tag-item .right-tag .company {
+  color: #999;
+  font-size: 14px;
+}
+
+@media (min-width: 1200px) {
+  .tag-item .right-tag {
+    width: 260px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .right-tag {
+    width: 240px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .right-tag {
+    width: 150px;
+  }
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

@@ -1,0 +1,272 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.activity-card-list .top-title {
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.activity-card-list .top-title .latest,
+.activity-card-list .top-title .cities,
+.activity-card-list .top-title .types {
+  float: left;
+  padding-right: 15px;
+  line-height: 40px;
+  font-weight: normal;
+}
+
+.activity-card-list .top-title .latest {
+  padding-left: 30px;
+  margin-right: 10px;
+  border-bottom: 2px solid #e64620;
+  font-size: 16px;
+}
+
+.activity-card-list .top-title .dropdown-inner {
+  border: 0;
+}
+
+.activity-card-list .top-title .dropdown-inner a {
+  color: #e64620;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.activity-card-list .top-title .dropdown-inner a .caret {
+  color: #000;
+}
+
+.activity-card-list .top-title .sui-dropdown-menu {
+  margin-top: 11px !important;
+  border: 0;
+}
+
+.activity-card-list .top-title .sui-dropdown-menu > li {
+  padding: 0;
+}
+
+.activity-card-list .top-title .sui-dropdown-menu > li a {
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.activity-card-list .top-title .sui-dropdown-menu > li a:hover {
+  background-color: #e64620;
+}
+
+.activity-card-list .activity {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.activity-card-list .activity .activity-item {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 1200px) {
+  .activity-card-list .activity .activity-item {
+    width: 277px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .activity-card-list .activity .activity-item {
+    width: 234px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .activity-card-list .activity .activity-item {
+    width: 191px;
+  }
+}
+
+.activity-card-list .activity .activity-item .activity-inner {
+  overflow: hidden;
+}
+
+.activity-card-list .activity .activity-item .activity-inner .text {
+  padding: 15px 10px;
+  background-color: #fff;
+}
+
+.activity-card-list .activity .activity-item .activity-inner .text .title {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.activity-card-list .activity .activity-item .activity-inner .text .btn {
+  margin-top: 3px;
+}
+
+@media (min-width: 1200px) {
+  .activity-card-list .activity .activity-item .activity-inner .text .btn {
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .activity-card-list .activity .activity-item .activity-inner .text .btn {
+    padding-right: 5px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .activity-card-list .activity .activity-item .activity-inner .text .btn {
+    padding-right: 2px;
+  }
+}
+
+.activity-card-list .activity .activity-item .activity-inner .text .btn .btn-bao {
+  padding-top: 7px;
+  padding-bottom: 9px;
+  font-size: 14px;
+  background-color: #e64620;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  line-height: 13px;
+}
+
+@media (min-width: 1200px) {
+  .activity-card-list .activity .activity-item .activity-inner .text .btn .btn-bao {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .activity-card-list .activity .activity-item .activity-inner .text .btn .btn-bao {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .activity-card-list .activity .activity-item .activity-inner .text .btn .btn-bao {
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 12px;
+  }
+}
+
+.activity-card-list .sui-pagination {
+  text-align: center;
+}
+
+.activity-card-list .sui-pagination ul .active a {
+  background-color: #f06c4c;
+  color: #fff;
+  border-color: #f06c4c;
+}
+
+.activity-card-list .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #f06c4c;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.activity-card-list .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #f06c4c;
+  font-size: 15px;
+}
+
+.activity-card-list .sui-pagination ul > li > a:hover, .activity-card-list .sui-pagination ul > li > a:focus {
+  border-color: #f06c4c;
+  background-color: #f06c4c;
+  color: #fff;
+}
+
+.activity-head {
+  margin-bottom: 10px;
+  box-shadow: 0 0 4px 1px #ccc;
+  background-color: #fff;
+}
+
+.activity-head .sui-form input {
+  height: 33px !important;
+  border: 1px solid #ccc !important;
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

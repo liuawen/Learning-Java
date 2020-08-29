@@ -1,0 +1,288 @@
+/*
+ * colors variables
+ */
+.file-edit {
+  margin-top: 15px;
+}
+
+.file-edit .tit {
+  font-weight: normal;
+  background-color: #fff;
+}
+
+.file-edit .tit span {
+  padding-left: 25px;
+  border-left: 2px solid #e64620;
+}
+
+.file-edit .name {
+  line-height: 36px;
+  color: #999;
+}
+
+.file-edit h3 {
+  font-weight: normal;
+}
+
+.file-edit .edit {
+  font-size: 14px;
+  color: #999;
+  line-height: 36px;
+  cursor: pointer;
+  float: right;
+}
+
+.file-edit .info {
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.file-edit .info .person {
+  margin: 0 auto;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.file-edit .info .person .item {
+  padding-left: 27px;
+  margin-left: 0;
+}
+
+.file-edit .info .person .item p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  clear: both;
+}
+
+.file-edit .info .skill {
+  padding: 10px 0;
+}
+
+.file-edit .info .skill h3 {
+  line-height: 36px;
+  padding: 0 20px;
+}
+
+.file-edit .info .skill .edit {
+  float: right;
+}
+
+.file-edit .info .skill .tag {
+  list-style: none;
+  padding: 0 20px;
+}
+
+.file-edit .info .skill .tag li {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: #39739d;
+  background-color: #e1ecf4;
+}
+
+.file-edit .canadd {
+  margin-top: 15px;
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.file-edit .canadd .add-list {
+  padding: 0 27px;
+}
+
+.file-edit .canadd .add-list li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  list-style: none;
+}
+
+.file-edit .canadd .add-list li .date {
+  line-height: 28px;
+  font-size: 14px;
+  color: #999;
+}
+
+.file-edit .canadd .add-list .add a {
+  font-size: 14px;
+  line-height: 28px;
+  color: #e64620;
+}
+
+.file-edit .btns {
+  text-align: right;
+  margin-top: 18px;
+}
+
+.file-edit .sui-btn {
+  padding: 5px 35px;
+  border-radius: 5px;
+  margin-right: 30px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.file-edit .btn-cancel {
+  border: 1px solid #ececec;
+  color: #999;
+  background: #fff;
+}
+
+.file-edit .btn-save {
+  background: #e64620;
+  color: #fff;
+  border-color: #e64620;
+}
+
+.file-edit .form-show {
+  display: none;
+  padding: 20px 25px;
+  background-color: #fffdeb;
+}
+
+.file-edit .form-show .photo {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.file-edit .form-show .photo img {
+  display: inline-block;
+}
+
+.file-edit .form-show .photo .text {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 32px;
+  color: #999;
+  margin-left: 10px;
+}
+
+.file-edit .form-show .photo .text .btn-default {
+  font-family: 'Microsoft Yahei';
+  font-size: 14px;
+}
+
+.file-edit .form-show .sui-form {
+  margin-bottom: 10px;
+}
+
+.file-edit .form-show .sui-form .control-label {
+  line-height: 26px;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #999;
+}
+
+.file-edit .form-show .sui-form .radio-pretty:hover span:before {
+  color: #999;
+}
+
+.file-edit .form-show .sui-form .radio-pretty span {
+  font-family: 'icon-pc','Microsoft Yahei';
+  font-size: 14px;
+}
+
+.file-edit .form-show .sui-form .radio-pretty.checked span:before {
+  color: #999;
+}
+
+.file-edit .form-show .sui-form input {
+  width: 260px;
+  line-height: 24px;
+  height: 24px;
+  box-shadow: none;
+}
+
+.file-edit .form-show .sui-form input, .file-edit .form-show .sui-form textarea {
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.file-edit .form-show .sui-form input::-webkit-input-placeholder, .file-edit .form-show .sui-form textarea::-webkit-input-placeholder {
+  color: #555;
+}
+
+.file-edit .form-show .sui-form input::-moz-input-placeholder, .file-edit .form-show .sui-form textarea::-moz-input-placeholder {
+  color: #555;
+}
+
+.file-edit .form-show .sui-form input::-ms-input-placeholder, .file-edit .form-show .sui-form textarea::-ms-input-placeholder {
+  color: #555;
+}
+
+.file-edit .form-show .sui-form .dropdown-inner {
+  line-height: 24px;
+  background-color: #fff;
+  font-size: 14px;
+  width: 260px;
+}
+
+.file-edit .form-show .sui-form .date input {
+  width: 120px;
+}
+
+.file-edit .form-skill .input-title {
+  margin-bottom: 10px;
+}
+
+.file-edit .form-skill .input-title input {
+  width: 98.3% !important;
+}
+
+.file-edit .form-skill .input-tags {
+  line-height: 27px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.file-edit .form-skill .input-tags .tags-detail {
+  margin-right: 5px;
+  padding: 2px 4px;
+  border: 0;
+  background: #e1ecf4;
+  color: #0077cc;
+  cursor: pointer;
+}
+
+.file-edit .form-skill .input-tags .tags-detail i {
+  padding-left: 3px;
+}
+
+.file-edit .form-skill .input-tags span {
+  line-height: 32px;
+  vertical-align: middle;
+}
+
+.file-edit .form-skill .input-tags input {
+  font-family: 'Microsoft Yahei';
+  padding-top: 0  !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  border: 0;
+  box-shadow: none;
+}
+
+.file-edit .form-skill .tags-box {
+  display: none;
+  position: absolute;
+  margin-top: 5px;
+  background-color: #FFF;
+  z-index: 999;
+}
+
+.file-edit .form-skill .tags-box .tag-bordered {
+  width: 280px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.18);
+  border-color: #ddd;
+}
+
+.file-edit .form-skill .tags-box .tag-bordered .tag-item {
+  border: 0;
+  background: #e1ecf4;
+  color: #0077cc;
+}

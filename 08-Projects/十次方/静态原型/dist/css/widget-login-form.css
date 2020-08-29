@@ -1,0 +1,27 @@
+/*
+ * colors variables
+ */
+.login-form .controls {
+  overflow: hidden;
+  margin-left: 8px;
+}
+
+.login-form .type-text {
+  font-size: 16px;
+  font-family: 'icon-pc' ,'Microsoft Yahei';
+  color: #666;
+}
+
+.login-form .btn-yes {
+  padding: 6px 15px;
+  float: right;
+  margin-right: 74px;
+  border-radius: 3px;
+  font-family: 'Microsoft Yahei';
+  font-size: 20px;
+}
+
+.login-form .other-methods {
+  margin-left: 10px;
+  margin-top: 10px;
+}

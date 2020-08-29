@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.headline-title {
+  padding: 15px 25px 15px 20px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.headline-title .title h2 {
+  margin-bottom: 10px;
+}
+
+.headline-title .time-tool .author {
+  font-weight: bold;
+  color: #0077cc;
+}
+
+/*
+ * colors variables
+ */
+.problem-detail {
+  padding: 18px;
+  background-color: #fff;
+}
+
+.problem-detail .title-intro .operate {
+  overflow: hidden;
+  line-height: 26px;
+}
+
+.problem-detail .title-intro .operate span {
+  color: #9a9a9a;
+}
+
+.problem-detail .title-intro .content p {
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.problem-detail .answer-intro {
+  margin-top: 25px;
+}
+
+.problem-detail .answer-intro img {
+  width: 32px;
+  border-radius: 15px;
+}
+
+.problem-detail .answer-intro .answer-num {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d1d1d1;
+  line-height: 26px;
+}
+
+.problem-detail .answer-intro .comment-box .comment-form .input-box {
+  width: 85%;
+  margin-left: 10px;
+}
+
+.problem-detail .answer-intro .comment-box .comment-form .input-box .real-box {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+}
+
+.problem-detail .answer-intro .comment-box .comment-form .input-box .add-on {
+  padding: 4px 16px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.problem-detail .answer-intro .remark-list ul {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.problem-detail .answer-intro .remark-list ul .item {
+  margin-bottom: 8px;
+}
+
+.problem-detail .answer-intro .remark-list ul .item .text {
+  margin-left: 15px;
+  width: 92%;
+}
+
+.problem-detail .answer-intro .remark-list ul .item .text p {
+  margin-bottom: 5px;
+  color: #5f5c5c;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.problem-detail .answer-intro .remark-list ul .item .text .name {
+  color: #d1d1d1;
+}
+
+.problem-detail .answer-intro .remark-list .inner-list {
+  margin-left: 48px;
+}
+
+.problem-detail .callback {
+  cursor: pointer;
+}
+
+.problem-detail .edit-box {
+  display: none;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding-left: 45px;
+}
+
+.problem-detail .edit-box .comment-form textarea {
+  width: 80%;
+  font-size: 14px;
+  height: 25px;
+  padding-left: 10px;
+  line-height: 25px;
+  border-color: #D1D1D1;
+  border-radius: 5px;
+}
+
+.problem-detail .edit-box .comment-form .submit-comment {
+  padding: 6px 15px;
+  font-size: 14px;
+  font-family: "微软雅黑";
+  background-color: #FFF;
+}
+
+.problem-detail .edit-box .tips {
+  width: 93%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fcf8e3;
+}
+
+/*
+ * colors variables
+ */
+.focus .img-title {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.focus .img-title img {
+  width: 46px;
+  border-radius: 23px;
+}
+
+.focus .img-title .btn-focus {
+  margin-left: 10px;
+}
+
+.focus .img-title .btn-focus .sui-btn {
+  font-size: 14px;
+  font-family: inherit;
+  margin-top: 3px;
+}
+
+.similar-problem {
+  padding: 5px 0 0;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.similar-problem .title {
+  padding-left: 10px;
+  color: #e64620;
+  border-left: 2px solid #e64620;
+}
+
+.similar-problem .problem-list {
+  padding: 15px 20px;
+}
+
+.similar-problem .problem-list .list-item {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  list-style-type: none;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.similar-problem .problem-list .list-item .list-title {
+  font-size: 13px;
+  line-height: 22px;
+}
+
+.similar-problem .problem-list .list-item .list-info {
+  line-height: 35px;
+}
+
+header {
+  margin: 15px 0;
+}
+
+.headline-content .left-list {
+  margin-right: 10px;
+}
+
+@media (min-width: 1200px) {
+  .headline-content .left-list {
+    width: 860px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .headline-content .left-list {
+    width: 710px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .headline-content .left-list {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .headline-content .right-tag {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .headline-content .right-tag {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .headline-content .right-tag {
+    width: 190px;
+  }
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

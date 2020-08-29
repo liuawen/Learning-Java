@@ -1,0 +1,355 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.search-job form {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.search-job form .input-job {
+  padding: 11px 15px;
+  font-size: 16px;
+  border-color: #aae5e2;
+  border-right: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #999;
+  font-family: inherit;
+}
+
+@media (min-width: 1200px) {
+  .search-job form .input-job {
+    width: 620px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .search-job form .input-job {
+    width: 460px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .search-job form .input-job {
+    width: 350px;
+  }
+}
+
+.search-job .input-area {
+  display: inline-block;
+  padding: 4px 8px 4px;
+  margin-left: -4px;
+  font-size: 16px;
+  vertical-align: middle;
+  border-top: 1px solid #aae5e2;
+  border-bottom: 1px solid #aae5e2;
+  background-color: #fff;
+}
+
+.search-job .input-area .city {
+  line-height: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-left: 1px solid #aae5e2;
+}
+
+.search-job .btn {
+  display: inline-block;
+}
+
+.search-job .btn .btn-search {
+  padding: 3px 28px 5px 23px;
+  line-height: 32px;
+  margin-left: -4px;
+  font-size: 18px;
+  border: 1px solid #aae5e2;
+  border-radius: 0;
+  background-color: #55cbc4;
+  color: #fff;
+}
+
+.search-job .hot dl {
+  display: block;
+  overflow: hidden;
+}
+
+.search-job .hot dl dt {
+  float: left;
+  font-size: 14px;
+  color: #999;
+}
+
+.search-job .hot dl dd {
+  float: left;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+.search-job .hot dl dd a {
+  color: #999;
+}
+
+/*
+ * colors variables
+ */
+.job-position .job-type {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  background-color: #fff;
+}
+
+.job-position .head .title {
+  border-left: 2px solid #55cbc4;
+  padding-left: 15px;
+  font-size: 16px;
+  color: #55cbc4;
+}
+
+.job-position .head .more a {
+  font-size: 14px;
+  color: #999;
+}
+
+.job-position .jobs {
+  padding: 10px 20px;
+}
+
+.job-position .job-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 15px;
+}
+
+.job-position .job-item p {
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.job-position .job-item .more {
+  text-align: right;
+}
+
+.job-position .job-item .more a {
+  font-size: 14px;
+  color: #999;
+}
+
+.job-position .job-item .name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 25px;
+  color: #000;
+}
+
+.job-position .job-item .name a {
+  color: #000;
+  text-decoration: none;
+}
+
+.job-position .job-item .city {
+  color: #999;
+  font-size: 14px;
+}
+
+.job-position .job-item .tag {
+  margin-top: 4px;
+}
+
+.job-position .job-item .tag li {
+  padding: 2px 4px;
+  margin-right: 5px;
+  border-radius: 4px;
+  list-style-type: none;
+  display: inline-block;
+  background: #e1ecf4;
+  color: #39739d;
+}
+
+.job-position .job-item .type .company {
+  color: #55cbc4;
+}
+
+.job-position .job-item .type p {
+  color: #999;
+}
+
+.job-position .job-item .time {
+  line-height: 28px;
+  color: #999;
+}
+
+/*
+ * colors variables
+ */
+.hot-company .mail {
+  line-height: 36px;
+  padding: 0 10px;
+  background-color: #e1e1e1;
+  color: #999;
+  font-size: 14px;
+}
+
+.hot-company .company {
+  background-color: #fff;
+}
+
+.hot-company .company .head {
+  padding-top: 15px;
+}
+
+.hot-company .company .head h4 {
+  border-left: 2px solid #55cbc4;
+  padding-left: 15px;
+  font-size: 16px;
+  color: #55cbc4;
+}
+
+.hot-company .company .company {
+  padding: 10px;
+}
+
+.hot-company .company .company .company-item {
+  font-family: "微软雅黑";
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+  margin-bottom: 10px;
+}
+
+.hot-company .company .company .company-item p {
+  line-height: 24px;
+}
+
+.hot-company .company .company .company-item .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hot-company .company .company .company-item .position {
+  font-size: 14px;
+  color: #e64620;
+}
+
+.hot-company .company .company .company-item .position a {
+  color: #e64620;
+  text-decoration: none;
+}
+
+.tag-item .left-list {
+  margin-right: 10px;
+}
+
+@media (min-width: 1200px) {
+  .tag-item .left-list {
+    width: 860px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .left-list {
+    width: 710px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .left-list {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tag-item .right-tag {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .right-tag {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .right-tag {
+    width: 190px;
+  }
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

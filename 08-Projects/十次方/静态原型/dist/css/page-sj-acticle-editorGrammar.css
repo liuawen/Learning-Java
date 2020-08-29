@@ -1,0 +1,391 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+header .sui-navbar {
+  margin-bottom: 0;
+}
+
+header .sui-navbar .navbar-inner {
+  padding-right: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+header .sui-navbar .navbar-inner .sui-brand {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+header .sui-navbar .navbar-inner .sui-nav li {
+  line-height: 45px;
+}
+
+header .sui-navbar .navbar-inner .sui-nav li a {
+  font-size: 20px;
+  color: #000;
+}
+
+@media (max-width: 1024px) {
+  header .sui-navbar .navbar-inner .sui-nav li a {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 14px;
+  }
+}
+
+header .sui-navbar .navbar-inner .sui-nav li.active a {
+  background: transparent;
+  color: #e64620;
+  font-weight: bold;
+}
+
+header .sui-navbar .navbar-inner .sui-form {
+  line-height: 59px;
+}
+
+header .sui-navbar .navbar-inner .sui-form input {
+  display: inline-block;
+  width: auto;
+  height: 40px;
+  padding: 2px 10px;
+  margin-top: 0;
+  border: 0;
+  border-radius: 25px;
+  line-height: 38px;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+@media (min-width: 1200px) {
+  header .sui-navbar .navbar-inner .sui-form input {
+    width: 290px;
+  }
+}
+
+header .sui-navbar .navbar-inner .sui-form .btn-search {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -40px;
+  line-height: 38px;
+  font-size: 20px;
+}
+
+header .sui-navbar .navbar-inner .info li {
+  padding: 10px;
+}
+
+header .sui-navbar .navbar-inner .info li .notice {
+  padding: 0;
+  font-size: 14px;
+}
+
+header .sui-navbar .navbar-inner .info li .homego {
+  padding: 0;
+}
+
+header .sui-navbar .navbar-inner .info li img {
+  border-radius: 15px;
+}
+
+header .sui-navbar .navbar-inner .info li.hover {
+  cursor: pointer;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo {
+  display: none;
+  margin-left: -21px;
+  margin-top: -1px;
+  list-style: none;
+  width: 80px;
+  float: right;
+  position: fixed;
+  z-index: 9999;
+  padding: 6px;
+  border: 1px solid #e4e4e4;
+  background-color: #fff;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo li {
+  padding: 0;
+  line-height: 26px;
+  text-align: center;
+  font-size: 14px;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo li:hover {
+  color: #e64620;
+}
+
+header .sui-navbar .navbar-inner .info li .hoverinfo li a {
+  font-size: 12px;
+}
+
+/*
+ * colors variables
+ */
+.nav-headline .navs li {
+  display: inline-block;
+  text-align: center;
+  width: 13%;
+  margin: 0 15px;
+  line-height: 32px;
+}
+
+.nav-headline .navs li a {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+.nav-headline .navs li.active {
+  border-bottom: 2px solid #e64620;
+}
+
+.nav-headline .navs li.active a {
+  font-weight: bold;
+  color: #0077cc;
+}
+
+/*
+ * colors variables
+ */
+.release-feedback .sui-form {
+  margin-top: 15px;
+}
+
+.release-feedback .sui-form .control-group {
+  margin-bottom: 30px;
+}
+
+.release-feedback .sui-form .control-label {
+  vertical-align: top;
+  font-size: 16px;
+  color: #999;
+}
+
+.release-feedback .sui-form .dropdown-inner {
+  min-width: 500px;
+}
+
+.release-feedback .sui-form .dropdown-inner a {
+  min-width: 182px;
+  padding: 4px 7px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.release-feedback .sui-form .sui-dropdown-menu > .active a {
+  background: #e64620;
+}
+
+.release-feedback .sui-form .sui-dropdown-menu > li > a:hover, .release-feedback .sui-form .sui-dropdown-menu > li > a:focus {
+  background: #e64620;
+}
+
+.release-feedback .sui-form .input-area {
+  min-width: 600px;
+  min-height: 150px;
+}
+
+.release-feedback .sui-form input {
+  height: 24px;
+  font-size: 14px;
+  box-shadow: none;
+  font-family: 'Microsoft Yahei';
+}
+
+.release-feedback .sui-form textarea {
+  font-family: 'Microsoft Yahei';
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.release-feedback .sui-form .btn-submit {
+  width: 800px;
+  text-align: center;
+}
+
+.release-feedback .sui-form .btn-submit .btn-release {
+  padding: 6px 22px 7px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 14px;
+  background-color: #e64620;
+  font-family: 'Microsoft Yahei';
+}
+
+.grammar header {
+  margin: 15px 0;
+}
+
+.grammar .nav {
+  box-shadow: 1px 1px 2px #E4DFDF;
+  background-color: #fff;
+}
+
+.grammar .footer {
+  border-top: 1px solid #e6e6e6;
+}
+
+.grammar .nav-headline .navs li {
+  display: inline-block;
+  text-align: center;
+  width: 13%;
+  margin: 0 15px;
+  line-height: 32px;
+}
+
+.grammar .nav-headline .navs li a {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+.grammar .nav-headline .navs li.active {
+  border-bottom: 2px solid #e64620;
+}
+
+.grammar .nav-headline .navs li.active a {
+  font-weight: bold;
+  color: #0077cc;
+}
+
+.grammar .sj-content {
+  overflow: hidden;
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+}
+
+.grammar .sj-content p {
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.grammar .sj-content h4 {
+  line-height: 32px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.grammar .sj-content h5 {
+  line-height: 30px;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.grammar .sj-content li {
+  list-style: none;
+  line-height: 24px;
+}
+
+.grammar .sj-content .main .style {
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 14px;
+  background: #f6f6f6;
+}
+
+.grammar .sj-content .left {
+  padding: 10px 15px;
+  float: left;
+  overflow: hidden;
+  width: 72%;
+  background-color: #fff;
+}
+
+.grammar .sj-content .right {
+  width: 20%;
+  float: left;
+}
+
+.grammar .sj-content .right .float_nav {
+  width: 100%;
+  padding: 10px;
+  margin-left: 12px;
+  background-color: #fff;
+}
+
+.grammar .sj-content .right .float_nav.fixed {
+  position: fixed;
+  top: 0;
+  width: 222px;
+}
+
+.grammar .sj-content .right h4 {
+  margin-top: 0;
+}

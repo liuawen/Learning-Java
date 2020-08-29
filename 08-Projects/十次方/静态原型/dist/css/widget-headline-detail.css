@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.problem-detail {
+  padding: 18px;
+  background-color: #fff;
+}
+
+.problem-detail .title-intro .operate {
+  overflow: hidden;
+  line-height: 26px;
+}
+
+.problem-detail .title-intro .operate span {
+  color: #9a9a9a;
+}
+
+.problem-detail .title-intro .content p {
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.problem-detail .answer-intro {
+  margin-top: 25px;
+}
+
+.problem-detail .answer-intro img {
+  width: 32px;
+  border-radius: 15px;
+}
+
+.problem-detail .answer-intro .answer-num {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d1d1d1;
+  line-height: 26px;
+}
+
+.problem-detail .answer-intro .comment-box .comment-form .input-box {
+  width: 85%;
+  margin-left: 10px;
+}
+
+.problem-detail .answer-intro .comment-box .comment-form .input-box .real-box {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+}
+
+.problem-detail .answer-intro .comment-box .comment-form .input-box .add-on {
+  padding: 4px 16px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.problem-detail .answer-intro .remark-list ul {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.problem-detail .answer-intro .remark-list ul .item {
+  margin-bottom: 8px;
+}
+
+.problem-detail .answer-intro .remark-list ul .item .text {
+  margin-left: 15px;
+  width: 92%;
+}
+
+.problem-detail .answer-intro .remark-list ul .item .text p {
+  margin-bottom: 5px;
+  color: #5f5c5c;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.problem-detail .answer-intro .remark-list ul .item .text .name {
+  color: #d1d1d1;
+}
+
+.problem-detail .answer-intro .remark-list .inner-list {
+  margin-left: 48px;
+}
+
+.problem-detail .callback {
+  cursor: pointer;
+}
+
+.problem-detail .edit-box {
+  display: none;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding-left: 45px;
+}
+
+.problem-detail .edit-box .comment-form textarea {
+  width: 80%;
+  font-size: 14px;
+  height: 25px;
+  padding-left: 10px;
+  line-height: 25px;
+  border-color: #D1D1D1;
+  border-radius: 5px;
+}
+
+.problem-detail .edit-box .comment-form .submit-comment {
+  padding: 6px 15px;
+  font-size: 14px;
+  font-family: "微软雅黑";
+  background-color: #FFF;
+}
+
+.problem-detail .edit-box .tips {
+  width: 93%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fcf8e3;
+}

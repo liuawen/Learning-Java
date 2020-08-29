@@ -1,0 +1,56 @@
+/*
+ * colors variables
+ */
+.card-line-job {
+  margin-bottom: 20px;
+}
+
+.card-line-job .text-center {
+  padding: 15px 0;
+  line-height: 36px;
+  font-size: 20px;
+  text-align: center;
+  color: #e64620;
+  font-weight: normal;
+}
+
+.card-line-job .cards .card-item {
+  min-height: 320px;
+}
+
+.card-line-job .cards .card-item .item-content {
+  width: 90%;
+  min-height: 340px;
+  border: 1px solid #E0DBDB;
+  background-color: #fff;
+}
+
+.card-line-job .cards .card-item .item-content .card-title {
+  padding-left: 15px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  font-weight: normal;
+  background: #ececec;
+}
+
+.card-line-job .cards .card-item .item-content .card-content {
+  padding: 8px 15px;
+  line-height: 26px;
+  color: #666;
+  font-size: 14px;
+}
+
+.card-line-job .cards .card-item .item-content .card-content .tit {
+  margin-bottom: 9px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.card-line-job .cards .send {
+  font-size: 16px;
+  line-height: 36px;
+  clear: both;
+  color: #e64620;
+}

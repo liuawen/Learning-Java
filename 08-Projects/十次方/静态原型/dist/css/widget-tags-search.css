@@ -1,0 +1,52 @@
+/*
+ * colors variables
+ */
+.tags-search {
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  background-color: #ededed;
+}
+
+.tags-search .tag-form {
+  font-size: 14px;
+}
+
+.tags-search .tag-form input {
+  padding-left: 12px;
+  font-size: 14px;
+  line-height: 24px;
+  border-color: #999;
+  border-width: 1px;
+  box-shadow: none;
+  border-radius: 5px;
+  height: auto;
+  min-width: 200px;
+}
+
+.tags-search .tag-form .sui-btn {
+  font-size: 14px;
+  line-height: 26px;
+  border-radius: 4px;
+  margin: 0 15px;
+  padding: 0 25px;
+}
+
+.tags-search .tag-form span {
+  color: #999;
+}
+
+.tags-search .tags {
+  margin-top: 10px;
+}
+
+.tags-search .tags ul {
+  list-style-type: none;
+}
+
+.tags-search .tags ul li {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 5px;
+  background-color: #e1ecf4;
+  color: #39739d;
+}

@@ -1,0 +1,44 @@
+/*
+ * colors variables
+ */
+.img-text {
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.img-text .left-img {
+  float: left;
+}
+
+.img-text .right-txt {
+  float: left;
+  padding: 25px;
+}
+
+.img-text .right-txt p {
+  font-size: 16px;
+  color: #666;
+  line-height: 28px;
+}
+
+.img-text .right-txt p .big {
+  font-size: 20px;
+}
+
+.img-text .right-txt .join {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.img-text .right-txt .join .sui-btn {
+  padding: 7px 24px;
+  font-size: 16px;
+  font-family: 'Microsoft Yahei';
+}
+
+.img-text .right-txt .join .will {
+  padding-left: 20px;
+  line-height: 32px;
+  color: #555;
+}

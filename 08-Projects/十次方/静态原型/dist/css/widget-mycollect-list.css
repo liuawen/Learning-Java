@@ -1,0 +1,166 @@
+/*
+ * colors variables
+ */
+.mycollect-list {
+  width: 100%;
+  float: left;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.mycollect-list .fr {
+  float: right;
+}
+
+.mycollect-list .nav-tabs {
+  margin-bottom: 5px;
+  padding: 0;
+  margin-left: 5px;
+  border-bottom: 0;
+  background-color: #fff;
+}
+
+.mycollect-list .nav-tabs li a {
+  padding: 0 20px;
+  border: 0;
+  line-height: 38px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mycollect-list .nav-tabs li a:hover {
+  color: #e64620;
+}
+
+.mycollect-list .nav-tabs > .active > a {
+  border: 0;
+  border-bottom: 2px solid #e64620;
+  color: #e64620;
+  background-color: transparent;
+}
+
+.mycollect-list .nav-tabs > .active > a:hover {
+  color: #e64620;
+  background-color: transparent;
+}
+
+.mycollect-list .tab-content {
+  padding: 0 5px 0;
+  border: 0;
+}
+
+.mycollect-list .tab-content .border {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.mycollect-list .tab-content .border span {
+  display: block;
+  padding: 5px 15px;
+  font-size: 16px;
+  color: #999;
+}
+
+.mycollect-list .tab-content .border span.usenum {
+  border-bottom: 1px solid #999;
+  font-size: 12px;
+  padding: 0px 12px 6px;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item {
+  position: relative;
+  padding: 15px 30px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .intro .content {
+  float: left;
+  width: 82%;
+  margin-left: 15px;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .intro .content p {
+  line-height: 28px;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .intro .content .title {
+  font-size: 14px;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .intro .content .link {
+  line-height: 36px;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .intro .content .link a {
+  color: #999;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .info {
+  margin-top: 20px;
+  margin-right: 15px;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .info img {
+  border-radius: 30%;
+}
+
+.mycollect-list .tab-content .collect-list .collect-item .info .author {
+  display: block;
+  line-height: 30px;
+  color: #28a3ef;
+}
+
+.mycollect-list .tab-content .company-list .company-item {
+  padding: 10px 30px;
+  margin-bottom: 5px;
+  list-style: none;
+  background-color: #fff;
+}
+
+.mycollect-list .tab-content .company-list .company-item p {
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.mycollect-list .tab-content .company-list .company-item .name {
+  font-weight: bold;
+}
+
+.mycollect-list .tab-content .company-list .company-item .job {
+  font-size: 12px;
+  color: #AFAAAA;
+}
+
+.mycollect-list .tab-content .company-list .company-item .focus {
+  margin-top: 6px;
+}
+
+.mycollect-list .tab-content .company-list .company-item .focus span {
+  display: block;
+  margin-bottom: 3px;
+  text-align: center;
+  color: #999;
+}
+
+.mycollect-list .tab-content .tc-list {
+  list-style: none;
+}
+
+.mycollect-list .tab-content .tc-list .tc-item {
+  padding: 10px 30px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.mycollect-list .tab-content .tc-list .tc-item a {
+  line-height: 30px;
+  font-size: 14px;
+  color: #555;
+}

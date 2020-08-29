@@ -1,0 +1,242 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.tab-nav {
+  background: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tab-nav .sui-nav {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.tab-nav .sui-nav.navbar-dark {
+  padding-left: 0;
+  border-bottom: 0;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li {
+  margin-bottom: -2px;
+  line-height: 36px;
+}
+
+.tab-nav .sui-nav.navbar-dark li a {
+  padding-left: 35px;
+  padding-right: 35px;
+  line-height: 36px;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li.active a {
+  border: 0;
+  border-radius: 0;
+  background-color: #e64620;
+}
+
+.tab-nav .more {
+  line-height: 40px;
+}
+
+.tab-nav .more a {
+  color: #fff;
+}
+
+/*
+ * colors variables
+ */
+.alltags-card ul {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.alltags-card ul .tag-item {
+  margin-bottom: 20px;
+  font-family: "微软雅黑";
+}
+
+.alltags-card ul .tag-item .inner {
+  margin-right: 15px;
+  margin-left: 5px;
+  background-color: #fff;
+}
+
+.alltags-card ul .tag-item .inner .title {
+  padding: 12px 15px 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.alltags-card ul .tag-item .inner .title a {
+  color: #e64620;
+  text-decoration: none;
+}
+
+.alltags-card ul .tag-item .inner .title img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: bottom;
+}
+
+.alltags-card ul .tag-item .inner .detail {
+  padding: 10px 16px 5px;
+  line-height: 24px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  color: #666;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu {
+  margin-top: 10px;
+  padding: 15px;
+  line-height: 20px;
+  font-size: 14px;
+  background-color: #ededed;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu .btn-guanzhu {
+  padding: 4px 25px 6px;
+  border-radius: 5px;
+  margin-right: 7px;
+  background-color: #fff;
+  color: #999;
+  font-size: 14px;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu .guannum {
+  vertical-align: middle;
+  line-height: 25px;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu .guannum .num {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.alltags-card .sui-pagination {
+  text-align: center;
+}
+
+.alltags-card .sui-pagination ul .active a {
+  background-color: #f06c4c;
+  color: #fff;
+  border-color: #f06c4c;
+}
+
+.alltags-card .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #f06c4c;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.alltags-card .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #f06c4c;
+  font-size: 15px;
+}
+
+.alltags-card .sui-pagination ul > li > a:hover, .alltags-card .sui-pagination ul > li > a:focus {
+  border-color: #f06c4c;
+  background-color: #f06c4c;
+  color: #fff;
+}
+
+header {
+  margin: 15px 0;
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.tags-head {
+  padding: 5px 7px;
+  margin: 10px 0 15px;
+}
+
+.tags-head .tag-second {
+  font-size: 14px;
+  line-height: 32px;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./img/asset-favicon.ico">
+    <title>社交-导航</title>
+    
+
+    <link rel="stylesheet" href="./plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="./plugins/bootstrap/dist/css/bootstrap.css" />
+    <style>
+    html,body{width: 100%;height: 100%;margin:0px;padding:0px;}
+    body{overflow: hidden}
+    .nav a{color:#000;padding:0 5px !important;}
+    .nav li{border-bottom: dashed 1px #fff;margin:0 15px;line-height: 30px;}
+    .nav div i{display:inline-block;border-bottom: solid 1px #fff;width:100%;cursor:pointer;line-height: 40px;padding-left: 10px;margin-top: 10px;font-size: 16px;}
+    .nav div i:before{font-size: 12px;position: relative;top:0px;left: -3px;}
+    .active a{color:#f00;}
+    .title{color:#fff;background: #bebebe; font-size: 28px;line-height: 50px;}
+    .row-left,.row-rit{height: 100%;float: left;position: relative;}
+    .row-left{background: #efefef;padding:0px;border-right:solid 2px #999;overflow: auto;width: 200px;position: relative;}
+    .left-show{background: #999;color:#fff;top:50%;left: 200px;z-index:999;position: absolute;width: 10px;height: 60px;border-radius: 0px 5px 5px 0px;}
+    .left-show:before{font-size: 12px;position: relative;top:20px;left:-2px;text-align: center;}
+</style>
+</head>
+<body>
+<!-- 页面头部 -->
+
+
+    <div class="left-show glyphicon glyphicon-step-backward"></div>
+    <div class="row-left">
+        <div class="title text-center">页面导航</div>
+        <div class="nav">
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">头条页面</i>
+        <li><a href="./headline-logined.html" target="right">头条首页-已登录</a></li>
+        <li><a href="./headline-login.html" target="right">头条首页-未登录</a></li>
+        <li><a href="./headline-detail.html" target="right">头条详情</a></li>
+        <li><a href="./headline-submit.html" target="right">提交头条</a></li>
+        <li><a href="./headline-column.html" target="right">申请专栏</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">问答页面</i>
+        <li><a href="./qa-logined.html" target="right">问答首页-已登录</a></li>
+        <li><a href="./qa-login.html" target="right">问答首页-未登录</a></li>
+        <li><a href="./qa-detail.html" target="right">问答-详情页</a></li>
+        <li><a href="./qa-customTag.html" target="right">常用标签</a></li>
+        <li><a href="./qa-allTag.html" target="right">所有标签</a></li>
+        <li><a href="./qa-tagDetail.html" target="right">标签-详情</a></li>
+        <li><a href="./qa-submit.html" target="right">提交问题</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">吐槽页面</i>
+        <li><a href="./spit-index.html" target="right">吐槽首页</a></li>
+        <li><a href="./spit-submit.html" target="right">发布吐槽</a></li>
+        <li><a href="./spit-detail.html" target="right">吐槽详情</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">交友页面</i>
+        <li><a href="./makeFriends-index.html" target="right">交友首页</a></li>
+        <li><a href="./makeFriends-list.html" target="right">好友列表</a></li>
+        <li><a href="./makeFriends-talk.html" target="right">好友对话</a></li>
+        <li><a href="./makeFriends-edit.html" target="right">编辑资料</a></li>
+        <li><a href="./makeFriends-submit.html" target="right">发布邀约</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">活动页面</i>
+        <li><a href="./activity-index.html" target="right">活动首页</a></li>
+        <li><a href="./activity-detail.html" target="right">活动详情</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">招聘页面</i>
+        <li><a href="./recruit-index.html" target="right">招聘首页</a></li>
+        <li><a href="./recruit-company.html" target="right">招聘公司首页</a></li>
+        <li><a href="./recruit-area.html" target="right">招聘地区列表</a></li>
+        <li><a href="./recruit-job.html" target="right">招聘公司岗位</a></li>
+        <li><a href="./recruit-detail.html" target="right">招聘岗位详情</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">个人页面</i>
+        <li><a href="./person-loginsign.html" target="right">登录注册</a></li>
+        <li><a href="./person-homepage.html" target="right">我的主页</a></li>
+        <li><a href="./person-myanswer.html" target="right">我的回答</a></li>
+        <li><a href="./person-myquestion.html" target="right">我的提问</a></li>
+        <li><a href="./person-myshare.html" target="right">我的分享</a></li>
+        <li><a href="./person-dynamic.html" target="right">个人动态</a></li>
+        <li><a href="./person-myfocus.html" target="right">我的关注</a></li>
+        <li><a href="./person-mycollect.html" target="right">我的收藏</a></li>
+        <li><a href="./person-myreaded.html" target="right">浏览记录</a></li>
+        <li><a href="./person-account.html" target="right">账号设置</a></li>
+        <li><a href="./person-myfile.html" target="right">我的档案</a></li>
+    </div>
+    <div>
+        <i class="glyphicon glyphicon-collapse-down">文章模块</i>
+        <li><a href="./acticle-aboutUs.html" target="right">关于我们</a></li>
+        <li><a href="./acticle-serviceTerm.html" target="right">服务条款</a></li>
+        <li><a href="./acticle-helpCenter.html" target="right">帮助中心</a></li>
+        <li><a href="./acticle-editorGrammar.html" target="right">编辑器语法</a></li>
+        <li><a href="./acticle-contactus.html" target="right">联系我们</a></li>
+        <li><a href="./acticle-joinUs.html" target="right">加入我们</a></li>
+        <li><a href="./acticle-feedback.html" target="right">建议反馈</a></li>
+    </div>
+    <div>
+            <i class="glyphicon glyphicon-collapse-down">其他页面</i>
+            <li><a href="./other-notice.html" target="right">通知页面</a></li>
+        </div>
+</div>
+    </div>
+    <div class="row-rit">
+        <iframe name="right" id="iframepage"  src="./headline-logined.html" width="100%" height="100%"   frameborder="0" ranat="server"></iframe>
+    </div>
+
+<script type="text/javascript" src="./plugins/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+        $(function(){
+            var wd = 200;
+            $(".row-rit").css('width',$('body').width()-wd+'px');
+            $(".left-show").click(function(){
+                if($(this).hasClass('glyphicon-step-backward')){
+                    $(this).removeClass('glyphicon-step-backward').addClass('glyphicon-step-forward').css("left",'0');
+                    $(".row-left").hide();
+                    $(".row-rit").css('width',$('body').width()+'px');
+                }else{
+                    $(this).removeClass('glyphicon-step-forward').addClass('glyphicon-step-backward').css("left",wd+'px');
+                    $(".row-left").show();
+                    $(".row-rit").css('width',$('body').width()-wd+'px');
+                }
+            })
+        })
+
+    
+
+        window.onresize=function(){ 
+            // document.getElementById('iframepage').contentWindow.location.reload(true);
+            //  document.frames("#iframepage").document.location = "./travel-index.html";
+            location.reload();  //修改因缩小浏览器导致页面消失
+
+            } 
+    
+
+    $('.nav li:first').addClass('active');
+    $('.nav div i').click(function(){
+        if($(this).hasClass("glyphicon-collapse-down")){
+            $(this).removeClass('glyphicon-collapse-down').addClass('glyphicon-expand');
+            $(this).parent().find('li').hide();
+        }else{
+            $(this).removeClass('glyphicon-expand').addClass('glyphicon-collapse-down');
+            $(this).parent().find('li').show();
+        }
+    });
+    $('.nav li').click(function(){
+        $('.nav li').removeClass('active')
+        $(this).addClass('active');
+    });
+</script>
+</body>

@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.problem-detail {
+  padding: 18px;
+  background-color: #fff;
+}
+
+.problem-detail .sidebar {
+  float: left;
+  width: 32px;
+  background-color: #E8E8E8;
+  color: #000;
+  font-size: 16px;
+  position: relative;
+}
+
+.problem-detail .sidebar .tooltip-inner {
+  width: 150px;
+  font-size: 12px;
+}
+
+.problem-detail .sidebar button {
+  width: 32px;
+  border: 0;
+  background-color: transparent;
+}
+
+.problem-detail .sidebar .count {
+  display: block;
+  line-height: 30px;
+  text-align: center;
+}
+
+.problem-detail .title {
+  margin-left: 50px;
+  padding-bottom: 15px;
+}
+
+.problem-detail .title p {
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.problem-detail .title pre {
+  margin: 10px 0;
+  line-height: 1.45;
+  max-height: 35em;
+  overflow: auto;
+}
+
+.problem-detail .operate {
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.problem-detail .operate span {
+  margin-right: 15px;
+  cursor: pointer;
+  color: #9a9a9a;
+}
+
+.problem-detail .operate img {
+  width: 22px;
+  height: 22px;
+  border-radius: 15px;
+}
+
+.problem-detail .answer-intro {
+  overflow: hidden;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.problem-detail .answer-intro .answer-num {
+  margin-bottom: 15px;
+  line-height: 36px;
+  border-bottom: 1px solid #ccc;
+}
+
+.problem-detail .comment-box {
+  display: none;
+  margin-top: 8px;
+  padding: 11px 17px;
+  background: #F3F3F3;
+}
+
+.problem-detail .comment-box .comment-form textarea {
+  width: 80%;
+  font-size: 14px;
+  height: 25px;
+  padding-left: 10px;
+  line-height: 25px;
+  border-color: #D1D1D1;
+  border-radius: 5px;
+}
+
+.problem-detail .comment-box .comment-form .submit-comment {
+  padding: 6px 15px;
+  font-size: 14px;
+  font-family: "微软雅黑";
+  background-color: #FFF;
+}
+
+.problem-detail .comment-box .tips {
+  width: 93%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fcf8e3;
+}
+
+.problem-detail .edit-answer {
+  margin-left: 50px;
+  margin-top: 15px;
+}
+
+.problem-detail .edit-answer .edit-tip {
+  margin-top: 5px;
+  padding: 10px 15px;
+  background: #FBF9DF;
+  border: 1px solid #faebcc;
+}

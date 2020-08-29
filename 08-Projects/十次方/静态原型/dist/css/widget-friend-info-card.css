@@ -1,0 +1,46 @@
+/*
+ * colors variables
+ */
+.card {
+  margin-bottom: 15px;
+  padding: 15px 15px 8px;
+  background-color: #fff;
+}
+
+.card .photo-name img {
+  float: left;
+}
+
+.card .photo-name .name-edit {
+  float: left;
+  padding-left: 15px;
+  line-height: 20px;
+}
+
+.card .photo-name .name-edit .name {
+  font-size: 16px;
+}
+
+.card .photo-name .name-edit .edit {
+  color: #b5b5b5;
+}
+
+.card .like {
+  margin-top: 15px;
+}
+
+.card .like span {
+  display: inline-block;
+  width: 48%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.card .like span.like1 {
+  border-right: 1px solid #b5b5b5;
+}
+
+.card .like span .num {
+  font-size: 16px;
+  font-weight: bold;
+}

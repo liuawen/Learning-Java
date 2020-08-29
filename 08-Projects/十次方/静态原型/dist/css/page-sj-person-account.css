@@ -1,0 +1,478 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.tab-nav {
+  background: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tab-nav .sui-nav {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.tab-nav .sui-nav.navbar-dark {
+  padding-left: 0;
+  border-bottom: 0;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li {
+  margin-bottom: -2px;
+  line-height: 36px;
+}
+
+.tab-nav .sui-nav.navbar-dark li a {
+  padding-left: 35px;
+  padding-right: 35px;
+  line-height: 36px;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li.active a {
+  border: 0;
+  border-radius: 0;
+  background-color: #e64620;
+}
+
+.tab-nav .more {
+  line-height: 40px;
+}
+
+.tab-nav .more a {
+  color: #fff;
+}
+
+/*
+ * colors variables
+ */
+.myhome-personinfo {
+  height: 200px;
+  background-repeat: no-repeat;
+}
+
+.myhome-personinfo .wrapper {
+  padding: 12px 0;
+}
+
+.myhome-personinfo .fa {
+  width: 15px;
+}
+
+.myhome-personinfo .person-baseinfo .photo {
+  float: left;
+}
+
+.myhome-personinfo .person-baseinfo .photo .person {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.myhome-personinfo .person-baseinfo .photo .share {
+  padding: 10px;
+}
+
+.myhome-personinfo .person-baseinfo .photo .share img {
+  opacity: .6;
+}
+
+.myhome-personinfo .person-baseinfo .info {
+  float: left;
+  margin-left: 15px;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 .allinfo {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 .allinfo a {
+  color: #e64620;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill {
+  padding-left: 10px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .fa {
+  font-size: 16px;
+  color: #666;
+  text-align: right;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .sui-form input[type="text"] {
+  border-color: #999;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .sui-form .btn-danger {
+  padding: 4px 30px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li {
+  line-height: 32px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li .sui-form {
+  display: none;
+  margin-bottom: 0;
+  margin-left: 25px;
+  margin-top: -25px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li span {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #666;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li span:hover {
+  border-radius: 6px;
+  background-color: #FCF8E3;
+  color: #8A6D3B;
+  padding-right: 5px;
+}
+
+.myhome-personinfo .edit-info {
+  float: right;
+  width: 300px;
+}
+
+.myhome-personinfo .edit-info h4 {
+  padding: 0 10px;
+  line-height: 36px;
+  font-weight: normal;
+  background-color: #E3E3E3;
+  color: #e64620;
+}
+
+.myhome-personinfo .edit-info h4 span {
+  float: right;
+  cursor: pointer;
+}
+
+.myhome-personinfo .edit-info h4 .addedit {
+  color: #999;
+}
+
+.myhome-personinfo .edit-info h4 .addedit img {
+  margin-top: -2px;
+  margin-right: 5px;
+}
+
+.myhome-personinfo .edit-info .info-box {
+  padding: 10px;
+  height: 120px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.myhome-personinfo .edit-info .info-box .edit-intro .btns {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.myhome-personinfo .edit-info .info-box .edit-intro .btns button {
+  margin-left: 10px;
+}
+
+.myhome-personinfo .edit-info .info-box .editarea {
+  width: 84%;
+  height: 60px;
+  margin-left: 10px;
+  border-color: #D0D0D0;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42858;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+/*
+ * colors variables
+ */
+.myhome-list {
+  width: 160px;
+  margin-top: 10px;
+}
+
+.myhome-list ul {
+  width: 90%;
+  padding-bottom: 10px;
+}
+
+.myhome-list ul.bottom {
+  padding-top: 10px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.myhome-list li {
+  padding: 0 10px;
+  margin: 5px 0;
+  text-align: center;
+  list-style: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.myhome-list li.active {
+  background-color: #f7d1c8;
+}
+
+.myhome-list li.active a {
+  color: #e64620;
+}
+
+.myhome-list li a {
+  line-height: 34px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+}
+
+/*
+ * colors variables
+ */
+.home-content {
+  margin-top: 10px;
+  float: none !important;
+}
+
+.home-content .fr {
+  float: right;
+}
+
+
+.home-content .activities {
+  margin-left: 5px;
+}
+
+.home-content .activities .tit {
+  line-height: 32px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.home-content .activities .tit span {
+  padding: 4px 20px;
+  border-bottom: 2px solid #e64620;
+}
+
+.home-content .activities .activities-content {
+  padding: 10px;
+  margin-top: 5px;
+  list-style: none;
+  background-color: #fff;
+}
+.account-main {
+	margin-top: 5px;
+    padding: 10px 25px;
+	background: #fff;
+}
+.account .right-content .account-type .account-info {
+  list-style: none;
+  font-size: 16px;
+}
+
+.account .right-content .account-type .account-info .sui-form {
+  margin-bottom: 0;
+  display: none;
+}
+
+.account .right-content .account-type .account-info .sui-form input {
+  height: 24px;
+  box-shadow: none;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+  padding-top: 0px;
+  padding-left: 10px;
+}
+.account-type {
+  padding: 10px 5px;
+}
+
+.account-type h3 {
+  line-height: 36px;
+  font-weight: normal;
+  color: #e64620;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.account-type .account-info {
+  list-style: none;
+  font-size: 16px;
+}
+.account-type .account-info .sui-form {
+  margin-bottom: 0;
+  display: none;
+}
+
+.account-type .account-info .sui-form input {
+  height: 24px;
+  box-shadow: none;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+  padding-top: 0px;
+  padding-left: 10px;
+}
+
+.account-type .account-info .sui-form .save-btn {
+  padding: 4px 7px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.account-type .account-info li {
+  padding: 0 15px;
+  line-height: 42px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.account-type .account-info .gray {
+  color: #999;
+}
+
+.account-type .account-info .gray.index {
+  float: left;
+  width: 190px;
+}
+
+.account-type .account-info .edit,
+.account-type .account-info .check {
+  float: right;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.account-type .account-info .bind {
+  cursor: pointer;
+  color: #e64620;
+}
+
+.account-type .account-person {
+  margin-bottom: 25px;
+}
+.tab-nav {
+  margin-bottom: 0;
+}
+
+header {
+  margin: 15px 0;
+}
+
+.left-list,
+.right-content {
+  float: left;
+  overflow: hidden;
+}
+
+@media (min-width: 1200px) {
+  .right-content {
+    width: 1010px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .right-content {
+    width: 840px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .right-content {
+    width: 640px;
+  }
+}

@@ -1,0 +1,99 @@
+/*
+ * colors variables
+ */
+.qa-submit-form {
+  background: #fff;
+  padding: 20px 10px;
+}
+
+.qa-submit-form .sui-form {
+  width: 99%;
+  margin: 0 auto;
+}
+
+.qa-submit-form .sui-form .input-title {
+  margin-bottom: 10px;
+}
+
+.qa-submit-form .sui-form .input-title .input-xxlarge {
+  width: 98.3% !important;
+  font-family: 'Microsoft Yahei';
+}
+
+.qa-submit-form .sui-form .input-tags {
+  line-height: 27px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear .2s, box-shadow linear .2s;
+  -moz-transition: border linear .2s, box-shadow linear .2s;
+  -o-transition: border linear .2s, box-shadow linear .2s;
+  transition: border linear .2s, box-shadow linear .2s;
+}
+
+.qa-submit-form .sui-form .input-tags .tags-detail {
+  margin-right: 5px;
+  padding: 2px 4px;
+  border: 0;
+  background: #e1ecf4;
+  color: #0077cc;
+  cursor: pointer;
+}
+
+.qa-submit-form .sui-form .input-tags .tags-detail i {
+  padding-left: 3px;
+}
+
+.qa-submit-form .sui-form .input-tags span {
+  line-height: 32px;
+  vertical-align: middle;
+}
+
+.qa-submit-form .sui-form .input-tags input {
+  padding-top: 0  !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  border: 0;
+  box-shadow: none;
+}
+
+.qa-submit-form .sui-form .tags-box {
+  display: none;
+  position: absolute;
+  margin-top: 5px;
+  background-color: #FFF;
+  z-index: 999;
+}
+
+.qa-submit-form .sui-form .tags-box .tag-bordered {
+  width: 280px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.18);
+  border-color: #ddd;
+}
+
+.qa-submit-form .sui-form .tags-box .tag-bordered .tag-item {
+  border: 0;
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.qa-submit-form .sui-form .editor {
+  margin-top: 10px;
+}
+
+.qa-submit-form .sui-form .submit {
+  float: right;
+  margin-top: 10px;
+}
+
+.qa-submit-form .sui-form .submit .btn-release {
+  padding: 6px 15px;
+  background-color: #e64620;
+  color: #fff;
+  font-size: 14px;
+}

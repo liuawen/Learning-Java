@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+.alltags-card ul {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.alltags-card ul .tag-item {
+  margin-bottom: 20px;
+  font-family: "微软雅黑";
+}
+
+.alltags-card ul .tag-item .inner {
+  margin-right: 15px;
+  margin-left: 5px;
+  background-color: #fff;
+}
+
+.alltags-card ul .tag-item .inner .title {
+  padding: 12px 15px 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.alltags-card ul .tag-item .inner .title a {
+  color: #e64620;
+  text-decoration: none;
+}
+
+.alltags-card ul .tag-item .inner .title img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: bottom;
+}
+
+.alltags-card ul .tag-item .inner .detail {
+  padding: 10px 16px 5px;
+  line-height: 24px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  color: #666;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu {
+  margin-top: 10px;
+  padding: 15px;
+  line-height: 20px;
+  font-size: 14px;
+  background-color: #ededed;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu .btn-guanzhu {
+  padding: 4px 25px 6px;
+  border-radius: 5px;
+  margin-right: 7px;
+  background-color: #fff;
+  color: #999;
+  font-size: 14px;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu .guannum {
+  vertical-align: middle;
+  line-height: 25px;
+}
+
+.alltags-card ul .tag-item .inner .guanzhu .guannum .num {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.alltags-card .sui-pagination {
+  text-align: center;
+}
+
+.alltags-card .sui-pagination ul .active a {
+  background-color: #f06c4c;
+  color: #fff;
+  border-color: #f06c4c;
+}
+
+.alltags-card .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #f06c4c;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.alltags-card .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #f06c4c;
+  font-size: 15px;
+}
+
+.alltags-card .sui-pagination ul > li > a:hover, .alltags-card .sui-pagination ul > li > a:focus {
+  border-color: #f06c4c;
+  background-color: #f06c4c;
+  color: #fff;
+}

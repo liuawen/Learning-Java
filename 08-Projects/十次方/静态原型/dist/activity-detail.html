@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --> 
+  <meta name="description" content="" /> 
+  <meta name="author" content="" /> 
+  <link rel="icon" href="./img/asset-favicon.ico" /> 
+  <title>社交-活动</title> 
+  <!-- 页面 css js --> 
+  <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/widget-base.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css" /> 
+  <link rel="stylesheet" type="text/css" href="./css/page-sj-activity-detail.css" /> 
+ </head> 
+ <body> 
+  <!--引用组件--> 
+  <div class="activity-head"> 
+   <div class="wrapper"> 
+    <!--头部导航--> 
+    <header> 
+     <div class="sui-navbar"> 
+      <div class="navbar-inner"> 
+       <a href="index-logined.html" class="sui-brand"><img src="./img/asset-logo-black.png" alt="社交" /></a> 
+       <ul class="sui-nav"> 
+        <li class="active"><a href="./headline-logined.html">头条</a></li> 
+        <li><a href="./qa-logined.html">问答</a></li> 
+        <li><a href="./activity-index.html">活动</a></li> 
+        <li><a href="./makeFriends-index.html">交友</a></li> 
+        <li><a href="./spit-index.html">吐槽</a></li> 
+        <li><a href="./recruit-index.html">招聘</a></li> 
+       </ul> 
+       <form class="sui-form sui-form pull-left"> 
+        <input type="text" placeholder="输入关键词..." /> 
+        <span class="btn-search fa fa-search"></span> 
+       </form> 
+       <div class="sui-nav pull-right info"> 
+        <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li> 
+        <li class="hover"> <span class="fa fa-plus "></span> 
+         <ul class="hoverinfo"> 
+          <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li> 
+          <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li> 
+          <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li> 
+          <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li> 
+         </ul> </li> 
+        <li><a href="./person-homepage.html" target="_blank" class="homego"><img src="./img/widget-photo.png" alt="用户头像" /></a></li> 
+       </div> 
+      </div> 
+     </div> 
+    </header> 
+   </div> 
+  </div> 
+  <!--中间布局--> 
+  <div class="wrapper activities"> 
+   <h1>APMCon2017中国应用性能管理大会</h1> 
+   <div class="img-text"> 
+    <div class="left-img"> 
+     <img src="./img/widget-acti.png" alt="" /> 
+    </div> 
+    <div class="right-txt"> 
+     <p>开始时间： 2017-07-07 08:00 周五</p> 
+     <p>结束时间： 2017-07-10 20:00 周一</p> 
+     <p>举办地点： 深圳市华侨城洲际酒店</p> 
+     <p>主办方：infoQ</p> 
+     <p>报名截止： <span class="big">85</span>天 <span class="big">15</span>时 <span class="big">16</span>分 <span class="big">10</span>秒</p> 
+     <div class="join"> 
+      <button class="sui-btn btn-danger">立即报名</button> 
+      <span class="will">报名即将开始</span> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="simple-text"> 
+    <div class="left-content"> 
+     <div class="content-item"> 
+      <div class="tit">
+       <span>大会介绍</span>
+      </div> 
+      <div class="text"> 
+       <h4>实践第一、案例为主</h4> 
+       <p>ArchSummit 全球架构师峰会是 InfoQ 中国团队推出的面向高端技术管理者、架构师的技术大会，参会者中超过 50% 拥有 8 年以上的工作经验。ArchSummit 秉承“实践第一、案例为主”的原则，展示新技术在行业应用中的最新实践，技术在企业转型中的加速作用，帮助企业技术管理者、CTO、架构师做好技术选型、技术团队组建与管理，并确立技术对于产品和业务的关键作用。</p> 
+      </div> 
+     </div> 
+     <div class="content-item"> 
+      <div class="tit">
+       <span>议题简介</span>
+      </div> 
+      <div class="text"> 
+       <h4>7月7日，星期五</h4> 
+       <p>#区块链以及金融新技术</p> 
+       <p>随着各国放宽金融法规，在 FinTech 创新上，尤其区块链领域正受到前所未有的支持，目前区块链技术有哪些最佳实践？如何替企业降低成本？金融新技术还有哪些玩法？我们将邀请研究 FinTech 的技术专家，一起看金融技术在这阶段的深度实践。</p> 
+      </div> 
+      <div class="text"> 
+       <p>#区块链以及金融新技术</p> 
+       <p>随着各国放宽金融法规，在 FinTech 创新上，尤其区块链领域正受到前所未有的支持，目前区块链技术有哪些最佳实践？如何替企业降低成本？金融新技术还有哪些玩法？我们将邀请研究 FinTech 的技术专家，一起看金融技术在这阶段的深度实践。</p> 
+      </div> 
+      <div class="text"> 
+       <p>#区块链以及金融新技术</p> 
+       <p>随着各国放宽金融法规，在 FinTech 创新上，尤其区块链领域正受到前所未有的支持，目前区块链技术有哪些最佳实践？如何替企业降低成本？金融新技术还有哪些玩法？我们将邀请研究 FinTech 的技术专家，一起看金融技术在这阶段的深度实践。</p> 
+      </div> 
+      <div class="text"> 
+       <p>#区块链以及金融新技术</p> 
+       <p>随着各国放宽金融法规，在 FinTech 创新上，尤其区块链领域正受到前所未有的支持，目前区块链技术有哪些最佳实践？如何替企业降低成本？金融新技术还有哪些玩法？我们将邀请研究 FinTech 的技术专家，一起看金融技术在这阶段的深度实践。</p> 
+      </div> 
+      <div class="text"> 
+       <p>#区块链以及金融新技术</p> 
+       <p>随着各国放宽金融法规，在 FinTech 创新上，尤其区块链领域正受到前所未有的支持，目前区块链技术有哪些最佳实践？如何替企业降低成本？金融新技术还有哪些玩法？我们将邀请研究 FinTech 的技术专家，一起看金融技术在这阶段的深度实践。</p> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="right-intro"> 
+     <div class="content-item"> 
+      <div class="tit">
+       <span>活动组织者</span>
+      </div> 
+      <div class="text"> 
+       <p>主办方： infoQ</p> 
+      </div> 
+     </div> 
+     <div class="content-item"> 
+      <div class="tit">
+       <span>相关链接</span>
+      </div> 
+      <div class="text"> 
+       <p>活动官网： infoQ.com</p> 
+      </div> 
+     </div> 
+     <div class="content-item"> 
+      <div class="tit">
+       <span>分享扩散</span>
+      </div> 
+      <div class="text"> 
+       <p><img src="./img/widget-weibo.png" alt="" width="30" /><img src="./img/widget-weixin.png" alt="" width="30" /></p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!--底部版权--> 
+  <div class="footer"> 
+   <div class="wrapper"> 
+    <div class="footer-bottom"> 
+     <div class="link"> 
+      <dl> 
+       <dt>
+        网站相关
+       </dt> 
+       <dd>
+        关于我们
+       </dd> 
+       <dd>
+        服务条款
+       </dd> 
+       <dd>
+        帮助中心
+       </dd> 
+       <dd>
+        编辑器语法
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        常用链接
+       </dt> 
+       <dd>
+        传智播客
+       </dd> 
+       <dd>
+        传智论坛
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        联系我们
+       </dt> 
+       <dd>
+        联系我们
+       </dd> 
+       <dd>
+        加入我们
+       </dd> 
+       <dd>
+        建议反馈
+       </dd> 
+      </dl> 
+      <dl> 
+       <dt>
+        关注我们
+       </dt> 
+       <dd>
+        微博
+       </dd> 
+       <dd>
+        twitter
+       </dd> 
+      </dl> 
+      <div class="xuke"> 
+       <h3>内容许可</h3> 
+       <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p> 
+       <p>本站由 传智研究院 提供更新服务</p> 
+      </div> 
+     </div> 
+     <p class="Copyright">Copyright &copy; 2017 传智问答社区 当前版本 0.0.1</p> 
+    </div> 
+   </div> 
+  </div> 
+  <script>
+// $(function(){
+//   $(".hover").hover(function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "show"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#e64620");
+//   },function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "hide"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#000");
+//   })
+// })
+</script> 
+ </body>
+</html>

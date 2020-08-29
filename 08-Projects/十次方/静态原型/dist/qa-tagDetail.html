@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./img/asset-favicon.ico">
+    <title>社交-标签详情</title>
+
+    <!-- 页面 css js -->
+    <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/widget-base.css" />
+    <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css" />
+    <link rel="stylesheet" type="text/css" href="./css/page-sj-qa-tagDetail.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <!--引用组件-->
+        <!--头部导航-->
+<header>
+  <div class="sui-navbar">
+    <div class="navbar-inner">
+      <a href="index-logined.html" class="sui-brand"><img src="./img/asset-logo-black.png" alt="社交"/></a>
+      <ul class="sui-nav">
+        <li class="active"><a href="./headline-logined.html">头条</a></li>
+        <li><a href="./qa-logined.html" >问答</a></li>
+        <li><a href="./activity-index.html" >活动</a></li>
+        <li><a href="./makeFriends-index.html" >交友</a></li>
+        <li><a href="./spit-index.html" >吐槽</a></li>
+        <li><a href="./recruit-index.html"  >招聘</a></li>
+      </ul>
+      <form class="sui-form sui-form pull-left">
+        <input type="text" placeholder="输入关键词...">
+        <span class="btn-search fa fa-search"></span>
+      </form>
+      <div class="sui-nav pull-right info">
+          <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li>
+          <li class="hover">
+            <span class="fa fa-plus "></span>
+            <ul class="hoverinfo">
+              <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li>
+              <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li>
+              <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li>
+              <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li>
+            </ul>
+          </li>
+          <li><a href="./person-homepage.html" target="_blank" class="homego"><img src="./img/widget-photo.png" alt="用户头像"></a></li> 
+      </div>
+  </div>
+  </div>
+  
+</header>
+    
+
+    </div>
+    <div class="tab-nav ">
+    <div class="wrapper">
+        <ul class="fl sui-nav nav-tabs navbar-dark">
+            <li class="active"><a href="#index" data-toggle="tab">首页</a></li>
+            <li><a href="#php" data-toggle="tab">Php</a></li>
+            <li><a href="#js" data-toggle="tab">Javascript </a></li>
+            <li><a href="#python" data-toggle="tab">Python</a></li>
+            <li><a href="#java" data-toggle="tab">Java</a></li>
+        </ul>
+        <span class="fr more"><a href="./qa-allTag.html" target="_blank">更多</a></span>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+    <!--两列布局-->
+    <div class="wrapper tag-item">
+        <div class="fl left-list">
+            <div class="tab-content">
+    <div id="index" class="tab-pane active">
+        <div class="tag-intro">
+            <h3 class="title">
+                <img src="./img/widget-h5.png" alt=""> HTML5
+                <a href="JavaScript:;" class="sui-btn btn-default guanzhu">关注</a>
+            </h3>
+            <p class="words">HTML5 是 HTML 下一个的主要修订版本，现在仍处于发展阶段。广义论及 HTML5 时，实际指的是包括 HTML、CSS 和 JavaScript 在内的一套技术组合。<a href="javascript:;" id="goto">[百科]</a></p>
+        </div>
+        <div class="tabtags-bottom-line">
+            <ul class="sui-nav nav-tabs" id="tab-line">
+                <li class="active"><a href="#qa" data-toggle="tab"><i class="fa fa-question-circle" aria-hidden="true"></i>问答</a></li>
+                <li><a href="#article" data-toggle="tab"><i class="fa fa-file-text" aria-hidden="true"></i>文章</a></li>
+                <li><a href="#job" data-toggle="tab"><i class="fa fa-black-tie" aria-hidden="true"></i>职位</a></li>
+                <li><a href="#baike" data-toggle="tab"><i class="fa fa-wikipedia-w" aria-hidden="true"></i>百科</a></li>
+            </ul>
+            <div class="qa-list">
+                <div class="tab-content" id="jump">
+                    <div id="qa" class="tab-pane active">
+                        <div class="show-type">
+                            <span class="fl order">排序：</span>
+                            <div class="sui-btn-group">
+                                <button class="sui-btn active">时间</button>
+                                <button class="sui-btn">得票数</button>
+                            </div>
+                        </div>
+                        
+                            <ul class="detail-list">
+                                
+                                <li class="qa-item">
+                                <div class="fl record">
+                                    <div class="number">
+                                        <div class="border useful">                                   
+                                            <p class="usenum">12</p> 
+                                            <p>浏览</p>
+                                        </div>
+                                        <div class="border answer">
+                                            <p class="ansnum">9</p>
+                                            <p>有用</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fl info">
+                                    <div class="question">
+                                        <p class="author"><span class="name">luckness</span><span>3</span>分钟前回答</p>
+                                        <p class="title">有关PHP初级进阶的问题？</p>
+                                        <ul class="sui-tag">
+                                            <li>Php</li>
+                                            <li>Javascript</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </li>
+                                
+                                <li class="qa-item">
+                                <div class="fl record">
+                                    <div class="number">
+                                        <div class="border useful">                                   
+                                            <p class="usenum">12</p> 
+                                            <p>浏览</p>
+                                        </div>
+                                        <div class="border answer">
+                                            <p class="ansnum">9</p>
+                                            <p>有用</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fl info">
+                                    <div class="question">
+                                        <p class="author"><span class="name">牛奶糖</span><span>3</span>分钟前回答</p>
+                                        <p class="title">springMVC的controller接收json数据失败</p>
+                                        <ul class="sui-tag">
+                                            <li>Php</li>
+                                            <li>Javascript</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </li>
+                                
+                                <li class="qa-item">
+                                <div class="fl record">
+                                    <div class="number">
+                                        <div class="border useful">                                   
+                                            <p class="usenum">12</p> 
+                                            <p>浏览</p>
+                                        </div>
+                                        <div class="border answer">
+                                            <p class="ansnum">9</p>
+                                            <p>有用</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fl info">
+                                    <div class="question">
+                                        <p class="author"><span class="name">大白兔</span><span>3</span>分钟前回答</p>
+                                        <p class="title">监听器中timer查询数据库</p>
+                                        <ul class="sui-tag">
+                                            <li>Php</li>
+                                            <li>Javascript</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </li>
+                                
+                                <li class="qa-item">
+                                <div class="fl record">
+                                    <div class="number">
+                                        <div class="border useful">                                   
+                                            <p class="usenum">34</p> 
+                                            <p>浏览</p>
+                                        </div>
+                                        <div class="border answer">
+                                            <p class="ansnum">9</p>
+                                            <p>有用</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fl info">
+                                    <div class="question">
+                                        <p class="author"><span class="name">luckness</span><span>3</span>分钟前回答</p>
+                                        <p class="title">服务器上安装了一个考试系统ASP.NET,安装完成后访问不了，求助</p>
+                                        <ul class="sui-tag">
+                                            <li>Php</li>
+                                            <li>Javascript</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </li>
+                                
+                                <li class="qa-item">
+                                <div class="fl record">
+                                    <div class="number">
+                                        <div class="border useful">                                   
+                                            <p class="usenum">12</p> 
+                                            <p>浏览</p>
+                                        </div>
+                                        <div class="border answer">
+                                            <p class="ansnum">9</p>
+                                            <p>有用</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fl info">
+                                    <div class="question">
+                                        <p class="author"><span class="name">牛奶糖</span><span>3</span>分钟前回答</p>
+                                        <p class="title">springMVC的controller接收json数据失败</p>
+                                        <ul class="sui-tag">
+                                            <li>Php</li>
+                                            <li>Javascript</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </li>
+                                
+                                <li class="qa-item">
+                                <div class="fl record">
+                                    <div class="number">
+                                        <div class="border useful">                                   
+                                            <p class="usenum">12</p> 
+                                            <p>浏览</p>
+                                        </div>
+                                        <div class="border answer">
+                                            <p class="ansnum">9</p>
+                                            <p>有用</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fl info">
+                                    <div class="question">
+                                        <p class="author"><span class="name">大白兔</span><span>3</span>分钟前回答</p>
+                                        <p class="title">监听器中timer查询数据库</p>
+                                        <ul class="sui-tag">
+                                            <li>Php</li>
+                                            <li>Javascript</li> 
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </li>
+                                
+                            </ul>
+                            <div class="sui-pagination">
+                                <ul>
+                                    <li class="prev"><a href="#">上一页</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li class="dotted"><span>...</span></li>
+                                    <li class="next"><a href="#">下一页</a></li>
+                                </ul>
+                                
+                            </div>
+                        
+                    </div>
+                    <div id="article" class="tab-pane">
+                        <div class="article">
+                            
+                            <ul class="detail-list">
+                                
+                                <li class="article-item">
+                                      <div class="fl info">
+                                        <div class="number">
+                                            <div class="border useful">                                   
+                                                <p class="usenum">11</p> 
+                                                <p>推荐</p>
+                                            </div>
+                                            <div class="border answer">
+                                                <p class="ansnum">23</p>
+                                                <p>浏览</p> 
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="article">
+                                        <p class="title">分享一个非常全的正则验证车牌格式的函数</p>
+                                        <p class="desc">PHP CURL POST 最近公司运营平台因为要接通另外一个服务端的接口，要求模拟HTTP POST 提交数据。很久没有写过CURL了，特意上官网查了下文档以及复习下HTTP POST参数所代表的...</p>
+                                        <p class="author"><span class="photo"><img src="./img/widget-photo.jpg" alt=""></span><span class="name">luckness</span>发表于<span>1</span>分钟前</p>                                       
+                                        
+                                    </div>
+                                  
+                                    <div class="clearfix"></div>
+                                </li>
+                                
+                                <li class="article-item">
+                                      <div class="fl info">
+                                        <div class="number">
+                                            <div class="border useful">                                   
+                                                <p class="usenum">11</p> 
+                                                <p>推荐</p>
+                                            </div>
+                                            <div class="border answer">
+                                                <p class="ansnum">23</p>
+                                                <p>浏览</p> 
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="article">
+                                        <p class="title">css 这个当文本写不开的时候用省略号,是怎么弄得呢?</p>
+                                        <p class="desc">PHP CURL POST 最近公司运营平台因为要接通另外一个服务端的接口，要求模拟HTTP POST 提交数据。很久没有写过CURL了，特意上官网查了下文档以及复习下HTTP POST参数所代表的...</p>
+                                        <p class="author"><span class="photo"><img src="./img/widget-photo.jpg" alt=""></span><span class="name">luckness</span>发表于<span>1</span>分钟前</p>                                       
+                                        
+                                    </div>
+                                  
+                                    <div class="clearfix"></div>
+                                </li>
+                                
+                                <li class="article-item">
+                                      <div class="fl info">
+                                        <div class="number">
+                                            <div class="border useful">                                   
+                                                <p class="usenum">11</p> 
+                                                <p>推荐</p>
+                                            </div>
+                                            <div class="border answer">
+                                                <p class="ansnum">23</p>
+                                                <p>浏览</p> 
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="article">
+                                        <p class="title">分享一个非常全的正则验证车牌格式的函数</p>
+                                        <p class="desc">PHP CURL POST 最近公司运营平台因为要接通另外一个服务端的接口，要求模拟HTTP POST 提交数据。很久没有写过CURL了，特意上官网查了下文档以及复习下HTTP POST参数所代表的...</p>
+                                        <p class="author"><span class="photo"><img src="./img/widget-photo.jpg" alt=""></span><span class="name">luckness</span>发表于<span>1</span>分钟前</p>                                       
+                                        
+                                    </div>
+                                  
+                                    <div class="clearfix"></div>
+                                </li>
+                                
+                                <li class="article-item">
+                                      <div class="fl info">
+                                        <div class="number">
+                                            <div class="border useful">                                   
+                                                <p class="usenum">11</p> 
+                                                <p>推荐</p>
+                                            </div>
+                                            <div class="border answer">
+                                                <p class="ansnum">23</p>
+                                                <p>浏览</p> 
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="article">
+                                        <p class="title">分享一个非常全的正则验证车牌格式的函数</p>
+                                        <p class="desc">PHP CURL POST 最近公司运营平台因为要接通另外一个服务端的接口，要求模拟HTTP POST 提交数据。很久没有写过CURL了，特意上官网查了下文档以及复习下HTTP POST参数所代表的...</p>
+                                        <p class="author"><span class="photo"><img src="./img/widget-photo.jpg" alt=""></span><span class="name">luckness</span>发表于<span>1</span>分钟前</p>                                       
+                                        
+                                    </div>
+                                  
+                                    <div class="clearfix"></div>
+                                </li>
+                                
+                                <li class="article-item">
+                                      <div class="fl info">
+                                        <div class="number">
+                                            <div class="border useful">                                   
+                                                <p class="usenum">11</p> 
+                                                <p>推荐</p>
+                                            </div>
+                                            <div class="border answer">
+                                                <p class="ansnum">23</p>
+                                                <p>浏览</p> 
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="article">
+                                        <p class="title">分享一个非常全的正则验证车牌格式的函数</p>
+                                        <p class="desc">PHP CURL POST 最近公司运营平台因为要接通另外一个服务端的接口，要求模拟HTTP POST 提交数据。很久没有写过CURL了，特意上官网查了下文档以及复习下HTTP POST参数所代表的...</p>
+                                        <p class="author"><span class="photo"><img src="./img/widget-photo.jpg" alt=""></span><span class="name">luckness</span>发表于<span>1</span>分钟前</p>                                       
+                                        
+                                    </div>
+                                  
+                                    <div class="clearfix"></div>
+                                </li>
+                                
+                                <li class="article-item">
+                                      <div class="fl info">
+                                        <div class="number">
+                                            <div class="border useful">                                   
+                                                <p class="usenum">11</p> 
+                                                <p>推荐</p>
+                                            </div>
+                                            <div class="border answer">
+                                                <p class="ansnum">23</p>
+                                                <p>浏览</p> 
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="article">
+                                        <p class="title">分享一个非常全的正则验证车牌格式的函数</p>
+                                        <p class="desc">PHP CURL POST 最近公司运营平台因为要接通另外一个服务端的接口，要求模拟HTTP POST 提交数据。很久没有写过CURL了，特意上官网查了下文档以及复习下HTTP POST参数所代表的...</p>
+                                        <p class="author"><span class="photo"><img src="./img/widget-photo.jpg" alt=""></span><span class="name">luckness</span>发表于<span>1</span>分钟前</p>                                       
+                                        
+                                    </div>
+                                  
+                                    <div class="clearfix"></div>
+                                </li>
+                                
+                            </ul>
+                            <div class="sui-pagination">
+                                <ul>
+                                    <li class="prev"><a href="#">上一页</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li class="dotted"><span>...</span></li>
+                                    <li class="next"><a href="#">下一页</a></li>
+                                </ul>                               
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div id="job" class="tab-pane">
+                        <div class="job">
+                            职位
+                        </div>
+                    </div>
+                    <div id="baike" class="tab-pane">
+                        <div class="baike">
+                            <p>HTML5 是 HTML 下一个的主要修订版本，现在仍处于发展阶段。广义论及 HTML5 时，实际指的是包括 HTML、CSS 和 JavaScript 在内的一套技术组合。</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="php" class="tab-pane">
+        php
+    </div>
+    <div id="js" class="tab-pane">
+        Javascript
+    </div>
+    <div id="python" class="tab-pane">
+        python
+    </div>
+    <div id="java" class="tab-pane">
+        java
+    </div>
+</div>
+        </div>
+        <div class="fl right-tag">
+                <div class="block-btn">
+                        <p>今天，有什么好东西要和大家分享么?</p>
+                        <a class="sui-btn btn-block btn-share" href="./qa-submit.html" target="_blank">发布分享</a>
+                    </div>
+            <div class="hot-tags">
+    <div class="head">
+        <h3 class="title">热门标签</h3>
+    </div>
+    <div class="tags">
+        <ul class="sui-tag">
+            <li>Php</li>
+            <li>Javascript</li>
+            <li>Gif</li>
+            <li>Java</li>
+            <li>C#</li>
+            <li>iOS</li>
+            <li>C++</li>
+        </ul>
+    </div>
+</div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-bottom">
+    <div class="link">
+        <dl>
+            <dt>网站相关</dt>
+            <dd>关于我们</dd>
+            <dd>服务条款</dd>
+            <dd>帮助中心</dd>
+            <dd>编辑器语法</dd>
+        </dl>
+        <dl>
+            <dt>常用链接</dt>
+            <dd>传智播客</dd>
+            <dd>传智论坛</dd>
+        </dl>
+        <dl>
+            <dt>联系我们</dt>
+            <dd>联系我们</dd>
+            <dd>加入我们</dd>
+            <dd>建议反馈</dd>
+        </dl>
+        <dl>
+            <dt>关注我们</dt>
+            <dd>微博</dd>
+            <dd>twitter</dd>
+        </dl>
+
+        <div class="xuke">
+            <h3>内容许可</h3>
+            <p>除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p>
+            <p>本站由 传智研究院 提供更新服务</p>
+        </div>
+    </div>
+
+
+    <p class="Copyright">Copyright © 2017 传智问答社区 当前版本 0.0.1</p>
+</div>
+        </div>
+
+    </div>
+
+
+
+
+
+<script>
+// $(function(){
+//   $(".hover").hover(function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "show"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#e64620");
+//   },function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "hide"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#000");
+//   })
+// })
+
+
+// $(function(){
+//     //点击关注
+//     var onOff = true;
+//     $(".guanzhu").click(function () {
+//         if ($(this).onOff) {
+//             $(this).text("关注");
+//             console.log(onOff);
+//             $(this).css("color", "#e64620");
+//             $(this).onOff = false;
+//         } else {
+//             $(this).text("已关注");
+//             $(this).css("color", "#999");
+//             $(this).onOff = true;
+//         }
+//     });
+//     //百科跳转
+//     $("#goto").click(function(){
+//         console.log("baike");
+//         $("#tab-line").children("li").removeClass("active");
+//         $("#tab-line").children("li:last-child").addClass("active");
+//         $("#jump").children("div").removeClass("active");
+//         $("#baike").addClass("active");
+
+//     })
+// })
+
+</script>
+</body>

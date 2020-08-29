@@ -1,0 +1,69 @@
+/*
+ * colors variables
+ */
+.job-intro {
+  padding: 15px 0;
+}
+
+.job-intro div {
+  line-height: 32px;
+}
+
+.job-intro .left-img {
+  float: left;
+  margin-right: 15px;
+  border: 1px solid #e1e1e1;
+}
+
+.job-intro .middle-intro {
+  float: left;
+}
+
+.job-intro .middle-intro .name {
+  font-size: 20px;
+}
+
+.job-intro .middle-intro .intro {
+  font-size: 16px;
+}
+
+.job-intro .middle-intro .tag li {
+  display: inline-block;
+  border-radius: 16px;
+  margin-right: 8px;
+  list-style: none;
+  border: 1px solid #55cbc4;
+  color: #55cbc4;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+.job-intro .middle-intro .link {
+  line-height: 32px;
+}
+
+.job-intro .middle-intro .link a {
+  color: #55cbc4;
+  font-size: 16px;
+}
+
+.job-intro .right-tool {
+  float: right;
+}
+
+.job-intro .right-tool .btn-collect {
+  background-color: #fff;
+  color: #55cbc4;
+  border-color: #55cbc4;
+  padding: 4px 25px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.job-intro .right-tool span {
+  color: #999;
+  font-size: 14px;
+  vertical-align: middle;
+  padding-right: 5px;
+  padding-left: 3px;
+}

@@ -1,0 +1,163 @@
+/*
+ * colors variables
+ */
+.myhome-personinfo {
+  height: 200px;
+  background-repeat: no-repeat;
+}
+
+.myhome-personinfo .wrapper {
+  padding: 12px 0;
+}
+
+.myhome-personinfo .fa {
+  width: 15px;
+}
+
+.myhome-personinfo .person-baseinfo .photo {
+  float: left;
+}
+
+.myhome-personinfo .person-baseinfo .photo .person {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.myhome-personinfo .person-baseinfo .photo .share {
+  padding: 10px;
+}
+
+.myhome-personinfo .person-baseinfo .photo .share img {
+  opacity: .6;
+}
+
+.myhome-personinfo .person-baseinfo .info {
+  float: left;
+  margin-left: 15px;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 .allinfo {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.myhome-personinfo .person-baseinfo .info h1 .allinfo a {
+  color: #e64620;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill {
+  padding-left: 10px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .fa {
+  font-size: 16px;
+  color: #666;
+  text-align: right;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .sui-form input[type="text"] {
+  border-color: #999;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.myhome-personinfo .person-baseinfo .info .fill .sui-form .btn-danger {
+  padding: 4px 30px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li {
+  line-height: 32px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li .sui-form {
+  display: none;
+  margin-bottom: 0;
+  margin-left: 25px;
+  margin-top: -25px;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li span {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #666;
+}
+
+.myhome-personinfo .person-baseinfo .info .fill li span:hover {
+  border-radius: 6px;
+  background-color: #FCF8E3;
+  color: #8A6D3B;
+  padding-right: 5px;
+}
+
+.myhome-personinfo .edit-info {
+  float: right;
+  width: 300px;
+}
+
+.myhome-personinfo .edit-info h4 {
+  padding: 0 10px;
+  line-height: 36px;
+  font-weight: normal;
+  background-color: #E3E3E3;
+  color: #e64620;
+}
+
+.myhome-personinfo .edit-info h4 span {
+  float: right;
+  cursor: pointer;
+}
+
+.myhome-personinfo .edit-info h4 .addedit {
+  color: #999;
+}
+
+.myhome-personinfo .edit-info h4 .addedit img {
+  margin-top: -2px;
+  margin-right: 5px;
+}
+
+.myhome-personinfo .edit-info .info-box {
+  padding: 10px;
+  height: 120px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.myhome-personinfo .edit-info .info-box .edit-intro .btns {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.myhome-personinfo .edit-info .info-box .edit-intro .btns button {
+  margin-left: 10px;
+}
+
+.myhome-personinfo .edit-info .info-box .editarea {
+  width: 84%;
+  height: 60px;
+  margin-left: 10px;
+  border-color: #D0D0D0;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42858;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}

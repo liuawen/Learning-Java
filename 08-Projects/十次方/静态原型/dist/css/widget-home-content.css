@@ -1,0 +1,143 @@
+/*
+ * colors variables
+ */
+.home-content {
+  float: left;
+  margin-top: 10px;
+}
+
+.home-content .fr {
+  float: right;
+}
+
+.home-content .nav-tabs {
+  margin-bottom: 5px;
+  padding: 0;
+  margin-left: 5px;
+  border-bottom: 0;
+  background-color: #fff;
+}
+
+.home-content .nav-tabs li a {
+  padding: 0 20px;
+  border: 0;
+  line-height: 38px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.home-content .nav-tabs li a:hover {
+  color: #e64620;
+}
+
+.home-content .nav-tabs > .active > a {
+  border: 0;
+  border-bottom: 2px solid #e64620;
+  color: #e64620;
+  background-color: transparent;
+}
+
+.home-content .nav-tabs > .active > a:hover {
+  color: #e64620;
+  background-color: transparent;
+}
+
+.home-content .tab-content {
+  padding: 0 12px;
+  margin-left: 5px;
+  border: 0;
+  background-color: #fff;
+}
+
+.home-content .tab-content .question-list li {
+  padding: 10px 0;
+  line-height: 36px;
+  list-style: none;
+  font-size: 13px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.home-content .tab-content .question-list li:last-child {
+  border-bottom: 0;
+}
+
+.home-content .tab-content .question-list li .good {
+  padding: 1px 5px;
+  margin-right: 10px;
+  line-height: 24px;
+  margin-top: 2px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #e64620;
+}
+
+.home-content .tab-content .question-list li .good .num {
+  color: #e64620;
+  font-size: 14px;
+}
+
+.home-content .tab-content .question-list li .title a {
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+}
+
+.home-content .tab-content .question-list li .date {
+  font-size: 12px;
+  color: #a8a8a8;
+}
+
+.home-content .activities {
+  margin-left: 5px;
+  margin-top: 15px;
+}
+
+.home-content .activities .tit {
+  line-height: 32px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.home-content .activities .tit span {
+  padding: 4px 20px;
+  border-bottom: 2px solid #e64620;
+}
+
+.home-content .activities .activities-content {
+  padding: 10px;
+  margin-top: 5px;
+  list-style: none;
+  background-color: #fff;
+}
+
+.home-content .activities .activities-content li {
+  padding: 3px 0;
+  margin-bottom: 10px;
+  line-height: 28px;
+  font-size: 13px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.home-content .activities .activities-content li .index-title {
+  color: #999;
+}
+
+.home-content .activities .activities-content li .guanzhuname .tag {
+  background-color: #e1ecf4;
+  color: #0077cc;
+  padding: 1px 4px;
+  border-radius: 5px;
+}
+
+.home-content .activities .activities-content li .question .title {
+  font-size: 14px;
+}
+
+.home-content .activities .activities-content li .qa-num {
+  color: #999;
+}
+
+.home-content .activities .activities-content li .intro,
+.home-content .activities .activities-content li .content {
+  padding-right: 8px;
+}

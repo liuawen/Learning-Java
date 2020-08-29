@@ -1,0 +1,511 @@
+@charset "UTF-8";
+
+/*
+ * colors variables
+ */
+
+
+/*
+ * colors variables
+ */
+
+html,
+body {
+	height: 100%;
+	background-color: #f5f5f5;
+	font-family: "微软雅黑";
+}
+
+.wrapper {
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+	.wrapper {
+		width: 1170px;
+	}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+	.wrapper {
+		width: 1000px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.wrapper {
+		width: 800px;
+	}
+}
+
+h2 {
+	font-size: 18px;
+	margin: 0;
+}
+
+h3 {
+	font-size: 16px;
+	margin: 0;
+}
+
+h4 {
+	font-size: 14px;
+	margin: 0;
+}
+
+h5 {
+	font-size: 12px;
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+i {
+	font-style: normal;
+}
+
+
+/*
+ * colors variables
+ */
+
+.card {
+	margin-bottom: 15px;
+	padding: 15px 15px 8px;
+	background-color: #fff;
+}
+
+.card .photo-name img {
+	float: left;
+}
+
+.card .photo-name .name-edit {
+	float: left;
+	padding-left: 15px;
+	line-height: 20px;
+}
+
+.card .photo-name .name-edit .name {
+	font-size: 16px;
+}
+
+.card .photo-name .name-edit .edit {
+	color: #b5b5b5;
+}
+
+.card .like {
+	margin-top: 15px;
+}
+
+.card .like span {
+	display: inline-block;
+	width: 48%;
+	text-align: center;
+	font-size: 14px;
+}
+
+.card .like span.like1 {
+	border-right: 1px solid #b5b5b5;
+}
+
+.card .like span .num {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.friend-chat {
+	margin-top: 10px;
+	padding: 10px;
+	background: #fff;
+}
+
+.friend-chat h4 {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.friend-chat .chat-bg {
+	background: #f9fcfd;
+	height: 100%;
+	position: relative;
+	padding-bottom: 4rem;
+}
+
+.friend-chat .chat-bg .chat-box {
+	height: 100%;
+	overflow-y: hidden;
+	position: relative;
+}
+
+.friend-chat .chat-bg .chat-box .chat-trip {
+	display: block;
+	line-height: 26px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	background-color: #F4F4F4;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv {
+	padding: 20px;
+	min-height: 300px;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .bubbleItem {
+	width: 100%;
+	position: relative;
+	margin-top: 10px;
+	clear: both;
+	overflow: hidden;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .leftBubble {
+	position: relative;
+	background-color: #EFF6F9;
+	margin-left: 1rem;
+	line-height: 36px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .rightBubble {
+	position: relative;
+	margin-right: 1rem;
+	float: right;
+	background-color: #6F83FF;
+	color: #fff;
+	padding: 5px;
+	border-radius: 6px;
+	margin-bottom: 7px;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .bubbleItem .rightBubble .topLevel {
+	position: absolute;
+	top: 1rem;
+	right: -8px;
+	border-bottom: 10px solid #6F83FF;
+	border-right: 10px solid transparent;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .doctor-head {
+	float: left;
+}
+
+.friend-chat .chat-bg .chat-box .bubbleDiv .doctor-head img {
+	border-radius: 10px;
+}
+
+.friend-chat .chat-bg .chat-edit {
+	border-top: 1px solid #eee;
+	background: #fff;
+	padding: 10px 2% 10px 0%;
+}
+
+.friend-chat .chat-bg .chat-edit .chat-info {
+	width: 100%;
+	border: 1px solid #eee;
+	resize: none;
+	padding: 0.6rem 0.4rem;
+	font-size: 14px;
+	color: #666;
+	overflow-y: visible;
+	height: 100px;
+}
+
+.friend-chat .chat-bg .chat-edit .send-btn {
+	padding: 0.6rem 1rem;
+	border: 0;
+	background: #6F83FF;
+	color: #fff;
+	min-width: 4rem;
+	border-radius: 0.4rem;
+	margin-left: 3%;
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+}
+
+
+/*
+ * colors variables
+ */
+
+.block-btn {
+	padding: 10px 15px 13px 25px;
+	border: 1px solid #e64620;
+	font-size: 14px;
+	background-color: #fff;
+}
+
+.block-btn p {
+	margin-bottom: 12px;
+}
+
+.block-btn .btn-share {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	border: 0;
+	background-color: #e64620;
+	color: #fff;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+
+.card {
+	margin-top: 10px;
+	padding: 20px;
+	background-color: #fff;
+	font-size: 14px;
+}
+
+header {
+	margin-bottom: 0;
+}
+
+.banner {
+	background-color: #00a8ff;
+}
+
+.banner img {
+	margin: 0 auto;
+}
+
+.tag-item .left-list {
+	margin-right: 10px;
+}
+
+.tag-item .left-list .full-info {
+	margin-left: 12px;
+	margin-top: 10px;
+	line-height: 28px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.tag-item .left-list .full-info .close {
+	float: right;
+	line-height: 28px;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+	.tag-item .left-list {
+		width: 860px;
+	}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+	.tag-item .left-list {
+		width: 710px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.tag-item .left-list {
+		width: 600px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.tag-item .right-tag {
+		width: 300px;
+	}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+	.tag-item .right-tag {
+		width: 280px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.tag-item .right-tag {
+		width: 190px;
+	}
+}
+
+.tag-item .right-tag .block-btn {
+	padding: 10px 15px 13px 17px;
+	border: 1px solid #00a8ff;
+	font-size: 14px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.tag-item .right-tag .block-btn p {
+	margin-bottom: 12px;
+}
+
+.tag-item .right-tag .block-btn .btn-share {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	border: 0;
+	background-color: #00a8ff;
+	color: #fff;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+
+.tag-item .right-tag .rank {
+	margin-top: 10px;
+	padding-bottom: 15px;
+	background-color: #fff;
+}
+
+.tag-item .right-tag .rank .head {
+	padding-top: 15px;
+	background-color: #fff;
+}
+
+.tag-item .right-tag .rank .head .title {
+	padding-left: 15px;
+	margin: 0;
+	border-left: 2px solid #00a8ff;
+	color: #00a8ff;
+}
+
+.tag-item .right-tag .rank .rank-list {
+	padding: 0 20px;
+}
+
+.tag-item .right-tag .rank .rank-list .rank {
+	list-style: none;
+}
+
+.tag-item .right-tag .rank .rank-list .rank li {
+	overflow: hidden;
+	font-size: 14px;
+	padding-bottom: 5px;
+}
+
+.tag-item .right-tag .rank .rank-list .rank li .fr {
+	color: #00a8ff;
+}
+
+.footer {
+	margin-top: 15px;
+	border-top: 1px solid #e6e6e6;
+}
+
+
+/*talk content*/
+
+.bubbleDiv .talk-content {
+	overflow: hidden;
+}
+
+.bubbleDiv .talk-content .text {
+	position: relative;
+}
+
+.bubbleDiv .talk-content .angle {
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	border-left: 10px solid #ecedee;
+	border-top: 10px solid #ecedee;
+	background-color: #fff;
+}
+
+.bubbleDiv .talk-content .img {
+	width: 40px;
+	height: 40px;
+}
+
+.bubbleDiv .talk-content .img img {
+	border-radius: 25%;
+}
+
+.bubbleDiv .talk-content .talk-left {
+	width: 100%;
+	float: left;
+}
+
+.talk-left .img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+.talk-left .text {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.talk-left .text .info {
+	line-height: 26px;
+	color: #ccc;
+}
+
+.talk-left .text .word {
+	background-color: #fff;
+	padding: 7px 9px;
+	/* border: 1px solid #ecedee; */
+	max-width: 200px;
+	box-shadow: 0px 0px 1px 0px #c7c7c7;
+}
+.bubbleDiv .talk-content .talk-rit {
+	float: right;
+}
+
+.talk-rit .img {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 6px;
+}
+
+.talk-rit .text {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.talk-rit .text .info {
+	line-height: 26px;
+	color: #ccc;
+}
+
+.talk-rit .text .word {
+	position: relative;
+}
+.talk-left .text .word em {
+	display: block;
+    border-width: 9px;
+    position: absolute;
+    top: 31px;
+    left: -18px;
+    border-style: solid dashed dashed;
+    border-color: transparent #ecedee transparent transparent;
+    font-size: 0;
+    line-height: 0;
+}
+.talk-rit .text .word em {
+	display: block;
+    border-width: 9px;
+    position: absolute;
+    top: 14px;
+    right: -18px;
+    border-style: solid dashed dashed;
+    border-color: transparent transparent transparent #ecedee;
+    font-size: 0;
+    line-height: 0;
+}
+
+.talk-rit .text .word {
+	max-width: 250px;
+	background-color: #fff;
+	padding: 7px 9px;
+	border: 1px solid #ecedee;
+}

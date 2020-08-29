@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./img/asset-favicon.ico">
+    <title>社交-通知页面</title>
+
+    <!-- 页面 css js -->
+    <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="./plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/yui/cssgrids-min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui.min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/sui/sui-append.min.css" />
+    <link rel="stylesheet" type="text/css" href="./plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/widget-base.css" />
+    <link rel="stylesheet" type="text/css" href="./css/widget-head-foot.css" />
+    <link rel="stylesheet" type="text/css" href="./css/page-sj-other-notice.css" />
+</head>
+
+<body class="notice">
+    <!--引用组件-->
+    <div class="wrapper">
+            <!--头部导航-->
+<header>
+  <div class="sui-navbar">
+    <div class="navbar-inner">
+      <a href="index-logined.html" class="sui-brand"><img src="./img/asset-logo-black.png" alt="社交"/></a>
+      <ul class="sui-nav">
+        <li class="active"><a href="./headline-logined.html">头条</a></li>
+        <li><a href="./qa-logined.html" >问答</a></li>
+        <li><a href="./activity-index.html" >活动</a></li>
+        <li><a href="./makeFriends-index.html" >交友</a></li>
+        <li><a href="./spit-index.html" >吐槽</a></li>
+        <li><a href="./recruit-index.html"  >招聘</a></li>
+      </ul>
+      <form class="sui-form sui-form pull-left">
+        <input type="text" placeholder="输入关键词...">
+        <span class="btn-search fa fa-search"></span>
+      </form>
+      <div class="sui-nav pull-right info">
+          <li><a href="./other-notice.html" target="_blank" class="notice">通知</a></li>
+          <li class="hover">
+            <span class="fa fa-plus "></span>
+            <ul class="hoverinfo">
+              <li><i class="fa fa-share-alt" aria-hidden="true"></i> <a href="./headline-submit.html">去分享</a></li>
+              <li><i class="fa fa-question-circle" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">提问题</a></li>
+              <li><i class="fa fa-comments" aria-hidden="true"></i><a href="./spit-submit.html" target="_blank">去吐槽</a></li>
+              <li><i class="fa fa-heartbeat" aria-hidden="true"></i> <a href="./makeFriends-submit.html" target="_blank">发约会</a></li>
+            </ul>
+          </li>
+          <li><a href="./person-homepage.html" target="_blank" class="homego"><img src="./img/widget-photo.png" alt="用户头像"></a></li> 
+      </div>
+  </div>
+  </div>
+  
+</header>
+    
+
+            </div>
+    <!--两列布局-->
+    <div class="wrapper">
+        <div class="notice-time">
+    <h5 class="notice-title">通知提醒</h5>
+    <div class="notice-content">
+        <div class="mark-all">
+            <a href="javascript:void(0);" class="sui-btn btn-bordered btn-large">全部标记为已读</a>
+        </div>
+        <div class="notice-day">
+            <div class="everyday">
+                <p class="date">今天</p>
+                <ul class="operate">
+                    <li><span class="name">Alex</span>评论了你的问题 <span class="red"><a href="#">网页链接如何直接打开微信，并进入公众号关注页面？</a></span></li>
+                    <li><span class="name">Alex</span>赞了你的问题 <span class="grey"><a href="#">网页链接如何直接打开微信，并进入公众号关注页面？</a></span></li>
+                </ul>
+            </div>
+            <div class="everyday">
+                <p class="date">昨天</p>
+                <ul class="operate">
+                    <li><span class="name">BiPeng</span>收藏了你的问题 <span class="red"><a href="#">网页链接如何直接打开微信，并进入公众号关注页面？</a></span></li>
+                </ul>
+            </div>
+            <div class="everyday">
+                <p class="date">09月26日</p>
+                <ul class="operate">
+                    <li><span class="name">BiPeng</span>响应了你的约会 <span class="red"><a href="#">喝咖啡</a></span>
+                        <span class="btns">
+                            <a href="javascript:void(0);" class="sui-btn btn-bordered  btn-danger btn-xlarge">忽略</a>
+                            <a href="javascript:void(0);" class="sui-btn btn-danger btn-xlarge">同意</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+<script>
+// $(function(){
+//   $(".hover").hover(function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "show"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#e64620");
+//   },function(){
+//     $(".hoverinfo").stop().animate({
+//        opacity: "hide"
+//     },"slow");
+//     $(this).find(".fa-plus").css("color","#000");
+//   })
+// })
+</script>
+</body>

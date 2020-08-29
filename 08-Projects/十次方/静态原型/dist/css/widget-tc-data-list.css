@@ -1,0 +1,113 @@
+/*
+ * colors variables
+ */
+.tc-data-list .tc-list .qa-item {
+  padding: 14px 35px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.tc-data-list .tc-list .qa-item .record {
+  margin-right: 30px;
+  margin-top: 5px;
+}
+
+.tc-data-list .tc-list .qa-item .record .number {
+  text-align: right;
+}
+
+.tc-data-list .tc-list .qa-item .record .number a {
+  color: #999;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .border {
+  padding: 6px 16px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .color {
+  color: #e64620;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .useful {
+  padding: 8px;
+  border: 1px solid #999;
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .useful .usenum {
+  color: #999;
+  font-size: 16px;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .answer {
+  border: 1px solid #999;
+}
+
+.tc-data-list .tc-list .qa-item .record .number .answer .fa {
+  font-size: 14px;
+}
+
+.tc-data-list .tc-list .qa-item .info .text {
+  font-size: 14px;
+  line-height: 21px;
+  color: #000;
+}
+
+.tc-data-list .tc-list .qa-item .info .text a {
+  color: #555;
+  text-decoration: none;
+}
+
+.tc-data-list .tc-list .qa-item .info .other {
+  overflow: hidden;
+  margin-top: 13px;
+  color: #999;
+  margin-left: 76px;
+}
+
+.tc-data-list .tc-list .qa-item .info .other .remark {
+  line-height: 25px;
+}
+
+.tc-data-list .tc-list .qa-item .info .other .remark a {
+  margin-right: 10px;
+  color: #999;
+  text-decoration: none;
+}
+
+.tc-data-list .jiathis_style_32x32 {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.tc-data-list .jiathis_style_32x32 span {
+  padding-right: 10px;
+}
+
+.tc-data-list .comment span {
+  color: #999;
+}
+
+.tc-data-list .comment span img {
+  width: 25px;
+  height: 25px;
+  border-radius: 6px;
+}
+
+.tc-data-list .form {
+  margin-top: 10px;
+}
+
+.tc-data-list .form .remark {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.tc-data-list .form .remark .sui-btn {
+  padding: 5px 20px;
+  font-size: 14px;
+}

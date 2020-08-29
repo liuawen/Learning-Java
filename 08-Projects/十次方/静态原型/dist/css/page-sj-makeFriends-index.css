@@ -1,0 +1,482 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.card {
+  margin-bottom: 15px;
+  padding: 15px 15px 8px;
+  background-color: #fff;
+}
+
+.card .photo-name img {
+  float: left;
+}
+
+.card .photo-name .name-edit {
+  float: left;
+  padding-left: 15px;
+  line-height: 20px;
+}
+
+.card .photo-name .name-edit .name {
+  font-size: 16px;
+}
+
+.card .photo-name .name-edit .edit {
+  color: #b5b5b5;
+}
+
+.card .like {
+  margin-top: 15px;
+}
+
+.card .like span {
+  display: inline-block;
+  width: 48%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.card .like span.like1 {
+  border-right: 1px solid #b5b5b5;
+}
+
+.card .like span .num {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/*
+ * colors variables
+ */
+.friend-dating-list {
+  margin-top: 10px;
+}
+
+.friend-dating-list .friends {
+  list-style: none;
+}
+
+.friend-dating-list .friends .friend-item {
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding-left: 13px;
+}
+
+.friend-dating-list .friends .friend-item .cafe-more,
+.friend-dating-list .friends .friend-item .eat-more,
+.friend-dating-list .friends .friend-item .travel-more,
+.friend-dating-list .friends .friend-item .sing-more,
+.friend-dating-list .friends .friend-item .other-more,
+.friend-dating-list .friends .friend-item .movie-more {
+  bottom: 5px;
+  left: -13px;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  line-height: 0px;
+  border-right: 13px solid #bd6600;
+  border-top: 23px solid #bd6600;
+  border-radius: 26px 0 0 28px;
+}
+
+.friend-dating-list .friends .friend-item .eat-more {
+  border-top-color: #e64620;
+  border-right-color: #e64620;
+}
+
+.friend-dating-list .friends .friend-item .travel-more {
+  border-top-color: #5dc99d;
+  border-right-color: #5dc99d;
+}
+
+.friend-dating-list .friends .friend-item .sing-more {
+  border-top-color: #5599d8;
+  border-right-color: #5599d8;
+}
+
+.friend-dating-list .friends .friend-item .other-more {
+  border-top-color: #71b5d2;
+  border-right-color: #71b5d2;
+}
+
+.friend-dating-list .friends .friend-item .movie-more {
+  border-top-color: #7054c2;
+  border-right-color: #7054c2;
+}
+
+.friend-dating-list .friends .friend-item .photo {
+  position: relative;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag {
+  position: absolute;
+  bottom: 8px;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe {
+  color: #fff;
+  padding: 2px 15px 2px 10px;
+  border-radius: 0 11px 11px 0;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.cafe {
+  background-color: #bd6600;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.eat {
+  background-color: #e64620;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.travel {
+  background-color: #5dc99d;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.movie {
+  background-color: #7054c2;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.other {
+  background-color: #71b5d2;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.sing {
+  background-color: #5599d8;
+}
+
+.friend-dating-list .friends .friend-item .content {
+  width: 60%;
+  padding: 15px 0 10px 35px;
+  background-color: #fff;
+}
+
+.friend-dating-list .friends .friend-item .content p {
+  line-height: 24px;
+  color: #666;
+}
+
+.friend-dating-list .friends .friend-item .content .title {
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.friend-dating-list .friends .friend-item .content .title .bold {
+  float: right;
+}
+
+.friend-dating-list .friends .friend-item .content .title .name {
+  color: #000;
+}
+
+.friend-dating-list .friends .friend-item .content .title .cafe {
+  color: #bd6600;
+}
+
+.friend-dating-list .friends .friend-item .content .title .eat {
+  color: #e64620;
+}
+
+.friend-dating-list .friends .friend-item .content .title .travel {
+  color: #5dc99d;
+}
+
+.friend-dating-list .friends .friend-item .content .title .movie {
+  color: #7054c2;
+}
+
+.friend-dating-list .friends .friend-item .content .title .other {
+  color: #71b5d2;
+}
+
+.friend-dating-list .friends .friend-item .content .title .sing {
+  color: #5599d8;
+}
+
+.friend-dating-list .friends .friend-item .content .aa .money {
+  padding-right: 30px;
+}
+
+.friend-dating-list .friends .friend-item .xy {
+  padding-right: 20px;
+  padding-top: 16px;
+}
+
+.friend-dating-list .friends .friend-item .xy ul {
+  list-style: none;
+}
+
+.friend-dating-list .friends .friend-item .xy ul li {
+  margin-bottom: 15px;
+}
+
+.friend-dating-list .friends .friend-item .xy ul li i {
+  font-size: 24px;
+  color: #9a8f8f;
+  cursor: pointer;
+}
+
+.friend-dating-list .friends .friend-item .clearfix {
+  background-color: #fff;
+}
+
+.friend-dating-list .sui-pagination {
+  text-align: center;
+}
+
+.friend-dating-list .sui-pagination ul .active a {
+  background-color: #06aaff;
+  color: #fff;
+  border-color: #06aaff;
+}
+
+.friend-dating-list .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #06aaff;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.friend-dating-list .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #06aaff;
+  font-size: 15px;
+}
+
+.friend-dating-list .sui-pagination ul > li > a:hover, .friend-dating-list .sui-pagination ul > li > a:focus {
+  border-color: #06aaff;
+  background-color: #06aaff;
+  color: #fff;
+}
+
+/*
+ * colors variables
+ */
+.block-btn {
+  padding: 10px 15px 13px 25px;
+  border: 1px solid #e64620;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.block-btn p {
+  margin-bottom: 12px;
+}
+
+.block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #e64620;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+.card {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+header {
+  margin-bottom: 0;
+}
+
+.banner {
+  background-color: #00a8ff;
+}
+
+.banner img {
+  margin: 0 auto;
+}
+
+.tag-item .left-list {
+  margin-right: 10px;
+}
+
+.tag-item .left-list .full-info {
+  margin-left: 12px;
+  margin-top: 10px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.tag-item .left-list .full-info .close {
+  float: right;
+  line-height: 28px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+  .tag-item .left-list {
+    width: 860px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .left-list {
+    width: 710px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .left-list {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tag-item .right-tag {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .tag-item .right-tag {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tag-item .right-tag {
+    width: 190px;
+  }
+}
+
+.tag-item .right-tag .block-btn {
+  padding: 10px 15px 13px 17px;
+  border: 1px solid #00a8ff;
+  font-size: 14px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .block-btn p {
+  margin-bottom: 12px;
+}
+
+.tag-item .right-tag .block-btn .btn-share {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  background-color: #00a8ff;
+  color: #fff;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}
+
+.tag-item .right-tag .rank {
+  margin-top: 10px;
+  padding-bottom: 15px;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .rank .head {
+  padding-top: 15px;
+  background-color: #fff;
+}
+
+.tag-item .right-tag .rank .head .title {
+  padding-left: 15px;
+  margin: 0;
+  border-left: 2px solid #00a8ff;
+  color: #00a8ff;
+}
+
+.tag-item .right-tag .rank .rank-list {
+  padding: 0 20px;
+}
+
+.tag-item .right-tag .rank .rank-list .rank {
+  list-style: none;
+}
+
+.tag-item .right-tag .rank .rank-list .rank li {
+  overflow: hidden;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+.tag-item .right-tag .rank .rank-list .rank li .fr {
+  color: #00a8ff;
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

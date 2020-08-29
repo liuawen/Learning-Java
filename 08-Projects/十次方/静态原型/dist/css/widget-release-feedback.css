@@ -1,0 +1,67 @@
+/*
+ * colors variables
+ */
+.release-feedback .sui-form {
+  margin-top: 15px;
+}
+
+.release-feedback .sui-form .control-group {
+  margin-bottom: 30px;
+}
+
+.release-feedback .sui-form .control-label {
+  vertical-align: top;
+  font-size: 16px;
+  color: #999;
+}
+
+.release-feedback .sui-form .dropdown-inner {
+  min-width: 500px;
+}
+
+.release-feedback .sui-form .dropdown-inner a {
+  min-width: 182px;
+  padding: 4px 7px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.release-feedback .sui-form .sui-dropdown-menu > .active a {
+  background: #e64620;
+}
+
+.release-feedback .sui-form .sui-dropdown-menu > li > a:hover, .release-feedback .sui-form .sui-dropdown-menu > li > a:focus {
+  background: #e64620;
+}
+
+.release-feedback .sui-form .input-area {
+  min-width: 600px;
+  min-height: 150px;
+}
+
+.release-feedback .sui-form input {
+  height: 24px;
+  font-size: 14px;
+  box-shadow: none;
+  font-family: 'Microsoft Yahei';
+}
+
+.release-feedback .sui-form textarea {
+  font-family: 'Microsoft Yahei';
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.release-feedback .sui-form .btn-submit {
+  width: 800px;
+  text-align: center;
+}
+
+.release-feedback .sui-form .btn-submit .btn-release {
+  padding: 6px 22px 7px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 14px;
+  background-color: #e64620;
+  font-family: 'Microsoft Yahei';
+}

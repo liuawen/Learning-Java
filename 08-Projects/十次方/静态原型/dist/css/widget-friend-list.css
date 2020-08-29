@@ -1,0 +1,96 @@
+/*
+ * colors variables
+ */
+.friend-list {
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #eeeeee;
+}
+
+.friend-list h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.friend-list ul {
+  list-style: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.friend-list ul .friend-item {
+  margin-top: 10px;
+  padding: 0 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.friend-list ul .friend-item .tip {
+  float: left;
+  margin-right: 10px;
+  position: relative;
+}
+
+.friend-list ul .friend-item .tip .num {
+  position: absolute;
+  top: -8px;
+  left: -6px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #f05f5f;
+}
+
+.friend-list ul .friend-item .msg {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.friend-list ul .friend-item .msg .name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.friend-list ul .friend-item .msg .date {
+  font-size: 12px;
+  float: right;
+}
+
+.friend-list ul .friend-item .msg .msg-content {
+  line-height: 26px;
+}
+
+.friend-list .pages {
+  margin-top: 15px;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.friend-list .pages ul .active a {
+  background-color: #06aaff;
+  color: #fff;
+  border-color: #06aaff;
+}
+
+.friend-list .pages ul > li span {
+  padding: 9px 15px;
+  color: #06aaff;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.friend-list .pages ul > li > a {
+  padding: 9px 15px;
+  color: #06aaff;
+  font-size: 15px;
+}
+
+.friend-list .pages ul > li > a:hover, .friend-list .pages ul > li > a:focus {
+  border-color: #06aaff;
+  background-color: #06aaff;
+  color: #fff;
+}

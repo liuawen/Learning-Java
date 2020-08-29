@@ -1,0 +1,201 @@
+/*
+ * colors variables
+ */
+.friend-dating-list {
+  margin-top: 10px;
+}
+
+.friend-dating-list .friends {
+  list-style: none;
+}
+
+.friend-dating-list .friends .friend-item {
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding-left: 13px;
+}
+
+.friend-dating-list .friends .friend-item .cafe-more,
+.friend-dating-list .friends .friend-item .eat-more,
+.friend-dating-list .friends .friend-item .travel-more,
+.friend-dating-list .friends .friend-item .sing-more,
+.friend-dating-list .friends .friend-item .other-more,
+.friend-dating-list .friends .friend-item .movie-more {
+  bottom: 5px;
+  left: -13px;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  line-height: 0px;
+  border-right: 13px solid #bd6600;
+  border-top: 23px solid #bd6600;
+  border-radius: 26px 0 0 28px;
+}
+
+.friend-dating-list .friends .friend-item .eat-more {
+  border-top-color: #e64620;
+  border-right-color: #e64620;
+}
+
+.friend-dating-list .friends .friend-item .travel-more {
+  border-top-color: #5dc99d;
+  border-right-color: #5dc99d;
+}
+
+.friend-dating-list .friends .friend-item .sing-more {
+  border-top-color: #5599d8;
+  border-right-color: #5599d8;
+}
+
+.friend-dating-list .friends .friend-item .other-more {
+  border-top-color: #71b5d2;
+  border-right-color: #71b5d2;
+}
+
+.friend-dating-list .friends .friend-item .movie-more {
+  border-top-color: #7054c2;
+  border-right-color: #7054c2;
+}
+
+.friend-dating-list .friends .friend-item .photo {
+  position: relative;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag {
+  position: absolute;
+  bottom: 8px;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe {
+  color: #fff;
+  padding: 2px 15px 2px 10px;
+  border-radius: 0 11px 11px 0;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.cafe {
+  background-color: #bd6600;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.eat {
+  background-color: #e64620;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.travel {
+  background-color: #5dc99d;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.movie {
+  background-color: #7054c2;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.other {
+  background-color: #71b5d2;
+}
+
+.friend-dating-list .friends .friend-item .photo .tag .tag-cafe.sing {
+  background-color: #5599d8;
+}
+
+.friend-dating-list .friends .friend-item .content {
+  width: 60%;
+  padding: 15px 0 10px 35px;
+  background-color: #fff;
+}
+
+.friend-dating-list .friends .friend-item .content p {
+  line-height: 24px;
+  color: #666;
+}
+
+.friend-dating-list .friends .friend-item .content .title {
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.friend-dating-list .friends .friend-item .content .title .bold {
+  float: right;
+}
+
+.friend-dating-list .friends .friend-item .content .title .name {
+  color: #000;
+}
+
+.friend-dating-list .friends .friend-item .content .title .cafe {
+  color: #bd6600;
+}
+
+.friend-dating-list .friends .friend-item .content .title .eat {
+  color: #e64620;
+}
+
+.friend-dating-list .friends .friend-item .content .title .travel {
+  color: #5dc99d;
+}
+
+.friend-dating-list .friends .friend-item .content .title .movie {
+  color: #7054c2;
+}
+
+.friend-dating-list .friends .friend-item .content .title .other {
+  color: #71b5d2;
+}
+
+.friend-dating-list .friends .friend-item .content .title .sing {
+  color: #5599d8;
+}
+
+.friend-dating-list .friends .friend-item .content .aa .money {
+  padding-right: 30px;
+}
+
+.friend-dating-list .friends .friend-item .xy {
+  padding-right: 20px;
+  padding-top: 16px;
+}
+
+.friend-dating-list .friends .friend-item .xy ul {
+  list-style: none;
+}
+
+.friend-dating-list .friends .friend-item .xy ul li {
+  margin-bottom: 15px;
+}
+
+.friend-dating-list .friends .friend-item .xy ul li i {
+  font-size: 24px;
+  color: #9a8f8f;
+  cursor: pointer;
+}
+
+.friend-dating-list .friends .friend-item .clearfix {
+  background-color: #fff;
+}
+
+.friend-dating-list .sui-pagination {
+  text-align: center;
+}
+
+.friend-dating-list .sui-pagination ul .active a {
+  background-color: #06aaff;
+  color: #fff;
+  border-color: #06aaff;
+}
+
+.friend-dating-list .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #06aaff;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.friend-dating-list .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #06aaff;
+  font-size: 15px;
+}
+
+.friend-dating-list .sui-pagination ul > li > a:hover, .friend-dating-list .sui-pagination ul > li > a:focus {
+  border-color: #06aaff;
+  background-color: #06aaff;
+  color: #fff;
+}

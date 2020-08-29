@@ -1,0 +1,91 @@
+/*
+ * colors variables
+ */
+.search-job form {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.search-job form .input-job {
+  padding: 11px 15px;
+  font-size: 16px;
+  border-color: #aae5e2;
+  border-right: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #999;
+  font-family: inherit;
+}
+
+@media (min-width: 1200px) {
+  .search-job form .input-job {
+    width: 620px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .search-job form .input-job {
+    width: 460px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .search-job form .input-job {
+    width: 350px;
+  }
+}
+
+.search-job .input-area {
+  display: inline-block;
+  padding: 4px 8px 4px;
+  margin-left: -4px;
+  font-size: 16px;
+  vertical-align: middle;
+  border-top: 1px solid #aae5e2;
+  border-bottom: 1px solid #aae5e2;
+  background-color: #fff;
+}
+
+.search-job .input-area .city {
+  line-height: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-left: 1px solid #aae5e2;
+}
+
+.search-job .btn {
+  display: inline-block;
+}
+
+.search-job .btn .btn-search {
+  padding: 3px 28px 5px 23px;
+  line-height: 32px;
+  margin-left: -4px;
+  font-size: 18px;
+  border: 1px solid #aae5e2;
+  border-radius: 0;
+  background-color: #55cbc4;
+  color: #fff;
+}
+
+.search-job .hot dl {
+  display: block;
+  overflow: hidden;
+}
+
+.search-job .hot dl dt {
+  float: left;
+  font-size: 14px;
+  color: #999;
+}
+
+.search-job .hot dl dd {
+  float: left;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+.search-job .hot dl dd a {
+  color: #999;
+}

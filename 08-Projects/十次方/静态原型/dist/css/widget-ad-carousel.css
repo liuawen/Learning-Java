@@ -1,0 +1,23 @@
+/*
+ * colors variables
+ */
+.ad-carousel {
+  margin-top: 15px;
+}
+
+.ad-carousel .carousel .carousel-indicators {
+  right: 15px;
+}
+
+.ad-carousel .carousel .carousel-indicators .active {
+  width: 10px;
+}
+
+.ad-carousel .carousel .adname {
+  position: absolute;
+  padding: 2px;
+  color: #fff;
+  top: 218px;
+  left: 5px;
+  border: 1px solid #fff;
+}

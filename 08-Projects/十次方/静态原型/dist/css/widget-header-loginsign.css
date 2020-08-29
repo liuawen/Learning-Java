@@ -1,0 +1,30 @@
+/*
+ * colors variables
+ */
+.head-login {
+  padding: 15px 0;
+  margin-bottom: 15px;
+  box-shadow: 5px 1px 6px #D6D6D6;
+}
+
+.head-login .sui-navbar {
+  margin-bottom: 0;
+}
+
+.head-login .sui-navbar .navbar-inner {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.head-login .sui-navbar .navbar-inner .sui-brand {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.head-login .sui-navbar .navbar-inner .login-text {
+  font-size: 26px;
+  line-height: 60px;
+  padding-left: 20px;
+  color: #ABA9A9;
+}

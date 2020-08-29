@@ -1,0 +1,71 @@
+/*
+ * colors variables
+ */
+.notice-time {
+  padding-top: 8px;
+  min-height: 500px;
+  background-color: #fff;
+}
+
+.notice-time .notice-title {
+  margin-bottom: 10px;
+  padding-left: 15px;
+  border-left: 2px solid #e64620;
+  font-size: 16px;
+  color: #e64620;
+}
+
+.notice-time .notice-content {
+  padding-left: 17px;
+  padding-bottom: 15px;
+}
+
+.notice-time .notice-content .everyday {
+  margin-top: 10px;
+}
+
+.notice-time .notice-content .everyday .date {
+  font-size: 16px;
+  line-height: 30px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notice-time .notice-content .everyday .operate {
+  list-style: none;
+}
+
+.notice-time .notice-content .everyday .operate li {
+  font-size: 14px;
+  line-height: 32px;
+  overflow: hidden;
+}
+
+.notice-time .notice-content .everyday .operate li span {
+  padding-right: 4px;
+}
+
+.notice-time .notice-content .everyday .operate li span.name {
+  color: #0077cc;
+}
+
+.notice-time .notice-content .everyday .operate li span.red a {
+  color: #e64620;
+}
+
+.notice-time .notice-content .everyday .operate li span.gray a {
+  color: #999;
+}
+
+.notice-time .notice-content .everyday .operate li span.btns {
+  float: right;
+  padding-top: 5px;
+  margin-right: 10%;
+}
+
+.notice-time .notice-content .everyday .operate li span.btns .btn-xlarge {
+  padding: 2px 13px;
+}
+
+.notice-time .notice-content .everyday .operate li span .sui-btn {
+  margin-left: 15px;
+}

@@ -1,0 +1,233 @@
+@charset "UTF-8";
+/*
+ * colors variables
+ */
+/*
+ * colors variables
+ */
+html, body {
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: "微软雅黑";
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .wrapper {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    width: 800px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+h5 {
+  font-size: 12px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+i {
+  font-style: normal;
+}
+
+/*
+ * colors variables
+ */
+.tab-nav {
+  background: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tab-nav .sui-nav {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.tab-nav .sui-nav.navbar-dark {
+  padding-left: 0;
+  border-bottom: 0;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li {
+  margin-bottom: -2px;
+  line-height: 36px;
+}
+
+.tab-nav .sui-nav.navbar-dark li a {
+  padding-left: 35px;
+  padding-right: 35px;
+  line-height: 36px;
+  color: #fff;
+}
+
+.tab-nav .sui-nav.navbar-dark li.active a {
+  border: 0;
+  border-radius: 0;
+  background-color: #e64620;
+}
+
+.tab-nav .more {
+  line-height: 40px;
+}
+
+.tab-nav .more a {
+  color: #fff;
+}
+
+/*
+ * colors variables
+ */
+.release-date {
+  margin-right: 20px;
+  border: 1px solid #E8E8E8;
+  background-color: #fff;
+}
+
+.release-date h3 {
+  padding-top: 10px;
+  font-weight: normal;
+}
+
+.release-date h3 span {
+  padding-left: 15px;
+  border-left: 2px solid #e64620;
+}
+
+.release-date .sui-form {
+  margin-top: 15px;
+}
+
+.release-date .sui-form .controls {
+  padding-left: 15px;
+}
+
+.release-date .sui-form .controls li {
+  position: relative;
+  margin-right: 15px;
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  opacity: .5;
+}
+
+.release-date .sui-form .controls li.active {
+  opacity: 1;
+}
+
+.release-date .sui-form .controls li .topic {
+  height: 45px;
+  width: 45px;
+  vertical-align: middle;
+  background-image: url("./../img/widget-friend-item.png");
+}
+
+.release-date .sui-form .controls li .topic.d1 {
+  background-position: 0 0;
+  color: #7054C2;
+}
+
+.release-date .sui-form .controls li .topic.d2 {
+  background-position: -64px 0;
+  color: #E64620;
+}
+
+.release-date .sui-form .controls li .topic.d3 {
+  background-position: -128px 0;
+  color: #5599D8;
+}
+
+.release-date .sui-form .controls li .topic.d4 {
+  background-position: -196px 0;
+  color: #BD6600;
+}
+
+.release-date .sui-form .controls li .topic.d5 {
+  background-position: -262px 0;
+  color: #19467d;
+}
+
+.release-date .sui-form .controls li .topic.d6 {
+  background-position: -326px 0;
+  color: #5dc99d;
+}
+
+.release-date .sui-form .controls li .topic.d7 {
+  background-position: -396px 0;
+  color: #d866c7;
+}
+
+.release-date .sui-form .controls li .topic.d8 {
+  background-position: -462px 0;
+  color: #71b5d2;
+}
+
+.release-date .sui-form .controls li .topic span {
+  display: block;
+  text-align: center;
+  padding-top: 46px;
+}
+
+.release-date .sui-form .btn-date {
+  width: 800px;
+  text-align: center;
+}
+
+.release-date .sui-form .btn-date .btn-release {
+  padding: 3px 15px 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #00a8ff !important;
+  font-family: 'Microsoft Yahei';
+}
+
+header {
+  margin-bottom: 15px;
+}
+
+.footer {
+  margin-top: 15px;
+  border-top: 1px solid #e6e6e6;
+}

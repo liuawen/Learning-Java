@@ -1,0 +1,89 @@
+/*
+ * colors variables
+ */
+.job-position .job-type {
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  background-color: #fff;
+}
+
+.job-position .head .title {
+  border-left: 2px solid #55cbc4;
+  padding-left: 15px;
+  font-size: 16px;
+  color: #55cbc4;
+}
+
+.job-position .head .more a {
+  font-size: 14px;
+  color: #999;
+}
+
+.job-position .jobs {
+  padding: 10px 20px;
+}
+
+.job-position .job-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 15px;
+}
+
+.job-position .job-item p {
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.job-position .job-item .more {
+  text-align: right;
+}
+
+.job-position .job-item .more a {
+  font-size: 14px;
+  color: #999;
+}
+
+.job-position .job-item .name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 25px;
+  color: #000;
+}
+
+.job-position .job-item .name a {
+  color: #000;
+  text-decoration: none;
+}
+
+.job-position .job-item .city {
+  color: #999;
+  font-size: 14px;
+}
+
+.job-position .job-item .tag {
+  margin-top: 4px;
+}
+
+.job-position .job-item .tag li {
+  padding: 2px 4px;
+  margin-right: 5px;
+  border-radius: 4px;
+  list-style-type: none;
+  display: inline-block;
+  background: #e1ecf4;
+  color: #39739d;
+}
+
+.job-position .job-item .type .company {
+  color: #55cbc4;
+}
+
+.job-position .job-item .type p {
+  color: #999;
+}
+
+.job-position .job-item .time {
+  line-height: 28px;
+  color: #999;
+}

@@ -1,0 +1,42 @@
+/*
+ * colors variables
+ */
+.card-line {
+  margin-bottom: 20px;
+}
+
+.card-line .text-center {
+  padding: 15px 0;
+  line-height: 36px;
+  font-size: 20px;
+  text-align: center;
+  color: #e64620;
+  font-weight: normal;
+}
+
+.card-line .cards .card-item {
+  min-height: 320px;
+}
+
+.card-line .cards .card-item .item-content {
+  width: 90%;
+  padding-top: 6px;
+  min-height: 340px;
+  background-color: #fff;
+}
+
+.card-line .cards .card-item .item-content .card-title {
+  padding-left: 15px;
+  line-height: 28px;
+  border-left: 2px solid #e64620;
+  font-size: 18px;
+  color: #333;
+  font-weight: normal;
+}
+
+.card-line .cards .card-item .item-content .card-content {
+  padding: 15px;
+  line-height: 26px;
+  color: #666;
+  font-size: 14px;
+}

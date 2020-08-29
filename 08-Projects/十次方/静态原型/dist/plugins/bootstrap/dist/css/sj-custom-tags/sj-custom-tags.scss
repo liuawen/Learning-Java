@@ -1,0 +1,16 @@
+@import "../../modules/css-modules/variables";
+@import "../../modules/css-modules/base";
+@import "../../modules/ui-modules/header-logined/header-logined";
+@import "../../modules/ui-modules/tab-nav/tab-nav";
+
+
+@import "../../modules/ui-modules/footer-bottom/footer-bottom";
+
+
+header {
+    margin: 15px 0;
+}
+.footer {
+    margin-top: 15px;
+    border-top: 1px solid #e6e6e6;
+}

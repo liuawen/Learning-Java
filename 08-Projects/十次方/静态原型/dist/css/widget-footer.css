@@ -1,0 +1,12 @@
+/*
+ * colors variables
+ */
+.footer {
+  margin-top: 5px;
+  padding: 18px 16px 10px 25px;
+  background-color: #ededed;
+}
+
+.footer p {
+  line-height: 24px;
+}

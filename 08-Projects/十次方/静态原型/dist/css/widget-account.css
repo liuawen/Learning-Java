@@ -1,0 +1,106 @@
+/*
+ * colors variables
+ */
+.account {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.account .left-tit {
+  float: left;
+  margin-right: 15px;
+}
+
+.account .left-tit .tit-item {
+  padding: 8px 25px;
+  background-color: #fff0d4;
+  color: #e64620;
+}
+
+.account .left-tit .tit-item span {
+  font-size: 16px;
+}
+
+.account .right-info {
+  float: left;
+  width: 88%;
+  padding: 8px 0;
+  background-color: #fff;
+}
+
+.account .right-info .right-tit {
+  margin-bottom: 12px;
+}
+
+.account .right-info .right-tit span {
+  padding-left: 25px;
+  font-size: 16px;
+  border-left: 2px solid #e64620;
+}
+
+.account .right-info .account-type {
+  padding: 10px 27px;
+}
+
+.account .right-info .account-type h3 {
+  line-height: 36px;
+  font-weight: normal;
+  color: #e64620;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.account .right-info .account-type .account-info {
+  list-style: none;
+  font-size: 16px;
+}
+
+.account .right-info .account-type .account-info .sui-form {
+  margin-bottom: 0;
+  display: none;
+}
+
+.account .right-info .account-type .account-info .sui-form input {
+  height: 24px;
+  box-shadow: none;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+  padding-top: 0px;
+  padding-left: 10px;
+}
+
+.account .right-info .account-type .account-info .sui-form .save-btn {
+  padding: 4px 7px;
+  font-size: 14px;
+  font-family: 'Microsoft Yahei';
+}
+
+.account .right-info .account-type .account-info li {
+  padding: 0 15px;
+  line-height: 42px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.account .right-info .account-type .account-info .gray {
+  color: #999;
+}
+
+.account .right-info .account-type .account-info .gray.index {
+  float: left;
+  width: 190px;
+}
+
+.account .right-info .account-type .account-info .edit,
+.account .right-info .account-type .account-info .check {
+  float: right;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.account .right-info .account-type .account-info .bind {
+  cursor: pointer;
+  color: #e64620;
+}
+
+.account .right-info .account-type .account-person {
+  margin-bottom: 25px;
+}

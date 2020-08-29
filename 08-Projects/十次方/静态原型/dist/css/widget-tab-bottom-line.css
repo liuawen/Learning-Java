@@ -1,0 +1,143 @@
+/*
+ * colors variables
+ */
+.tab-bottom-line .sui-nav {
+  margin-bottom: 5px;
+  border-bottom: 0;
+  padding-left: 0;
+  background-color: #fff;
+}
+
+.tab-bottom-line .sui-nav li > a {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 2px solid transparent;
+  line-height: 36px;
+  font-size: 16px;
+  color: #000;
+}
+
+.tab-bottom-line .sui-nav li > a:hover {
+  color: #e64620;
+}
+
+.tab-bottom-line .sui-nav > .active > a {
+  font-weight: bold;
+  border: 0;
+  border-bottom: 2px solid #e64620;
+  color: #000;
+}
+
+.tab-bottom-line .qa-list .qa-item {
+  position: relative;
+  padding: 10px 30px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  list-style: none;
+}
+
+.tab-bottom-line .qa-list .qa-item .record {
+  margin-right: 30px;
+}
+
+.tab-bottom-line .qa-list .qa-item .record .number {
+  text-align: right;
+}
+
+.tab-bottom-line .qa-list .qa-item .record .number .border {
+  padding: 1px 9px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.tab-bottom-line .qa-list .qa-item .record .number .useful {
+  border: 1px solid #f06c4c;
+}
+
+.tab-bottom-line .qa-list .qa-item .record .number .useful .usenum {
+  color: #f06c4c;
+  font-size: 16px;
+}
+
+.tab-bottom-line .qa-list .qa-item .record .number .answer {
+  border: 1px solid #5fba7d;
+}
+
+.tab-bottom-line .qa-list .qa-item .record .number .answer .ansnum {
+  color: #5fba7d;
+  font-size: 16px;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .question .author {
+  margin-bottom: 5px;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .question .author .name {
+  padding-right: 10px;
+  color: #0077cc;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .question .title {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .question .title a {
+  color: #555;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .other {
+  overflow: hidden;
+  margin-top: 22px;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .other .sui-tag {
+  margin-bottom: 0;
+  padding-top: 0;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .other .sui-tag li {
+  margin-right: 10px;
+  border: 0;
+  border-radius: 4px;
+  background: #e1ecf4;
+  color: #0077cc;
+}
+
+.tab-bottom-line .qa-list .qa-item .info .other .brower {
+  position: absolute;
+  right: 20px;
+  line-height: 25px;
+  color: #a8a8a8;
+}
+
+.tab-bottom-line .qa-list .sui-pagination {
+  text-align: center;
+}
+
+.tab-bottom-line .qa-list .sui-pagination ul .active a {
+  background-color: #f06c4c;
+  color: #fff;
+  border-color: #f06c4c;
+}
+
+.tab-bottom-line .qa-list .sui-pagination ul > li span {
+  padding: 9px 15px;
+  color: #f06c4c;
+  border-top: 1px solid #e0e9ee;
+  border-bottom: 1px solid #e0e9ee;
+}
+
+.tab-bottom-line .qa-list .sui-pagination ul > li > a {
+  padding: 9px 15px;
+  color: #f06c4c;
+  font-size: 15px;
+}
+
+.tab-bottom-line .qa-list .sui-pagination ul > li > a:hover, .tab-bottom-line .qa-list .sui-pagination ul > li > a:focus {
+  border-color: #f06c4c;
+  background-color: #f06c4c;
+  color: #fff;
+}
