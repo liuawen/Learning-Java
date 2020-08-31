@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>测试 notice 微服务与页面 websocket 交互</title>
+</head>
+<body>
+<h1>
+    websocket连接服务器获取mq消息测试
+</h1>
+<form onSubmit="return false;">
+    <table><tr>
+        <td><span>服务器地址：</span></td>
+        <td><input type="text" id="serverUrl" value="ws://127.0.0.1:1234/ws" /></td>
+      </tr>
+      <tr>
+        <td><input type="button" id="action" value="连接服务器" onClick="connect()" /></td>
+        <td><input type="text" id="connStatus" value="未连接 ......" /></td>
+    </tr></table>
+    <br />
+    <hr color="blue" />
+    <div>
+        <div style="width: 50%;float:left;">
+            <div>
+                <table><tr>
+                    <td><h3>发送给服务端的消息</h3></td>
+                    <td><input type="button" value="发送" onClick="send(this.form.message.value)" /></td>
+                </tr></table>
+            </div>
+            <div><textarea type="text" name="message" style="width:500px;height:300px;">
+{
+    "userId":"1"
+}
+                </textarea></div>
+        </div>
+        <div style="width: 50%;float:left;">
+            <div><table>
+                <tr>
+                    <td><h3>服务端返回的应答消息</h3></td>
+                </tr>
+            </table></div>
+            <div><textarea id="responseText" name="responseText" style="width: 500px;height: 300px;" onfocus="this.scrollTop = this.scrollHeight ">
+这里显示服务器推送的信息
+            </textarea></div>
+        </div>
+    </div>
+
+</form>
+
+<script type="text/javascript">
+    var socket;
+    var connStatus = document.getElementById('connStatus');;
+    var respText = document.getElementById('responseText');
+    var actionBtn = document.getElementById('action');
+    var sysCount = 0;
+    var userCount = 0;
+
+    function connect() {
+        connStatus.value = "正在连接 ......";
+
+        if(!window.WebSocket){
+            window.WebSocket = window.MozWebSocket;
+        }
+        if(window.WebSocket){
+
+            socket = new WebSocket("ws://127.0.0.1:1234/ws");
+
+            socket.onmessage = function(event){
+                respText.scrollTop = respText.scrollHeight;
+                respText.value += "\r\n" + event.data;
+                var sysData = JSON.parse(event.data).data.sysNoticeCount;
+                if(sysData){
+                    sysCount = sysCount + parseInt(sysData)
+                }
+                var userData = JSON.parse(event.data).data.userNoticeCount;
+                if(userData){
+                    userCount = userCount + parseInt(sysData)
+                }
+                respText.value += "\r\n现在有" + sysCount + "条订阅新消息";
+                respText.value += "\r\n现在有" + userCount + "条点赞新消息";
+                respText.scrollTop = respText.scrollHeight;
+            };
+            socket.onopen = function(event){
+                respText.value += "\r\nWebSocket 已连接";
+                respText.scrollTop = respText.scrollHeight;
+
+                connStatus.value = "已连接 O(∩_∩)O";
+
+                actionBtn.value = "断开服务器";
+                actionBtn.onclick =function(){
+                    disconnect();
+                };
+
+            };
+            socket.onclose = function(event){
+                respText.value += "\r\n" + "WebSocket 已关闭";
+                respText.scrollTop = respText.scrollHeight;
+
+                connStatus.value = "已断开";
+
+                actionBtn.value = "连接服务器";
+                actionBtn.onclick = function() {
+                    connect();
+                };
+            };
+
+        } else {
+            //alert("您的浏览器不支持WebSocket协议！");
+            connStatus.value = "您的浏览器不支持WebSocket协议！";
+        }
+    }
+
+    function disconnect() {
+        socket.close();
+    }
+
+    function send(message){
+        if(!window.WebSocket){return;}
+        if(socket.readyState == WebSocket.OPEN){
+            socket.send(message);
+        }else{
+            alert("WebSocket 连接没有建立成功！");
+        }
+    }
+</script>
+</body>
+</html>
