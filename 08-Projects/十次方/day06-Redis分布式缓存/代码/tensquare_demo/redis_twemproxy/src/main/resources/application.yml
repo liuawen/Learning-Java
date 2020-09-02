@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: 192.168.200.129
+    port: 22121

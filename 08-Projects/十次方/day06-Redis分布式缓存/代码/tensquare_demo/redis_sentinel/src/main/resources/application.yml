@@ -1,0 +1,6 @@
+spring:
+  redis:
+    password: 123456
+    sentinel:
+      master: mymaster
+      nodes: 192.168.200.129:26379
