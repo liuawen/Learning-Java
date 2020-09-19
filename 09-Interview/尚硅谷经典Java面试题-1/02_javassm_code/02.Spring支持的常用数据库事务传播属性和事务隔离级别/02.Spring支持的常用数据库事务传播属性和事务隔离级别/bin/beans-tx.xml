@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- 设置自动扫描的包 -->
+	<context:component-scan base-package="com.atguigu.spring.tx"></context:component-scan>
+
+	<!-- 引入外部的属性文件 -->
+	<context:property-placeholder location="classpath:druid_tx.properties" />
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+
+		<property name="initialSize" value="${jdbc.initialSize}"></property>
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+		<property name="maxActive" value="${jdbc.maxActive}"></property>
+		<property name="maxWait" value="${jdbc.maxWait}"></property>
+	</bean>
+
+	<!-- 配置JdbcTemplate -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<!-- 配置数据源属性值 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 配置数据源属性值 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 开启事务注解支持 
+		如果事务管理器的id属性值为transactionManager，那么transaction-manager属性可以省略不写
+	-->
+<!-- 	<tx:annotation-driven transaction-manager="transactionManager"/> -->
+	<tx:annotation-driven/>
+</beans>

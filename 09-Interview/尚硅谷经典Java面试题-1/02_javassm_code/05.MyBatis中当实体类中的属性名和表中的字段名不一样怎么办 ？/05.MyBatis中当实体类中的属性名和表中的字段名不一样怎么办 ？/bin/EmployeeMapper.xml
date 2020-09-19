@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性：必须是接口的全类名 -->
+<mapper namespace="com.atguigu.mybatis.mapper.EmployeeMapper">
+	<!-- 
+		id属性：必须是接口中方法的方法名
+		resultType属性：必须是方法的返回值的全类名
+	 -->
+	<select id="getEmployeeById" resultMap="myMap">
+		select * from employees where id = #{id}
+	</select>
+	
+	<!-- 自定义高级映射 -->
+    <resultMap type="com.atguigu.mybatis.entities.Employee" id="myMap">
+    	<!-- 映射主键 -->
+    	<id column="id" property="id"/>
+    	<!-- 映射其他列 -->
+    	<result column="last_name" property="lastName"/>
+    	<result column="email" property="email"/>
+    	<result column="salary" property="salary"/>
+    	<result column="dept_id" property="deptId"/>
+    </resultMap>
+</mapper>

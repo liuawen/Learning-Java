@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>好评图标</title>
+    <desc>Created with Sketch.</desc>
+    <g id="好评图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#578834" x="7" y="11" width="2" height="7"></rect>
+            <path d="M0,12 L-1.10218212e-15,12 C3.3137085,12 6,14.6862915 6,18 L6,18 C2.6862915,18 4.05812251e-16,15.3137085 0,12 Z" id="Rectangle-Copy" fill="#80AE60"></path>
+            <path d="M10,12 L10,12 C13.3137085,12 16,14.6862915 16,18 L16,18 C12.6862915,18 10,15.3137085 10,12 Z" id="Rectangle-Copy-3" fill="#80AE60" transform="translate(13.000000, 15.000000) scale(-1, 1) translate(-13.000000, -15.000000) "></path>
+            <polygon id="Triangle" fill="#9E1717" points="8 0 10 4 6 4"></polygon>
+            <path d="M9,1 L9,10.5 C9,11.8807119 7.88071187,13 6.5,13 L6.5,13 C5.11928813,13 4,11.8807119 4,10.5 L4,6 C4,3.23857625 6.23857625,1 9,1 Z" id="Rectangle" fill="#BB1818" transform="translate(6.500000, 7.000000) scale(-1, 1) translate(-6.500000, -7.000000) "></path>
+            <path d="M12,1 L12,9.5 C12,10.8807119 10.8807119,12 9.5,12 L9.5,12 C8.11928813,12 7,10.8807119 7,9.5 L7,6 C7,3.23857625 9.23857625,1 12,1 Z" id="Rectangle" fill="#CE1F1F"></path>
+            <path d="M2,4 L4,4 C6.76142375,4 9,6.23857625 9,9 L9,13 L7,13 C4.23857625,13 2,10.7614237 2,8 L2,4 Z" id="Rectangle" fill="#EC2F2F"></path>
+            <path d="M7,4 L10,4 C12.209139,4 14,5.790861 14,8 L14,13 L12,13 C9.23857625,13 7,10.7614237 7,8 L7,4 Z" id="Rectangle-Copy-2" fill="#F54C4C" transform="translate(10.500000, 8.500000) scale(-1, 1) translate(-10.500000, -8.500000) "></path>
+        </g>
+    </g>
+</svg>
