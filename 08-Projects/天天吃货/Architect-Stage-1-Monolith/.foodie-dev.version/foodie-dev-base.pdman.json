@@ -1,0 +1,1540 @@
+{
+  "modules": [
+    {
+      "name": "foodie-shop",
+      "chnname": "天天吃货",
+      "entities": [
+        {
+          "title": "carousel",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "主键",
+              "relationNoShow": false,
+              "pk": true,
+              "notNull": true,
+              "uiHint": ""
+            },
+            {
+              "name": "image_url",
+              "type": "Name",
+              "remark": "图片地址",
+              "chnname": "图片",
+              "relationNoShow": false,
+              "notNull": true
+            },
+            {
+              "name": "background_color",
+              "type": "DefaultString",
+              "remark": "背景颜色",
+              "chnname": "背景色"
+            },
+            {
+              "name": "item_id",
+              "type": "LongKey",
+              "remark": "商品id",
+              "chnname": "商品id"
+            },
+            {
+              "name": "cat_id",
+              "type": "LongKey",
+              "remark": "商品分类id",
+              "chnname": "商品分类id"
+            },
+            {
+              "name": "type",
+              "type": "Integer",
+              "remark": "轮播图类型，用于判断，可以根据商品id或者分类进行页面跳转，1：商品 2：分类",
+              "chnname": "轮播图类型",
+              "notNull": true
+            },
+            {
+              "name": "sort",
+              "type": "Integer",
+              "remark": "轮播图展示顺序，从小到大",
+              "chnname": "轮播图展示顺序",
+              "notNull": true
+            },
+            {
+              "name": "is_show",
+              "type": "Integer",
+              "remark": "是否展示，1：展示    0：不展示",
+              "chnname": "是否展示",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "update_time",
+              "type": "DateTime",
+              "remark": "更新",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "轮播图"
+        },
+        {
+          "title": "category",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "分类id主键",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true,
+              "relationNoShow": false,
+              "uiHint": ""
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "分类名称",
+              "chnname": "分类名称",
+              "pk": false,
+              "notNull": true
+            },
+            {
+              "name": "type",
+              "type": "Integer",
+              "remark": "分类得类型，\n1:一级大分类\n2:二级分类\n3:三级小分类",
+              "chnname": "分类类型",
+              "notNull": true
+            },
+            {
+              "name": "father_id",
+              "type": "Integer",
+              "remark": "父id 上一级依赖的id，1级分类则为0，二级三级分别依赖上一级",
+              "chnname": "父id",
+              "notNull": true
+            },
+            {
+              "name": "logo",
+              "type": "LongKey",
+              "remark": "logo",
+              "chnname": "图标",
+              "notNull": false
+            },
+            {
+              "name": "slogan",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "口号",
+              "notNull": false
+            },
+            {
+              "name": "cat_image",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "分类图",
+              "notNull": false
+            },
+            {
+              "name": "bg_color",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "背景颜色"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商品分类"
+        },
+        {
+          "title": "users",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "用户id",
+              "chnname": "主键id",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "username",
+              "type": "DefaultString",
+              "remark": "用户名",
+              "chnname": "用户名",
+              "pk": false,
+              "notNull": true
+            },
+            {
+              "name": "password",
+              "type": "LongKey",
+              "remark": "密码",
+              "chnname": "密码",
+              "notNull": true
+            },
+            {
+              "name": "nickname",
+              "type": "DefaultString",
+              "remark": "昵称",
+              "chnname": "昵称"
+            },
+            {
+              "name": "realname",
+              "type": "Name",
+              "remark": "真实姓名",
+              "chnname": "真实姓名"
+            },
+            {
+              "name": "face",
+              "type": "MiddleString",
+              "remark": "头像",
+              "chnname": "头像",
+              "notNull": true
+            },
+            {
+              "name": "mobile",
+              "type": "DefaultString",
+              "remark": "手机号",
+              "chnname": "手机号"
+            },
+            {
+              "name": "email",
+              "type": "DefaultString",
+              "remark": "邮箱地址",
+              "chnname": "邮箱地址"
+            },
+            {
+              "name": "sex",
+              "type": "Integer",
+              "remark": "性别 1:男  0:女  2:保密",
+              "chnname": "性别"
+            },
+            {
+              "name": "birthday",
+              "type": "Date",
+              "remark": "生日",
+              "chnname": "生日"
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "创建时间",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "更新时间",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [
+            {
+              "name": "username",
+              "isUnique": true,
+              "fields": [
+                "username"
+              ]
+            }
+          ],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户表"
+        },
+        {
+          "title": "user_address",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "地址主键id",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "user_id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "关联用户id",
+              "notNull": true
+            },
+            {
+              "name": "receiver",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "收件人姓名",
+              "notNull": true
+            },
+            {
+              "name": "mobile",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "收件人手机号",
+              "notNull": true
+            },
+            {
+              "name": "province",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "省份",
+              "notNull": true
+            },
+            {
+              "name": "city",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "城市",
+              "notNull": true
+            },
+            {
+              "name": "district",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "区县",
+              "notNull": true
+            },
+            {
+              "name": "detail",
+              "type": "Name",
+              "remark": "",
+              "chnname": "详细地址",
+              "notNull": true
+            },
+            {
+              "name": "extand",
+              "type": "Name",
+              "remark": "",
+              "chnname": "扩展字段"
+            },
+            {
+              "name": "is_default",
+              "type": "Integer",
+              "remark": "1:是  0:否",
+              "chnname": "是否默认地址"
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户地址表"
+        },
+        {
+          "title": "items",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品主键id",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "item_name",
+              "type": "IdOrKey",
+              "remark": "商品名称",
+              "chnname": "商品名称",
+              "notNull": true
+            },
+            {
+              "name": "cat_id",
+              "type": "Integer",
+              "remark": "分类id",
+              "chnname": "分类外键id",
+              "notNull": true
+            },
+            {
+              "name": "root_cat_id",
+              "type": "Integer",
+              "remark": "一级分类id，用于优化查询",
+              "chnname": "一级分类外键id",
+              "notNull": true
+            },
+            {
+              "name": "sell_counts",
+              "type": "Integer",
+              "remark": "累计销售",
+              "chnname": "累计销售",
+              "notNull": true
+            },
+            {
+              "name": "on_off_status",
+              "type": "Integer",
+              "remark": "上下架状态,1:上架 2:下架",
+              "chnname": "上下架状态",
+              "notNull": true
+            },
+            {
+              "name": "content",
+              "type": "LongText",
+              "remark": "商品内容",
+              "chnname": "商品内容",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商品表",
+          "remark": "商品信息相关表：分类表，商品图片表，商品规格表，商品参数表"
+        },
+        {
+          "title": "items_img",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "图片主键",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "item_id",
+              "type": "LongKey",
+              "remark": "商品外键id",
+              "chnname": "商品外键id",
+              "notNull": true
+            },
+            {
+              "name": "url",
+              "type": "Name",
+              "remark": "图片地址",
+              "chnname": "图片地址",
+              "notNull": true
+            },
+            {
+              "name": "sort",
+              "type": "Integer",
+              "remark": "图片顺序，从小到大",
+              "chnname": "顺序",
+              "notNull": true
+            },
+            {
+              "name": "is_main",
+              "type": "Integer",
+              "remark": "是否主图，1：是，0：否",
+              "chnname": "是否主图",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商品图片"
+        },
+        {
+          "title": "items_spec",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品规格id",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "item_id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品外键id",
+              "notNull": true
+            },
+            {
+              "name": "name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "规格名称",
+              "notNull": true
+            },
+            {
+              "name": "stock",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "库存",
+              "notNull": true
+            },
+            {
+              "name": "discounts",
+              "type": "Ratio",
+              "remark": "",
+              "chnname": "折扣力度",
+              "notNull": true
+            },
+            {
+              "name": "price_discount",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "优惠价",
+              "notNull": true
+            },
+            {
+              "name": "price_normal",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "原价",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商品规格",
+          "remark": "每一件商品都有不同的规格，不同的规格又有不同的价格和优惠力度，规格表为此设计"
+        },
+        {
+          "title": "items_param",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品参数id",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "item_id",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "商品外键id",
+              "notNull": true
+            },
+            {
+              "name": "produc_place",
+              "type": "DefaultString",
+              "remark": "产地，例：中国江苏",
+              "chnname": "产地",
+              "notNull": true
+            },
+            {
+              "name": "foot_period",
+              "type": "DefaultString",
+              "remark": "保质期，例：180天",
+              "chnname": "保质期",
+              "notNull": true
+            },
+            {
+              "name": "brand",
+              "type": "DefaultString",
+              "remark": "品牌名，例：三只大灰狼",
+              "chnname": "品牌名",
+              "notNull": true
+            },
+            {
+              "name": "factory_name",
+              "type": "DefaultString",
+              "remark": "生产厂名，例：大灰狼工厂",
+              "chnname": "生产厂名",
+              "notNull": true
+            },
+            {
+              "name": "factory_address",
+              "type": "DefaultString",
+              "remark": "生产厂址，例：大灰狼生产基地",
+              "chnname": "生产厂址",
+              "notNull": true
+            },
+            {
+              "name": "packaging_method",
+              "type": "DefaultString",
+              "remark": "包装方式，例：袋装",
+              "chnname": "包装方式",
+              "notNull": true
+            },
+            {
+              "name": "weight",
+              "type": "DefaultString",
+              "remark": "规格重量，例：35g",
+              "chnname": "规格重量",
+              "notNull": true
+            },
+            {
+              "name": "storage_method",
+              "type": "DefaultString",
+              "remark": "存储方法，例：常温5~25°",
+              "chnname": "存储方法",
+              "notNull": true
+            },
+            {
+              "name": "eat_method",
+              "type": "DefaultString",
+              "remark": "食用方式，例：开袋即食",
+              "chnname": "食用方式",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商品参数"
+        },
+        {
+          "title": "items_comments",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "id主键",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "user_id",
+              "type": "LongKey",
+              "remark": "用户名须脱敏",
+              "chnname": "用户id"
+            },
+            {
+              "name": "item_id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品id",
+              "notNull": true
+            },
+            {
+              "name": "item_name",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品名称"
+            },
+            {
+              "name": "item_spec_id",
+              "type": "LongKey",
+              "remark": "可为空",
+              "chnname": "商品规格id"
+            },
+            {
+              "name": "sepc_name",
+              "type": "DefaultString",
+              "remark": "可为空",
+              "chnname": "规格名称"
+            },
+            {
+              "name": "comment_level",
+              "type": "Integer",
+              "remark": "1：好评 2：中评 3：差评",
+              "chnname": "评价等级",
+              "notNull": true
+            },
+            {
+              "name": "content",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "评价内容",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商品评价表"
+        },
+        {
+          "title": "orders",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "同时也是订单编号",
+              "chnname": "订单主键",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "user_id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "receiver_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "收货人快照",
+              "notNull": true
+            },
+            {
+              "name": "receiver_mobile",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "收货人手机号快照",
+              "notNull": true
+            },
+            {
+              "name": "receiver_address",
+              "type": "Name",
+              "remark": "",
+              "chnname": "收货地址快照",
+              "notNull": true
+            },
+            {
+              "name": "total_amount",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "订单总价格",
+              "notNull": true
+            },
+            {
+              "name": "real_pay_amount",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "实际支付总价格",
+              "notNull": true
+            },
+            {
+              "name": "post_amount",
+              "type": "Integer",
+              "remark": "默认可以为零，代表包邮",
+              "chnname": "邮费",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "pay_method",
+              "type": "Integer",
+              "remark": "1:微信 2:支付宝",
+              "chnname": "支付方式",
+              "notNull": true
+            },
+            {
+              "name": "left_msg",
+              "type": "Name",
+              "remark": "",
+              "chnname": "买家留言"
+            },
+            {
+              "name": "extand",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "扩展字段"
+            },
+            {
+              "name": "is_comment",
+              "type": "Integer",
+              "remark": "1：已评价，0：未评价",
+              "chnname": "买家是否评价",
+              "notNull": true
+            },
+            {
+              "name": "is_delete",
+              "type": "Integer",
+              "remark": "1: 删除 0:未删除",
+              "chnname": "逻辑删除状态",
+              "defaultValue": "0",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间（成交时间）",
+              "notNull": true
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "订单表"
+        },
+        {
+          "title": "order_items",
+          "fields": [
+            {
+              "name": "id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "主键id",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "order_id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "归属订单id",
+              "notNull": true
+            },
+            {
+              "name": "item_id",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "商品id",
+              "notNull": true
+            },
+            {
+              "name": "item_img",
+              "type": "Name",
+              "remark": "",
+              "chnname": "商品图片",
+              "notNull": true
+            },
+            {
+              "name": "item_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "商品名称",
+              "notNull": true
+            },
+            {
+              "name": "item_spec_id",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "规格id",
+              "notNull": true
+            },
+            {
+              "name": "item_spec_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "规格名称",
+              "notNull": true
+            },
+            {
+              "name": "price",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "成交价格",
+              "notNull": true
+            },
+            {
+              "name": "buy_counts",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "购买数量",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "订单商品关联表"
+        },
+        {
+          "title": "order_status",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "LongKey",
+              "remark": "对应订单表的主键id",
+              "chnname": "订单ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "order_status",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "订单状态",
+              "notNull": true
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "对应[10:待付款]状态",
+              "chnname": "订单创建时间"
+            },
+            {
+              "name": "pay_time",
+              "type": "DateTime",
+              "remark": "对应[20:已付款，待发货]状态",
+              "chnname": "支付成功时间"
+            },
+            {
+              "name": "deliver_time",
+              "type": "DateTime",
+              "remark": "对应[30：已发货，待收货]状态",
+              "chnname": "发货时间"
+            },
+            {
+              "name": "success_time",
+              "type": "DateTime",
+              "remark": "对应[40：交易成功]状态",
+              "chnname": "交易成功时间"
+            },
+            {
+              "name": "close_time",
+              "type": "DateTime",
+              "remark": "对应[50：交易关闭]状态",
+              "chnname": "交易关闭时间"
+            },
+            {
+              "name": "comment_time",
+              "type": "DateTime",
+              "remark": "用户在交易成功后的留言时间",
+              "chnname": "留言时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "订单状态表",
+          "remark": "订单的每个状态更改都需要进行记录\n10：待付款  20：已付款，待发货  30：已发货，待收货（7天自动确认）  40：交易成功（此时可以评价）50：交易关闭（待付款时，用户取消 或 长时间未付款，系统识别后自动关闭）\n退货/退货，此分支流程不做，所以不加入"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [
+          {
+            "shape": "table",
+            "title": "carousel",
+            "moduleName": false,
+            "x": 280,
+            "y": 210,
+            "id": "7a3c6295",
+            "size": [
+              427.74798336318077,
+              310.65875
+            ]
+          },
+          {
+            "shape": "table",
+            "title": "category",
+            "moduleName": false,
+            "x": 790,
+            "y": 110,
+            "id": "f06be02d",
+            "size": [
+              405.68341684549944,
+              121.72222222222221
+            ]
+          }
+        ],
+        "edges": []
+      },
+      "associations": []
+    }
+  ],
+  "version": "v1.0.0",
+  "message": "初始化当前项目数据库版本",
+  "date": "2020/10/1 17:10:10"
+}
