@@ -1,8 +1,0 @@
-server:
-  port: 9090
-
-spring:
-  security:
-    user:
-      name: admin
-      password: 53cr3t
